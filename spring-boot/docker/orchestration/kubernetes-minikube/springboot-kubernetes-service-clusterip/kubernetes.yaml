@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: helloworld-pod
+spec:
+  containers:
+  - name: helloworld-container
+    image: wisniewskikr/springboot-helloworld-image
+    ports:
+    - containerPort: 8080
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: helloworld-service
+spec:
+  selector:
+    app: helloworld-container
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 8000

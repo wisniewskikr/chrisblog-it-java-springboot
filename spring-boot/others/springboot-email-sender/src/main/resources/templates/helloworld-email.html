@@ -1,0 +1,100 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Greeting</title>
+<style>
+@media only screen and (max-width: 596px) {
+table[class="main"] {
+	width: 100% !important;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+}
+img[class="logo"] {
+	padding: 10px;
+	width: 50px;
+	height: auto;
+}
+.buttons {
+	width: 100% !important;
+	text-align: center!important
+}
+.buttons a {
+	display: block;
+}
+table[class="holder"] {
+	padding: 8px;
+}
+}
+body {
+	background-color: #06c;
+}
+table.main {
+	width: 600px;
+}
+body, h1, h2, p, div, td, a, .buttons, .disclaimer {
+	font-family: Arial, Helvetica, sans-serif;
+}
+h1 {
+	font-size: 24px;
+	color: #06c;
+}
+h2 {
+	font-size: 20px;
+	color: #bababa;
+}
+p, td, div, a, .buttons {
+	font-size: 16px;
+}
+.disclaimer {
+	font-size: 12px;
+	color: #bababa;
+	padding-top: 15px;
+	border-top: 1px #bababa solid
+}
+p {
+	color: #333;
+}
+a {
+	color: #06c;
+}
+.buttons a {
+	background: #06c;
+	padding: 10px 20px 10px 20px;
+	text-decoration: none;
+	color: #fff;
+}
+.holder {
+	padding-left: 15px;
+	padding-right: 15px;
+	padding-bottom: 15px;
+}
+p.signature span 
+{
+    display: block;
+}
+</style>
+</head>
+<body style="background-color:#06c;font-family:Arial, Helvetica, sans-serif;" >
+<table width="100%" border="0" cellspacing="0" cellpadding="0" >
+  <tr>
+	<td align="center" style="font-family:Arial, Helvetica, sans-serif;font-size:16px;" ><table border="0" cellspacing="0" cellpadding="0" class="main" bgcolor="#fff" style="width:600px;" >		
+		<tr>
+		<td class="holder" style="font-family:Arial, Helvetica, sans-serif;font-size:16px;padding-left:15px;padding-right:15px;padding-bottom:15px;" >
+			<h1 style="font-family:Arial, Helvetica, sans-serif;font-size:24px;color:#06c;" ><span th:text="${header}">header</span></h1>
+			<h2 style="font-family:Arial, Helvetica, sans-serif;font-size:20px;color:#bababa;" ><span th:text="${header}">header</span></h2>
+			<p style="font-family:Arial, Helvetica, sans-serif;font-size:16px;color:#333;" >
+				<span th:text="${text}">text</span>
+			</p>
+			<p class="signature" style="font-family:Arial, Helvetica, sans-serif;font-size:16px;color:#333;" >
+				<span>Kind Regards,</span>
+				<span>Mail Sender</span>
+			</p>			
+		</tr>
+	  </table></td>
+  </tr>
+</table>
+<p style="font-family:Arial, Helvetica, sans-serif;font-size:16px;color:#333;" >&nbsp;</p>
+</body>
+</html>

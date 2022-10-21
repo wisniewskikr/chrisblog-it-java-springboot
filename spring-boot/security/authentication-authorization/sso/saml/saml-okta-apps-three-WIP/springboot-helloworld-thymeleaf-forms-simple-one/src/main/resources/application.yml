@@ -1,0 +1,24 @@
+server:
+  port: 8443
+  ssl:
+    enabled: true
+    key-alias: spring
+    key-store: "classpath:saml/keystore.jks"
+    key-store-password: secret
+
+spring:
+  security:
+    saml2:
+      relyingparty:
+        registration:
+          okta:
+            identityprovider:
+              entity-id: http://www.okta.com/exk5tqiv3xoiAlbkW5d7
+              verification.credentials:
+                - certificate-location: "classpath:saml/okta.cert"
+              singlesignon.url: https://dev-58841934.okta.com/app/dev-58841934_app_1/exk5tqiv3xoiAlbkW5d7/sso/saml
+              singlesignon.sign-request: false
+
+text:
+  service:
+    url: https://localhost:8445

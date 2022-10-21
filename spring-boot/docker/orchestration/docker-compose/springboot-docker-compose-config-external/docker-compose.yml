@@ -1,0 +1,19 @@
+version: '3'
+
+services:
+  greeting:
+    image: greeting-image
+    container_name: greeting-container
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    ports:
+      - 8080:8080
+    volumes:
+      - ./config/application.properties:/config/application.properties
+    networks:
+      - network
+
+networks:
+  network:
+    name: greeting-network

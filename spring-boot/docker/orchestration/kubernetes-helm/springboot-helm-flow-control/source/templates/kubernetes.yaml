@@ -1,0 +1,74 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: helloworld-configmap
+data:
+  message_hello_prop : {{ if eq .Values.lang "en" }} {{ .Values.hello_en }} {{ else if eq .Values.lang "pl" }} {{ .Values.hello_pl }} {{ else }} {{ .Values.hello_en }} {{ end }}
+  message_world_prop : {{ if eq .Values.lang "en" }} {{ .Values.world_en }} {{ else if eq .Values.lang "pl" }} {{ .Values.world_pl }} {{ else }} {{ .Values.world_en }} {{ end }}
+  message_exclamation_prop : '{{ .Values.exclamation }}'
+---
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: helloworld-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: helloworld-container
+  template:
+    metadata:
+      labels:
+        app: helloworld-container
+    spec:
+      containers:
+        - name: helloworld-container
+          image: wisniewskikr/springboot-helloworld-message-flexible-image
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080
+          readinessProbe:
+            httpGet:
+              path: /actuator/health
+              port: 8080
+            initialDelaySeconds: 5
+          livenessProbe:
+            httpGet:
+              path: /actuator/health
+              port: 8080
+            initialDelaySeconds: 5
+          env:
+          - name: message_hello
+            valueFrom:
+              configMapKeyRef:
+                name: helloworld-configmap
+                key: message_hello_prop
+          - name: message_world
+            valueFrom:
+              configMapKeyRef:
+                name: helloworld-configmap
+                key: message_world_prop
+          - name: message_exclamation
+            valueFrom:
+              configMapKeyRef:
+                name: helloworld-configmap
+                key: message_exclamation_prop 
+      volumes:
+      - name: helloworld-volume
+        configMap:
+          name: helloworld-configmap          
+      restartPolicy: Always
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: helloworld-service
+spec:
+  type: NodePort
+  ports:
+    - port: 8080
+      targetPort: 8080
+      protocol: TCP
+      nodePort: 31000
+  selector:
+    app: helloworld-container

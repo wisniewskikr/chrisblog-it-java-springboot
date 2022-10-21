@@ -1,0 +1,51 @@
+version: '3'
+
+services:
+
+  rabbitmq:
+    image: rabbitmq:3-management-alpine
+    container_name: rabbitmq
+    ports:
+        - 5672:5672
+        - 15672:15672
+    volumes:
+      - ./springboot-rabbitmq-server/etc/definitions.json:/etc/rabbitmq/definitions.json
+      - ./springboot-rabbitmq-server/etc/rabbitmq.conf:/etc/rabbitmq/rabbitmq.conf
+      - ./springboot-rabbitmq-server/data:/var/lib/rabbitmq/mnesia/rabbit@my-rabbit
+      - ./springboot-rabbitmq-server/logs:/var/log/rabbitmq/log
+    networks:
+        - network
+
+  producer:
+    image: producer
+    container_name: producer
+    build:
+      context: ./springboot-rabbitmq-producer
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    environment:
+    - SPRING_RABBITMQ_HOST=rabbitmq
+    networks:
+      - network
+    depends_on:
+      - rabbitmq
+  
+  consumer:
+    image: consumer
+    container_name: consumer
+    build:
+      context: ./springboot-rabbitmq-consumer
+      dockerfile: Dockerfile
+    ports:
+      - "9090:9090"
+    environment:
+    - SPRING_RABBITMQ_HOST=rabbitmq
+    networks:
+      - network
+    depends_on:
+      - rabbitmq
+
+networks:
+  network:
+    name: helloworld-network

@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: helloworld-deployment
+  labels:
+    app: helloworld-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: helloworld-container
+  template:
+    metadata:
+      labels:
+        app: helloworld-container
+    spec:
+      containers:
+      - name: helloworld-container
+        image: wisniewskikr/springboot-helloworld-image
+        ports:
+        - containerPort: 8080

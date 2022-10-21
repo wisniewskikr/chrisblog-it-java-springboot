@@ -1,0 +1,36 @@
+package com.example.services;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.BadCredentialsException;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.stereotype.Component;
+
+import com.example.entities.UserEntity;
+import com.example.enums.UserTypeEnum;
+import com.example.repositories.UserRepository;
+
+@Component
+public class CustomUserDetailsService implements UserDetailsService {
+	
+	private UserRepository userRepository;	
+	
+	@Autowired
+	public CustomUserDetailsService(UserRepository userRepository) {
+		this.userRepository = userRepository;
+	}
+	
+	@Override
+	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+		
+		UserEntity user = userRepository.findByUserNameAndUserType(username, UserTypeEnum.DATABASE);		
+		if (user == null) {
+			throw new BadCredentialsException("Not Existing Username");
+		}
+		
+		return new UserEntity(user.getUserName(), user.getPassword(), user.getUserRole(), UserTypeEnum.DATABASE);
+		
+	}
+
+}

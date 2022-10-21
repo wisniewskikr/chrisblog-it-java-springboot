@@ -1,0 +1,66 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: helloworld-configmap
+data:
+   application.properties: |-
+     message_hello=Hello
+     message_world=World
+     message_exclamation=!
+---
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: helloworld-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: helloworld-container
+  template:
+    metadata:
+      labels:
+        app: helloworld-container
+    spec:
+      containers:
+        - name: helloworld-container
+          image: wisniewskikr/springboot-helloworld-message-flexible-image
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080
+          readinessProbe:
+            httpGet:
+              path: /actuator/health
+              port: 8080
+            initialDelaySeconds: 5
+          livenessProbe:
+            httpGet:
+              path: /actuator/health
+              port: 8080
+            initialDelaySeconds: 5
+          volumeMounts:
+          - name: helloworld-volume 
+            mountPath: "/config" 
+            readOnly: true
+      volumes:
+      - name: helloworld-volume
+        configMap:
+          name: helloworld-configmap
+          items:
+          - key: application.properties 
+            path: application.properties
+      restartPolicy: Always
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: helloworld-service
+spec:
+  type: NodePort
+  ports:
+    - port: 8080
+      targetPort: 8080
+      protocol: TCP
+      nodePort: 31000
+  selector:
+    app: helloworld-container

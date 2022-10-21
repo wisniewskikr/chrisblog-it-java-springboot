@@ -1,0 +1,15 @@
+spring:
+  security:
+    oauth2:
+      client:
+        registration:
+          okta:
+            client-id: 
+            client-secret: 
+        provider:
+          okta:
+            authorization-uri: {okta_server}/oauth2/default/v1/authorize
+            token-uri: {okta_server}/oauth2/default/v1/token
+            user-info-uri: {okta_server}/oauth2/default/v1/userinfo
+            user-name-attribute: preferred_username
+            jwk-set-uri: {okta_server}/oauth2/default/v1/keys

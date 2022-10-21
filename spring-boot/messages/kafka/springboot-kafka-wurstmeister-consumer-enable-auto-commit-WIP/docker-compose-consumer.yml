@@ -1,0 +1,48 @@
+version: '3'
+
+services:
+  
+  consumer1:
+    image: consumer1
+    container_name: consumer1
+    build:
+      context: ./springboot-kafka-consumer
+      dockerfile: Dockerfile
+    ports:
+      - "9090:9090"
+    environment:
+      SERVER_PORT: 9090
+      CONSUMER_ID: 1
+      SPRING_KAFKA_CONSUMER_BOOTSTRAP_SERVERS: kafka:9093
+      SPRING_KAFKA_CONSUMER_GROUP_ID: groupid1
+      SPRING_KAFKA_CONSUMER_ENABLE_AUTO_COMMIT: true
+      SPRING_KAFKA_CONSUMER_AUTO_COMMIT_INTERVAL_MS: 6000
+      SPRING_KAFKA_CONSUMER_KEY_DESERIALIZER: org.apache.kafka.common.serialization.StringDeserializer
+      SPRING_KAFKA_CONSUMER_VALUE_DESERIALIZER: org.apache.kafka.common.serialization.StringDeserializer
+      TOPIC_NAME: greeting
+    networks:
+      - network
+
+  consumer2:
+    image: consumer2
+    container_name: consumer2
+    build:
+      context: ./springboot-kafka-consumer
+      dockerfile: Dockerfile
+    ports:
+      - "9091:9091"
+    environment:
+      SERVER_PORT: 9091
+      CONSUMER_ID: 2
+      SPRING_KAFKA_CONSUMER_BOOTSTRAP_SERVERS: kafka:9093
+      SPRING_KAFKA_CONSUMER_GROUP_ID: groupid2
+      SPRING_KAFKA_CONSUMER_ENABLE_AUTO_COMMIT: false
+      SPRING_KAFKA_CONSUMER_KEY_DESERIALIZER: org.apache.kafka.common.serialization.StringDeserializer
+      SPRING_KAFKA_CONSUMER_VALUE_DESERIALIZER: org.apache.kafka.common.serialization.StringDeserializer
+      TOPIC_NAME: greeting
+    networks:
+      - network
+
+networks:
+  network:
+    name: greeting-network

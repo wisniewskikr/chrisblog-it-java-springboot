@@ -1,0 +1,170 @@
+version: '3'
+
+services:
+
+  zookeeper1:
+    image: wurstmeister/zookeeper
+    container_name: zookeeper1
+    ports:
+      - "2181:2181"
+    networks:
+      - network
+
+  zookeeper2:
+    image: wurstmeister/zookeeper
+    container_name: zookeeper2
+    ports:
+      - "2182:2182"
+    networks:
+      - network
+
+  kafka1:
+    image: wurstmeister/kafka
+    container_name: kafka1
+    depends_on:
+      - zookeeper1
+      - zookeeper2
+    ports:
+      - "9092:9092"
+    expose:
+    - "9093"
+    environment:
+      KAFKA_BROKER_ID: 1
+      KAFKA_ADVERTISED_LISTENERS: INSIDE://kafka1:9093,OUTSIDE://localhost:9092
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: INSIDE:PLAINTEXT,OUTSIDE:PLAINTEXT
+      KAFKA_LISTENERS: INSIDE://0.0.0.0:9093,OUTSIDE://0.0.0.0:9092
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper1:2181,zookeeper2:2182
+      KAFKA_INTER_BROKER_LISTENER_NAME: INSIDE      
+    networks:
+      - network
+
+  kafka2:
+    image: wurstmeister/kafka
+    container_name: kafka2
+    depends_on:
+      - zookeeper1
+      - zookeeper2
+    ports:
+      - "9094:9094"
+    expose:
+    - "9095"
+    environment:
+      KAFKA_BROKER_ID: 2
+      KAFKA_ADVERTISED_LISTENERS: INSIDE://kafka2:9095,OUTSIDE://localhost:9094
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: INSIDE:PLAINTEXT,OUTSIDE:PLAINTEXT
+      KAFKA_LISTENERS: INSIDE://0.0.0.0:9095,OUTSIDE://0.0.0.0:9094
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper1:2181,zookeeper2:2182
+      KAFKA_INTER_BROKER_LISTENER_NAME: INSIDE      
+    networks:
+      - network
+
+  producer1:
+    image: producer1
+    container_name: producer1
+    build:
+      context: ./springboot-kafka-producer
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    environment:
+      SERVER_PORT: 8080
+      SPRING_KAFKA_PRODUCER_BOOTSTRAP_SERVERS: kafka1:9093, kafka2:9095
+      SPRING_KAFKA_PRODUCER_KEY_SERIALIZER: org.apache.kafka.common.serialization.StringSerializer
+      SPRING_KAFKA_PRODUCER_VALUE_SERIALIZER: org.apache.kafka.common.serialization.StringSerializer
+      TOPIC_NAME: helloworld-man
+      TOPIC_PARTITIONS: 2
+      TOPIC_REPLICAS: 2
+    networks:
+      - network
+    depends_on:
+      - kafka1
+      - kafka2
+
+  producer2:
+    image: producer2
+    container_name: producer2
+    build:
+      context: ./springboot-kafka-producer
+      dockerfile: Dockerfile
+    ports:
+      - "8081:8081"
+    environment:
+      SERVER_PORT: 8081
+      SPRING_KAFKA_PRODUCER_BOOTSTRAP_SERVERS: kafka1:9093, kafka2:9095
+      SPRING_KAFKA_PRODUCER_KEY_SERIALIZER: org.apache.kafka.common.serialization.StringSerializer
+      SPRING_KAFKA_PRODUCER_VALUE_SERIALIZER: org.apache.kafka.common.serialization.StringSerializer
+      TOPIC_NAME: helloworld-woman
+      TOPIC_PARTITIONS: 2
+      TOPIC_REPLICAS: 2
+    networks:
+      - network
+    depends_on:
+      - kafka1
+      - kafka2
+
+  consumer1:
+    image: consumer1
+    container_name: consumer1
+    build:
+      context: ./springboot-kafka-consumer
+      dockerfile: Dockerfile
+    ports:
+      - "7090:7090"
+    environment:
+      SERVER_PORT: 7090
+      SPRING_KAFKA_CONSUMER_BOOTSTRAP_SERVERS: kafka1:9093, kafka2:9095
+      SPRING_KAFKA_CONSUMER_GROUP_ID: helloworld-man-woman
+      SPRING_KAFKA_CONSUMER_KEY_DESERIALIZER: org.apache.kafka.common.serialization.StringDeserializer
+      SPRING_KAFKA_CONSUMER_VALUE_DESERIALIZER: org.apache.kafka.common.serialization.StringDeserializer
+      TOPIC_NAME: helloworld-man
+    networks:
+      - network
+    depends_on:
+      - kafka1
+      - kafka2
+
+  consumer2:
+    image: consumer2
+    container_name: consumer2
+    build:
+      context: ./springboot-kafka-consumer
+      dockerfile: Dockerfile
+    ports:
+      - "7091:7091"
+    environment:
+      SERVER_PORT: 7091
+      SPRING_KAFKA_CONSUMER_BOOTSTRAP_SERVERS: kafka1:9093, kafka2:9095
+      SPRING_KAFKA_CONSUMER_GROUP_ID: helloworld-man-woman
+      SPRING_KAFKA_CONSUMER_KEY_DESERIALIZER: org.apache.kafka.common.serialization.StringDeserializer
+      SPRING_KAFKA_CONSUMER_VALUE_DESERIALIZER: org.apache.kafka.common.serialization.StringDeserializer
+      TOPIC_NAME: helloworld-woman
+    networks:
+      - network
+    depends_on:
+      - kafka1
+      - kafka2
+
+  consumer3:
+    image: consumer3
+    container_name: consumer3
+    build:
+      context: ./springboot-kafka-consumer
+      dockerfile: Dockerfile
+    ports:
+      - "7092:7092"
+    environment:
+      SERVER_PORT: 7092
+      SPRING_KAFKA_CONSUMER_BOOTSTRAP_SERVERS: kafka1:9093, kafka2:9095
+      SPRING_KAFKA_CONSUMER_GROUP_ID: helloworld-human
+      SPRING_KAFKA_CONSUMER_KEY_DESERIALIZER: org.apache.kafka.common.serialization.StringDeserializer
+      SPRING_KAFKA_CONSUMER_VALUE_DESERIALIZER: org.apache.kafka.common.serialization.StringDeserializer
+      TOPIC_NAME: helloworld-man,helloworld-woman
+    networks:
+      - network
+    depends_on:
+      - kafka1
+      - kafka2
+
+networks:
+  network:
+    name: helloworld-network
