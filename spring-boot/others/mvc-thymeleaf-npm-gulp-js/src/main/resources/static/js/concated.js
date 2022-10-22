@@ -1,0 +1,1 @@
+function displayMsg(){return alert(provideMsg())}function provideMsg(){return"Hello World!"}

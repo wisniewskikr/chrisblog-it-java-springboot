@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+
+<head>
+  	<title>Hello World</title>
+  	<meta charset="utf-8">
+  	<link rel="stylesheet" th:href="@{/css/custom.css}"/>
+  	<script th:src="@{/js/custom.js}"></script>
+  
+	<!-- Bootstrap 5 -->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+</head>
+
+
+<body th:object="${command}">
+	
+	<div class="d-flex align-items-center justify-content-center full-height">
+		<div class="frame border">
+			<div class="mb-3">
+				<h2>View Page</h2>
+			</div>
+			
+			<div class="mb-3">
+				<label for="dateFrom" class="form-label">Date From</label>
+				<input type="text" class="form-control" th:field="*{dateFrom}" aria-describedby="dateFromHelp" disabled="disabled">
+				<div id="dateFromHelp" class="form-text">You can not edit Date From here.</div>
+			</div>
+			<div class="mb-3">
+				<label for="timeFrom" class="form-label">Time From</label>
+				<input type="text" class="form-control" th:field="*{timeFrom}" aria-describedby="timeFromHelp" disabled="disabled">
+				<div id="timeFromHelp" class="form-text">You can not edit Time From here.</div>
+			</div>			
+			<div class="mb-3">
+				<label for="dateTo" class="form-label">Date To</label>
+				<input type="text" class="form-control" th:field="*{dateTo}" aria-describedby="dateToHelp" disabled="disabled">
+				<div id="dateToHelp" class="form-text">You can not edit Date To here.</div>
+			</div>
+			<div class="mb-3">
+				<label for="timeTo" class="form-label">Time To</label>
+				<input type="text" class="form-control" th:field="*{timeTo}" aria-describedby="timeToHelp" disabled="disabled">
+				<div id="timeToHelp" class="form-text">You can not edit Time To here.</div>
+			</div>		
+			<div class="mb-3">
+				<label for="room" class="form-label">Room</label>
+				<input type="text" class="form-control" th:field="*{room}" aria-describedby="roomHelp" disabled="disabled">
+				<div id="roomHelp" class="form-text">You can not edit Room here.</div>
+			</div>
+			  
+			<a th:href="@{/list}" class="btn btn-primary">Back</a>
+		</div>
+	</div>
+	
+</body>
+
+
+</html>

@@ -1,0 +1,4 @@
+<header th:fragment="header (current)" class="text-center">
+	<a href="#" th:href="@{/greeting}" th:classappend="${current == 'greeting'} ? selected : ''">Greeting</a> 
+	<a href="#" th:href="@{/greetingSecond}" th:classappend="${current == 'greetingSecond'} ? selected : ''">Greeting Second</a>  
+</header>

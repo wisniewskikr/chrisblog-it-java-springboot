@@ -1,0 +1,8 @@
+.classpath
+.project
+.settings
+target
+node
+node_modules
+src/main/resource/static/js
+
