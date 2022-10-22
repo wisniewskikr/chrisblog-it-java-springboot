@@ -28,3 +28,21 @@ Security:
 	- Client Authorization - OAuth2
 		- JWT (JSON Web Token) (Header + Payload + Signature)
 		- etc.
+		
+api-text
+api-json
+
+html-regular
+html-thymeleaf
+html-thymeleaf-model
+html-thymeleaf-command
+html-thymeleaf-form-with-redirect
+html-thymeleaf-form-without-redirect
+html-thymeleaf-form-crud
+
+service-endpoint
+service-target
+
+demo-springboot-helloworld-html
+demo-springboot-helloworld-api
+demo-springboot-aws
