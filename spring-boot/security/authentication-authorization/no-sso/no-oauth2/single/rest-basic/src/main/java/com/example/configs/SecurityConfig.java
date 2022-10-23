@@ -15,10 +15,14 @@ import org.springframework.security.web.SecurityFilterChain;
 @Configuration
 public class SecurityConfig {
 	
-	@Value(value = "${basic.username}")
-    private String username;
-	@Value(value = "${basic.password}")
-    private String password;
+	@Value(value = "${basic.username.user}")
+    private String usernameUser;
+	@Value(value = "${basic.password.user}")
+    private String passwordUser;
+	@Value(value = "${basic.username.admin}")
+    private String usernameAdmin;
+	@Value(value = "${basic.password.admin}")
+    private String passwordAdmin;
 
 	@Bean
     public PasswordEncoder bcryptPasswordEncoder() {
@@ -26,15 +30,25 @@ public class SecurityConfig {
     }
 	
 	@Bean
-    public InMemoryUserDetailsManager inMemoryUserDetailsManager() {
+    public InMemoryUserDetailsManager inMemoryUserDetailsManager() {		
 		
         UserDetails user = User
-        	.withUsername(username)
-            .password(bcryptPasswordEncoder().encode(password))
+        	.withUsername(usernameUser)
+            .password(bcryptPasswordEncoder().encode(passwordUser))
             .roles("USER")
             .build();
         
-        return new InMemoryUserDetailsManager(user);
+        UserDetails admin = User
+            	.withUsername(usernameAdmin)
+                .password(bcryptPasswordEncoder().encode(passwordAdmin))
+                .roles("ADMIN")
+                .build();
+        
+        InMemoryUserDetailsManager manager = new InMemoryUserDetailsManager();
+        manager.createUser(user);
+        manager.createUser(admin);
+        
+        return manager;
         
     }
 	
@@ -47,7 +61,8 @@ public class SecurityConfig {
 		
 		http
         	.authorizeRequests((authReq) -> authReq
-        		.antMatchers("/").hasRole("USER")
+        		.antMatchers("/user").hasAnyRole("USER", "ADMIN")
+        		.antMatchers("/admin").hasRole("ADMIN")
         	);  
 		
 		http.httpBasic();
