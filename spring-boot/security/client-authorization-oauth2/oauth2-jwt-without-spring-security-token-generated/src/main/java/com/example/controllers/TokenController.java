@@ -1,34 +1,39 @@
 package com.example.controllers;
 
-import java.util.Date;
+import javax.servlet.ServletException;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.SignatureAlgorithm;
+import com.auth0.jwt.JWT;
+import com.auth0.jwt.algorithms.Algorithm;
+import com.auth0.jwt.exceptions.JWTCreationException;
 
 @RestController
 public class TokenController {
-	
-	@Value("${token.expriration.milliseconds}")
-	private long tokenExpirationMilliseconds;
 	
 	@Value("${token.secret.key}")
 	private String tokenSecretKey;
 
 	@RequestMapping(value="/token")
-	public String token() {
+	public String token() throws ServletException {
 		
-		return Jwts.builder()
-			.setSubject("JWT")
-			.claim("roles", "USER")
-			.claim("message", "Hello World!")
-			.setIssuedAt(new Date(System.currentTimeMillis()))
-			.setExpiration(new Date(System.currentTimeMillis() + tokenExpirationMilliseconds))
-			.signWith(SignatureAlgorithm.HS512, tokenSecretKey)
-			.compact();
+		String token = null;
+		
+		try {
+			
+		    Algorithm algorithm = Algorithm.HMAC256(tokenSecretKey);
+		    token = JWT.create()
+		    		.withClaim("name", "Demo")
+		    		.withClaim("role", "ROLE_USER")
+		    		.sign(algorithm);
+		    
+		} catch (JWTCreationException exception){
+			throw new ServletException("Problem with creation of token");
+		}
+		
+		return token;
 		
 	}
 	

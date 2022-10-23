@@ -9,8 +9,10 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 
-import io.jsonwebtoken.Claims;
-import io.jsonwebtoken.Jwts;
+import com.auth0.jwt.JWT;
+import com.auth0.jwt.algorithms.Algorithm;
+import com.auth0.jwt.interfaces.DecodedJWT;
+import com.auth0.jwt.interfaces.JWTVerifier;
 
 public class JwtFilter implements Filter {
 	
@@ -31,17 +33,31 @@ public class JwtFilter implements Filter {
 			throw new ServletException("Wrong or empty header");
 		}
 		
+		handleAuthorization(authorizationHeader);		
+		chain.doFilter(request, response);
+		
+	}
+	
+	private void handleAuthorization(String authorizationHeader) throws ServletException {
+		
+		String role = null;
+		
 		try {
 			
 			String token = authorizationHeader.substring(7);
-			Claims claims = Jwts.parser().setSigningKey(tokenSecretKey).parseClaimsJws(token).getBody();
-			request.setAttribute("claims", claims);
+			
+		    Algorithm algorithm = Algorithm.HMAC256(tokenSecretKey);
+		    JWTVerifier verifier = JWT.require(algorithm).build();
+		    DecodedJWT jwt = verifier.verify(token);
+			role = jwt.getClaim("role").as(String.class);
 			
 		} catch (Exception e) {
-			throw new ServletException("Wrong key");
+			throw new ServletException("Wrong token");
 		}
 		
-		chain.doFilter(request, response);
+		if (role == null || !"ROLE_USER".equals(role)) {
+			throw new ServletException("Wrong role in token");
+		}
 		
 	}
 
