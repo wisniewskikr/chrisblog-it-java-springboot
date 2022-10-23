@@ -1,42 +1,54 @@
 package com.example.configs;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
-import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-
-import com.example.filters.JwtFilter;
 
 @Configuration
 public class SecurityConfig {
 	
-	private JwtFilter jwtFilter;
-	    
-    @Autowired
-	public SecurityConfig(JwtFilter jwtFilter) {
-		this.jwtFilter = jwtFilter;
-	}
+	@Value(value = "${basic.username}")
+    private String username;
+	@Value(value = "${basic.password}")
+    private String password;
 
 	@Bean
-    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+    public PasswordEncoder bcryptPasswordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
+	
+	@Bean
+    public InMemoryUserDetailsManager inMemoryUserDetailsManager() {
 		
-		http.csrf().disable();
+        UserDetails user = User
+        	.withUsername(username)
+            .password(bcryptPasswordEncoder().encode(password))
+            .roles("USER")
+            .build();
         
-        http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+        return new InMemoryUserDetailsManager(user);
+        
+    }
+	
+	@Bean
+    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 		
 		http
         	.authorizeRequests((authReq) -> authReq
         		.antMatchers("/").hasRole("USER")
-        	);                
-        
-        http
-        	.addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);
+        	);  
+		
+		http.httpBasic();
         
         return http.build();
         
-    }    
+    }
 
 }
