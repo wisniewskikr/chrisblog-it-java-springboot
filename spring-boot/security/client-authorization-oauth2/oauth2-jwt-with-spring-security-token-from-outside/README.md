@@ -33,7 +33,7 @@ PRECONDITIONS
 
 ##### Preconditions - Actions
 * **Download** source code using Git 
-* Open any **Command Line** tool on **project's folder** (for instance "Windonw PowerShell" on Windows OS)
+* * Open any **Command Line** (for instance "Windonw PowerShell" on Windows OS) tool on **project's folder** (exact localization of project you can check in GIT repositories on page `https://github.com/`)
 
 
 USAGE
