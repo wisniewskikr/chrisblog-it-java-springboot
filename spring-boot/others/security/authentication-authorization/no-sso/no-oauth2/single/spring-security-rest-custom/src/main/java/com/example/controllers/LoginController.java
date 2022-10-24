@@ -31,7 +31,7 @@ public class LoginController {
 			SecurityContextHolder.getContext().setAuthentication(usernamePasswordAuthenticationToken);
             
         } catch (UsernameNotFoundException exception) {
-        	throw new UsernameNotFoundException("User with email not found: " + authRequest.getUsername());
+        	throw new UsernameNotFoundException("User with following username not found: " + authRequest.getUsername());
         }
 		
 		return "You are successfully logged in!";
