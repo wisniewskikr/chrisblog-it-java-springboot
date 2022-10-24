@@ -34,7 +34,7 @@ public class LoginController {
         	throw new UsernameNotFoundException("User with email not found: " + authRequest.getUsername());
         }
 		
-		return "You are successfully logged!";
+		return "You are successfully logged in!";
 		
 	}
 
