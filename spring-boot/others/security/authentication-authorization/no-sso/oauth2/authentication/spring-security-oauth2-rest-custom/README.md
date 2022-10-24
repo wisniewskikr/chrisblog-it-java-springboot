@@ -2,20 +2,16 @@ DESCRIPTION
 -----------
 
 ##### Goal
-The goal of this project is to present how to implement **Custom authentication and authorization** using **Java** application with **Spring Boot** framework. Custom authentication and authorization is based on **Spring Security** and enables log in by sending "username" and "password" as JSON in the body of POST request.
+The goal of this project is to present how to implement **Custom authentication and OAuth2 authorization** using **Java** application with **Spring Boot** framework. Custom authentication is based on **Spring Security** and enables logging in by sending "username" and "password" as JSON in the body of POST request. OAuth2 authorization is also based on **Spring Security** and checks if role provided in token is valid for requested resource.
 
 ##### Flow
 The following flow takes place in this project:
-1. User uses any Client API (for instance Postman) for sending POST request to Server to log in. Values of "username" and "password" are sent as JSON in the body of request 
-1. Server validates credentials. If everything is ok user is authenticated and appropriate text is sent back to Client API.
-1. Client API displays text to the User 
-1. User uses any Client API for sending GET request to Server for secured content
-1. Server authorizes request. Because user is logged in then the secured content is sent back to Client API 
+1. User uses any Client API (for instance Postman) for sending POST request to Server for token. Values of "username" and "password" are sent as JSON in the body of request 
+1. Server validates credentials. If everything is ok then token is sent back to Client API
+1. Client API displays token to the User 
+1. User uses any Client API for sending GET request to Server for secured content. Token is sent as Bearer Authorization
+1. Server checks token and included in token role. If everything is ok then secured content is sent back to Client API
 1. Client API displays secured content to the User
-1. User uses any Client API for sending GET request to Server for logging out
-1. Server logs out User and sends back appropriate text to Client API
-1. Client API displays text to the User 
-
 
 ##### Launch
 To launch this application please make sure that the **Preconditions** are met and then follow instructions from **Usage** section.
@@ -48,15 +44,12 @@ Usage steps:
 1. Start application with `mvn spring-boot:run`
 1. Send POST request (JSON with credentials: "username" : "user", "password" : "user123") with Postman to URL `http://localhost:8080/auth/login`
 1. Send GET request with Postman to URL `http://localhost:8080/`
-1. Send GET request with Postman to URL `http://localhost:8080/user`
-1. Send GET request with Postman to URL `http://localhost:8080/admin`
+1. Send GET request (with token as Bearer Authorization) with Postman to URL `http://localhost:8080/user`
+1. Send GET request (with token as Bearer Authorization)  with Postman to URL `http://localhost:8080/admin`
 1. Send POST request (JSON with credentials: "username" : "admin", "password" : "admin123") with Postman to URL `http://localhost:8080/auth/login`
 1. Send GET request with Postman to URL `http://localhost:8080/`
-1. Send GET request with Postman to URL `http://localhost:8080/user`
-1. Send GET request with Postman to URL `http://localhost:8080/admin`
-1. Send GET request with Postman to URL `http://localhost:8080/auth/logout`
-1. Send GET request with Postman to URL `http://localhost:8080/user`
-1. Send GET request with Postman to URL `http://localhost:8080/admin`
+1. Send GET request (with token as Bearer Authorization)  with Postman to URL `http://localhost:8080/user`
+1. Send GET request (with token as Bearer Authorization)  with Postman to URL `http://localhost:8080/admin`
 1. Clean up environment with `ctrl + C`
 
 ![My Image](image-1.png)
@@ -74,9 +67,3 @@ Usage steps:
 ![My Image](image-7.png)
 
 ![My Image](image-8.png)
-
-![My Image](image-9.png)
-
-![My Image](image-10.png)
-
-![My Image](image-11.png)
