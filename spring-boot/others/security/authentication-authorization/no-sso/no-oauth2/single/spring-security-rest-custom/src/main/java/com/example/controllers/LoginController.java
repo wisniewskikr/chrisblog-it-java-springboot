@@ -3,6 +3,7 @@ package com.example.controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -25,8 +26,9 @@ public class LoginController {
 		
 		try {
             
-			authorizationManager.authenticate(
-                    new UsernamePasswordAuthenticationToken(authRequest.getUsername(), authRequest.getPassword()));
+			UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken = new UsernamePasswordAuthenticationToken(authRequest.getUsername(), authRequest.getPassword());
+			authorizationManager.authenticate(usernamePasswordAuthenticationToken);			
+			SecurityContextHolder.getContext().setAuthentication(usernamePasswordAuthenticationToken);
             
         } catch (UsernameNotFoundException exception) {
         	throw new UsernameNotFoundException("User with email not found: " + authRequest.getUsername());
