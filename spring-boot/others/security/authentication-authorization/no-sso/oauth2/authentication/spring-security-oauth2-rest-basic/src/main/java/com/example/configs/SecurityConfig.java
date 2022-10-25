@@ -80,9 +80,10 @@ public class SecurityConfig {
 		http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 		
 		http
-        	.authorizeRequests((authReq) -> authReq
-        		.antMatchers("/auth/login").hasAnyRole("USER", "ADMIN")	        		
-        	);
+			.antMatcher("/auth/login")
+			.authorizeHttpRequests(authorize -> authorize
+					.anyRequest().hasAnyRole("USER", "ADMIN")
+			);
 		
 		http.httpBasic();
         
@@ -92,23 +93,44 @@ public class SecurityConfig {
 	
 	@Bean
 	@Order(2)
-    public SecurityFilterChain filterChainToken(HttpSecurity http) throws Exception {
+    public SecurityFilterChain filterChainTokenUser(HttpSecurity http) throws Exception {
 		
 		http.csrf().disable();
 		
 		http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 		
 		http
-        	.authorizeRequests((authReq) -> authReq
-        		.antMatchers("/user").hasAnyRole("USER", "ADMIN")
-        		.antMatchers("/admin").hasRole("ADMIN")
-        	);
+			.antMatcher("/user")
+			.authorizeHttpRequests(authorize -> authorize
+				.anyRequest().hasAnyRole("USER", "ADMIN")
+			);
 		
 		http
     		.addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);
         
         return http.build();
         
-    }	
+    }
+	
+	@Bean
+	@Order(3)
+    public SecurityFilterChain filterChainTokenAdmin(HttpSecurity http) throws Exception {
+		
+		http.csrf().disable();
+		
+		http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+		
+		http
+			.antMatcher("/admin")
+			.authorizeHttpRequests(authorize -> authorize
+					.anyRequest().hasAnyRole("ADMIN")
+			);
+		
+		http
+    		.addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);
+        
+        return http.build();
+        
+    }
 
 }
