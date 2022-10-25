@@ -2,11 +2,11 @@ DESCRIPTION
 -----------
 
 ##### Goal
-The goal of this project is to present how to implement **Custom authentication and OAuth2 authorization** using **Java** application with **Spring Boot** framework. Custom authentication is based on **Spring Security** and enables logging in by sending "username" and "password" as JSON in the body of POST request. OAuth2 authorization is also based on **Spring Security** and checks if role provided in token is valid for requested resource.
+The goal of this project is to present how to implement **Basic Authentication and OAuth2 Authorization** using **Java** application with **Spring Boot** framework. Basic Authentication is based on **Spring Security**. OAuth2 Authorization is also based on **Spring Security** and checks if role provided in token is valid for requested resource.
 
 ##### Flow
 The following flow takes place in this project:
-1. User uses any Client API (for instance Postman) for sending POST request to Server for token. Values of "username" and "password" are sent as JSON in the body of request 
+1. User uses any Client API (for instance Postman) for sending GET request to Server for token. Values of "username" and "password" are sent as Basic Authentication
 1. Server validates credentials. If everything is ok then token is sent back to Client API
 1. Client API displays token to the User 
 1. User uses any Client API for sending GET request to Server for secured content. Token is sent as Bearer Authorization
@@ -42,11 +42,11 @@ USAGE
 
 Usage steps:
 1. Start application with `mvn spring-boot:run`
-1. Send POST request (JSON with credentials: "username" : "user", "password" : "user123") with Postman to URL `http://localhost:8080/auth/login`
+1. Send GET request (Basic Authentication with credentials: "username" : "user", "password" : "user123") with Postman to URL `http://localhost:8080/auth/login`
 1. Send GET request with Postman to URL `http://localhost:8080/`
 1. Send GET request (with token as Bearer Authorization) with Postman to URL `http://localhost:8080/user`
 1. Send GET request (with token as Bearer Authorization)  with Postman to URL `http://localhost:8080/admin`
-1. Send POST request (JSON with credentials: "username" : "admin", "password" : "admin123") with Postman to URL `http://localhost:8080/auth/login`
+1. Send GET request (Basic Authentication with credentials: "username" : "admin", "password" : "admin123") with Postman to URL `http://localhost:8080/auth/login`
 1. Send GET request with Postman to URL `http://localhost:8080/`
 1. Send GET request (with token as Bearer Authorization)  with Postman to URL `http://localhost:8080/user`
 1. Send GET request (with token as Bearer Authorization)  with Postman to URL `http://localhost:8080/admin`
