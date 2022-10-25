@@ -1,16 +1,10 @@
 package com.example.controllers;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import com.example.jsons.AuthRequestJson;
 
 import javax.servlet.ServletException;
 
@@ -25,31 +19,13 @@ public class LoginController {
 	
 	@Value("${token.secret.key}")
 	private String tokenSecretKey;
-	
-	private final AuthenticationManager authorizationManager;
-	
-	@Autowired
-	public LoginController(AuthenticationManager authorizationManager) {
-		this.authorizationManager = authorizationManager;
-	}
 
-	@PostMapping("/auth/login")
-    public String login(@RequestBody AuthRequestJson authRequest) throws ServletException {
+	@GetMapping("/auth/login")
+    public String login() throws ServletException {
 		
-		String token = null;
-		
-		try {
-            
-			UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken = new UsernamePasswordAuthenticationToken(authRequest.getUsername(), authRequest.getPassword());
-			Authentication authenticate = authorizationManager.authenticate(usernamePasswordAuthenticationToken);
-			token = generateToken(authenticate);
-			            
-        } catch (UsernameNotFoundException exception) {
-        	throw new UsernameNotFoundException("User with following username not found: " + authRequest.getUsername());
-        } catch (ServletException e) {
-			throw e;
-		}
-		
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();		
+		String token = generateToken(authentication);
+		SecurityContextHolder.getContext().setAuthentication(null);
 		return token;
 		
 	}

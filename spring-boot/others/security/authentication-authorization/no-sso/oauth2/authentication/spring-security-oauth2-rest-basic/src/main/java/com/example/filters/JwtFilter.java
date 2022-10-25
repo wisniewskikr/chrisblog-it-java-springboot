@@ -32,11 +32,10 @@ public class JwtFilter extends OncePerRequestFilter {
 	protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
 			throws ServletException, IOException {
 		
-		String authorizationHeader = request.getHeader("authorization");
+		String authorizationHeader = request.getHeader("authorization");		
 		if (authorizationHeader == null) {
-            filterChain.doFilter(request, response);
-            return;
-        }
+			throw new ServletException("This resource is secured by Bearer Auth");
+		}
 		
 		SecurityContextHolder.getContext().setAuthentication(getUsernamePasswordAuthenticationToken(authorizationHeader));
 		filterChain.doFilter(request, response);
@@ -67,5 +66,23 @@ public class JwtFilter extends OncePerRequestFilter {
 		return authentication;
 		
 	}
+
+	@Override
+	protected boolean shouldNotFilter(HttpServletRequest request) throws ServletException {	
+		
+		boolean result = true;
+		
+		if ("/user".equals(request.getRequestURI())) {
+			result = false;
+		}
+		
+		if ("/admin".equals(request.getRequestURI())) {
+			result = false;
+		}
+		
+		return result;
+	}
+	
+	
 
 }
