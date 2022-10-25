@@ -1,6 +1,5 @@
 package com.example.configs;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.core.annotation.Order;
@@ -30,13 +29,6 @@ public class SecurityConfig {
     private String usernameAdmin;
 	@Value(value = "${basic.password.admin}")
     private String passwordAdmin;
-	
-	private JwtFilter jwtFilter;
-    
-    @Autowired
-	public SecurityConfig(JwtFilter jwtFilter) {
-		this.jwtFilter = jwtFilter;
-	}
 
 	@Bean
     public PasswordEncoder bcryptPasswordEncoder() {
@@ -70,6 +62,11 @@ public class SecurityConfig {
         return manager;
         
     }
+	
+	@Bean
+	public JwtFilter jwtFilter() {
+		return new JwtFilter("/user", "/admin");
+	}
 	
 	@Bean
 	@Order(1)
@@ -106,7 +103,7 @@ public class SecurityConfig {
 			);
 		
 		http
-    		.addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);
+    		.addFilterBefore(jwtFilter(), UsernamePasswordAuthenticationFilter.class);
         
         return http.build();
         
@@ -127,7 +124,7 @@ public class SecurityConfig {
 			);
 		
 		http
-    		.addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);
+    		.addFilterBefore(jwtFilter(), UsernamePasswordAuthenticationFilter.class);
         
         return http.build();
         

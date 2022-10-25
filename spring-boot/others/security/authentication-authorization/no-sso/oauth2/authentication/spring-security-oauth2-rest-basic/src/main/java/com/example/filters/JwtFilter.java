@@ -1,6 +1,7 @@
 package com.example.filters;
 
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.Set;
 
@@ -13,7 +14,6 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import com.auth0.jwt.JWT;
@@ -22,11 +22,16 @@ import com.auth0.jwt.exceptions.JWTVerificationException;
 import com.auth0.jwt.interfaces.DecodedJWT;
 import com.auth0.jwt.interfaces.JWTVerifier;
 
-@Component
 public class JwtFilter extends OncePerRequestFilter {
 	
 	@Value("${token.secret.key}")
 	private String tokenSecretKey;
+	
+	private String[] filterPaths;	
+
+	public JwtFilter(String... filterPaths) {
+		this.filterPaths = filterPaths;
+	}
 
 	@Override
 	protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
@@ -34,7 +39,7 @@ public class JwtFilter extends OncePerRequestFilter {
 		
 		String authorizationHeader = request.getHeader("authorization");		
 		if (authorizationHeader == null) {
-			throw new ServletException("This resource is secured by Bearer Auth");
+			throw new ServletException("This resource is secured by Bearer Token Authorization");
 		}
 		
 		SecurityContextHolder.getContext().setAuthentication(getUsernamePasswordAuthenticationToken(authorizationHeader));
@@ -68,21 +73,8 @@ public class JwtFilter extends OncePerRequestFilter {
 	}
 
 	@Override
-	protected boolean shouldNotFilter(HttpServletRequest request) throws ServletException {	
-		
-		boolean result = true;
-		
-		if ("/user".equals(request.getRequestURI())) {
-			result = false;
-		}
-		
-		if ("/admin".equals(request.getRequestURI())) {
-			result = false;
-		}
-		
-		return result;
-	}
-	
-	
+	protected boolean shouldNotFilter(HttpServletRequest request) throws ServletException {		
+		return !Arrays.asList(filterPaths).contains(request.getRequestURI());		
+	}	
 
 }
