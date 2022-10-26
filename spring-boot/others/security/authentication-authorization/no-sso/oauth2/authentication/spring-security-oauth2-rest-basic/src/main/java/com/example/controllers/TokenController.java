@@ -15,13 +15,13 @@ import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.exceptions.JWTCreationException;
 
 @RestController
-public class LoginController {
+public class TokenController {
 	
 	@Value("${token.secret.key}")
 	private String tokenSecretKey;
 
-	@GetMapping("/auth/login")
-    public String login() throws ServletException {
+	@GetMapping("/token")
+    public String token() throws ServletException {
 		
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();		
 		return generateToken(authentication);

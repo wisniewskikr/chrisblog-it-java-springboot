@@ -77,7 +77,7 @@ public class SecurityConfig {
 		http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 		
 		http
-			.antMatcher("/auth/login")
+			.antMatcher("/token")
 			.authorizeHttpRequests(authorize -> authorize
 					.anyRequest().hasAnyRole("USER", "ADMIN")
 			);
