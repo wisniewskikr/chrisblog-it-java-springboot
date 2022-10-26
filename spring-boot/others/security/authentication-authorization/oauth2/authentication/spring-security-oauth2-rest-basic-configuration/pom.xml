@@ -9,7 +9,7 @@
 		<relativePath/>
 	</parent>
 	<groupId>com.example</groupId>
-	<artifactId>spring-security-oauth2-rest-basic</artifactId>
+	<artifactId>spring-security-oauth2-rest-basic-configuration</artifactId>
 	<version>0.1.0</version>
 
 	<properties>
