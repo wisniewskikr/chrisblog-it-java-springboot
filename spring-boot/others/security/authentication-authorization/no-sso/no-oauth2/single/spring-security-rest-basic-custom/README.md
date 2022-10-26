@@ -2,11 +2,11 @@ DESCRIPTION
 -----------
 
 ##### Goal
-The goal of this project is to present how to implement **Custom authentication and authorization** using **Java** application with **Spring Boot** framework. Custom authentication and authorization is based on **Spring Security** and enables log in by sending "username" and "password" as JSON in the body of POST request.
+The goal of this project is to present how to implement **Basic Authentication and Authorization** in **custom** way using **Java** application with **Spring Boot** framework. Basic Authentication and Authorization in custom way is based on **Spring Security** but without usage automatic configuration. Reading header is implemented manually without automatic Spring Security mechanism.
 
 ##### Flow
 The following flow takes place in this project:
-1. User uses any Client API (for instance Postman) for sending POST request to Server to log in. Values of "username" and "password" are sent as JSON in the body of request 
+1. User uses any Client API (for instance Postman) for sending GET request to Server to log in. Basic Authentication should be included in this request 
 1. Server validates credentials. If everything is ok user is authenticated and appropriate text is sent back to Client API.
 1. Client API displays text to the User 
 1. User uses any Client API for sending GET request to Server for secured content
@@ -46,11 +46,11 @@ USAGE
 
 Usage steps:
 1. Start application with `mvn spring-boot:run`
-1. Send POST request (JSON with credentials: "username" : "user", "password" : "user123") with Postman to URL `http://localhost:8080/auth/login`
+1. Send GET request (Basic Authentication credentials: user/user123) with Postman to URL `http://localhost:8080/auth/login`
 1. Send GET request with Postman to URL `http://localhost:8080/`
 1. Send GET request with Postman to URL `http://localhost:8080/user`
 1. Send GET request with Postman to URL `http://localhost:8080/admin`
-1. Send POST request (JSON with credentials: "username" : "admin", "password" : "admin123") with Postman to URL `http://localhost:8080/auth/login`
+1. Send GET request (Basic Authentication credentials: admin/admin123) with Postman to URL `http://localhost:8080/auth/login`
 1. Send GET request with Postman to URL `http://localhost:8080/`
 1. Send GET request with Postman to URL `http://localhost:8080/user`
 1. Send GET request with Postman to URL `http://localhost:8080/admin`
