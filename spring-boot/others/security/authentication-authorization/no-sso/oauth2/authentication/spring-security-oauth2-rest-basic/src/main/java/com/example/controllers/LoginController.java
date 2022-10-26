@@ -24,9 +24,7 @@ public class LoginController {
     public String login() throws ServletException {
 		
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();		
-		String token = generateToken(authentication);
-		SecurityContextHolder.getContext().setAuthentication(null);
-		return token;
+		return generateToken(authentication);
 		
 	}
 	
