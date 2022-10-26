@@ -21,7 +21,7 @@ import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.exceptions.JWTCreationException;
 
 @RestController
-public class LoginController {
+public class TokenController {
 	
 	@Value("${token.secret.key}")
 	private String tokenSecretKey;
@@ -29,12 +29,12 @@ public class LoginController {
 	private final AuthenticationManager authorizationManager;
 	
 	@Autowired
-	public LoginController(AuthenticationManager authorizationManager) {
+	public TokenController(AuthenticationManager authorizationManager) {
 		this.authorizationManager = authorizationManager;
 	}
 
-	@PostMapping("/auth/login")
-    public String login(@RequestBody AuthRequestJson authRequest) throws ServletException {
+	@PostMapping("/token")
+    public String token(@RequestBody AuthRequestJson authRequest) throws ServletException {
 		
 		String token = null;
 		

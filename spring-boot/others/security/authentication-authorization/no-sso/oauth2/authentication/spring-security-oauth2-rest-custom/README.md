@@ -42,11 +42,11 @@ USAGE
 
 Usage steps:
 1. Start application with `mvn spring-boot:run`
-1. Send POST request (JSON with credentials: "username" : "user", "password" : "user123") with Postman to URL `http://localhost:8080/auth/login`
+1. Send POST request (JSON with credentials: "username" : "user", "password" : "user123") with Postman to URL `http://localhost:8080/token`
 1. Send GET request with Postman to URL `http://localhost:8080/`
 1. Send GET request (with token as Bearer Authorization) with Postman to URL `http://localhost:8080/user`
 1. Send GET request (with token as Bearer Authorization)  with Postman to URL `http://localhost:8080/admin`
-1. Send POST request (JSON with credentials: "username" : "admin", "password" : "admin123") with Postman to URL `http://localhost:8080/auth/login`
+1. Send POST request (JSON with credentials: "username" : "admin", "password" : "admin123") with Postman to URL `http://localhost:8080/token`
 1. Send GET request with Postman to URL `http://localhost:8080/`
 1. Send GET request (with token as Bearer Authorization)  with Postman to URL `http://localhost:8080/user`
 1. Send GET request (with token as Bearer Authorization)  with Postman to URL `http://localhost:8080/admin`
