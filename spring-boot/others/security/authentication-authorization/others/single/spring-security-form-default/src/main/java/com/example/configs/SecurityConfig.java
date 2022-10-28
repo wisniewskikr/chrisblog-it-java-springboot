@@ -63,6 +63,8 @@ public class SecurityConfig {
 		http.formLogin();
 		
 		http.logout().logoutSuccessUrl("/");
+		
+		http.exceptionHandling().accessDeniedPage("/access-denied");
         
         return http.build();
         
