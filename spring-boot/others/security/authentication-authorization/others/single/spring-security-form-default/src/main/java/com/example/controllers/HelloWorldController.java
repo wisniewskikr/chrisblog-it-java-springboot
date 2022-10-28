@@ -1,22 +1,22 @@
 package com.example.controllers;
 
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 
-@RestController
+@Controller
 public class HelloWorldController {
 
-	@RequestMapping(value="/")
+	@GetMapping("/")
 	public String helloWorld() {		
 		return "Hello World!";		
 	}
 	
-	@RequestMapping(value="/user")
+	@GetMapping("/user")
 	public String helloWorldUser() {		
 		return "Hello World User!";		
 	}
 	
-	@RequestMapping(value="/admin")
+	@GetMapping("/admin")
 	public String helloWorldAdmin() {		
 		return "Hello World Admin!";		
 	}
