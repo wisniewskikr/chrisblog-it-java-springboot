@@ -60,9 +60,13 @@ public class SecurityConfig {
         		.antMatchers("/admin").hasRole("ADMIN")
         	);  
 		
-		http.formLogin();
+		http
+			.formLogin()
+			.loginPage("/login");
 		
-		http.logout().logoutSuccessUrl("/");
+		http
+			.logout()
+			.logoutUrl("/logout");
 		
 		http.exceptionHandling().accessDeniedPage("/access-denied");
         
