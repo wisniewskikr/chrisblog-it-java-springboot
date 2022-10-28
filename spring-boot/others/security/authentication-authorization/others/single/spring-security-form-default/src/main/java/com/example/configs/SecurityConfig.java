@@ -61,6 +61,8 @@ public class SecurityConfig {
         	);  
 		
 		http.formLogin();
+		
+		http.logout().logoutSuccessUrl("/");
         
         return http.build();
         
