@@ -13,12 +13,12 @@ public class HelloWorldController {
 	
 	@GetMapping("/user")
 	public String helloWorldUser() {		
-		return "Hello World User!";		
+		return "helloworld-user";		
 	}
 	
 	@GetMapping("/admin")
 	public String helloWorldAdmin() {		
-		return "Hello World Admin!";		
+		return "helloworld-admin";		
 	}
 	
 }
