@@ -2,12 +2,12 @@ DESCRIPTION
 -----------
 
 ##### Goal
-The goal of this project is to present how to implement **Form Authentication and Authorization** using **Java** application with **Spring Boot** framework. Form Authentication and Authorization is a **default** form provided by **Spring Security**.
+The goal of this project is to present how to implement **Form Authentication and Authorization** using **Java** application with **Spring Boot** framework. Form Authentication and Authorization is a **custom** form which has to be implemented by developer.
 
 ##### Basic Flow
 The following flow takes place in this project:
-1. User uses any Browser for sending request to Server for secured content
-1. Server sends back Spring Security Default Login page to User via Browser
+1. User via Browser sends request to Server for secured content
+1. Server sends back Spring Security Custom Login page to User via Browser
 1. User via Browser fills credentials and sends request to Server
 1. Server checks credentials. If credentials are valid then secured content is sent back to User via Browser
 
@@ -72,3 +72,5 @@ Usage steps:
 ![My Image](image-10.png)
 
 ![My Image](image-11.png)
+
+![My Image](image-12.png)
