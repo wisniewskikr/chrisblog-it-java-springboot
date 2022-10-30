@@ -1,17 +1,16 @@
-docker run -p 8080:8080 -e KEYCLOAK_ADMIN=admin -e KEYCLOAK_ADMIN_PASSWORD=admin quay.io/keycloak/keycloak:19.0.3 start-dev
-
 DESCRIPTION
 -----------
 
 ##### Goal
-The goal of this project is to present how to implement **Form Authentication and Authorization** using **Java** application with **Spring Boot** framework. Form Authentication and Authorization is a **default** form provided by **Spring Security**.
+The goal of this project is to present how to implement SSO security by **Keycloak** using **Java** application with **Spring Boot** framework. Keycloak is the tool which handles authentication (**OIDC**) and authorization (**OAuth2**). Java application uses **Spring Security** and **Keycloak** dependencies.
 
 ##### Basic Flow
 The following flow takes place in this project:
-1. User uses any Browser for sending request to Server for secured content
-1. Server sends back Spring Security Default Login page to User via Browser
-1. User via Browser fills credentials and sends request to Server
-1. Server checks credentials. If credentials are valid then secured content is sent back to User via Browser
+1. User via Browser sends request to Server for secured content
+1. Server redirects User via Browser to Keycloak Login page
+1. User via Browser fills credentials and sends request to Keycloak
+1. Keycloak checks credentials and redirects request to Server with OAuth token 
+1. Server checks if user is properly authenticated and has access to secured content. If everything is ok then secured content is sent back to User via Browser
 
 ##### Launch
 To launch this application please make sure that the **Preconditions** are met and then follow instructions from **Usage** section.
@@ -30,11 +29,16 @@ PRECONDITIONS
 * Installed **Java** (tested on version 1.8.0_291). Tool details: `https://docs.google.com/document/d/119VYxF8JIZIUSk7JjwEPNX1RVjHBGbXHBKuK_1ytJg4/edit?usp=sharing`
 * Installed **Maven** (tested on version 3.8.5). Tool details: `https://docs.google.com/document/d/1cfIMcqkWlobUfVfTLQp7ixqEcOtoTR8X6OGo3cU4maw/edit?usp=sharing`
 * Installed **Git** (tested on version 2.33.0.windows.2). Tool details: `https://docs.google.com/document/d/1Iyxy5DYfsrEZK5fxZJnYy5a1saARxd5LyMEscJKSHn0/edit?usp=sharing`
-* Installed **Postman** (tested on version 8.11.1)
 
 ##### Preconditions - Actions
-* **Download** source code using Git 
-* * Open any **Command Line** (for instance "Windonw PowerShell" on Windows OS) tool on **project's folder** (exact localization of project you can check in GIT repositories on page `https://github.com/`)
+* **Configure Keycloak** performing steps from section "Keycloak Configuration"
+* **Download** source code using Git
+* Update **keycloak.credentials.secret** in file **application.properties** of project 
+* Open any **Command Line** (for instance "Windonw PowerShell" on Windows OS) tool on **project's folder** (exact localization of project you can check in GIT repositories on page `https://github.com/`)
+
+
+KEYCLOAK CONFIGURATION
+----------------------
 
 
 USAGE

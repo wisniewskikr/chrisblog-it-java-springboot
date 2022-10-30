@@ -13,13 +13,13 @@ public class HelloWorldController {
 	}
 	
 	@GetMapping("/user")
-	@PreAuthorize("hasAuthority('user')")
+	@PreAuthorize("hasAuthority('USER')")
 	public String helloWorldUser() {		
 		return "helloworld-user";		
 	}
 	
 	@GetMapping("/admin")
-	@PreAuthorize("hasAuthority('admin')")
+	@PreAuthorize("hasAuthority('ADMIN')")
 	public String helloWorldAdmin() {		
 		return "helloworld-admin";		
 	}
