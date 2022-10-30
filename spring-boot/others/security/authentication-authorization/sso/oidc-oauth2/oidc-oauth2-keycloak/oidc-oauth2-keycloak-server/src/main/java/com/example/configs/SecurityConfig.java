@@ -26,9 +26,18 @@ public class SecurityConfig extends KeycloakWebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
+    	
         super.configure(http);
-        http.authorizeRequests().antMatchers("*/**")
-                .authenticated().and().formLogin();
+        
+        http.authorizeRequests()
+        	.antMatchers("*/**").authenticated();
+        
+        http.formLogin();
+		
+		http.logout().logoutUrl("/logout");
+		
+		http.exceptionHandling().accessDeniedPage("/access-denied");
+        
     }
 
 }
