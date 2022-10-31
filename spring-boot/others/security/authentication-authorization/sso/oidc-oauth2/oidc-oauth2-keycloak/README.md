@@ -96,7 +96,7 @@ KEYCLOAK CONFIGURATION PRINTSCREENS
 
 ![My Image](keycloak-10.png)
 
-![My Image](keycloak-10.png)
+![My Image](keycloak-11.png)
 
 ![My Image](keycloak-12.png)
 
