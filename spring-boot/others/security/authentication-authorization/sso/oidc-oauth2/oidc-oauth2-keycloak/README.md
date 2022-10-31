@@ -58,12 +58,13 @@ USAGE
 Usage steps:
 1. In first Command Line tool start Keycloak with `docker-compose up --build`
 1. In second Command Line tool start application with `mvn spring-boot:run`
-1. Send request with `http://localhost:8080`
+1. Send request with `http://localhost:8081`
 1. On page "Hello World" click link `Secured Hello World User` and fill credentials (**user / user123**)
 1. On page "Hello World User" click link `Back`
 1. On page "Hello World" click link `Secured Hello World Admin`
 1. On page "Access Denied" click link `Back`
 1. On page "Hello World" click link `Logout`
+1. On page "Logout" click link `Back`
 1. On page "Hello World" click link `Secured Hello World User` and fill credentials (**admin / admin123**)
 1. On page "Hello World User" click link `Back`
 1. On page "Hello World" click link `Secured Hello World Admin`
