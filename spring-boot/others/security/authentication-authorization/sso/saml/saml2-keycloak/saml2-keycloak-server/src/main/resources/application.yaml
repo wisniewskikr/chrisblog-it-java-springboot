@@ -1,0 +1,15 @@
+server:
+  port: 8081
+
+spring:
+  security:
+    saml2:
+      relyingparty:
+        registration:
+          saml:
+            identityprovider:
+              entity-id: http://localhost:8080/realms/HelloWorldRealm
+              verification.credentials:
+                - certificate-location: "classpath:saml/private.key"
+              singlesignon.url: http://localhost:8080/realms/HelloWorldRealm/protocol/saml
+              singlesignon.sign-request: false
