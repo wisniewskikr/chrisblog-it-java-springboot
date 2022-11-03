@@ -1,3 +1,7 @@
+- https://developer.okta.com/
+- http://localhost:8080/login/saml2/sso/okta
+- http://localhost:8080/saml2/service-provider-metadata/okta
+
 - https://d28m3l9ryqsunl.cloudfront.net/code/java/spring_security_saml/#add-a-sign-out-feature
 - https://developer.okta.com/blog/2020/03/27/spring-oidc-logout-options
 - https://www.baeldung.com/spring-security-okta
