@@ -21,8 +21,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 					.antMatchers("/admin").hasRole("ADMIN")
 			)
 			.saml2Login(Customizer.withDefaults())
-			.logout().logoutUrl("/logout")
-		.and()
 			.exceptionHandling().accessDeniedPage("/access-denied");
 		
 	}

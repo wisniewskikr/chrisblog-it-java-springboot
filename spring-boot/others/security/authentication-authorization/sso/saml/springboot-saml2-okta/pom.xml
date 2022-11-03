@@ -9,7 +9,7 @@
 		<relativePath/>
 	</parent>
 	<groupId>com.example</groupId>
-	<artifactId>springboot-saml2-keycloak</artifactId>
+	<artifactId>springboot-saml2-okta</artifactId>
 	<version>0.1.0</version>
 
 	<properties>
