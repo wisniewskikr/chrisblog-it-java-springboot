@@ -1,7 +1,3 @@
-- https://developer.okta.com/
-- http://localhost:8080/login/saml2/sso/okta
-- http://localhost:8080/saml2/service-provider-metadata/okta
-
 DESCRIPTION
 -----------
 
@@ -45,7 +41,7 @@ OKTA CONFIGURATION
 ------------------
 
 Okta configuration steps:
-1. Create application **HelloWorld** with Single Sigh on Url **http://localhost:8080/login/saml2/sso/okta** and SP Entity Id **http://localhost:8080/saml2/service-provider-metadata/okta**
+1. First log in to Okta with **https://developer.okta.com/**. The create application **HelloWorld** with Single Sigh on Url **http://localhost:8080/login/saml2/sso/okta** and SP Entity Id **http://localhost:8080/saml2/service-provider-metadata/okta**
 1. From IdP metadata take **EntityId** and **Location**
 1. Download Okta certificate
 1. Create new user with credentials user@gmail.com/Password1234
