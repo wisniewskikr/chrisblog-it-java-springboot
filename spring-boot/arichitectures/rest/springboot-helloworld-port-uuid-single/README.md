@@ -2,12 +2,12 @@ DESCRIPTION
 -----------
 
 ##### Goal
-The goal of this project is to present how to display **Hello World** message and **UUID** in a **JSON** format in a **browser** using **Java** application with **Spring Boot** framework.
+The goal of this project is to present how to display **Hello World** message, **port** and **UUID** in a **single** Java application with **Spring Boot** framework.
 
 ##### Flow
 The following flow takes place in this project:
-1. User via any browser sends request to application HelloWorld for content.
-1. Application HelloWorld returns response with JSON containing message and UUID. This response is presented to User via browser.
+1. User via any browser sends request to application for a content.
+1. Application HelloWorld returns response with JSON containing message, port and UUID. This response is presented to User via browser.
 
 ##### Launch
 To launch this application please make sure that the **Preconditions** are met and then follow instructions from **Usage** section.
