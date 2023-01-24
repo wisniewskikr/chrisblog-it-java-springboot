@@ -21,8 +21,8 @@ public class HelloWorldFeController {
 	
 	private WebClient webClient;
 	
-	@Value("${text.service.url}")
-	private String textServiceUrl;
+	@Value("${helloworld.be.url}")
+	private String helloWorldBeUrl;
 	
 	@Autowired
 	public HelloWorldFeController(Environment environment, WebClient webClient) {
@@ -34,7 +34,7 @@ public class HelloWorldFeController {
 	public HelloWorldFeJson helloWorld() {
 		
 		HelloWorldBeJson helloWorldBeJson = this.webClient.get()
-	            .uri(textServiceUrl)
+	            .uri(helloWorldBeUrl)
 	            .retrieve()
 	            .bodyToMono(HelloWorldBeJson.class)
 	            .block();
