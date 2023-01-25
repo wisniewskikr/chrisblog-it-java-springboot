@@ -33,21 +33,41 @@ public class HelloWorldFeController {
 	@RequestMapping(value="/")
 	public HelloWorldFeJson helloWorld() {
 		
-		HelloWorldBeJson helloWorldBeJson = this.webClient.get()
-	            .uri(helloWorldBeUrl)
-	            .retrieve()
-	            .bodyToMono(HelloWorldBeJson.class)
-	            .block();
+		String portFe = environment.getProperty("local.server.port");
+		String uuidFe = System.getProperty("uuid");		
+		HelloWorldBeJson helloWorldBeJson = getHelloWorldBeJson(uuidFe);
+		
+		if (helloWorldBeJson == null) {
+			return new HelloWorldFeJson("Problem with connection with BE application", portFe, uuidFe, null, null);
+		}
 				
 		String message = helloWorldBeJson.getMessage();
 		String portBe = helloWorldBeJson.getPortBe();
-		String uuidBe = helloWorldBeJson.getUuidBe();
-		String portFe = environment.getProperty("local.server.port");
-		String uuidFe = System.getProperty("uuid");
+		String uuidBe = helloWorldBeJson.getUuidBe();		
 		
 		logger.info("Application FE was called with message: {}, port FE: {}, uuid FE: {}, port BE: {} and uuid BE: {}", message, portFe, uuidFe, portBe, uuidBe);
 		
 		return new HelloWorldFeJson(message, portFe, uuidFe, portBe, uuidBe);
+		
+	}
+	
+	private HelloWorldBeJson getHelloWorldBeJson(String uuidFe) {
+		
+		HelloWorldBeJson helloWorldBeJson = null;
+		
+		try {
+			
+			helloWorldBeJson = this.webClient.get()
+			        .uri(helloWorldBeUrl)
+			        .retrieve()
+			        .bodyToMono(HelloWorldBeJson.class)
+			        .block();
+			
+		} catch (Exception e) {
+			logger.error("Problem with BE connection for FE application with UUID: " + uuidFe, e);
+		}
+		
+		return helloWorldBeJson;
 		
 	}
 	
