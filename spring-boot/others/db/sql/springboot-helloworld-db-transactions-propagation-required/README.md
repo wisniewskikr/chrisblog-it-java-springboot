@@ -2,18 +2,17 @@ CRIPTION
 -----------
 
 ##### Goal
-The goal of this project is to present how to create **Hello World** application in **Java** programming language with usage **Spring Boot** framework which handles **transactions** with **propagation** type **required**. 
+The goal of this project is to present how to create **Hello World** application in **Java** programming language with usage **Spring Boot** framework which handles **transactions**.
+ 
+**Transaction** means that all database operations should be performed or none of them. There can not be such situation that some databases operations are performed and some not. In Spring Boot transactions are handled by annotation **@Transactional** (in this example classes SentenceService and WordService).
 
-**Transaction** means that all database operations should be performed or none of them. There can not be such situation that some databases operations are performed and some not. In Spring Boot transactions are handled by annotation **@Transactional** (in this example classes HelloWorldService and WorldService).
-
-**Propagation** is used when we call second transactional method from first transactional method. Type **required** means that all transactions are treated as one. So if there is some error in second transactional method then all operations from first transactional method should be also rolled out. In Spring Boot transactions with propagation type required are handled by annotation **@Transactional(propagation = Propagation.REQUIRED)** (in this example classes WorldService). This type of propagation is default.
+**Propagation** is used when we call second transactional method from first transactional method. Type **required** means that all transactions are treated as one. So if there is some error in second transactional method then all operations from first transactional method should be also rolled out. In Spring Boot transactions with propagation type required are handled by annotation **@Transactional(propagation = Propagation.REQUIRED)** (in this example class WordService). This type of propagation is default.
 
 ##### Flow
 The following flow takes place in this project:
 1. User via any browser sends request to application HelloWorld for content
-1. Application HelloWorld saves texts "Hello" and "World" to different tables in database and then read them. Result is added to JSON
-1. Application HelloWorld saves texts "Hello" and "World" to different tables in database **with transaction** and then read them. But saving word "World" is also transactional and marked as **propagation required** and some error occurs there. That's why operations saving words "Hello" and "World" should be rolled out.  Result is added to JSON
-1. Application HelloWorld returns response with message. This response is presented to User via browser
+1. Application HelloWorld runs transactional method saveSentence(Hello, World) which calls two methods: saveFirstWord(Hello) and saveSecondWord(World). There is an exception in saveSecondWord(World) which is also transactional and marked as Propagation.REQUIRED. So all database operations are rolled back - even already saved word "Hello". That's why sentence from database is 'null null'. Description and sentence are added to result JSON
+1. Application HelloWorld returns response with JSON. This response is presented to User via browser
 
 ##### Launch
 To launch this application please make sure that the **Preconditions** are met and then follow instructions from **Usage** section.
