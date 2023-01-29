@@ -9,7 +9,7 @@
 		<relativePath/>
 	</parent>
 	<groupId>com.example</groupId>
-	<artifactId>springboot-helloworld-embedded-h2</artifactId>
+	<artifactId>springboot-helloworld-db-embedded-h2</artifactId>
 	<version>0.1.0</version>
 
 	<properties>
