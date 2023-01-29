@@ -11,7 +11,7 @@ The goal of this project is to present how to create **Hello World** application
 ##### Flow
 The following flow takes place in this project:
 1. User via any browser sends request to application HelloWorld for content
-1. Application HelloWorld runs transactional method saveSentence(Hello, World) which calls two methods: saveFirstWord(Hello) and saveSecondWord(World). There is an exception in saveSecondWord(World) which is also transactional and marked as Propagation.REQUIRED. So all database operations are rolled back - even already saved word "Hello". That's why sentence from database is 'null null'. Description and sentence are added to result JSON
+1. Application HelloWorld runs transactional method saveSentence(Hello, World) which calls two methods: saveFirstWord(Hello) and saveSecondWord(World). There is an exception in saveSecondWord(World) which is also transactional and marked as Propagation.REQUIRES_NEW. So word Hello is saved and word World is not saved - new transaction. That's why sentence from database is: 'Hello null'. Description and sentence are added to result JSON
 1. Application HelloWorld returns response with JSON. This response is presented to User via browser
 
 ##### Launch
