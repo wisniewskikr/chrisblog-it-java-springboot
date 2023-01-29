@@ -1,29 +1,40 @@
 package com.example.services;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import com.example.entities.HelloWorldEntity;
-import com.example.repositories.HelloWorldRepository;
 
 @Service
 public class HelloWorldService {
-	
-	private HelloWorldRepository helloWorldRepository;
 
-	@Autowired
-	public HelloWorldService(HelloWorldRepository helloWorldRepository) {
-		this.helloWorldRepository = helloWorldRepository;
+	private HelloService helloService;
+	private WorldService worldService;
+	
+	public HelloWorldService(HelloService helloService, WorldService worldService) {		
+		this.helloService = helloService;
+		this.worldService = worldService;
 	}
 	
-	public HelloWorldEntity saveText(String text) {
-		HelloWorldEntity entity = new HelloWorldEntity();
-		entity.setText(text);
-		return helloWorldRepository.save(entity);
+	public void saveText(String helloText, String worldText) {
+		
+		try {
+			helloService.saveText(helloText);
+		} catch (Exception e) {
+			System.err.println(e);
+		}
+		
+		try {
+			worldService.saveText(worldText).getId();
+		} catch (Exception e) {
+			System.err.println(e);
+		}
+		
 	}
 	
-	public String readText(Long id) {
-		return helloWorldRepository.findById(id).get().getText();
+	public String readText() {
+		
+		String textHello = helloService.readText();		
+		String textWorld = worldService.readText();		
+		return textHello + " " + textWorld;
+		
 	}
-
+	
 }
