@@ -9,7 +9,7 @@
 		<relativePath/>
 	</parent>
 	<groupId>com.example</groupId>
-	<artifactId>springboot-helloworld-db-transactional</artifactId>
+	<artifactId>springboot-helloworld-db-transactions</artifactId>
 	<version>0.1.0</version>
 
 	<properties>
