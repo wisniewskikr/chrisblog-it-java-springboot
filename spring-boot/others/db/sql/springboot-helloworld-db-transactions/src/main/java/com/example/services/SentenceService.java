@@ -1,31 +1,88 @@
 package com.example.services;
 
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-@Service
-public class SentenceService {	
+import com.example.entities.WordEntity;
+import com.example.repositories.WordRepository;
 
-	private WordService wordService;
+@Service
+public class SentenceService {
 	
-	public SentenceService(WordService worldService) {		
-		this.wordService = worldService;
+	private static final Long FIRST_WORD_ID = Long.valueOf(1);
+	private static final Long SECOND_WORD_ID = Long.valueOf(2);
+	
+	private WordRepository worldRepository;
+	
+	@Autowired
+	public SentenceService(WordRepository worldRepository) {
+		this.worldRepository = worldRepository;
 	}
 	
 	@Transactional
 	public void saveSentence(String firstWord, String secondWord) {
 		
-		wordService.saveFirstWord(firstWord);
-		wordService.saveSecondWord(secondWord);
+		saveFirstWord(firstWord);
+		saveSecondWord(secondWord);
 		
-	}
-
-	public String readSentence() {
-		
-		String firstWord = wordService.readFirstWord();
-		String secondWord = wordService.readSecondWord();
-		return firstWord + " " + secondWord;
+		if (true)
+			throw new RuntimeException();
 		
 	}
 	
+	public String readSentence() {
+		
+		String firstWord = readFirstWord();
+		String secondWord = readSecondWord();
+		return firstWord + " " + secondWord;
+		
+	}
+
+	private WordEntity saveFirstWord(String firstWord) {
+		
+		WordEntity result = null;
+		
+		try {
+			WordEntity entity = new WordEntity();
+			entity.setId(FIRST_WORD_ID);
+			entity.setText(firstWord);
+			result = worldRepository.save(entity);
+		} catch (Exception e) {
+			System.err.println(e);
+		}
+		
+		return result;
+		
+	}
+	
+	private String readFirstWord() {
+		Optional<WordEntity> entity = worldRepository.findById(FIRST_WORD_ID);
+		return (entity.isPresent()) ? entity.get().getText() : null;
+	}
+	
+	private WordEntity saveSecondWord(String secondWord) {
+		
+		WordEntity result = null;
+		
+		try {
+			WordEntity entity = new WordEntity();
+			entity.setId(SECOND_WORD_ID);
+			entity.setText(secondWord);
+			result = worldRepository.save(entity);
+		} catch (Exception e) {
+			System.err.println(e);
+		}
+		
+		return result;
+		
+	}
+	
+	private String readSecondWord() {
+		Optional<WordEntity> entity = worldRepository.findById(SECOND_WORD_ID);
+		return (entity.isPresent()) ? entity.get().getText() : null;
+	}
+
 }

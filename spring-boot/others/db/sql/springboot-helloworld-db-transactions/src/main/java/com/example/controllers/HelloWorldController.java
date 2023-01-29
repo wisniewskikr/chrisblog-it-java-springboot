@@ -27,8 +27,8 @@ public class HelloWorldController {
 		}
 		
 		String sentence = sentenceService.readSentence();
-		String description = "Transactional method saveSentence(Hello, World) calls two methods saveFirstWord(Hello) and saveSecondWord(World). "
-				+ "There is an exception in saveSecondWord(World) so all database operations are rolled back. That's why sentence from database is: 'null null'";
+		String description = "Transactional method saveSentence(Hello, World) saves words to database. "
+				+ "But there is an exception at the end of this method so all database operations are rolled back. That's why final sentence from database is: 'null null'";
 		
 		return new HelloWorldJson(description, sentence);
 		
