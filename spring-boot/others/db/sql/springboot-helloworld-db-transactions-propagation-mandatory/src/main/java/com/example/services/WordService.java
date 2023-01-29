@@ -45,7 +45,6 @@ public class WordService {
 		return (entity.isPresent()) ? entity.get().getText() : null;
 	}
 	
-	@SuppressWarnings("unused")
 	@Transactional(propagation = Propagation.MANDATORY)
 	public WordEntity saveSecondWord(String secondWord) {
 		
@@ -55,9 +54,6 @@ public class WordService {
 		entity.setId(SECOND_WORD_ID);
 		entity.setText(secondWord);
 		result = worldRepository.save(entity);
-		
-		if (true)
-			throw new RuntimeException();
 		
 		return result;
 		
