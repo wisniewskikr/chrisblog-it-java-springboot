@@ -7,9 +7,7 @@ import com.example.entities.HelloEntity;
 import com.example.repositories.HelloRepository;
 
 @Service
-public class HelloService {
-	
-	private static final Long ENTITY_ID = Long.valueOf(1);
+public class HelloService {	
 	
 	private HelloRepository helloRepository;
 
@@ -18,15 +16,15 @@ public class HelloService {
 		this.helloRepository = helloWorldRepository;
 	}
 	
-	public HelloEntity saveText(String text) {
+	public HelloEntity saveText(Long entityId, String text) {
 		HelloEntity entity = new HelloEntity();
-		entity.setId(ENTITY_ID);
+		entity.setId(entityId);
 		entity.setText(text);
 		return helloRepository.save(entity);
 	}
 	
-	public String readText() {
-		return helloRepository.findById(ENTITY_ID).get().getText();
+	public String readText(Long entityId) {
+		return helloRepository.findById(entityId).get().getText();
 	}
 
 }

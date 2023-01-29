@@ -4,6 +4,9 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class HelloWorldService {
+	
+	private static final Long HELLO_ENTITY_ID = Long.valueOf(1);
+	private static final Long WORLD_ENTITY_ID = Long.valueOf(2);
 
 	private HelloService helloService;
 	private WorldService worldService;
@@ -16,13 +19,13 @@ public class HelloWorldService {
 	public void saveText(String helloText, String worldText) {
 		
 		try {
-			helloService.saveText(helloText);
+			helloService.saveText(HELLO_ENTITY_ID, helloText);
 		} catch (Exception e) {
 			System.err.println(e);
 		}
 		
 		try {
-			worldService.saveText(worldText).getId();
+			worldService.saveText(WORLD_ENTITY_ID, worldText).getId();
 		} catch (Exception e) {
 			System.err.println(e);
 		}
@@ -31,8 +34,8 @@ public class HelloWorldService {
 	
 	public String readText() {
 		
-		String textHello = helloService.readText();		
-		String textWorld = worldService.readText();		
+		String textHello = helloService.readText(HELLO_ENTITY_ID);		
+		String textWorld = worldService.readText(WORLD_ENTITY_ID);		
 		return textHello + " " + textWorld;
 		
 	}
