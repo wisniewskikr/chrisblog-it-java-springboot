@@ -4,43 +4,32 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class HelloWorldJson {
 	
-	@JsonProperty(value = "Message without any error")
-	private String message;
-	@JsonProperty(value = "Message after error without transaction (partly saved - WRONG)")
-	private String messageErrorWithoutTransaction;
-	@JsonProperty(value = "Message after error with transaction (not saved - RIGHT)")
-	private String messageErrorWithTransaction;
+	@JsonProperty(value = "description")
+	private String description;
+	@JsonProperty(value = "sentence")
+	private String sentence;
 
 	public HelloWorldJson() {}
 
-	public HelloWorldJson(String message, String messageErrorWithoutTransaction, String messageErrorWithTransaction) {
-		this.message = message;
-		this.messageErrorWithoutTransaction = messageErrorWithoutTransaction;
-		this.messageErrorWithTransaction = messageErrorWithTransaction;
-	}	
-
-	public String getMessage() {
-		return message;
+	public HelloWorldJson(String description, String sentence) {
+		this.description = description;
+		this.sentence = sentence;
 	}
 
-	public void setMessage(String message) {
-		this.message = message;
+	public String getDescription() {
+		return description;
 	}
 
-	public String getMessageErrorWithoutTransaction() {
-		return messageErrorWithoutTransaction;
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
-	public void setMessageErrorWithoutTransaction(String messageErrorWithoutTransaction) {
-		this.messageErrorWithoutTransaction = messageErrorWithoutTransaction;
+	public String getSentence() {
+		return sentence;
 	}
 
-	public String getMessageErrorWithTransaction() {
-		return messageErrorWithTransaction;
+	public void setSentence(String sentence) {
+		this.sentence = sentence;
 	}
-
-	public void setMessageErrorWithTransaction(String messageErrorWithTransaction) {
-		this.messageErrorWithTransaction = messageErrorWithTransaction;
-	}	
 
 }

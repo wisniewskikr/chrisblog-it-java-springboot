@@ -2,17 +2,15 @@ CRIPTION
 -----------
 
 ##### Goal
-The goal of this project is to present how to create **Hello World** application in **Java** programming language with usage **Spring Boot** framework which handles **transactions**. Transaction means that all database operations should be performed or none of them. There can not be such situation that some databases operations are performed and some not. 
-
-In Spring Boot transactions are handled by annotation **@Transactional** (class HelloWorldService).
+The goal of this project is to present how to create **Hello World** application in **Java** programming language with usage **Spring Boot** framework which handles **transactions**.
+ 
+**Transaction** means that all database operations should be performed or none of them. There can not be such situation that some databases operations are performed and some not. In Spring Boot transactions are handled by annotation **@Transactional** (class SentenceService).
 
 ##### Flow
 The following flow takes place in this project:
 1. User via any browser sends request to application HelloWorld for content
-1. Application HelloWorld saves texts "Hello" and "World" to different tables in database and then read them. Result is added to JSON
-1. Application HelloWorld saves texts "Hello" and "World" to different tables in database **without transaction** and then read them. But between saving "Hello" and saving "World" an error occurs. Because there is not transaction so **word "Hello" is saved** and **word "World" is not saved**. Result is added to JSON
-1. Application HelloWorld saves texts "Hello" and "World" to different tables in database **with transaction** and then read them. But between saving "Hello" and saving "World" an error occurs. Because there is transaction so **word "Hello" is not saved** and **word "World" is not saved**. Result is added to JSON
-1. Application HelloWorld returns response with message. This response is presented to User via browser
+1. Application HelloWorld runs transactional method saveSentence(Hello, World) which calls two methods: saveFirstWord(Hello) and saveSecondWord(World). There is an exception in saveSecondWord(World) so all database operations are rolled back - even already saved word "Hello". That's why sentence from database is 'null null'. Description and sentence are added to result JSON
+1. Application HelloWorld returns response with JSON. This response is presented to User via browser
 
 ##### Launch
 To launch this application please make sure that the **Preconditions** are met and then follow instructions from **Usage** section.

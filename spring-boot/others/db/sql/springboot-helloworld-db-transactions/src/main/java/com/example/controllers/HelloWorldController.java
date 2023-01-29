@@ -5,62 +5,32 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.jsons.HelloWorldJson;
-import com.example.services.HelloWorldService;
+import com.example.services.SentenceService;
 
 @RestController
 public class HelloWorldController {
 	
-	private HelloWorldService helloWorldService;
+	private SentenceService sentenceService;
 
 	@Autowired
-	public HelloWorldController(HelloWorldService helloWorldService) {
-		this.helloWorldService = helloWorldService;
+	public HelloWorldController(SentenceService sentenceService) {
+		this.sentenceService = sentenceService;
 	}
 
 	@RequestMapping(value="/")
 	public HelloWorldJson helloWorld() {		
 		
-		String text = getText();
-		String textAfterErrorWithoutTransaction = getTextAfterErrorWithoutTransaction();
-		String textAfterErrorWithTransaction = getTextAfterErrorWithTransaction();
-		
-		return new HelloWorldJson(text, textAfterErrorWithoutTransaction, textAfterErrorWithTransaction);
-		
-	}
-	
-	private String getText() {
-		
 		try {
-			helloWorldService.saveText("Hello", "World");
+			sentenceService.saveSentence("Hello", "World");
 		} catch (Exception e) {
 			System.err.println(e);
-		}		
+		}
 		
-		return helloWorldService.readText();
+		String sentence = sentenceService.readSentence();
+		String description = "Transactional method saveSentence(Hello, World) calls two methods saveFirstWord(Hello) and saveSecondWord(World). "
+				+ "There is an exception in saveSecondWord(World) so all database operations are rolled back. That's why sentence from database is: 'null null'";
 		
-	}
-	
-	private String getTextAfterErrorWithoutTransaction() {
-		
-		try {
-			helloWorldService.saveTextWithErrorWithoutTransaction("Hello", "World");
-		} catch (Exception e) {
-			System.err.println(e);
-		}		
-		
-		return helloWorldService.readTextWithErrorWithoutTransaction();
-		
-	}
-	
-	private String getTextAfterErrorWithTransaction() {
-		
-		try {
-			helloWorldService.saveTextWithErrorWithTransaction("Hello", "World");
-		} catch (Exception e) {
-			System.err.println(e);
-		}		
-		
-		return helloWorldService.readTextWithErrorWithTransaction();
+		return new HelloWorldJson(description, sentence);
 		
 	}
 	
