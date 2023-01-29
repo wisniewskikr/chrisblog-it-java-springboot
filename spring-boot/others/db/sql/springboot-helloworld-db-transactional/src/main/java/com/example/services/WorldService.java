@@ -19,10 +19,20 @@ public class WorldService {
 	}
 
 	public WorldEntity saveText(Long entityId, String text) {
-		WorldEntity entity = new WorldEntity();
-		entity.setId(entityId);
-		entity.setText(text);
-		return worldRepository.save(entity);
+		
+		WorldEntity result = null;
+		
+		try {
+			WorldEntity entity = new WorldEntity();
+			entity.setId(entityId);
+			entity.setText(text);
+			result = worldRepository.save(entity);
+		} catch (Exception e) {
+			System.err.println(e);
+		}
+		
+		return result;
+		
 	}
 	
 	public String readText(Long entityId) {

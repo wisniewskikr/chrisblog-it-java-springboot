@@ -1,5 +1,7 @@
 package com.example.services;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,14 +19,25 @@ public class HelloService {
 	}
 	
 	public HelloEntity saveText(Long entityId, String text) {
-		HelloEntity entity = new HelloEntity();
-		entity.setId(entityId);
-		entity.setText(text);
-		return helloRepository.save(entity);
+		
+		HelloEntity result = null;
+				
+		try {
+			HelloEntity entity = new HelloEntity();
+			entity.setId(entityId);
+			entity.setText(text);
+			result = helloRepository.save(entity);
+		} catch (Exception e) {
+			System.err.println(e);
+		}
+		
+		return result;
+		
 	}
 	
 	public String readText(Long entityId) {
-		return helloRepository.findById(entityId).get().getText();
+		Optional<HelloEntity> entity = helloRepository.findById(entityId);
+		return (entity.isPresent()) ? entity.get().getText() : null;
 	}
 
 }
