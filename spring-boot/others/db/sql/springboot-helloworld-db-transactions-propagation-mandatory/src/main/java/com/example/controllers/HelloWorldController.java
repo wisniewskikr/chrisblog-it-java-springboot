@@ -5,49 +5,32 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.jsons.HelloWorldJson;
-import com.example.services.HelloWorldService;
+import com.example.services.SentenceService;
 
 @RestController
 public class HelloWorldController {
 	
-	private HelloWorldService helloWorldService;
+	private SentenceService sentenceService;
 
 	@Autowired
-	public HelloWorldController(HelloWorldService helloWorldService) {
-		this.helloWorldService = helloWorldService;
+	public HelloWorldController(SentenceService sentenceService) {
+		this.sentenceService = sentenceService;
 	}
 
 	@RequestMapping(value="/")
 	public HelloWorldJson helloWorld() {		
 		
-		String text = getText();
-		String textAfterErrorWithTransaction = getTextAfterErrorWithTransaction();
-		
-		return new HelloWorldJson(text, textAfterErrorWithTransaction);
-		
-	}
-	
-	private String getText() {
-		
 		try {
-			helloWorldService.saveText("Hello", "World");
+			sentenceService.saveSentence("Hello", "World");
 		} catch (Exception e) {
 			System.err.println(e);
-		}		
+		}
 		
-		return helloWorldService.readText();
+		String sentence = sentenceService.readSentence();
+		String description = "Method saveSentence(Hello, World) calls two methods: saveFirstWord(Hello) and saveSecondWord(World). "
+				+ "This second method is transactional and marked as Propagation.MANDATORY. So because method saveSentence() is not transactional then this second method throws exception. That's why sentence from database is: 'Hello null'";
 		
-	}
-	
-	private String getTextAfterErrorWithTransaction() {
-		
-		try {
-			helloWorldService.saveTextWithErrorTransactionPropagationMandatory("Hello", "World");
-		} catch (Exception e) {
-			System.err.println(e);
-		}		
-		
-		return helloWorldService.readTextWithErrorTransactionPropagationRequired();
+		return new HelloWorldJson(description, sentence);
 		
 	}
 	
