@@ -6,7 +6,7 @@ The goal of this project is to present how to create **Hello World** application
  
 **Transaction** means that all database operations should be performed or none of them. There can not be such situation that some databases operations are performed and some not. In Spring Boot transactions are handled by annotation **@Transactional** (in this example classe WordService).
 
-**Propagation** is used when first transactional method calls second transactional method. Type **NEVER** means that second method can not be called from transactional method. Otherwise an exception will be thrown. In Spring Boot transactions with propagation type required are handled by annotation **@Transactional(propagation = Propagation.NEVER)** (in this example class WordService).
+**Propagation** is used when first transactional method calls second transactional method. Type **NEVER** means that second method can not be called from transactional method. Otherwise an exception will be thrown. In Spring Boot this propagation is handled by annotation **@Transactional(propagation = Propagation.NEVER)** (in this example class WordService).
 
 ##### Flow
 The following flow takes place in this project:
