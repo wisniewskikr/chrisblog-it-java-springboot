@@ -2,11 +2,11 @@ CRIPTION
 -----------
 
 ##### Goal
-The goal of this project is to present how to create **Hello World** application in **Java** programming language with usage **Spring Boot** framework which handles **transactions**.
+The goal of this project is to present how to create **Hello World** application in **Java** programming language with usage **Spring Boot** framework which handles **transactions** and **propagation** type **REQUIRED**.
  
 **Transaction** means that all database operations should be performed or none of them. There can not be such situation that some databases operations are performed and some not. In Spring Boot transactions are handled by annotation **@Transactional** (in this example classes SentenceService and WordService).
 
-**Propagation** is used when we call second transactional method from first transactional method. Type **required** means that all transactions are treated as one. So if there is some error in second transactional method then all operations from first transactional method should be also rolled out. In Spring Boot transactions with propagation type required are handled by annotation **@Transactional(propagation = Propagation.REQUIRED)** (in this example class WordService). This type of propagation is default.
+**Propagation** is used when first transactional method calls second transactional method. Type **REQUIRED** means that all transactions are treated as one. So if there is some error in second transactional method then all operations from first transactional method should be also rolled out. In Spring Boot transactions with propagation type required are handled by annotation **@Transactional(propagation = Propagation.REQUIRED)** (in this example class WordService). This type of propagation is default.
 
 ##### Flow
 The following flow takes place in this project:

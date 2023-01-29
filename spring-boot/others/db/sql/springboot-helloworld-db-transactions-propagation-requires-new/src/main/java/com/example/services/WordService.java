@@ -46,7 +46,7 @@ public class WordService {
 	}
 	
 	@SuppressWarnings("unused")
-	@Transactional(propagation = Propagation.REQUIRED)
+	@Transactional(propagation = Propagation.REQUIRES_NEW)
 	public WordEntity saveSecondWord(String secondWord) {
 		
 		WordEntity result = null;		
