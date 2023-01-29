@@ -3,7 +3,7 @@ package com.example.repositories;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-import com.example.entities.HelloEntity;
+import com.example.entities.WordEntity;
 
 @Repository
-public interface HelloRepository extends CrudRepository<HelloEntity, Long> {}
+public interface WordRepository extends CrudRepository<WordEntity, Long> {}

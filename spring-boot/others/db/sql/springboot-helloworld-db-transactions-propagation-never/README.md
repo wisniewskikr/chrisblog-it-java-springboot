@@ -1,19 +1,18 @@
-DESCRIPTION
+CRIPTION
 -----------
 
 ##### Goal
-The goal of this project is to present how to create **Hello World** application in **Java** programming language with usage **Spring Boot** framework which handles **transactions** with **propagation** type **never**. 
+The goal of this project is to present how to create **Hello World** application in **Java** programming language with usage **Spring Boot** framework which handles **transactions** and **propagation** type **NEVER**.
+ 
+**Transaction** means that all database operations should be performed or none of them. There can not be such situation that some databases operations are performed and some not. In Spring Boot transactions are handled by annotation **@Transactional** (in this example classe WordService).
 
-**Transaction** means that all database operations should be performed or none of them. There can not be such situation that some databases operations are performed and some not. In Spring Boot transactions are handled by annotation **@Transactional** (in this example classes HelloWorldService and WorldService).
-
-**Propagation** is used when first transactional method calls second transactional method. Type **never** means that second transactional method can not be called only from other transactional method otherwise exception is thrown. In Spring Boot transactions with propagation type mandatory are handled by annotation **@Transactional(propagation = Propagation.NEVER)** (in this example classes WorldService).
+**Propagation** is used when first transactional method calls second transactional method. Type **NEVER** means that second method can not be called from transactional method. Otherwise an exception will be thrown. In Spring Boot transactions with propagation type required are handled by annotation **@Transactional(propagation = Propagation.NEVER)** (in this example class WordService).
 
 ##### Flow
 The following flow takes place in this project:
 1. User via any browser sends request to application HelloWorld for content
-1. Application HelloWorld saves texts "Hello" and "World" to different tables in database and then read them. Result is added to JSON
-1. Application HelloWorld saves texts "Hello" and "World" to different tables in database and then read them. But saving word "World" is transactional and marked as **never** and saving whole sentence is transactional. That's why operations saving word "World" throws exception and both words are not saved.  Result is added to JSON
-1. Application HelloWorld returns response with message. This response is presented to User via browser
+1. Application HelloWorld runs transactional method saveSentence(Hello, World) which calls two methods: saveFirstWord(Hello) and saveSecondWord(World). This second method is transactional and marked as Propagation.NEVER. So because method saveSentence() is transactional then this second method throws exception. That's why sentence from database is: 'Hello null'. Description and sentence are added to result JSON
+1. Application HelloWorld returns response with JSON. This response is presented to User via browser
 
 ##### Launch
 To launch this application please make sure that the **Preconditions** are met and then follow instructions from **Usage** section.
