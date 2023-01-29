@@ -2,14 +2,16 @@ CRIPTION
 -----------
 
 ##### Goal
-The goal of this project is to present how to create **Hello World** application in **Java** programming language with usage **Spring Boot** framework which uses **embedded** database type **h2**.
+The goal of this project is to present how to create **Hello World** application in **Java** programming language with usage **Spring Boot** framework which handles **transactions**. Transaction means that all database operations should be performed or none of them. There can not be such situation that some databases operations are performed and some not. 
 
-Embedded database means that database is started together with application. 
+In Spring Boot transactions are handled by annotation **@Transactional** (class HelloWorldService).
 
 ##### Flow
 The following flow takes place in this project:
 1. User via any browser sends request to application HelloWorld for content
-1. Application HelloWorld saves text "Hello World" to database and then read it
+1. Application HelloWorld saves texts "Hello" and "World" to different tables in database and then read them. Result is added to JSON
+1. Application HelloWorld saves texts "Hello" and "World" to different tables in database **without transaction** and then read them. But between saving "Hello" and saving "World" an error occurs. Because there is not transaction so **word "Hello" is saved** and **word "World" is not saved**. Result is added to JSON
+1. Application HelloWorld saves texts "Hello" and "World" to different tables in database **with transaction** and then read them. But between saving "Hello" and saving "World" an error occurs. Because there is transaction so **word "Hello" is not saved** and **word "World" is not saved**. Result is added to JSON
 1. Application HelloWorld returns response with message. This response is presented to User via browser
 
 ##### Launch
