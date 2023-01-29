@@ -1,4 +1,4 @@
-CRIPTION
+DESCRIPTION
 -----------
 
 ##### Goal
