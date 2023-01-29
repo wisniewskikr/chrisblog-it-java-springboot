@@ -1,5 +1,7 @@
 package com.example.services;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -24,7 +26,8 @@ public class WorldService {
 	}
 	
 	public String readText(Long entityId) {
-		return worldRepository.findById(entityId).get().getText();
-	}
+		Optional<WorldEntity> entity = worldRepository.findById(entityId);
+		return (entity.isPresent()) ? entity.get().getText() : null;
+	}	
 
 }

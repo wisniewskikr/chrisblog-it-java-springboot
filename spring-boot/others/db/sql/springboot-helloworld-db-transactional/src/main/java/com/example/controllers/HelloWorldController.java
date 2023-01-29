@@ -19,8 +19,13 @@ public class HelloWorldController {
 	@RequestMapping(value="/")
 	public String helloWorld() {
 		
-		helloWorldService.saveText("Hello", "World");
-		String text = helloWorldService.readText();
+		try {
+			helloWorldService.saveTextWithErrorWithoutTransaction("Hello", "World");
+		} catch (Exception e) {
+			System.err.println(e);
+		}		
+		
+		String text = helloWorldService.readTextWithErrorWithoutTransaction();
 		
 		return text;		
 	}

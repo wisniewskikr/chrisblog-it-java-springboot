@@ -16,13 +16,16 @@ public class HelloWorldService {
 		this.worldService = worldService;
 	}
 	
-	public void saveText(String helloText, String worldText) {
+	public void saveTextWithErrorWithoutTransaction(String helloText, String worldText) {
 		
 		try {
 			helloService.saveText(HELLO_ENTITY_ID, helloText);
 		} catch (Exception e) {
 			System.err.println(e);
 		}
+		
+		if (true)
+			throw new RuntimeException();
 		
 		try {
 			worldService.saveText(WORLD_ENTITY_ID, worldText).getId();
@@ -32,7 +35,7 @@ public class HelloWorldService {
 		
 	}
 	
-	public String readText() {
+	public String readTextWithErrorWithoutTransaction() {
 		
 		String textHello = helloService.readText(HELLO_ENTITY_ID);		
 		String textWorld = worldService.readText(WORLD_ENTITY_ID);		
