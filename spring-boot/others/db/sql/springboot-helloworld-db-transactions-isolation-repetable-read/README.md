@@ -2,7 +2,7 @@ DESCRIPTION
 -----------
 
 ##### Goal
-The goal of this project is to present how to create **Hello World** application in **Java** programming language with usage **Spring Boot** framework and **transactions** with **isolation** type **READ UNCOMMITED**.
+The goal of this project is to present how to create **Hello World** application in **Java** programming language with usage **Spring Boot** framework and **transactions** with **isolation** type **REPETABLE READ**.
 
 **Transaction** means that all database operations should be performed or none of them. There can not be such situation that some databases operations are performed and some not. In Spring Boot transactions are handled by annotation **@Transactional** (class SentenceService).
 
