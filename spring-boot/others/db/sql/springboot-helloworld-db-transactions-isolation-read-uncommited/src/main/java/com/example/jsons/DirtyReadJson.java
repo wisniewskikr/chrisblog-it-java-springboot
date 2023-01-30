@@ -4,9 +4,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class DirtyReadJson {
 	
-	@JsonProperty(value = "Dirty Read - message before roll out (expected null)")
+	@JsonProperty(value = "Dirty Read - message before roll out (expected empty)")
 	private String dirtyReadBeforeRollOut;
-	@JsonProperty(value = "Dirty Read - message after roll out (expected null)")
+	@JsonProperty(value = "Dirty Read - message after roll out (expected empty)")
 	private String dirtyReadAfterRollOut;
 	
 	public DirtyReadJson() {}
