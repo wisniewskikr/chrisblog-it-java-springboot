@@ -1,28 +1,35 @@
 package com.example.controllers;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.services.HelloWorldService;
+import com.example.services.DirtyReadService;
 
 @RestController
 public class HelloWorldController {
 	
-	private HelloWorldService helloWorldService;
+	private DirtyReadService dirtyReadService;
 
-	@Autowired
-	public HelloWorldController(HelloWorldService helloWorldService) {
-		this.helloWorldService = helloWorldService;
+	public HelloWorldController(DirtyReadService dirtyReadService) {
+		this.dirtyReadService = dirtyReadService;
 	}
 
 	@RequestMapping(value="/")
-	public String helloWorld() {
+	public String helloWorld() throws InterruptedException {
 		
-		Long idText = helloWorldService.saveText("Hello World!").getId();
-		String text = helloWorldService.readText(idText);
+		try {
+			dirtyReadService.runFirstMethod();
+		} catch (Exception e) {
+			System.err.println(e);
+		}
 		
-		return text;		
+		try {
+			dirtyReadService.runSecondMethod();
+		} catch (Exception e) {
+			System.err.println(e);
+		}
+		
+		return "Hello World";		
 	}
 	
 }
