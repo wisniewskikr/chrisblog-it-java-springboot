@@ -3,24 +3,31 @@ package com.example.controllers;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.jsons.DirtyReadJson;
 import com.example.jsons.HelloWorldJson;
 import com.example.jsons.NotRepetableReadJson;
+import com.example.jsons.PhantomReadJson;
 import com.example.services.DirtyReadService;
 import com.example.services.NotRepetableReadService;
+import com.example.services.PhantomReadService;
 
 @RestController
 public class HelloWorldController {
 	
 	private DirtyReadService dirtyReadService;
 	private NotRepetableReadService notRepetableReadService;
-
-	public HelloWorldController(DirtyReadService dirtyReadService, NotRepetableReadService notRepetableReadService) {
+	private PhantomReadService phantomReadService;
+	
+	@Autowired
+	public HelloWorldController(DirtyReadService dirtyReadService, NotRepetableReadService notRepetableReadService,
+			PhantomReadService phantomReadService) {
 		this.dirtyReadService = dirtyReadService;
 		this.notRepetableReadService = notRepetableReadService;
+		this.phantomReadService = phantomReadService;
 	}
 
 	@RequestMapping(value="/")
@@ -30,12 +37,16 @@ public class HelloWorldController {
 		Future<DirtyReadJson> futureDirtyRead = runDirtyReadSecondMethod();
 		runNotRepetableReadFirstMethod();
 		Future<NotRepetableReadJson> futureNotRepetableRead = runNotRepetableReadSecondMethod();
+		runPhantomReadFirstMethod();
+		Future<PhantomReadJson> futurePhantomRead = runPhantomReadSecondMethod();
 		
-		while (!futureDirtyRead.isDone() && !futureNotRepetableRead.isDone()) {
+		while (!futureDirtyRead.isDone() && 
+				!futureNotRepetableRead.isDone() &&
+				!futurePhantomRead.isDone()) {
 			Thread.sleep(2000);			
 		}
 		
-		return new HelloWorldJson(futureDirtyRead.get(), futureNotRepetableRead.get());	
+		return new HelloWorldJson(futureDirtyRead.get(), futureNotRepetableRead.get(), futurePhantomRead.get());	
 	}
 	
 	private void runDirtyReadFirstMethod() {
@@ -78,6 +89,30 @@ public class HelloWorldController {
 		
 		try {
 			future = notRepetableReadService.runSecondMethod();
+		} catch (Exception e) {
+			System.err.println(e);
+		}
+		
+		return future;
+		
+	}
+	
+	private void runPhantomReadFirstMethod() {
+		
+		try {
+			phantomReadService.runFirstMethod();
+		} catch (Exception e) {
+			System.err.println(e);
+		}
+		
+	}
+	
+	private Future<PhantomReadJson> runPhantomReadSecondMethod() {
+		
+		Future<PhantomReadJson> future = null;
+		
+		try {
+			future = phantomReadService.runSecondMethod();
 		} catch (Exception e) {
 			System.err.println(e);
 		}

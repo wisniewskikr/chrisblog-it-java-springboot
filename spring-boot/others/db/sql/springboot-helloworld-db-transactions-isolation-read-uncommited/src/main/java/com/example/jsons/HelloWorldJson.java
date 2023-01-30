@@ -8,10 +8,14 @@ public class HelloWorldJson {
 	private DirtyReadJson dirtyReadJson;
 	@JsonProperty(value = "Not Repetable Read")
 	private NotRepetableReadJson notRepetableReadJson;
+	@JsonProperty(value = "Phantom Read")
+	private PhantomReadJson phantomReadJson;
 	
-	public HelloWorldJson(DirtyReadJson dirtyReadJson, NotRepetableReadJson notRepetableReadJson) {
+	public HelloWorldJson(DirtyReadJson dirtyReadJson, NotRepetableReadJson notRepetableReadJson,
+			PhantomReadJson phantomReadJson) {
 		this.dirtyReadJson = dirtyReadJson;
 		this.notRepetableReadJson = notRepetableReadJson;
+		this.phantomReadJson = phantomReadJson;
 	}
 
 	public DirtyReadJson getDirtyReadJson() {
@@ -28,6 +32,14 @@ public class HelloWorldJson {
 
 	public void setNotRepetableReadJson(NotRepetableReadJson notRepetableReadJson) {
 		this.notRepetableReadJson = notRepetableReadJson;
+	}
+
+	public PhantomReadJson getPhantomReadJson() {
+		return phantomReadJson;
+	}
+
+	public void setPhantomReadJson(PhantomReadJson phantomReadJson) {
+		this.phantomReadJson = phantomReadJson;
 	}	
 
 }
