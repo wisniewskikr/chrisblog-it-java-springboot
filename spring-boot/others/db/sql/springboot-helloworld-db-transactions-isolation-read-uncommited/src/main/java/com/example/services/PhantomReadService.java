@@ -2,7 +2,6 @@ package com.example.services;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 import java.util.concurrent.Future;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,17 +30,21 @@ public class PhantomReadService {
 	@Transactional
 	public void runFirstMethod() throws InterruptedException {
 		
-		logs.add("First Method - Entity is saved");
+		logs.add("First Method - Entities are saved");
 		PhantomReadEntity entity = new PhantomReadEntity();
 		entity.setId(1L);
 		entity.setText("Hello World");
 		phantomReadRepository.saveAndFlush(entity);
+		entity = new PhantomReadEntity();
+		entity.setId(2L);
+		entity.setText("Hello World 2");
+		phantomReadRepository.saveAndFlush(entity);
 
 		Thread.sleep(2000);
 		
-		logs.add("First Method - Operation is rolled out");
-		if (true)
-			throw new RuntimeException();
+		logs.add("First Method - Entity is removed");
+		phantomReadRepository.deleteById(2L);
+		
 		
 	}
 	
@@ -49,21 +52,31 @@ public class PhantomReadService {
 	@Transactional(isolation = Isolation.READ_UNCOMMITTED)
 	public Future<PhantomReadJson> runSecondMethod() throws InterruptedException {
 				
-		Optional<PhantomReadEntity> optional = null;
+		List<PhantomReadEntity> entities = null;
+		StringBuilder firstMessage = new StringBuilder();
+		StringBuilder secondMessage = new StringBuilder();
 		
 		Thread.sleep(1000);
 		
-		optional = phantomReadRepository.findById(1L);
-		String firstMessage = (optional.isPresent()) ? optional.get().getText() : "";		
-		logs.add("Second Method - Text before rolling out: " + firstMessage);
+		entities = phantomReadRepository.findAll();
+		for (PhantomReadEntity entity : entities) {
+			String text = entity.getText();
+			firstMessage.append(",");
+			firstMessage.append(text);			
+			logs.add("Second Method - Text before delete: " + text);
+		}
 		
 		Thread.sleep(2000);
 		
-		optional = phantomReadRepository.findById(1L);
-		String secondMessage = (optional.isPresent()) ? optional.get().getText() : "";		
-		logs.add("Second Method - Text after rolling out: " + secondMessage);
+		entities = phantomReadRepository.findAll();
+		for (PhantomReadEntity entity : entities) {
+			String text = entity.getText();
+			secondMessage.append(",");
+			secondMessage.append(text);			
+			logs.add("Second Method - Text after delete: " + text);
+		}
 		
-		PhantomReadJson json = new PhantomReadJson(firstMessage, secondMessage);
+		PhantomReadJson json = new PhantomReadJson(firstMessage.toString().replaceFirst(",", ""), secondMessage.toString().replaceFirst(",", ""));
 		
 		displayLogs();
 		

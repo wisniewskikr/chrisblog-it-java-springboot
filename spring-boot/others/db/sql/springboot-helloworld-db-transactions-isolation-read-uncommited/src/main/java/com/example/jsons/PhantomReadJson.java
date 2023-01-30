@@ -4,9 +4,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class PhantomReadJson {
 	
-	@JsonProperty(value = "Message before roll out (expected empty)")
+	@JsonProperty(value = "Message before delete (expected empty)")
 	private String firstMessage;
-	@JsonProperty(value = "Message after roll out (expected empty)")
+	@JsonProperty(value = "Message after delete (expected empty)")
 	private String secondMessage;
 	
 	public PhantomReadJson() {}
