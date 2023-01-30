@@ -51,16 +51,16 @@ public class DirtyReadService {
 		Thread.sleep(1000);
 		
 		optional = dirtyReadRepository.findById(1L);
-		String textBeforeRollOut = (optional.isPresent()) ? optional.get().getText() : "";		
-		System.out.println("Second Method - Text before rolling out: " + textBeforeRollOut);
+		String firstMessage = (optional.isPresent()) ? optional.get().getText() : "";		
+		System.out.println("Second Method - Text before rolling out: " + firstMessage);
 		
 		Thread.sleep(2000);
 		
 		optional = dirtyReadRepository.findById(1L);
-		String textAfterRollOut = (optional.isPresent()) ? optional.get().getText() : "";		
-		System.out.println("Second Method - Text after rolling out: " + textAfterRollOut);
+		String secondMessage = (optional.isPresent()) ? optional.get().getText() : "";		
+		System.out.println("Second Method - Text after rolling out: " + secondMessage);
 		
-		DirtyReadJson json = new DirtyReadJson(textBeforeRollOut, textAfterRollOut);
+		DirtyReadJson json = new DirtyReadJson(firstMessage, secondMessage);
 		
 		return new AsyncResult<DirtyReadJson>(json);
 		

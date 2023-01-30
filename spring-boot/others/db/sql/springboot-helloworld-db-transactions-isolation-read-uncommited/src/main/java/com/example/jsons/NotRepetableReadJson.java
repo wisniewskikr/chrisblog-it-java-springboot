@@ -2,16 +2,16 @@ package com.example.jsons;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class DirtyReadJson {
+public class NotRepetableReadJson {
 	
-	@JsonProperty(value = "Message before roll out (expected empty)")
+	@JsonProperty(value = "Message before update (expected empty)")
 	private String firstMessage;
-	@JsonProperty(value = "Message after roll out (expected empty)")
+	@JsonProperty(value = "Message after update (expected empty)")
 	private String secondMessage;
 	
-	public DirtyReadJson() {}
+	public NotRepetableReadJson() {}
 
-	public DirtyReadJson(String firstMessage, String secondMessage) {
+	public NotRepetableReadJson(String firstMessage, String secondMessage) {
 		super();
 		this.firstMessage = firstMessage;
 		this.secondMessage = secondMessage;
