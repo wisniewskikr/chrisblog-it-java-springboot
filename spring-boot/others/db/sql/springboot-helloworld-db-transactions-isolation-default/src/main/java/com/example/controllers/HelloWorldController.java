@@ -1,8 +1,12 @@
 package com.example.controllers;
 
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.Future;
+
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.jsons.DirtyReadJson;
 import com.example.services.DirtyReadService;
 
 @RestController
@@ -15,12 +19,16 @@ public class HelloWorldController {
 	}
 
 	@RequestMapping(value="/")
-	public String helloWorld() throws InterruptedException {
+	public DirtyReadJson helloWorld() throws InterruptedException, ExecutionException {
 			
 		runDirtyReadFirstMethod();
-		runDirtyReadSecondMethod();
+		Future<DirtyReadJson> futureDirtyRead = runDirtyReadSecondMethod();
 		
-		return "Hello World";		
+		while (!futureDirtyRead.isDone()) {
+			Thread.sleep(2000);			
+		}
+		
+		return futureDirtyRead.get();	
 	}
 	
 	private void runDirtyReadFirstMethod() {
@@ -33,13 +41,17 @@ public class HelloWorldController {
 		
 	}
 	
-	private void runDirtyReadSecondMethod() {
+	private Future<DirtyReadJson> runDirtyReadSecondMethod() {
+		
+		Future<DirtyReadJson> future = null;
 		
 		try {
-			dirtyReadService.runSecondMethod();
+			future = dirtyReadService.runSecondMethod();
 		} catch (Exception e) {
 			System.err.println(e);
 		}
+		
+		return future;
 		
 	}
 	

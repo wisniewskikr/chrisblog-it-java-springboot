@@ -1,14 +1,17 @@
 package com.example.services;
 
 import java.util.Optional;
+import java.util.concurrent.Future;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Async;
+import org.springframework.scheduling.annotation.AsyncResult;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.example.entities.DirtyReadEntity;
+import com.example.jsons.DirtyReadJson;
 import com.example.repositories.DirtyReadRepository;
 
 @Service
@@ -41,22 +44,25 @@ public class DirtyReadService {
 	
 	@Async
 	@Transactional(isolation = Isolation.READ_UNCOMMITTED)
-	public void runSecondMethod() throws InterruptedException {
+	public Future<DirtyReadJson> runSecondMethod() throws InterruptedException {
 				
 		Optional<DirtyReadEntity> optional = null;
-		String text = null;
 		
 		Thread.sleep(1000);
 		
 		optional = dirtyReadRepository.findById(1L);
-		text = (optional.isPresent()) ? optional.get().getText() : "";		
-		System.out.println("Second Method - Text before rolling out: " + text);
+		String textBeforeRollOut = (optional.isPresent()) ? optional.get().getText() : "";		
+		System.out.println("Second Method - Text before rolling out: " + textBeforeRollOut);
 		
 		Thread.sleep(2000);
 		
 		optional = dirtyReadRepository.findById(1L);
-		text = (optional.isPresent()) ? optional.get().getText() : "";		
-		System.out.println("Second Method - Text after rolling out: " + text);
+		String textAfterRollOut = (optional.isPresent()) ? optional.get().getText() : "";		
+		System.out.println("Second Method - Text after rolling out: " + textAfterRollOut);
+		
+		DirtyReadJson json = new DirtyReadJson(textBeforeRollOut, textAfterRollOut);
+		
+		return new AsyncResult<DirtyReadJson>(json);
 		
 	}
 
