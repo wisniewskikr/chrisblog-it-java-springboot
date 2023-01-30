@@ -1,5 +1,7 @@
 package com.example.services;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 import java.util.concurrent.Future;
 
@@ -18,6 +20,7 @@ import com.example.repositories.NotRepetableReadRepository;
 public class NotRepetableReadService {
 	
 	private NotRepetableReadRepository notRepetableReadRepository;
+	private List<String> logs = new ArrayList<String>();
 
 	@Autowired
 	public NotRepetableReadService(NotRepetableReadRepository notRepetableReadRepository) {
@@ -28,7 +31,7 @@ public class NotRepetableReadService {
 	@Transactional
 	public void runFirstMethod() throws InterruptedException {
 		
-		System.out.println("First Method - Entity is saved");
+		logs.add("First Method - Entity is saved");
 		NotRepetableReadEntity entity = new NotRepetableReadEntity();
 		entity.setId(1L);
 		entity.setText("Hello World");
@@ -36,7 +39,7 @@ public class NotRepetableReadService {
 
 		Thread.sleep(2000);
 		
-		System.out.println("First Method - Entity is updated");
+		logs.add("First Method - Entity is updated");
 		entity.setText("Hello World Updated");
 		notRepetableReadRepository.saveAndFlush(entity);
 		
@@ -53,17 +56,29 @@ public class NotRepetableReadService {
 		
 		optional = notRepetableReadRepository.findById(1L);
 		String firstMessage = (optional.isPresent()) ? optional.get().getText() : "";		
-		System.out.println("Second Method - Text before updata: " + firstMessage);
+		logs.add("Second Method - Text before updata: " + firstMessage);
 		
 		Thread.sleep(2000);
 		
 		optional = notRepetableReadRepository.findById(1L);
 		String secondMessage = (optional.isPresent()) ? optional.get().getText() : "";		
-		System.out.println("Second Method - Text after update: " + secondMessage);
+		logs.add("Second Method - Text after update: " + secondMessage);
 		
 		NotRepetableReadJson json = new NotRepetableReadJson(firstMessage, secondMessage);
 		
+		displayLogs();
+		
 		return new AsyncResult<NotRepetableReadJson>(json);
+		
+	}
+	
+	private void displayLogs() {
+		
+		System.out.println("***** NOT REPETABLE READ START *****");
+		for (String log : logs) {
+			System.out.println(log);
+		}
+		System.out.println("***** NOT REPETABLE READ STOP *****");
 		
 	}
 

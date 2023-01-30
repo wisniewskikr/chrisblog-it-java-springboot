@@ -1,5 +1,7 @@
 package com.example.services;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 import java.util.concurrent.Future;
 
@@ -18,6 +20,7 @@ import com.example.repositories.DirtyReadRepository;
 public class DirtyReadService {
 	
 	private DirtyReadRepository dirtyReadRepository;
+	private List<String> logs = new ArrayList<String>();
 
 	@Autowired
 	public DirtyReadService(DirtyReadRepository helloWorldRepository) {
@@ -28,7 +31,7 @@ public class DirtyReadService {
 	@Transactional
 	public void runFirstMethod() throws InterruptedException {
 		
-		System.out.println("First Method - Entity is saved");
+		logs.add("First Method - Entity is saved");
 		DirtyReadEntity entity = new DirtyReadEntity();
 		entity.setId(1L);
 		entity.setText("Hello World");
@@ -36,7 +39,7 @@ public class DirtyReadService {
 
 		Thread.sleep(2000);
 		
-		System.out.println("First Method - Operation is rolled out");
+		logs.add("First Method - Operation is rolled out");
 		if (true)
 			throw new RuntimeException();
 		
@@ -52,17 +55,29 @@ public class DirtyReadService {
 		
 		optional = dirtyReadRepository.findById(1L);
 		String firstMessage = (optional.isPresent()) ? optional.get().getText() : "";		
-		System.out.println("Second Method - Text before rolling out: " + firstMessage);
+		logs.add("Second Method - Text before rolling out: " + firstMessage);
 		
 		Thread.sleep(2000);
 		
 		optional = dirtyReadRepository.findById(1L);
 		String secondMessage = (optional.isPresent()) ? optional.get().getText() : "";		
-		System.out.println("Second Method - Text after rolling out: " + secondMessage);
+		logs.add("Second Method - Text after rolling out: " + secondMessage);
 		
 		DirtyReadJson json = new DirtyReadJson(firstMessage, secondMessage);
 		
+		displayLogs();
+		
 		return new AsyncResult<DirtyReadJson>(json);
+		
+	}
+	
+	private void displayLogs() {
+		
+		System.out.println("***** DIRTY READ START *****");
+		for (String log : logs) {
+			System.out.println(log);
+		}
+		System.out.println("***** DIRTY READ END *****");
 		
 	}
 
