@@ -1,5 +1,8 @@
 package com.example.controllers;
 
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 
@@ -34,11 +37,11 @@ public class HelloWorldController {
 	public HelloWorldJson helloWorld() throws InterruptedException, ExecutionException {
 			
 		runDirtyReadFirstMethod();
-		Future<DirtyReadJson> futureDirtyRead = runDirtyReadSecondMethod();
+		Future<Map<DirtyReadJson, List<String>>> futureDirtyRead = runDirtyReadSecondMethod();
 		runNotRepetableReadFirstMethod();
-		Future<NotRepetableReadJson> futureNotRepetableRead = runNotRepetableReadSecondMethod();
+		Future<Map<NotRepetableReadJson, List<String>>> futureNotRepetableRead = runNotRepetableReadSecondMethod();
 		runPhantomReadFirstMethod();
-		Future<PhantomReadJson> futurePhantomRead = runPhantomReadSecondMethod();
+		Future<Map<PhantomReadJson, List<String>>> futurePhantomRead = runPhantomReadSecondMethod();
 		
 		while (!futureDirtyRead.isDone() && 
 				!futureNotRepetableRead.isDone() &&
@@ -46,8 +49,21 @@ public class HelloWorldController {
 			Thread.sleep(2000);			
 		}
 		
-		return new HelloWorldJson(futureDirtyRead.get(), futureNotRepetableRead.get(), futurePhantomRead.get());	
-	}
+		Entry<DirtyReadJson, List<String>> dirtyReadEntry = futureDirtyRead.get().entrySet().iterator().next();
+		DirtyReadJson dirtyReadJson = dirtyReadEntry.getKey();
+		List<String> dirtyReadLogs = dirtyReadEntry.getValue();
+		
+		Entry<NotRepetableReadJson, List<String>> notRepetableReadEntry = futureNotRepetableRead.get().entrySet().iterator().next();
+		NotRepetableReadJson notRepetableReadReadJson = notRepetableReadEntry.getKey();
+		List<String> notRepetableReadLogs = notRepetableReadEntry.getValue();
+		
+		Entry<PhantomReadJson, List<String>> phantomReadEntry = futurePhantomRead.get().entrySet().iterator().next();
+		PhantomReadJson phantomReadJson = phantomReadEntry.getKey();
+		List<String> phantomReadLogs = phantomReadEntry.getValue();
+		
+		displayLogs(dirtyReadLogs, notRepetableReadLogs, phantomReadLogs);		
+		return new HelloWorldJson(dirtyReadJson, notRepetableReadReadJson, phantomReadJson);	
+	}	
 	
 	private void runDirtyReadFirstMethod() {
 		
@@ -59,9 +75,9 @@ public class HelloWorldController {
 		
 	}
 	
-	private Future<DirtyReadJson> runDirtyReadSecondMethod() {
+	private Future<Map<DirtyReadJson, List<String>>> runDirtyReadSecondMethod() {
 		
-		Future<DirtyReadJson> future = null;
+		Future<Map<DirtyReadJson, List<String>>> future = null;
 		
 		try {
 			future = dirtyReadService.runSecondMethod();
@@ -83,9 +99,9 @@ public class HelloWorldController {
 		
 	}
 	
-	private Future<NotRepetableReadJson> runNotRepetableReadSecondMethod() {
+	private Future<Map<NotRepetableReadJson, List<String>>> runNotRepetableReadSecondMethod() {
 		
-		Future<NotRepetableReadJson> future = null;
+		Future<Map<NotRepetableReadJson, List<String>>> future = null;
 		
 		try {
 			future = notRepetableReadService.runSecondMethod();
@@ -107,9 +123,9 @@ public class HelloWorldController {
 		
 	}
 	
-	private Future<PhantomReadJson> runPhantomReadSecondMethod() {
+	private Future<Map<PhantomReadJson, List<String>>> runPhantomReadSecondMethod() {
 		
-		Future<PhantomReadJson> future = null;
+		Future<Map<PhantomReadJson, List<String>>> future = null;
 		
 		try {
 			future = phantomReadService.runSecondMethod();
@@ -118,6 +134,32 @@ public class HelloWorldController {
 		}
 		
 		return future;
+		
+	}
+	
+	private void displayLogs(List<String> dirtyReadLogs, List<String> notRepetableReadLogs, List<String> phantomReadLogs) {
+		
+		System.out.println("**** DIRTY READ LOGS BEGIN ***");
+		for (String log : dirtyReadLogs) {
+			System.out.println(log);
+		}
+		System.out.println("**** DIRTY READ LOGS END ***");
+		
+		System.out.println("");
+		
+		System.out.println("**** NOT REPETABLE READ LOGS BEGIN ***");
+		for (String log : notRepetableReadLogs) {
+			System.out.println(log);
+		}
+		System.out.println("**** NOT REPETABLE READ LOGS END ***");
+		
+		System.out.println("");
+		
+		System.out.println("**** PHANTOM READ LOGS BEGIN ***");
+		for (String log : phantomReadLogs) {
+			System.out.println(log);
+		}
+		System.out.println("**** PHANTOM READ LOGS END ***");
 		
 	}
 	

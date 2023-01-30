@@ -1,7 +1,9 @@
 package com.example.services;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import java.util.concurrent.Future;
 
@@ -47,7 +49,7 @@ public class DirtyReadService {
 	
 	@Async
 	@Transactional(isolation = Isolation.READ_UNCOMMITTED)
-	public Future<DirtyReadJson> runSecondMethod() throws InterruptedException {
+	public Future<Map<DirtyReadJson, List<String>>> runSecondMethod() throws InterruptedException {
 				
 		Optional<DirtyReadEntity> optional = null;
 		
@@ -63,23 +65,12 @@ public class DirtyReadService {
 		String secondMessage = (optional.isPresent()) ? optional.get().getText() : "";		
 		logs.add("Second Method - Text after rolling out: " + secondMessage);
 		
-		DirtyReadJson json = new DirtyReadJson(firstMessage, secondMessage);
-		
-		displayLogs();
-		
-		return new AsyncResult<DirtyReadJson>(json);
-		
-	}
-	
-	private void displayLogs() {
-		
-		System.out.println("***** DIRTY READ START *****");
-		for (String log : logs) {
-			System.out.println(log);
-		}
-		System.out.println("***** DIRTY READ END *****");
+		// Return result
+		DirtyReadJson json = new DirtyReadJson(firstMessage, secondMessage);		
+		Map<DirtyReadJson, List<String>> result = new HashMap<DirtyReadJson, List<String>>();
+		result.put(json, logs);		
+		return new AsyncResult<Map<DirtyReadJson, List<String>>>(result);
 		
 	}
-
 
 }

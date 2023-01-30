@@ -1,7 +1,9 @@
 package com.example.services;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.Future;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,7 +52,7 @@ public class PhantomReadService {
 	
 	@Async
 	@Transactional(isolation = Isolation.READ_UNCOMMITTED)
-	public Future<PhantomReadJson> runSecondMethod() throws InterruptedException {
+	public Future<Map<PhantomReadJson, List<String>>> runSecondMethod() throws InterruptedException {
 				
 		List<PhantomReadEntity> entities = null;
 		StringBuilder firstMessage = new StringBuilder();
@@ -76,23 +78,12 @@ public class PhantomReadService {
 			logs.add("Second Method - Text after delete: " + text);
 		}
 		
-		PhantomReadJson json = new PhantomReadJson(firstMessage.toString().replaceFirst(",", ""), secondMessage.toString().replaceFirst(",", ""));
-		
-		displayLogs();
-		
-		return new AsyncResult<PhantomReadJson>(json);
-		
-	}
-	
-	private void displayLogs() {
-		
-		System.out.println("***** PHANTOM READ START *****");
-		for (String log : logs) {
-			System.out.println(log);
-		}
-		System.out.println("***** PHANTOM READ END *****");
+		// Return result
+		PhantomReadJson json = new PhantomReadJson(firstMessage.toString().replaceFirst(",", ""), secondMessage.toString().replaceFirst(",", ""));		
+		Map<PhantomReadJson, List<String>> result = new HashMap<PhantomReadJson, List<String>>();
+		result.put(json, logs);		
+		return new AsyncResult<Map<PhantomReadJson, List<String>>>(result);
 		
 	}
-
 
 }
