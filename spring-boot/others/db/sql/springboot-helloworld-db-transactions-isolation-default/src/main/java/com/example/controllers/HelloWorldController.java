@@ -16,6 +16,14 @@ public class HelloWorldController {
 
 	@RequestMapping(value="/")
 	public String helloWorld() throws InterruptedException {
+			
+		runDirtyReadFirstMethod();
+		runDirtyReadSecondMethod();
+		
+		return "Hello World";		
+	}
+	
+	private void runDirtyReadFirstMethod() {
 		
 		try {
 			dirtyReadService.runFirstMethod();
@@ -23,13 +31,16 @@ public class HelloWorldController {
 			System.err.println(e);
 		}
 		
+	}
+	
+	private void runDirtyReadSecondMethod() {
+		
 		try {
 			dirtyReadService.runSecondMethod();
 		} catch (Exception e) {
 			System.err.println(e);
 		}
 		
-		return "Hello World";		
 	}
 	
 }
