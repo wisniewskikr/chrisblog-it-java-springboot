@@ -1,3 +1,13 @@
+USAGE
+-----
+
+Usage steps:
+1. Start application with `mvn spring-boot:run`
+1. Visit `http://localhost:8080`
+1. (Optional) Check database in console (url: "jdbc:h2:mem:db-embedded", user: "admin", password: "admin123") with `http://localhost:8080/console`
+1. Clean up environment with `ctrl + C`
+
+
 DESCRIPTION
 -----------
 
@@ -31,13 +41,3 @@ PRECONDITIONS
 ##### Preconditions - Actions
 * **Download** source code using Git 
 * Open any **Command Line** (for instance "Windonw PowerShell" on Windows OS) tool on **project's folder** (exact localization of project you can check in GIT repositories on page `https://github.com/wisniewskikr/chrisblog-it-java`)
-
-
-USAGE
------
-
-Usage steps:
-1. Start application with `mvn spring-boot:run`
-1. Visit `http://localhost:8080`
-1. (Optional) Check database in console (url: "jdbc:h2:mem:db-embedded", user: "admin", password: "admin123") with `http://localhost:8080/console`
-1. Clean up environment with `ctrl + C`
