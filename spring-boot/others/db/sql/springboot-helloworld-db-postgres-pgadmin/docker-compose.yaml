@@ -3,7 +3,6 @@ services:
   postgres:
     image: postgres:alpine3.17
     container_name: postgres-container
-    restart: always
     ports:
       - "5432:5432"
     environment:
@@ -16,7 +15,8 @@ services:
   pgadmin:
     image: dpage/pgadmin4:6.20
     container_name: pgadmin_container
-    restart: always
+    links:
+      - postgres
     ports:
       - "8081:80"
     environment:
