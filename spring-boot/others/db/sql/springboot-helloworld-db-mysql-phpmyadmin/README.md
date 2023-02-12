@@ -1,20 +1,26 @@
 USAGE
 -----
 
+> **NOTE:** Tools **Java**, **Maven**, **Docker** and **Docker Compose** have to be installed. Tool **Docker** has to be up and running. Please open Command Line tool on **main folder of project**.
+
 Usage steps:
+1. Start database and console with `docker-compose up -d`
+1. (Optional) Check database and console status with `docker ps -a`
 1. Start application with `mvn spring-boot:run`
 1. Visit `http://localhost:8080`
-1. (Optional) Check database in console (url: "jdbc:h2:mem:db-embedded", user: "admin", password: "admin123") with `http://localhost:8080/console`
-1. Clean up environment with `ctrl + C`
+1. (Optional) Check database in console (server: "mysql", username: "admin", password: "admin123") with `http://localhost:8081`
+1. Clean up local environment 
+     * Stop application `ctrl + C`
+     * Stop database and console with `docker-compose down`
 
 
 DESCRIPTION
 -----------
 
 ##### Goal
-The goal of this project is to present how to create **Hello World** application in **Java** programming language with usage **Spring Boot** framework and **embedded** database type **h2**.
+The goal of this project is to present how to create **Hello World** application in **Java** programming language with usage **Spring Boot** framework. This application uses database type **MySql**. Additionally tool **PhpMyAdmin** will be set up - it's console for MySql database.
 
-Embedded database means that database is started together with application. 
+Tools MySql and PhpMyAdmin are set up by Docker Compose tool.
 
 ##### Flow
 The following flow takes place in this project:
