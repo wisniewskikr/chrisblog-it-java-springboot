@@ -8,7 +8,8 @@ Usage steps:
 1. (Optional) Check database and console status with `docker ps -a`
 1. Start application with `mvn spring-boot:run`
 1. Visit `http://localhost:8080`
-1. (Optional) Check database in console (server: "mysql", username: "admin", password: "admin123") with `http://localhost:8081`
+1. (Optional) Check database in console (username: "admin@admin.com", password: "admin123") with `http://localhost:8081`
+1. (Optional) Configure console (Maintanance database: database, user: admin, password: admin123, port: 5432). Please check section **USAGE PGADMIN**
 1. Clean up local environment 
      * Stop application `ctrl + C`
      * Stop database and console with `docker-compose down`
@@ -18,9 +19,9 @@ DESCRIPTION
 -----------
 
 ##### Goal
-The goal of this project is to present how to create **Hello World** application in **Java** programming language with usage **Spring Boot** framework. This application uses database type **MySql**. Additionally tool **PhpMyAdmin** will be set up - it's console for MySql database.
+The goal of this project is to present how to create **Hello World** application in **Java** programming language with usage **Spring Boot** framework. This application uses database type **Postgres**. Additionally tool **PgAdmin** will be set up - it's console for Postgres database.
 
-Tools MySql and PhpMyAdmin are set up by Docker Compose tool.
+Tools Postgres and PgAdmin are set up by Docker Compose tool.
 
 ##### Flow
 The following flow takes place in this project:
@@ -56,3 +57,22 @@ PRECONDITIONS
 * **Launched** Docker on your local machine
 * **Download** source code using Git command `git clone https://github.com/wisniewskikr/chrisblog-it-java.git`
 * Open any **Command Line** tool (for instance "Windonw PowerShell" on Windows OS) on **project's main folder**
+
+
+USAGE PGADMIN
+-------------
+
+Link:
+* http://localhost:8081
+
+![My Image](readme-images/pgadmin-01.png)
+
+![My Image](readme-images/pgadmin-02.png)
+
+![My Image](readme-images/pgadmin-03.png)
+
+![My Image](readme-images/pgadmin-04.png)
+
+![My Image](readme-images/pgadmin-05.png)
+
+![My Image](readme-images/pgadmin-06.png)
