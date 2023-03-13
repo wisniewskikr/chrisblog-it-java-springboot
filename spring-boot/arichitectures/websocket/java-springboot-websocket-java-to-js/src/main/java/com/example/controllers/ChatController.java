@@ -11,14 +11,14 @@ import com.example.dtos.ChatMessage;
 @Controller
 public class ChatController {
 
-	@MessageMapping("/chat.register")
+	@MessageMapping("${websocket.receive.register}")
 	@SendTo("/topic/public")
 	public ChatMessage register(@Payload ChatMessage chatMessage, SimpMessageHeaderAccessor headerAccessor) {
 		headerAccessor.getSessionAttributes().put("username", chatMessage.getSender());
 		return chatMessage;
 	}
 
-	@MessageMapping("/chat.send")
+	@MessageMapping("${websocket.receive.chat}")
 	@SendTo("/topic/public")
 	public ChatMessage sendMessage(@Payload ChatMessage chatMessage) {
 		return chatMessage;
