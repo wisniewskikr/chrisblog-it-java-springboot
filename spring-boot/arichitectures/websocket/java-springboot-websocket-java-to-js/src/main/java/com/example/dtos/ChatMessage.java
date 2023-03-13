@@ -1,4 +1,4 @@
-package com.javatechie.spring.ws.api.model;
+package com.example.dtos;
 
 public class ChatMessage {
 	private String content;

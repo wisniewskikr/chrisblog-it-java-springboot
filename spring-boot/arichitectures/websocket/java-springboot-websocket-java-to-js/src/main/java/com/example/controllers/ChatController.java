@@ -1,4 +1,4 @@
-package com.javatechie.spring.ws.api.controller;
+package com.example.controllers;
 
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.Payload;
@@ -6,7 +6,7 @@ import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.messaging.simp.SimpMessageHeaderAccessor;
 import org.springframework.stereotype.Controller;
 
-import com.javatechie.spring.ws.api.model.ChatMessage;
+import com.example.dtos.ChatMessage;
 
 @Controller
 public class ChatController {
