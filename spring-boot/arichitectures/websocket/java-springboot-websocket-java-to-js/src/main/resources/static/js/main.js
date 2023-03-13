@@ -1,6 +1,6 @@
 'use strict';
 
-var websocketEndpoint = '/javatechie';
+var websocketEndpoint = '/endpoint';
 var websocketReceive = '/topic/public';
 var websocketSendRegister = "/app/chat.register";
 var websocketSendChat = "/app/chat.send";
