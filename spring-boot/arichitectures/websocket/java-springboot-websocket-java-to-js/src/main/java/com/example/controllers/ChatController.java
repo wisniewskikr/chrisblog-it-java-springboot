@@ -18,7 +18,7 @@ public class ChatController {
 		return chatMessage;
 	}
 
-	@MessageMapping("${websocket.receive.chat}")
+	@MessageMapping("${websocket.receive.message}")
 	@SendTo("/topic/public")
 	public ChatMessage sendMessage(@Payload ChatMessage chatMessage) {
 		return chatMessage;

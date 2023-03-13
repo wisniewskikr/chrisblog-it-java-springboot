@@ -2,8 +2,8 @@
 
 var websocketEndpoint = '/endpoint';
 var websocketReceive = '/topic/public';
-var websocketSendRegister = "/app/chat.register";
-var websocketSendChat = "/app/chat.send";
+var websocketSendRegister = "/chat/register";
+var websocketSendMessage = "/chat/message";
 
 var usernamePage = document.querySelector('#username-page');
 var chatPage = document.querySelector('#chat-page');
@@ -67,7 +67,7 @@ function send(event) {
             type: 'CHAT'
         };
 
-        stompClient.send(websocketSendChat, {}, JSON.stringify(chatMessage));
+        stompClient.send(websocketSendMessage, {}, JSON.stringify(chatMessage));
         messageInput.value = '';
     }
     event.preventDefault();
