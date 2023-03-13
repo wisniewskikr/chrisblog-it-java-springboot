@@ -1,5 +1,10 @@
 'use strict';
 
+var websocketEndpoint = '/javatechie';
+var websocketReceive = '/topic/public';
+var websocketSendRegister = "/app/chat.register";
+var websocketSendChat = "/app/chat.send";
+
 var usernamePage = document.querySelector('#username-page');
 var chatPage = document.querySelector('#chat-page');
 var usernameForm = document.querySelector('#usernameForm');
@@ -23,7 +28,7 @@ function connect(event) {
         usernamePage.classList.add('hidden');
         chatPage.classList.remove('hidden');
 
-        var socket = new SockJS('/javatechie');
+        var socket = new SockJS(websocketEndpoint);
         stompClient = Stomp.over(socket);
 
         stompClient.connect({}, onConnected, onError);
@@ -34,10 +39,10 @@ function connect(event) {
 
 function onConnected() {
     // Subscribe to the Public Topic
-    stompClient.subscribe('/topic/public', onMessageReceived);
+    stompClient.subscribe(websocketReceive, onMessageReceived);
 
     // Tell your username to the server
-    stompClient.send("/app/chat.register",
+    stompClient.send(websocketSendRegister,
         {},
         JSON.stringify({sender: username, type: 'JOIN'})
     )
@@ -62,7 +67,7 @@ function send(event) {
             type: 'CHAT'
         };
 
-        stompClient.send("/app/chat.send", {}, JSON.stringify(chatMessage));
+        stompClient.send(websocketSendChat, {}, JSON.stringify(chatMessage));
         messageInput.value = '';
     }
     event.preventDefault();
