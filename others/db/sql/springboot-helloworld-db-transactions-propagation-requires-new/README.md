@@ -6,7 +6,17 @@ The goal of this project is to present how to create **Hello World** application
  
 **Transaction** means that all database operations should be performed or none of them. There can not be such situation that some databases operations are performed and some not. In Spring Boot transactions are handled by annotation **@Transactional** (in this example classes SentenceService and WordService).
 
-**Propagation** is used when first transactional method calls second transactional method. Type **REQUIRES_NEW** means that transaction in second method is treated as new one - errors in second method rolls back only database operations from second method but not from first one. In Spring Boot transactions with propagation type required are handled by annotation **@Transactional(propagation = Propagation.REQUIRES_NEW)** (in this example class WordService).
+**Propagation** takes place when we have two or more methods marked as @Transactional which calls each other. In such a situation there is a question about the relation between transactions. Should all transactions be treated as one? Should all transactions be treated as separate transactions? 
+
+In Spring Boot propagation is handled by annotation **@Transactional(propagation = Propagation.{propagation-type})**.
+
+Types of propagation:
+* **REQUIRED**: this is the default type of propagation in Spring Boot. This type of propagation means that all methods marked as @Transactional are treated as one transaction. So if some error occurs in one of them then operations are rolled back in all of them;
+* **REQUIRES NEW**: this type of propagation means that method marked with this type suspends previous transaction and creates new one. So if some error occurs in this method then all operations in this method are rolled back but not in previous methods
+* **MANDATORY**: method marked with this type of propagation has to be called from a transactional method. Otherwise an exception is thrown.
+* **NEVER**: method marked with this type of propagation can not be called from a transactional method. Otherwise an exception is thrown.
+* **SUPPORTS**: method marked with this type of propagation joins existing transactions. If there is no transaction the it doesn’t create new one 
+* **NOT SUPPORTED**: method marked with this type of propagation suspends existing transaction - everything in this method is not transactional
 
 ##### Flow
 The following flow takes place in this project:
