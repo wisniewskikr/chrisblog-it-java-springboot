@@ -1,6 +1,8 @@
 USAGE
 -----
 
+> This usage assumes that you have installed on your local machine following tools: **Java**, **Maven** and **Git**.
+
 Usage steps:
 1. Start application with `mvn spring-boot:run`
 1. Visit `http://localhost:8080`

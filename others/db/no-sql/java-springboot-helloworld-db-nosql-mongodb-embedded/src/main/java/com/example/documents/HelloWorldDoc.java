@@ -1,10 +1,10 @@
-package com.example.entities;
+package com.example.documents;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document
-public class HelloWorldEntity {
+public class HelloWorldDoc {
 		
 	@Id
     private String id;

@@ -3,8 +3,8 @@ package com.example.services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.example.documents.HelloWorldDoc;
 import com.example.dtos.HelloWorldDto;
-import com.example.entities.HelloWorldEntity;
 import com.example.repositories.HelloWorldRepository;
 
 @Service
@@ -18,9 +18,9 @@ public class HelloWorldService {
 	}
 	
 	public HelloWorldDto saveText(String text) {
-		HelloWorldEntity entity = new HelloWorldEntity();
-		entity.setText(text);
-		return new HelloWorldDto(helloWorldRepository.save(entity));
+		HelloWorldDoc doc = new HelloWorldDoc();
+		doc.setText(text);
+		return new HelloWorldDto(helloWorldRepository.save(doc));
 	}
 	
 	public String readText(String id) {

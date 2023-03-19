@@ -1,13 +1,13 @@
 package com.example.dtos;
 
-import com.example.entities.HelloWorldEntity;
+import com.example.documents.HelloWorldDoc;
 
 public class HelloWorldDto {
 		
     private String id; 
     private String text;    
 
-	public HelloWorldDto(HelloWorldEntity entity) {
+	public HelloWorldDto(HelloWorldDoc entity) {
 		this.id = entity.getId();
 		this.text = entity.getText();
 	}
