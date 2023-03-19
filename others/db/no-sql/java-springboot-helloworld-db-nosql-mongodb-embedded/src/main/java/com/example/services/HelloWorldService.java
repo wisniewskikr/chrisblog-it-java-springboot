@@ -23,7 +23,7 @@ public class HelloWorldService {
 		return new HelloWorldDto(helloWorldRepository.save(entity));
 	}
 	
-	public String readText(Long id) {
+	public String readText(String id) {
 		return helloWorldRepository.findById(id).get().getText();
 	}
 

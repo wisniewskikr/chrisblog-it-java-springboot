@@ -1,30 +1,23 @@
 package com.example.entities;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
-@Entity
-@Table(name="HELLO_WORLDS")
+@Document
 public class HelloWorldEntity {
 		
 	@Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
- 
-    @Column(nullable = false)
+    private String id;
     private String text;
+	
 
-	public Long getId() {
+	public String getId() {
 		return id;
 	}
-	public void setId(Long id) {
+	public void setId(String id) {
 		this.id = id;
 	}
-
+	
 	public String getText() {
 		return text;
 	}

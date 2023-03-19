@@ -4,7 +4,7 @@ import com.example.entities.HelloWorldEntity;
 
 public class HelloWorldDto {
 		
-    private Long id; 
+    private String id; 
     private String text;    
 
 	public HelloWorldDto(HelloWorldEntity entity) {
@@ -12,10 +12,10 @@ public class HelloWorldDto {
 		this.text = entity.getText();
 	}
 	
-	public Long getId() {
+	public String getId() {
 		return id;
 	}
-	public void setId(Long id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 

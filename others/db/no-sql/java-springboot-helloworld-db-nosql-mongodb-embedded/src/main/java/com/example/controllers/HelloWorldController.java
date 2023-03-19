@@ -19,7 +19,7 @@ public class HelloWorldController {
 	@RequestMapping(value="/")
 	public String helloWorld() {
 		
-		Long idText = helloWorldService.saveText("Hello World!").getId();
+		String idText = helloWorldService.saveText("Hello World!").getId();
 		String text = helloWorldService.readText(idText);
 		
 		return text;		

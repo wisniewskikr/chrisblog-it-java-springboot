@@ -6,4 +6,4 @@ import org.springframework.stereotype.Repository;
 import com.example.entities.HelloWorldEntity;
 
 @Repository
-public interface HelloWorldRepository extends CrudRepository<HelloWorldEntity, Long> {}
+public interface HelloWorldRepository extends CrudRepository<HelloWorldEntity, String> {}
