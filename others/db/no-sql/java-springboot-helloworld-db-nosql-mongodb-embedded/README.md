@@ -6,7 +6,6 @@ USAGE
 Usage steps:
 1. Start application with `mvn spring-boot:run`
 1. Visit `http://localhost:8080`
-1. (Optional) Check database in console (url: "jdbc:h2:mem:db-embedded", user: "admin", password: "admin123") with `http://localhost:8080/console`
 1. Clean up environment with `ctrl + C`
 
 
@@ -14,9 +13,14 @@ DESCRIPTION
 -----------
 
 ##### Goal
-The goal of this project is to present how to create **Hello World** application in **Java** programming language with usage **Spring Boot** framework and **embedded** database type **h2**.
+The goal of this project is to present how to create **Hello World** application in **Java** programming language with usage **Spring Boot** framework and **embedded noSql** database type **MongoDB**.
 
-Embedded database means that database is started together with application. 
+##### Terminology
+Terminology explanation:
+* **Java Spring Boot application**: application created in Java programming language and basing on Spring Boot framework. This application returns text "Hello World" in JSON format.
+* **Embedded**: it means that tool is included into application code. It starts together with application. 
+* **NoSql database**: database that enables storing and management of data in other way than relational databases
+* **MongoDB database**: noSql database type Document. It means that data are stored as so called Documents, usually JSONs 
 
 ##### Flow
 The following flow takes place in this project:
@@ -42,4 +46,4 @@ PRECONDITIONS
 
 ##### Preconditions - Actions
 * **Download** source code using Git 
-* Open any **Command Line** (for instance "Windonw PowerShell" on Windows OS) tool on **project's folder** (exact localization of project you can check in GIT repositories on page `https://github.com/wisniewskikr/chrisblog-it-java`)
+* Open any **Command Line** (for instance "Windonw PowerShell" on Windows OS) tool on **project's folder** (exact localization of project you can check in GIT repositories on page `https://github.com/wisniewskikr/chrisblog-it-java-springboot`)
