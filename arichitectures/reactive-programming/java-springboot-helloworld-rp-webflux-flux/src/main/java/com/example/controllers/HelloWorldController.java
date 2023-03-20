@@ -31,6 +31,7 @@ public class HelloWorldController {
 	}
 
 	@RequestMapping(value="/", produces = MediaType.APPLICATION_STREAM_JSON_VALUE)
+//	@RequestMapping(value="/", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
 	public Flux<HelloWorldJson> helloWorld() {
 				
 		String port = environment.getProperty("local.server.port");

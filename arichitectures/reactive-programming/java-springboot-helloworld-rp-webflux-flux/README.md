@@ -1,7 +1,7 @@
 USAGE
 -----
 
-> **Note** Please open project main folder in your favorite command line tool and then run below commands. Please be aware that to run this project tools Java and Maven have to installed first. 
+> **Note** Please open project's main folder in your favorite command line tool and then run the commands below. Please be aware that to run this project tools **Java**, **Maven** and **Git** have to installed first. 
 
 Usage steps:
 1. Start application with `mvn spring-boot:run`
@@ -13,17 +13,20 @@ DESCRIPTION
 -----------
 
 ##### Goal
-The goal of this project is to present how to display **Hello World** message, **port** and **UUID** in  Java application with usage **Spring Boot** framework.
+The goal of this project is to present how to create **reactive application** using **Java Spring Boot** framework with publisher type **Flux** from **WebFlux** dependency.
 
-Section "Usage" presents how to deploy this project using Java and Maven tools. But this project is also prepared to be deployed as:
-* Docker Project
-* Docker Compose Project
-* Kubernetes Project
+##### Terminology
+Terminology explanation:
+* **Java**: object programming language
+* **Spring Boot**: Java framework which contains Spring framework, application server and configuration
+* **Reactive programming**: asynchronous and non-blocking programming for stream of events. In classic programming result is sent once at the end. In reactive programming result is sent with small pieces
+* **WebFlux**: dependency for reactive programming in Java Spring Boot
+* **Flux**: publisher from WebFlux dependency which returns groups of events
 
 ##### Flow
 The following flow takes place in this project:
 1. User via any browser sends request to application for a content.
-1. Application HelloWorld returns response with JSON containing message, port and UUID. This response is presented to User via browser.
+1. Application HelloWorld returns response with JSON containing message, port and UUID. This response is presented to User via browser. This response is presented in pieces - one by one with 2 deconds delay
 
 ##### Launch
 To launch this application please make sure that the **Preconditions** are met and then follow instructions from **Usage** section.
@@ -46,4 +49,4 @@ PRECONDITIONS
 ##### Preconditions - Actions
 * **Launch** Docker tool on your local machine
 * **Download** source code using Git 
-* Open any **Command Line** (for instance "Windonw PowerShell" on Windows OS) tool on **project's folder** (exact localization of project you can check in GIT repositories on page `https://github.com/wisniewskikr/java-springboot-helloworld`)
+* Open any **Command Line** (for instance "Windonw PowerShell" on Windows OS) tool on **project's folder** (exact localization of project you can check in GIT repositories on page `https://github.com/wisniewskikr/chrisblog-it-java-springboot`)
