@@ -13,7 +13,7 @@ DESCRIPTION
 -----------
 
 ##### Goal
-The goal of this project is to present how to create **reactive application** using **Java Spring Boot** framework with publisher type **Flux** and connection type **WebClient** - both from **WebFlux** dependency.
+The goal of this project is to present how to create **reactive application** using **Java Spring Boot** framework with publisher type **Mono** and connection type **WebClient** - both from **WebFlux** dependency.
 
 ##### Terminology
 Terminology explanation:
@@ -29,7 +29,7 @@ The following flow takes place in this project:
 1. User via any browser sends request to application for a content.
 1. Application HelloWorld sends request to it's own endpoint called "be" via WebClient
 1. Application HelloWorld sends back response to it's own defauld endpoint via WebClient
-1. Application HelloWorld returns response with JSON containing message, port and UUID. This response is presented to User via browser. This response is presented in pieces - one by one with 2 deconds delay
+1. Application HelloWorld returns response with JSON containing message, port and UUID. This response is presented to User via browser.
 
 ##### Launch
 To launch this application please make sure that the **Preconditions** are met and then follow instructions from **Usage** section.
