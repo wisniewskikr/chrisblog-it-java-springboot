@@ -18,7 +18,7 @@ DESCRIPTION
 ##### Goal
 The goal of this project is to present how to create **Hello World** application in **Java** programming language with usage **Spring Boot** framework and **noSql** database type **Elasticseach**.
 
-Tools MongoDB and MongoDB Express are started by **Docker Compose** tool.
+Tool Elasticsearch is started by **Docker Compose** tool.
 
 ##### Terminology
 Terminology explanation:
