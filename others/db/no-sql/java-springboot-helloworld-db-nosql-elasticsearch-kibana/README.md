@@ -1,31 +1,35 @@
 USAGE
 -----
 
-> This usage assumes that you have installed on your local machine following tools: **Java**, **Maven**, **Git**, **Docker** and **Docker Compose**. It also assumes that tool **Docker** is up and running.
+> This usage assumes that you have installed on your local PC following tools: **Java**, **Maven**, **Git**, **Docker** and **Docker Compose**. It also assumes that tool **Docker** is up and running.
 
 Usage steps:
-1. Start Elasticsearch with `docker-compose up -d`
+1. Start Elasticsearch and Kibana with `docker-compose up -d`
      * (Optional) Verify Elasticsearch with `http://localhost:9200`
 1. Start application with `mvn spring-boot:run`
-1. Visit `http://localhost:8080`
+1. In browser visit `http://localhost:8080`
+1. Display stored data in Kibana
+     * In browser visit `http://localhost:5601`
+     * Configure Kibana. Please check section **KIBANA CONFIGURATION** 
 1. Clean up environment 
      * Stop application with `ctrl + C`
-     * Stop Elasticsearch with `docker-compose down`
+     * Stop Elasticsearch and Kibana with `docker-compose down`
 
 
 DESCRIPTION
 -----------
 
 ##### Goal
-The goal of this project is to present how to create **Hello World** application in **Java** programming language with usage **Spring Boot** framework and **noSql** database type **Elasticseach**.
+The goal of this project is to present how to connect **Elasticsearch** and **Kibana** with **Java Spring Boot** application.
 
-Tool Elasticsearch is started by **Docker Compose** tool.
+Tools Elasticsearch and Kibana are deployed as **Docker Containers** by **Docker Compose** tool.
 
 ##### Terminology
 Terminology explanation:
 * **Java Spring Boot application**: application created in Java programming language and basing on Spring Boot framework. This application returns text "Hello World" in JSON format.
 * **NoSql database**: database that enables storing and management of data in other way than relational databases
 * **Elasticsearch**: it's noSql database and search engine based on Lucene. Because it creates indexes then search if very fast here
+* **Kibana**: it's tool for visualization datas 
 * **Docker**: platform for deploying application in closed units called Docker Containers
 * **Docker Compose**: tool for working with many Docker Containers
 
@@ -57,3 +61,18 @@ PRECONDITIONS
 ##### Preconditions - Actions
 * **Download** source code using Git 
 * Open any **Command Line** (for instance "Windonw PowerShell" on Windows OS) tool on **project's folder**
+
+
+KIBANA CONFIGURATON
+-------------------
+
+Link:
+* http://localhost:5601
+
+![My Image](readme-images/kibana-01.png)
+
+![My Image](readme-images/kibana-02.png)
+
+![My Image](readme-images/kibana-03.png)
+
+![My Image](readme-images/kibana-04.png)
