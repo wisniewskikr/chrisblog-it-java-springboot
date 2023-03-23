@@ -11,4 +11,3 @@ services:
     environment:
         discovery.type: single-node
         xpack.security.enabled: false
-        cluster.name: helloworld-cluster
