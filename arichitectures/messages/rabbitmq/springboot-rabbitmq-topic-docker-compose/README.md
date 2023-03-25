@@ -41,11 +41,14 @@ USAGE
 -----
 
 Usage steps:
-1. Build packages with `mvn clean package`
-1. Start elements using Docker Compose with `docker-compose up --build`
+1. Build packages with `mvn clean package -DskipTests=true`
+1. Start elements using Docker Compose with `docker-compose up --build -d`
+     * (Optional) Check if all Containers are up and ready with `docker ps -a` 
+1. (Optional) Check queues in RabbitMQ Console
+     * (Optional) Log in to RabbitMQ Console (guest/guest) with `http://localhost:15672`
+     * (Optional) Check queues ("helloworld-api" and "helloworld-listener") with `http://localhost:15672/#/queues`
 1. Send message (expected text **Done** in the browser) with **http://localhost:8080/helloworld/name/{name}**. For instance: `http://localhost:8080/helloworld/name/Chris`
 1. Read message automatically. Check logs in Command Line tool where message **Hello World {name}** should be displayed. For instance: Hello World Chris.
 1. Read message manually. Read message (expected **Hello World {name}**, for instance: Hello World Chris.) with `http://localhost:9090/helloworld/type/api/message`
 1. Clean up environment
-    * Stop containers with `ctrl + C`
     * Remove containers `docker-compose down`
