@@ -43,6 +43,9 @@ USAGE
 Usage steps:
 1. Build packages with `mvn clean package`
 1. Start elements using Docker Compose with `docker-compose up --build`
+1. (Optional) Check queues in RabbitMQ Console
+     * (Optional) Log in to RabbitMQ Console (guest/guest) with `http://localhost:15672`
+     * (Optional) Check queues ("helloworld-api" and "helloworld-listener") with `http://localhost:15672/#/queues`
 1. Send manual message (expected text **Done** in the browser) with **http://localhost:8080/helloworld/type/api/name/{name}**. For instance: `http://localhost:8080/helloworld/type/api/name/Chris`
 1. Read manual message. Read message (expected **Hello World {name}**, for instance: Hello World Chris.) with `http://localhost:9090/helloworld/type/api/message`
 1. Send automatic message (expected text **Done** in the browser) with **http://localhost:8080/helloworld/type/listener/name/{name}**. For instance: `http://localhost:8080/helloworld/type/listener/name/Chris`
