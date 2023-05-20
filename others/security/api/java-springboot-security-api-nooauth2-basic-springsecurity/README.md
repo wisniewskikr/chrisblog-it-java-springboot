@@ -59,5 +59,3 @@ PRECONDITIONS
 ##### Preconditions - Actions
 * **Download** source code using Git 
 * * Open any **Command Line** (for instance "Windonw PowerShell" on Windows OS) tool on **project's folder**. Type commands from section **USAGE** there.
-
-Test change
