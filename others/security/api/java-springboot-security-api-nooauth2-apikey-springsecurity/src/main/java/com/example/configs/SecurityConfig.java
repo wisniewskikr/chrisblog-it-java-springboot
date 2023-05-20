@@ -6,6 +6,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
 import com.example.filters.ApiKeyFilter;
 import org.springframework.security.authentication.BadCredentialsException;
@@ -30,7 +31,10 @@ public class SecurityConfig {
                 .authenticated()
 			)
             .addFilter(getFilter())
-            .csrf(Customizer.withDefaults());
+            .csrf(Customizer.withDefaults())
+            .sessionManagement(session -> session
+                .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+            );
         
         return http.build();
         
