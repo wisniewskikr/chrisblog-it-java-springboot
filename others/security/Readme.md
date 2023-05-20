@@ -24,6 +24,33 @@ OAuth2 types:
 - Resource Owner Password Credentials
 - Client Credentials
 
+---
+
+java-springboot-security-html-nosso-basic-springsecurity
+java-springboot-security-html-nosso-formdefault-springsecurity
+java-springboot-security-html-nosso-formcustom-springsecurity
+java-springboot-security-html-sso-saml-okta
+java-springboot-security-html-sso-oidcoauth2-keykloack
+java-springboot-security-html-sso-oidcoauth2-facebook
+java-springboot-security-html-sso-oidcoauth2-google
+java-springboot-security-html-sso-oidcoauth2-github
+java-springboot-security-html-springsecurity-customform-userdetailsservice
+java-springboot-security-html-springsecurity-customform-authenticationprovider
+java-springboot-security-html-springsecurity-customform-filter
+
+
+java-springboot-security-api-nooauth2-basic-springsecurity
+java-springboot-security-api-nooauth2-apikey-springsecurity
+java-springboot-security-api-nooauth2-json-springsecurity
+java-springboot-security-api-withoauth2-basic-oauth2
+java-springboot-security-api-withoauth2-apikey-oauth2
+java-springboot-security-api-withoauth2-json-oauth2
+java-springboot-security-api-springsecurity-basic-userdetailsservice
+java-springboot-security-api-springsecurity-basic-authenticationprovider
+java-springboot-security-api-springsecurity-basic-filter
+
+---
+
 OIDC Workflow
 https://www.youtube.com/watch?v=7gWcPWh5WVY&list=PLab_if3UBk99jYV1jfe_7fKQczVX9H4zZ&index=5
 
