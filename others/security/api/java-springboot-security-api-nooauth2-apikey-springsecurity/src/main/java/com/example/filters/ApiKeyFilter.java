@@ -12,17 +12,12 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
-@Component
 public class ApiKeyFilter extends OncePerRequestFilter  {
 
-    @Value("${api.key.name.user}")
-	private String apiKeyNameUser;
-
-    @Value("${api.key.name.admin}")
-	private String apiKeyNameAdmin;
+    @Value("${api.key.name}")
+	private String apiKeyName;
 
     @Value("${api.key.value.user}")
 	private String apiKeyValueUser;
@@ -34,9 +29,7 @@ public class ApiKeyFilter extends OncePerRequestFilter  {
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
             throws ServletException, IOException {
         
-        String userKey = request.getHeader(apiKeyNameUser);
-        String adminKey = request.getHeader(apiKeyNameAdmin);
-        String apiKey = (userKey != null) ? userKey : adminKey;
+        String apiKey = request.getHeader(apiKeyName);
         String path = request.getRequestURI();
         ArrayList<String> apiKeyValues = getApiKeyValues(path);
 

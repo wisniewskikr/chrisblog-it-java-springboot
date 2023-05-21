@@ -13,12 +13,10 @@ import com.example.filters.ApiKeyFilter;
 @Configuration
 public class SecurityConfig {
 
-    private ApiKeyFilter apiKeyFilter;
-
-    @Autowired
-	public SecurityConfig(ApiKeyFilter apiKeyFilter) {
-		this.apiKeyFilter = apiKeyFilter;
-	}
+    @Bean
+    public ApiKeyFilter apiKeyFilter() {
+        return new ApiKeyFilter();
+    }
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
@@ -29,7 +27,7 @@ public class SecurityConfig {
                 .requestMatchers("/user", "/admin")
                 .authenticated()
 			)
-            .addFilterBefore(apiKeyFilter, UsernamePasswordAuthenticationFilter.class)
+            .addFilterBefore(apiKeyFilter(), UsernamePasswordAuthenticationFilter.class)
             .csrf(Customizer.withDefaults())
             .sessionManagement(session -> session
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
