@@ -9,7 +9,6 @@ import java.io.IOException;
 import java.util.Collections;
 
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -32,34 +31,8 @@ public class ApiKeyFilter extends OncePerRequestFilter  {
             throws ServletException, IOException {
         
         String apiKey = request.getHeader(apiKeyName);
-        String path = request.getRequestURI();
-
-        if (!isPathSecured(path)) {
-            filterChain.doFilter(request, response); 
-            return;
-        }
-
-        if (apiKey == null) {
-            throw new BadCredentialsException("The API key was not definied.");
-        }
-
-        Authentication authentication = getAuthentication(apiKey);
-        if (authentication == null) {
-            throw new BadCredentialsException("The API key was not found or not the expected value.");
-        }
-
-        SecurityContextHolder.getContext().setAuthentication(authentication);
+        SecurityContextHolder.getContext().setAuthentication(getAuthentication(apiKey));
         filterChain.doFilter(request, response);        
-
-    }
-
-    private boolean isPathSecured(String path) {
-
-        if ("/user".equals(path) || "/admin".equals(path)) {
-            return true;
-        }
-
-        return false;
 
     }
 
