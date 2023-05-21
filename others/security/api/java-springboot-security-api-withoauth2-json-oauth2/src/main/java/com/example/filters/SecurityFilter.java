@@ -20,7 +20,7 @@ import org.springframework.web.filter.OncePerRequestFilter;
 import com.example.jsons.UserJson;
 import com.google.gson.Gson;
 
-public class ApiKeyFilter extends OncePerRequestFilter  {
+public class SecurityFilter extends OncePerRequestFilter  {
 
     @Value("${credentials.user.name}")
 	private String userName;
