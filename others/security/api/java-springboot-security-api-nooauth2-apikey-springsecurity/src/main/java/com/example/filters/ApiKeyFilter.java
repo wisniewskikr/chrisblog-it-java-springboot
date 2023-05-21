@@ -66,11 +66,11 @@ public class ApiKeyFilter extends OncePerRequestFilter  {
     private Authentication getAuthentication(String apiKey) {
 
         if (apiKeyValueUser.equals(apiKey)) {
-            return new UsernamePasswordAuthenticationToken(apiKey, null, Collections.singleton(new SimpleGrantedAuthority("ROLE_USER")));
+            return new UsernamePasswordAuthenticationToken(null, null, Collections.singleton(new SimpleGrantedAuthority("ROLE_USER")));
         }
 
         if (apiKeyValueAdmin.equals(apiKey)) {
-            return new UsernamePasswordAuthenticationToken(apiKey, null, Collections.singleton(new SimpleGrantedAuthority("ROLE_ADMIN")));
+            return new UsernamePasswordAuthenticationToken(null, null, Collections.singleton(new SimpleGrantedAuthority("ROLE_ADMIN")));
         }
 
         return null;
