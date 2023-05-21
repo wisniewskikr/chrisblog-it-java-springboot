@@ -6,11 +6,13 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
-import java.util.ArrayList;
+import java.util.Collections;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.filter.OncePerRequestFilter;
 
@@ -31,7 +33,6 @@ public class ApiKeyFilter extends OncePerRequestFilter  {
         
         String apiKey = request.getHeader(apiKeyName);
         String path = request.getRequestURI();
-        ArrayList<String> apiKeyValues = getApiKeyValues(path);
 
         if (!isPathSecured(path)) {
             filterChain.doFilter(request, response); 
@@ -42,11 +43,12 @@ public class ApiKeyFilter extends OncePerRequestFilter  {
             throw new BadCredentialsException("The API key was not definied.");
         }
 
-        if (!apiKeyValues.contains(apiKey)) {
+        Authentication authentication = getAuthentication(apiKey);
+        if (authentication == null) {
             throw new BadCredentialsException("The API key was not found or not the expected value.");
         }
 
-        SecurityContextHolder.getContext().setAuthentication(new UsernamePasswordAuthenticationToken(apiKey, null, null));
+        SecurityContextHolder.getContext().setAuthentication(authentication);
         filterChain.doFilter(request, response);        
 
     }
@@ -61,20 +63,17 @@ public class ApiKeyFilter extends OncePerRequestFilter  {
 
     }
 
-    private ArrayList<String> getApiKeyValues(String path) {
+    private Authentication getAuthentication(String apiKey) {
 
-        ArrayList<String> apiKeyValues = new ArrayList<String>();
-
-        if ("/user".equals(path)) {
-            apiKeyValues.add(apiKeyValueUser);
-            apiKeyValues.add(apiKeyValueAdmin);
+        if (apiKeyValueUser.equals(apiKey)) {
+            return new UsernamePasswordAuthenticationToken(apiKey, null, Collections.singleton(new SimpleGrantedAuthority("ROLE_USER")));
         }
 
-        if ("/admin".equals(path)) {  
-            apiKeyValues.add(apiKeyValueAdmin);
+        if (apiKeyValueAdmin.equals(apiKey)) {
+            return new UsernamePasswordAuthenticationToken(apiKey, null, Collections.singleton(new SimpleGrantedAuthority("ROLE_ADMIN")));
         }
 
-        return apiKeyValues;
+        return null;
 
     }
 

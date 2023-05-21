@@ -24,8 +24,9 @@ public class SecurityConfig {
         http
 			.authorizeHttpRequests((requests) -> requests
                 .requestMatchers("/").permitAll()
-                .requestMatchers("/user", "/admin")
-                .authenticated()
+                .requestMatchers("/user").hasAnyRole("USER", "ADMIN")
+                .requestMatchers("/admin").hasAnyRole("ADMIN")
+                .anyRequest().authenticated()
 			)
             .addFilterBefore(apiKeyFilter(), UsernamePasswordAuthenticationFilter.class)
             .csrf(Customizer.withDefaults())
