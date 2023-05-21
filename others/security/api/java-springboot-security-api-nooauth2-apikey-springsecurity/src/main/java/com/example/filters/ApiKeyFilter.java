@@ -1,25 +1,88 @@
 package com.example.filters;
 
+import jakarta.servlet.FilterChain;
+import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
-import org.springframework.security.web.authentication.preauth.AbstractPreAuthenticatedProcessingFilter;
+import java.io.IOException;
+import java.util.ArrayList;
 
-public class ApiKeyFilter extends AbstractPreAuthenticatedProcessingFilter {
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.authentication.BadCredentialsException;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.stereotype.Component;
+import org.springframework.web.filter.OncePerRequestFilter;
 
-    private String principalRequestHeader;
+@Component
+public class ApiKeyFilter extends OncePerRequestFilter  {
 
-    public ApiKeyFilter(String principalRequestHeader) {
-        this.principalRequestHeader = principalRequestHeader;
-    }
+    @Value("${api.key.name.user}")
+	private String apiKeyNameUser;
+
+    @Value("${api.key.name.admin}")
+	private String apiKeyNameAdmin;
+
+    @Value("${api.key.value.user}")
+	private String apiKeyValueUser;
+
+    @Value("${api.key.value.admin}")
+	private String apiKeyValueAdmin;
 
     @Override
-    protected Object getPreAuthenticatedPrincipal(HttpServletRequest request) {
-        return request.getHeader(principalRequestHeader);
+    protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
+            throws ServletException, IOException {
+        
+        String userKey = request.getHeader(apiKeyNameUser);
+        String adminKey = request.getHeader(apiKeyNameAdmin);
+        String apiKey = (userKey != null) ? userKey : adminKey;
+        String path = request.getRequestURI();
+        ArrayList<String> apiKeyValues = getApiKeyValues(path);
+
+        if (!isPathSecured(path)) {
+            filterChain.doFilter(request, response); 
+            return;
+        }
+
+        if (apiKey == null) {
+            throw new BadCredentialsException("The API key was not definied.");
+        }
+
+        if (!apiKeyValues.contains(apiKey)) {
+            throw new BadCredentialsException("The API key was not found or not the expected value.");
+        }
+
+        SecurityContextHolder.getContext().setAuthentication(new UsernamePasswordAuthenticationToken(apiKey, null, null));
+        filterChain.doFilter(request, response);        
+
     }
 
-    @Override
-    protected Object getPreAuthenticatedCredentials(HttpServletRequest request) {
-        return request.getRequestURI();
+    private boolean isPathSecured(String path) {
+
+        if ("/user".equals(path) || "/admin".equals(path)) {
+            return true;
+        }
+
+        return false;
+
+    }
+
+    private ArrayList<String> getApiKeyValues(String path) {
+
+        ArrayList<String> apiKeyValues = new ArrayList<String>();
+
+        if ("/user".equals(path)) {
+            apiKeyValues.add(apiKeyValueUser);
+            apiKeyValues.add(apiKeyValueAdmin);
+        }
+
+        if ("/admin".equals(path)) {  
+            apiKeyValues.add(apiKeyValueAdmin);
+        }
+
+        return apiKeyValues;
+
     }
 
 }
