@@ -20,17 +20,9 @@ DESCRIPTION
 -----------
 
 ##### Goal
-The goal of this project is to present how to use **UserDetailsService** in **Java** application type **API** with usage **Spring Boot** framework. This application uses **Spring Security** dependencies.
+The goal of this project is to present how to use **AuthenticationProvider** in **Java** application type **API** with usage **Spring Boot** framework. This application uses **Spring Security** dependencies.
 
-**UserDetailsService** means that developer receives **username** provided by user and basing on it provides following data from external source (for instance database):
-* username
-* password
-* roles
-
-Spring Security automatically will compare data from UserDetailsService with data data provided by user:
-* username
-* password
-* path (authorization)
+**UserDetailsService** means that developer receives **username** and **password** and has to take care of **authentication**. Spring Security will care only of **authorization**.
 
 ##### Flow
 The following flow takes place in this project:
