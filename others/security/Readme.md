@@ -45,8 +45,9 @@ java-springboot-security-api-nooauth2-json-springsecurity
 java-springboot-security-api-withoauth2-basic-oauth2
 java-springboot-security-api-withoauth2-apikey-oauth2
 java-springboot-security-api-withoauth2-json-oauth2
-java-springboot-security-api-springsecurity-filter-userdetailsservice
-java-springboot-security-api-springsecurity-filter-authenticationprovider
+java-springboot-security-api-springsecurity-basic-userdetailsservice
+java-springboot-security-api-springsecurity-basic-authenticationprovider
+java-springboot-security-api-springsecurity-json-securitycontextholder
 
 ---
 
