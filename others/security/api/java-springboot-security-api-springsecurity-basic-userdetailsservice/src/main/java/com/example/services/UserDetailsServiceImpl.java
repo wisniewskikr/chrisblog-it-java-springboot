@@ -1,6 +1,7 @@
 package com.example.services;
 
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -32,7 +33,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
             return new UserEntity(userNameAdmin, new BCryptPasswordEncoder().encode(passwordAdmin), "ADMIN");
         }
 
-        return null;
+        throw new BadCredentialsException("(Invalid Login Details");
 		
 	}
 
