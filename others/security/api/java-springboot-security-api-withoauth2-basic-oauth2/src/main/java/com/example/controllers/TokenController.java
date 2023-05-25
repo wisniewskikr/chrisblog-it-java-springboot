@@ -4,9 +4,7 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 
 import java.io.IOException;
-import java.util.stream.Collectors;
 
-import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -15,7 +13,7 @@ import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.exceptions.JWTCreationException;
 import com.example.jsons.UserJson;
-import com.google.gson.Gson;
+import com.example.utils.JsonUtils;
 
 @RestController
 public class TokenController {
@@ -45,14 +43,8 @@ public class TokenController {
 
 	private UserJson getUserJson(HttpServletRequest request) throws IOException {
 
-		// String authorizationHeader = request.getHeader("authorization");
-
-        String requestData = request.getReader().lines().collect(Collectors.joining());
-        if (StringUtils.isBlank(requestData)) {
-            return null;
-        }
-
-        return new Gson().fromJson(requestData, UserJson.class);
+		String authorizationHeader = request.getHeader("authorization");
+		return JsonUtils.getUserJson(authorizationHeader);
 
     }
 

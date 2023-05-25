@@ -23,7 +23,7 @@ import com.auth0.jwt.interfaces.DecodedJWT;
 import com.auth0.jwt.interfaces.JWTVerifier;
 
 @Component
-public class JwtFilter extends OncePerRequestFilter {
+public class OAuth2Filter extends OncePerRequestFilter {
 	
 	@Value("${token.secret.key}")
 	private String tokenSecretKey;
@@ -33,7 +33,10 @@ public class JwtFilter extends OncePerRequestFilter {
 			throws ServletException, IOException {
 		
 		String authorizationHeader = request.getHeader("authorization");
-		if (authorizationHeader == null) {
+		StringBuffer requestURL = request.getRequestURL();
+		String path = requestURL.substring(requestURL.lastIndexOf("/"), requestURL.length());
+
+		if (authorizationHeader == null|| !authorizationHeader.toLowerCase().startsWith("bearer") || "/token".equals(path)) {
             filterChain.doFilter(request, response);
             return;
         }

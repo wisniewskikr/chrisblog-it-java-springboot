@@ -2,7 +2,6 @@ package com.example.filters;
 
 import java.io.IOException;
 import java.util.Collections;
-import java.util.Set;
 
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
@@ -16,56 +15,61 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
-import com.auth0.jwt.JWT;
-import com.auth0.jwt.algorithms.Algorithm;
-import com.auth0.jwt.exceptions.JWTVerificationException;
-import com.auth0.jwt.interfaces.DecodedJWT;
-import com.auth0.jwt.interfaces.JWTVerifier;
+import com.example.jsons.UserJson;
+import com.example.utils.JsonUtils;
+
+import org.springframework.security.core.Authentication;
 
 @Component
 public class BasicFilter extends OncePerRequestFilter {
 	
-	@Value("${token.secret.key}")
-	private String tokenSecretKey;
+	@Value("${credentials.user.name}")
+	private String userName;
+
+    @Value("${credentials.admin.name}")
+	private String adminName;
+
+    @Value("${credentials.user.password}")
+	private String userPassword;
+
+    @Value("${credentials.admin.password}")
+	private String adminPassword;
 
 	@Override
 	protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
 			throws ServletException, IOException {
 		
 		String authorizationHeader = request.getHeader("authorization");
-		if (authorizationHeader == null) {
+        StringBuffer requestURL = request.getRequestURL();
+        String path = requestURL.substring(requestURL.lastIndexOf("/"), requestURL.length());
+
+		if (authorizationHeader == null || !authorizationHeader.toLowerCase().startsWith("basic") || !"/token".equals(path)) {
             filterChain.doFilter(request, response);
             return;
         }
 		
-		// SecurityContextHolder.getContext().setAuthentication(getUsernamePasswordAuthenticationToken(authorizationHeader));
+		UserJson userJson = JsonUtils.getUserJson(authorizationHeader);
+		SecurityContextHolder.getContext().setAuthentication(getAuthentication(userJson));
 		filterChain.doFilter(request, response);
 		
-	}
+	}	
 	
-	private UsernamePasswordAuthenticationToken getUsernamePasswordAuthenticationToken(String authorizationHeader) throws ServletException {
-	
-		UsernamePasswordAuthenticationToken authentication = null;;
-		
-		try {
-			
-			String token = authorizationHeader.substring(7);
-			
-		    Algorithm algorithm = Algorithm.HMAC256(tokenSecretKey);
-		    JWTVerifier verifier = JWT.require(algorithm).build();
-		    DecodedJWT jwt = verifier.verify(token);
-		    String name = jwt.getClaim("name").as(String.class);
-		    String role = jwt.getClaim("role").as(String.class);
-		    
-			Set<SimpleGrantedAuthority> roles = Collections.singleton(new SimpleGrantedAuthority(role));
-			authentication = new UsernamePasswordAuthenticationToken(name, null, roles);
-		    
-		} catch (JWTVerificationException exception){
-			throw new ServletException("Wrong key");
-		}
-		
-		return authentication;
-		
-	}
+	private Authentication getAuthentication(UserJson userJson ) {
+
+        if (userJson == null) {
+            return null;
+        }
+
+        if (userName.equals(userJson.getName()) && userPassword.equals(userJson.getPassword())) {
+            return new UsernamePasswordAuthenticationToken(null, null, Collections.singleton(new SimpleGrantedAuthority("ROLE_USER")));
+        }
+
+        if (adminName.equals(userJson.getName()) && adminPassword.equals(userJson.getPassword())) {
+            return new UsernamePasswordAuthenticationToken(null, null, Collections.singleton(new SimpleGrantedAuthority("ROLE_ADMIN")));
+        }
+
+        return null;
+
+    }
 
 }
