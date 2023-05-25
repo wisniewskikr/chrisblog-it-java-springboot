@@ -4,9 +4,9 @@ USAGE
 Usage steps:
 1. Start application with `mvn spring-boot:run`
 1. Send GET request with Postman to URL `http://localhost:8080/`
-1. Get **User Token** with GET request in Postman (**Body** type **JSON** as **{"name":"user","password":"user123"}** to URL `http://localhost:8080/token`
+1. Get **User Token** with GET request in Postman (**Authorisation** type **Basic Auth** with credentials **user/user123**) to URL `http://localhost:8080/token`
 1. Send GET request with Postman (**Authorization** type **Token Bearer** and value **User Token**) to URL `http://localhost:8080/user`
-1. Get **Admin Token** with GET request in Postman (**Body** type **JSON** as **{"name":"admin","password":"admin123"}** to URL `http://localhost:8080/token`
+1. Get **Admin Token** with GET request in Postman (**Authorisation** type **Basic Auth** with credentials **admin/admin123**) to URL `http://localhost:8080/token`
 1. Send GET request with Postman (**Authorization** type **Token Bearer** and value **Admin Token**) to URL `http://localhost:8080/user`
 1. Send GET request with Postman (**Authorization** type **Token Bearer** and value **Admin Token**) to URL `http://localhost:8080/admin`
 1. Clean up environment:
@@ -27,11 +27,11 @@ DESCRIPTION
 -----------
 
 ##### Goal
-The goal of this project is to present how to implement **JSON Authentication** and **OAuth2 Authorization** in **Java** application type **API** with usage **Spring Boot** framework. This application uses **Spring Security** dependencies. Authentication credentials are sent as JSON and proceeded in Filter. **JWT Token** is returned as result of valid authentication. Using this JWT Token user can access secured resource. Authorization is done by Spring Security.
+The goal of this project is to present how to implement **Basic Authentication** and **OAuth2 Authorization** in **Java** application type **API** with usage **Spring Boot** framework. This application uses **Spring Security** dependencies. Authentication credentials are sent in header as "Authorization" type "Basic" and proceeded in Filter. **JWT Token** is returned as result of valid authentication. Using this JWT Token user can access secured resource. Authorization is done by Spring Security.
 
 ##### Flow
 The following flow takes place in this project:
-1. User uses any Client API (for instance Postman) for sending GET request to Server for Token. Username and Password are sent in request body as JSON;
+1. User uses any Client API (for instance Postman) for sending GET request to Server for Token. Username and Password are sent as Authorization Basic;
 1. Server sends back response with Token if credentials are valid; 
 1. User uses any Client API (for instance Postman) for sending GET request to Server for secured resource. JWT Token is sent as Authorization Token Bearer;
 1. Server sends back response with secured resource if JWT Token is valid.

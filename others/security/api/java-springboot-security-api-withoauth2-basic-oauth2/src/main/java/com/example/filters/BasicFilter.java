@@ -40,10 +40,7 @@ public class BasicFilter extends OncePerRequestFilter {
 			throws ServletException, IOException {
 		
 		String authorizationHeader = request.getHeader("authorization");
-        StringBuffer requestURL = request.getRequestURL();
-        String path = requestURL.substring(requestURL.lastIndexOf("/"), requestURL.length());
-
-		if (authorizationHeader == null || !authorizationHeader.toLowerCase().startsWith("basic") || !"/token".equals(path)) {
+		if (authorizationHeader == null || !authorizationHeader.toLowerCase().startsWith("basic")) {
             filterChain.doFilter(request, response);
             return;
         }
@@ -61,11 +58,11 @@ public class BasicFilter extends OncePerRequestFilter {
         }
 
         if (userName.equals(userJson.getName()) && userPassword.equals(userJson.getPassword())) {
-            return new UsernamePasswordAuthenticationToken(null, null, Collections.singleton(new SimpleGrantedAuthority("ROLE_USER")));
+            return new UsernamePasswordAuthenticationToken(null, null, Collections.singleton(new SimpleGrantedAuthority("ROLE_USER_TOKEN")));
         }
 
         if (adminName.equals(userJson.getName()) && adminPassword.equals(userJson.getPassword())) {
-            return new UsernamePasswordAuthenticationToken(null, null, Collections.singleton(new SimpleGrantedAuthority("ROLE_ADMIN")));
+            return new UsernamePasswordAuthenticationToken(null, null, Collections.singleton(new SimpleGrantedAuthority("ROLE_ADMIN_TOKEN")));
         }
 
         return null;

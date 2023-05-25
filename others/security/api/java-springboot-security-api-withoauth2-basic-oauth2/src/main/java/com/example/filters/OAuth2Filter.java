@@ -33,10 +33,7 @@ public class OAuth2Filter extends OncePerRequestFilter {
 			throws ServletException, IOException {
 		
 		String authorizationHeader = request.getHeader("authorization");
-		StringBuffer requestURL = request.getRequestURL();
-		String path = requestURL.substring(requestURL.lastIndexOf("/"), requestURL.length());
-
-		if (authorizationHeader == null|| !authorizationHeader.toLowerCase().startsWith("bearer") || "/token".equals(path)) {
+		if (authorizationHeader == null|| !authorizationHeader.toLowerCase().startsWith("bearer")) {
             filterChain.doFilter(request, response);
             return;
         }
