@@ -3,9 +3,9 @@ USAGE
 
 Usage steps:
 1. Start application with `mvn spring-boot:run`
-1. Send GET request with Postman to URL `http://localhost:8080`
-1. Send GET request with Postman (**Basic Authentication** with credentials **user / user123** or **admin / admin123**) to URL `http://localhost:8080/user`
-1. Send GET request with Postman (**Basic Authentication** with credentials **admin / admin123**) to URL `http://localhost:8080/admin`
+1. Send GET request with Postman to not secured URL `http://localhost:8080`
+1. Send GET request with Postman (**Basic Authentication** with credentials **user / user123** or **admin / admin123**) to secured URL `http://localhost:8080/user`
+1. Send GET request with Postman (**Basic Authentication** with credentials **admin / admin123**) to secured URL `http://localhost:8080/admin`
 1. Clean up environment:
     * Stop application with `ctrl + C`
 
@@ -20,7 +20,7 @@ DESCRIPTION
 -----------
 
 ##### Goal
-The goal of this project is to present how to implement **Basic authentication and authorization** in **Java** application type **API** with usage **Spring Boot** framework. This application uses **Spring Security** dependencies. 
+The goal of this project is to present how to implement **authentication and authorization** in **Java** application type **API** with usage **Spring Boot** framework and **Spring Security** dependencies. Secured resources are displayed after **one request**. Credentials are sent as **Header Basic**. **Authentication** is done automatically by Spring Security with data stored **inmemory**. **Authorization** is done automatically by Spring Security based on **cofiguration** (paths and roles).
 
 ##### Flow
 The following flow takes place in this project:
