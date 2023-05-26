@@ -36,7 +36,7 @@ java-springboot-security-html-sso-oidcoauth2-google
 java-springboot-security-html-sso-oidcoauth2-github
 java-springboot-security-html-springsecurity-customform-userdetailsservice
 java-springboot-security-html-springsecurity-customform-authenticationprovider
-java-springboot-security-html-springsecurity-customform-filter
+java-springboot-security-html-springsecurity-customform-securitycontextholder
 
 
 java-springboot-security-api-nooauth2-basic-springsecurity
@@ -48,6 +48,21 @@ java-springboot-security-api-withoauth2-json-oauth2
 java-springboot-security-api-springsecurity-basic-userdetailsservice
 java-springboot-security-api-springsecurity-basic-authenticationprovider
 java-springboot-security-api-springsecurity-json-securitycontextholder
+
+---
+
+api-springsec-onereq-source-header-basic-authn-inmemory-authr-config
+api-springsec-onereq-source-header-basic-authn-userdetailsservice-authr-config
+api-springsec-onereq-source-header-basic-authn-authenticationprovider-authr-config
+api-springsec-onereq-source-header-apikey-authn-filter-securitycontextholder-authr-config
+api-springsec-onereq-source-header-bearertoken-authn-filter-securitycontextholder-authr-config
+api-springsec-onereq-source-body-json-authn-filter-securitycontextholder-authr-config
+api-springsec-onereq-source-url-params-authn-filter-securitycontextholder-authr-config
+
+api-springsec-tworeq-basic-bearertoken-authn-filter-securitycontextholder-authr-config
+api-springsec-tworeq-apikey-bearertoken-authn-filter-securitycontextholder-authr-config
+api-springsec-tworeq-json-bearertoken-authn-filter-securitycontextholder-authr-config
+api-springsec-tworeq-url-bearertoken-authn-filter-securitycontextholder-authr-config
 
 ---
 
