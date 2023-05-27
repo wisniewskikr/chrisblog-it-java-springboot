@@ -9,7 +9,7 @@
 		<relativePath/>
 	</parent>
 	<groupId>com.example</groupId>
-	<artifactId>java-springboot-security-api-springsecurity-basic-authenticationprovider</artifactId>
+	<artifactId>api-springsec-onereq-source-header-basic-authn-authenticationprovider-authr-config</artifactId>
 	<version>0.1.0</version>
 
 	<properties>

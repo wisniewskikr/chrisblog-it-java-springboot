@@ -20,9 +20,7 @@ DESCRIPTION
 -----------
 
 ##### Goal
-The goal of this project is to present how to use **AuthenticationProvider** in **Java** application type **API** with usage **Spring Boot** framework. This application uses **Spring Security** dependencies.
-
-**UserDetailsService** means that developer receives **username** and **password** and has to take care of **authentication**. Spring Security will care only of **authorization**.
+The goal of this project is to present how to implement **authentication and authorization** in **Java** application type **API** with usage **Spring Boot** framework and **Spring Security** dependencies. Secured resources are displayed after **one request**. Credentials are sent as **Header Basic**. **Authentication** is done manually by developer basing on **username** and **password**. **Authorization** is done automatically by Spring Security based on **cofiguration** (paths and roles).
 
 ##### Flow
 The following flow takes place in this project:
