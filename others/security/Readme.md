@@ -58,11 +58,23 @@ api-springsec-onereq-source-header-apikey-authn-filter-securitycontextholder-aut
 api-springsec-onereq-source-header-bearertoken-authn-filter-securitycontextholder-authr-config
 api-springsec-onereq-source-body-json-authn-filter-securitycontextholder-authr-config
 api-springsec-onereq-source-url-params-authn-filter-securitycontextholder-authr-config
-
 api-springsec-tworeq-basic-bearertoken-authn-filter-securitycontextholder-authr-config
 api-springsec-tworeq-apikey-bearertoken-authn-filter-securitycontextholder-authr-config
 api-springsec-tworeq-json-bearertoken-authn-filter-securitycontextholder-authr-config
 api-springsec-tworeq-url-bearertoken-authn-filter-securitycontextholder-authr-config
+
+html-springsec-source-header-basic-authn-inmemory-authr-config
+html-springsec-source-header-form-default-authn-inmemory-authr-config
+html-springsec-source-header-form-custom-authn-inmemory-authr-config
+html-springsec-source-header-form-custom-authn-userdetailsservice-authr-config
+html-springsec-source-header-form-custom-authn-authenticationprovider-authr-config
+html-springsec-source-body-params-authn-filter-securitycontextholder-authr-config
+html-springsec-source-url-params-authn-filter-securitycontextholder-authr-config
+html-springsec-sso-authn-saml-okta-authr-config
+html-springsec-sso-authn-oidcoauth2-keykloack-authr-config
+html-springsec-sso-authn-oidcoauth2-facebook-authr-config
+html-springsec-sso-authn-oidcoauth2-google-authr-config
+html-springsec-sso-authn-oidcoauth2-github-authr-config
 
 ---
 
