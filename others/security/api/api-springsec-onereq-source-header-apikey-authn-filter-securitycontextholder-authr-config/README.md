@@ -20,7 +20,7 @@ DESCRIPTION
 -----------
 
 ##### Goal
-The goal of this project is to present how to implement **API Key authentication and authorization** in **Java** application type **API** with usage **Spring Boot** framework. This application uses **Spring Security** dependencies. 
+The goal of this project is to present how to implement **authentication and authorization** in **Java** application type **API** with usage **Spring Boot** framework and **Spring Security** dependencies. Secured resources are displayed after **one request**. Credentials are sent as **Header API Key**. **Authentication** is done manually by developer in **filter** (if everything is ok then object **SecurityContextHolder** with user **roles** is created). **Authorization** is done automatically by Spring Security based on **cofiguration** (paths and roles).
 
 ##### Flow
 The following flow takes place in this project:
