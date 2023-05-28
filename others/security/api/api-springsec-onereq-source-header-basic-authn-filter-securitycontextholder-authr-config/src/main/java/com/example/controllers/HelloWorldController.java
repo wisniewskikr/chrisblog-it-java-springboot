@@ -8,17 +8,17 @@ public class HelloWorldController {
 
 	@RequestMapping(value="/")
 	public String helloWorld() {		
-		return "Hello World!";		
+		return "Hello World from Public Page!";		
 	}
 	
 	@RequestMapping(value="/user")
 	public String helloWorldUser() {		
-		return "Hello World User!";		
+		return "Hello World from User Page!";		
 	}
 	
 	@RequestMapping(value="/admin")
 	public String helloWorldAdmin() {		
-		return "Hello World Admin!";		
+		return "Hello World from Admin Page!";		
 	}
 	
 }

@@ -8,14 +8,16 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-import com.example.filters.ApiKeyFilter;
+import com.example.filters.BasicFilter;
 
 @Configuration
 public class SecurityConfig {
 
-    @Bean
-    public ApiKeyFilter apiKeyFilter() {
-        return new ApiKeyFilter();
+    private BasicFilter basicFilter;
+
+    @Autowired
+    public SecurityConfig(BasicFilter basicFilter) {
+        this.basicFilter = basicFilter;
     }
 
     @Bean
@@ -28,7 +30,7 @@ public class SecurityConfig {
                 .requestMatchers("/admin").hasAnyRole("ADMIN")
                 .anyRequest().authenticated()
 			)
-            .addFilterBefore(apiKeyFilter(), UsernamePasswordAuthenticationFilter.class)
+            .addFilterBefore(basicFilter, UsernamePasswordAuthenticationFilter.class)
             .csrf(Customizer.withDefaults())
             .sessionManagement(session -> session
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
