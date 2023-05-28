@@ -9,19 +9,15 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
-import com.example.filters.BasicFilter;
 import com.example.filters.OAuth2Filter;
 
 @Configuration
 public class SecurityConfig {
     
-    private BasicFilter basicFilter; 
-
     private OAuth2Filter oAuth2Filter; 
     
     @Autowired
-    public SecurityConfig(BasicFilter basicFilter, OAuth2Filter oAuth2Filter) {
-        this.basicFilter = basicFilter;
+    public SecurityConfig(OAuth2Filter oAuth2Filter) {
         this.oAuth2Filter = oAuth2Filter;
     }
 
@@ -31,12 +27,10 @@ public class SecurityConfig {
             http
                 .authorizeHttpRequests((requests) -> requests
                     .requestMatchers("/").permitAll()
-                    .requestMatchers("/token").hasAnyRole("USER_TOKEN", "ADMIN_TOKEN")
                     .requestMatchers("/user").hasAnyRole("USER", "ADMIN")
                     .requestMatchers("/admin").hasAnyRole("ADMIN") 
                     .anyRequest().permitAll()              
                 )
-                .addFilterBefore(basicFilter, UsernamePasswordAuthenticationFilter.class)
                 .addFilterBefore(oAuth2Filter, UsernamePasswordAuthenticationFilter.class)
                 .csrf(Customizer.withDefaults())
                 .sessionManagement(session -> session
