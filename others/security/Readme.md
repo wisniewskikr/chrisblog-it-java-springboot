@@ -54,8 +54,9 @@ java-springboot-security-api-springsecurity-json-securitycontextholder
 api-springsec-onereq-source-header-basic-authn-inmemory-authr-config
 api-springsec-onereq-source-header-basic-authn-userdetailsservice-authr-config
 api-springsec-onereq-source-header-basic-authn-authenticationprovider-authr-config
+api-springsec-onereq-source-header-basic-authn-filter-securitycontextholder-authr-config
 api-springsec-onereq-source-header-apikey-authn-filter-securitycontextholder-authr-config
-api-springsec-onereq-source-header-bearertoken-authn-filter-securitycontextholder-authr-config
+api-springsec-onereq-source-header-jwtbearer-authn-filter-securitycontextholder-authr-config
 api-springsec-onereq-source-body-json-authn-filter-securitycontextholder-authr-config
 api-springsec-onereq-source-url-params-authn-filter-securitycontextholder-authr-config
 api-springsec-tworeq-basic-bearertoken-authn-filter-securitycontextholder-authr-config
