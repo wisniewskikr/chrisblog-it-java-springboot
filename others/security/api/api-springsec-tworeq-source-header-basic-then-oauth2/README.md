@@ -29,7 +29,7 @@ DESCRIPTION
 ##### Goal
 The goal of this project is to present how to implement **authentication and authorization** in **Java** application type **API** with usage **Spring Boot** framework and **Spring Security** dependencies. Secured resources are displayed after **two requests**. 
 
-**In first request** credentials are sent as **Header API Key**. **Authentication** is done manually by developer in **filter** (if everything is ok then object **SecurityContextHolder** with user **roles** is created). **Authorization** is done automatically by Spring Security based on **cofiguration** (paths and roles). As a result **Access Token** type **JWT (JSON Web Token)** is sent.
+**In first request** credentials are sent as **Header Basic Auth**. **Authentication** is done manually by developer in **filter** (if everything is ok then object **SecurityContextHolder** with user **roles** is created). **Authorization** is done automatically by Spring Security based on **cofiguration** (paths and roles). As a result **Access Token** type **JWT (JSON Web Token)** is sent.
 
 **In second request** the Access Token from previous request is sent as **Header Bearer Token**. Because it's **OAuth2** so there is **NO Authentication** here. **Authorization** is done in two phases:
 * **Phase One**: is done manually by developer in **filter** where JWT is decrypted and basing on it object **SecurityContextHolder** is created 
