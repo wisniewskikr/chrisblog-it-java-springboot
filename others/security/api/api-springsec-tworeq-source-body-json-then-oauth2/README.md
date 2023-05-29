@@ -27,7 +27,13 @@ DESCRIPTION
 -----------
 
 ##### Goal
-The goal of this project is to present how to implement **JSON Authentication** and **OAuth2 Authorization** in **Java** application type **API** with usage **Spring Boot** framework. This application uses **Spring Security** dependencies. Authentication credentials are sent as JSON and proceeded in Filter. **JWT Token** is returned as result of valid authentication. Using this JWT Token user can access secured resource. Authorization is done by Spring Security.
+The goal of this project is to present how to implement **authentication and authorization** in **Java** application type **API** with usage **Spring Boot** framework and **Spring Security** dependencies. Secured resources are displayed after **two requests**. 
+
+**In first request** credentials are sent as **Body JSON**. **Authentication** is done manually by developer in **filter** (if everything is ok then object **SecurityContextHolder** with user **roles** is created). **Authorization** is done automatically by Spring Security based on **cofiguration** (paths and roles). As a result **Access Token** type **JWT (JSON Web Token)** is sent.
+
+**In second request** the Access Token from previous request is sent as **Header Bearer Token**. Because it's **OAuth2** so there is **NO Authentication** here. **Authorization** is done in two phases:
+* **Phase One**: is done manually by developer in **filter** where JWT is decrypted and basing on it object **SecurityContextHolder** is created 
+* **Phase Two**: is done automatically by Spring Security based on **cofiguration** (paths and roles)
 
 ##### Flow
 The following flow takes place in this project:
