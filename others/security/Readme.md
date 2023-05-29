@@ -59,10 +59,10 @@ api-springsec-onereq-source-header-apikey-authn-filter-securitycontextholder-aut
 api-springsec-onereq-source-header-jwtbearer-authn-filter-securitycontextholder-authr-config
 api-springsec-onereq-source-body-json-authn-filter-securitycontextholder-authr-config
 api-springsec-onereq-source-url-params-authn-filter-securitycontextholder-authr-config
-api-springsec-tworeq-basic-bearertoken-authn-filter-securitycontextholder-authr-config
-api-springsec-tworeq-apikey-bearertoken-authn-filter-securitycontextholder-authr-config
-api-springsec-tworeq-json-bearertoken-authn-filter-securitycontextholder-authr-config
-api-springsec-tworeq-url-bearertoken-authn-filter-securitycontextholder-authr-config
+api-springsec-tworeq-source-header-basic-then-oauth2
+api-springsec-tworeq-source-header-apikey-then-oauth2
+api-springsec-tworeq-source-body-json-then-oauth2
+api-springsec-tworeq-source-url-params-then-oauth2
 
 html-springsec-source-header-basic-authn-inmemory-authr-config
 html-springsec-source-header-form-default-authn-inmemory-authr-config
