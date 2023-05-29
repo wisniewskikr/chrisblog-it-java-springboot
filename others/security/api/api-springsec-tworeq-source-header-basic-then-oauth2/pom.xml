@@ -9,7 +9,7 @@
 		<relativePath/>
 	</parent>
 	<groupId>com.example</groupId>
-	<artifactId>java-springboot-security-api-withoauth2-basic-oauth2</artifactId>
+	<artifactId>api-springsec-tworeq-basic-bearertoken-authn-filter-securitycontextholder-authr-config</artifactId>
 	<version>0.1.0</version>
 
 	<properties>
