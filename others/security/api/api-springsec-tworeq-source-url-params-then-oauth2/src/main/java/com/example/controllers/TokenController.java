@@ -45,12 +45,14 @@ public class TokenController {
 
 	private UserJson getUserJson(HttpServletRequest request) throws IOException {
 
-        String requestData = request.getReader().lines().collect(Collectors.joining());
-        if (StringUtils.isBlank(requestData)) {
+        String user = request.getParameter("user");
+        String password = request.getParameter("password");
+
+        if (StringUtils.isBlank(user) || StringUtils.isBlank(password)) {
             return null;
         }
 
-        return new Gson().fromJson(requestData, UserJson.class);
+        return new UserJson(user, password);
 
     }
 

@@ -6,6 +6,11 @@ public class UserJson {
     private String password;
 
     public UserJson() {}
+
+    public UserJson(String name, String password) {
+        this.name = name;
+        this.password = password;
+    }    
     
     public String getName() {
         return name;

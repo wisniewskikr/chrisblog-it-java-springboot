@@ -4,9 +4,9 @@ USAGE
 Usage steps:
 1. Start application with `mvn spring-boot:run`
 1. Send GET request with Postman to URL `http://localhost:8080/`
-1. Get **User Token** with GET request in Postman (**Body** type **JSON** as **{"name":"user","password":"user123"}** to URL `http://localhost:8080/token`
+1. Get **User Token** with GET request in Postman to URL `http://localhost:8080/token?user=user&password=user123`
 1. Send GET request with Postman (**Authorization** type **Token Bearer** and value **User Token**) to URL `http://localhost:8080/user`
-1. Get **Admin Token** with GET request in Postman (**Body** type **JSON** as **{"name":"admin","password":"admin123"}** to URL `http://localhost:8080/token`
+1. Get **Admin Token** with GET request in Postman to URL `http://localhost:8080/token?user=admin&password=admin123`
 1. Send GET request with Postman (**Authorization** type **Token Bearer** and value **Admin Token**) to URL `http://localhost:8080/user`
 1. Send GET request with Postman (**Authorization** type **Token Bearer** and value **Admin Token**) to URL `http://localhost:8080/admin`
 1. Clean up environment:
