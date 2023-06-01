@@ -9,12 +9,14 @@
 	</head>
 
 	<body>	
-		<div>
+		<div sec:authorize="isAuthenticated()">
 			<span>User Role: </span>
-			<span sec:authentication="principal.authorities"></span>
+			<span sec:authentication="principal.authorities"></span> <br/>
+			<a th:href="@{/#}">Logout (doesn't work in Basic Authentication)</a>
 		</div>		
-		<div>Hello World from User Page!</div>
-		<a th:href="@{#}">Logout doesn't work in Basic Auth</a> <br/>
+		<br/>
+		<div>Hello World from User Page!</div> 
+		<br/>
 		<a th:href="@{/}">Home</a>	
 	</body>
 
