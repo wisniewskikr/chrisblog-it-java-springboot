@@ -9,7 +9,7 @@
 		<relativePath/>
 	</parent>
 	<groupId>com.example</groupId>
-	<artifactId>html-springsec-source-body-form-custom-authn-inmemory-authr-config</artifactId>
+	<artifactId>html-springsec-source-body-params-authn-filter-securitycontextholder-authr-config</artifactId>
 	<version>0.1.0</version>
 
 	<properties>
@@ -41,6 +41,12 @@
 		<dependency>
     		<groupId>org.thymeleaf.extras</groupId>
     		<artifactId>thymeleaf-extras-springsecurity6</artifactId>
+		</dependency>
+
+		<dependency>
+    		<groupId>org.apache.commons</groupId>
+    		<artifactId>commons-lang3</artifactId>
+    		<version>3.12.0</version>
 		</dependency>
 	</dependencies>
 
