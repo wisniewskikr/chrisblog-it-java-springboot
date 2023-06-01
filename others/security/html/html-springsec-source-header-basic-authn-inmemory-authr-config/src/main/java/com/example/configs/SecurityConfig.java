@@ -39,6 +39,9 @@ public class SecurityConfig {
                 .anyRequest().permitAll()
 			)
             .httpBasic(Customizer.withDefaults())
+            .exceptionHandling(exception -> exception
+                .accessDeniedPage("/access-denied")
+            )
             .csrf(Customizer.withDefaults());
         
         return http.build();
