@@ -9,7 +9,7 @@
 		<relativePath/>
 	</parent>
 	<groupId>com.example</groupId>
-	<artifactId>html-springsec-source-header-basic-authn-inmemory-authr-config</artifactId>
+	<artifactId>html-springsec-source-body-form-default-authn-inmemory-authr-config</artifactId>
 	<version>0.1.0</version>
 
 	<properties>
