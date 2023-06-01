@@ -9,8 +9,12 @@
 	</head>
 
 	<body>	
+		<div>
+			<span>User Role: </span>
+			<span sec:authentication="principal.authorities"></span>
+		</div>
 		<div>Sorry, but you don't have permissions to see this Page!</div>
-		<a href="/">Home</a>	
+		<a th:href="@{/}">Home</a>	
 	</body>
 
 </html>
