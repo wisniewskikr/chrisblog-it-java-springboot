@@ -10,7 +10,7 @@ public class AdminController {
 
 	@RequestMapping(method = RequestMethod.GET)
 	public String display() {
-		return "helloworld";		
+		return "admin";		
 	}
 	
 }
