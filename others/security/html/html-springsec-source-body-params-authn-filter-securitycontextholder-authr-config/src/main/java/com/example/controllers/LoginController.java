@@ -7,12 +7,14 @@ import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 
 @Controller
 public class LoginController {
@@ -32,7 +34,7 @@ public class LoginController {
 	}
 
 	@PostMapping("/login")
-	public String login(HttpServletRequest request) {	
+	public String login(HttpSession session, HttpServletRequest request) {	
 		
 		String username = request.getParameter("username");
         String password = request.getParameter("password");
@@ -44,14 +46,18 @@ public class LoginController {
 
 		if (usernameUser.equals(username) && passwordUser.equals(password)) {
 			Set<SimpleGrantedAuthority> roles = Collections.singleton(new SimpleGrantedAuthority("ROLE_USER"));
-			SecurityContextHolder.getContext().setAuthentication(new UsernamePasswordAuthenticationToken(username, password, roles));
+			SecurityContext context = SecurityContextHolder.getContext();
+			context.setAuthentication(new UsernamePasswordAuthenticationToken(username, password, roles));
+			session.setAttribute("SPRING_SECURITY_CONTEXT", context);
 			return "redirect:/" + redirect;	
 		}
 
 		if (usernameAdmin.equals(username) && passwordAdmin.equals(password)) {
 			Set<SimpleGrantedAuthority> roles = Collections.singleton(new SimpleGrantedAuthority("ROLE_ADMIN"));
-			SecurityContextHolder.getContext().setAuthentication(new UsernamePasswordAuthenticationToken(username, password, roles));
-			return "redirect:/" + redirect;
+			SecurityContext context = SecurityContextHolder.getContext();
+			context.setAuthentication(new UsernamePasswordAuthenticationToken(username, password, roles));
+			session.setAttribute("SPRING_SECURITY_CONTEXT", context);
+			return "redirect:/" + redirect;	
 		}
 
 		return "redirect:/login?error";	
