@@ -34,24 +34,27 @@ public class LoginController {
 	@PostMapping("/login")
 	public String login(HttpServletRequest request) {	
 		
-		String user = request.getParameter("user");
+		String username = request.getParameter("username");
         String password = request.getParameter("password");
+		String redirect = request.getParameter("redirect");
 
-        if (StringUtils.isBlank(user) || StringUtils.isBlank(password)) {
-            return "login?error";	
+        if (StringUtils.isBlank(username) || StringUtils.isBlank(password)) {
+            return "redirect:/login?error";	
         }
 
-		if (usernameUser.equals(user) && passwordUser.equals(password)) {
+		if (usernameUser.equals(username) && passwordUser.equals(password)) {
 			Set<SimpleGrantedAuthority> roles = Collections.singleton(new SimpleGrantedAuthority("ROLE_USER"));
-			SecurityContextHolder.getContext().setAuthentication(new UsernamePasswordAuthenticationToken(user, password, roles));
+			SecurityContextHolder.getContext().setAuthentication(new UsernamePasswordAuthenticationToken(username, password, roles));
+			return "redirect:/" + redirect;	
 		}
 
-		if (usernameAdmin.equals(user) && passwordAdmin.equals(password)) {
+		if (usernameAdmin.equals(username) && passwordAdmin.equals(password)) {
 			Set<SimpleGrantedAuthority> roles = Collections.singleton(new SimpleGrantedAuthority("ROLE_ADMIN"));
-			SecurityContextHolder.getContext().setAuthentication(new UsernamePasswordAuthenticationToken(user, password, roles));
+			SecurityContextHolder.getContext().setAuthentication(new UsernamePasswordAuthenticationToken(username, password, roles));
+			return "redirect:/" + redirect;
 		}
 
-		return "login";		
+		return "redirect:/login?error";	
 	}
 	
 }

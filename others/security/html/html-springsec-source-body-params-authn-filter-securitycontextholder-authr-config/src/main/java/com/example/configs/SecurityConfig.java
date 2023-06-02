@@ -17,10 +17,7 @@ public class SecurityConfig {
 				.requestMatchers("/user").hasAnyRole("USER", "ADMIN")
                 .requestMatchers("/admin").hasAnyRole("ADMIN")
                 .anyRequest().permitAll()
-			)
-            .formLogin(login -> login
-                .loginProcessingUrl("/login")
-            )            
+			)                      
             .exceptionHandling(exception -> exception
                 .accessDeniedPage("/access-denied")
             )
