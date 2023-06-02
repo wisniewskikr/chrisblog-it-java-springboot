@@ -52,7 +52,7 @@ public class LoginController {
 		SecurityContext context = SecurityContextHolder.getContext();
 
         if (StringUtils.isBlank(username) || StringUtils.isBlank(password)) {
-            return "redirect:/login?error";	
+            return "redirect:/login?error&redirect=" + redirect;	
         }		
 
 		if (usernameUser.equals(username) && passwordUser.equals(password)) {
@@ -69,7 +69,7 @@ public class LoginController {
 			return "redirect:/" + redirect;	
 		}
 
-		return "redirect:/login?error";	
+		return "redirect:/login?error&redirect=" + redirect;	
 	}
 	
 }
