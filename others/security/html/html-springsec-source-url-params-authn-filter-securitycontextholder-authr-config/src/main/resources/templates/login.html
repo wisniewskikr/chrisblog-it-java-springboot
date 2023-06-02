@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+	<head>
+	  	<title>Hello World</title>
+	  	<meta charset="utf-8">  
+		<link rel="stylesheet" th:href="@{/css/custom.css}"/>
+		<script th:src="@{/js/custom.js}"></script>  	
+	</head>
+
+	<body>
+	   <h1>Login</h1>
+		<input type="hidden" th:name="redirect" th:value="${param.redirect}"/>
+		
+		<p th:if="${param.error}">Wrong user or password</p>
+		<p th:if="${param.logout}">User was logged out</p>
+		
+		<table>
+			<tr>
+			<td>User:</td>
+			<td><input type='text' name='username'/></td>
+			</tr>
+			<tr>
+			<td>Password:</td>
+			<td><input type='password' name='password' /></td>
+			</tr>
+			<tr>
+			<td><input name="submit" type="button" value="Submit" onclick="submit()"/></td>
+			</tr>
+		</table>
+	  
+	  <div>
+	  	<a th:href="@{/}">Home</a>
+	  </div>
+	  
+	</body>
+	
+</html>

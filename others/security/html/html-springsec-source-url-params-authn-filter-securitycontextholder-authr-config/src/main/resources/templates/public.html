@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+	<head>
+		<title>Hello World</title>
+		<meta charset="utf-8">
+		<link rel="stylesheet" th:href="@{/css/custom.css}"/>
+		<script th:src="@{/js/custom.js}"></script>  
+	</head>
+
+	<body>	
+		<div sec:authorize="isAuthenticated()">
+			<span>User Role: </span>
+			<span sec:authentication="principal"></span> <br/>
+			<a th:href="@{/logout}">Logout</a> 
+		</div>
+		<br/>
+		<div>Hello World from Public Page!</div>
+		<br/>
+		<a th:href="@{/login?redirect=user}">User Page</a> <br/>
+		<a th:href="@{/login?redirect=admin}">Admin Page</a>		
+	</body>
+
+</html>
