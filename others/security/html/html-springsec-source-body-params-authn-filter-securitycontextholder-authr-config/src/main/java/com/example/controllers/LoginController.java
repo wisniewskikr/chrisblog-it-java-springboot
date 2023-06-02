@@ -6,6 +6,7 @@ import java.util.Set;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -30,6 +31,15 @@ public class LoginController {
 
 	@GetMapping("/login")
 	public String display(HttpServletRequest request) {	
+
+		String redirect = request.getParameter("redirect");
+
+		SecurityContext context = SecurityContextHolder.getContext();
+		Authentication authentication = context.getAuthentication();
+		if (authentication != null && !"anonymousUser".equals(authentication.getPrincipal())) {
+			return "redirect:/" + redirect;	
+		}
+
 		return "login";		
 	}
 
@@ -39,14 +49,14 @@ public class LoginController {
 		String username = request.getParameter("username");
         String password = request.getParameter("password");
 		String redirect = request.getParameter("redirect");
+		SecurityContext context = SecurityContextHolder.getContext();
 
         if (StringUtils.isBlank(username) || StringUtils.isBlank(password)) {
             return "redirect:/login?error";	
-        }
+        }		
 
 		if (usernameUser.equals(username) && passwordUser.equals(password)) {
-			Set<SimpleGrantedAuthority> roles = Collections.singleton(new SimpleGrantedAuthority("ROLE_USER"));
-			SecurityContext context = SecurityContextHolder.getContext();
+			Set<SimpleGrantedAuthority> roles = Collections.singleton(new SimpleGrantedAuthority("ROLE_USER"));			
 			context.setAuthentication(new UsernamePasswordAuthenticationToken(username, password, roles));
 			session.setAttribute("SPRING_SECURITY_CONTEXT", context);
 			return "redirect:/" + redirect;	
@@ -54,7 +64,6 @@ public class LoginController {
 
 		if (usernameAdmin.equals(username) && passwordAdmin.equals(password)) {
 			Set<SimpleGrantedAuthority> roles = Collections.singleton(new SimpleGrantedAuthority("ROLE_ADMIN"));
-			SecurityContext context = SecurityContextHolder.getContext();
 			context.setAuthentication(new UsernamePasswordAuthenticationToken(username, password, roles));
 			session.setAttribute("SPRING_SECURITY_CONTEXT", context);
 			return "redirect:/" + redirect;	
