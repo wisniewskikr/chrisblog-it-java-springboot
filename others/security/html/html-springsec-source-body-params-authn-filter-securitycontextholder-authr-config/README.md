@@ -4,8 +4,8 @@ USAGE
 Usage steps:
 1. Start application with `mvn spring-boot:run`
 1. In any browser display not secured Public Page with `http://localhost:8080`
-1. In any browser display secured User Page (credentials **user / user123** or **admin / admin123**) with `http://localhost:8080/user`
-1. In any browser display secured Admin Page (credentials **admin / admin123**) with `http://localhost:8080/admin`
+1. In any browser display secured User Page (credentials **user / user123** or **admin / admin123**) with `http://localhost:8080/login?redirect=user`
+1. In any browser display secured Admin Page (credentials **admin / admin123**) with `http://localhost:8080/login?redirect=admin`
 1. Clean up environment:
     * Stop application with `ctrl + C`
 
@@ -14,7 +14,7 @@ DESCRIPTION
 -----------
 
 ##### Goal
-The goal of this project is to present how to implement **authentication and authorization** in **Java** application type **HTML** with usage **Spring Boot** and **Thymeleaf** frameworks and **Spring Security** dependencies. Credentials are filled by user in **Custom Form** displayed by browser and sent as **parameters in body**. **Authentication** is done automatically by Spring Security with data stored **inmemory**. **Authorization** is done automatically by Spring Security based on **cofiguration** (paths and roles).
+The goal of this project is to present how to implement **authentication and authorization** in **Java** application type **HTML** with usage **Spring Boot** and **Thymeleaf** frameworks and **Spring Security** dependencies. Credentials are filled by user in **Simple Form** displayed by browser and sent as **parameters in body**. **Authentication** is done manually by developer using **SecurityContextHolder** class. **Authorization** is done automatically by Spring Security based on **cofiguration** (paths and roles).
 
 Please be aware that **logout** doesn't work in Basic Authentication.
 
@@ -22,7 +22,7 @@ Please be aware that **logout** doesn't work in Basic Authentication.
 The following flow takes place in this project:
 1. Using any browser the User sends request to Server for not secured content. 
 1. Server sends back response to User via browser with not secured content.
-1. Using any browser the user sends request to Server for secured content. Credentials are sent as Custom Form displayed by browser. 
+1. Using any browser the user sends request to Server for secured content. Credentials are sent as Simple Form displayed by browser. 
 1. Server sends back response to User via browser with secured content if authentication and authorization are valid.
 
 ##### Launch
