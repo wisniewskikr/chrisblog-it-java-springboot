@@ -1,30 +1,23 @@
 package com.example.configs;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.authentication.AuthenticationProvider;
-import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 
-import com.example.services.UserDetailsServiceImpl;
+import com.example.providers.AuthenticationProviderImpl;
 
 @Configuration
 public class SecurityConfig {
 
-	private UserDetailsServiceImpl uds;    
+	private AuthenticationProviderImpl authenticationProvider;
 
-    public SecurityConfig(UserDetailsServiceImpl uds) {
-        this.uds = uds;
-    }
-
-    @Bean
-    public PasswordEncoder bcryptPasswordEncoder() {
-        return new BCryptPasswordEncoder();
+    @Autowired
+    public SecurityConfig(AuthenticationProviderImpl authenticationProvider) {
+        this.authenticationProvider = authenticationProvider;
     }
 
     @Bean
@@ -47,20 +40,11 @@ public class SecurityConfig {
                 .accessDeniedPage("/access-denied")
             )
             .csrf(Customizer.withDefaults())
-            .authenticationProvider(authenticationProvider());
+            .authenticationProvider(authenticationProvider);
         
         return http.build();
         
     }
 
-    @Bean
-	public AuthenticationProvider authenticationProvider() {
-
-		DaoAuthenticationProvider authenticationProvider = new DaoAuthenticationProvider();
-		authenticationProvider.setUserDetailsService(uds);
-        authenticationProvider.setPasswordEncoder(bcryptPasswordEncoder());
-		return authenticationProvider;
-
-	}
 
 }

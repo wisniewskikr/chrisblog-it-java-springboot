@@ -14,7 +14,7 @@ DESCRIPTION
 -----------
 
 ##### Goal
-The goal of this project is to present how to implement **authentication and authorization** in **Java** application type **HTML** with usage **Spring Boot** and **Thymeleaf** frameworks and **Spring Security** dependencies. Credentials are filled by user in **Custom Form** displayed by browser and sent as **parameters in body**. Developer receives parameter **username** and basing on it creates object **UserDetailsService** with: username, password and role. **Authentication** is done automatically by Spring Security with data from UserDetailsService. **Authorization** is done automatically by Spring Security based on **cofiguration** (paths and roles).
+The goal of this project is to present how to implement **authentication and authorization** in **Java** application type **HTML** with usage **Spring Boot** and **Thymeleaf** frameworks and **Spring Security** dependencies. Credentials are filled by user in **Custom Form** displayed by browser and sent as **parameters in body**. **Authentication** is done manually by developer with these parameters in class **AuthenticationProvider**. **Authorization** is done automatically by Spring Security based on **cofiguration** (paths and roles).
 
 Please be aware that **logout** doesn't work in Basic Authentication.
 
