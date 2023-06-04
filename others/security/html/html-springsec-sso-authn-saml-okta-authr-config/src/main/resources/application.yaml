@@ -5,8 +5,8 @@ spring:
         registration:
           okta:            
             identityprovider:
-              entity-id: http://www.okta.com/exk74dmpb3wbmcbjA5d7
+              entity-id: http://www.okta.com/exk9tq888yk5w0Vwj5d7
               verification.credentials:
                 - certificate-location: "classpath:saml/okta.cert"
-              singlesignon.url: https://dev-58841934.okta.com/app/dev-58841934_helloworld_9/exk74dmpb3wbmcbjA5d7/sso/saml
+              singlesignon.url: https://dev-58841934.okta.com/app/dev-58841934_helloworld_11/exk9tq888yk5w0Vwj5d7/sso/saml
               singlesignon.sign-request: false
