@@ -36,7 +36,11 @@ public class SecurityConfig {
                 .anyRequest().permitAll()
 			)
             .saml2Login(saml2 -> saml2
-                .authenticationManager(new ProviderManager(authenticationProvider)))  
+                .authenticationManager(new ProviderManager(authenticationProvider)))
+            .saml2Logout(Customizer.withDefaults())
+            .logout(logout -> logout
+                .logoutSuccessUrl("/")
+            )
             .exceptionHandling(exception -> exception
                 .accessDeniedPage("/access-denied")
             )
