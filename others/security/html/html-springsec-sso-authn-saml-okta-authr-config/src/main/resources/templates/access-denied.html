@@ -11,7 +11,7 @@
 	<body>	
 		<div sec:authorize="isAuthenticated()">
 			<span>User Role: </span>
-			<span sec:authentication="principal.authorities"></span> <br/>
+			<span sec:authentication="principal"></span> <br/>
 			<a th:href="@{/logout}">Logout</a> 
 		</div>
 		<br/>

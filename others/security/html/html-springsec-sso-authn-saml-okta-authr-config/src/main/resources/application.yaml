@@ -3,10 +3,6 @@ spring:
     saml2:
       relyingparty:
         registration:
-          okta:            
-            identityprovider:
-              entity-id: http://www.okta.com/exk9tq888yk5w0Vwj5d7
-              verification.credentials:
-                - certificate-location: "classpath:saml/okta.cert"
-              singlesignon.url: https://dev-58841934.okta.com/app/dev-58841934_helloworld_11/exk9tq888yk5w0Vwj5d7/sso/saml
-              singlesignon.sign-request: false
+          okta:
+            assertingparty:
+              metadata-uri: https://dev-58841934.okta.com/app/exk9tq888yk5w0Vwj5d7/sso/saml/metadata
