@@ -11,9 +11,9 @@
 	<body>	
 		<div sec:authorize="isAuthenticated()">
 			<span>User Role: </span>
-			<span sec:authentication="principal"></span> <br/>
+			<span sec:authentication="authorities"></span> <br/>
 			<a th:href="@{/logout}">Logout</a> 
-		</div>
+		</div>	
 		<br/>
 		<div>Sorry, but you don't have permissions to see this Page!</div> 
 		<br/>
