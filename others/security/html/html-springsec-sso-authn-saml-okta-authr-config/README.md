@@ -144,3 +144,16 @@ Actions:
 ![My Image](images/group-09.png)
 
 ![My Image](images/group-10.png)
+
+#### Configure users in Okta
+
+Actions:
+- Create user **user@gmail.com** with password **Password1234** and role **ROLE_USER**
+- Create user **admin@gmail.com** with password **Password1234** and roles **ROLE_USER** and **ROLE_PASSWORD**
+
+![My Image](images/people-01.png)
+
+![My Image](images/people-02.png)
+
+![My Image](images/people-03.png)
+
