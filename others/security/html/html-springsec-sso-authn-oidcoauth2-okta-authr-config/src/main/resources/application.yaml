@@ -3,9 +3,12 @@ spring:
     oauth2:
       client:
         provider:
-          okta:
-            issuer-uri:
+          okta:            
+            authorization-uri: https://dev-58841934.okta.com/oauth2/default/v1/authorize
+            token-uri: https://dev-58841934.okta.com/oauth2/default/v1/token
+            user-info-uri: https://dev-58841934.okta.com/oauth2/default/v1/userinfo
+            jwk-set-uri: https://dev-58841934.okta.com/oauth2/default/v1/keys
         registration:
           okta:
-            client-id:
-            client-secret:
+            client-id: 0oa9umjqr9paoX6mh5d7
+            client-secret: D_JHljFZoSmVXXHd04LJp7bpGr6gLcmzAHbBj0cu
