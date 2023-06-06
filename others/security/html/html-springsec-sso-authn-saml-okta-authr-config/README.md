@@ -77,3 +77,43 @@ openssl req -newkey rsa:2048 -nodes -keyout local.key -x509 -days 365 -out local
 As a result you should receive files **local.key** and **local.crt**.
 
 ![My Image](images/okta-1.png)
+
+#### Configure application in Okta
+
+- Link: https://developer.okta.com/
+- Single sign on URL: http://localhost:8080/login/saml2/sso/okta
+- Audience URI: http://localhost:8080/saml2/service-provider-metadata/okta
+- Single Logout URL: http://localhost:8080/logout/saml2/slo
+- SP Issuer: http://localhost:8080/saml2/service-provider-metadata/okta
+- Group Attribute Statements (optional)
+     * Name: groups
+     * Name format: Unspecified
+     * Filter: Matches regex and use .* for the value
+
+![My Image](images/okta-02.png)
+
+![My Image](images/okta-03.png)
+
+![My Image](images/okta-04.png)
+
+![My Image](images/okta-05.png)
+
+![My Image](images/okta-06.png)
+
+![My Image](images/okta-07.png)
+
+![My Image](images/okta-08.png)
+
+![My Image](images/okta-09.png)
+
+![My Image](images/okta-10.png)
+
+![My Image](images/okta-11.png)
+
+![My Image](images/okta-12.png)
+
+![My Image](images/okta-13.png)
+
+![My Image](images/okta-14.png)
+
+![My Image](images/okta-15.png)
