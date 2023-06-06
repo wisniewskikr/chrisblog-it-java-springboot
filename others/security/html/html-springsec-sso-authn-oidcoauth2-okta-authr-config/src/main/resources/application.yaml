@@ -10,5 +10,5 @@ spring:
             jwk-set-uri: https://dev-58841934.okta.com/oauth2/default/v1/keys
         registration:
           okta:
-            client-id: 0oa9unhksvONAY2gV5d7
-            client-secret: QFPR-lODLJ8kfSyo5bd49cf508SUwVAscOBi106S
+            client-id: 0oa9uzc9udexB2R9J5d7
+            client-secret: xOZKD-nhvi9uMj-2n8F-XSjWhoehcO7G1065tqlq

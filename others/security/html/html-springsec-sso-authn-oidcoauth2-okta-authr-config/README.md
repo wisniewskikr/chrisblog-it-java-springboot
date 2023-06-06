@@ -115,10 +115,6 @@ Details:
 
 ![My Image](images/okta-13.png)
 
-![My Image](images/okta-14.png)
-
-![My Image](images/okta-15.png)
-
 #### Configure groups in Okta
 
 Actions:
