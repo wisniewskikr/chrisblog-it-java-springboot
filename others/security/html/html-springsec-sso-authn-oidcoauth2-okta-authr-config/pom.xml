@@ -44,24 +44,10 @@
 		</dependency>
 
 		<dependency>
-			<groupId>org.springframework.security</groupId>
-			<artifactId>spring-security-saml2-service-provider</artifactId>
-		</dependency>
-		<dependency>
-    		<groupId>org.opensaml</groupId>
-    		<artifactId>opensaml-core</artifactId>
-    		<version>4.1.1</version>
-		</dependency>
-		<dependency>
-    		<groupId>org.opensaml</groupId>
-    		<artifactId>opensaml-saml-api</artifactId>
-    		<version>4.1.1</version>
-		</dependency>
-		<dependency>
-    		<groupId>org.opensaml</groupId>
-    		<artifactId>opensaml-saml-impl</artifactId>
-    		<version>4.1.1</version>
-		</dependency>
+      		<groupId>com.okta.spring</groupId>
+      		<artifactId>okta-spring-boot-starter</artifactId>
+      		<version>3.0.4</version>
+    	</dependency>
 	</dependencies>
 
 	<repositories>
