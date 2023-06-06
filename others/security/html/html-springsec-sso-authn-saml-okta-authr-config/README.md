@@ -80,7 +80,8 @@ As a result you should receive files **local.key** and **local.crt**.
 
 #### Configure application in Okta
 
-- Link: https://developer.okta.com/
+Details:
+- Okta link: https://developer.okta.com/
 - Single sign on URL: http://localhost:8080/login/saml2/sso/okta
 - Audience URI: http://localhost:8080/saml2/service-provider-metadata/okta
 - Single Logout URL: http://localhost:8080/logout/saml2/slo
@@ -117,3 +118,29 @@ As a result you should receive files **local.key** and **local.crt**.
 ![My Image](images/okta-14.png)
 
 ![My Image](images/okta-15.png)
+
+#### Configure groups in Okta
+
+Actions:
+- Create group **ROLE_USER** and assign this group to application **Hello World**
+- Create group **ROLE_ADMIN** and assign this group to application **Hello World**
+
+![My Image](images/group-01.png)
+
+![My Image](images/group-02.png)
+
+![My Image](images/group-03.png)
+
+![My Image](images/group-04.png)
+
+![My Image](images/group-05.png)
+
+![My Image](images/group-06.png)
+
+![My Image](images/group-07.png)
+
+![My Image](images/group-08.png)
+
+![My Image](images/group-09.png)
+
+![My Image](images/group-10.png)
