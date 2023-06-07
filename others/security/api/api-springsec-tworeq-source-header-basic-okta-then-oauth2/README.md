@@ -2,25 +2,18 @@ USAGE
 -----
 
 Usage steps:
+1. Configure Okta. For more details please check section **Okta Configuration**
 1. Start application with `mvn spring-boot:run`
-1. Send GET request with Postman to URL `http://localhost:8080/`
-1. Get **User Token** with GET request in Postman (**Authorisation** type **Basic Auth** with credentials **user/user123**) to URL `http://localhost:8080/token`
-1. Send GET request with Postman (**Authorization** type **Token Bearer** and value **User Token**) to URL `http://localhost:8080/user`
-1. Get **Admin Token** with GET request in Postman (**Authorisation** type **Basic Auth** with credentials **admin/admin123**) to URL `http://localhost:8080/token`
-1. Send GET request with Postman (**Authorization** type **Token Bearer** and value **Admin Token**) to URL `http://localhost:8080/user`
-1. Send GET request with Postman (**Authorization** type **Token Bearer** and value **Admin Token**) to URL `http://localhost:8080/admin`
+1. Get Token from Okta with POST request in Postman (**Authorisation** type **Basic Auth** with credentials **Client Id/Client Secrets** and **Body x-www-form-urlencoded** with parameters **grant_type=client_credentials** and **scope=helloworld**) with **https://{issuer-uri}/oauth2/default/v1/token**. For instance `https://dev-58841934.okta.com/oauth2/default/v1/token`
+1. Send GET request with Postman (**Authorization** type **Token Bearer** and value **Token from Okta**) to URL `http://localhost:8080/`
 1. Clean up environment:
     * Stop application with `ctrl + C`
 
-![My Image](image-1.png)
+![My Image](image-01.png)
 
-![My Image](image-2.png)
+![My Image](image-02.png)
 
-![My Image](image-3.png)
-
-![My Image](image-4.png)
-
-![My Image](image-5.png)
+![My Image](image-03.png)
 
 
 DESCRIPTION
@@ -29,11 +22,9 @@ DESCRIPTION
 ##### Goal
 The goal of this project is to present how to implement **authentication and authorization** in **Java** application type **API** with usage **Spring Boot** framework and **Spring Security** dependencies. Secured resources are displayed after **two requests**. 
 
-**In first request** credentials are sent as **Header Basic Auth**. **Authentication** is done manually by developer in **filter** (if everything is ok then object **SecurityContextHolder** with user **roles** is created). **Authorization** is done automatically by Spring Security based on **cofiguration** (paths and roles). As a result **Access Token** type **JWT (JSON Web Token)** is sent.
+**In first request** credentials are sent as **Header Basic Auth**. **Authentication** is done by **Okta** vendor. As a result **Access Token** type **JWT (JSON Web Token)** is sent.
 
-**In second request** the Access Token from previous request is sent as **Header Bearer Token**. Because it's **OAuth2** so there is **NO Authentication** here. **Authorization** is done in two phases:
-* **Phase One**: is done manually by developer in **filter** where JWT is decrypted and basing on it object **SecurityContextHolder** is created 
-* **Phase Two**: is done automatically by Spring Security based on **cofiguration** (paths and roles)
+**In second request** the Access Token from previous request is sent as **Header Bearer Token**. Because it's **OAuth2** so there is **NO Authentication** here. **Authorization** is done automatically by **Okta dependencies**.
 
 ##### Flow
 The following flow takes place in this project:
