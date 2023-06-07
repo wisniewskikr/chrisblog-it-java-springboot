@@ -9,11 +9,11 @@ Usage steps:
 1. Clean up environment:
     * Stop application with `ctrl + C`
 
-![My Image](image-01.png)
+![My Image](images/image-01.png)
 
-![My Image](image-02.png)
+![My Image](images/image-02.png)
 
-![My Image](image-03.png)
+![My Image](images/image-03.png)
 
 
 DESCRIPTION
@@ -58,3 +58,32 @@ PRECONDITIONS
 ##### Preconditions - Actions
 * **Download** source code using Git 
 * * Open any **Command Line** (for instance "Windonw PowerShell" on Windows OS) tool on **project's folder**. Type commands from section **USAGE** there.
+
+
+OKTA CONFIGURATION
+------------------
+
+Actions:
+- Link to Okta: https://developer.okta.com/
+
+![My Image](images/okta-02.png)
+
+![My Image](images/okta-03.png)
+
+![My Image](images/okta-04.png)
+
+![My Image](images/okta-05.png)
+
+![My Image](images/okta-06.png)
+
+![My Image](images/okta-07.png)
+
+![My Image](images/okta-08.png)
+
+![My Image](images/okta-09.png)
+
+![My Image](images/okta-10.png)
+
+![My Image](images/okta-11.png)
+
+![My Image](images/okta-12.png)
