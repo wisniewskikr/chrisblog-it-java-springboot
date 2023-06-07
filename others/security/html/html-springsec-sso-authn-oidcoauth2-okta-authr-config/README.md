@@ -3,13 +3,11 @@ USAGE
 
 Usage steps:
 1. Configure SAML in Okta (for more details please check section **Okta Configuration**)
-     * Create key and certificate
      * Configure application in Okta
      * Configure groups in Okta
      * Configure users in Okta
 1. Configure application
-     * Place created **local.key** and **local.crt** in location **src/main/resources/saml**
-     * Update property **metadata-uri** in file **application.yaml**     
+     * Update properties in file **application.yaml**     
 1. Start application with `mvn spring-boot:run`
 1. In any browser display not secured Public Page with `http://localhost:8080`
 1. In any browser display secured User Page (credentials **user@gmail.com / Password1234** or **admin@gmail.com / Password1234**) with `http://localhost:8080/user`
@@ -66,30 +64,13 @@ PRECONDITIONS
 OKTA CONFIGURATION
 ------------------
 
-#### Create key and certificate
-
-In any location please open any Command Line tool with installed **openssl** (for instance Git Bash) and run following command (for every question you can just click "Enter" leaving fields empty):
-
-```
-openssl req -newkey rsa:2048 -nodes -keyout local.key -x509 -days 365 -out local.crt
-```
-
-As a result you should receive files **local.key** and **local.crt**.
-
-![My Image](images/okta-1.png)
-
 #### Configure application in Okta
 
 Details:
 - Okta link: https://developer.okta.com/
-- Single sign on URL: http://localhost:8080/login/saml2/sso/okta
-- Audience URI: http://localhost:8080/saml2/service-provider-metadata/okta
-- Single Logout URL: http://localhost:8080/logout/saml2/slo
-- SP Issuer: http://localhost:8080/saml2/service-provider-metadata/okta
-- Group Attribute Statements (optional)
-     * Name: groups
-     * Name format: Unspecified
-     * Filter: Matches regex and use .* for the value
+- Sign-in redirect URIs: http://localhost:8080/login/oauth2/code/okta
+- Sign-out redirect URIs: http://localhost:8080
+- Claims: group groups: matches regex .*
 
 ![My Image](images/okta-02.png)
 
