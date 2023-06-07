@@ -20,7 +20,7 @@ DESCRIPTION
 -----------
 
 ##### Goal
-The goal of this project is to present how to implement **authentication and authorization** in **Java** application type **HTML** with usage **Spring Boot** and **Thymeleaf** frameworks and **Spring Security** dependencies. **Authentication** is handled by **SSO** type **SAML** provided by vendor **OKTA**. It means that after connecting application and Okta you can handle users and groups in Okta. **Authorization** is handled by Spring Security configured in **SecurityConfig** class.
+The goal of this project is to present how to implement **authentication and authorization** in **Java** application type **HTML** with usage **Spring Boot** and **Thymeleaf** frameworks and **Spring Security** dependencies. **Authentication** is handled by **SSO** type **OIDC** provided by vendor **OKTA**. It means that after connecting application and Okta you can handle users and groups in Okta. **Authorization** is handled by Spring Security configured in **SecurityConfig** class.
 
 ##### Flow
 The following flow takes place in this project:
@@ -133,4 +133,3 @@ Actions:
 ![My Image](images/people-02.png)
 
 ![My Image](images/people-03.png)
-
