@@ -4,11 +4,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-public class AccessDeniedController {
+public class AdminController {
 
-	@RequestMapping(value="/access-denied")
+	@RequestMapping(value="/admin")
 	public String display() {
-		return "access-denied";		
+		return "admin";		
 	}
 	
 }
