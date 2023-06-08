@@ -125,3 +125,37 @@ Details:
 ![My Image](images/role-03.png)
 
 ![My Image](images/role-04.png)
+
+#### Configure Keycloak Users
+
+Details:
+* **User Credentials**: user / user123
+* **Admin Credentials**: admin / admin123
+
+![My Image](images/user-01.png)
+
+![My Image](images/user-02.png)
+
+![My Image](images/user-03.png)
+
+![My Image](images/user-04.png)
+
+![My Image](images/user-05.png)
+
+![My Image](images/user-06.png)
+
+![My Image](images/user-07.png)
+
+![My Image](images/user-08.png)
+
+![My Image](images/user-09.png)
+
+![My Image](images/user-10.png)
+
+![My Image](images/user-11.png)
+
+![My Image](images/user-12.png)
+
+![My Image](images/user-13.png)
+
+![My Image](images/user-14.png)
