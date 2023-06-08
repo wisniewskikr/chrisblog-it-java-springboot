@@ -56,7 +56,8 @@ USAGE
 -----
 
 Usage steps:
-1. In first Command Line tool start Keycloak with `docker-compose up --build`
+1. In first Command Line tool start Keycloak with `docker-compose up --build -d`
+     * (Optional) Check Keycloak logs with `docker logs keycloak`
 1. In second Command Line tool start application with `mvn spring-boot:run`
 1. Send request with `http://localhost:8081`
 1. On page "Hello World" click link `Secured Hello World User` and fill credentials (**user / user123**)
