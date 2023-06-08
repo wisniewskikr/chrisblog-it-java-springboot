@@ -1,25 +1,33 @@
 package com.example.configs;
 
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
 @EnableWebSecurity
-public class SecurityConfig extends WebSecurityConfigurerAdapter {
+public class SecurityConfig {
 
-    @Override
-    protected void configure(HttpSecurity http) throws Exception {
-   	
-    	http.authorizeRequests()
-    		.antMatchers("/helloworld").authenticated();
-       
-    	http
-        	.oauth2Login()
-        		.loginPage("/")
-        		.defaultSuccessUrl("/helloworld");
-    	    	
-    }    
+    @Bean
+    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+
+        http            
+            .authorizeHttpRequests((requests) -> requests
+				.requestMatchers("/user").hasAnyRole("USER", "ADMIN")
+                .requestMatchers("/admin").hasAnyRole("ADMIN")
+                .anyRequest().permitAll()
+			)
+            .oauth2Login(Customizer.withDefaults())            
+            .exceptionHandling(exception -> exception
+                .accessDeniedPage("/access-denied")
+            )
+            .csrf(Customizer.withDefaults());
+        
+        return http.build();
+
+    }  
 
 }
