@@ -4,11 +4,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-public class HelloWorldController {
+public class UserController {
 
-	@RequestMapping(value="/helloworld")
-	public String helloWorld() {		
-		return "helloworld";		
+	@RequestMapping(value="/user")
+	public String display() {
+		return "user";		
 	}
 	
 }
