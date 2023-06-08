@@ -5,7 +5,7 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.7.4</version>
+		<version>3.1.0</version>
 		<relativePath/>
 	</parent>
 	<groupId>com.example</groupId>
@@ -13,7 +13,7 @@
 	<version>0.1.0</version>
 
 	<properties>
-		<java.version>8</java.version>
+		<java.version>17</java.version>
 	</properties>
 	
 	<dependencies>
@@ -42,7 +42,7 @@
 		<dependency>
             <groupId>org.keycloak</groupId>
             <artifactId>keycloak-spring-boot-starter</artifactId>
-            <version>19.0.3</version>
+            <version>21.1.1</version>
         </dependency>
 	
 	</dependencies>
