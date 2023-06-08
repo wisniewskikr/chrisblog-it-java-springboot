@@ -78,3 +78,14 @@ Details:
 ![My Image](images/login-01.png)
 
 ![My Image](images/login-02.png)
+
+#### Configure Keycloak Realm
+
+Details:
+* **Realm name**: HelloWorldRealm
+
+![My Image](images/realm-01.png)
+
+![My Image](images/realm-02.png)
+
+#### Configure Keycloak Client
