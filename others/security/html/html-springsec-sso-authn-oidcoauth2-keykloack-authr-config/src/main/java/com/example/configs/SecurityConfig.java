@@ -13,6 +13,7 @@ import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.session.RegisterSessionAuthenticationStrategy;
 import org.springframework.security.web.authentication.session.SessionAuthenticationStrategy;
 
+import com.example.converters.JwtAuthConverter;
 import com.example.handlers.KeycloakLogoutHandler;
 
 @Configuration
@@ -20,16 +21,18 @@ import com.example.handlers.KeycloakLogoutHandler;
 class SecurityConfig {
 
     private final KeycloakLogoutHandler keycloakLogoutHandler;
+    private final JwtAuthConverter jwtAuthConverter;
 
     @Autowired
-    SecurityConfig(KeycloakLogoutHandler keycloakLogoutHandler) {
+    public SecurityConfig(KeycloakLogoutHandler keycloakLogoutHandler, JwtAuthConverter jwtAuthConverter) {
         this.keycloakLogoutHandler = keycloakLogoutHandler;
-    }
+        this.jwtAuthConverter = jwtAuthConverter;
+    }    
 
     @Bean
     protected SessionAuthenticationStrategy sessionAuthenticationStrategy() {
         return new RegisterSessionAuthenticationStrategy(new SessionRegistryImpl());
-    }
+    }    
 
     @Bean
     public AuthenticationManager authenticationManager(HttpSecurity http) throws Exception {
@@ -51,7 +54,11 @@ class SecurityConfig {
                 .addLogoutHandler(keycloakLogoutHandler)
                 .logoutSuccessUrl("/")
             )
-            .oauth2ResourceServer(configurer -> configurer.jwt(Customizer.withDefaults()))
+            .oauth2ResourceServer(configurer -> configurer
+                .jwt(oauth2 -> oauth2
+                    .jwtAuthenticationConverter(jwtAuthConverter)
+                )                
+            )
             .exceptionHandling(exception -> exception
                 .accessDeniedPage("/access-denied")
             )
