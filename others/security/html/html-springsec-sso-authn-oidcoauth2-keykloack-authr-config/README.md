@@ -8,8 +8,8 @@ Usage steps:
      * Log in to Keycloak
      * Configure Keycloak Realm
      * Configure Keycloak Client
-     * Configure Keycloak Groups
-     * Configure Keycloak User
+     * Configure Keycloak Realm Roles
+     * Configure Keycloak Users
 1. Start application with `mvn spring-boot:run`
 1. In any browser display not secured Public Page with `http://localhost:8080`
 1. In any browser display secured User Page (credentials **user / user123** or **admin / admin123**) with `http://localhost:8080/user`
@@ -113,3 +113,15 @@ Details:
 
 ![My Image](images/client-09.png)
 
+#### Configure Keycloak Realm Roles
+
+Details:
+* **Realm Roles Names**: USER, ADMIN
+
+![My Image](images/role-01.png)
+
+![My Image](images/role-02.png)
+
+![My Image](images/role-03.png)
+
+![My Image](images/role-04.png)
