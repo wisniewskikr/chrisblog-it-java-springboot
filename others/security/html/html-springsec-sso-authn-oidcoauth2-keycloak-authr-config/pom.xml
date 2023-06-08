@@ -9,7 +9,7 @@
 		<relativePath/>
 	</parent>
 	<groupId>com.example</groupId>
-	<artifactId>html-springsec-sso-authn-oidcoauth2-keykloack-authr-config</artifactId>
+	<artifactId>html-springsec-sso-authn-oidcoauth2-keycloak-authr-config</artifactId>
 	<version>0.1.0</version>
 
 	<properties>
