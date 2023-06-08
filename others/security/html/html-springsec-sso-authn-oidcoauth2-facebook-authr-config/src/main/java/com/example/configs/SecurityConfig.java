@@ -16,11 +16,10 @@ public class SecurityConfig {
 
         http            
             .authorizeHttpRequests((requests) -> requests
-				.requestMatchers("/user").hasAnyRole("USER", "ADMIN")
-                .requestMatchers("/admin").hasAnyRole("ADMIN")
+				.requestMatchers("/user").authenticated()
                 .anyRequest().permitAll()
 			)
-            .oauth2Login(Customizer.withDefaults())            
+            .oauth2Login(Customizer.withDefaults())          
             .exceptionHandling(exception -> exception
                 .accessDeniedPage("/access-denied")
             )
