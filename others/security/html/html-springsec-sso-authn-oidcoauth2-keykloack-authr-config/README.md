@@ -82,10 +82,34 @@ Details:
 #### Configure Keycloak Realm
 
 Details:
-* **Realm name**: HelloWorldRealm
+* **Realm Name**: HelloWorldRealm
 
 ![My Image](images/realm-01.png)
 
 ![My Image](images/realm-02.png)
 
 #### Configure Keycloak Client
+
+Details:
+* **Client Name**: HelloWorldClient
+* **Valid redirect URIs**: http://localhost:8080/*
+* **Mappers**: realm roles
+
+![My Image](images/client-01.png)
+
+![My Image](images/client-02.png)
+
+![My Image](images/client-03.png)
+
+![My Image](images/client-04.png)
+
+![My Image](images/client-05.png)
+
+![My Image](images/client-06.png)
+
+![My Image](images/client-07.png)
+
+![My Image](images/client-08.png)
+
+![My Image](images/client-09.png)
+
