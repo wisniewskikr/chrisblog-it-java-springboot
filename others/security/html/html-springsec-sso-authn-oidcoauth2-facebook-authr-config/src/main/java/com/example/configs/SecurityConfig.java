@@ -19,7 +19,13 @@ public class SecurityConfig {
 				.requestMatchers("/user").authenticated()
                 .anyRequest().permitAll()
 			)
-            .oauth2Login(Customizer.withDefaults())          
+            .oauth2Login(Customizer.withDefaults()) 
+            .logout(logout -> logout
+                .invalidateHttpSession(true)
+                .clearAuthentication(true)
+                .logoutSuccessUrl("/")
+                .deleteCookies("JSESSIONID")
+            )         
             .exceptionHandling(exception -> exception
                 .accessDeniedPage("/access-denied")
             )
