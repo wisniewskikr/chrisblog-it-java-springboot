@@ -2,7 +2,7 @@ USAGE
 -----
 
 Usage steps:
-1. Configure OIDC in Github (for more details please check section **Github Configuration**)
+1. Configure OIDC in Google (for more details please check section **Google Configuration**)
 1. Configure application
      * Update properties in file **application.yaml**     
 1. Start application with `mvn spring-boot:run`
@@ -16,17 +16,17 @@ DESCRIPTION
 -----------
 
 ##### Goal
-The goal of this project is to present how to implement **authentication and authorization** in **Java** application type **HTML** with usage **Spring Boot** and **Thymeleaf** frameworks and **Spring Security** dependencies. **Authentication** is handled by **SSO** type **OIDC** provided by vendor **Github**. It means that after connecting application and Github you can log in to application using credentials from Github. **Authorization** is handled by Spring Security configured in **SecurityConfig** class.
+The goal of this project is to present how to implement **authentication and authorization** in **Java** application type **HTML** with usage **Spring Boot** and **Thymeleaf** frameworks and **Spring Security** dependencies. **Authentication** is handled by **SSO** type **OIDC** provided by vendor **Google**. It means that after proper configuration you can log in to application using credentials from Google. **Authorization** is handled by Spring Security configured in **SecurityConfig** class.
 
 ##### Flow
 The following flow takes place in this project:
 1. Using any browser the User sends request to Server for not secured content.
 1. Server sends back response to User via browser with not secured content.
 1. Using any browser the user sends request to Server for secured content.
-1. Servier redirects request to Github.
-1. Github sends back to User via browser response with Login form.
-1. User via browser sends request to Github with credentials from Login form. 
-1. Github authenticates User and then redirects request to Server.
+1. Servier redirects request to Google.
+1. Google sends back to User via browser response with Login form.
+1. User via browser sends request to Google with credentials from Login form. 
+1. Google authenticates User and then redirects request to Server.
 1. Server authorizes User. If everything is ok then Server sends back response to User via browser with secured content.
 
 ##### Launch
@@ -56,21 +56,42 @@ PRECONDITIONS
 * * Open any **Command Line** (for instance "Windonw PowerShell" on Windows OS) tool on **project's folder**. Type commands from section **USAGE** there.
 
 
-GITHUB CONFIGURATION
+GOOGLE CONFIGURATION
 --------------------
 
 Details:
-- Init link: https://github.com
+- Init link: https://console.cloud.google.com
+- Autorized Redirect URIs: http://localhost:8080/login/oauth2/code/google
 
 
-![My Image](images/github-1.png)
+![My Image](images/google-1.png)
 
-![My Image](images/github-2.png)
+![My Image](images/google-2.png)
 
-![My Image](images/github-3.png)
+![My Image](images/google-3.png)
 
-![My Image](images/github-4.png)
+![My Image](images/google-4.png)
 
-![My Image](images/github-5.png)
+![My Image](images/google-5.png)
 
-![My Image](images/github-6.png)
+![My Image](images/google-6.png)
+
+![My Image](images/google-7.png)
+
+![My Image](images/google-8.png)
+
+![My Image](images/google-9.png)
+
+![My Image](images/google-10.png)
+
+![My Image](images/google-11.png)
+
+![My Image](images/google-12.png)
+
+![My Image](images/google-13.png)
+
+![My Image](images/google-14.png)
+
+![My Image](images/google-15.png)
+
+![My Image](images/google-16.png)
