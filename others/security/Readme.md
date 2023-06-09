@@ -72,11 +72,11 @@ html-springsec-source-body-form-custom-authn-inmemory-authr-config
 html-springsec-source-body-params-authn-filter-securitycontextholder-authr-config
 html-springsec-source-url-params-authn-filter-securitycontextholder-authr-config
 html-springsec-sso-authn-saml-okta-authr-config
-html-springsec-sso-authn-oidcoauth2-okta-authr-config
+html-springsec-sso-authn-oidcoauth2-okta-authr-config (logout doesn't work)
 html-springsec-sso-authn-oidcoauth2-keycloak-authr-config
-html-springsec-sso-authn-oidcoauth2-facebook-authr-config
+html-springsec-sso-authn-oidcoauth2-facebook-authr-config (doesn't work)
 html-springsec-sso-authn-oidcoauth2-google-authr-config
-html-springsec-sso-authn-oidcoauth2-github-authr-config
+html-springsec-sso-authn-oidcoauth2-github-authr-config (logout doesn't work)
 
 html-springsec-source-body-form-custom-authn-userdetailsservice-authr-config
 html-springsec-source-body-form-custom-authn-authenticationprovider-authr-config
