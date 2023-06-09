@@ -9,7 +9,7 @@
 		<relativePath/>
 	</parent>
 	<groupId>com.example</groupId>
-	<artifactId>html-springsec-sso-authn-oidcoauth2-facebook-authr-config</artifactId>
+	<artifactId>html-springsec-sso-authn-oidcoauth2-github-authr-config</artifactId>
 	<version>0.1.0</version>
 
 	<properties>
