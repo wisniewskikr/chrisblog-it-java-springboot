@@ -1,3 +1,9 @@
+NOTE
+----
+
+For some reason this project **DOESN'T WORK**.
+
+
 USAGE
 -----
 

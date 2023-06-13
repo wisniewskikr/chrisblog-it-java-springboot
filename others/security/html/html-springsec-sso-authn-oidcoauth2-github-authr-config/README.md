@@ -1,3 +1,9 @@
+NOTE
+----
+
+For some reason logout **DOESN'T WORK** as expected. After returning to secured page user is still logged in.
+
+
 USAGE
 -----
 
