@@ -9,7 +9,7 @@
 		<relativePath/>
 	</parent>
 	<groupId>com.example</groupId>
-	<artifactId>springboot-helloworld-rcp-graphql</artifactId>
+	<artifactId>springboot-helloworld-rcp-graphql-single</artifactId>
 	<version>0.1.0</version>
 
 	<properties>
