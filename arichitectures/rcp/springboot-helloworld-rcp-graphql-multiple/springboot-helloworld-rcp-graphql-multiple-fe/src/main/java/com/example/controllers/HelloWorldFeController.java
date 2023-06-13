@@ -1,5 +1,7 @@
 package com.example.controllers;
 
+import java.io.IOException;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,8 +11,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.reactive.function.client.WebClient;
 
+import com.example.jsons.GraphqlRequestBodyJson;
 import com.example.jsons.HelloWorldBeJson;
 import com.example.jsons.HelloWorldFeJson;
+import com.example.utils.GraphqlSchemaReaderUtil;
 
 @RestController
 public class HelloWorldFeController {
@@ -51,7 +55,10 @@ public class HelloWorldFeController {
 		
 	}
 	
-	private HelloWorldBeJson getHelloWorldBeJson(String uuidFe) {
+	private HelloWorldBeJson getHelloWorldBeJson(String uuidFe) throws IOException {
+
+		GraphqlRequestBodyJson graphQLRequestBody = new GraphqlRequestBodyJson();
+		final String query = GraphqlSchemaReaderUtil.getSchemaFromFileName("getHelloWorldBe");
 		
 		HelloWorldBeJson helloWorldBeJson = null;
 		
