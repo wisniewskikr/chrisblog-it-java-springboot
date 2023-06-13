@@ -57,15 +57,14 @@ public class HelloWorldFeController {
 	
 	private HelloWorldBeJson getHelloWorldBeJson(String uuidFe) throws IOException {
 
-		GraphqlRequestBodyJson graphQLRequestBody = new GraphqlRequestBodyJson();
-		final String query = GraphqlSchemaReaderUtil.getSchemaFromFileName("getHelloWorldBe");
-		
+		GraphqlRequestBodyJson graphQLRequestBody = getGraphQLRequestBody();		
 		HelloWorldBeJson helloWorldBeJson = null;
 		
 		try {
 			
-			helloWorldBeJson = this.webClient.get()
+			helloWorldBeJson = this.webClient.post()
 			        .uri(helloWorldBeUrl)
+					.bodyValue(graphQLRequestBody)
 			        .retrieve()
 			        .bodyToMono(HelloWorldBeJson.class)
 			        .block();
@@ -76,6 +75,15 @@ public class HelloWorldFeController {
 		
 		return helloWorldBeJson;
 		
+	}
+
+	private GraphqlRequestBodyJson getGraphQLRequestBody() throws IOException {
+
+		GraphqlRequestBodyJson graphQLRequestBody = new GraphqlRequestBodyJson();
+		final String query = GraphqlSchemaReaderUtil.getSchemaFromFileName("getHelloWorldBe");
+		graphQLRequestBody.setQuery(query);
+		return graphQLRequestBody;
+
 	}
 	
 }
