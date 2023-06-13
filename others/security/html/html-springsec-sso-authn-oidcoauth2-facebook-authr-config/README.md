@@ -2,7 +2,7 @@ USAGE
 -----
 
 Usage steps:
-1. Configure OIDC in Google (for more details please check section **Google Configuration**)
+1. Configure OIDC in Facebook (for more details please check section **Facebook Configuration**)
 1. Configure application
      * Update properties in file **application.yaml**     
 1. Start application with `mvn spring-boot:run`
@@ -16,17 +16,17 @@ DESCRIPTION
 -----------
 
 ##### Goal
-The goal of this project is to present how to implement **authentication and authorization** in **Java** application type **HTML** with usage **Spring Boot** and **Thymeleaf** frameworks and **Spring Security** dependencies. **Authentication** is handled by **SSO** type **OIDC** provided by vendor **Google**. It means that after proper configuration you can log in to application using credentials from Google. **Authorization** is handled by Spring Security configured in **SecurityConfig** class.
+The goal of this project is to present how to implement **authentication and authorization** in **Java** application type **HTML** with usage **Spring Boot** and **Thymeleaf** frameworks and **Spring Security** dependencies. **Authentication** is handled by **SSO** type **OIDC** provided by vendor **Facebook**. It means that after proper configuration you can log in to application using credentials from Facebook. **Authorization** is handled by Spring Security configured in **SecurityConfig** class.
 
 ##### Flow
 The following flow takes place in this project:
 1. Using any browser the User sends request to Server for not secured content.
 1. Server sends back response to User via browser with not secured content.
 1. Using any browser the user sends request to Server for secured content.
-1. Servier redirects request to Google.
-1. Google sends back to User via browser response with Login form.
-1. User via browser sends request to Google with credentials from Login form. 
-1. Google authenticates User and then redirects request to Server.
+1. Servier redirects request to Facebook.
+1. Facebook sends back to User via browser response with Login form.
+1. User via browser sends request to Facebook with credentials from Login form. 
+1. Facebook authenticates User and then redirects request to Server.
 1. Server authorizes User. If everything is ok then Server sends back response to User via browser with secured content.
 
 ##### Launch
@@ -34,12 +34,12 @@ To launch this application please make sure that the **Preconditions** are met a
 
 ##### Technologies
 This project uses following technologies:
-* **Spring Boot** framework: `https://docs.google.com/document/d/1mvrJT5clbkr9yTj-AQ7YOXcqr2eHSEw2J8n9BMZIZKY/edit?usp=sharing`
-* **Thymeleaf** framework: `https://docs.google.com/document/d/1FTMKfQ5-f6PZ4cW7LSsm5_NeiBgkTe4gzSue2BCX0Lg/edit?usp=sharing`
-* **Security**: `https://docs.google.com/document/d/1nhPRbfD10KJOYsgI1HUwUz95ReiJPbXK85_zMyAptoY/edit?usp=sharing`
-* **Java**: `https://docs.google.com/document/d/119VYxF8JIZIUSk7JjwEPNX1RVjHBGbXHBKuK_1ytJg4/edit?usp=sharing`
-* **Maven**: `https://docs.google.com/document/d/1cfIMcqkWlobUfVfTLQp7ixqEcOtoTR8X6OGo3cU4maw/edit?usp=sharing`
-* **Git**: `https://docs.google.com/document/d/1Iyxy5DYfsrEZK5fxZJnYy5a1saARxd5LyMEscJKSHn0/edit?usp=sharing`
+* **Spring Boot** framework: `https://docs.Facebook.com/document/d/1mvrJT5clbkr9yTj-AQ7YOXcqr2eHSEw2J8n9BMZIZKY/edit?usp=sharing`
+* **Thymeleaf** framework: `https://docs.Facebook.com/document/d/1FTMKfQ5-f6PZ4cW7LSsm5_NeiBgkTe4gzSue2BCX0Lg/edit?usp=sharing`
+* **Security**: `https://docs.Facebook.com/document/d/1nhPRbfD10KJOYsgI1HUwUz95ReiJPbXK85_zMyAptoY/edit?usp=sharing`
+* **Java**: `https://docs.Facebook.com/document/d/119VYxF8JIZIUSk7JjwEPNX1RVjHBGbXHBKuK_1ytJg4/edit?usp=sharing`
+* **Maven**: `https://docs.Facebook.com/document/d/1cfIMcqkWlobUfVfTLQp7ixqEcOtoTR8X6OGo3cU4maw/edit?usp=sharing`
+* **Git**: `https://docs.Facebook.com/document/d/1Iyxy5DYfsrEZK5fxZJnYy5a1saARxd5LyMEscJKSHn0/edit?usp=sharing`
 
 
 PRECONDITIONS
@@ -56,42 +56,23 @@ PRECONDITIONS
 * * Open any **Command Line** (for instance "Windonw PowerShell" on Windows OS) tool on **project's folder**. Type commands from section **USAGE** there.
 
 
-GOOGLE CONFIGURATION
---------------------
+FACEBOOK CONFIGURATION
+----------------------
 
 Details:
-- Init link: https://console.cloud.google.com
-- Autorized Redirect URIs: http://localhost:8080/login/oauth2/code/google
+- Init link: https://developers.facebook.com
 
 
-![My Image](images/google-1.png)
+![My Image](images/facebook-1.png)
 
-![My Image](images/google-2.png)
+![My Image](images/facebook-2.png)
 
-![My Image](images/google-3.png)
+![My Image](images/facebook-3.png)
 
-![My Image](images/google-4.png)
+![My Image](images/facebook-4.png)
 
-![My Image](images/google-5.png)
+![My Image](images/facebook-5.png)
 
-![My Image](images/google-6.png)
+![My Image](images/facebook-6.png)
 
-![My Image](images/google-7.png)
-
-![My Image](images/google-8.png)
-
-![My Image](images/google-9.png)
-
-![My Image](images/google-10.png)
-
-![My Image](images/google-11.png)
-
-![My Image](images/google-12.png)
-
-![My Image](images/google-13.png)
-
-![My Image](images/google-14.png)
-
-![My Image](images/google-15.png)
-
-![My Image](images/google-16.png)
+![My Image](images/facebook-7.png)
