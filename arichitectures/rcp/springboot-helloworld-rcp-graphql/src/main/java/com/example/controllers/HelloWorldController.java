@@ -5,12 +5,12 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.env.Environment;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.graphql.data.method.annotation.QueryMapping;
+import org.springframework.stereotype.Controller;
 
 import com.example.jsons.HelloWorldJson;
 
-@RestController
+@Controller
 public class HelloWorldController {
 	
 	Logger logger = LoggerFactory.getLogger(HelloWorldController.class);
@@ -25,7 +25,7 @@ public class HelloWorldController {
 		this.environment = environment;
 	}
 
-	@RequestMapping(value="/")
+	@QueryMapping
 	public HelloWorldJson helloWorld() {
 				
 		String port = environment.getProperty("local.server.port");
