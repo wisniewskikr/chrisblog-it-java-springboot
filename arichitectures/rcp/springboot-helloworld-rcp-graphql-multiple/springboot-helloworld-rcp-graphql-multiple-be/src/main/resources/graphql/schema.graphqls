@@ -1,9 +1,9 @@
 type Query {
-    helloWorld: HelloWorldJson
+    helloWorldBe: HelloWorldBeJson
 }
 
-type HelloWorldJson {
+type HelloWorldBeJson {
     message: String!
-    port: String!
-    uuid: String!
+    portBe: String!
+    uuidBe: String!
 }

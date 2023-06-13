@@ -8,7 +8,7 @@ import org.springframework.core.env.Environment;
 import org.springframework.graphql.data.method.annotation.QueryMapping;
 import org.springframework.stereotype.Controller;
 
-import com.example.jsons.HelloWorldJson;
+import com.example.jsons.HelloWorldBeJson;
 
 @Controller
 public class HelloWorldController {
@@ -26,14 +26,14 @@ public class HelloWorldController {
 	}
 
 	@QueryMapping
-	public HelloWorldJson helloWorld() {
+	public HelloWorldBeJson helloWorldBe() {
 				
 		String port = environment.getProperty("local.server.port");
 		String uuid = System.getProperty("uuid");
 		
 		logger.info("Application was called with message: {}, port: {} and uuid: {}", message, port, uuid);
 		
-		return new HelloWorldJson(message, port, uuid);
+		return new HelloWorldBeJson(message, port, uuid);
 		
 	}
 	
