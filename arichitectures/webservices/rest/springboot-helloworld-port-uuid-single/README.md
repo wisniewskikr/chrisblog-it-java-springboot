@@ -1,8 +1,17 @@
+USAGE
+-----
+
+Usage steps:
+1. Start application with `mvn spring-boot:run`
+2. Visit `http://localhost:8080`
+3. Clean up environment with `ctrl + C`
+
+
 DESCRIPTION
 -----------
 
 ##### Goal
-The goal of this project is to present how to display **Hello World** message, **port** and **UUID** in a **single** Java application with **Spring Boot** framework.
+The goal of this project is to present how to display **Hello World** message, **port** and **UUID** in a **single** Java **REST** application with usage **Spring Boot** framework.
 
 ##### Flow
 The following flow takes place in this project:
@@ -29,13 +38,4 @@ PRECONDITIONS
 
 ##### Preconditions - Actions
 * **Download** source code using Git 
-* Open any **Command Line** (for instance "Windonw PowerShell" on Windows OS) tool on **project's folder** (exact localization of project you can check in GIT repositories on page `https://github.com/wisniewskikr/chrisblog-it-java`)
-
-
-USAGE
------
-
-Usage steps:
-1. Start application with `mvn spring-boot:run`
-2. Visit `http://localhost:8080`
-3. Clean up environment with `ctrl + C`
+* Open any **Command Line** (for instance "Windonw PowerShell" on Windows OS) tool on **project's folder**.
