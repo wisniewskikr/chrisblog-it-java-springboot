@@ -1,0 +1,9 @@
+type Query {
+    helloWorldBe: HelloWorldBeJson
+}
+
+type HelloWorldBeJson {
+    message: String!
+    portBe: String!
+    uuidBe: String!
+}
