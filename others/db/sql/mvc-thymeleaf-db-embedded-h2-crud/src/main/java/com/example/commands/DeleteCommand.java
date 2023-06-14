@@ -1,8 +1,8 @@
-package com.example.app.commands;
+package com.example.commands;
 
 import java.io.Serializable;
 
-public class EditCommand implements Serializable{
+public class DeleteCommand implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
 	

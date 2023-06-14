@@ -1,10 +1,10 @@
-package com.example.app.commands;
+package com.example.commands;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.example.app.entities.UserEntity;
+import com.example.entities.UserEntity;
 
 public class ListCommand implements Serializable{
 	

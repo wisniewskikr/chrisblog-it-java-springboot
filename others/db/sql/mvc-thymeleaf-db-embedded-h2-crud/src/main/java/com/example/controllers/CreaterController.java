@@ -1,4 +1,4 @@
-package com.example.app.controllers;
+package com.example.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -6,9 +6,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.example.app.commands.CreateCommand;
-import com.example.app.entities.UserEntity;
-import com.example.app.repositories.UserRepository;
+import com.example.commands.CreateCommand;
+import com.example.entities.UserEntity;
+import com.example.repositories.UserRepository;
 
 @Controller
 public class CreaterController {
