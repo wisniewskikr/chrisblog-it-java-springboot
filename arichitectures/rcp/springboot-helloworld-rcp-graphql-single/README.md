@@ -3,20 +3,35 @@ USAGE
 
 Usage steps:
 1. Start application with `mvn spring-boot:run`
-1. Visit `http://localhost:8080/graphiql`
-1. Run following GraphQL query:
-    ```
-    query {
-      helloWorld {
-        message
-        port
-        uuid
-      }
-    }
-    ```
+1. Display result in **GraphQL Console**:
+     * Use any browser and visit `http://localhost:8080/graphiql`
+     * Run following GraphQL query:
+         ```
+         query {
+          helloWorld {
+            message
+            port
+            uuid
+          }
+        }
+       ```
+1. Display result in **Postman**:
+     * Use Postman with URL type POST `http://localhost:8080/graphql`
+     * Choose Body -> GraphQL wit following content:
+         ```
+         query {
+          helloWorld {
+            message
+            port
+            uuid
+          }
+        }
+       ```
 1. Clean up environment with `ctrl + C`
 
 ![My Image](images/image-01.png)
+
+![My Image](images/image-02.png)
 
 
 DESCRIPTION
