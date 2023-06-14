@@ -5,16 +5,16 @@ import java.io.IOException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.env.Environment;
 import org.springframework.graphql.data.method.annotation.QueryMapping;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.reactive.function.client.WebClient;
 
-import com.example.jsons.GraphqlRequestBodyJson;
 import com.example.jsons.HelloWorldBeJson;
 import com.example.jsons.HelloWorldFeJson;
-import com.example.utils.GraphqlSchemaReaderUtil;
+
+import graphql.kickstart.spring.webclient.boot.GraphQLRequest;
+import graphql.kickstart.spring.webclient.boot.GraphQLResponse;
+import graphql.kickstart.spring.webclient.boot.GraphQLWebClient;
 
 @Controller
 public class HelloWorldFeController {
@@ -23,15 +23,12 @@ public class HelloWorldFeController {
 	
 	private Environment environment;
 	
-	private WebClient webClient;
-	
-	@Value("${helloworld.be.url}")
-	private String helloWorldBeUrl;
-	
+	private GraphQLWebClient graphQLWebClient;
+
 	@Autowired
-	public HelloWorldFeController(Environment environment, WebClient webClient) {
+	public HelloWorldFeController(Environment environment, GraphQLWebClient graphQLWebClient) {
 		this.environment = environment;
-		this.webClient = webClient;
+		this.graphQLWebClient = graphQLWebClient;
 	}
 
 	@QueryMapping
@@ -57,33 +54,10 @@ public class HelloWorldFeController {
 	
 	private HelloWorldBeJson getHelloWorldBeJson(String uuidFe) throws IOException {
 
-		GraphqlRequestBodyJson graphQLRequestBody = getGraphQLRequestBody();		
-		HelloWorldBeJson helloWorldBeJson = null;
+		GraphQLRequest request = GraphQLRequest.builder().resource("graphql/getHelloWorldBe.graphql").build();
+        GraphQLResponse response = graphQLWebClient.post(request).block();
+        return response.get("helloWorldBe", HelloWorldBeJson.class);
 		
-		try {
-			
-			helloWorldBeJson = this.webClient.post()
-			        .uri(helloWorldBeUrl)
-					.bodyValue(graphQLRequestBody)
-			        .retrieve()
-			        .bodyToMono(HelloWorldBeJson.class)
-			        .block();
-			
-		} catch (Exception e) {
-			logger.error("Problem with BE connection for FE application with UUID: " + uuidFe, e);
-		}
-		
-		return helloWorldBeJson;
-		
-	}
-
-	private GraphqlRequestBodyJson getGraphQLRequestBody() throws IOException {
-
-		GraphqlRequestBodyJson graphQLRequestBody = new GraphqlRequestBodyJson();
-		final String query = GraphqlSchemaReaderUtil.getSchemaFromFileName("getHelloWorldBe");
-		graphQLRequestBody.setQuery(query);
-		return graphQLRequestBody;
-
 	}
 	
 }
