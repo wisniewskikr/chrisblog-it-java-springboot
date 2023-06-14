@@ -9,20 +9,24 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.example.commands.DeleteCommand;
-import com.example.repositories.UserRepository;
+import com.example.services.UserService;
 
 @Controller
 public class DeleteController {
 	
-	@Autowired
-	private UserRepository userService;
+	private UserService userService;
 	
+	@Autowired
+	public DeleteController(UserService userService) {
+		this.userService = userService;
+	}
+
 	@RequestMapping(value="/delete")
 	public String displayPage(@ModelAttribute("command")DeleteCommand command,
 			HttpSession session) {
 		
 		Long id = (Long)session.getAttribute("selectedUserId");	
-		command.setName(userService.findById(id).get().getName());
+		command.setName(userService.findById(id).getName());
 		return "delete";
 		
 	}

@@ -7,15 +7,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.example.commands.CreateCommand;
-import com.example.entities.UserEntity;
-import com.example.repositories.UserRepository;
+import com.example.dtos.UserDto;
+import com.example.services.UserService;
 
 @Controller
 public class CreaterController {
 	
-	@Autowired
-	private UserRepository userRepository;
+	private UserService userService;
 	
+	@Autowired
+	public CreaterController(UserService userService) {
+		this.userService = userService;
+	}
+
 	@RequestMapping(value="/create", method=RequestMethod.GET)
 	public String displayPage(@ModelAttribute("command")CreateCommand command) {
 		return "create";
@@ -24,7 +28,7 @@ public class CreaterController {
 	@RequestMapping(value="/create", method=RequestMethod.POST)
 	public String handleCreate(@ModelAttribute("command")CreateCommand command) {
 		
-		userRepository.save(new UserEntity(command.getName()));
+		userService.save(new UserDto(command.getName()));
 		return "redirect:/list";
 		
 	}

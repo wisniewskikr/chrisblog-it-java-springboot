@@ -1,6 +1,6 @@
 package com.example.services;
 
-import java.util.Optional;
+import java.util.List;
 
 import org.springframework.stereotype.Service;
 
@@ -30,4 +30,10 @@ public class UserService {
         UserEntity userEntity = userRepository.findById(id).orElseThrow(() -> new RuntimeException("User doesn't exist"));
         return new UserDto(userEntity);
     }
+
+    public List<UserDto> findAll() {
+        List<UserEntity> users = userRepository.findAll();
+        return users.stream().map(user -> new UserDto(user)).toList();
+    }
+    
 }

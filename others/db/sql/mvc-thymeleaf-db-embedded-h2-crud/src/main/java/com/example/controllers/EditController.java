@@ -9,21 +9,25 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.example.commands.EditCommand;
-import com.example.entities.UserEntity;
-import com.example.repositories.UserRepository;
+import com.example.dtos.UserDto;
+import com.example.services.UserService;
 
 @Controller
 public class EditController {
 	
+	private UserService userService;
+
 	@Autowired
-	private UserRepository userService;
-	
+	public EditController(UserService userService) {
+		this.userService = userService;
+	}
+
 	@RequestMapping(value="/edit")
 	public String displayPage(@ModelAttribute("command")EditCommand command,
 			HttpSession session) {
 		
 		Long id = (Long)session.getAttribute("selectedUserId");		
-		command.setName(userService.findById(id).get().getName());
+		command.setName(userService.findById(id).getName());
 		return "edit";
 		
 	}
@@ -33,7 +37,7 @@ public class EditController {
 			HttpSession session) {
 		
 		Long id = (Long)session.getAttribute("selectedUserId");
-		userService.save(new UserEntity(id, command.getName()));
+		userService.save(new UserDto(id, command.getName()));
 		return "redirect:/list";
 		
 	}
