@@ -1,5 +1,7 @@
 package com.example.entities;
 
+import com.example.dtos.UserDto;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -27,7 +29,12 @@ public class UserEntity {
 	public UserEntity(Long id, String name) {
 		this.id = id;
 		this.name = name;
-	}	
+	}
+	
+	public UserEntity(UserDto userDto) {
+		this.id = userDto.getId();
+		this.name = userDto.getName();
+	}
 
 	public Long getId() {
 		return id;
