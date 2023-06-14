@@ -8,6 +8,7 @@ Usage steps:
      * View user
      * Update user
      * Delete user
+1. (Optional) In any browser open H2 Console (credentials admin / admin123) with `http://localhos:8080/h2-console`     
 1. In Command Line tool clean up environment with `ctrl + C`
 
 
