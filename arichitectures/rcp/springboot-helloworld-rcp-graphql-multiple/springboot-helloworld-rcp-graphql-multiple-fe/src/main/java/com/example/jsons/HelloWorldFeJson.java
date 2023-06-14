@@ -1,17 +1,11 @@
 package com.example.jsons;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 public class HelloWorldFeJson {
 	
 	private String message;
-	@JsonProperty(value = "port FE")
 	private String portFe;
-	@JsonProperty(value = "uuid FE")
 	private String uuidFe;
-	@JsonProperty(value = "port BE")
 	private String portBe;
-	@JsonProperty(value = "uuid BE")
 	private String uuidBe;
 	
 	public HelloWorldFeJson() {}

@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.env.Environment;
 import org.springframework.graphql.data.method.annotation.QueryMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.reactive.function.client.WebClient;
 
 import com.example.jsons.GraphqlRequestBodyJson;
@@ -16,7 +16,7 @@ import com.example.jsons.HelloWorldBeJson;
 import com.example.jsons.HelloWorldFeJson;
 import com.example.utils.GraphqlSchemaReaderUtil;
 
-@RestController
+@Controller
 public class HelloWorldFeController {
 	
 	Logger logger = LoggerFactory.getLogger(HelloWorldFeController.class);
