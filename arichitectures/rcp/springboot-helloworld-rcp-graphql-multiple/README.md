@@ -2,9 +2,60 @@ USAGE
 -----
 
 Usage steps:
-1. In the first Command Line tool start BE application with `mvn -f ./springboot-helloworld-port-uuid-multiple-be spring-boot:run`
-1. In the second Command Line tool start BE application with `mvn -f ./springboot-helloworld-port-uuid-multiple-fe spring-boot:run`
-1. Visit `http://localhost:8080`
+1. In the first Command Line tool start **application BE** with `mvn -f ./springboot-helloworld-rcp-graphql-multiple-be spring-boot:run`
+1. (Optional) Display **application BE** result in **GraphQL Console** (for more details check section **Printscreens of BE application**)
+     * Use any browser and visit `http://localhost:9090/graphiql`
+     * Run following GraphQL query:
+         ```
+         query {
+          helloWorldBe {
+            message
+            portBe
+            uuidBe
+          }
+        }
+       ```
+1. (Optional) Display **application BE** result in **Postman** (for more details check section **Printscreens of BE application**)
+     * Use Postman with URL type POST `http://localhost:9090/graphql`
+     * Choose Body -> GraphQL wit following content:
+         ```
+         query {
+          helloWorldBe {
+            message
+            portBe
+            uuidBe
+          }
+        }
+       ```
+1. In the second Command Line tool start **application FE** with `mvn -f ./springboot-helloworld-rcp-graphql-multiple-fe spring-boot:run`
+1. Display **application FE** result in **GraphQL Console** (for more details check section **Printscreens of FE application**)
+     * Use any browser and visit `http://localhost:8080/graphiql`
+     * Run following GraphQL query:
+         ```
+         query {
+          helloWorldFe {
+            message
+            portBe
+            uuidBe
+            portFe
+            uuidFe
+          }
+        }
+       ```
+1. Display **application FE** result in **Postman** (for more details check section **Printscreens of FE application**)
+     * Use Postman with URL type POST `http://localhost:8080/graphql`
+     * Choose Body -> GraphQL wit following content:
+         ```
+         query {
+          helloWorldFe {
+            message
+            portBe
+            uuidBe
+            portFe
+            uuidFe
+          }
+        }
+       ```
 1. Clean up environment:
     * In the first Command Line with `ctrl + C`
     * In the second Command Line with `ctrl + C`
@@ -14,14 +65,14 @@ DESCRIPTION
 -----------
 
 ##### Goal
-The goal of this project is to present how to display **Hello World** message, **port FE**, **UUID FE**, **port BE** and **UUID BE** for **multiple** Java applications with **Spring Boot** framework. FE means Front-End application - application which is visible for user. BE means Back-End application - application which is not visible for user. UUID means unique id number for application.
+The goal of this project is to present how to implement communication between **multiple Java** applications type **GraphQL** with usage **Spring Boot** framework. **Application BE** provides message, port BE and uuid BE. **Application FE** displays message, port FE, uuid FE, port BE and uuid BE.
 
 ##### Flow
 The following flow takes place in this project:
-1. User via any browser sends request to FE application for a content
-1. FE application sends request to BE application for a content
-1. BE application sends back response with message, BE port and BE UUID to FE application
-1. FE application sends back response with message, FE port, FE UUID, BE port and BE UUID to User via browser
+1. User via tool GraphQL Console sends request to FE application for a content
+1. FE application sends request to BE application for a content. Communication type GraphQL is used
+1. BE application sends back response with message, BE port and BE UUID to FE application. Communication type GraphQL is used
+1. FE application sends back response with message, FE port, FE UUID, BE port and BE UUID to User via GraphQL Console
 
 ##### Launch
 To launch this application please make sure that the **Preconditions** are met and then follow instructions from **Usage** section.
@@ -46,3 +97,19 @@ PRECONDITIONS
 ##### Preconditions - Actions
 * **Download** source code using Git 
 * Open any **Command Line** (for instance "Windonw PowerShell" on Windows OS) tool on the main **project's folder**.
+
+
+PRINTSCREENS OF BE APPLICATION
+------------------------------
+
+![My Image](images/image-01.png)
+
+![My Image](images/image-02.png)
+
+
+PRINTSCREENS OF FE APPLICATION
+------------------------------
+
+![My Image](images/image-03.png)
+
+![My Image](images/image-04.png)
