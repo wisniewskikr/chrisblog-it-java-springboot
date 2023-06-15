@@ -9,7 +9,7 @@
 		<relativePath/>
 	</parent>
 	<groupId>com.example</groupId>
-	<artifactId>springboot-helloworld-html-thymeleaf-db-embedded-h2-crud</artifactId>
+	<artifactId>springboot-helloworld-db-embedded-h2-html-thymeleaf</artifactId>
 	<version>0.1.0</version>
 
 	<properties>
