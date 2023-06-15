@@ -1,4 +1,4 @@
-package com.example.app.commands.greeting;
+package com.example.commands;
 
 public class GreetingCommand {
 	

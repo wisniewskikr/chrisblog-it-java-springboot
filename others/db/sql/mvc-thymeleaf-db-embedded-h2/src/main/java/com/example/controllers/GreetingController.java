@@ -1,4 +1,4 @@
-package com.example.app.controllers.greeting;
+package com.example.controllers;
 
 import java.util.Optional;
 
@@ -8,9 +8,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.example.app.commands.greeting.GreetingCommand;
-import com.example.app.entities.GreetingEntity;
-import com.example.app.repositories.GreetingRepository;
+import com.example.commands.GreetingCommand;
+import com.example.entities.GreetingEntity;
+import com.example.repositories.GreetingRepository;
 
 
 @Controller
