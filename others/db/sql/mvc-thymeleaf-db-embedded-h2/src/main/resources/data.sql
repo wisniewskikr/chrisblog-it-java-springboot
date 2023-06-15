@@ -1,1 +1,1 @@
-insert into GREETING (id, text) values (1,'Hello World!');
+insert into HELLO_WORLD (id, text) values (1,'Hello World!');
