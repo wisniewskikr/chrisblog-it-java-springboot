@@ -17,13 +17,13 @@ import com.example.repositories.HelloWorldRepository;
 public class HelloWorldController {
 	
 	@Autowired
-	private HelloWorldRepository greetingRepository;
+	private HelloWorldRepository helloWorldRepository;
 
 	@RequestMapping(value="/", method = RequestMethod.GET)
-	public String greeting(@ModelAttribute("command") HelloWorldCommand command) {
+	public String helloWorld(@ModelAttribute("command") HelloWorldCommand command) {
 		
-		Optional<HelloWorldEntity> greetingEntity = greetingRepository.findById(1L);		
-		command.setText(greetingEntity.get().getText());
+		Optional<HelloWorldEntity> helloWorldEntity = helloWorldRepository.findById(1L);		
+		command.setText(helloWorldEntity.get().getText());
 		return "helloworld";
 		
 	}
