@@ -3,11 +3,23 @@ USAGE
 
 Usage steps:
 1. In any Command Line tool start application with `mvn spring-boot:run`
-1. In any Browser open application with `http://localhost:8080`
-     * Create new user
-     * View user
-     * Update user
-     * Delete user
+1. In Postman tool create user using POST method with `http://localhost:8080/create`
+     * Body -> raw - JSON
+     ```
+     {
+          "name" : "Chris"
+     }
+     ```
+1. In Postman tool view user using GET method with `http://localhost:8080/view/1`
+1. In Postman tool update user using PUT method with `http://localhost:8080/edit/1`
+     * Body -> raw - JSON
+     ```
+     {
+          "name" : "John"
+     }
+     ```
+1. In Postman tool view list of users using GET method with `http://localhost:8080/list`
+1. In Postman tool delete user using DELETE method with `http://localhost:8080/delete/1`
 1. (Optional) In any browser open H2 Console (credentials admin / admin123) with `http://localhos:8080/h2-console`     
 1. In Command Line tool clean up environment with `ctrl + C`
 
@@ -25,25 +37,17 @@ USAGE PRINTSCREENS
 
 ![My Image](images/image-05.png)
 
-![My Image](images/image-06.png)
-
-![My Image](images/image-07.png)
-
-![My Image](images/image-08.png)
-
-![My Image](images/image-09.png)
-
 
 DESCRIPTION
 -----------
 
 ##### Goal
-The goal of this project is to present how to implement **CRUD (Create, Read, Update, Delete)** operations on **embedded database H2** in **Java** application type **HTML** with usage **Spring Boot** and **Thymeleaf** frameworks.
+The goal of this project is to present how to implement **CRUD (Create, Read, Update, Delete)** operations on **embedded database H2** in **Java** application type **API REST** with usage **Spring Boot** framework.
 
 ##### Flow
 The following flow takes place in this project:
-1. User via any Browser sends request to application for a content. Request can be type CRUD: Create, Read, Update, Delete
-1. Application sends back response to User via Browser
+1. User via Postman sends request to application for a content. Request can be type CRUD: Create, Read, Update, Delete
+1. Application sends back response to User via Postman
 
 ##### Launch
 To launch this application please make sure that the **Preconditions** are met and then follow instructions from **Usage** section.
@@ -54,7 +58,6 @@ This project uses following technologies:
 * **Java**: `https://docs.google.com/document/d/119VYxF8JIZIUSk7JjwEPNX1RVjHBGbXHBKuK_1ytJg4/edit?usp=sharing`
 * **Maven**: `https://docs.google.com/document/d/1cfIMcqkWlobUfVfTLQp7ixqEcOtoTR8X6OGo3cU4maw/edit?usp=sharing`
 * **Git**: `https://docs.google.com/document/d/1Iyxy5DYfsrEZK5fxZJnYy5a1saARxd5LyMEscJKSHn0/edit?usp=sharing`
-* **Thymeleaf**: `https://docs.google.com/document/d/1FTMKfQ5-f6PZ4cW7LSsm5_NeiBgkTe4gzSue2BCX0Lg/edit?usp=sharing`
 
 
 PRECONDITIONS
