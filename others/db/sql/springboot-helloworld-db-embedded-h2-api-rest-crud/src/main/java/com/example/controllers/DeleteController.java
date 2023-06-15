@@ -17,7 +17,7 @@ public class DeleteController {
 	}
 	
 	@DeleteMapping("/delete/{id}")
-	public String handleButtonEdit(@PathVariable Long id) {
+	public String delete(@PathVariable Long id) {
 		
 		userService.deleteById(id);
 		return "Deleted";

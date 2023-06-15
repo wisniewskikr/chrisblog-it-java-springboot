@@ -20,7 +20,7 @@ public class CreaterController {
 	}
 	
 	@PostMapping("/create")
-	public UserDto handleCreate(@RequestBody CreateCommand command) {		
+	public UserDto create(@RequestBody CreateCommand command) {		
 		return userService.save(new UserDto(command.getName()));		
 	}
 

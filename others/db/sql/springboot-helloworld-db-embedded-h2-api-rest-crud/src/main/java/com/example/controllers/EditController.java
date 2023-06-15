@@ -1,18 +1,15 @@
 package com.example.controllers;
 
-import jakarta.servlet.http.HttpSession;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
 import com.example.commands.EditCommand;
 import com.example.dtos.UserDto;
 import com.example.services.UserService;
 
-@Controller
+@RestController
 public class EditController {
 	
 	private UserService userService;
@@ -21,25 +18,10 @@ public class EditController {
 	public EditController(UserService userService) {
 		this.userService = userService;
 	}
-
-	@RequestMapping(value="/edit")
-	public String displayPage(@ModelAttribute("command")EditCommand command,
-			HttpSession session) {
-		
-		Long id = (Long)session.getAttribute("selectedUserId");		
-		command.setName(userService.findById(id).getName());
-		return "edit";
-		
-	}
 	
-	@RequestMapping(value="/edit", method=RequestMethod.POST)
-	public String handleButtonEdit(@ModelAttribute("command")EditCommand command,
-			HttpSession session) {
-		
-		Long id = (Long)session.getAttribute("selectedUserId");
-		userService.save(new UserDto(id, command.getName()));
-		return "redirect:/list";
-		
+	@PutMapping("/edit/{id}")
+	public UserDto edit(@PathVariable Long id, @RequestBody EditCommand command) {		
+		return userService.save(new UserDto(id, command.getName()));		
 	}
 
 }
