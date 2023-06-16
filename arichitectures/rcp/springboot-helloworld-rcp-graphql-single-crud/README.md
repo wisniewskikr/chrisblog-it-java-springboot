@@ -3,25 +3,55 @@ USAGE
 
 Usage steps:
 1. In any Command Line tool start application with `mvn spring-boot:run`
-1. In Postman tool create user using POST method with `http://localhost:8080/create`
-     * Body -> raw - JSON
-     ```
-     {
-          "name" : "Chris"
-     }
-     ```
-1. In Postman tool view user using GET method with `http://localhost:8080/view/1`
-1. In Postman tool update user using PUT method with `http://localhost:8080/edit/1`
-     * Body -> raw - JSON
-     ```
-     {
-          "name" : "John"
-     }
-     ```
-1. In Postman tool view list of users using GET method with `http://localhost:8080/list`
-1. In Postman tool delete user using DELETE method with `http://localhost:8080/delete/1`
-1. (Optional) In any browser open H2 Console (credentials admin / admin123) with `http://localhos:8080/h2-console`     
-1. In Command Line tool clean up environment with `ctrl + C`
+1. In any Browser open **GraphQL Console** with `http://localhost:8080/graphiql`
+1. In GraphQL Console **create user**:
+     * Run following GraphQL command:
+         ```
+         mutation {
+          create(command: { name: "Chris" }) {
+               id
+               name
+          }
+        }
+        ```
+1. In GraphQL Console **view user**:
+     * Run following GraphQL command:
+         ```
+         query {
+          view(id: 1) {
+               id
+               name
+          }
+        }
+        ```
+1. In GraphQL Console **edit user**:
+     * Run following GraphQL command:
+         ```
+         mutation {
+          edit(id: 1, command: {name: "John"}) {
+               id
+               name
+          }
+        }
+        ```
+1. In GraphQL Console display **list of users**:
+     * Run following GraphQL command:
+         ```
+         query {
+          list {
+               id
+               name
+          }
+        }
+        ```
+1. In GraphQL Console **delete user**:
+     * Run following GraphQL command:
+         ```
+         mutation {
+          delete(id: 1)
+        }
+        ```
+1. Clean up environment with `ctrl + C`
 
 
 USAGE PRINTSCREENS
@@ -42,12 +72,12 @@ DESCRIPTION
 -----------
 
 ##### Goal
-The goal of this project is to present how to implement **CRUD (Create, Read, Update, Delete)** operations on **embedded database H2** in **Java** application type **API REST** with usage **Spring Boot** framework.
+The goal of this project is to present how to implement **CRUD (Create, Read, Update, Delete)** operations in **Java** application type **GraphQL** with usage **Spring Boot** framework.
 
 ##### Flow
 The following flow takes place in this project:
-1. User via Postman sends request to application for a content. Request can be type CRUD: Create, Read, Update, Delete
-1. Application sends back response to User via Postman
+1. User via tool GraphiQL sends request to application for a content. Content can be type CRUD: Create, Read, Update or Delete
+1. Application HelloWorld sends back response to User via tool GraphiQL.
 
 ##### Launch
 To launch this application please make sure that the **Preconditions** are met and then follow instructions from **Usage** section.
