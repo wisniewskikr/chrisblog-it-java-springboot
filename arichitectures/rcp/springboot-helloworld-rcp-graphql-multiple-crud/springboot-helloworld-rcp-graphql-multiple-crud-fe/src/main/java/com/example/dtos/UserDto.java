@@ -1,7 +1,5 @@
 package com.example.dtos;
 
-import com.example.entities.UserEntity;
-
 public class UserDto {	
 
 	private Long id;	
@@ -16,11 +14,6 @@ public class UserDto {
 	public UserDto(Long id, String name) {
 		this.id = id;
 		this.name = name;
-	}
-	
-	public UserDto(UserEntity userEntity) {
-		this.id = userEntity.getId();
-		this.name = userEntity. getName();
 	}
 
 	public Long getId() {

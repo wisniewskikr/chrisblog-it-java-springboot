@@ -1,0 +1,6 @@
+mutation {
+ create(command: { name: "Chris" }) {
+      id
+      name
+ }
+}
