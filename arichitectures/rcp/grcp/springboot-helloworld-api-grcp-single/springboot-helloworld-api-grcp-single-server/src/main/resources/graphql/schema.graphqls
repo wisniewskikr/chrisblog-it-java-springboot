@@ -1,0 +1,11 @@
+type Query {
+    helloWorldFe: HelloWorldFeJson
+}
+
+type HelloWorldFeJson {
+    message: String!
+    portFe: String!
+    uuidFe: String!
+    portBe: String!
+    uuidBe: String!
+}
