@@ -4,6 +4,7 @@ type Query {
 
 type Mutation {
     create(command: CreateCommand!): UserDto
+    edit(id: ID!, command: EditCommand!): UserDto
 }
 
 type UserDto {
@@ -12,5 +13,9 @@ type UserDto {
 }
 
 input CreateCommand {
+    name: String!
+}
+
+input EditCommand {
     name: String!
 }
