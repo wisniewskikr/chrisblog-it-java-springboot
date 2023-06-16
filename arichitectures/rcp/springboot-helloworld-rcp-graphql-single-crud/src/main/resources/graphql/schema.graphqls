@@ -1,0 +1,8 @@
+type Query {
+    view(id: ID!): UserDto
+}
+
+type UserDto {
+    id: ID!
+    name: String!
+}
