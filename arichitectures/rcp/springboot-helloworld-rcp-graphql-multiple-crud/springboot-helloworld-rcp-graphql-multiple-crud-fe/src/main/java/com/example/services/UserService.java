@@ -37,7 +37,7 @@ public class UserService {
     public void deleteById(Long id) {
         GraphQLRequest request = GraphQLRequest.builder().resource("graphql/delete.graphql").variables(Map.of("id", id)).build();
         GraphQLResponse response = graphQLWebClient.post(request).block();
-        response.get("delete", null);
+        response.get("delete", String.class);
     }
     
     public UserDto findById(Long id) {
