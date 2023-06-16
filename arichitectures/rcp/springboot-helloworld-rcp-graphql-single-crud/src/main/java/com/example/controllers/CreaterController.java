@@ -1,15 +1,14 @@
 package com.example.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
-
+import org.springframework.graphql.data.method.annotation.Argument;
+import org.springframework.graphql.data.method.annotation.MutationMapping;
+import org.springframework.stereotype.Controller;
 import com.example.commands.CreateCommand;
 import com.example.dtos.UserDto;
 import com.example.services.UserService;
 
-@RestController
+@Controller
 public class CreaterController {
 	
 	private UserService userService;
@@ -19,8 +18,8 @@ public class CreaterController {
 		this.userService = userService;
 	}
 	
-	@PostMapping("/create")
-	public UserDto create(@RequestBody CreateCommand command) {		
+	@MutationMapping
+	public UserDto create(@Argument CreateCommand command) {		
 		return userService.save(new UserDto(command.getName()));		
 	}
 

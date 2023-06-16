@@ -2,7 +2,15 @@ type Query {
     view(id: ID!): UserDto
 }
 
+type Mutation {
+    create(command: CreateCommand!): UserDto
+}
+
 type UserDto {
     id: ID!
+    name: String!
+}
+
+input CreateCommand {
     name: String!
 }
