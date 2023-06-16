@@ -1,6 +1,6 @@
 type Query {
     view(id: ID!): UserDto,
-    list(): [UserDto]
+    list: [UserDto]
 }
 
 type Mutation {
