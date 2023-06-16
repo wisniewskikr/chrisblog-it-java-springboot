@@ -1,7 +1,0 @@
-query {
-    helloWorldBe {
-        message
-        portBe
-        uuidBe
-    }
-}

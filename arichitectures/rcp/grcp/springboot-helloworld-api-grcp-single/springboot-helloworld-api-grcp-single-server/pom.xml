@@ -24,11 +24,6 @@
 		
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-webflux</artifactId>
-		</dependency>
-		
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-actuator</artifactId>
 		</dependency>
 
@@ -40,15 +35,12 @@
 		</dependency>
 
 		<dependency>
-      		<groupId>org.springframework.boot</groupId>
-      		<artifactId>spring-boot-starter-graphql</artifactId>
+      		<groupId>com.example</groupId>
+      		<artifactId>springboot-helloworld-api-grcp-single-common</artifactId>
+			<version>0.1.0</version>
     	</dependency>
 
-		<dependency>
-  			<groupId>com.graphql-java-kickstart</groupId>
-  			<artifactId>graphql-webclient-spring-boot-starter</artifactId>
-  			<version>2.0.0</version>
-		</dependency>
+
 	</dependencies>
 
 	<build>
