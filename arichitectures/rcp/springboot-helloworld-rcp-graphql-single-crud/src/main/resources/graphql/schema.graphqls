@@ -3,7 +3,7 @@ type Query {
 }
 
 type Mutation {
-    create(command: CreateCommand!): UserDto
+    create(command: CreateCommand!): UserDto,
     edit(id: ID!, command: EditCommand!): UserDto
 }
 
