@@ -1,0 +1,6 @@
+mutation {
+ edit(id: 1, command: {name: "John"}) {
+      id
+      name
+ }
+}
