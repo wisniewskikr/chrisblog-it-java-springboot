@@ -1,5 +1,8 @@
-package com.example.grpc;
+package com.example.clients;
 
+import com.example.grpc.HelloWorldRequest;
+import com.example.grpc.HelloWorldServiceGrpc;
+import com.example.grpc.HelloWroldResponse;
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
 
