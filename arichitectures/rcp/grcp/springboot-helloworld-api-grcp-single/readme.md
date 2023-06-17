@@ -4,6 +4,7 @@ USAGE
 > **Note** Please be aware that this example requires tool **grpcurl**. For more details please check section **Preconditions**.
 
 Usage steps:
+1. In first Command Line tool build Grpc API classes basing on **HelloWorld.proto** file with `mvn clean install`
 1. In first Command Line tool start application with `mvn spring-boot:run`
 1. In second Command Line tool play with API:
      * Call application with `grpcurl --plaintext -d '{"name": "Chris"}' localhost:6565 HelloWorldService/GetHelloWorld`
