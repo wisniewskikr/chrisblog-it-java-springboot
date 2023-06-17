@@ -2,6 +2,7 @@ USAGE
 -----
 
 Usage steps:
+1. In the first Command Line tool build GRPC API classes basing on **HelloWorld.proto** file with `mvn clean install`
 1. In the first Command Line tool start **application BE** with `mvn -f ./springboot-helloworld-api-grcp-multiple-be spring-boot:run`
 1. In the second Command Line tool start **application FE** with `mvn -f ./springboot-helloworld-api-grcp-multiple-fe spring-boot:run`
 1. In Postman tool with GET method diplay REST API result of GRPC API call with `http:\\localhost:8080`
