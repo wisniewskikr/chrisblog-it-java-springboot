@@ -3,7 +3,7 @@ service CreteService {
 }
 
 service ListService {
-    rpc List() return ([UserDto]) {};
+    rpc List() return (stream UserDto) {};
 }
 
 message CreateCommand {
