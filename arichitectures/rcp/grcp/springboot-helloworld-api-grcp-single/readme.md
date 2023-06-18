@@ -7,9 +7,9 @@ Usage steps:
 1. In first Command Line tool build Grpc API classes basing on **HelloWorld.proto** file with `mvn clean install`
 1. In first Command Line tool start application with `mvn spring-boot:run`
 1. In second Command Line tool play with API:
-     * Call application with `grpcurl --plaintext -d '{"name": "Chris"}' localhost:6565 HelloWorldService/GetHelloWorld`
-     * (Optional) Display list of endpoints with `grpcurl --plaintext localhost:6565 list`
-     * (Optional) Display list of methods in specific endpoint with `grpcurl --plaintext localhost:6565 list HelloWorldService`
+     * Call application with `grpcurl --plaintext -d '{"name": "Chris"}' localhost:9090 HelloWorldService/GetHelloWorld`
+     * (Optional) Display list of endpoints with `grpcurl --plaintext localhost:9090 list`
+     * (Optional) Display list of methods in specific endpoint with `grpcurl --plaintext localhost:9090 list HelloWorldService`
 1. (Optional) In IDE run class **HelloWorldClient** and method **main()**     
 1. In first Command Line tool clean up environment with `ctrl + C`
 
