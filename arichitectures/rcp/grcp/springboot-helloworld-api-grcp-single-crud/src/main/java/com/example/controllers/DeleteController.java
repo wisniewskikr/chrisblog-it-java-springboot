@@ -1,12 +1,8 @@
 package com.example.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
 import com.example.services.UserService;
 
-@RestController
 public class DeleteController {
 	
 	private UserService userService;
@@ -16,8 +12,7 @@ public class DeleteController {
 		this.userService = userService;
 	}
 	
-	@DeleteMapping("/delete/{id}")
-	public String delete(@PathVariable Long id) {
+	public String delete(Long id) {
 		
 		userService.deleteById(id);
 		return "Deleted";

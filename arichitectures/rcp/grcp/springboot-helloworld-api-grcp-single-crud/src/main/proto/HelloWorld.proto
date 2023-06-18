@@ -1,0 +1,16 @@
+service CreteService {
+    rpc Create(CreateCommand) returns (UserDto) {};
+}
+
+service ListService {
+    rpc List() return ([UserDto]) {};
+}
+
+message CreateCommand {
+    string name = 1;
+}
+
+message UserDto {
+    uint64 id = 1
+    string name = 2
+}
