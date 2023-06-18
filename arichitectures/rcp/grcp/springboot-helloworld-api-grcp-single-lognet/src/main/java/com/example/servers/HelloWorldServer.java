@@ -1,11 +1,11 @@
 package com.example.servers;
 
+import org.lognet.springboot.grpc.GRpcService;
+
 import com.example.grpc.HelloWorldServiceGrpc;
 import com.example.grpc.HelloWroldResponse;
 
-import net.devh.boot.grpc.server.service.GrpcService;
-
-@GrpcService
+@GRpcService
 public class HelloWorldServer extends HelloWorldServiceGrpc.HelloWorldServiceImplBase {
 
     @Override
