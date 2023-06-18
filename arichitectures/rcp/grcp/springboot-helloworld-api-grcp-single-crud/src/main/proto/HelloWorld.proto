@@ -1,3 +1,8 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "com.example.grpc";
+
 service CreteService {
     rpc Create(CreateCommand) returns (UserDto) {};
 }
@@ -11,6 +16,6 @@ message CreateCommand {
 }
 
 message UserDto {
-    uint64 id = 1
-    string name = 2
+    uint64 id = 1;
+    string name = 2;
 }
