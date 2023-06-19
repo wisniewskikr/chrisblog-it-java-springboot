@@ -7,6 +7,10 @@ service CreateService {
     rpc Create(CreateCommandGrpc) returns (UserDtoGrpc) {};
 }
 
+service ListService {
+    rpc List(ListCommandGrpc) returns (stream UserDtoGrpc) {};
+}
+
 message CreateCommandGrpc {
     string name = 1;
 }
@@ -15,3 +19,5 @@ message UserDtoGrpc {
     uint64 id = 1;
     string name = 2;
 }
+
+message ListCommandGrpc {}
