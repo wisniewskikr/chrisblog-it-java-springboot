@@ -19,6 +19,7 @@ public class DeleteController extends DeleteServiceGrpc.DeleteServiceImplBase {
 		this.userService = userService;
 	}
 
+	@Override
 	public void delete(com.example.grpc.DeleteCommandGrpc commandGrpc,
         io.grpc.stub.StreamObserver<com.example.grpc.DeleteResponseGrpc> responseObserver) {
       
