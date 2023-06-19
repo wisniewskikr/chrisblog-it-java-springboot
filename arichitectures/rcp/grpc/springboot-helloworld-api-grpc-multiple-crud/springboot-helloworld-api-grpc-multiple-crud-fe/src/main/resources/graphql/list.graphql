@@ -1,0 +1,6 @@
+query {
+ list {
+      id
+      name
+ }
+}

@@ -1,0 +1,6 @@
+query {
+ view(id: 1) {
+      id
+      name
+ }
+}
