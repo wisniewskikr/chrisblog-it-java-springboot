@@ -8,9 +8,9 @@
     <artifactId>springboot-helloworld-api-grpc-multiple-crud</artifactId>
     <version>0.1.0</version>
     <modules>
-		<module>springboot-helloworld-api-grcp-multiple-crud-common</module>
-    	<module>springboot-helloworld-api-grcp-multiple-crud-fe</module>
-        <module>springboot-helloworld-api-grcp-multiple-crud-be</module>
+		<module>springboot-helloworld-api-grpc-multiple-crud-common</module>
+    	<module>springboot-helloworld-api-grpc-multiple-crud-fe</module>
+        <module>springboot-helloworld-api-grpc-multiple-crud-be</module>
     </modules>
     <packaging>pom</packaging>
 
