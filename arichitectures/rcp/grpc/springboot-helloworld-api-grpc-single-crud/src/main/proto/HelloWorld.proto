@@ -11,8 +11,8 @@ service ListService {
     rpc List(ListCommandGrpc) returns (stream UserDtoGrpc) {};
 }
 
-message CreateCommandGrpc {
-    string name = 1;
+service ViewService {
+    rpc View(ViewCommandGrpc) returns (UserDtoGrpc) {};
 }
 
 message UserDtoGrpc {
@@ -20,4 +20,12 @@ message UserDtoGrpc {
     string name = 2;
 }
 
+message CreateCommandGrpc {
+    string name = 1;
+}
+
 message ListCommandGrpc {}
+
+message ViewCommandGrpc {
+    uint64 id = 1;
+}
