@@ -1,14 +1,16 @@
 package com.example.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.graphql.data.method.annotation.Argument;
-import org.springframework.graphql.data.method.annotation.MutationMapping;
-import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+
 import com.example.commands.EditCommand;
 import com.example.dtos.UserDto;
 import com.example.services.UserService;
 
-@Controller
+@RestController
 public class EditController {
 	
 	private UserService userService;
@@ -18,8 +20,8 @@ public class EditController {
 		this.userService = userService;
 	}
 	
-	@MutationMapping
-	public UserDto edit(@Argument Long id, @Argument EditCommand command) {		
+	@PutMapping("/edit/{id}")
+	public UserDto edit(@PathVariable Long id, @RequestBody EditCommand command) {		
 		return userService.save(new UserDto(id, command.getName()));		
 	}
 

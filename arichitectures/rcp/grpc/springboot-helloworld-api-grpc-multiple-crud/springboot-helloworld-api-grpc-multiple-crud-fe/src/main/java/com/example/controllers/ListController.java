@@ -2,12 +2,13 @@ package com.example.controllers;
 
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.graphql.data.method.annotation.QueryMapping;
-import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
+
 import com.example.dtos.UserDto;
 import com.example.services.UserService;
 
-@Controller
+@RestController
 public class ListController {
 	
 	private UserService userService;
@@ -17,7 +18,7 @@ public class ListController {
 		this.userService = userService;
 	}
 
-	@QueryMapping
+	@GetMapping("/list")
 	public List<UserDto> list() {		
 		return userService.findAll();
 	}
