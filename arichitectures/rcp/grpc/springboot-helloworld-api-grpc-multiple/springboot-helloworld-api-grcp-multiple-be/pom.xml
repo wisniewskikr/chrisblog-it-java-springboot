@@ -11,15 +11,14 @@
 	<properties>
 		<maven.compiler.source>17</maven.compiler.source>
 		<maven.compiler.target>17</maven.compiler.target>
-		<lognet.grpc.version>4.7.1</lognet.grpc.version>
 		<java.version>17</java.version>
 	</properties>
 
 	<dependencies>
 		<dependency>
-			<groupId>io.github.lognet</groupId>
-			<artifactId>grpc-spring-boot-starter</artifactId>
-			<version>${lognet.grpc.version}</version>
+			<groupId>net.devh</groupId>
+			<artifactId>grpc-server-spring-boot-starter</artifactId>
+			<version>2.14.0.RELEASE</version>
 		</dependency>
 
 		<dependency>
