@@ -5,7 +5,7 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.example</groupId>
-	<artifactId>springboot-helloworld-api-grcp-single</artifactId>
+	<artifactId>springboot-helloworld-api-grpc-single-lognet</artifactId>
 	<version>1.0-SNAPSHOT</version>
 
 	<properties>
