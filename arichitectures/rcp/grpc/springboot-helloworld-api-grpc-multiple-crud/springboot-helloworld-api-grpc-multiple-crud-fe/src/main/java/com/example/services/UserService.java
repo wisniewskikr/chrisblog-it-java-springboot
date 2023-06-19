@@ -1,55 +1,78 @@
 package com.example.services;
 
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.dtos.UserDto;
+import com.example.grpc.CreateCommandGrpc;
+import com.example.grpc.CreateServiceGrpc;
+import com.example.grpc.DeleteCommandGrpc;
+import com.example.grpc.DeleteResponseGrpc;
+import com.example.grpc.DeleteServiceGrpc;
+import com.example.grpc.EditCommandGrpc;
+import com.example.grpc.EditServiceGrpc;
+import com.example.grpc.ListCommandGrpc;
+import com.example.grpc.ListServiceGrpc;
+import com.example.grpc.UserDtoGrpc;
+import com.example.grpc.ViewCommandGrpc;
+import com.example.grpc.ViewServiceGrpc;
 
-import graphql.kickstart.spring.webclient.boot.GraphQLRequest;
-import graphql.kickstart.spring.webclient.boot.GraphQLResponse;
-import graphql.kickstart.spring.webclient.boot.GraphQLWebClient;
+import io.grpc.ManagedChannel;
 
 @Service
 public class UserService {
 
-    private GraphQLWebClient graphQLWebClient;
 
-    public UserService(GraphQLWebClient graphQLWebClient) {
-        this.graphQLWebClient = graphQLWebClient;
+    private ManagedChannel managedChannel;
+    
+    @Autowired
+    public UserService(ManagedChannel managedChannel) {
+        this.managedChannel = managedChannel;
     }
 
     public UserDto save(UserDto userDto) {
 
         if (userDto.getId() == null) {
-            GraphQLRequest request = GraphQLRequest.builder().resource("graphql/create.graphql").variables(Map.of("name", userDto.getName())).build();
-            GraphQLResponse response = graphQLWebClient.post(request).block();
-            return response.get("create", UserDto.class);
+            CreateServiceGrpc.CreateServiceBlockingStub blockingStub = CreateServiceGrpc.newBlockingStub(managedChannel);
+            UserDtoGrpc userDtoGrpc = blockingStub.create(CreateCommandGrpc.newBuilder().setName(userDto.getName()).build());
+            return new UserDto(userDtoGrpc.getId(), userDtoGrpc.getName());
         } else {
-            GraphQLRequest request = GraphQLRequest.builder().resource("graphql/edit.graphql").variables(Map.of("id", userDto.getId(), "name", userDto.getName())).build();
-            GraphQLResponse response = graphQLWebClient.post(request).block();
-            return response.get("edit", UserDto.class);
+            EditServiceGrpc.EditServiceBlockingStub blockingStub = EditServiceGrpc.newBlockingStub(managedChannel);
+            UserDtoGrpc userDtoGrpc = blockingStub.edit(EditCommandGrpc.newBuilder().setId(userDto.getId()).setName(userDto.getName()).build());
+            return new UserDto(userDtoGrpc.getId(), userDtoGrpc.getName());
         }
 
     }
 
     public void deleteById(Long id) {
-        GraphQLRequest request = GraphQLRequest.builder().resource("graphql/delete.graphql").variables(Map.of("id", id)).build();
-        GraphQLResponse response = graphQLWebClient.post(request).block();
-        response.get("delete", String.class);
+        DeleteServiceGrpc.DeleteServiceBlockingStub blockingStub = DeleteServiceGrpc.newBlockingStub(managedChannel);
+        blockingStub.delete(DeleteCommandGrpc.newBuilder().setId(id).build());
     }
     
     public UserDto findById(Long id) {
-        GraphQLRequest request = GraphQLRequest.builder().resource("graphql/view.graphql").variables(Map.of("id", id)).build();
-        GraphQLResponse response = graphQLWebClient.post(request).block();
-        return response.get("view", UserDto.class);
+        ViewServiceGrpc.ViewServiceBlockingStub blockingStub = ViewServiceGrpc.newBlockingStub(managedChannel);
+        UserDtoGrpc userDtoGrpc = blockingStub.view(ViewCommandGrpc.newBuilder().setId(id).build());
+        return new UserDto(userDtoGrpc.getId(), userDtoGrpc.getName());
     }
 
     public List<UserDto> findAll() {
-        GraphQLRequest request = GraphQLRequest.builder().resource("graphql/list.graphql").build();
-        GraphQLResponse response = graphQLWebClient.post(request).block();
-        return response.getList("list", UserDto.class);
+
+        List<UserDto> list = new ArrayList<UserDto>();
+
+        ListServiceGrpc.ListServiceBlockingStub blockingStub = ListServiceGrpc.newBlockingStub(managedChannel);
+        Iterator<UserDtoGrpc> it = blockingStub.list(ListCommandGrpc.newBuilder().build());
+        while(it.hasNext()) {
+            UserDtoGrpc userDtoGrpc = it.next();
+            list.add(new UserDto(userDtoGrpc.getId(), userDtoGrpc.getName()));
+        }
+
+        return list;
+
     }
     
 }
