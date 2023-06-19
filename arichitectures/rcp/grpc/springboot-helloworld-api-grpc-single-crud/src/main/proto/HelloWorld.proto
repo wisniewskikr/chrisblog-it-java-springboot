@@ -3,19 +3,15 @@ syntax = "proto3";
 option java_multiple_files = true;
 option java_package = "com.example.grpc";
 
-service CreteService {
-    rpc Create(CreateCommand) returns (UserDto) {};
+service CreateService {
+    rpc Create(CreateCommandGrpc) returns (UserDtoGrpc) {};
 }
 
-service ListService {
-    rpc List() return (stream UserDto) {};
-}
-
-message CreateCommand {
+message CreateCommandGrpc {
     string name = 1;
 }
 
-message UserDto {
+message UserDtoGrpc {
     uint64 id = 1;
     string name = 2;
 }
