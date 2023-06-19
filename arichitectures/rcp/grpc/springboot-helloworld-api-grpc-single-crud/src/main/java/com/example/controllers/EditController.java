@@ -1,11 +1,16 @@
 package com.example.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import com.example.commands.EditCommand;
 import com.example.dtos.UserDto;
 import com.example.services.UserService;
 
-public class EditController {
+import net.devh.boot.grpc.server.service.GrpcService;
+
+import com.example.grpc.EditServiceGrpc;
+import com.example.grpc.UserDtoGrpc;
+
+@GrpcService
+public class EditController extends EditServiceGrpc.EditServiceImplBase {
 	
 	private UserService userService;
 
@@ -13,9 +18,16 @@ public class EditController {
 	public EditController(UserService userService) {
 		this.userService = userService;
 	}
-	
-	public UserDto edit(Long id, EditCommand command) {		
-		return userService.save(new UserDto(id, command.getName()));		
-	}
+
+	@Override
+	public void edit(com.example.grpc.EditCommandGrpc commandGrpc,
+        io.grpc.stub.StreamObserver<com.example.grpc.UserDtoGrpc> responseObserver) {
+      
+			UserDto userDto = userService.save(new UserDto(commandGrpc.getId(), commandGrpc.getName()));
+			UserDtoGrpc userDtoGrpc = UserDtoGrpc.newBuilder().setId(userDto.getId()).setName(userDto.getName()).build();
+			responseObserver.onNext(userDtoGrpc);
+            responseObserver.onCompleted();
+
+    }
 
 }

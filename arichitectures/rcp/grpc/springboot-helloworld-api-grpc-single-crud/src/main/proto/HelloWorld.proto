@@ -15,6 +15,10 @@ service ViewService {
     rpc View(ViewCommandGrpc) returns (UserDtoGrpc) {};
 }
 
+service EditService {
+    rpc Edit(EditCommandGrpc) returns (UserDtoGrpc) {};
+}
+
 message UserDtoGrpc {
     uint64 id = 1;
     string name = 2;
@@ -28,4 +32,9 @@ message ListCommandGrpc {}
 
 message ViewCommandGrpc {
     uint64 id = 1;
+}
+
+message EditCommandGrpc {
+    uint64 id = 1;
+    string name = 2;
 }
