@@ -38,4 +38,9 @@ public class HelloWorldService {
 		return list;		
 	}
 
+	public String deleteById(String id) {
+		helloWorldRepository.deleteById(id);
+		return "Deleted";
+	}
+
 }
