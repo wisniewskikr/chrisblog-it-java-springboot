@@ -17,9 +17,9 @@ public class HelloWorldService {
 		this.helloWorldRepository = helloWorldRepository;
 	}
 	
-	public HelloWorldDto saveText(String text) {
+	public HelloWorldDto save(HelloWorldDto helloWorldDto) {
 		HelloWorldDoc doc = new HelloWorldDoc();
-		doc.setText(text);
+		doc.setText(helloWorldDto.getText());
 		return new HelloWorldDto(helloWorldRepository.save(doc));
 	}
 	

@@ -6,10 +6,12 @@ public class HelloWorldDto {
 		
     private String id; 
     private String text;    
+	
+	public HelloWorldDto() {}
 
-	public HelloWorldDto(HelloWorldDoc entity) {
-		this.id = entity.getId();
-		this.text = entity.getText();
+	public HelloWorldDto(HelloWorldDoc doc) {
+		this.id = doc.getId();
+		this.text = doc.getText();
 	}
 	
 	public String getId() {
