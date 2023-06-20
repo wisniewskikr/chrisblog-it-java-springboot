@@ -1,5 +1,7 @@
 package com.example.services;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,8 +24,9 @@ public class HelloWorldService {
 		return new HelloWorldDto(helloWorldRepository.save(doc));
 	}
 	
-	public String readText(String id) {
-		return helloWorldRepository.findById(id).get().getText();
+	public HelloWorldDto read(String id) {
+		Optional<HelloWorldDoc> optHelloWorldDoc = helloWorldRepository.findById(id);
+		return new HelloWorldDto(optHelloWorldDoc.orElseThrow((() -> new RuntimeException("There is no document with id: " + id))));
 	}
 
 }
