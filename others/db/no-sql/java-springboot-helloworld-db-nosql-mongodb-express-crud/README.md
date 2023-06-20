@@ -5,19 +5,49 @@ USAGE
 
 Usage steps:
 1. Start MongoDB and MondoDB Express with `docker-compose up -d`
-1. Start application with `mvn spring-boot:run`
-1. Visit `http://localhost:8080`
-1. (Optional) Check data in MongoDB Express (admin/changeme) with `http://localhost:28081/`
+1. In any Command Line tool start application with `mvn spring-boot:run`
+1. In Postman tool **create text** using POST method with `http://localhost:8080/create`
+     * Body -> raw - JSON
+     ```
+     {
+          "text" : "Hello World!"
+     }
+     ```
+1. In Postman tool **view text** using GET method with `http://localhost:8080/view/{id}`
+1. In Postman tool **update text** using PUT method with `http://localhost:8080/edit/{id}`
+     * Body -> raw - JSON
+     ```
+     {
+          "text" : "Welcome"
+     }
+     ```
+1. In Postman tool **view list of texts** using GET method with `http://localhost:8080/list`
+1. In Postman tool **delete text** using DELETE method with `http://localhost:8080/delete/{id}`
+1. (Optional) In any browser check data in MongoDB Express (admin/changeme) with `http://localhost:28081/`
 1. Clean up environment 
      * Stop application with `ctrl + C`
      * Stop MongoDB and MongoDB Express with `docker-compose down`
+
+
+USAGE PRINTSCREENS
+------------------
+
+![My Image](images/image-01.png)
+
+![My Image](images/image-02.png)
+
+![My Image](images/image-03.png)
+
+![My Image](images/image-04.png)
+
+![My Image](images/image-05.png)
 
 
 DESCRIPTION
 -----------
 
 ##### Goal
-The goal of this project is to present how to create **Hello World** application in **Java** programming language with usage **Spring Boot** framework and **noSql** database type **MongoDB**. Additionally user can check data in **MongoDB Express** console. 
+The goal of this project is to present how to implement **CRUD (Create, Read, Update, Delete)** operations on **MongoDB** No Sql database in **Java** application type **API REST** with usage **Spring Boot** framework. You can also use **MongoDB Express** console to display current data in MongoDB database.
 
 Tools MongoDB and MongoDB Express are started by **Docker Compose** tool.
 
@@ -32,9 +62,8 @@ Terminology explanation:
 
 ##### Flow
 The following flow takes place in this project:
-1. User via any browser sends request to application HelloWorld for content
-1. Application HelloWorld saves text "Hello World" to database and then read it
-1. Application HelloWorld returns response with message. This response is presented to User via browser
+1. User via Postman sends request to application for a content. Request can be type CRUD: Create, Read, Update, Delete
+1. Application sends back response to User via Postman
 
 ##### Launch
 To launch this application please make sure that the **Preconditions** are met and then follow instructions from **Usage** section.
@@ -42,18 +71,23 @@ To launch this application please make sure that the **Preconditions** are met a
 ##### Technologies
 This project uses following technologies:
 * **Spring Boot** framework: `https://docs.google.com/document/d/1mvrJT5clbkr9yTj-AQ7YOXcqr2eHSEw2J8n9BMZIZKY/edit?usp=sharing`
+* **Java**: `https://docs.google.com/document/d/119VYxF8JIZIUSk7JjwEPNX1RVjHBGbXHBKuK_1ytJg4/edit?usp=sharing`
+* **Maven**: `https://docs.google.com/document/d/1cfIMcqkWlobUfVfTLQp7ixqEcOtoTR8X6OGo3cU4maw/edit?usp=sharing`
+* **Git**: `https://docs.google.com/document/d/1Iyxy5DYfsrEZK5fxZJnYy5a1saARxd5LyMEscJKSHn0/edit?usp=sharing`
 
 
 PRECONDITIONS
 -------------
+
 ##### Preconditions - Tools
-* Installed **Operating System** (tested on Windows 10)
-* Installed **Java** (tested on version 1.8.0_291). Tool details: `https://docs.google.com/document/d/119VYxF8JIZIUSk7JjwEPNX1RVjHBGbXHBKuK_1ytJg4/edit?usp=sharing`
-* Installed **Maven** (tested on version 3.8.5). Tool details: `https://docs.google.com/document/d/1cfIMcqkWlobUfVfTLQp7ixqEcOtoTR8X6OGo3cU4maw/edit?usp=sharing`
-* Installed **Git** (tested on version 2.33.0.windows.2). Tool details: `https://docs.google.com/document/d/1Iyxy5DYfsrEZK5fxZJnYy5a1saARxd5LyMEscJKSHn0/edit?usp=sharing`
+* Installed **Operating System** (tested on Windows 11)
+* Installed **Java** (tested on version 17.0.5)
+* Installed **Maven** (tested on version 3.8.5)
+* Installed **Git** (tested on version 2.33.0.windows.2)
 * Installed **Docker** (tested on version 4.17.0)
 * Installed **Docker Compose** (tested on version 2.15.1)
 
+
 ##### Preconditions - Actions
 * **Download** source code using Git 
-* Open any **Command Line** (for instance "Windonw PowerShell" on Windows OS) tool on **project's folder** (exact localization of project you can check in GIT repositories on page `https://github.com/wisniewskikr/chrisblog-it-java-springboot`)
+* Open any **Command Line** (for instance "Windonw PowerShell" on Windows OS) tool on the main **project's folder**.
