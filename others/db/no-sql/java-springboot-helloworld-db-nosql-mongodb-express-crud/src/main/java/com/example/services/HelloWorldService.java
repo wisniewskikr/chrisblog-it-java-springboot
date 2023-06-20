@@ -1,5 +1,7 @@
 package com.example.services;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,9 +26,16 @@ public class HelloWorldService {
 		return new HelloWorldDto(helloWorldRepository.save(doc));
 	}
 	
-	public HelloWorldDto read(String id) {
+	public HelloWorldDto findById(String id) {
 		Optional<HelloWorldDoc> optHelloWorldDoc = helloWorldRepository.findById(id);
 		return new HelloWorldDto(optHelloWorldDoc.orElseThrow((() -> new RuntimeException("There is no document with id: " + id))));
+	}
+
+	public List<HelloWorldDto> findAll() {
+		List<HelloWorldDto> list = new ArrayList<HelloWorldDto>();
+		Iterable<HelloWorldDoc> it = helloWorldRepository.findAll();
+		it.forEach(doc -> list.add(new HelloWorldDto(doc)));
+		return list;		
 	}
 
 }
