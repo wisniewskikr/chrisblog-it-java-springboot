@@ -2,34 +2,54 @@ USAGE
 -----
 
 Usage steps:
-1. In the first Command Line tool build GRPC API classes basing on **HelloWorld.proto** file with `mvn clean install`
-1. In the first Command Line tool start **application BE** with `mvn -f ./springboot-helloworld-api-grcp-multiple-be spring-boot:run`
-1. In the second Command Line tool start **application FE** with `mvn -f ./springboot-helloworld-api-grcp-multiple-fe spring-boot:run`
-1. In Postman tool with GET method diplay REST API result of GRPC API call with `http:\\localhost:8080`
-1. (Optional) In Postman tool with GET method diplay REST API result of GRPC API call with flexible parameter with `http:\\localhost:8080\name\John`
-1. Clean up environment:
-    * In the first Command Line with `ctrl + C`
-    * In the second Command Line with `ctrl + C`
+1. In the first Command Line tool build **GRPC API classes** with `mvn clean install`
+1. In the first Command Line tool start **application BE** with `mvn -f ./springboot-helloworld-api-grpc-multiple-crud-be spring-boot:run`
+1. In the second Command Line tool start **application FE** with `mvn -f ./springboot-helloworld-api-grpc-multiple-crud-fe spring-boot:run`
+1. In Postman tool **create user** using POST method with `http://localhost:8080/create`
+     * Body -> raw - JSON
+     ```
+     {
+          "name" : "Chris"
+     }
+     ```
+1. In Postman tool **view user** using GET method with `http://localhost:8080/view/1`
+1. In Postman tool **update user** using PUT method with `http://localhost:8080/edit/1`
+     * Body -> raw - JSON
+     ```
+     {
+          "name" : "John"
+     }
+     ```
+1. In Postman tool **view list of users** using GET method with `http://localhost:8080/list`
+1. In Postman tool **delete user** using DELETE method with `http://localhost:8080/delete/1`
+1. (Optional) In any browser open H2 Console (credentials admin / admin123) with `http://localhos:8080/h2-console`     
+1. In Command Line tool clean up environment with `ctrl + C`
 
 
-USAGE IMAGES
-------------
+USAGE PRINTSCREENS
+------------------
 
 ![My Image](images/image-01.png)
 
 ![My Image](images/image-02.png)
+
+![My Image](images/image-03.png)
+
+![My Image](images/image-04.png)
+
+![My Image](images/image-05.png)
 
 
 DESCRIPTION
 -----------
 
 ##### Goal
-The goal of this project is to present how to implement **GRPC API** communication between **multiple Java** applications with usage **Spring Boot** framework. FE and BE applications communicate using GRPC API. User and FE communicate using REST API.
+The goal of this project is to present how to implement **GRPC API** communication with operations type **CRUD (Create, Read, Update, Delete)** between **multiple Java** applications with usage **Spring Boot** framework. FE and BE applications communicate using GRPC API. User and FE communicate using REST API. All CRPC API classes are created in **common** module based on **HelloWorld.proto** file. This module is added as dependency in BE and FE modules.
 
 ##### Flow
 The following flow takes place in this project:
-1. User via tool Postman sends request to FE application for a content. Communication type REST API is used here
-1. FE application sends request to BE application for a content. Communication type GRPC API is used here
+1. User via tool Postman sends request to FE application for a content. Request is type CRUD: Create, Read, Update, Delete. Communication type REST API is used here
+1. FE application sends request to BE application for a content. Request is type CRUD: Create, Read, Update, Delete. Communication type GRPC API is used here
 1. BE application sends back response to FE application. Communication type GRPC API is used here
 1. FE application sends back response to User via Postman. Communication type REST API is used here
 
