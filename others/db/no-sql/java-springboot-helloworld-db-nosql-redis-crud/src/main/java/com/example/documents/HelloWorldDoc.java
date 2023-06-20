@@ -1,11 +1,11 @@
 package com.example.documents;
 
 import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.redis.core.RedisHash;
 
 import com.example.dtos.HelloWorldDto;
 
-@Document
+@RedisHash("HelloWorld")
 public class HelloWorldDoc {
 		
 	@Id
