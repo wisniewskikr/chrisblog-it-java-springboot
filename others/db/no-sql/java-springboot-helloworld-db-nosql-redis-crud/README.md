@@ -4,7 +4,7 @@ USAGE
 > This usage assumes that you have installed on your local machine following tools: **Java**, **Maven**, **Git**, **Docker** and **Docker Compose**.
 
 Usage steps:
-1. Start MongoDB and MondoDB Express with `docker-compose up -d`
+1. Start Redis database with `docker-compose up -d`
 1. In any Command Line tool start application with `mvn spring-boot:run`
 1. In Postman tool **create text** using POST method with `http://localhost:8080/create`
      * Body -> raw - JSON
@@ -47,7 +47,7 @@ DESCRIPTION
 -----------
 
 ##### Goal
-The goal of this project is to present how to implement **CRUD (Create, Read, Update, Delete)** operations on **MongoDB** No Sql database in **Java** application type **API REST** with usage **Spring Boot** framework. You can also use **MongoDB Express** console to display current data in MongoDB database.
+The goal of this project is to present how to implement **CRUD (Create, Read, Update, Delete)** operations on **Redis** No Sql database in **Java** application type **API REST** with usage **Spring Boot** framework.
 
 Tools MongoDB and MongoDB Express are started by **Docker Compose** tool.
 
@@ -55,8 +55,7 @@ Tools MongoDB and MongoDB Express are started by **Docker Compose** tool.
 Terminology explanation:
 * **Java Spring Boot application**: application created in Java programming language and basing on Spring Boot framework. This application returns text "Hello World" in JSON format.
 * **NoSql database**: database that enables storing and management of data in other way than relational databases
-* **MongoDB database**: noSql database type Document. It means that data are stored as so called Documents, usually JSONs 
-* **MongoDB Express**: it's web Console for working with MongoDB data manually
+* **Redis database**: noSql database type Key-Value. It means that data are stored as JSON under some hash
 * **Docker**: platform for deploying application in closed units called Docker Containers
 * **Docker Compose**: tool for working with many Docker Containers
 
