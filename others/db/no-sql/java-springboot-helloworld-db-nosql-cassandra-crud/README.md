@@ -1,3 +1,11 @@
+docker exec -it 9dd bash
+cqlsh
+describe keyspaces;
+CREATE KEYSPACE mykeyspace WITH replication = {'class':'SimpleStrategy','replication_factor':1};
+use mykeyspace;
+CREATE TABLE HelloWorldDoc (id text PRIMARY KEY, text text);
+describe tables;
+
 USAGE
 -----
 
