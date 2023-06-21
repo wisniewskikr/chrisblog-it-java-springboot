@@ -1,14 +1,14 @@
 package com.example.documents;
 
-import org.springframework.data.annotation.Id;
-import org.springframework.data.redis.core.RedisHash;
+import org.springframework.data.cassandra.core.mapping.PrimaryKey;
+import org.springframework.data.cassandra.core.mapping.Table;
 
 import com.example.dtos.HelloWorldDto;
 
-@RedisHash("HelloWorld")
+@Table
 public class HelloWorldDoc {
 		
-	@Id
+	@PrimaryKey
     private String id;
     private String text;
 
