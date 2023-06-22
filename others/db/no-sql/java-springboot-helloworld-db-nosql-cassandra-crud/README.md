@@ -1,28 +1,22 @@
-docker exec -it mycassandra bash
-cqlsh
-describe keyspaces;
-CREATE KEYSPACE mykeyspace WITH replication = {'class':'SimpleStrategy','replication_factor':1};
-use mykeyspace;
-CREATE TABLE HelloWorldDoc (id text PRIMARY KEY, text text);
-describe tables;
-
 USAGE
 -----
 
 > This usage assumes that you have installed on your local machine following tools: **Java**, **Maven**, **Git**, **Docker** and **Docker Compose**.
 
 Usage steps:
-1. Start Redis database with `docker-compose up -d`
+1. In any Command Line tool start Cassandra database with `docker-compose up -d`
+1. **Wait about one minute** until Cassandra database is fully up and running
 1. In any Command Line tool start application with `mvn spring-boot:run`
 1. In Postman tool **create text** using POST method with `http://localhost:8080/create`
      * Body -> raw - JSON
      ```
      {
+          "id" : "1"
           "text" : "Hello World!"
      }
      ```
-1. In Postman tool **view text** using GET method with `http://localhost:8080/view/{id}`
-1. In Postman tool **update text** using PUT method with `http://localhost:8080/edit/{id}`
+1. In Postman tool **view text** using GET method with `http://localhost:8080/view/1`
+1. In Postman tool **update text** using PUT method with `http://localhost:8080/edit/1`
      * Body -> raw - JSON
      ```
      {
@@ -30,11 +24,10 @@ Usage steps:
      }
      ```
 1. In Postman tool **view list of texts** using GET method with `http://localhost:8080/list`
-1. In Postman tool **delete text** using DELETE method with `http://localhost:8080/delete/{id}`
-1. (Optional) In any browser check data in MongoDB Express (admin/changeme) with `http://localhost:28081/`
+1. In Postman tool **delete text** using DELETE method with `http://localhost:8080/delete/1`
 1. Clean up environment 
      * Stop application with `ctrl + C`
-     * Stop MongoDB and MongoDB Express with `docker-compose down`
+     * Stop docker compose applications with `docker-compose down`
 
 
 USAGE PRINTSCREENS
@@ -55,15 +48,15 @@ DESCRIPTION
 -----------
 
 ##### Goal
-The goal of this project is to present how to implement **CRUD (Create, Read, Update, Delete)** operations on **Redis** No Sql database in **Java** application type **API REST** with usage **Spring Boot** framework.
+The goal of this project is to present how to implement **CRUD (Create, Read, Update, Delete)** operations on **Cassandra** noSql database in **Java** application type **API REST** with usage **Spring Boot** framework.
 
-Tools MongoDB and MongoDB Express are started by **Docker Compose** tool.
+Cassandra database is started by **Docker Compose** tool.
 
 ##### Terminology
 Terminology explanation:
 * **Java Spring Boot application**: application created in Java programming language and basing on Spring Boot framework. This application returns text "Hello World" in JSON format.
 * **NoSql database**: database that enables storing and management of data in other way than relational databases
-* **Redis database**: noSql database type Key-Value. It means that data are stored as JSON under some hash
+* **Cassandra database**: noSql database type Column-Oriented. It means that there are tables, rows and dynamic columns
 * **Docker**: platform for deploying application in closed units called Docker Containers
 * **Docker Compose**: tool for working with many Docker Containers
 
