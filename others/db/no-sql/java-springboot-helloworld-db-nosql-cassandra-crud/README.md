@@ -8,7 +8,7 @@ Usage steps:
 1. **Wait about one minute** until Cassandra database is fully up and running
 1. In Command Line tool start application with `mvn spring-boot:run`
 1. In Postman tool **create text** using POST method with `http://localhost:8080/create`
-     * Body -> raw - JSON
+     * Body -> raw -> JSON
      ```
      {
           "id" : "1"
@@ -17,7 +17,7 @@ Usage steps:
      ```
 1. In Postman tool **view text** using GET method with `http://localhost:8080/view/1`
 1. In Postman tool **update text** using PUT method with `http://localhost:8080/edit/1`
-     * Body -> raw - JSON
+     * Body -> raw -> JSON
      ```
      {
           "text" : "Welcome"
