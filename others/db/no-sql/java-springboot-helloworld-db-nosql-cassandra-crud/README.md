@@ -1,4 +1,4 @@
-docker exec -it 9dd bash
+docker exec -it mycassandra bash
 cqlsh
 describe keyspaces;
 CREATE KEYSPACE mykeyspace WITH replication = {'class':'SimpleStrategy','replication_factor':1};
