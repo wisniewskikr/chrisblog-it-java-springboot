@@ -3,5 +3,5 @@ spring:
     cassandra:
       port: 9042
       contact-points: cassandra-container
-      keyspace-name: mykeyspace
+      keyspace-name: helloworldkeyspace
       entity-base-package: com.example.documents

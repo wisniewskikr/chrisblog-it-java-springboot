@@ -4,9 +4,9 @@ USAGE
 > This usage assumes that you have installed on your local machine following tools: **Java**, **Maven**, **Git**, **Docker** and **Docker Compose**.
 
 Usage steps:
-1. In any Command Line tool start Cassandra database with `docker-compose up -d`
+1. In Command Line tool start Cassandra database with `docker-compose up -d`
 1. **Wait about one minute** until Cassandra database is fully up and running
-1. In any Command Line tool start application with `mvn spring-boot:run`
+1. In Command Line tool start application with `mvn spring-boot:run`
 1. In Postman tool **create text** using POST method with `http://localhost:8080/create`
      * Body -> raw - JSON
      ```
@@ -26,8 +26,8 @@ Usage steps:
 1. In Postman tool **view list of texts** using GET method with `http://localhost:8080/list`
 1. In Postman tool **delete text** using DELETE method with `http://localhost:8080/delete/1`
 1. Clean up environment 
-     * Stop application with `ctrl + C`
-     * Stop docker compose applications with `docker-compose down`
+     * In Command Line tool stop application with `ctrl + C`
+     * In Command Line tool stop docker compose applications with `docker-compose down`
 
 
 USAGE PRINTSCREENS
