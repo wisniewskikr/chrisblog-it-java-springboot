@@ -1,14 +1,16 @@
 package com.example.documents;
 
-import org.springframework.data.cassandra.core.mapping.PrimaryKey;
-import org.springframework.data.cassandra.core.mapping.Table;
+
+import org.springframework.data.neo4j.core.schema.GeneratedValue;
+import org.springframework.data.neo4j.core.schema.Id;
+import org.springframework.data.neo4j.core.schema.Node;
 
 import com.example.dtos.HelloWorldDto;
 
-@Table
+@Node
 public class HelloWorldDoc {
 		
-	@PrimaryKey
+	@Id @GeneratedValue
     private String id;
     private String text;
 

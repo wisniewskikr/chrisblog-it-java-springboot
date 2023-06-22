@@ -1,7 +1,6 @@
 spring:
   data:
-    cassandra:
-      port: 9042
-      contact-points: cassandra-container
-      keyspace-name: helloworldkeyspace
-      entity-base-package: com.example.documents
+    neo4j:
+      uri: localhost
+      username: neo4j
+      password: password
