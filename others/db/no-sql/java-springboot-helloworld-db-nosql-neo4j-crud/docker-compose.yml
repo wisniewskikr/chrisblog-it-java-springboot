@@ -1,7 +1,9 @@
 version: '3.1'
+
 services:
-  cassandra:
-    image: cassandra:4.1.2
-    container_name: cassandra-container
+  neo4j:
+    image: neo4j:4.1.9
+    container_name: neo4j-container
     ports:
-      - "9042:9042"
+      - "7474:7474"
+      - "7687:7687"
