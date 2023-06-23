@@ -4,19 +4,20 @@ USAGE
 > This usage assumes that you have installed on your local machine following tools: **Java**, **Maven**, **Git**, **Docker** and **Docker Compose**.
 
 Usage steps:
-1. In Command Line tool start Cassandra database with `docker-compose up -d`
-1. **Wait about one minute** until Cassandra database is fully up and running
+1. In Command Line tool start Neo4J database with `docker-compose up -d`
+1. In Browser configure Neo4J database (check section **NEO4J CONFIGURATION** for details)
+     * Log in to Neo4j ("Authentication Type": "Username / Password", credentials **neo4j/neo4j**) with `http://localhost:7474`
+     * Set new password as **password**
 1. In Command Line tool start application with `mvn spring-boot:run`
 1. In Postman tool **create text** using POST method with `http://localhost:8080/create`
      * Body -> raw -> JSON
      ```
      {
-          "id" : "1"
           "text" : "Hello World!"
      }
      ```
-1. In Postman tool **view text** using GET method with `http://localhost:8080/view/1`
-1. In Postman tool **update text** using PUT method with `http://localhost:8080/edit/1`
+1. In Postman tool **view text** using GET method with `http://localhost:8080/view/0`
+1. In Postman tool **update text** using PUT method with `http://localhost:8080/edit/0`
      * Body -> raw -> JSON
      ```
      {
@@ -24,7 +25,7 @@ Usage steps:
      }
      ```
 1. In Postman tool **view list of texts** using GET method with `http://localhost:8080/list`
-1. In Postman tool **delete text** using DELETE method with `http://localhost:8080/delete/1`
+1. In Postman tool **delete text** using DELETE method with `http://localhost:8080/delete/0`
 1. Clean up environment 
      * In Command Line tool stop application with `ctrl + C`
      * In Command Line tool stop docker compose applications with `docker-compose down`
@@ -48,15 +49,15 @@ DESCRIPTION
 -----------
 
 ##### Goal
-The goal of this project is to present how to implement **CRUD (Create, Read, Update, Delete)** operations on **Cassandra** noSql database in **Java** application type **API REST** with usage **Spring Boot** framework.
+The goal of this project is to present how to implement **CRUD (Create, Read, Update, Delete)** operations on **Neo4J** noSql database in **Java** application type **API REST** with usage **Spring Boot** framework.
 
-Cassandra database is started by **Docker Compose** tool.
+Neo4J database is started by **Docker Compose** tool.
 
 ##### Terminology
 Terminology explanation:
 * **Java Spring Boot application**: application created in Java programming language and basing on Spring Boot framework. This application returns text "Hello World" in JSON format.
 * **NoSql database**: database that enables storing and management of data in other way than relational databases
-* **Cassandra database**: noSql database type Column-Oriented. It means that there are tables, rows and dynamic columns
+* **Neo4J database**: noSql database type Graph. It means that data are stored in nodes and edges. Nodes typically store information about people, places, and things, while edges store information about the relationships between the nodes
 * **Docker**: platform for deploying application in closed units called Docker Containers
 * **Docker Compose**: tool for working with many Docker Containers
 
@@ -91,3 +92,18 @@ PRECONDITIONS
 ##### Preconditions - Actions
 * **Download** source code using Git 
 * Open any **Command Line** (for instance "Windonw PowerShell" on Windows OS) tool on the main **project's folder**.
+
+
+NEO4J CONFIGURATION
+-------------------
+
+Details:
+* URL: `http://localhost:7474`
+* Default Credentials: neo4j / neo4J
+* New password: password
+
+![My Image](images/neo4j-01.png)
+
+![My Image](images/neo4j-02.png)
+
+![My Image](images/neo4j-03.png)
