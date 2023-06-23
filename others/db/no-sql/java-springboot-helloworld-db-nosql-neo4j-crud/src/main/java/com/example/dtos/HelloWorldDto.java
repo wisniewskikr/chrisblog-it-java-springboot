@@ -4,7 +4,7 @@ import com.example.documents.HelloWorldDoc;
 
 public class HelloWorldDto {
 		
-    private String id; 
+    private Long id; 
     private String text;    
 	
 	public HelloWorldDto() {}
@@ -14,10 +14,10 @@ public class HelloWorldDto {
 		this.text = doc.getText();
 	}
 	
-	public String getId() {
+	public Long getId() {
 		return id;
 	}
-	public void setId(String id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

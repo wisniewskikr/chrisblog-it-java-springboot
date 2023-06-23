@@ -20,7 +20,7 @@ public class EditController {
 	}
 
 	@PutMapping(value="/edit/{id}")
-	public HelloWorldDto edit(@PathVariable String id, @RequestBody HelloWorldDto helloWorldDto) {
+	public HelloWorldDto edit(@PathVariable Long id, @RequestBody HelloWorldDto helloWorldDto) {
 		helloWorldDto.setId(id);		
 		return helloWorldService.save(helloWorldDto);
 	}

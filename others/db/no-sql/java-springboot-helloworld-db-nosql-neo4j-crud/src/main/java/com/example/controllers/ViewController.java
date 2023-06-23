@@ -19,7 +19,7 @@ public class ViewController {
 	}
 
 	@GetMapping(value="/view/{id}")
-	public HelloWorldDto view(@PathVariable String id) {		
+	public HelloWorldDto view(@PathVariable Long id) {		
 		return helloWorldService.findById(id);
 	}
 

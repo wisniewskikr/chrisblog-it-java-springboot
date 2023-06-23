@@ -26,7 +26,7 @@ public class HelloWorldService {
 		return new HelloWorldDto(helloWorldRepository.save(doc));
 	}
 	
-	public HelloWorldDto findById(String id) {
+	public HelloWorldDto findById(Long id) {
 		Optional<HelloWorldDoc> optHelloWorldDoc = helloWorldRepository.findById(id);
 		return new HelloWorldDto(optHelloWorldDoc.orElseThrow((() -> new RuntimeException("There is no document with id: " + id))));
 	}
@@ -38,7 +38,7 @@ public class HelloWorldService {
 		return list;		
 	}
 
-	public String deleteById(String id) {
+	public String deleteById(Long id) {
 		helloWorldRepository.deleteById(id);
 		return "Deleted";
 	}

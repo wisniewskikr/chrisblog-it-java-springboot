@@ -17,7 +17,7 @@ public class DeleteController {
 	}
 
 	@DeleteMapping(value="/delete/{id}")
-	public String delete(@PathVariable String id) {		
+	public String delete(@PathVariable Long id) {		
 		return helloWorldService.deleteById(id);
 	}
 
