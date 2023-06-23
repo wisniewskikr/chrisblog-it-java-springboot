@@ -9,23 +9,44 @@ Usage steps:
      * Log in to Neo4j ("Authentication Type": "Username / Password", credentials **neo4j/neo4j**) with `http://localhost:7474`
      * Set new password as **password**
 1. In Command Line tool start application with `mvn spring-boot:run`
-1. In Postman tool **create text** using POST method with `http://localhost:8080/create`
+1. In Postman tool **create nodes with relationship** using POST method with `http://localhost:8080/api/movies`
      * Body -> raw -> JSON
      ```
      {
-          "text" : "Hello World!"
+          "title":"Godfather",
+          "description":"Gangster",
+          "actorsAndRoles":[
+               {
+                    "roles":["Michael Corleone"],
+                    "person":{
+                         "name":"Al Pacino",
+                         "born":"25-04-1940"
+                    }
+               }
+          ]
      }
      ```
-1. In Postman tool **view text** using GET method with `http://localhost:8080/view/0`
-1. In Postman tool **update text** using PUT method with `http://localhost:8080/edit/0`
+1. In Postman tool **create nodes without relationship** using POST method with `http://localhost:8080/api/movies`
      * Body -> raw -> JSON
      ```
      {
-          "text" : "Welcome"
+          "id":2,
+          "title":"Gladiator",
+          "description":"Historical",
+          "actorsAndRoles":[
+               {
+                    "id":1,
+                    "roles":["Maximus"],
+                    "person":{
+                         "id":3,
+                         "name":"Russel Crowe",
+                         "born":"27-01-1963"
+                    }
+               }
+          ]
      }
      ```
-1. In Postman tool **view list of texts** using GET method with `http://localhost:8080/list`
-1. In Postman tool **delete text** using DELETE method with `http://localhost:8080/delete/0`
+1. In Browser check result in Neo4J database (check section **NEO4J CONSOLE** for details)
 1. Clean up environment 
      * In Command Line tool stop application with `ctrl + C`
      * In Command Line tool stop docker compose applications with `docker-compose down`
@@ -38,20 +59,16 @@ USAGE PRINTSCREENS
 
 ![My Image](images/image-02.png)
 
-![My Image](images/image-03.png)
-
-![My Image](images/image-04.png)
-
-![My Image](images/image-05.png)
-
 
 DESCRIPTION
 -----------
 
 ##### Goal
-The goal of this project is to present how to implement **CRUD (Create, Read, Update, Delete)** operations on **Neo4J** noSql database in **Java** application type **API REST** with usage **Spring Boot** framework.
+The goal of this project is to present how to implement **CRUD (Create, Read, Update, Delete)** operations with **nodes and relationships** on **Neo4J** noSql database in **Java** application type **API REST** with usage **Spring Boot** framework.
 
 Neo4J database is started by **Docker Compose** tool.
+
+This project is based on following GIT project: `https://github.com/RosarioB/spring-boot-rest-api-crud-neo4j/tree/main`
 
 ##### Terminology
 Terminology explanation:
@@ -107,3 +124,9 @@ Details:
 ![My Image](images/neo4j-02.png)
 
 ![My Image](images/neo4j-03.png)
+
+
+NEO4J CONSOLE
+-------------
+
+![My Image](images/neo4j-console-01.png)

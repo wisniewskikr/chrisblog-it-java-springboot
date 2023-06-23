@@ -1,5 +1,6 @@
 package com.rosariob.crud.neo4j.config;
 
+import org.neo4j.cypherdsl.core.renderer.Dialect;
 import org.neo4j.driver.AuthTokens;
 import org.neo4j.driver.Driver;
 import org.neo4j.driver.GraphDatabase;
@@ -41,4 +42,11 @@ public class DatabaseConfiguration extends AbstractNeo4jConfig {
     protected DatabaseSelectionProvider databaseSelectionProvider() {
         return DatabaseSelectionProvider.createStaticDatabaseSelectionProvider(applicationProperties.getDatabase());
     }
+
+    @Bean
+    public org.neo4j.cypherdsl.core.renderer.Configuration cypherDslConfiguration() {
+        return org.neo4j.cypherdsl.core.renderer.Configuration.newConfig()
+            .withDialect(Dialect.NEO4J_5)
+            .build();
+    } 
 }
