@@ -5,10 +5,11 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.env.Environment;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.jsons.HelloWorldBeJson;
+import com.example.dtos.HelloWorldBeDto;
 
 @RestController
 public class HelloWorldBeController {
@@ -26,14 +27,14 @@ public class HelloWorldBeController {
 	}
 
 	@RequestMapping(value="/")
-	public HelloWorldBeJson helloWorld() {
+	public ResponseEntity<HelloWorldBeDto> helloWorld() {
 				
 		String port = environment.getProperty("local.server.port");
 		String uuid = System.getProperty("uuid");
 		
 		logger.info("Application BE was called with message: {}, port BE: {} and uuid BE: {}", message, port, uuid);
 		
-		return new HelloWorldBeJson(message, port, uuid);
+		return ResponseEntity.ok(new HelloWorldBeDto(message, port, uuid));
 		
 	}
 	

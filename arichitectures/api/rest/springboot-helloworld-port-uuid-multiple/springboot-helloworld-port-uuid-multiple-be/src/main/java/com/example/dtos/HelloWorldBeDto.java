@@ -1,8 +1,8 @@
-package com.example.jsons;
+package com.example.dtos;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class HelloWorldBeJson {
+public class HelloWorldBeDto {
 	
 	private String message;
 	@JsonProperty(value = "port BE")
@@ -10,9 +10,9 @@ public class HelloWorldBeJson {
 	@JsonProperty(value = "uuid BE")
 	private String uuidBe;
 	
-	public HelloWorldBeJson() {}
+	public HelloWorldBeDto() {}
 
-	public HelloWorldBeJson(String message, String portBe, String uuidBe) {
+	public HelloWorldBeDto(String message, String portBe, String uuidBe) {
 		this.message = message;
 		this.portBe = portBe;
 		this.uuidBe = uuidBe;
