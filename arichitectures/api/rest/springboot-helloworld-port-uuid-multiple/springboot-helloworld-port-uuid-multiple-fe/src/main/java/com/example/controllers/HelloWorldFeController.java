@@ -5,12 +5,13 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.env.Environment;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.reactive.function.client.WebClient;
 
-import com.example.jsons.HelloWorldBeJson;
-import com.example.jsons.HelloWorldFeJson;
+import com.example.dtos.HelloWorldBeDto;
+import com.example.dtos.HelloWorldFeDto;
 
 @RestController
 public class HelloWorldFeController {
@@ -30,15 +31,15 @@ public class HelloWorldFeController {
 		this.webClient = webClient;
 	}
 
-	@RequestMapping(value="/")
-	public HelloWorldFeJson helloWorld() {
+	@GetMapping(value="/")
+	public ResponseEntity<HelloWorldFeDto> helloWorld() {
 		
 		String portFe = environment.getProperty("local.server.port");
 		String uuidFe = System.getProperty("uuid");		
-		HelloWorldBeJson helloWorldBeJson = getHelloWorldBeJson(uuidFe);
+		HelloWorldBeDto helloWorldBeJson = getHelloWorldBeDto(uuidFe);
 		
 		if (helloWorldBeJson == null) {
-			return new HelloWorldFeJson("Problem with connection with BE application", portFe, uuidFe, null, null);
+			return ResponseEntity.ok(new HelloWorldFeDto("Problem with connection with BE application", portFe, uuidFe, null, null));
 		}
 				
 		String message = helloWorldBeJson.getMessage();
@@ -47,20 +48,20 @@ public class HelloWorldFeController {
 		
 		logger.info("Application FE was called with message: {}, port FE: {}, uuid FE: {}, port BE: {} and uuid BE: {}", message, portFe, uuidFe, portBe, uuidBe);
 		
-		return new HelloWorldFeJson(message, portFe, uuidFe, portBe, uuidBe);
+		return ResponseEntity.ok(new HelloWorldFeDto(message, portFe, uuidFe, portBe, uuidBe));
 		
 	}
 	
-	private HelloWorldBeJson getHelloWorldBeJson(String uuidFe) {
+	private HelloWorldBeDto getHelloWorldBeDto(String uuidFe) {
 		
-		HelloWorldBeJson helloWorldBeJson = null;
+		HelloWorldBeDto helloWorldBeJson = null;
 		
 		try {
 			
 			helloWorldBeJson = this.webClient.get()
 			        .uri(helloWorldBeUrl)
 			        .retrieve()
-			        .bodyToMono(HelloWorldBeJson.class)
+			        .bodyToMono(HelloWorldBeDto.class)
 			        .block();
 			
 		} catch (Exception e) {

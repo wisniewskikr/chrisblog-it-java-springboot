@@ -1,25 +1,19 @@
-package com.example.jsons;
+package com.example.dtos;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class HelloWorldFeJson {
+public class HelloWorldBeDto {
 	
 	private String message;
-	@JsonProperty(value = "port FE")
-	private String portFe;
-	@JsonProperty(value = "uuid FE")
-	private String uuidFe;
 	@JsonProperty(value = "port BE")
 	private String portBe;
 	@JsonProperty(value = "uuid BE")
 	private String uuidBe;
 	
-	public HelloWorldFeJson() {}
+	public HelloWorldBeDto() {}
 
-	public HelloWorldFeJson(String message, String portFe, String uuidFe, String portBe, String uuidBe) {
+	public HelloWorldBeDto(String message, String portBe, String uuidBe) {
 		this.message = message;
-		this.portFe = portFe;
-		this.uuidFe = uuidFe;
 		this.portBe = portBe;
 		this.uuidBe = uuidBe;
 	}
@@ -29,20 +23,6 @@ public class HelloWorldFeJson {
 	}
 	public void setMessage(String message) {
 		this.message = message;
-	}
-
-	public String getPortFe() {
-		return portFe;
-	}
-	public void setPortFe(String portFe) {
-		this.portFe = portFe;
-	}
-
-	public String getUuidFe() {
-		return uuidFe;
-	}
-	public void setUuidFe(String uuidFe) {
-		this.uuidFe = uuidFe;
 	}
 
 	public String getPortBe() {
@@ -57,6 +37,6 @@ public class HelloWorldFeJson {
 	}
 	public void setUuidBe(String uuidBe) {
 		this.uuidBe = uuidBe;
-	}	
+	}		
 	
 }
