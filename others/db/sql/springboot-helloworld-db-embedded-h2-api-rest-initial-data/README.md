@@ -18,7 +18,7 @@ DESCRIPTION
 -----------
 
 ##### Goal
-The goal of this project is to present how to create **Hello World** application in **Java** programming language with usage **Spring Boot** framework and **embedded** database type **h2**.
+The goal of this project is to present how to create **initial data** for **Hello World** application in **Java** programming language with usage **Spring Boot** framework and **embedded** database type **h2**.
 
 Embedded database means that database is started together with application. 
 
