@@ -12,6 +12,7 @@ var messageForm = document.querySelector('#messageForm');
 var messageInput = document.querySelector('#message');
 var messageArea = document.querySelector('#messageArea');
 var connectingElement = document.querySelector('.connecting');
+var chatName = document.querySelector('#chat-name');
 
 var stompClient = null;
 var username = null;
@@ -25,6 +26,7 @@ function connect(event) {
     username = document.querySelector('#name').value.trim();
 
     if(username) {
+        chatName.textContent = username;
         usernamePage.classList.add('hidden');
         chatPage.classList.remove('hidden');
 
