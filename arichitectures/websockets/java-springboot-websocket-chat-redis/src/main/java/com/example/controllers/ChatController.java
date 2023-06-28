@@ -19,8 +19,12 @@ public class ChatController {
 	}
 
 	@MessageMapping("${websocket.receive.message}")
+	public void receiveMessage(@Payload ChatMessage chatMessage) {
+		System.out.println("chatMessage.getContent(): " + chatMessage.getContent());
+	}
+
 	@SendTo("/topic/public")
-	public ChatMessage sendMessage(@Payload ChatMessage chatMessage) {
+	public ChatMessage sendMessage(ChatMessage chatMessage) {
 		return chatMessage;
 	}
 
