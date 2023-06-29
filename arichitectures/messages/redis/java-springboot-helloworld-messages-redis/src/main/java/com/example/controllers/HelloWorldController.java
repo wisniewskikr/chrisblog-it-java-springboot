@@ -9,22 +9,20 @@ import com.example.redis.Subscriber;
 
 @RestController
 public class HelloWorldController {
-
-	@Value("${redis.channel}")
-	private String channel;
 	
 	private Publisher publisher;
-	private Subscriber subscriber;
+
+	@Value("${redis.channel}") 
+	private String channel;
 
 	@Autowired
-	public HelloWorldController(Publisher publisher, Subscriber subscriber) {
+	public HelloWorldController(Publisher publisher, Subscriber subscriber, @Value("${redis.channel}") String channel) {
 		this.publisher = publisher;
-		this.subscriber = subscriber;
+		subscriber.subscribe(channel);
 	}
 	
 	@GetMapping(value="/")
-	public String send() {
-		subscriber.subscribe(channel);
+	public String send() {		
 		publisher.publish(channel, "Hello World!");		
 		return "Message was sent. Please check Console";
 	}
