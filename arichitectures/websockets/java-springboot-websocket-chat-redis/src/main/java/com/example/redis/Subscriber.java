@@ -6,20 +6,15 @@ import io.lettuce.core.pubsub.StatefulRedisPubSubConnection;
 import io.lettuce.core.pubsub.api.sync.RedisPubSubCommands;
 import org.springframework.stereotype.Component;
 
-import com.example.controllers.ChatController;
-
 @Component
 public class Subscriber {
     
-    private ChatController chatController;
     private RedisPubSubCommands<String, String> sync;
 
     @Autowired
-    public Subscriber(ChatController chatController) {
-        this.chatController = chatController;
+    public Subscriber(SubscriberHelper redisListner) {
         RedisClient client = RedisClient.create("redis://localhost:6379");
         StatefulRedisPubSubConnection<String, String> connection = client.connectPubSub();
-        var redisListner = new SubscriberHelper(this.chatController);
         connection.addListener(redisListner);
         this.sync = connection.sync();
     } 
