@@ -4,65 +4,38 @@ USAGE
 > This usage assumes that you have installed on your local machine following tools: **Java**, **Maven**, **Git**, **Docker** and **Docker Compose**.
 
 Usage steps:
-1. Start Redis database with `docker-compose up -d`
-1. In any Command Line tool start application with `mvn spring-boot:run`
-1. In Postman tool **create text** using POST method with `http://localhost:8080/create`
-     * Body -> raw - JSON
-     ```
-     {
-          "text" : "Hello World!"
-     }
-     ```
-1. In Postman tool **view text** using GET method with `http://localhost:8080/view/{id}`
-1. In Postman tool **update text** using PUT method with `http://localhost:8080/edit/{id}`
-     * Body -> raw - JSON
-     ```
-     {
-          "text" : "Welcome"
-     }
-     ```
-1. In Postman tool **view list of texts** using GET method with `http://localhost:8080/list`
-1. In Postman tool **delete text** using DELETE method with `http://localhost:8080/delete/{id}`
-1. (Optional) In any browser check data in MongoDB Express (admin/changeme) with `http://localhost:28081/`
+1. In command line tool start Redis with `docker-compose up -d`
+1. In command line tool start application with `mvn spring-boot:run`
+1. In Postman tool send message using GET method with `http://localhost:8080`
+1. In console check result:
+     * Expected Publisher message: **Publish message Hello World! on channel helloworld**
+     * Expected Subscriber message: **Subscribe message Hello World! on channel helloworld**
 1. Clean up environment 
      * Stop application with `ctrl + C`
-     * Stop MongoDB and MongoDB Express with `docker-compose down`
-
-
-USAGE PRINTSCREENS
-------------------
-
-![My Image](images/image-01.png)
-
-![My Image](images/image-02.png)
-
-![My Image](images/image-03.png)
-
-![My Image](images/image-04.png)
-
-![My Image](images/image-05.png)
-
+     * Stop Redis with `docker-compose down`
 
 DESCRIPTION
 -----------
 
 ##### Goal
-The goal of this project is to present how to implement **CRUD (Create, Read, Update, Delete)** operations on **Redis** No Sql database in **Java** application type **API REST** with usage **Spring Boot** framework.
+The goal of this project is to present how to implement **publish - subscribe** operations on **Redis** tool in **Java** application type **API REST** with usage **Spring Boot** framework.
 
-Tools MongoDB and MongoDB Express are started by **Docker Compose** tool.
+Tools Redis is started by **Docker Compose** tool.
 
 ##### Terminology
 Terminology explanation:
-* **Java Spring Boot application**: application created in Java programming language and basing on Spring Boot framework. This application returns text "Hello World" in JSON format.
-* **NoSql database**: database that enables storing and management of data in other way than relational databases
-* **Redis database**: noSql database type Key-Value. It means that data are stored as JSON under some hash
+* **Java Spring Boot application**: application created in Java programming language and basing on Spring Boot framework.
+* **Publish - Subcribe operations**: asynchronous operations between Publishers and Subscribers. Pubslishers send messages to Broker. Subscribers receives messages from from Broker. This operations are asynchronous - they can be done in diffrent time frames.
+* **Redis**: tool which can be used as noSQL database or Publish-Subscribe broker
 * **Docker**: platform for deploying application in closed units called Docker Containers
 * **Docker Compose**: tool for working with many Docker Containers
 
 ##### Flow
 The following flow takes place in this project:
-1. User via Postman sends request to application for a content. Request can be type CRUD: Create, Read, Update, Delete
-1. Application sends back response to User via Postman
+1. User via Postman sends request to application.
+1. Application sends message to Publisher.
+1. Publisher publishes message on Redis broker.
+1. Subscriber receives message from Redis broker.
 
 ##### Launch
 To launch this application please make sure that the **Preconditions** are met and then follow instructions from **Usage** section.
