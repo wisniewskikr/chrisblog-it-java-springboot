@@ -28,7 +28,7 @@ public class ChatController {
 	}
 
 	@MessageMapping("${websocket.receive.register}")
-	@SendTo("/topic/public")
+	@SendTo("${websocket.topic}")
 	public ChatMessage register(@Payload ChatMessage chatMessage, SimpMessageHeaderAccessor headerAccessor) {
 		headerAccessor.getSessionAttributes().put("username", chatMessage.getSender());
 		return chatMessage;

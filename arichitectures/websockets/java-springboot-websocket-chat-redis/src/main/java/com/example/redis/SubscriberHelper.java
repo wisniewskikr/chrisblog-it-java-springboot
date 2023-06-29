@@ -3,6 +3,7 @@ package com.example.redis;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Component;
 
@@ -16,6 +17,9 @@ public class SubscriberHelper implements RedisPubSubListener<String, String> {
 
     private static final Logger logger = LoggerFactory.getLogger(SubscriberHelper.class);
    
+    @Value("${websocket.topic}")
+    private String websocketTopic;
+    
     private SimpMessagingTemplate template;
     
     @Autowired
@@ -26,7 +30,7 @@ public class SubscriberHelper implements RedisPubSubListener<String, String> {
     @Override
     public void message(String channel, String message) {   
         logger.info("Subscribe message {} from channel {}", message, channel);     
-        this.template.convertAndSend("/topic/public", new Gson().fromJson(message,ChatMessage.class));
+        this.template.convertAndSend(websocketTopic, new Gson().fromJson(message,ChatMessage.class));
     }
 
     @Override
