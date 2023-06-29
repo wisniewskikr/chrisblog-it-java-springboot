@@ -10,13 +10,10 @@ import org.springframework.stereotype.Component;
 @Component
 public class Subscriber {
 
-    @Value("${redis.channel}")
-	private String channel;
-
     private RedisPubSubCommands<String, String> sync;
 
-    public Subscriber(){
-        RedisClient client = RedisClient.create("redis://localhost:6379");
+    public Subscriber(@Value("${redis.uri}") String redisUri){
+        RedisClient client = RedisClient.create(redisUri);
         StatefulRedisPubSubConnection<String, String> connection = client.connectPubSub();
         var redisListner = new SubscriberHelper();
         connection.addListener(redisListner);
