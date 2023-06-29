@@ -3,10 +3,15 @@ package com.example.redis;
 import io.lettuce.core.RedisClient;
 import io.lettuce.core.pubsub.StatefulRedisPubSubConnection;
 import io.lettuce.core.pubsub.api.sync.RedisPubSubCommands;
+
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 @Component
 public class Subscriber {
+
+    @Value("${redis.channel}")
+	private String channel;
 
     private RedisPubSubCommands<String, String> sync;
 

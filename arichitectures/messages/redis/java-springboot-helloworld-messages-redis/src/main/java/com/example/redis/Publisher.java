@@ -17,8 +17,8 @@ public class Publisher {
     }
 
     public void publish(String channel, String message){
-        logger.info("going to publish the message to channel {} and message = {}", channel, message);
+        logger.info("Going to publish the message to channel {} and message {}", channel, message);
         var connection = this.client.connect();
-        connection.sync().publish(channel,message);
+        connection.sync().publish(channel, message);
     }
 }

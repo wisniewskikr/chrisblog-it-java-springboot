@@ -1,12 +1,17 @@
 package com.example.redis;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import io.lettuce.core.pubsub.RedisPubSubListener;
 
 public class SubscriberHelper implements RedisPubSubListener<String, String> {
 
+    private static final Logger logger = LoggerFactory.getLogger(SubscriberHelper.class);
+
     @Override
     public void message(String channel, String message) {
-        System.out.println("Got the message on Redis. Channel: " + channel + "; Message: "+ message);
+        logger.info("Got Redis message on channel {} and message {}", channel, message);
    
     }
 
