@@ -11,7 +11,7 @@ public class SubscriberHelper implements RedisPubSubListener<String, String> {
 
     @Override
     public void message(String channel, String message) {
-        logger.info("Got Redis message on channel {} and message {}", channel, message);
+        logger.info("Subscribe message {} on channel {}", message, channel);
    
     }
 
