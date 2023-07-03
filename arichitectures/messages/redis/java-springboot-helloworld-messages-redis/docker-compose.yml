@@ -1,17 +1,7 @@
 version: '3.8'
 
 services:
-  
-  helloworld:
-    image: helloworld-image
-    container_name: helloworld-container
-    build:
-      context: ./
-      dockerfile: Dockerfile
-    ports:
-      - 8080:8080
-  
-  redis:
+   redis:
     image: redis:7.0.11-alpine
     container_name: redis-container
     restart: always
