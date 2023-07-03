@@ -1,29 +1,30 @@
 USAGE
 -----
 
-> **NOTE** This usage assumes that following tools are installed: **Java**, **Maven** and **Git**.
+> **NOTE** This usage assumes that following tools are up and running: **Docker** and **Docker Compose**.
 
 Steps:
-1. Start application with `mvn spring-boot:run`
-1. Open first chat with `http://localhost:8080`
-1. Open second chat with `http://localhost:8080`
+1. In command lint tool start applications with `docker-compose up -d --build`
+1. In browser open first chat with `http://localhost:8080`
+1. In browser open second chat with `http://localhost:9090`
 1. Register two users and chat each other
 1. Clean up
-     * Stop application with `ctrl + c`
+     * In command line tool stop and remove applications with `docker-compose down`
 
 
 DESCRIPTION
 -----------
 
 ##### Goal
-The goal of this project is to present how to create **Java Spring Boot** application which will send messages between **Java** and **Javascript** using **WebSockets**.
+The goal of this project is to present how to create **horizontal scallable chat** using Java applications based on **Spring Boot** framework. Communication between UI (browser) and applications is based on **Web Sockets**. Communication between applications is based on **Redis** as subscriber-publisher broker.
+
+Horizontal Scallable Chat means that if there is too many users for one application you can without any problem add new one.
 
 ##### Terminology
 Terminology explanation:
 * **Java Spring Boot application**: it's application in Java programming language which uses Spring Boot framework. This is chat application - user can open two or more browsers or browser's tabs, register with specific name and then chat
 * **Websockets**: WebSockets is a bidirectional, full-duplex, persistent connection between a web browser and a server or between servers. Once a WebSocket connection is established, the connection stays open until the client or server decides to close this connection.
-
-> **Websockets vs Messages** Messages requires additional server - Message Server. Websocket doesn't require any additional server. It's just bidirectional connection between two actors.
+* **Redis**: it's subscriber-publisher broker which enables exchanging messages between applications
 
 ##### Flow
 The following flow takes place in this project:
@@ -31,6 +32,8 @@ The following flow takes place in this project:
 1. User via any browser sends request to broker for registration
 1. Broker sends back to User via browser registration confirmation 
 1. User via any browser sends request to broker with message
+1. Broker publish message
+1. Broker receive message
 1. Broker sends back to User via browser the same message
 1. User cleans up
 
@@ -56,4 +59,4 @@ PRECONDITIONS
 
 ##### Preconditions - Actions
 * **Download** source code using Git 
-* Open any **Command Line** (for instance "Windonw PowerShell" on Windows OS) tool on **project's folder** (exact localization of project you can check in GIT repositories on page `https://github.com/wisniewskikr/chrisblog-it-java`)
+* Open any **Command Line** (for instance "Windonw PowerShell" on Windows OS) tool on **project's folder**.
