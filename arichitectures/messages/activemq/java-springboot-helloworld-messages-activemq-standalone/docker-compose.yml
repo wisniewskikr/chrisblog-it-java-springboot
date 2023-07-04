@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+
+  activemq:
+    image: symptoma/activemq:5.18.0
+    container_name: activemq-container
+    ports:
+      - "61616:61616"
+      - "8161:8161"
+    environment:
+      - ACTIVEMQ_DISALLOW_WEBCONSOLE=false
+      - ACTIVEMQ_USERNAME=activemq
+      - ACTIVEMQ_PASSWORD=password
+      - ACTIVEMQ_WEBADMIN_USERNAME=admin
+      - ACTIVEMQ_WEBADMIN_PASSWORD=admin
