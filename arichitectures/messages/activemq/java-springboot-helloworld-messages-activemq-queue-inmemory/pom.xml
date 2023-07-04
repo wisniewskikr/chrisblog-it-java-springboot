@@ -9,7 +9,7 @@
 		<relativePath/>
 	</parent>
 	<groupId>com.example</groupId>
-	<artifactId>java-springboot-helloworld-messages-activemq-inmemory</artifactId>
+	<artifactId>java-springboot-helloworld-messages-activemq-queue-inmemory</artifactId>
 	<version>0.1.0</version>
 
 	<properties>
