@@ -16,19 +16,11 @@ import javax.jms.Topic;
 @Configuration
 public class ActiveMQConfig {
 
-    @Value("${jms.queue.name}")
-    private String queueName;
-
     @Value("${jms.topic.name}")
     private String topicName;
 
     @Value("${activemq.broker-url}")
     private String brokerUrl;
-
-    @Bean
-    public Queue queue() {
-        return new ActiveMQQueue(queueName);
-    }
 
     @Bean
     public Topic topic() {
