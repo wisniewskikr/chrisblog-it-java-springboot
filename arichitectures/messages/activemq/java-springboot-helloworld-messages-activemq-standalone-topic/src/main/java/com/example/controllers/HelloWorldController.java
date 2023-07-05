@@ -41,7 +41,6 @@ public class HelloWorldController {
 	@GetMapping("/subscribe")
 	public ResponseEntity<String> topicSubscribeSubscriber() {				
 		
-		jmsTemplate.setReceiveTimeout(JmsTemplate.RECEIVE_TIMEOUT_NO_WAIT);		
 		String message = (String)jmsTemplate.receiveAndConvert(topic);
 
    		String response = null;
