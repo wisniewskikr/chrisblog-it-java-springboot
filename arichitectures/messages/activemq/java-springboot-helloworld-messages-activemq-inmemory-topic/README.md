@@ -7,12 +7,12 @@ USAGE JAVA
 
 Usage steps:
 1. In a command line tool start application with `mvn spring-boot:run`
-1. In a first tab of browser consume message with `http://localhost:8080/subscribe`
-     * Expected: consumption is waiting for message
-1. In a second tab of browser produce message with `http://localhost:8080/publish`
+1. In a first tab of browser subscribe message with `http://localhost:8080/subscribe`
+     * Expected: subscriber is waiting for message
+1. In a second tab of browser publish message with `http://localhost:8080/publish`
 1. Result:
      * Listener: In a command line tool expected message: "Topic was subscribed successfuly by Listener. Message: Hello World!"
-     * Consumer: In a subscriber tab of browser expected message: "Topic was subscribed successfuly by Subscriber. Message: Hello World!"
+     * Subscriber: In a subscriber tab of browser expected message: "Topic was subscribed successfuly by Subscriber. Message: Hello World!"
 1. Clean up environment 
      * In a command line tool stop application with `ctrl + C`
 
@@ -29,8 +29,8 @@ Terminology explanation:
 * **Spring Boot**: framework for Java. It consists of: Spring + Container + Configuration
 * **Maven**: tool for build automation
 * **Git**: tool for distributed version control
-* **JMS messages type Queue**: it's asynchronic communication type point-to-point. It means that message can be produced in one moment but consumed in another moment. Type point-to-point means that this message is consumed only once by first consumer
-* **ActiveMQ**: message broker between producer and consumer. It can store message waiting for consumer. In this way communication becomes asynchronic. In memory means that this tool is up and running together with application
+* **JMS messages type Topic**: it's asynchronic communication type publish-subscribe. It means that published message is subscribed by all Subscribers in the same time
+* **ActiveMQ**: message broker between pubslishers and subscribers. In memory means that this tool is up and running together with application
 
 
 ##### Flow
