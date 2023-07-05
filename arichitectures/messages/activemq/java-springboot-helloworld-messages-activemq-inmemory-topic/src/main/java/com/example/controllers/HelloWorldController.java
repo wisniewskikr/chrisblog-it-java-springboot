@@ -1,6 +1,5 @@
 package com.example.controllers;
 
-import javax.jms.Queue;
 import javax.jms.Topic;
 
 import org.slf4j.Logger;
@@ -42,7 +41,6 @@ public class HelloWorldController {
 	@GetMapping("/subscribe")
 	public ResponseEntity<String> topicSubscribeSubscriber() {				
 		
-		jmsTemplate.setReceiveTimeout(JmsTemplate.RECEIVE_TIMEOUT_NO_WAIT);		
 		String message = (String)jmsTemplate.receiveAndConvert(topic);
 
    		String response = null;
