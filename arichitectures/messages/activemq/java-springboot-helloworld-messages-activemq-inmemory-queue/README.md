@@ -7,11 +7,16 @@ USAGE JAVA
 
 Usage steps:
 1. In a command line tool start application with `mvn spring-boot:run`
-1. In a browser produce message with `http://localhost:8080/produce`
-1. In a command line tool check message. 
-     * Expected: "Queue was consumed successfuly by Listener. Message: Hello World!"
-1. In a browser consume message with `http://localhost:8080/consume`
-     * Expected (because Queue was consumed earlier by Listener): "Queue wasn't consumed successfuly by Consumer. Message is empty"
+1. In a first tab of browser consume message with `http://localhost:8080/consume`
+     * Expected: consumption is waiting for message
+1. In a second tab of browser produce message with `http://localhost:8080/produce`
+1. Result:
+     * Listener: In a command line tool expected message: "Queue was consumed successfuly by Listener. Message: Hello World!"
+     * Consumer: In a consumer tab of browser expected that consumption is still waiting for message
+1. In a second tab of browser produce another message with `http://localhost:8080/produce`
+1. Result:
+     * Listener: In a command line tool expected nothing
+     * Consumer: In a consumer tab of browser expected message: "Queue was consumed successfuly by Consumer. Message: Hello World!"
 1. Clean up environment 
      * In a command line tool stop application with `ctrl + C`
 

@@ -41,7 +41,6 @@ public class HelloWorldController {
 	@GetMapping("/consume")
 	public ResponseEntity<String> consumeByConsumer() {				
 		
-		jmsTemplate.setReceiveTimeout(JmsTemplate.RECEIVE_TIMEOUT_NO_WAIT);		
 		String message = (String)jmsTemplate.receiveAndConvert(queue);
 
    		String response = null;
