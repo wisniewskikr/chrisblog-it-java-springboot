@@ -22,8 +22,6 @@ function connect(event) {
         usernamePage.classList.add('hidden');
         chatPage.classList.remove('hidden');
         connectingElement.classList.add('hidden');
-
-        createOffer();
     }
     event.preventDefault();
 }
@@ -91,7 +89,7 @@ var conn = new WebSocket('ws://localhost:8080/socket');
 
 conn.onopen = function() {
     console.log("Connected to the signaling server");
-    initialize();
+    initialize();    
 };
 
 conn.onmessage = function(msg) {
