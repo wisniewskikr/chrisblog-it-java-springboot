@@ -1,20 +1,12 @@
 'use strict';
 
-var websocketEndpoint = '/endpoint';
-var websocketReceive = '/topic/public';
-var websocketSendRegister = "/chat/register";
-var websocketSendMessage = "/chat/message";
-
 var usernamePage = document.querySelector('#username-page');
 var chatPage = document.querySelector('#chat-page');
 var usernameForm = document.querySelector('#usernameForm');
-var messageForm = document.querySelector('#messageForm');
 var messageInput = document.querySelector('#message');
 var messageArea = document.querySelector('#messageArea');
 var connectingElement = document.querySelector('.connecting');
 var chatName = document.querySelector('#chat-name');
-
-var stompClient = null;
 var username = null;
 
 var colors = [
@@ -31,78 +23,44 @@ function connect(event) {
         chatPage.classList.remove('hidden');
         connectingElement.classList.add('hidden');
 
-        // TODO
-        // var socket = new SockJS(websocketEndpoint);
-        // stompClient = Stomp.over(socket);
-        // stompClient.connect({}, onConnected, onError);
+        createOffer();
     }
     event.preventDefault();
 }
 
-
-function onConnected() {
-    // Subscribe to the Public Topic
-    stompClient.subscribe(websocketReceive, onMessageReceived);
-
-    // Tell your username to the server
-    stompClient.send(websocketSendRegister,
-        {},
-        JSON.stringify({sender: username, type: 'JOIN'})
-    )
-
-    connectingElement.classList.add('hidden');
-}
-
-
-function onError(error) {
-    connectingElement.textContent = 'Could not connect to WebSocket server. Please refresh this page to try again!';
-    connectingElement.style.color = 'red';
-}
-
-
-function send(event) {
+function sendChat() {
     var messageContent = messageInput.value.trim();
 
-    if(messageContent && stompClient) {
+    if(messageContent) {
         var chatMessage = {
             sender: username,
             content: messageInput.value,
             type: 'CHAT'
-        };
+        };        
 
-        stompClient.send(websocketSendMessage, {}, JSON.stringify(chatMessage));
-        messageInput.value = '';
+        dataChannel.send(JSON.stringify(chatMessage));
     }
-    event.preventDefault();
 }
 
-
 function onMessageReceived(payload) {
-    var message = JSON.parse(payload.body);
+
+    var message = JSON.parse(payload);
 
     var messageElement = document.createElement('li');
 
-    if(message.type === 'JOIN') {
-        messageElement.classList.add('event-message');
-        message.content = message.sender + ' joined!';
-    } else if (message.type === 'LEAVE') {
-        messageElement.classList.add('event-message');
-        message.content = message.sender + ' left!';
-    } else {
-        messageElement.classList.add('chat-message');
+    messageElement.classList.add('chat-message');
 
-        var avatarElement = document.createElement('i');
-        var avatarText = document.createTextNode(message.sender[0]);
-        avatarElement.appendChild(avatarText);
-        avatarElement.style['background-color'] = getAvatarColor(message.sender);
+    var avatarElement = document.createElement('i');
+    var avatarText = document.createTextNode(message.sender[0]);
+    avatarElement.appendChild(avatarText);
+    avatarElement.style['background-color'] = getAvatarColor(message.sender);
 
-        messageElement.appendChild(avatarElement);
+    messageElement.appendChild(avatarElement);
 
-        var usernameElement = document.createElement('span');
-        var usernameText = document.createTextNode(message.sender);
-        usernameElement.appendChild(usernameText);
-        messageElement.appendChild(usernameElement);
-    }
+    var usernameElement = document.createElement('span');
+    var usernameText = document.createTextNode(message.sender);
+    usernameElement.appendChild(usernameText);
+    messageElement.appendChild(usernameElement);
 
     var textElement = document.createElement('p');
     var messageText = document.createTextNode(message.content);
@@ -112,6 +70,7 @@ function onMessageReceived(payload) {
 
     messageArea.appendChild(messageElement);
     messageArea.scrollTop = messageArea.scrollHeight;
+
 }
 
 
@@ -134,6 +93,31 @@ conn.onopen = function() {
     console.log("Connected to the signaling server");
     initialize();
 };
+
+conn.onmessage = function(msg) {
+    console.log("Got message", msg.data);
+    var content = JSON.parse(msg.data);
+    var data = content.data;
+    switch (content.event) {
+    // when somebody wants to call us
+    case "offer":
+        handleOffer(data);
+        break;
+    case "answer":
+        handleAnswer(data);
+        break;
+    // when a remote peer sends an ice candidate to us
+    case "candidate":
+        handleCandidate(data);
+        break;
+    default:
+        break;
+    }
+};
+
+function send(message) {
+    conn.send(JSON.stringify(message));
+}
 
 var peerConnection;
 var dataChannel;
@@ -165,6 +149,7 @@ function initialize() {
     // when we receive a message from the other peer, printing it on the console
     dataChannel.onmessage = function(event) {
         console.log("message:", event.data);
+        onMessageReceived(event.data);
     };
 
     dataChannel.onclose = function() {
@@ -177,7 +162,47 @@ function initialize() {
     
 }
 
+function createOffer() {
+    peerConnection.createOffer(function(offer) {
+        send({
+            event : "offer",
+            data : offer
+        });
+        peerConnection.setLocalDescription(offer);
+    }, function(error) {
+        alert("Error creating an offer");
+    });
+}
+
+function handleOffer(offer) {
+    peerConnection.setRemoteDescription(new RTCSessionDescription(offer));
+
+    // create and send an answer to an offer
+    peerConnection.createAnswer(function(answer) {
+        peerConnection.setLocalDescription(answer);
+        send({
+            event : "answer",
+            data : answer
+        });
+    }, function(error) {
+        alert("Error creating an answer");
+    });
+
+};
+
+function handleCandidate(candidate) {
+    peerConnection.addIceCandidate(new RTCIceCandidate(candidate));
+};
+
+function handleAnswer(answer) {
+    peerConnection.setRemoteDescription(new RTCSessionDescription(answer));
+    console.log("connection established successfully!!");
+};
+
+// function sendMessage(message) {
+//     dataChannel.send(message);
+// }
+
 // ***** stop webrtc
 
 usernameForm.addEventListener('submit', connect, true)
-messageForm.addEventListener('submit', send, true)
