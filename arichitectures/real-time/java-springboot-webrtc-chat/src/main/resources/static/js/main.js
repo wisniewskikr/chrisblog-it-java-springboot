@@ -2,7 +2,6 @@
 
 var usernamePage = document.querySelector('#username-page');
 var chatPage = document.querySelector('#chat-page');
-var usernameForm = document.querySelector('#usernameForm');
 var messageInput = document.querySelector('#message');
 var messageArea = document.querySelector('#messageArea');
 var connectingElement = document.querySelector('.connecting');
@@ -16,7 +15,7 @@ var colors = [
     '#ffc107', '#ff85af', '#FF9800', '#39bbb0'
 ];
 
-function connect(event) {
+function logIn() {
     username = document.querySelector('#name').value.trim();
 
     if(username) {
@@ -25,7 +24,27 @@ function connect(event) {
         chatPage.classList.remove('hidden');
         connectingElement.classList.add('hidden');
     }
-    event.preventDefault();
+
+}
+
+function createOffer() {
+
+    offerButton.classList.add('hidden');
+    chatButton.classList.remove('hidden');
+
+    if (peerConnection.iceConnectionState != "new") {
+        return;
+    }
+
+    peerConnection.createOffer(function(offer) {
+        send({
+            event : "offer",
+            data : offer
+        });
+        peerConnection.setLocalDescription(offer);
+    }, function(error) {
+        alert("Error creating an offer");
+    });
 }
 
 function sendChat() {
@@ -165,26 +184,6 @@ function initialize() {
     
 }
 
-function createOffer() {
-
-    offerButton.classList.add('hidden');
-    chatButton.classList.remove('hidden');
-
-    if (peerConnection.iceConnectionState != "new") {
-        return;
-    }
-
-    peerConnection.createOffer(function(offer) {
-        send({
-            event : "offer",
-            data : offer
-        });
-        peerConnection.setLocalDescription(offer);
-    }, function(error) {
-        alert("Error creating an offer");
-    });
-}
-
 function handleOffer(offer) {
     peerConnection.setRemoteDescription(new RTCSessionDescription(offer));
 
@@ -210,10 +209,4 @@ function handleAnswer(answer) {
     console.log("connection established successfully!!");
 };
 
-// function sendMessage(message) {
-//     dataChannel.send(message);
-// }
-
 // ***** stop webrtc
-
-usernameForm.addEventListener('submit', connect, true)
