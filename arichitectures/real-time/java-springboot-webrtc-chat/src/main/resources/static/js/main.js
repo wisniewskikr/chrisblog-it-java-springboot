@@ -7,6 +7,8 @@ var messageInput = document.querySelector('#message');
 var messageArea = document.querySelector('#messageArea');
 var connectingElement = document.querySelector('.connecting');
 var chatName = document.querySelector('#chat-name');
+var chatButton = document.querySelector('#chat-button');
+var offerButton = document.querySelector('#offer-button');
 var username = null;
 
 var colors = [
@@ -164,6 +166,14 @@ function initialize() {
 }
 
 function createOffer() {
+
+    offerButton.classList.add('hidden');
+    chatButton.classList.remove('hidden');
+
+    if (peerConnection.iceConnectionState != "new") {
+        return;
+    }
+
     peerConnection.createOffer(function(offer) {
         send({
             event : "offer",
