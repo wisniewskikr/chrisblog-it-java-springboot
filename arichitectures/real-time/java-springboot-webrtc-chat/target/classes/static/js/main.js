@@ -37,6 +37,7 @@ function sendChat() {
         };        
 
         dataChannel.send(JSON.stringify(chatMessage));
+        onMessageReceived(JSON.stringify(chatMessage));
     }
 }
 
