@@ -8,7 +8,11 @@ var connectingElement = document.querySelector('.connecting');
 var chatName = document.querySelector('#chat-name');
 var chatButton = document.querySelector('#chat-button');
 var offerButton = document.querySelector('#offer-button');
-var username = null;
+var peerConnection;
+var dataChannel;
+var username;
+//connecting to our signaling server 
+var conn = new WebSocket('ws://localhost:8080/socket');
 
 var colors = [
     '#2196F3', '#32c787', '#00BCD4', '#ff5652',
@@ -95,7 +99,6 @@ function displayMessage(messageString) {
 
 }
 
-
 function getAvatarColor(messageSender) {
     var hash = 0;
     for (var i = 0; i < messageSender.length; i++) {
@@ -105,11 +108,6 @@ function getAvatarColor(messageSender) {
     var index = Math.abs(hash % colors.length);
     return colors[index];
 }
-
-// ***** start webrtc
-
-//connecting to our signaling server 
-var conn = new WebSocket('ws://localhost:8080/socket');
 
 conn.onopen = function() {
     console.log("Connected to the signaling server");
@@ -140,9 +138,6 @@ conn.onmessage = function(msg) {
 function send(message) {
     conn.send(JSON.stringify(message));
 }
-
-var peerConnection;
-var dataChannel;
 
 function initialize() {
     var configuration = null;
@@ -208,5 +203,3 @@ function handleAnswer(answer) {
     peerConnection.setRemoteDescription(new RTCSessionDescription(answer));
     console.log("connection established successfully!!");
 };
-
-// ***** stop webrtc
