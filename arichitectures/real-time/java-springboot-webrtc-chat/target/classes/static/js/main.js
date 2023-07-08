@@ -58,15 +58,15 @@ function sendChat() {
         };        
 
         dataChannel.send(JSON.stringify(chatMessage));
-        onMessageReceived(JSON.stringify(chatMessage));
+        displayMessage(JSON.stringify(chatMessage));
 
         messageInput.value = "";
     }
 }
 
-function onMessageReceived(payload) {
+function displayMessage(messageString) {
 
-    var message = JSON.parse(payload);
+    var message = JSON.parse(messageString);
 
     var messageElement = document.createElement('li');
 
@@ -171,7 +171,7 @@ function initialize() {
     // when we receive a message from the other peer, printing it on the console
     dataChannel.onmessage = function(event) {
         console.log("message:", event.data);
-        onMessageReceived(event.data);
+        displayMessage(event.data);
     };
 
     dataChannel.onclose = function() {
