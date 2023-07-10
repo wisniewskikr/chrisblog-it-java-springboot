@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.models.ChatMessageModel;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 import jakarta.servlet.http.HttpServletResponse;
 
@@ -23,8 +25,42 @@ public class ChatMessageController {
     @PostMapping("/send")
     public ResponseEntity<String> send(@RequestBody ChatMessageModel model) {
 
-        System.out.println("send()");
+        long lastId = getLastId();        
+        long currentId = getCurrentId(lastId);        
+        saveMessage(currentId, model);
+
         return ResponseEntity.ok("Message was sent.");
+
+    }
+
+    private void saveMessage(long currentId, ChatMessageModel model) {
+
+        model.setId(currentId);
+        Gson gson = new GsonBuilder().create();
+        System.setProperty("lastId", String.valueOf(currentId));
+        System.setProperty(String.valueOf(currentId), gson.toJson(model));
+
+    }
+
+    private long getLastId() {
+
+        long lastId;
+
+        String lastIdString = System.getProperty("lastId");
+        if (lastIdString == null) {
+            lastId = 0;
+        } else {
+            lastId = Long.valueOf(lastIdString);
+        }
+
+        return lastId;
+
+    }
+
+    private long getCurrentId(long lastId) {
+
+        long currentId = lastId++;
+        return currentId;
 
     }
     
