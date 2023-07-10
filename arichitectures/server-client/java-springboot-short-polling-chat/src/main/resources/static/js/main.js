@@ -34,15 +34,31 @@ function sendChat() {
         var chatMessage = {
             index: index,
             sender: username,
-            content: messageInput.value,
-            type: 'CHAT'
+            content: messageInput.value
         };        
 
+        send(chatMessage);
         displayMessage(JSON.stringify(chatMessage));
-
         messageInput.value = "";
     }
 }
+
+function send(chatMessage) {
+    const url = 'http://localhost:8080/send'    
+    const options = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(chatMessage),
+    }
+    return fetch(url, options)
+      .then((response) => {
+        console.log("Message response: " + JSON.stringify(response));
+      }).catch(error => {
+        console.log("Message error: " + JSON.stringify(error));
+    });      
+  }
 
 function displayMessage(messageString) {
 
