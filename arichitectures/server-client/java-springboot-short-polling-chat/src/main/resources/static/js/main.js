@@ -7,10 +7,8 @@ var messageArea = document.querySelector('#messageArea');
 var connectingElement = document.querySelector('.connecting');
 var chatName = document.querySelector('#chat-name');
 var chatButton = document.querySelector('#chat-button');
-var offerButton = document.querySelector('#offer-button');
-var peerConnection;
-var dataChannel;
 var username;
+var index = 0;
 
 var colors = [
     '#2196F3', '#32c787', '#00BCD4', '#ff5652',
@@ -29,15 +27,12 @@ function logIn() {
 
 }
 
-function createOffer() {
-    
-}
-
 function sendChat() {
     var messageContent = messageInput.value.trim();
 
     if(messageContent) {
         var chatMessage = {
+            index: index,
             sender: username,
             content: messageInput.value,
             type: 'CHAT'
