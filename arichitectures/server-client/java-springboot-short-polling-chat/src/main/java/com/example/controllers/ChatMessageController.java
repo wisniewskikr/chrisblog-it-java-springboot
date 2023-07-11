@@ -6,9 +6,11 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.models.ChatMessageModel;
+import com.example.models.SendResponseModel;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -23,13 +25,13 @@ public class ChatMessageController {
     }
 
     @PostMapping("/send")
-    public ResponseEntity<String> send(@RequestBody ChatMessageModel model) {
+    public ResponseEntity<SendResponseModel> send(@RequestBody ChatMessageModel model) {
 
         long lastId = getLastId();        
         long currentId = getCurrentId(lastId);        
         saveMessage(currentId, model);
 
-        return ResponseEntity.ok("Message was sent.");
+        return ResponseEntity.ok(new SendResponseModel(currentId));
 
     }
 
@@ -59,7 +61,8 @@ public class ChatMessageController {
 
     private long getCurrentId(long lastId) {
 
-        long currentId = lastId++;
+        lastId++;
+        long currentId = lastId;
         return currentId;
 
     }

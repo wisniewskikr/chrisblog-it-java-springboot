@@ -30,35 +30,43 @@ function logIn() {
 function sendChat() {
     var messageContent = messageInput.value.trim();
 
-    if(messageContent) {
-        var chatMessage = {
-            index: index,
-            sender: username,
-            content: messageInput.value
-        };        
-
-        send(chatMessage);
-        displayMessage(JSON.stringify(chatMessage));
-        messageInput.value = "";
+    if(!messageContent) {
+      return;
     }
+
+    var chatMessage = {
+        index: index,
+        sender: username,
+        content: messageInput.value
+    };        
+
+    send(chatMessage);         
+    
 }
 
 function send(chatMessage) {
-    const url = 'http://localhost:8080/send'    
+
+    const url = 'http://localhost:8080/send';
+
     const options = {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify(chatMessage),
-    }
-    return fetch(url, options)
-      .then((response) => {
-        console.log("Message response: " + JSON.stringify(response));
-      }).catch(error => {
-        console.log("Message error: " + JSON.stringify(error));
-    });      
-  }
+    };
+
+    fetch(url, options)
+      .then((response) => response.json())
+      .then((data) => {
+        index = data.id;
+        displayMessage(JSON.stringify(chatMessage));
+        messageInput.value = "";
+      }).catch((error) => {
+        console.log(error);
+      });
+
+}
 
 function displayMessage(messageString) {
 
