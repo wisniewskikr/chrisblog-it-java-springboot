@@ -8,7 +8,6 @@ Steps:
 1. In a browser open first chat with `http://localhost:8080`
 1. In a browser open second chat with `http://localhost:8080`
 1. In a browser register two users
-1. In a browser send offer for two users
 1. In a browser chat between two users
 1. Clean up
      * In a command line tool stop application with `ctrl + c`
@@ -18,13 +17,12 @@ DESCRIPTION
 -----------
 
 ##### Goal
-The goal of this project is to present how to create **chat** using **webRTC** protocol in **Java** application based on **Spring Boot** framework.
+The goal of this project is to present how to create **chat** using **HTTP Short Polling** communication in **Java** application based on **Spring Boot** framework.
 
 ##### Terminology
 Terminology explanation:
 * **Java Spring Boot application**: it's application in Java programming language which uses Spring Boot framework. This is chat application - user can open two or more browsers or browser's tabs, register with specific name, send webRTC offer and then chat
-* **webRTC**: it's protocol for chats, audio or video. It users peer-to-peer connection - direct connection between two clients. Server called Signal Server is required only to establish this P2P connection - offer, answer and candidates are exchanged between two clients. Later all communication is done through P2P directly between two clients
-* **Websockets**: WebSockets is a bidirectional, full-duplex, persistent connection between a web browser and a server or between servers. In this example this connection is used only on the beginning to contact with Signal Server. Later all communication is done through P2P
+* **HTTP Short Polling**: it's a communication where Client constantly and in short time intervals sends request to Server for content. Response is sent back immadietly from Server to Client
 
 
 ##### Flow
@@ -32,10 +30,8 @@ The following flow takes place in this project:
 1. User runs application
 1. User via any browser sends request to Server for registration
 1. Server sends back response to User via browser registration confirmation 
-1. User via browser sends offer to Server. This offer is redirected to other client
-1. Server sends back response with answer to User via browser
-1. User via any browser sends request to another Client with message
-1. Client sends back response to User via browser with anser
+1. User via any browser sends request to Server with message
+1. Another User via browser sends request to Server for existing messages
 1. User cleans up
 
 ##### Launch
