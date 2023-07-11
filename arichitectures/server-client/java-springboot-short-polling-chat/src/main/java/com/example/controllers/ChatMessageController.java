@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.models.ChatMessageModel;
+import com.example.models.ReadRequestModel;
 import com.example.models.SendResponseModel;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -35,14 +36,23 @@ public class ChatMessageController {
 
     }
 
-    private void saveMessage(long currentId, ChatMessageModel model) {
+    @PostMapping("/read")
+    public ResponseEntity<ChatMessageModel> read(@RequestBody ReadRequestModel model) {        
 
-        model.setId(currentId);
-        Gson gson = new GsonBuilder().create();
-        System.setProperty("lastId", String.valueOf(currentId));
-        System.setProperty(String.valueOf(currentId), gson.toJson(model));
+        ChatMessageModel chatModel;
+        long lastId = getLastId();
 
-    }
+        if (lastId <= model.getId()) {
+            chatModel = new ChatMessageModel();
+            chatModel.setId(0L);
+            return ResponseEntity.ok(chatModel);
+        }        
+
+        long id = model.getId() + 1;
+        chatModel = readMessage(id);
+        return ResponseEntity.ok(chatModel);
+
+    }   
 
     private long getLastId() {
 
@@ -64,6 +74,23 @@ public class ChatMessageController {
         lastId++;
         long currentId = lastId;
         return currentId;
+
+    }
+
+    private void saveMessage(long currentId, ChatMessageModel model) {
+
+        model.setId(currentId);
+        Gson gson = new GsonBuilder().create();
+        System.setProperty("lastId", String.valueOf(currentId));
+        System.setProperty(String.valueOf(currentId), gson.toJson(model));
+
+    }
+
+    private ChatMessageModel readMessage(long id) {
+
+        String modelString = System.getProperty(String.valueOf(id));
+        Gson gson = new GsonBuilder().create();
+        return gson.fromJson(modelString, ChatMessageModel.class);
 
     }
     

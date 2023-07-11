@@ -23,6 +23,8 @@ function logIn() {
         usernamePage.classList.add('hidden');
         chatPage.classList.remove('hidden');
         connectingElement.classList.add('hidden');
+
+        readInit();
     }
 
 }
@@ -65,6 +67,52 @@ function send(chatMessage) {
       }).catch((error) => {
         console.log(error);
       });
+
+}
+
+function readInit() {
+
+  var intervalId = window.setInterval(function(){
+    readChat();
+  }, 3000);  
+
+}
+
+function readChat() {
+
+  var readRequest = {
+      id: index
+  };        
+
+  read(readRequest);         
+  
+}
+
+function read(readRequest) {
+
+  const url = 'http://localhost:8080/read';
+
+  const options = {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(readRequest),
+  };
+
+  fetch(url, options)
+    .then((response) => response.json())
+    .then((data) => {
+
+      if (data.id == 0) {
+        return;
+      }
+      index = data.id;
+      displayMessage(JSON.stringify(data));
+
+    }).catch((error) => {
+      console.log(error);
+    });
 
 }
 
