@@ -62,7 +62,6 @@ function send(chatMessage) {
       .then((response) => response.json())
       .then((data) => {
         index = data.id;
-        displayMessage(JSON.stringify(chatMessage));
         messageInput.value = "";
       }).catch((error) => {
         console.log(error);
@@ -97,7 +96,6 @@ function read(readRequest) {
   fetch(url, options)
     .then((response) => response.json())
     .then((data) => {
-      console.log("read");      
       index = data.id;
       displayMessage(JSON.stringify(data));
       readChat();
