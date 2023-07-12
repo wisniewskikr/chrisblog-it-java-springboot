@@ -5,10 +5,7 @@ USAGE
 
 Steps:
 1. In a command line tool start application with `mvn spring-boot:run`
-1. In a browser open first chat with `http://localhost:8080`
-1. In a browser open second chat with `http://localhost:8080`
-1. In a browser register two users
-1. In a browser chat between two users
+1. In a browser start Server communication with `http://localhost:8080`
 1. Clean up
      * In a command line tool stop application with `ctrl + c`
 
@@ -17,21 +14,19 @@ DESCRIPTION
 -----------
 
 ##### Goal
-The goal of this project is to present how to create **chat** using **HTTP Short Polling** communication in **Java** application based on **Spring Boot** framework.
+The goal of this project is to present how to **display** messages from Server using **Server-Send Events (SSE)** communication in **Java** application based on **Spring Boot** framework.
 
 ##### Terminology
 Terminology explanation:
 * **Java Spring Boot application**: it's application in Java programming language which uses Spring Boot framework. This is chat application - user can open two or more browsers or browser's tabs, register with specific name, send webRTC offer and then chat
-* **HTTP Short Polling**: it's a communication where Client constantly and in short time intervals sends request to Server for content. Response is sent back immadietly from Server to Client
+* **Server-Send Events (SSE)**: it's a type of communication where Client initializes communication but then only Server sends messages. These messages are sent as Stream. Client can not send any message to Server.
 
 
 ##### Flow
 The following flow takes place in this project:
 1. User runs application
-1. User via any browser sends request to Server for registration
-1. Server sends back response to User via browser registration confirmation 
-1. User via any browser sends request to Server with message
-1. Another User via browser sends request to Server for existing messages
+1. User via any browser sends request to Server for communication
+1. Server sends back many reponses to User via browser
 1. User cleans up
 
 ##### Launch

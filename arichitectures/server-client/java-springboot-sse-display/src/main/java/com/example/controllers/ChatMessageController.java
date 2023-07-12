@@ -22,9 +22,9 @@ public class ChatMessageController {
 	public void init() {
         messages.add("Hi");
         messages.add("Hello World from Server-Sent Events (SSE)");        
-        messages.add("This are authomatic messages sent by Server");
-        messages.add("SSE enables only communication from Server to Client");
+        messages.add("These are authomatic messages sent by Server");
         messages.add("These messages are sent as stream");
+        messages.add("SSE enables only communication from Server to Client");
         messages.add("Have a nice day");
         messages.add("Bye");
     }
