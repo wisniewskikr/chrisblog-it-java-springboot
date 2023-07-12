@@ -1,0 +1,1 @@
+Other REST examples are in location: `https://github.com/wisniewskikr/chrisblog-it-java-springboot/tree/main/arichitectures/other/rest`
