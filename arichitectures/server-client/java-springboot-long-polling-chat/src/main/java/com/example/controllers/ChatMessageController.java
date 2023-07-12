@@ -6,7 +6,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.models.ChatMessageModel;
@@ -37,22 +36,28 @@ public class ChatMessageController {
     }
 
     @PostMapping("/read")
-    public ResponseEntity<ChatMessageModel> read(@RequestBody ReadRequestModel model) {        
+    public ResponseEntity<ChatMessageModel> read(@RequestBody ReadRequestModel model) throws InterruptedException {        
 
         ChatMessageModel chatModel;
-        long lastId = getLastId();
-
-        if (lastId <= model.getId()) {
-            chatModel = new ChatMessageModel();
-            chatModel.setId(0L);
-            return ResponseEntity.ok(chatModel);
-        }        
+        
+        waitForMessage(model);
 
         long id = model.getId() + 1;
         chatModel = readMessage(id);
         return ResponseEntity.ok(chatModel);
 
-    }   
+    } 
+    
+    private void waitForMessage(ReadRequestModel model) throws InterruptedException {
+
+        long lastId = getLastId();
+
+        if (lastId <= model.getId()) {
+            Thread.sleep(3000);
+            waitForMessage(model);
+        }
+
+    }
 
     private long getLastId() {
 

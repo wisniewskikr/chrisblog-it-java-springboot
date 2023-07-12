@@ -24,7 +24,7 @@ function logIn() {
         chatPage.classList.remove('hidden');
         connectingElement.classList.add('hidden');
 
-        readInit();
+        readChat();
     }
 
 }
@@ -70,14 +70,6 @@ function send(chatMessage) {
 
 }
 
-function readInit() {
-
-  var intervalId = window.setInterval(function(){
-    readChat();
-  }, 3000);  
-
-}
-
 function readChat() {
 
   var readRequest = {
@@ -96,6 +88,8 @@ function read(readRequest) {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
+      'Connection' : 'keep-alive',
+      'Keep-Alive' : 'timeout=5, max=100'
     },
     body: JSON.stringify(readRequest),
   };
@@ -103,13 +97,10 @@ function read(readRequest) {
   fetch(url, options)
     .then((response) => response.json())
     .then((data) => {
-
-      if (data.id == 0) {
-        return;
-      }
+      console.log("read");      
       index = data.id;
       displayMessage(JSON.stringify(data));
-
+      readChat();
     }).catch((error) => {
       console.log(error);
     });
