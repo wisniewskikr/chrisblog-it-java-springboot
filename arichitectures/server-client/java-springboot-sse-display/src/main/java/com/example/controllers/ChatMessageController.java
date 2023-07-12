@@ -1,6 +1,5 @@
 package com.example.controllers;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -11,7 +10,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import jakarta.annotation.PostConstruct;
-import jakarta.servlet.http.HttpServletResponse;
 import reactor.core.publisher.Flux;
 import java.time.Duration;
 
@@ -23,19 +21,15 @@ public class ChatMessageController {
     @PostConstruct
 	public void init() {
         messages.add("Hi");
-        messages.add("Hello World from Server-Sent Events (SSE)");
+        messages.add("Hello World from Server-Sent Events (SSE)");        
         messages.add("This are authomatic messages sent by Server");
+        messages.add("SSE enables only communication from Server to Client");
         messages.add("These messages are sent as stream");
         messages.add("Have a nice day");
         messages.add("Bye");
     }
 
-    @GetMapping("/")
-    public void index(HttpServletResponse response) throws IOException {
-        response.sendRedirect("index.html");
-    }
-
-    @GetMapping(value = "/sse", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
+    @GetMapping(value = "/", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
     public Flux<ServerSentEvent<String>> sse() {
 
         AtomicInteger counter = new AtomicInteger(1);
@@ -46,7 +40,7 @@ public class ChatMessageController {
                         .event("lineEvent")
                         .retry(Duration.ofMillis(1000))
                         .build())
-                .delayElements(Duration.ofMillis(300));
+                .delayElements(Duration.ofMillis(3000));
 
     }
     
