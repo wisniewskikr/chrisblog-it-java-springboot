@@ -17,12 +17,12 @@ DESCRIPTION
 -----------
 
 ##### Goal
-The goal of this project is to present how to create **chat** using **HTTP Short Polling** communication in **Java** application based on **Spring Boot** framework.
+The goal of this project is to present how to create **chat** using **HTTP Long Polling** communication in **Java** application based on **Spring Boot** framework.
 
 ##### Terminology
 Terminology explanation:
 * **Java Spring Boot application**: it's application in Java programming language which uses Spring Boot framework. This is chat application - user can open two or more browsers or browser's tabs, register with specific name, send webRTC offer and then chat
-* **HTTP Short Polling**: it's a communication where Client constantly and in short time intervals sends request to Server for content. Response is sent back immadietly from Server to Client
+* **HTTP Long Polling**: it's a communication where Client sends request to Sever and waits long time for response. Client can wait from 100 to 300 seconds for response. Connection is opened in this time.
 
 
 ##### Flow
