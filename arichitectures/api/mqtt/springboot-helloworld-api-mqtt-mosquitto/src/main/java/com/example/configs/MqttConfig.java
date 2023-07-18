@@ -22,11 +22,13 @@ public class MqttConfig {
 		DefaultMqttPahoClientFactory factory = new DefaultMqttPahoClientFactory();
 		MqttConnectOptions options = new MqttConnectOptions();
 
-		options.setServerURIs(new String[] { "tcp://localhost:1883" });
-		options.setUserName("admin");
-		String pass = "12345678";
-		options.setPassword(pass.toCharArray());
-		options.setCleanSession(true);
+		options.setServerURIs(new String[] { "tcp://localhost:1883" });		
+		options.setCleanSession(true);		
+		
+		// Security (Optional)
+		// options.setUserName("admin");
+		// String pass = "12345678";
+		// options.setPassword(pass.toCharArray());
 
 		factory.setConnectionOptions(options);
 
