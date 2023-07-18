@@ -11,8 +11,11 @@ import com.example.publishers.MqttPublisher;
 @RestController
 public class HelloWorldController {
 	
-	@Value("${service.helloworld.message}")
+	@Value("${mqtt.message}")
 	private String message;
+
+	@Value("${mqtt.topic}")
+	private String mqttTopic;
 
 	private MqttPublisher publisher;
 
@@ -25,7 +28,7 @@ public class HelloWorldController {
 	public ResponseEntity<?> publish(){
 
 		try {
-			publisher.senToMqtt(message, "myTopic");
+			publisher.senToMqtt(message, mqttTopic);
 			return ResponseEntity.ok("Success");
 		}catch(Exception ex) {
 			ex.printStackTrace();
@@ -33,7 +36,5 @@ public class HelloWorldController {
 		}
 
 	}
-	
-
 	
 }
