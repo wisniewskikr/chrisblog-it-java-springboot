@@ -2,7 +2,7 @@ USAGE
 -----
 
 Usage steps:
-1. In any Command Line tool start application with `mvn spring-boot:run`
+1. In command line tool start application with `mvn spring-boot:run`
 1. In Postman tool using GET method visit `http://localhost:8080`
 1. (Optional) Check database in console (url: "jdbc:h2:mem:db-embedded", user: "admin", password: "admin123") with `http://localhost:8080/console`
 1. Clean up environment with `ctrl + C`
@@ -18,9 +18,14 @@ DESCRIPTION
 -----------
 
 ##### Goal
-The goal of this project is to present how to create **Hello World** application in **Java** programming language with usage **Spring Boot** framework and **embedded** database type **h2**.
+The goal of this project is to present how to use database migration tool **Liquibase** in **Java** application with usage **Spring Boot** framework and **embedded** database type **h2**.
 
-Embedded database means that database is started together with application. 
+##### Terminology
+Terminology explanation:
+* **Java Spring Boot application**: application created in Java programming language with usage Spring Boot framework
+* **Liquibase**: this tool enables automated database migration
+* **H2**: relational database
+* **Embedded database**: it means that database is started together with application 
 
 ##### Flow
 The following flow takes place in this project:
