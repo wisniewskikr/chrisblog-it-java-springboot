@@ -8,9 +8,10 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
-@SpringBootTest
+import com.example.base.BaseIT;
+
 @AutoConfigureMockMvc
-public class HelloWorldControllerIT {
+public class HelloWorldControllerIT extends BaseIT {
 
     @Autowired
     private MockMvc mockMvc;
