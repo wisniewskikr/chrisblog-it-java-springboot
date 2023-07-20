@@ -30,7 +30,7 @@ public class HelloWorldController {
 	public ResponseEntity<HelloWorldDto> helloWorld() {
 				
 		String port = environment.getProperty("local.server.port");
-		String uuid = System.getProperty("uuid");
+		String uuid = "uuid";
 		
 		logger.info("Application was called with message: {}, port: {} and uuid: {}", message, port, uuid);
 		
