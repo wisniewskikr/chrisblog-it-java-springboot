@@ -1,0 +1,14 @@
+databaseChangeLog:  
+  -  changeSet:  
+      id:  1  
+      author:  wisniewk
+      changes:
+        - insert:
+            tableName: HELLO_WORLDS 
+            columns:
+            - column:
+                name: id
+                value: "1"
+            - column:
+                name: text
+                value: "Hello World!"
