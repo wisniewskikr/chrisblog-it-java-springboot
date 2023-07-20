@@ -18,12 +18,12 @@ DESCRIPTION
 -----------
 
 ##### Goal
-The goal of this project is to present how to use database migration tool **Liquibase** in **Java** application with usage **Spring Boot** framework and **embedded** database type **h2**.
+The goal of this project is to present how to use database migration tool **Flyway** in **Java** application with usage **Spring Boot** framework and **embedded** database type **h2**.
 
 ##### Terminology
 Terminology explanation:
 * **Java Spring Boot application**: application created in Java programming language with usage Spring Boot framework
-* **Liquibase**: this tool enables automated database migration. All database migration scrips are loaded before application is started
+* **Flyway**: this tool enables automated database migration. This tool is used for versioning database changes. All database migration scrips are loaded before application is started
 * **H2**: relational database
 * **Embedded database**: it means that database is started together with application 
 
