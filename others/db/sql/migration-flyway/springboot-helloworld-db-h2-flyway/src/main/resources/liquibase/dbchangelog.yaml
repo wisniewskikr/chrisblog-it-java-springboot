@@ -1,5 +1,0 @@
-databaseChangeLog:
-  - include:
-      file: liquibase/files/001-create-table-helloworlds.yaml 
-  - include:
-      file: liquibase/files/002-fill-table-helloworlds.yaml 
