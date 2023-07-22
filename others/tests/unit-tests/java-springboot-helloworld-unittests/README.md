@@ -6,14 +6,14 @@ USAGE JAVA
 > Please **clone/download** project, open **project's main folder** in your favorite **command line tool** and then **proceed with steps below**. 
 
 Usage steps:
-1. In a command line tool start integration tests with `mvn test -Dtest="HelloWorldControllerIT"`
+1. In a command line tool start unit tests with `mvn test -Dtest="HelloWorldControllerUT"`
 
 
 DESCRIPTION
 -----------
 
 ##### Goal
-The goal of this project is to present how to create **Integration Tests** with **Mock MVC** for an application type **API REST** in **Java** programming language with usage **Spring Boot** framework.
+The goal of this project is to present how to create **Unit Tests**for an application type **API REST** in **Java** programming language with usage **Spring Boot** framework.
 
 ##### Terminology
 Terminology explanation:
@@ -22,8 +22,7 @@ Terminology explanation:
 * **Spring Boot**: framework for Java. It consists of: Spring + Container + Configuration
 * **Maven**: tool for build automation
 * **Git**: tool for distributed version control
-* **Integration Tests**: these tests validate integration between diferent part of systems. They check if everything together works fine
-* **MockMvc**: enables mocking MVC in tests
+* **Unit Tests**: these tests validate single method in code without integration with any other layers
 
 ##### Flow
 The following flow takes place in this project:
