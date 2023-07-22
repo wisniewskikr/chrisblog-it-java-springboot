@@ -6,7 +6,7 @@ USAGE JAVA
 > Please **clone/download** project, open **project's main folder** in your favorite **command line tool** and then **proceed with steps below**. 
 
 Usage steps:
-1. In a command line tool start unit tests with `mvn test -Dtest="HelloWorldControllerUT"`
+1. In a command line tool start unit tests with `mvn test -Dtest="HelloWorldControllerIT"`
 
 
 DESCRIPTION

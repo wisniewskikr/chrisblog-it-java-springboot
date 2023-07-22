@@ -9,7 +9,7 @@ import com.example.services.MessageService;
 import com.example.dtos.HelloWorldDto;
 
 
-public class HelloWorldControllerUT {
+public class HelloWorldControllerIT {
 
     @Test
     public void should_return_hello_world() throws Exception {
