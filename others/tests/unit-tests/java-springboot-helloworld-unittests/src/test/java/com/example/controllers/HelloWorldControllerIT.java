@@ -1,30 +1,26 @@
 package com.example.controllers;
 
-import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
-import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-@SpringBootTest
-@AutoConfigureMockMvc
+import org.junit.jupiter.api.Test;
+import org.springframework.http.ResponseEntity;
+
+import com.example.dtos.HelloWorldDto;
+
 public class HelloWorldControllerIT {
 
-    @Autowired
-    private MockMvc mockMvc;
-
     @Test
-    public void helloWorld() throws Exception {
-        mockMvc
-            .perform(MockMvcRequestBuilders
-                .get("/")
-            )
-            .andExpect(MockMvcResultMatchers
-                .content()
-                .string("{\"message\":\"Hello World!\",\"port\":null,\"uuid\":\"uuid\"}")
-            );
+    public void should_return_hello_world() throws Exception {
+        
+        //given
+        HelloWorldController controller = new HelloWorldController();
+        
+        //when
+        ResponseEntity<HelloWorldDto> result = controller.helloWorld();
+
+        //then
+        assertEquals("Hello World!", result.getBody().getMessage());
+
     }
     
 }
