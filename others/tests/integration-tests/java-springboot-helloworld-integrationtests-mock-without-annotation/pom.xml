@@ -9,7 +9,7 @@
 		<relativePath/>
 	</parent>
 	<groupId>com.example</groupId>
-	<artifactId>java-springboot-helloworld-integrationtests-mock</artifactId>
+	<artifactId>java-springboot-helloworld-integrationtests-mock-without-annotation</artifactId>
 	<version>0.1.0</version>
 
 	<properties>
