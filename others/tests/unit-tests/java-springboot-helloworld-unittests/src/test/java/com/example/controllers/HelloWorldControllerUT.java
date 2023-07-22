@@ -7,7 +7,7 @@ import org.springframework.http.ResponseEntity;
 
 import com.example.dtos.HelloWorldDto;
 
-public class HelloWorldControllerIT {
+public class HelloWorldControllerUT {
 
     @Test
     public void should_return_hello_world() throws Exception {
