@@ -13,7 +13,7 @@ DESCRIPTION
 -----------
 
 ##### Goal
-The goal of this project is to present how to create **Integration Tests** with **Mock without annotation** for an application type **API REST** in **Java** programming language with usage **Spring Boot** framework.
+The goal of this project is to present how to create **Integration Tests** with **Mock with annotation** for an application type **API REST** in **Java** programming language with usage **Spring Boot** framework.
 
 ##### Terminology
 Terminology explanation:
@@ -23,7 +23,7 @@ Terminology explanation:
 * **Maven**: tool for build automation
 * **Git**: tool for distributed version control
 * **Integration Tests**: these tests validate two or more layers of application
-* **Mock Without Annotation**: mock simutlates some class. In this example is created without any annotation
+* **Mock With Annotation**: mock simutlates some class. In this example is created with annotation @Mock
 
 ##### Flow
 The following flow takes place in this project:
