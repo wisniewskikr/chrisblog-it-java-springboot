@@ -1,29 +1,31 @@
 package com.example.controllers;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.http.ResponseEntity;
-import com.example.dtos.HelloWorldDto;
+import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
+import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
 @SpringBootTest
+@AutoConfigureMockMvc
 public class HelloWorldControllerIT {
 
     @Autowired
-    private HelloWorldController controller;
+    private MockMvc mockMvc;
 
     @Test
     public void should_return_hello_world() throws Exception {
         
-        //given
-        
-        //when
-        ResponseEntity<HelloWorldDto> result = controller.helloWorld();
-
-        //then
-        assertEquals("Hello World!", result.getBody().getMessage());
+        mockMvc
+            .perform(MockMvcRequestBuilders
+                .get("/")
+            )
+            .andExpect(MockMvcResultMatchers
+                .content()
+                .string("{\"message\":\"Hello World!\"}")
+            );
 
     }
     

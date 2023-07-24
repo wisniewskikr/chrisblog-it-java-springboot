@@ -13,7 +13,7 @@ DESCRIPTION
 -----------
 
 ##### Goal
-The goal of this project is to present how to create **Integration Tests** with **Test Context** for an application type **API REST** in **Java** programming language with usage **Spring Boot** framework.
+The goal of this project is to present how to create **Integration Tests** with **Test Context** and **MockMvc** for an application type **API REST** in **Java** programming language with usage **Spring Boot** framework.
 
 ##### Terminology
 Terminology explanation:
@@ -24,6 +24,7 @@ Terminology explanation:
 * **Git**: tool for distributed version control
 * **Integration Tests**: these tests validate two or more layers of application
 * **Test Context**: it means that Spring Boot is up and running before tests. Tests are done on working application
+* **MockMvc**: it simulates REST calling on Spring Boot application
 
 ##### Flow
 The following flow takes place in this project:
