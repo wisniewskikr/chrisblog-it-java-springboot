@@ -9,7 +9,7 @@
 		<relativePath/>
 	</parent>
 	<groupId>com.example</groupId>
-	<artifactId>java-springboot-helloworld-gui-html-text</artifactId>
+	<artifactId>java-springboot-helloworld-gui-html-plain</artifactId>
 	<version>0.1.0</version>
 
 	<properties>
