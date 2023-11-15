@@ -19,7 +19,8 @@ public class HelloWorldService {
 	
 	public HelloWorldDto saveText(Long id, String text) {
 		HelloWorldRecord record = new HelloWorldRecord(id, text);
-		return new HelloWorldDto(helloWorldRepository.save(record));
+		helloWorldRepository.save(record);
+		return new HelloWorldDto(record.id(), record.text());
 	}
 	
 	public String readText(Long id) {
