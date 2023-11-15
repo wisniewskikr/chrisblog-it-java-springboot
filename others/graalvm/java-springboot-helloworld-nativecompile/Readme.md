@@ -1,12 +1,13 @@
 USAGE JAVA
 ----------
 
-> Please be aware that following tools should be installed on your local PC: **Java**, **Gradle** and **Git**. 
+> Please be aware that following tools should be installed on your local PC: **GraalVM**, **Gradle** and **Git**. 
 
 > Please **clone/download** project, open **project's main folder** in your favorite **command line tool** and then **proceed with steps below**. 
 
 Usage steps:
-1. In a command line tool start application with `mvn spring-boot:run`
+1. In a command line tool create executable file for application with `gradle nativeCompile`
+1. In a command line tool run application with ` .\build\native\nativeCompile\java-springboot-helloworld-nativecompile.exe`
 1. In a browser visit `http://localhost:8080`
 1. Clean up environment 
      * In a command line tool stop application with `ctrl + C`
@@ -16,7 +17,7 @@ DESCRIPTION
 -----------
 
 ##### Goal
-The goal of this project is to present how to create an application with usage build tool **Gradle - Groovy** in **Java** programming language with usage **Spring Boot** framework.
+The goal of this project is to present how to create **native compile** file provided by **GraalVM** with an application with usage build tool **Gradle - Groovy** in **Java** programming language with usage **Spring Boot** framework. Native compile file is an executable file (*.exe for Windows, *.sh for Linux etc.) which can run Java application just by clicking on it.
 
 ##### Terminology
 Terminology explanation:
@@ -24,6 +25,7 @@ Terminology explanation:
 * **Spring Boot**: framework for Java. It consists of: Spring + Container + Configuration
 * **Gradle - Groovy**: tool for build automation which uses Groovy programming language
 * **Git**: tool for distributed version control
+* **GraalVM**: it's faster Virtual Machine. It also enables creation of executable files for specific OS for Java applications
 
 ##### Flow
 The following flow takes place in this project:
@@ -35,7 +37,7 @@ To launch this application please make sure that the **Preconditions** are met a
 
 ##### Technologies
 This project uses following technologies:
-* **Java**: `https://docs.google.com/document/d/119VYxF8JIZIUSk7JjwEPNX1RVjHBGbXHBKuK_1ytJg4/edit?usp=sharing`
+* **GraalVM**: `https://docs.google.com/document/d/119VYxF8JIZIUSk7JjwEPNX1RVjHBGbXHBKuK_1ytJg4/edit#heading=h.jsied0ocge0d`
 * **Gradle**: `https://docs.google.com/document/d/16-daDFIYs4wZT-vsrrrV4nDD6XooYh2ageJkgY8eUQU/edit?usp=sharing`
 * **Git**: `https://docs.google.com/document/d/1Iyxy5DYfsrEZK5fxZJnYy5a1saARxd5LyMEscJKSHn0/edit?usp=sharing`
 * **Spring Boot**: `https://docs.google.com/document/d/1mvrJT5clbkr9yTj-AQ7YOXcqr2eHSEw2J8n9BMZIZKY/edit?usp=sharing`
@@ -46,7 +48,7 @@ PRECONDITIONS
 
 ##### Preconditions - Tools
 * Installed **Operating System** (tested on Windows 11)
-* Installed **Java** (tested on version 17.0.5)
+* Installed **GraalVM** (tested on version 17.0.5)
 * Installed **Gradle** (tested on version 8.4)
 * Installed **Git** (tested on version 2.33.0.windows.2)
 
