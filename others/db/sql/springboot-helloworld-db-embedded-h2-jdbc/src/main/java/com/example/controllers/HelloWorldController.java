@@ -18,8 +18,7 @@ public class HelloWorldController {
 
 	@RequestMapping(value="/")
 	public String helloWorld() {		
-		String text = helloWorldService.readText(1L);		
-		return text;		
+		return helloWorldService.readText(1L);		
 	}
 	
 }

@@ -1,0 +1,2 @@
+INSERT INTO HELLO_WORLD_RECORD (id, text)
+VALUES (1, 'Hello World!');
