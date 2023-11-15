@@ -1,15 +1,15 @@
 package com.example.dtos;
 
-import com.example.entities.HelloWorldEntity;
+import com.example.records.HelloWorldRecord;
 
 public class HelloWorldDto {
 		
     private Long id; 
     private String text;    
 
-	public HelloWorldDto(HelloWorldEntity entity) {
-		this.id = entity.getId();
-		this.text = entity.getText();
+	public HelloWorldDto(HelloWorldRecord entity) {
+		this.id = entity.id();
+		this.text = entity.text();
 	}
 	
 	public Long getId() {

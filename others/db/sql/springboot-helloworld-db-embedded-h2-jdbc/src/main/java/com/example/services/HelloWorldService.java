@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.dtos.HelloWorldDto;
-import com.example.entities.HelloWorldEntity;
+import com.example.records.HelloWorldRecord;
 import com.example.repositories.HelloWorldRepository;
 
 @Service
@@ -17,14 +17,13 @@ public class HelloWorldService {
 		this.helloWorldRepository = helloWorldRepository;
 	}
 	
-	public HelloWorldDto saveText(String text) {
-		HelloWorldEntity entity = new HelloWorldEntity();
-		entity.setText(text);
-		return new HelloWorldDto(helloWorldRepository.save(entity));
+	public HelloWorldDto saveText(Long id, String text) {
+		HelloWorldRecord record = new HelloWorldRecord(id, text);
+		return new HelloWorldDto(helloWorldRepository.save(record));
 	}
 	
 	public String readText(Long id) {
-		return helloWorldRepository.findById(id).get().getText();
+		return helloWorldRepository.findById(id).get().text();
 	}
 
 }
