@@ -55,7 +55,7 @@ DESCRIPTION
 -----------
 
 ##### Goal
-The goal of this project is to present how to create an application type **API REST** in **Java** programming language with usage **Spring Boot** framework.
+The goal of this project is to present how to use **RestClient** for communication in an application type **API REST** in **Java** programming language with usage **Spring Boot** framework. RestClient is HTTP Client introduced in Spring Boot from version 3.2. It connects advantages of two other HTTP Clients provided by Spring Boot: RestTemplate and WebClient.
 
 ##### Terminology
 Terminology explanation:
@@ -67,8 +67,9 @@ Terminology explanation:
 
 ##### Flow
 The following flow takes place in this project:
-1. User via any browser sends request to application Hello World for the content.
-1. Application HelloWorld sends back response with JSON containing: message, port and UUID. This response is presented to User via browser.
+1. User via any http client sends requests to application for post. These request are RESTFUL.
+1. Application uses RestClient to get responses from external API
+1. Application sends back response to User via http client.
 
 ##### Launch
 To launch this application please make sure that the **Preconditions** are met and then follow instructions from **Usage** section.
