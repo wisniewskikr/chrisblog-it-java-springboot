@@ -1,5 +1,5 @@
-USAGE JAVA
-----------
+USAGE COMMANDS
+--------------
 
 > Please be aware that following tools should be installed on your local PC: **Java**, **Maven** and **Git**. 
 
@@ -7,12 +7,38 @@ USAGE JAVA
 
 Usage steps:
 1. In a command line tool start application with `mvn spring-boot:run`
-1. In a http client tool (e.g. Postman) using **GET** method visit `http://localhost:8080/api/posts`
+1. In a http client tool (e.g. Postman) read all posts using **GET** method and url `http://localhost:8080/api/posts`
    * Expected list of posts
-1. In a http client tool (e.g. Postman) using **GET** method visit `http://localhost:8080/api/posts/1`
+1. In a http client tool (e.g. Postman) read single post using **GET** method and url `http://localhost:8080/api/posts/1`
    * Expected post with id 1
+1. In a http client tool (e.g. Postman) create single post using **POST** method and url `http://localhost:8080/api/posts`
+   * Please set up **Body** as following **JSON**:
+   ```
+   {
+    "userId": 1,
+    "title": "Title",
+    "body": "Body"
+   }
+   ```
+   * Expected post with new id
+1. In a http client tool (e.g. Postman) update single post using **PUT** method and url `http://localhost:8080/api/posts/1`
+   * Please set up **Body** as following **JSON**:
+   ```
+   {
+    "userId": 2,
+    "title": "Title Updated",
+    "body": "Body Updated"
+   }
+   ```
+   * Expected updated post
+1. In a http client tool (e.g. Postman) delete single post using **DELETE** method and url `http://localhost:8080/api/posts/1`
+   * Expected empty response
 1. Clean up environment 
      * In a command line tool stop application with `ctrl + C`
+
+
+USAGE IMAGES
+------------
 
 
 DESCRIPTION
