@@ -1,11 +1,12 @@
-package dev.danvega.restclient.client;
+package com.example.client;
 
-import dev.danvega.restclient.post.Post;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.service.annotation.GetExchange;
 import org.springframework.web.service.annotation.PostExchange;
 import org.springframework.web.service.annotation.PutExchange;
+
+import com.example.dao.Post;
 
 import java.util.List;
 

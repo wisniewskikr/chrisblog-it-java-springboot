@@ -1,9 +1,11 @@
-package dev.danvega.restclient.post;
+package com.example.service;
 
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestClient;
+
+import com.example.dao.Post;
 
 import java.util.List;
 
@@ -18,21 +20,21 @@ public class PostService {
                 .build();
     }
 
-    List<Post> findAll() {
+    public List<Post> findAll() {
         return restClient.get()
                 .uri("/posts")
                 .retrieve()
                 .body(new ParameterizedTypeReference<List<Post>>() {});
     }
 
-    Post findById(int id) {
+    public Post findById(int id) {
         return restClient.get()
                 .uri("/posts/{id}", id)
                 .retrieve()
                 .body(Post.class);
     }
 
-    Post create(Post post) {
+    public Post create(Post post) {
         return restClient.post()
                 .uri("/posts")
                 .contentType(MediaType.APPLICATION_JSON)
@@ -42,7 +44,7 @@ public class PostService {
     }
 
 
-    Post update(Integer id, Post post) {
+    public Post update(Integer id, Post post) {
         return restClient.put()
                 .uri("/posts/{id}", id)
                 .contentType(MediaType.APPLICATION_JSON)
@@ -52,7 +54,7 @@ public class PostService {
     }
 
 
-    void delete(Integer id) {
+    public void delete(Integer id) {
         restClient.delete()
                 .uri("/posts/{id}", id)
                 .retrieve()

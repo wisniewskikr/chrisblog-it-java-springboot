@@ -1,12 +1,13 @@
-package dev.danvega.restclient;
+package com.example;
 
-import dev.danvega.restclient.client.JsonPlaceholderService;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.client.RestClient;
 import org.springframework.web.client.support.RestClientAdapter;
 import org.springframework.web.service.invoker.HttpServiceProxyFactory;
+
+import com.example.client.JsonPlaceholderService;
 
 @SpringBootApplication
 public class Application {

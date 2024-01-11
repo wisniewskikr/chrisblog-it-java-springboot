@@ -1,7 +1,10 @@
-package dev.danvega.restclient.post;
+package com.example.controller;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+
+import com.example.dao.Post;
+import com.example.service.PostService;
 
 import java.util.List;
 
