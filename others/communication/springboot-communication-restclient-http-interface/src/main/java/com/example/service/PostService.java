@@ -1,64 +1,30 @@
 package com.example.service;
 
-import org.springframework.core.ParameterizedTypeReference;
-import org.springframework.http.MediaType;
-import org.springframework.stereotype.Service;
-import org.springframework.web.client.RestClient;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.service.annotation.GetExchange;
+import org.springframework.web.service.annotation.PostExchange;
+import org.springframework.web.service.annotation.PutExchange;
 
 import com.example.dao.Post;
 
 import java.util.List;
 
-@Service
-public class PostService {
+public interface PostService {
 
-    private final RestClient restClient;
+    @GetExchange("/posts")
+    List<Post> findAll();
 
-    public PostService() {
-        restClient = RestClient.builder()
-                .baseUrl("https://jsonplaceholder.typicode.com")
-                .build();
-    }
+    @GetExchange("/posts/{id}")
+    Post findById(Integer id);
 
-    public List<Post> findAll() {
-        return restClient.get()
-                .uri("/posts")
-                .retrieve()
-                .body(new ParameterizedTypeReference<List<Post>>() {});
-    }
+    @PostExchange("/posts")
+    Post create(Post post);
 
-    public Post findById(int id) {
-        return restClient.get()
-                .uri("/posts/{id}", id)
-                .retrieve()
-                .body(Post.class);
-    }
+    @PutExchange("/posts/{id}")
+    Post update(@PathVariable Integer id, Post post);
 
-    public Post create(Post post) {
-        return restClient.post()
-                .uri("/posts")
-                .contentType(MediaType.APPLICATION_JSON)
-                .body(post)
-                .retrieve()
-                .body(Post.class);
-    }
-
-
-    public Post update(Integer id, Post post) {
-        return restClient.put()
-                .uri("/posts/{id}", id)
-                .contentType(MediaType.APPLICATION_JSON)
-                .body(post)
-                .retrieve()
-                .body(Post.class);
-    }
-
-
-    public void delete(Integer id) {
-        restClient.delete()
-                .uri("/posts/{id}", id)
-                .retrieve()
-                .toBodilessEntity();
-    }
+    @DeleteMapping("/posts/{id}")
+    void delete(@PathVariable Integer id);
 
 }
