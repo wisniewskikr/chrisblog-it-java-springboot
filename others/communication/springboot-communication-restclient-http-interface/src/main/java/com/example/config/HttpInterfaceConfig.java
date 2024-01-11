@@ -11,7 +11,7 @@ import com.example.service.PostService;
 @Configuration
 public class HttpInterfaceConfig {
 
-    	@Bean
+    @Bean
 	PostService postService() {
 		RestClient client = RestClient.create("https://jsonplaceholder.typicode.com");
 	    HttpServiceProxyFactory factory = HttpServiceProxyFactory
