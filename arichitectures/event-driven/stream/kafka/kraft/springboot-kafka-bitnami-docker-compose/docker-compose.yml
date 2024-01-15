@@ -35,18 +35,18 @@ services:
     depends_on:
       - kafka
   
-  # consumer:
-  #   image: consumer
-  #   container_name: consumer
-  #   build:
-  #     context: ./springboot-kafka-consumer
-  #     dockerfile: Dockerfile
-  #   ports:
-  #     - "9090:9090"
-  #   networks:
-  #     - network
-  #   depends_on:
-  #     - kafka
+  consumer:
+    image: consumer
+    container_name: consumer
+    build:
+      context: ./springboot-kafka-consumer
+      dockerfile: Dockerfile
+    ports:
+      - "9090:9090"
+    networks:
+      - network
+    depends_on:
+      - kafka
 
 networks:
   network:
