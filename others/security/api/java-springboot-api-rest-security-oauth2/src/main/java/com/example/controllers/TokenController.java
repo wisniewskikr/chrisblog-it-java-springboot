@@ -31,14 +31,14 @@ public class TokenController {
 	private String adminPassword;
 
 	@RequestMapping(value="/token")
-	public String token(@RequestBody UserJson userJson) throws ServletException {
+	public String token(@RequestBody(required = false) UserJson userJson) throws ServletException {
 		return createToken(userJson);	
 	}
 
 	private String createToken(UserJson userJson) throws ServletException {
 
 		if (userJson == null) {
-            throw new BadCredentialsException("Credentials are not sent !");
+            throw new BadCredentialsException("Credentials are not sent or are in not valid format !");
         }
 
 		if (userName.equals(userJson.getName()) && userPassword.equals(userJson.getPassword())) {
