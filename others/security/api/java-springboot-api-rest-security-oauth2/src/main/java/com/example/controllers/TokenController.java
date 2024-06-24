@@ -8,6 +8,7 @@ import java.util.stream.Collectors;
 
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -57,7 +58,7 @@ public class TokenController {
 	private String createToken(UserJson userJson) throws ServletException {
 
 		if (userJson == null) {
-            return null;
+            throw new BadCredentialsException("Credentials are not sent !");
         }
 
 		if (userName.equals(userJson.getName()) && userPassword.equals(userJson.getPassword())) {
@@ -68,7 +69,7 @@ public class TokenController {
 			return createTokenByNameAndRole(adminName, "ROLE_ADMIN");
 		}
 
-		return null;
+		throw new BadCredentialsException("Credentials are not valid !");
 
 	}
 
