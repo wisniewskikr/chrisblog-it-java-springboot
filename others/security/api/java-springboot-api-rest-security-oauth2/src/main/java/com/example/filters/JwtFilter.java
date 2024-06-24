@@ -1,6 +1,7 @@
 package com.example.filters;
 
 import java.io.IOException;
+import java.security.SignatureException;
 import java.util.Collections;
 import java.util.Set;
 
@@ -18,7 +19,6 @@ import org.springframework.web.filter.OncePerRequestFilter;
 
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
-import com.auth0.jwt.exceptions.JWTVerificationException;
 import com.auth0.jwt.interfaces.DecodedJWT;
 import com.auth0.jwt.interfaces.JWTVerifier;
 
@@ -43,27 +43,21 @@ public class JwtFilter extends OncePerRequestFilter {
 		
 	}
 	
-	private UsernamePasswordAuthenticationToken getUsernamePasswordAuthenticationToken(String authorizationHeader) throws ServletException {
+	private UsernamePasswordAuthenticationToken getUsernamePasswordAuthenticationToken(String authorizationHeader) {
 	
-		UsernamePasswordAuthenticationToken authentication = null;;
-		
-		try {
+		UsernamePasswordAuthenticationToken authentication = null;
 			
-			String token = authorizationHeader.substring(7);
-			
-		    Algorithm algorithm = Algorithm.HMAC256(tokenSecretKey);
-		    JWTVerifier verifier = JWT.require(algorithm).build();
-		    DecodedJWT jwt = verifier.verify(token);
-		    String name = jwt.getClaim("name").as(String.class);
-		    String role = jwt.getClaim("role").as(String.class);
-		    
-			Set<SimpleGrantedAuthority> roles = Collections.singleton(new SimpleGrantedAuthority(role));
-			authentication = new UsernamePasswordAuthenticationToken(name, null, roles);
-		    
-		} catch (JWTVerificationException exception){
-			throw new ServletException("Wrong key");
-		}
+		String token = authorizationHeader.substring(7);		
+		Algorithm algorithm = Algorithm.HMAC256(tokenSecretKey);
+		JWTVerifier verifier = JWT.require(algorithm).build();
+		DecodedJWT jwt = verifier.verify(token);
 		
+		String name = jwt.getClaim("name").as(String.class);
+		String role = jwt.getClaim("role").as(String.class);
+				
+		Set<SimpleGrantedAuthority> roles = Collections.singleton(new SimpleGrantedAuthority(role));
+		authentication = new UsernamePasswordAuthenticationToken(name, null, roles);		
+				
 		return authentication;
 		
 	}
