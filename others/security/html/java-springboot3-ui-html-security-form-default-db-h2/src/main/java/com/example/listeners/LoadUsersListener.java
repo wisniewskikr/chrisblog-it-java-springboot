@@ -27,8 +27,8 @@ public class LoadUsersListener {
     public void onApplicationEvent(ContextRefreshedEvent event) {
 
         List<UserEntity> users = Stream.of(
-                new UserEntity(1L, "user", new BCryptPasswordEncoder().encode("user123"), "USER_ROLE"),
-                new UserEntity(2L, "admin", new BCryptPasswordEncoder().encode("admin123"), "USER_ROLE,ADMIN_ROLE")
+                new UserEntity(1L, "user", new BCryptPasswordEncoder().encode("user123"), "ROLE_USER"),
+                new UserEntity(2L, "admin", new BCryptPasswordEncoder().encode("admin123"), "ROLE_USER,ROLE_ADMIN")
         ).collect(Collectors.toList());
         userRepository.saveAll(users);
 
