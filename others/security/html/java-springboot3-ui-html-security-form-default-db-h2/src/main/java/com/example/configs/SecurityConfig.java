@@ -6,6 +6,8 @@ import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
+import org.springframework.security.config.annotation.web.configurers.HeadersConfigurer.FrameOptionsConfig;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -55,11 +57,9 @@ public class SecurityConfig {
             .exceptionHandling(exception -> exception
                 .accessDeniedPage("/access-denied")
             )
-            .csrf(httpSecurityCsrfConfigurer -> httpSecurityCsrfConfigurer.disable())
+            .csrf(AbstractHttpConfigurer::disable)
             .headers(httpSecurityHeadersConfigurer -> {
-                httpSecurityHeadersConfigurer.frameOptions(frameOptionsConfig -> {
-                                frameOptionsConfig.disable();
-                });
+                httpSecurityHeadersConfigurer.frameOptions(FrameOptionsConfig::disable);
             })
             .authenticationProvider(authenticationProvider());
         
