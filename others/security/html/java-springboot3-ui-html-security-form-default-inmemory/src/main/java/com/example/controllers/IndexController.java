@@ -4,11 +4,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-public class PublicController {
+public class IndexController {
 
-	@RequestMapping(value="/public")
+	@RequestMapping(value="/")
 	public String display() {
-		return "public";		
+		return "index";		
 	}
 	
 }
