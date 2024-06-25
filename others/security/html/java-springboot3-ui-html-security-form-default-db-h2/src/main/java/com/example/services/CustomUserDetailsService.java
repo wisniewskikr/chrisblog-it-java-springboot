@@ -3,7 +3,6 @@ package com.example.services;
 import java.util.Arrays;
 import java.util.stream.Collectors;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -17,8 +16,11 @@ import com.example.repositories.UserRepository;
 @Service
 public class CustomUserDetailsService implements UserDetailsService{
 
-    @Autowired
-    private UserRepository userRepository;
+    private UserRepository userRepository;    
+
+    public CustomUserDetailsService(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
 
     @Override
     public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {

@@ -1,5 +1,6 @@
 package com.example.configs;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationProvider;
@@ -14,14 +15,22 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 
+import com.example.repositories.UserRepository;
 import com.example.services.CustomUserDetailsService;
 
 @Configuration
 public class SecurityConfig {
 
+    private UserRepository userRepository;
+
+    @Autowired
+    public SecurityConfig(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
+
     @Bean
 	public UserDetailsService userDetailsService() {
-        return new CustomUserDetailsService();
+        return new CustomUserDetailsService(userRepository);
     }
     
     @Bean
