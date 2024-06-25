@@ -5,6 +5,7 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.context.event.EventListener;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
@@ -23,7 +24,7 @@ public class LoadUsersListener {
     }
 
     @EventListener
-    public void loadUsers() {
+    public void onApplicationEvent(ContextRefreshedEvent event) {
 
         List<UserEntity> users = Stream.of(
                 new UserEntity(1L, "user", new BCryptPasswordEncoder().encode("user123"), "USER_ROLE"),
