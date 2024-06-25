@@ -55,7 +55,12 @@ public class SecurityConfig {
             .exceptionHandling(exception -> exception
                 .accessDeniedPage("/access-denied")
             )
-            .csrf(Customizer.withDefaults())
+            .csrf(httpSecurityCsrfConfigurer -> httpSecurityCsrfConfigurer.disable())
+            .headers(httpSecurityHeadersConfigurer -> {
+                httpSecurityHeadersConfigurer.frameOptions(frameOptionsConfig -> {
+                                frameOptionsConfig.disable();
+                });
+            })
             .authenticationProvider(authenticationProvider());
         
         return http.build();
