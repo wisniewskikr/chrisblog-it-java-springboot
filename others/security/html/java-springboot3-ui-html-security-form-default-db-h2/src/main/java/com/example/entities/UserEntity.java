@@ -12,6 +12,7 @@ public class UserEntity {
     private Long id;
     private String userName;
     private String password;
+    private String roles;
 
     public Long getId() {
         return id;
@@ -30,6 +31,12 @@ public class UserEntity {
     }
     public void setPassword(String password) {
         this.password = password;
-    }    
+    }
+    public String getRoles() {
+        return roles;
+    }
+    public void setRoles(String roles) {
+        this.roles = roles;
+    }        
 
 }

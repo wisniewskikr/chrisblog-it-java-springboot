@@ -1,8 +1,10 @@
 package com.example.services;
 
-import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -23,8 +25,18 @@ public class CustomUserDetailsService implements UserDetailsService{
 
     @Override
     public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
+        
         UserEntity user = userRepository.findByUserName(userName);
-        return new org.springframework.security.core.userdetails.User(user.getUserName(), user.getPassword(), new ArrayList<>());
+        return new org.springframework.security.core.userdetails.User(
+            user.getUserName(), 
+            user.getPassword(), 
+            Arrays.stream(
+                user.getRoles()
+                .split(","))
+                .map(SimpleGrantedAuthority::new)
+                .collect(Collectors.toList())
+        );
+
     }
 
 }
