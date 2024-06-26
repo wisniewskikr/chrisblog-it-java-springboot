@@ -15,7 +15,9 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
+import com.example.filters.JwtAuthFilter;
 import com.example.repositories.UserRepository;
 import com.example.services.CustomUserDetailsService;
 
@@ -23,17 +25,19 @@ import com.example.services.CustomUserDetailsService;
 public class SecurityConfig {
 
     private UserRepository userRepository;
+    private JwtAuthFilter jwtAuthFilter;
 
     @Autowired
-    public SecurityConfig(UserRepository userRepository) {
+    public SecurityConfig(UserRepository userRepository, JwtAuthFilter jwtAuthFilter) {
         this.userRepository = userRepository;
-    }
+        this.jwtAuthFilter = jwtAuthFilter;
+    }    
 
     @Bean
 	public UserDetailsService userDetailsService() {
         return new CustomUserDetailsService(userRepository);
-    }
-    
+    }    
+
     @Bean
     public PasswordEncoder bcryptPasswordEncoder() {
         return new BCryptPasswordEncoder();
@@ -68,7 +72,8 @@ public class SecurityConfig {
                 .requestMatchers("/admin").hasAnyAuthority("ROLE_ADMIN")
                 .anyRequest().permitAll()
 			)           
-            .authenticationProvider(authenticationProvider());            
+            .authenticationProvider(authenticationProvider())
+            .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);            
         
         return http.build();
         
