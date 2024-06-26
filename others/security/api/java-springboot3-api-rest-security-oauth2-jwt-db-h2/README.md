@@ -7,11 +7,14 @@ USAGE COMMANDS
 
 Usage steps:
 1. Start application with `mvn spring-boot:run`
-1. (Optional) Check database (url: `jdbc:h2:mem:db-embedded;DB_CLOSE_DELAY=-1`, username: `sa`, password: -, table: `USER_TBL`) with `http://localhost:8080/h2-console`
-1. In any browser display Home Page with `http://localhost:8080`
-1. In any browser display not secured Public Page with `http://localhost:8080/public`
-1. In any browser display secured User Page (credentials **user / user123** or **admin / admin123**) with `http://localhost:8080/user`
-1. In any browser display secured Admin Page (credentials **admin / admin123**) with `http://localhost:8080/admin`
+1. (Optional) In any browser check database (url: `jdbc:h2:mem:db-embedded;DB_CLOSE_DELAY=-1`, username: `sa`, password: -, table: `USER_TBL`) with `http://localhost:8080/h2-console`
+1. In any REST Client (e.g. Postman) display Public resources using GET method with `http://localhost:8080`
+1. In any REST Client (e.g. Postman) authenticate using POST method with JSON body with `http://localhost:8080/authenticate`
+   * Credentials for USER role: **{"userName": "user", "password": "user123"}**
+   * Credentials for ADMIN role: **{"userName": "admin", "password": "admin123"}**
+   * A a result expected **JWT Token**
+1. In any REST Client (e.g. Postman) display User resources using GET method with authorization **Bearer Token** with `http://localhost:8080/user`
+1. In any REST Client (e.g. Postman) display Admin resources using GET method with authorization **Bearer Token** with `http://localhost:8080/admin`
 1. Clean up environment:
     * Stop application with `ctrl + C`
 
@@ -50,7 +53,7 @@ DESCRIPTION
 -----------
 
 ##### Goal
-The goal of this project is to present how to implement **security** type **default form** for **UI** application type **HTML** in **Java** programming language with usage **Spring Boot** and **Thymeleaf** frameworks and **Spring Security** dependencies. Users are stored in **embedded database** type **H2**.
+The goal of this project is to present how to implement **security** type **OAuth2** with token **JWT** for **API** application type **REST** in **Java** programming language with usage **Spring Boot** framework and **Spring Security** dependencies. Users are stored in **embedded database** type **H2**.
 
 ##### Terminology
 Terminology explanation:
