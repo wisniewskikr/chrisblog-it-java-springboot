@@ -1,13 +1,8 @@
 package com.example.controllers;
 
 import jakarta.servlet.ServletException;
-import jakarta.servlet.http.HttpServletRequest;
-
-import java.io.IOException;
-import java.util.stream.Collectors;
-
-import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -15,7 +10,6 @@ import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.exceptions.JWTCreationException;
 import com.example.jsons.UserJson;
-import com.google.gson.Gson;
 
 @RestController
 public class TokenController {
@@ -36,23 +30,9 @@ public class TokenController {
 	private String adminPassword;
 
 	@RequestMapping(value="/token")
-	public String token(HttpServletRequest request) throws ServletException, IOException {
-
-		UserJson userJson = getUserJson(request);
-		return createToken(userJson);	
-		
+	public String token(@RequestBody(required = false) UserJson user) throws ServletException {
+		return createToken(user);		
 	}
-
-	private UserJson getUserJson(HttpServletRequest request) throws IOException {
-
-        String requestData = request.getReader().lines().collect(Collectors.joining());
-        if (StringUtils.isBlank(requestData)) {
-            return null;
-        }
-
-        return new Gson().fromJson(requestData, UserJson.class);
-
-    }
 
 	private String createToken(UserJson userJson) throws ServletException {
 
