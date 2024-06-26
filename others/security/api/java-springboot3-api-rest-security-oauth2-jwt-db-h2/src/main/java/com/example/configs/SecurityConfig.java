@@ -1,6 +1,7 @@
 package com.example.configs;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -16,27 +17,39 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.web.servlet.HandlerExceptionResolver;
 
 import com.example.filters.JwtAuthFilter;
 import com.example.repositories.UserRepository;
 import com.example.services.CustomUserDetailsService;
+import com.example.services.JwtService;
 
 @Configuration
 public class SecurityConfig {
 
+    @Autowired
+    @Qualifier("handlerExceptionResolver")
+    private HandlerExceptionResolver exceptionResolver;
+
     private UserRepository userRepository;
-    private JwtAuthFilter jwtAuthFilter;
+    private JwtService jwtService;    
 
     @Autowired
-    public SecurityConfig(UserRepository userRepository, JwtAuthFilter jwtAuthFilter) {
+    public SecurityConfig(UserRepository userRepository,
+            JwtService jwtService) {
         this.userRepository = userRepository;
-        this.jwtAuthFilter = jwtAuthFilter;
-    }    
+        this.jwtService = jwtService;
+    }
 
     @Bean
 	public UserDetailsService userDetailsService() {
         return new CustomUserDetailsService(userRepository);
-    }    
+    } 
+    
+    @Bean
+    public JwtAuthFilter jwtAuthFilter(){
+        return new JwtAuthFilter(jwtService, userDetailsService(), exceptionResolver);
+    }
 
     @Bean
     public PasswordEncoder bcryptPasswordEncoder() {
@@ -73,7 +86,7 @@ public class SecurityConfig {
                 .anyRequest().permitAll()
 			)           
             .authenticationProvider(authenticationProvider())
-            .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);            
+            .addFilterBefore(jwtAuthFilter(), UsernamePasswordAuthenticationFilter.class);            
         
         return http.build();
         
