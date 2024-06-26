@@ -2,6 +2,7 @@ package com.example.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -25,7 +26,11 @@ public class AuthController {
     }
 
     @PostMapping("/authenticate")
-    public String authenticateAndGetToken(@RequestBody AuthDto authRequest) {
+    public String authenticateAndGetToken(@RequestBody(required = false) AuthDto authRequest) {
+
+        if (authRequest == null) {
+            throw new BadCredentialsException("Missing JSON with credentials !");
+        }
 
         Authentication authentication = 
             authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(authRequest.getUserName(), authRequest.getPassword()));
