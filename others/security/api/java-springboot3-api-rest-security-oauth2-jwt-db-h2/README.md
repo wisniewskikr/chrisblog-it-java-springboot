@@ -10,8 +10,8 @@ Usage steps:
 1. (Optional) In any browser check database (url: `jdbc:h2:mem:db-embedded;DB_CLOSE_DELAY=-1`, username: `sa`, password: -, table: `USER_TBL`) with `http://localhost:8080/h2-console`
 1. In any REST Client (e.g. Postman) display Public resources using GET method with `http://localhost:8080`
 1. In any REST Client (e.g. Postman) authenticate using POST method with JSON body with `http://localhost:8080/authenticate`
-   * Credentials for USER role: **{"userName": "user", "password": "user123"}**
-   * Credentials for ADMIN role: **{"userName": "admin", "password": "admin123"}**
+   * Credentials for USER role (access for User resources): **{"userName": "user", "password": "user123"}**
+   * Credentials for ADMIN role (access for User and Admin resources): **{"userName": "admin", "password": "admin123"}**
    * A a result expected **JWT Token**
 1. In any REST Client (e.g. Postman) display User resources using GET method with authorization **Bearer Token** with `http://localhost:8080/user`
 1. In any REST Client (e.g. Postman) display Admin resources using GET method with authorization **Bearer Token** with `http://localhost:8080/admin`
@@ -46,9 +46,10 @@ The goal of this project is to present how to implement **security** type **OAut
 ##### Terminology
 Terminology explanation:
 * **Security**: in IT it means authentication + authorization. Authentication - application confirms that you are you and checks your role. Authorization - application confirms that you have access to requested resources.
-* **Default Form**: it's provided by Spring Security form where user can authenticate himself. Here user can provide username and password.
-* **UI**: it's type of application designed for humans.
-* **HTML**: it stands for HyperText Markup Language, is the standard language used to create and design documents on the World Wide Web.
+* **OAuth2**: OAuth2 (Open Authorization 2.0) is an authorization framework that enables applications to obtain limited access to user accounts on an HTTP service.
+* **JWT**: JSON Web Token (JWT) is an open standard (RFC 7519) for securely transmitting information between parties as a JSON object. This information can be verified and trusted because it is digitally signed.
+* **API**: An API (Application Programming Interface) is a set of rules and protocols for building and interacting with software applications. It defines the methods and data structures that developers can use to interact with the software component, system, or service.
+* **REST**: REST (Representational State Transfer) is an architectural style for designing networked applications. It relies on a stateless, client-server communication protocol, typically HTTP.
 * **Java**: object-oriented programming language.
 * **Spring Boot**: framework for Java. It consists of: Spring + Container + Configuration.
 * **Thymeleaf**: Thymeleaf is a modern server-side Java template engine for web and standalone environments. It is used for processing and generating HTML, XML, JavaScript, CSS, and plain text. Thymeleaf's main goal is to bring elegant natural templates to your development workflow.
