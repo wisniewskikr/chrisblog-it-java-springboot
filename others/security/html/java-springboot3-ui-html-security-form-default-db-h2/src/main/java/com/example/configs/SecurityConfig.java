@@ -68,6 +68,8 @@ public class SecurityConfig {
             .exceptionHandling(exception -> exception
                 .accessDeniedPage("/access-denied")
             )
+            .csrf(csrf -> csrf
+                .ignoringRequestMatchers("/h2-console/**"))
             .headers(httpSecurityHeadersConfigurer -> {
                 httpSecurityHeadersConfigurer.frameOptions(FrameOptionsConfig::disable);
             })
