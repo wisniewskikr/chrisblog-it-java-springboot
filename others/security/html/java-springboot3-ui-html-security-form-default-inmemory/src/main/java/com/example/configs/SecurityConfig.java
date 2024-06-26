@@ -11,7 +11,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
-import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 
 @Configuration
 public class SecurityConfig {
@@ -40,10 +39,13 @@ public class SecurityConfig {
                 .anyRequest().permitAll()
 			)
             .formLogin(Customizer.withDefaults())
-            .logout(logout -> logout
-                .logoutUrl("/logout")
-                .addLogoutHandler(new SecurityContextLogoutHandler())
-                .logoutSuccessUrl("/")
+            .logout(logout -> 
+                logout
+                    .logoutUrl("/logout")
+                    .logoutSuccessUrl("/")
+                    .invalidateHttpSession(true)
+                    .deleteCookies("JSESSIONID")
+                    .permitAll()
             )
             .exceptionHandling(exception -> exception
                 .accessDeniedPage("/access-denied")
