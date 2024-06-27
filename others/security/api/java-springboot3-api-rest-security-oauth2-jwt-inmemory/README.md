@@ -7,7 +7,6 @@ USAGE COMMANDS
 
 Usage steps:
 1. Start application with `mvn spring-boot:run`
-1. (Optional) In any browser check database (url: `jdbc:h2:mem:db-embedded;DB_CLOSE_DELAY=-1`, username: `sa`, password: -, table: `USER_TBL`) with `http://localhost:8080/h2-console`
 1. In any REST Client (e.g. Postman) display Public resources using GET method with `http://localhost:8080`
 1. In any REST Client (e.g. Postman) authenticate using POST method with JSON body with `http://localhost:8080/authenticate`
    * Credentials for USER role (access for User resources): **{"userName": "user", "password": "user123"}**
@@ -41,7 +40,7 @@ DESCRIPTION
 -----------
 
 ##### Goal
-The goal of this project is to present how to implement **security** type **OAuth2** with token **JWT** for **API** application type **REST** in **Java** programming language with usage **Spring Boot** framework and **Spring Security** dependencies. Users are stored in **embedded database** type **H2**.
+The goal of this project is to present how to implement **security** type **OAuth2** with token **JWT** for **API** application type **REST** in **Java** programming language with usage **Spring Boot** framework and **Spring Security** dependencies. Users are stored **in memory** of application.
 
 ##### Terminology
 Terminology explanation:
@@ -54,8 +53,7 @@ Terminology explanation:
 * **Spring Boot**: framework for Java. It consists of: Spring + Container + Configuration.
 * **Thymeleaf**: Thymeleaf is a modern server-side Java template engine for web and standalone environments. It is used for processing and generating HTML, XML, JavaScript, CSS, and plain text. Thymeleaf's main goal is to bring elegant natural templates to your development workflow.
 * **Spring Security**: Spring Security is a powerful and highly customizable authentication and access-control framework for the Java application development environment. It is part of the Spring Framework ecosystem and provides comprehensive security services for enterprise applications.
-* **Embedded Database**: this type of database is embedded in application. It means that it starts together with application.
-* **H2**: type of embedded database.
+* **In memory**: it means that credentials and roles are stored in memory of application.
 
 ##### Launch
 To launch this application please make sure that the **Preconditions** are met and then follow instructions from **Usage** section.
