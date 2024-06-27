@@ -83,7 +83,9 @@ public class SecurityConfig {
                 .requestMatchers("/admin").hasAnyAuthority("ROLE_ADMIN")
                 .anyRequest().permitAll()
 			)
-            .formLogin(Customizer.withDefaults())
+            .formLogin(login -> 
+                login
+                    .loginPage("/login"))
             .logout(logout -> 
                 logout
                     .logoutUrl("/logout")
