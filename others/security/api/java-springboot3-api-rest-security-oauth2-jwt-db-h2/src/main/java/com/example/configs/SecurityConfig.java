@@ -26,17 +26,17 @@ import com.example.services.JwtService;
 
 @Configuration
 public class SecurityConfig {
-
-    @Autowired
-    @Qualifier("handlerExceptionResolver")
+    
     private HandlerExceptionResolver exceptionResolver;
-
     private UserRepository userRepository;
     private JwtService jwtService;    
 
     @Autowired
-    public SecurityConfig(UserRepository userRepository,
+    public SecurityConfig(
+            @Qualifier("handlerExceptionResolver") HandlerExceptionResolver exceptionResolver,
+            UserRepository userRepository,
             JwtService jwtService) {
+        this.exceptionResolver = exceptionResolver;
         this.userRepository = userRepository;
         this.jwtService = jwtService;
     }
