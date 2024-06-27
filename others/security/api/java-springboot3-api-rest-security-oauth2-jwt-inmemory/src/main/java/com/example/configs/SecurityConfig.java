@@ -37,15 +37,13 @@ public class SecurityConfig {
     private String usernameAdmin;
 	@Value(value = "${password.admin}")
     private String passwordAdmin;
-
-    @Autowired
-    @Qualifier("handlerExceptionResolver")
+    
     private HandlerExceptionResolver exceptionResolver;
-
     private JwtService jwtService;    
 
     @Autowired
-    public SecurityConfig(JwtService jwtService) {
+    public SecurityConfig(@Qualifier("handlerExceptionResolver") HandlerExceptionResolver exceptionResolver, JwtService jwtService) {
+        this.exceptionResolver = exceptionResolver;
         this.jwtService = jwtService;
     }
 
