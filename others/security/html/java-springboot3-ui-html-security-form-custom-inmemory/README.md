@@ -45,12 +45,12 @@ DESCRIPTION
 -----------
 
 ##### Goal
-The goal of this project is to present how to implement **security** type **default form** for **UI** application type **HTML** in **Java** programming language with usage **Spring Boot** and **Thymeleaf** frameworks and **Spring Security** dependencies. Users are stored **in memory**.
+The goal of this project is to present how to implement **security** type **custom form** for **UI** application type **HTML** in **Java** programming language with usage **Spring Boot** and **Thymeleaf** frameworks and **Spring Security** dependencies. Users are stored **in memory**.
 
 ##### Terminology
 Terminology explanation:
 * **Security**: in IT it means authentication + authorization. Authentication - application confirms that you are you and checks your role. Authorization - application confirms that you have access to requested resources.
-* **Default Form**: it's provided by Spring Security form where user can authenticate himself. Here user can provide username and password.
+* **Custom Form**: login form has to fully implemented by developer. It this way login form can be fully customized.
 * **UI**: it's type of application designed for humans.
 * **HTML**: it stands for HyperText Markup Language, is the standard language used to create and design documents on the World Wide Web.
 * **Java**: object-oriented programming language.
