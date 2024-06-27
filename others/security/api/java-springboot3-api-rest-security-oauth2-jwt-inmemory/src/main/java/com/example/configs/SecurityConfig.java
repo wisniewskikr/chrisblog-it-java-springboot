@@ -24,7 +24,6 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 import org.springframework.web.servlet.HandlerExceptionResolver;
 
 import com.example.filters.JwtAuthFilter;
-import com.example.repositories.UserRepository;
 import com.example.services.JwtService;
 
 @Configuration
@@ -43,13 +42,10 @@ public class SecurityConfig {
     @Qualifier("handlerExceptionResolver")
     private HandlerExceptionResolver exceptionResolver;
 
-    private UserRepository userRepository;
     private JwtService jwtService;    
 
     @Autowired
-    public SecurityConfig(UserRepository userRepository,
-            JwtService jwtService) {
-        this.userRepository = userRepository;
+    public SecurityConfig(JwtService jwtService) {
         this.jwtService = jwtService;
     }
 
@@ -62,13 +58,13 @@ public class SecurityConfig {
 		    .roles("USER")
 		    .build();
 	    
-            UserDetails admin = User.builder()
+        UserDetails admin = User.builder()
 		    .username(usernameAdmin)
 		    .password(bcryptPasswordEncoder().encode(passwordAdmin))
 		    .roles("USER", "ADMIN")
 		    .build();
 	    
-            return new InMemoryUserDetailsManager(user, admin);
+        return new InMemoryUserDetailsManager(user, admin);
 
     } 
     
