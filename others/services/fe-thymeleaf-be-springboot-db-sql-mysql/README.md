@@ -1,3 +1,15 @@
+USAGE
+-----
+
+Usage steps:
+1. In the first Command Line tool start application with `mvn -f ./fe-thymeleaf-be-springboot-db-sql-mysql_FE spring-boot:run`
+2. In the second Command Line tool start application with `mvn -f ./springboot-helloworld-browser-json-ports-display spring-boot:run`
+3. Visit `http://localhost:8080`
+4. Clean up environment:
+    * In the first Command Line with `ctrl + C`
+    * In the second Command Line with `ctrl + C`
+
+
 USAGE COMMANDS
 --------------
 
