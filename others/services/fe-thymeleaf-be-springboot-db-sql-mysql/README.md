@@ -1,13 +1,18 @@
 USAGE
 -----
 
-Usage steps:
-1. In the first Command Line tool start application with `mvn -f ./fe-thymeleaf-be-springboot-db-sql-mysql_FE spring-boot:run`
-2. In the second Command Line tool start application with `mvn -f ./springboot-helloworld-browser-json-ports-display spring-boot:run`
-3. Visit `http://localhost:8080`
-4. Clean up environment:
+Required steps:
+1. `docker run -d --name mysql-container -e MYSQL_ROOT_PASSWORD=my_secret_password -e MYSQL_DATABASE=database -e MYSQL_USER=admin -e MYSQL_PASSWORD=admin123 -p 3306:3306 mysql:5.7`
+1. In the first command line tool start application with `mvn -f ./fe-thymeleaf-be-springboot-db-sql-mysql_FE spring-boot:run`
+1. In the second command line tool start application with `mvn -f ./fe-thymeleaf-be-springboot-db-sql-mysql_BE spring-boot:run`
+1. Visit `http://localhost:8080`
+1. Clean up environment:
     * In the first Command Line with `ctrl + C`
     * In the second Command Line with `ctrl + C`
+
+Optional steps:
+1. In a command line tool check Docker images with `docker images`
+1. In a command line tool check Docker containers with `docker ps`
 
 
 USAGE COMMANDS
