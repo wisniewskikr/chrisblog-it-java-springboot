@@ -1,3 +1,5 @@
+docker run -d --name mysql-container -e MYSQL_ROOT_PASSWORD=my_secret_password -e MYSQL_DATABASE=database -e MYSQL_USER=admin -e MYSQL_PASSWORD=admin123 -p 3306:3306 mysql:5.7
+
 SPRING BOOT MVC, THYMELEAF AND MYSQL
 =============================================
 
