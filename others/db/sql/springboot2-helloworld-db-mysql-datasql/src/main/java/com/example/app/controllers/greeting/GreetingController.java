@@ -19,7 +19,7 @@ public class GreetingController {
 	@Autowired
 	private GreetingRepository greetingRepository;
 
-	@RequestMapping(value="/greeting", method = RequestMethod.GET)
+	@RequestMapping(value="/", method = RequestMethod.GET)
 	public String greeting(@ModelAttribute("command") GreetingCommand command) {
 		
 		Optional<GreetingEntity> greetingEntity = greetingRepository.findById(1L);		
