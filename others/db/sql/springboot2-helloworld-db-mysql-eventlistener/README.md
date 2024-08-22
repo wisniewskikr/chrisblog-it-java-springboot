@@ -31,7 +31,7 @@ DESCRIPTION
 -----------
 
 ##### Goal
-The goal of this project is to present how to create an application type **API REST** in **Java** programming language with usage **Spring Boot 2** framework.
+The goal of this project is to present how to connect a **MySql** database with an application created in **Java** programming language with usage **Spring Boot 2** framework. Additionally database is initially filled with data provided by **EventListener**.
 
 ##### Terminology
 Terminology explanation:
@@ -39,8 +39,8 @@ Terminology explanation:
 * **Spring Boot**: framework for Java. It consists of: Spring + Container + Configuration
 * **Maven**: tool for build automation
 * **Git**: tool for distributed version control
-* **API**: Application Programming Interface is designed for communication between machines
-* **REST**: It's HTTP protocol with some set of rules
+* **MySql**: database type SQL
+* **EventListener**: SpringBoot mechanism for proceed some actions on some events. In this case is used for fill database with data after initialization of application.
 
 ##### Launch
 To launch this application please make sure that the **Preconditions** are met and then follow instructions from **Usage** section.
@@ -54,7 +54,9 @@ PRECONDITIONS
 * Installed **Java** (tested on version 17.0.5)
 * Installed **Maven** (tested on version 3.8.5)
 * Installed **Git** (tested on version 2.33.0.windows.2)
+* Installed **Docker** (texted on version 4.33.1)
 
 ##### Preconditions - Actions
+* Start **Docker**
 * Download **Source Code** (using Git or in any other way) 
 * Open any **Command Line** tool (for instance "Windonw PowerShell" on Windows OS) on downloaded **project's main folder**
