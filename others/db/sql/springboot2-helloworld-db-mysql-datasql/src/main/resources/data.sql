@@ -1,1 +1,0 @@
-insert into GREETING (id, text) values (1,'Hello World!');
