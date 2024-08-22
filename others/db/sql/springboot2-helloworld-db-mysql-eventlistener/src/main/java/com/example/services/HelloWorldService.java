@@ -20,4 +20,8 @@ public class HelloWorldService {
         return helloWorldRepository.findById(id).orElseThrow(() -> new RuntimeException("Message doesn't exist"));
     }
 
+    public HelloWorldEntity save(HelloWorldEntity helloWorldEntity) {
+        return helloWorldRepository.save(helloWorldEntity);
+    }
+
 }

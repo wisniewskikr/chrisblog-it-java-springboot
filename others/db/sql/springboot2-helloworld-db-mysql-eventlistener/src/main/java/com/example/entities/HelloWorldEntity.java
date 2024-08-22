@@ -12,6 +12,13 @@ public class HelloWorldEntity {
     private Long id;
     private String text;
 
+    public HelloWorldEntity() {}
+
+    public HelloWorldEntity(Long id, String text) {
+        this.id = id;
+        this.text = text;
+    }
+
     public Long getId() {
         return id;
     }
