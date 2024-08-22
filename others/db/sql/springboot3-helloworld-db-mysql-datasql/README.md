@@ -31,7 +31,7 @@ DESCRIPTION
 -----------
 
 ##### Goal
-The goal of this project is to present how to connect a **MySql** database with an application created in **Java** programming language with usage **Spring Boot 2** framework. Additionally database is initially filled with data provided by file **data.sql**.
+The goal of this project is to present how to connect a **MySql** database with an application created in **Java** programming language with usage **Spring Boot 3** framework. Additionally database is initially filled with data provided by file **data.sql**.
 
 ##### Terminology
 Terminology explanation:
