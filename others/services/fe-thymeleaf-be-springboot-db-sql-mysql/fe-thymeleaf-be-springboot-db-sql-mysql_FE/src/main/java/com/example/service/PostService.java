@@ -16,49 +16,15 @@ public class PostService {
 
     public PostService() {
         restClient = RestClient.builder()
-                .baseUrl("https://jsonplaceholder.typicode.com")
+                .baseUrl("http://localhost:8081")
                 .build();
     }
 
-    public List<Post> findAll() {
+    public Post findById(Long id) {
         return restClient.get()
-                .uri("/posts")
-                .retrieve()
-                .body(new ParameterizedTypeReference<List<Post>>() {});
-    }
-
-    public Post findById(int id) {
-        return restClient.get()
-                .uri("/posts/{id}", id)
+                .uri("/message/{id}", id)
                 .retrieve()
                 .body(Post.class);
-    }
-
-    public Post create(Post post) {
-        return restClient.post()
-                .uri("/posts")
-                .contentType(MediaType.APPLICATION_JSON)
-                .body(post)
-                .retrieve()
-                .body(Post.class);
-    }
-
-
-    public Post update(Integer id, Post post) {
-        return restClient.put()
-                .uri("/posts/{id}", id)
-                .contentType(MediaType.APPLICATION_JSON)
-                .body(post)
-                .retrieve()
-                .body(Post.class);
-    }
-
-
-    public void delete(Integer id) {
-        restClient.delete()
-                .uri("/posts/{id}", id)
-                .retrieve()
-                .toBodilessEntity();
     }
 
 }

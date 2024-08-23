@@ -1,15 +1,12 @@
 package com.example.controllers;
 
-import java.util.Collections;
-import java.util.Map;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.entities.HelloWorldEntity;
+import com.example.dtos.HelloWorldDto;
 import com.example.services.HelloWorldService;
 
 @RestController
@@ -23,11 +20,10 @@ public class HelloWorldController {
 	}
 
 	@GetMapping("/message/{id}")
-	public ResponseEntity<Map<String, String>> helloWorld(@PathVariable Long id) {
+	public ResponseEntity<HelloWorldDto> helloWorld(@PathVariable Long id) {
 
-		HelloWorldEntity helloWorldEntity = helloWorldService.findById(id);
-		Map<String, String> response = Collections.singletonMap("message", helloWorldEntity.getText());		
-		return ResponseEntity.ok(response);		
+		HelloWorldDto helloWorldDto = helloWorldService.findById(id);
+		return ResponseEntity.ok(helloWorldDto);		
 		
 	}
 	
