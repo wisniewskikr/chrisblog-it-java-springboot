@@ -10,11 +10,11 @@ import com.example.dao.Post;
 import java.util.List;
 
 @Service
-public class PostService {
+public class HelloWorldService {
 
     private final RestClient restClient;
 
-    public PostService() {
+    public HelloWorldService() {
         restClient = RestClient.builder()
                 .baseUrl("http://localhost:8081")
                 .build();

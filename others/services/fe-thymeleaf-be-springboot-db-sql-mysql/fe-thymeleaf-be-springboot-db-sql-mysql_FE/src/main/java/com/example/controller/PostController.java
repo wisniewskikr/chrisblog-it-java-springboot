@@ -3,20 +3,20 @@ package com.example.controller;
 import org.springframework.web.bind.annotation.*;
 
 import com.example.dao.Post;
-import com.example.service.PostService;
+import com.example.service.HelloWorldService;
 
 @RestController
 public class PostController {
 
-    private final PostService postService;
+    private final HelloWorldService helloWorldService;
 
-    public PostController(PostService postService) {
-        this.postService = postService;
+    public PostController(HelloWorldService helloWorldService) {
+        this.helloWorldService = helloWorldService;
     }
 
     @GetMapping
     Post findById() {
-        return postService.findById(1L);
+        return helloWorldService.findById(1L);
     }
 
 }
