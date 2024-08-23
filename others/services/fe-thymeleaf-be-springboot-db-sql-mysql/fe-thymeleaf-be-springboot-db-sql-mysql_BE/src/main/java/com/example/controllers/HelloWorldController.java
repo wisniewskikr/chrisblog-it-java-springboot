@@ -6,6 +6,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.entities.HelloWorldEntity;
@@ -21,10 +22,10 @@ public class HelloWorldController {
 		this.helloWorldService = helloWorldService;
 	}
 
-	@GetMapping
-	public ResponseEntity<Map<String, String>> helloWorld() {
+	@GetMapping("/message/{id}")
+	public ResponseEntity<Map<String, String>> helloWorld(@PathVariable Long id) {
 
-		HelloWorldEntity helloWorldEntity = helloWorldService.findById(1L);
+		HelloWorldEntity helloWorldEntity = helloWorldService.findById(id);
 		Map<String, String> response = Collections.singletonMap("message", helloWorldEntity.getText());		
 		return ResponseEntity.ok(response);		
 		

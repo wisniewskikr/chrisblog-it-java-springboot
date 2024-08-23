@@ -11,7 +11,7 @@ Required steps:
     * In the second Command Line with `ctrl + C`
 
 Optional steps:
-1. In a browser check Back-End application with `http://localhost:8081`
+1. In a browser check Back-End application with `http://localhost:8081/message/1`
 1. In a command line tool check Docker images with `docker images`
 1. In a command line tool check Docker containers with `docker ps`
 
