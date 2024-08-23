@@ -2,7 +2,7 @@ package com.example.controller;
 
 import org.springframework.web.bind.annotation.*;
 
-import com.example.dao.Post;
+import com.example.dao.HelloWorldDto;
 import com.example.service.HelloWorldService;
 
 @RestController
@@ -15,7 +15,7 @@ public class HelloWorldController {
     }
 
     @GetMapping
-    Post findById() {
+    HelloWorldDto findById() {
         return helloWorldService.findById(1L);
     }
 

@@ -5,7 +5,7 @@ import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestClient;
 
-import com.example.dao.Post;
+import com.example.dao.HelloWorldDto;
 
 import java.util.List;
 
@@ -20,11 +20,11 @@ public class HelloWorldService {
                 .build();
     }
 
-    public Post findById(Long id) {
+    public HelloWorldDto findById(Long id) {
         return restClient.get()
                 .uri("/message/{id}", id)
                 .retrieve()
-                .body(Post.class);
+                .body(HelloWorldDto.class);
     }
 
 }
