@@ -1,11 +1,11 @@
-package com.example.service;
+package com.example.services;
 
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestClient;
 
-import com.example.dao.HelloWorldDto;
+import com.example.dtos.HelloWorldDto;
 
 import java.util.List;
 

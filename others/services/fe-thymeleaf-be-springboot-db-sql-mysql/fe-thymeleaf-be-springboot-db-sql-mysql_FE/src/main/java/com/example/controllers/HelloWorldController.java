@@ -1,9 +1,9 @@
-package com.example.controller;
+package com.example.controllers;
 
 import org.springframework.web.bind.annotation.*;
 
-import com.example.dao.HelloWorldDto;
-import com.example.service.HelloWorldService;
+import com.example.dtos.HelloWorldDto;
+import com.example.services.HelloWorldService;
 
 @RestController
 public class HelloWorldController {
