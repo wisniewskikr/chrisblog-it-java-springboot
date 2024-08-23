@@ -6,11 +6,11 @@ import com.example.dao.Post;
 import com.example.service.HelloWorldService;
 
 @RestController
-public class PostController {
+public class HelloWorldController {
 
     private final HelloWorldService helloWorldService;
 
-    public PostController(HelloWorldService helloWorldService) {
+    public HelloWorldController(HelloWorldService helloWorldService) {
         this.helloWorldService = helloWorldService;
     }
 
