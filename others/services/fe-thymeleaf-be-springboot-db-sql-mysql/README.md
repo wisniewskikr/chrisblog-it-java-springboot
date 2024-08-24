@@ -1,72 +1,35 @@
-USAGE
------
-
-Required steps:
-1. `docker run -d --name mysql-container -e MYSQL_ROOT_PASSWORD=my_secret_password -e MYSQL_DATABASE=database -e MYSQL_USER=admin -e MYSQL_PASSWORD=admin123 -p 3306:3306 mysql:5.7`
-1. In the first command line tool start Back-End application with `mvn -f ./fe-thymeleaf-be-springboot-db-sql-mysql_BE spring-boot:run`
-1. In the second command line tool start Front-End application with `mvn -f ./fe-thymeleaf-be-springboot-db-sql-mysql_FE spring-boot:run`
-1. Visit `http://localhost:8080`
-1. Clean up environment:
-    * In the first Command Line with `ctrl + C`
-    * In the second Command Line with `ctrl + C`
-
-Optional steps:
-1. In a browser check Back-End application with `http://localhost:8081/message/1`
-1. In a command line tool check Docker images with `docker images`
-1. In a command line tool check Docker containers with `docker ps`
-
-
-USAGE COMMANDS
---------------
-
-> Please be aware that following tools should be installed on your local PC: **Java**, **Maven** and **Git**. 
-
-> Please **clone/download** project, open **project's main folder** in your favorite **command line tool** and then **proceed with steps below**. 
-
-Usage steps:
-1. In a command line tool start application with `mvn spring-boot:run`
-1. In a http client tool (e.g. Postman) read all posts using **GET** method and url `http://localhost:8080/api/posts`
-   * Expected list of posts
-1. In a http client tool (e.g. Postman) read single post using **GET** method and url `http://localhost:8080/api/posts/1`
-   * Expected post with id 1
-1. In a http client tool (e.g. Postman) create single post using **POST** method and url `http://localhost:8080/api/posts`
-   * Please set up **Body** as following **JSON**:
-   ```
-   {
-    "userId": 1,
-    "title": "Title",
-    "body": "Body"
-   }
-   ```
-   * Expected post with new id
-1. In a http client tool (e.g. Postman) update single post using **PUT** method and url `http://localhost:8080/api/posts/1`
-   * Please set up **Body** as following **JSON**:
-   ```
-   {
-    "userId": 2,
-    "title": "Title Updated",
-    "body": "Body Updated"
-   }
-   ```
-   * Expected updated post
-1. In a http client tool (e.g. Postman) delete single post using **DELETE** method and url `http://localhost:8080/api/posts/1`
-   * Expected empty response
-1. Clean up environment 
-     * In a command line tool stop application with `ctrl + C`
-
-
-USAGE IMAGES
-------------
+EXAMPLE
+-------
 
 ![My Image](readme-images/image-01.png)
 
-![My Image](readme-images/image-02.png)
 
-![My Image](readme-images/image-03.png)
+USAGE CLASSIC
+-------------
 
-![My Image](readme-images/image-04.png)
+> **Usage Classic** means that Back-End and Front-End servers are started manually by developer from a command line. Database is provided as Docker container.
 
-![My Image](readme-images/image-05.png)
+> Please be aware that following tools should be installed on your local PC: **Java**, **Maven** **Git** and **Docker**. Docker has to be **up and running**. 
+
+> Please **clone/download** project, open **project's main folder** in your favorite **command line tool** and then **proceed with steps below**. 
+
+Required steps:
+1. In the first command line tool start MySql database with `docker run -d --name mysql-container -e MYSQL_ROOT_PASSWORD=my_secret_password -e MYSQL_DATABASE=database -e MYSQL_USER=admin -e MYSQL_PASSWORD=admin123 -p 3306:3306 mysql:5.7`
+1. In the second command line tool start Back-End application with `mvn -f ./fe-thymeleaf-be-springboot-db-sql-mysql_BE spring-boot:run`
+1. In the third command line tool start Front-End application with `mvn -f ./fe-thymeleaf-be-springboot-db-sql-mysql_FE spring-boot:run`
+1. In a browser visit `http://localhost:8080`
+   * Expected HTML page with **Message from Database**, **Id of Back-End**, **Port of Back-End**, **Id of Front-End** and **Port of Front-End** 
+1. Clean up environment 
+     * In the third command line tool stop Front-End application with `ctrl + C`
+     * In the second command line tool stop Back-End application with `ctrl + C`
+     * In the first command line tool stop and remove Docker container with `docker rm -f mysql-container`
+     * In the first command line tool remove Docker image with `docker rmi mysql:5.7`
+
+Optional steps:
+1. In a browser check Back-End application with `http://localhost:8081/message/1`
+1. In a command line tool check list of Docker images with `docker images`
+1. In a command line tool check list of all Docker containers with `docker ps -a`
+1. In a command line tool check list of active Docker containers with `docker ps`
 
 
 DESCRIPTION
