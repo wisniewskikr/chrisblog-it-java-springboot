@@ -36,31 +36,24 @@ DESCRIPTION
 -----------
 
 ##### Goal
-The goal of this project is to present how to use **RestClient** for communication in an application type **API REST** in **Java** programming language with usage **Spring Boot** framework. RestClient is HTTP Client introduced in Spring Boot from version 3.2. It connects advantages of two other HTTP Clients provided by Spring Boot: RestTemplate and WebClient.
+The goal of this project is to present how to create **chain of services** which communicate each other and provide single ouput on HTML page. This chain of services consists of following elements:
+* **Database**: type SQL - **MySql**
+* **Back-End**: an application created in **Java** programming language with usage **Spring Boot** framework
+* **Front-End**: an application created in **Java** programming language with usage **Spring Boot** framework. **Thymeleaf** engine is used to display data
 
 ##### Terminology
 Terminology explanation:
 * **Java**: object-oriented programming language
-* **API REST**: an architectural style for an application program interface (API) that uses HTTP requests to access and use data
 * **Spring Boot**: framework for Java. It consists of: Spring + Container + Configuration
 * **Maven**: tool for build automation
 * **Git**: tool for distributed version control
-
-##### Flow
-The following flow takes place in this project:
-1. User via any http client sends requests to application for post. These request are RESTFUL.
-1. Application uses RestClient to get responses from external API
-1. Application sends back response to User via http client.
+* **Database**: A database is an organized collection of data that is stored and managed electronically, allowing for efficient retrieval, manipulation, and updating of information. It is typically managed by a database management system (DBMS).
+* **MySql**: MySQL is an open-source relational database management system (RDBMS) that uses Structured Query Language (SQL) for managing and organizing data. It's widely used for web applications and is known for its speed, reliability, and ease of use.
+* **Back-End**: The back-end refers to the server-side part of a software application, responsible for managing the database, server logic, and application programming interface (API). It processes requests from the front-end (user interface), handles data storage, retrieval, and business logic, and sends the appropriate responses back to the front-end.
+* **Front-End**: Front-end refers to the part of a website or application that users interact with directly. It includes the visual elements, layout, and design, typically built using HTML, CSS, and JavaScript. The front-end is responsible for the user experience (UX) and interface (UI) that allows users to navigate and interact with the system.
 
 ##### Launch
 To launch this application please make sure that the **Preconditions** are met and then follow instructions from **Usage** section.
-
-##### Technologies
-This project uses following technologies:
-* **Java**: `https://docs.google.com/document/d/119VYxF8JIZIUSk7JjwEPNX1RVjHBGbXHBKuK_1ytJg4/edit?usp=sharing`
-* **Maven**: `https://docs.google.com/document/d/1cfIMcqkWlobUfVfTLQp7ixqEcOtoTR8X6OGo3cU4maw/edit?usp=sharing`
-* **Git**: `https://docs.google.com/document/d/1Iyxy5DYfsrEZK5fxZJnYy5a1saARxd5LyMEscJKSHn0/edit?usp=sharing`
-* **Spring Boot**: `https://docs.google.com/document/d/1mvrJT5clbkr9yTj-AQ7YOXcqr2eHSEw2J8n9BMZIZKY/edit?usp=sharing`
 
 
 PRECONDITIONS
@@ -71,8 +64,10 @@ PRECONDITIONS
 * Installed **Java** (tested on version 17.0.5)
 * Installed **Maven** (tested on version 3.8.5)
 * Installed **Git** (tested on version 2.33.0.windows.2)
+* Installed **Docker** (texted on version 4.33.1)
 
 
 ##### Preconditions - Actions
+* Start **Docker**
 * Download **Source Code** (using Git or in any other way) 
 * Open any **Command Line** tool (for instance "Windonw PowerShell" on Windows OS) on downloaded **project's main folder**
