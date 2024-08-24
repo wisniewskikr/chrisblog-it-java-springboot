@@ -1,5 +1,6 @@
 package com.example.controllers;
 
+import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -10,19 +11,23 @@ import com.example.services.HelloWorldService;
 @Controller
 public class HelloWorldController {
 
-    private final HelloWorldService helloWorldService;
+    private HelloWorldService helloWorldService;
+    private Environment environment; 
 
-    public HelloWorldController(HelloWorldService helloWorldService) {
+    public HelloWorldController(HelloWorldService helloWorldService, Environment environment) {
         this.helloWorldService = helloWorldService;
+        this.environment = environment;
     }
 
     @GetMapping
     String findById(Model model) {
 
         HelloWorldDto helloWorldDto = helloWorldService.findById(1L);
-        model.addAttribute("message", helloWorldDto.text());
+        model.addAttribute("message", helloWorldDto.text());        
         model.addAttribute("idBe", helloWorldDto.idBe());
         model.addAttribute("portBe", helloWorldDto.portBe());
+        model.addAttribute("idFe", System.getProperty("id"));
+        model.addAttribute("portFe", environment.getProperty("local.server.port"));
         return "helloworld";
 
     }
