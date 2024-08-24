@@ -1,3 +1,3 @@
 package com.example.dtos;
 
-public record HelloWorldDto(Long id, String text){}
+public record HelloWorldDto(Long id, String text, String idBe, String portBe){}
