@@ -7,11 +7,16 @@ EXAMPLE
 USAGE CLASSIC
 -------------
 
-> **Usage Classic** means that Back-End and Front-End servers are started manually by developer from a command line. Database is provided as Docker container.
-
-> Please be aware that following tools should be installed on your local PC: **Java**, **Maven** **Git** and **Docker**. Docker has to be **up and running**. 
+> **Usage Classic** means that Back-End and Front-End services are provided as **Java and Maven applications**. Database is provided as **Docker container**.
 
 > Please **clone/download** project, open **project's main folder** in your favorite **command line tool** and then **proceed with steps below**. 
+
+> Please be aware that following tools should be installed on your local PC:  
+* **Operating System** (tested on Windows 11)
+* **Java** (tested on version 17.0.5)
+* **Maven** (tested on version 3.8.5)
+* **Git** (tested on version 2.33.0.windows.2)
+* **Docker** (texted on version 4.33.1 - it has to be up and running)
 
 Required steps:
 1. In the first command line tool start MySql database with `docker run -d --name mysql-container -e MYSQL_ROOT_PASSWORD=my_secret_password -e MYSQL_DATABASE=database -e MYSQL_USER=admin -e MYSQL_PASSWORD=admin123 -p 3306:3306 mysql:5.7`
@@ -35,11 +40,14 @@ Optional steps:
 USAGE DOCKER
 ------------
 
-> **Usage Docker** means that Back-End, Front-End servers and Database are provided as Docker container.
+> **Usage Docker** means that Back-End, Front-End services and Database are provided as **Docker containers**. 
 
-> Please be aware that following tools should be installed on your local PC: **Docker**. Docker has to be **up and running**. 
+> Please **clone/download** project, open **project's main folder** in your favorite **command line tool** and then **proceed with steps below**.
 
-> Please **clone/download** project, open **project's main folder** in your favorite **command line tool** and then **proceed with steps below**. 
+> Please be aware that following tools should be installed on your local PC:  
+* **Operating System** (tested on Windows 11)
+* **Git** (tested on version 2.33.0.windows.2)
+* **Docker** (texted on version 4.33.1 - it has to be up and running)
 
 Required steps:
 1. In a command line tool create Docker network with `docker network create helloworld-network`
@@ -99,14 +107,3 @@ Terminology explanation:
 
 ##### Launch
 To launch this application please make sure that the **Preconditions** are met and then follow instructions from **Usage** section.
-
-
-PRECONDITIONS
--------------
-
-##### Preconditions - Tools
-* Installed **Operating System** (tested on Windows 11)
-* Installed **Java** (tested on version 17.0.5)
-* Installed **Maven** (tested on version 3.8.5)
-* Installed **Git** (tested on version 2.33.0.windows.2)
-* Installed **Docker** (texted on version 4.33.1)
