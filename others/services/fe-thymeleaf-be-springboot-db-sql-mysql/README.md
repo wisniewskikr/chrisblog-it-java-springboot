@@ -45,9 +45,9 @@ Required steps:
 1. In a command line tool create Docker network with `docker network create helloworld-network`
 1. In a command line tool build and start **Docker container MySql** database with `docker run -d --name mysql-container -e MYSQL_ROOT_PASSWORD=my_secret_password -e MYSQL_DATABASE=database -e MYSQL_USER=admin -e MYSQL_PASSWORD=admin123 -p 3306:3306 --network helloworld-network mysql:5.7`
 1. In a command line tool build **Docker image BE** with `docker build -f fe-thymeleaf-be-springboot-db-sql-mysql_BE/Dockerfile -t fe-thymeleaf-be-springboot-db-sql-mysql_be-image ./fe-thymeleaf-be-springboot-db-sql-mysql_BE`
-1. In a command line tool build and start **Docker container BE** with `docker run -d -p 8081:8081 --name fe-thymeleaf-be-springboot-db-sql-mysql_be-container --network helloworld-network fe-thymeleaf-be-springboot-db-sql-mysql_be-image`
+1. In a command line tool build and start **Docker container BE** with `docker run -p 8081:8081 --name fe-thymeleaf-be-springboot-db-sql-mysql_be-container --network helloworld-network -e spring.datasource.url=jdbc:mysql://mysql-container:3306/database -d fe-thymeleaf-be-springboot-db-sql-mysql_be-image`
 1. In a command line tool build **Docker image FE** with `docker build -f fe-thymeleaf-be-springboot-db-sql-mysql_FE/Dockerfile -t fe-thymeleaf-be-springboot-db-sql-mysql_fe-image ./fe-thymeleaf-be-springboot-db-sql-mysql_FE`
-1. In a command line tool build and start **Docker container FE** with `docker run -d -p 9090:9090 --name fe-thymeleaf-be-springboot-db-sql-mysql_fe-container --network helloworld-network fe-thymeleaf-be-springboot-db-sql-mysql_fe-image`
+1. In a command line tool build and start **Docker container FE** with `docker run -p 9090:9090 --name fe-thymeleaf-be-springboot-db-sql-mysql_fe-container --network helloworld-network -d fe-thymeleaf-be-springboot-db-sql-mysql_fe-image`
 
 Optional steps:
 1. In a browser check Back-End application with `http://localhost:8081/message/1`
@@ -110,9 +110,3 @@ PRECONDITIONS
 * Installed **Maven** (tested on version 3.8.5)
 * Installed **Git** (tested on version 2.33.0.windows.2)
 * Installed **Docker** (texted on version 4.33.1)
-
-
-##### Preconditions - Actions
-* Start **Docker**
-* Download **Source Code** (using Git or in any other way) 
-* Open any **Command Line** tool (for instance "Windonw PowerShell" on Windows OS) on downloaded **project's main folder**
