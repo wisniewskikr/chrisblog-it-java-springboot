@@ -32,6 +32,51 @@ Optional steps:
 1. In a command line tool check list of active Docker containers with `docker ps`
 
 
+USAGE DOCKER
+------------
+
+> **Usage Docker** means that Back-End, Front-End servers and Database are provided as Docker container.
+
+> Please be aware that following tools should be installed on your local PC: **Docker**. Docker has to be **up and running**. 
+
+> Please **clone/download** project, open **project's main folder** in your favorite **command line tool** and then **proceed with steps below**. 
+
+Required steps:
+1. In a command line tool create Docker network with `docker network create helloworld-network`
+1. In a command line tool build and start **Docker container MySql** database with `docker run -d --name mysql-container -e MYSQL_ROOT_PASSWORD=my_secret_password -e MYSQL_DATABASE=database -e MYSQL_USER=admin -e MYSQL_PASSWORD=admin123 -p 3306:3306 --network helloworld-network mysql:5.7`
+1. In a command line tool build **Docker image BE** with `docker build -f fe-thymeleaf-be-springboot-db-sql-mysql_BE/Dockerfile -t fe-thymeleaf-be-springboot-db-sql-mysql_be-image ./fe-thymeleaf-be-springboot-db-sql-mysql_BE`
+1. In a command line tool build and start **Docker container BE** with `docker run -d -p 8081:8081 --name fe-thymeleaf-be-springboot-db-sql-mysql_be-container --network helloworld-network fe-thymeleaf-be-springboot-db-sql-mysql_be-image`
+1. In a command line tool build **Docker image FE** with `docker build -f fe-thymeleaf-be-springboot-db-sql-mysql_FE/Dockerfile -t fe-thymeleaf-be-springboot-db-sql-mysql_fe-image ./fe-thymeleaf-be-springboot-db-sql-mysql_FE`
+1. In a command line tool build and start **Docker container FE** with `docker run -d -p 9090:9090 --name fe-thymeleaf-be-springboot-db-sql-mysql_fe-container --network helloworld-network fe-thymeleaf-be-springboot-db-sql-mysql_fe-image`
+
+Optional steps:
+1. In a browser check Back-End application with `http://localhost:8081/message/1`
+1. In a command line tool check list of Docker images with `docker images`
+1. In a command line tool check list of all Docker containers with `docker ps -a`
+1. In a command line tool check list of active Docker containers with `docker ps`
+1. In a command line tool check list of Docker nerworks with `docker network ls`
+1. In a command line tool check BE container logs with `docker logs fe-thymeleaf-be-springboot-db-sql-mysql_be-container`
+1. In a command line tool check FE container logs with `docker logs fe-thymeleaf-be-springboot-db-sql-mysql_fe-container`
+
+
+
+1. In the second command line tool start Back-End application with `mvn -f ./fe-thymeleaf-be-springboot-db-sql-mysql_BE spring-boot:run`
+1. In the third command line tool start Front-End application with `mvn -f ./fe-thymeleaf-be-springboot-db-sql-mysql_FE spring-boot:run`
+1. In a browser visit `http://localhost:8080`
+   * Expected HTML page with **Message from Database**, **Id of Back-End**, **Port of Back-End**, **Id of Front-End** and **Port of Front-End** 
+1. Clean up environment 
+     * In the third command line tool stop Front-End application with `ctrl + C`
+     * In the second command line tool stop Back-End application with `ctrl + C`
+     * In the first command line tool stop and remove Docker container with `docker rm -f mysql-container`
+     * In the first command line tool remove Docker image with `docker rmi mysql:5.7`
+
+Optional steps:
+1. In a browser check Back-End application with `http://localhost:8081/message/1`
+1. In a command line tool check list of Docker images with `docker images`
+1. In a command line tool check list of all Docker containers with `docker ps -a`
+1. In a command line tool check list of active Docker containers with `docker ps`
+
+
 DESCRIPTION
 -----------
 
