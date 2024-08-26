@@ -55,7 +55,7 @@ Required steps:
 1. In a command line tool build **Docker image BE** with `docker build -f fe-thymeleaf-be-springboot-db-sql-mysql_BE/Dockerfile -t fe-thymeleaf-be-springboot-db-sql-mysql_be-image ./fe-thymeleaf-be-springboot-db-sql-mysql_BE`
 1. In a command line tool build and start **Docker container BE** with `docker run -p 8081:8081 --name fe-thymeleaf-be-springboot-db-sql-mysql_be-container --network helloworld-network -e spring.datasource.url=jdbc:mysql://mysql-container:3306/database -d fe-thymeleaf-be-springboot-db-sql-mysql_be-image`
 1. In a command line tool build **Docker image FE** with `docker build -f fe-thymeleaf-be-springboot-db-sql-mysql_FE/Dockerfile -t fe-thymeleaf-be-springboot-db-sql-mysql_fe-image ./fe-thymeleaf-be-springboot-db-sql-mysql_FE`
-1. In a command line tool build and start **Docker container FE** with `docker run -p 9090:9090 --name fe-thymeleaf-be-springboot-db-sql-mysql_fe-container --network helloworld-network -d fe-thymeleaf-be-springboot-db-sql-mysql_fe-image`
+1. In a command line tool build and start **Docker container FE** with `docker run -p 8080:8080 --name fe-thymeleaf-be-springboot-db-sql-mysql_fe-container --network helloworld-network -e baseurl.be=http://fe-thymeleaf-be-springboot-db-sql-mysql_be-container:8081 -d fe-thymeleaf-be-springboot-db-sql-mysql_fe-image`
 
 Optional steps:
 1. In a browser check Back-End application with `http://localhost:8081/message/1`
