@@ -50,12 +50,20 @@ USAGE DOCKER
 * **Docker** (texted on version 4.33.1 - it has to be up and running)
 
 Required steps:
-1. In a command line tool create Docker network with `docker network create helloworld-network`
+1. In a command line tool create **Docker Network** with `docker network create helloworld-network`
 1. In a command line tool build and start **Docker container MySql** database with `docker run -d --name mysql-container -e MYSQL_ROOT_PASSWORD=my_secret_password -e MYSQL_DATABASE=database -e MYSQL_USER=admin -e MYSQL_PASSWORD=admin123 -p 3306:3306 --network helloworld-network mysql:5.7`
 1. In a command line tool build **Docker image BE** with `docker build -f fe-thymeleaf-be-springboot-db-sql-mysql_BE/Dockerfile -t fe-thymeleaf-be-springboot-db-sql-mysql_be-image ./fe-thymeleaf-be-springboot-db-sql-mysql_BE`
 1. In a command line tool build and start **Docker container BE** with `docker run -p 8081:8081 --name fe-thymeleaf-be-springboot-db-sql-mysql_be-container --network helloworld-network -e spring.datasource.url=jdbc:mysql://mysql-container:3306/database -d fe-thymeleaf-be-springboot-db-sql-mysql_be-image`
 1. In a command line tool build **Docker image FE** with `docker build -f fe-thymeleaf-be-springboot-db-sql-mysql_FE/Dockerfile -t fe-thymeleaf-be-springboot-db-sql-mysql_fe-image ./fe-thymeleaf-be-springboot-db-sql-mysql_FE`
 1. In a command line tool build and start **Docker container FE** with `docker run -p 8080:8080 --name fe-thymeleaf-be-springboot-db-sql-mysql_fe-container --network helloworld-network -e baseurl.be=http://fe-thymeleaf-be-springboot-db-sql-mysql_be-container:8081 -d fe-thymeleaf-be-springboot-db-sql-mysql_fe-image`
+1. Clean up environment 
+     * In a command line tool stop and remove **BE Docker container** with `docker rm -f fe-thymeleaf-be-springboot-db-sql-mysql_fe-container`
+     * In a command line tool remove **BE Docker image** with `docker rmi fe-thymeleaf-be-springboot-db-sql-mysql_fe-image`
+     * In a command line tool stop and remove **FE Docker container** with `docker rm -f fe-thymeleaf-be-springboot-db-sql-mysql_be-container`
+     * In a command line tool remove **FE Docker image** with `docker rmi fe-thymeleaf-be-springboot-db-sql-mysql_be-image`
+     * In a command line tool stop and remove **Database Docker container** with `docker rm -f mysql-container`
+     * In a command line tool remove **Database Docker image** with `docker rmi mysql:5.7`
+     * In a command line tool remove **Docker Nerwork** with `docker network rm helloworld-network`
 
 Optional steps:
 1. In a browser check Back-End application with `http://localhost:8081/message/1`
