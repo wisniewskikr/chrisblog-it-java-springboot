@@ -77,24 +77,6 @@ Optional steps:
 1. In a command line tool check FE container logs with `docker logs fe-container`
 
 
-
-1. In the second command line tool start Back-End application with `mvn -f ./fe-thymeleaf-be-springboot-db-sql-mysql_BE spring-boot:run`
-1. In the third command line tool start Front-End application with `mvn -f ./fe-thymeleaf-be-springboot-db-sql-mysql_FE spring-boot:run`
-1. In a browser visit `http://localhost:8080`
-   * Expected HTML page with **Message from Database**, **Id of Back-End**, **Port of Back-End**, **Id of Front-End** and **Port of Front-End** 
-1. Clean up environment 
-     * In the third command line tool stop Front-End application with `ctrl + C`
-     * In the second command line tool stop Back-End application with `ctrl + C`
-     * In the first command line tool stop and remove Docker container with `docker rm -f mysql-container`
-     * In the first command line tool remove Docker image with `docker rmi mysql:5.7`
-
-Optional steps:
-1. In a browser check Back-End application with `http://localhost:8081/message/1`
-1. In a command line tool check list of Docker images with `docker images`
-1. In a command line tool check list of all Docker containers with `docker ps -a`
-1. In a command line tool check list of active Docker containers with `docker ps`
-
-
 DESCRIPTION
 -----------
 
