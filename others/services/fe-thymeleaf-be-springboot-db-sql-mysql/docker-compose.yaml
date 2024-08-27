@@ -25,6 +25,8 @@ services:
       dockerfile: Dockerfile
     environment:
       spring.datasource.url: jdbc:mysql://mysql:3306/database
+    depends_on:
+      - mysql
     ports:
       - 8081:8081
     networks:
@@ -38,11 +40,13 @@ services:
       dockerfile: Dockerfile
     environment:
       baseurl.be: http://be:8081
+    depends_on:
+      - be
     ports:
       - 8080:8080
     networks:
       - helloworld-network
 
-  networks:
-    helloworld-network:
-      name: helloworld-network-name
+networks:
+  helloworld-network:
+    name: helloworld-network-name
