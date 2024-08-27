@@ -11,7 +11,7 @@ services:
       MYSQL_USER: admin
       MYSQL_PASSWORD: admin123
     ports:
-      - "3306:3306"
+      - 3306:3306    
     networks:
       - helloworld-network
 #    volumes:
@@ -29,6 +29,12 @@ services:
       - mysql
     ports:
       - 8081:8081
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8081/actuator/health"]
+      interval: 10s
+      timeout: 10s
+      retries: 5
+      start_period: 10s
     networks:
       - helloworld-network
 
@@ -44,6 +50,12 @@ services:
       - be
     ports:
       - 8080:8080
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/actuator/health"]
+      interval: 10s
+      timeout: 10s
+      retries: 5
+      start_period: 10s
     networks:
       - helloworld-network
 
