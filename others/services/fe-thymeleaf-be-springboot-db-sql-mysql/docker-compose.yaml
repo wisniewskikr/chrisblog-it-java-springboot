@@ -12,6 +12,8 @@ services:
       MYSQL_PASSWORD: admin123
     ports:
       - "3306:3306"
+    networks:
+      - helloworld-network
 #    volumes:
 #      - dbdata:/var/lib/mysql
 
