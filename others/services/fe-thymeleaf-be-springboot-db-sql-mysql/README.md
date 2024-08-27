@@ -52,15 +52,15 @@ USAGE DOCKER
 Required steps:
 1. In a command line tool create **Docker Network** with `docker network create helloworld-network`
 1. In a command line tool build and start **Docker container MySql** database with `docker run -d --name mysql-container -e MYSQL_ROOT_PASSWORD=my_secret_password -e MYSQL_DATABASE=database -e MYSQL_USER=admin -e MYSQL_PASSWORD=admin123 -p 3306:3306 --network helloworld-network mysql:5.7`
-1. In a command line tool build **Docker image BE** with `docker build -f fe-thymeleaf-be-springboot-db-sql-mysql_BE/Dockerfile -t be-image ./fe-thymeleaf-be-springboot-db-sql-mysql_BE`
-1. In a command line tool build and start **Docker container BE** with `docker run -p 8081:8081 --name be-container --network helloworld-network -e spring.datasource.url=jdbc:mysql://mysql-container:3306/database -d be-image`
-1. In a command line tool build **Docker image FE** with `docker build -f fe-thymeleaf-be-springboot-db-sql-mysql_FE/Dockerfile -t fe-image ./fe-thymeleaf-be-springboot-db-sql-mysql_FE`
-1. In a command line tool build and start **Docker container FE** with `docker run -p 8080:8080 --name fe-container --network helloworld-network -e baseurl.be=http://be-container:8081 -d fe-image`
+1. In a command line tool build **Docker image BE** with `docker build -f fe-thymeleaf-be-springboot-db-sql-mysql_BE/Dockerfile -t be-image:0.0.1 ./fe-thymeleaf-be-springboot-db-sql-mysql_BE`
+1. In a command line tool build and start **Docker container BE** with `docker run -p 8081:8081 --name be-container --network helloworld-network -e spring.datasource.url=jdbc:mysql://mysql-container:3306/database -d be-image:0.0.1`
+1. In a command line tool build **Docker image FE** with `docker build -f fe-thymeleaf-be-springboot-db-sql-mysql_FE/Dockerfile -t fe-image:0.0.1 ./fe-thymeleaf-be-springboot-db-sql-mysql_FE`
+1. In a command line tool build and start **Docker container FE** with `docker run -p 8080:8080 --name fe-container --network helloworld-network -e baseurl.be=http://be-container:8081 -d fe-image:0.0.1`
 1. Clean up environment 
      * In a command line tool stop and remove **BE Docker container** with `docker rm -f fe-container`
-     * In a command line tool remove **BE Docker image** with `docker rmi fe-image`
+     * In a command line tool remove **BE Docker image** with `docker rmi fe-image:0.0.1`
      * In a command line tool stop and remove **FE Docker container** with `docker rm -f be-container`
-     * In a command line tool remove **FE Docker image** with `docker rmi be-image`
+     * In a command line tool remove **FE Docker image** with `docker rmi be-image:0.0.1`
      * In a command line tool stop and remove **Database Docker container** with `docker rm -f mysql-container`
      * In a command line tool remove **Database Docker image** with `docker rmi mysql:5.7`
      * In a command line tool remove **Docker Nerwork** with `docker network rm helloworld-network`
