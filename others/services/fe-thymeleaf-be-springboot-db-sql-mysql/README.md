@@ -77,6 +77,35 @@ Optional steps:
 1. In a command line tool check FE container logs with `docker logs fe-container`
 
 
+USAGE DOCKER COMPOSE
+--------------------
+
+> **Usage Docker Compse** means that Back-End, Front-End services and Database are provided as **Docker containers** definied in **Docker Compose** file. 
+
+> Please **clone/download** project, open **project's main folder** in your favorite **command line tool** and then **proceed with steps below**.
+
+> Please be aware that following tools should be installed on your local PC:  
+* **Operating System** (tested on Windows 11)
+* **Git** (tested on version 2.33.0.windows.2)
+* **Docker** (texted on version 4.33.1 - it has to be up and running)
+
+Required steps:
+1. In a command line tool start all services with `docker-compose up -d --build`
+1. In a browser visit `http://localhost:8080`
+   * Expected HTML page with **Database Message**, **Back-End Id**, **Back-End Port**, **Front-End Id** and **Front-End Port** 
+1. Clean up environment 
+     * In a command line tool remove all services with `docker-compose down --rmi all`
+
+Optional steps:
+1. In a browser check Back-End application with `http://localhost:8081/message/1`
+1. In a command line tool check list of Docker images with `docker images`
+1. In a command line tool check list of all Docker containers with `docker ps -a`
+1. In a command line tool check list of active Docker containers with `docker ps`
+1. In a command line tool check list of Docker nerworks with `docker network ls`
+1. In a command line tool check BE container logs with `docker logs be-container`
+1. In a command line tool check FE container logs with `docker logs fe-container`
+
+
 DESCRIPTION
 -----------
 
