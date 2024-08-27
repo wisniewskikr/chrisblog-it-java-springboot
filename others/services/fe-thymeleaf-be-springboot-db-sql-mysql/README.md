@@ -23,7 +23,7 @@ Required steps:
 1. In the second command line tool start Back-End application with `mvn -f ./fe-thymeleaf-be-springboot-db-sql-mysql_BE spring-boot:run`
 1. In the third command line tool start Front-End application with `mvn -f ./fe-thymeleaf-be-springboot-db-sql-mysql_FE spring-boot:run`
 1. In a browser visit `http://localhost:8080`
-   * Expected HTML page with **Message from Database**, **Id of Back-End**, **Port of Back-End**, **Id of Front-End** and **Port of Front-End** 
+   * Expected HTML page with **Database Message**, **Back-End Id**, **Back-End Port**, **Front-End Id** and **Front-End Port** 
 1. Clean up environment 
      * In the third command line tool stop Front-End application with `ctrl + C`
      * In the second command line tool stop Back-End application with `ctrl + C`
@@ -56,6 +56,8 @@ Required steps:
 1. In a command line tool build and start **Docker container BE** with `docker run -p 8081:8081 --name be-container --network helloworld-network -e spring.datasource.url=jdbc:mysql://mysql-container:3306/database -d be-image:0.0.1`
 1. In a command line tool build **Docker image FE** with `docker build -f fe-thymeleaf-be-springboot-db-sql-mysql_FE/Dockerfile -t fe-image:0.0.1 ./fe-thymeleaf-be-springboot-db-sql-mysql_FE`
 1. In a command line tool build and start **Docker container FE** with `docker run -p 8080:8080 --name fe-container --network helloworld-network -e baseurl.be=http://be-container:8081 -d fe-image:0.0.1`
+1. In a browser visit `http://localhost:8080`
+   * Expected HTML page with **Database Message**, **Back-End Id**, **Back-End Port**, **Front-End Id** and **Front-End Port** 
 1. Clean up environment 
      * In a command line tool stop and remove **BE Docker container** with `docker rm -f fe-container`
      * In a command line tool remove **BE Docker image** with `docker rmi fe-image:0.0.1`
