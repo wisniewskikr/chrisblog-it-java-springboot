@@ -98,6 +98,7 @@ Required steps:
 
 Optional steps:
 1. In a browser check Back-End application with `http://localhost:8081/message/1`
+1. In a command line tool validate Docker Compose with `docker-compose config`
 1. In a command line tool check list of Docker images with `docker images`
 1. In a command line tool check list of all Docker containers with `docker ps -a`
 1. In a command line tool check list of active Docker containers with `docker ps`
