@@ -137,18 +137,18 @@ USAGE KUBERNETES (MINIKUBE)
      * In the first command line tool **with administrator privileges** stop **Minikube** with `minikube stop`
 
 ##### Optional steps:
-1. In a command line tool **build Docker BE image** with `docker build -f fe-thymeleaf-be-springboot-db-sql-mysql_BE/Dockerfile -t wisniewskikr/fe-thymeleaf-be-springboot-db-sql-mysql_be:0.0.1 ./fe-thymeleaf-be-springboot-db-sql-mysql_BE`
-1. In a command line tool **push Docker BE image** to Docker Repository with `docker push wisniewskikr/fe-thymeleaf-be-springboot-db-sql-mysql_be:0.0.1` 
-1. In a command line tool **build Docker FE image** with `docker build -f fe-thymeleaf-be-springboot-db-sql-mysql_FE/Dockerfile -t wisniewskikr/fe-thymeleaf-be-springboot-db-sql-mysql_fe:0.0.1 ./fe-thymeleaf-be-springboot-db-sql-mysql_FE`
-1. In a command line tool **push Docker FE image** to Docker Repository with `docker push wisniewskikr/fe-thymeleaf-be-springboot-db-sql-mysql_fe:0.0.1` 
-1. In the first command line tool **with administrator privileges** check status of **Minikube** with `minikube status`
-1. In a command line tool check **Kubernetes Deployments** with `kubectl get deployments`
-1. In a command line tool check **Kubernetes Deployments details** with **kubectl describe deployment {deployment-name}**
-1. In a command line tool check **Kubernetes Services** with `kubectl get services`
-1. In a command line tool check **Kubernetes Services details** with **kubectl describe service {service-name}**
-1. In a command line tool check **Kubernetes Pods** with `kubectl get pods`
-1. In a command line tool check **Kubernetes Pods details** with **kubectl describe pod {pod-name}**
-1. In a command line tool check **Kubernetes Pods logs** with **kubectl log {pod-name}**
+1. In a command line tool build Docker BE image with `docker build -f fe-thymeleaf-be-springboot-db-sql-mysql_BE/Dockerfile -t wisniewskikr/fe-thymeleaf-be-springboot-db-sql-mysql_be:0.0.1 ./fe-thymeleaf-be-springboot-db-sql-mysql_BE`
+1. In a command line tool push Docker BE image to Docker Repository with `docker push wisniewskikr/fe-thymeleaf-be-springboot-db-sql-mysql_be:0.0.1` 
+1. In a command line tool build Docker FE image with `docker build -f fe-thymeleaf-be-springboot-db-sql-mysql_FE/Dockerfile -t wisniewskikr/fe-thymeleaf-be-springboot-db-sql-mysql_fe:0.0.1 ./fe-thymeleaf-be-springboot-db-sql-mysql_FE`
+1. In a command line tool push Docker FE image to Docker Repository with `docker push wisniewskikr/fe-thymeleaf-be-springboot-db-sql-mysql_fe:0.0.1` 
+1. In the first command line tool with administrator privileges check status of Minikube with `minikube status`
+1. In a command line tool check Kubernetes Deployments with `kubectl get deployments`
+1. In a command line tool check Kubernetes Deployments details with **kubectl describe deployment {deployment-name}**
+1. In a command line tool check Kubernetes Services with `kubectl get services`
+1. In a command line tool check Kubernetes Services details with **kubectl describe service {service-name}**
+1. In a command line tool check Kubernetes Pods with `kubectl get pods`
+1. In a command line tool check Kubernetes Pods details with **kubectl describe pod {pod-name}**
+1. In a command line tool check Kubernetes Pods logs with **kubectl log {pod-name}**
 
 
 DESCRIPTION
