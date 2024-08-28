@@ -18,7 +18,7 @@ USAGE CLASSIC
 * **Git** (tested on version 2.33.0.windows.2)
 * **Docker** (texted on version 4.33.1 - it has to be up and running)
 
-Required steps:
+##### Required steps:
 1. In the first command line tool start MySql database with `docker run -d --name mysql-container -e MYSQL_ROOT_PASSWORD=my_secret_password -e MYSQL_DATABASE=database -e MYSQL_USER=admin -e MYSQL_PASSWORD=admin123 -p 3306:3306 mysql:5.7`
 1. In the second command line tool start Back-End application with `mvn -f ./fe-thymeleaf-be-springboot-db-sql-mysql_BE spring-boot:run`
 1. In the third command line tool start Front-End application with `mvn -f ./fe-thymeleaf-be-springboot-db-sql-mysql_FE spring-boot:run`
@@ -30,7 +30,7 @@ Required steps:
      * In the first command line tool stop and remove Docker container with `docker rm -f mysql-container`
      * In the first command line tool remove Docker image with `docker rmi mysql:5.7`
 
-Optional steps:
+##### Optional steps:
 1. In a browser check Back-End application healthcheck with `http://localhost:8081/actuator/health`
 1. In a browser check Back-End application API result with `http://localhost:8081/message/1`
 1. In a browser check Front-End application healthcheck with `http://localhost:8080/actuator/health`
@@ -51,7 +51,7 @@ USAGE DOCKER
 * **Git** (tested on version 2.33.0.windows.2)
 * **Docker** (texted on version 4.33.1 - it has to be up and running)
 
-Required steps:
+##### Required steps:
 1. In a command line tool create **Docker Network** with `docker network create helloworld-network`
 1. In a command line tool build and start **Docker container MySql** database with `docker run -d --name mysql-container -e MYSQL_ROOT_PASSWORD=my_secret_password -e MYSQL_DATABASE=database -e MYSQL_USER=admin -e MYSQL_PASSWORD=admin123 -p 3306:3306 --network helloworld-network mysql:5.7`
 1. In a command line tool build **Docker image BE** with `docker build -f fe-thymeleaf-be-springboot-db-sql-mysql_BE/Dockerfile -t be-image:0.0.1 ./fe-thymeleaf-be-springboot-db-sql-mysql_BE`
@@ -69,7 +69,7 @@ Required steps:
      * In a command line tool remove **Database Docker image** with `docker rmi mysql:5.7`
      * In a command line tool remove **Docker Nerwork** with `docker network rm helloworld-network`
 
-Optional steps:
+##### Optional steps:
 1. In a browser check Back-End application healthcheck with `http://localhost:8081/actuator/health`
 1. In a browser check Back-End application API result with `http://localhost:8081/message/1`
 1. In a browser check Front-End application healthcheck with `http://localhost:8080/actuator/health`
@@ -93,14 +93,14 @@ USAGE DOCKER COMPOSE
 * **Git** (tested on version 2.33.0.windows.2)
 * **Docker** (texted on version 4.33.1 - it has to be up and running)
 
-Required steps:
+##### Required steps:
 1. In a command line tool start all services with `docker-compose up -d --build`
 1. In a browser visit `http://localhost:8080`
    * Expected HTML page with **Database Message**, **Back-End Id**, **Back-End Port**, **Front-End Id** and **Front-End Port** 
 1. Clean up environment 
      * In a command line tool remove all services with `docker-compose down --rmi all`
 
-Optional steps:
+##### Optional steps:
 1. In a browser check Back-End application healthcheck with `http://localhost:8081/actuator/health`
 1. In a browser check Back-End application API result with `http://localhost:8081/message/1`
 1. In a browser check Front-End application healthcheck with `http://localhost:8080/actuator/health`
@@ -125,7 +125,7 @@ USAGE KUBERNETES (MINIKUBE)
 * **Git** (tested on version 2.33.0.windows.2)
 * **Minikube** (texted on version 1.33.1)
 
-Required steps:
+##### Required steps:
 1. In the first command line tool **with administrator privileges** start **Minikube** with `minikube start`
 1. In the second command line tool **start Kubernetes Pods** with `kubectl apply -f kubernetes.yaml`
 1. In the second command line tool **check status of Kubernetes Pods** with `kubectl get pods`
@@ -136,7 +136,7 @@ Required steps:
      * In a command line tool remove all Docker Containers using Kubernetes with `kubectl delete -f kubernetes.yaml`
      * In the first command line tool **with administrator privileges** stop **Minikube** with `minikube stop`
 
-Optional steps:
+##### Optional steps:
 1. In a command line tool **build Docker Image BE** with `docker build -f fe-thymeleaf-be-springboot-db-sql-mysql_BE/Dockerfile -t wisniewskikr/fe-thymeleaf-be-springboot-db-sql-mysql_be:0.0.1 ./fe-thymeleaf-be-springboot-db-sql-mysql_BE`
 1. In a command line tool **push Docker Image BE** to Docker Repository with `docker push wisniewskikr/fe-thymeleaf-be-springboot-db-sql-mysql_be:0.0.1` 
 1. In a command line tool **build Docker Image FE** with `docker build -f fe-thymeleaf-be-springboot-db-sql-mysql_FE/Dockerfile -t wisniewskikr/fe-thymeleaf-be-springboot-db-sql-mysql_fe:0.0.1 ./fe-thymeleaf-be-springboot-db-sql-mysql_FE`
