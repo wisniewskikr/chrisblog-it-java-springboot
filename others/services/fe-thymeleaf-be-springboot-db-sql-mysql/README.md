@@ -94,11 +94,11 @@ USAGE DOCKER COMPOSE
 * **Docker** (texted on version 4.33.1 - it has to be up and running)
 
 ##### Required steps:
-1. In a command line tool **start Docker Containers** with `docker-compose up -d --build`
+1. In a command line tool **start Docker containers** with `docker-compose up -d --build`
 1. In a browser visit `http://localhost:8080`
    * Expected HTML page with **Database Message**, **Back-End Id**, **Back-End Port**, **Front-End Id** and **Front-End Port** 
 1. Clean up environment 
-     * In a command line tool **remove Docker Containers** with `docker-compose down --rmi all`
+     * In a command line tool **remove Docker containers** with `docker-compose down --rmi all`
 
 ##### Optional steps:
 1. In a browser check Back-End application healthcheck with `http://localhost:8081/actuator/health`
@@ -137,10 +137,10 @@ USAGE KUBERNETES (MINIKUBE)
      * In the first command line tool **with administrator privileges** stop **Minikube** with `minikube stop`
 
 ##### Optional steps:
-1. In a command line tool **build Docker Image BE** with `docker build -f fe-thymeleaf-be-springboot-db-sql-mysql_BE/Dockerfile -t wisniewskikr/fe-thymeleaf-be-springboot-db-sql-mysql_be:0.0.1 ./fe-thymeleaf-be-springboot-db-sql-mysql_BE`
-1. In a command line tool **push Docker Image BE** to Docker Repository with `docker push wisniewskikr/fe-thymeleaf-be-springboot-db-sql-mysql_be:0.0.1` 
-1. In a command line tool **build Docker Image FE** with `docker build -f fe-thymeleaf-be-springboot-db-sql-mysql_FE/Dockerfile -t wisniewskikr/fe-thymeleaf-be-springboot-db-sql-mysql_fe:0.0.1 ./fe-thymeleaf-be-springboot-db-sql-mysql_FE`
-1. In a command line tool **push Docker Image FE** to Docker Repository with `docker push wisniewskikr/fe-thymeleaf-be-springboot-db-sql-mysql_fe:0.0.1` 
+1. In a command line tool **build Docker BE image** with `docker build -f fe-thymeleaf-be-springboot-db-sql-mysql_BE/Dockerfile -t wisniewskikr/fe-thymeleaf-be-springboot-db-sql-mysql_be:0.0.1 ./fe-thymeleaf-be-springboot-db-sql-mysql_BE`
+1. In a command line tool **push Docker BE image** to Docker Repository with `docker push wisniewskikr/fe-thymeleaf-be-springboot-db-sql-mysql_be:0.0.1` 
+1. In a command line tool **build Docker FE image** with `docker build -f fe-thymeleaf-be-springboot-db-sql-mysql_FE/Dockerfile -t wisniewskikr/fe-thymeleaf-be-springboot-db-sql-mysql_fe:0.0.1 ./fe-thymeleaf-be-springboot-db-sql-mysql_FE`
+1. In a command line tool **push Docker FE image** to Docker Repository with `docker push wisniewskikr/fe-thymeleaf-be-springboot-db-sql-mysql_fe:0.0.1` 
 1. In the first command line tool **with administrator privileges** check status of **Minikube** with `minikube status`
 1. In a command line tool check **Kubernetes Deployments** with `kubectl get deployments`
 1. In a command line tool check **Kubernetes Deployments details** with **kubectl describe deployment {deployment-name}**
