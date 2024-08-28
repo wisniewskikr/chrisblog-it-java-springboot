@@ -133,7 +133,7 @@ USAGE KUBERNETES (MINIKUBE)
 1. In the first command line tool **with administrator privileges** display FE service in a Browser with `minikube service fe`
    * Expected HTML page with **Database Message**, **Back-End Id**, **Back-End Port**, **Front-End Id** and **Front-End Port**
 1. Clean up environment 
-     * In a command line tool **remove Kubernetes Pods** with `kubectl delete -f kubernetes.yaml`
+     * In the second command line tool **remove Kubernetes Pods** with `kubectl delete -f kubernetes.yaml`
      * In the first command line tool **with administrator privileges** stop **Minikube** with `minikube stop`
 
 ##### Optional steps:
