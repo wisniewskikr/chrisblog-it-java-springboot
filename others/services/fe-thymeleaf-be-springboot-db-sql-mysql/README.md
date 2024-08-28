@@ -132,6 +132,7 @@ Required steps:
    * Expected HTML page with **Database Message**, **Back-End Id**, **Back-End Port**, **Front-End Id** and **Front-End Port**
 1. Clean up environment 
      * In a command line tool remove all Docker Containers using Kubernetes with `kubectl delete -f kubernetes.yaml`
+     * In the first command line tool **with administrator privileges** stop **Minikube** with `minikube stop`
 
 Optional steps:
 1. In a command line tool **build Docker Image BE** with `docker build -f fe-thymeleaf-be-springboot-db-sql-mysql_BE/Dockerfile -t wisniewskikr/fe-thymeleaf-be-springboot-db-sql-mysql_be:0.0.1 ./fe-thymeleaf-be-springboot-db-sql-mysql_BE`
