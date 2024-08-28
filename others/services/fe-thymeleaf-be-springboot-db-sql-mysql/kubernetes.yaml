@@ -55,10 +55,10 @@ kind: Service
 metadata:
   name: mysql
 spec:
-  ports:
-    - port: 3306
   selector:
     app: mysql
+  ports:
+    - port: 3306  
   clusterIP: None
 
 ---
@@ -173,7 +173,6 @@ spec:
   selector:
     app: fe
   ports:
-    - protocol: TCP
-      port: 8080
+    - port: 8080
       targetPort: 8080
       nodePort: 30000
