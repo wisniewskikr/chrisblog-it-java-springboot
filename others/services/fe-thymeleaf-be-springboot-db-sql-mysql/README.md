@@ -113,6 +113,29 @@ Optional steps:
 1. In a command line tool check FE container logs with `docker logs fe-container`
 
 
+USAGE KUBERNETES (MINIKUBE)
+--------------------------
+
+> **Usage Kubernetes** means that Back-End, Front-End services and Database are provided as **Docker containers** managed by **Kubernetes** type **Minikube**. 
+
+> Please **clone/download** project, open **project's main folder** in your favorite **command line tool** and then **proceed with steps below**.
+
+> Please be aware that following tools should be installed on your local PC:  
+* **Operating System** (tested on Windows 11)
+* **Git** (tested on version 2.33.0.windows.2)
+* **Minikube** (texted on version 1.33.1)
+
+Required steps:
+1. In the first command line tool **with administrator privileges** start **Minikube** with `minikube start`
+
+Optional steps:
+1. In a command line tool **build Docker Image BE** with `docker build -f fe-thymeleaf-be-springboot-db-sql-mysql_BE/Dockerfile -t wisniewskikr/fe-thymeleaf-be-springboot-db-sql-mysql_be:0.0.1 ./fe-thymeleaf-be-springboot-db-sql-mysql_BE`
+1. In a command line tool **push Docker Image BE** to Docker Repository with `docker push wisniewskikr/fe-thymeleaf-be-springboot-db-sql-mysql_be:0.0.1` 
+1. In a command line tool **build Docker Image FE** with `docker build -f fe-thymeleaf-be-springboot-db-sql-mysql_FE/Dockerfile -t wisniewskikr/fe-thymeleaf-be-springboot-db-sql-mysql_fe:0.0.1 ./fe-thymeleaf-be-springboot-db-sql-mysql_FE`
+1. In a command line tool **push Docker Image FE** to Docker Repository with `docker push wisniewskikr/fe-thymeleaf-be-springboot-db-sql-mysql_fe:0.0.1` 
+1. In the first command line tool **with administrator privileges** check status of **Minikube** with `minikube status`
+
+
 DESCRIPTION
 -----------
 
