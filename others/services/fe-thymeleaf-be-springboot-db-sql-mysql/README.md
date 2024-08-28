@@ -127,7 +127,9 @@ USAGE KUBERNETES (MINIKUBE)
 
 Required steps:
 1. In the first command line tool **with administrator privileges** start **Minikube** with `minikube start`
-1. In the second command line tool start Docker Containers using Kubernetes with `kubectl apply -f kubernetes.yaml`
+1. In the second command line tool **start Kubernetes Pods** with `kubectl apply -f kubernetes.yaml`
+1. In the second command line tool **check status of Kubernetes Pods** with `kubectl get pods`
+   * Expected mysql, be and fe as **READY 1/1** (it can take few minutes)
 1. In the first command line tool **with administrator privileges** display FE service in a Browser with `minikube service fe`
    * Expected HTML page with **Database Message**, **Back-End Id**, **Back-End Port**, **Front-End Id** and **Front-End Port**
 1. Clean up environment 
