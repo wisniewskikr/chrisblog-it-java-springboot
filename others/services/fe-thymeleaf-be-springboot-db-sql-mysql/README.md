@@ -114,7 +114,7 @@ Optional steps:
 
 
 USAGE KUBERNETES (MINIKUBE)
---------------------------
+---------------------------
 
 > **Usage Kubernetes** means that Back-End, Front-End services and Database are provided as **Docker containers** managed by **Kubernetes** type **Minikube**. 
 

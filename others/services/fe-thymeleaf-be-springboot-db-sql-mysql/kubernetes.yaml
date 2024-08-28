@@ -1,3 +1,5 @@
+# DATABASE CONFIGURATION
+
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -63,6 +65,8 @@ spec:
 
 ---
 
+# BE CONFIGURATION
+
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -119,6 +123,8 @@ spec:
       targetPort: 8081
 
 ---
+
+# FE CONFIGURATION
 
 apiVersion: apps/v1
 kind: Deployment
