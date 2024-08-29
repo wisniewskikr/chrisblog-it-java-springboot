@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { ApiService } from './services/api.service';
+import { HelloWorldDto } from './dtos/HelloWorldDto';
 
 @Component({
   selector: 'app-root',
@@ -17,8 +18,8 @@ export class AppComponent implements OnInit{
 
   ngOnInit(): void {
     let response = this.service.getMessage();
-    response.subscribe((data)=>{      
-      this.message = data
+    response.subscribe((helloWorldDto: HelloWorldDto)=>{      
+      this.message = helloWorldDto.text;
     });
   }
   
