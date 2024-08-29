@@ -21,6 +21,8 @@ export class AppComponent implements OnInit{
   constructor(private service: ApiService) {}
 
   ngOnInit(): void {
+    this.portFe = window.location.port;
+
     let response = this.service.getMessage();
     response.subscribe((helloWorldDto: HelloWorldDto)=>{      
       this.message = helloWorldDto.text;
