@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { catchError, throwError, Observable } from 'rxjs';
-import { HelloWorldDto } from '../../dtos/HelloWorldDto';
+import { HelloWorldDto } from '../../dtos/hello-world.dto';
 import { map } from 'rxjs/operators';
 import { environment } from '../../../environments/environment';
 

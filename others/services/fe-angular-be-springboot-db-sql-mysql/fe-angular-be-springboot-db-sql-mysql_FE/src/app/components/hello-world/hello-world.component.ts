@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { ApiService } from '../../services/api/api.service';
 import { UuidService } from '../../services/uuid/uuid.service';
-import { HelloWorldDto } from '../../dtos/HelloWorldDto';
+import { HelloWorldDto } from '../../dtos/hello-world.dto';
 
 
 @Component({
