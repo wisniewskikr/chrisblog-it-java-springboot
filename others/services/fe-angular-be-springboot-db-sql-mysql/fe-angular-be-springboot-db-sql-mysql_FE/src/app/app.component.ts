@@ -12,7 +12,11 @@ import { HelloWorldDto } from './dtos/HelloWorldDto';
 })
 export class AppComponent implements OnInit{
 
-  message: any;
+  message: string = "";
+  idBe: string = "";
+  portBe: string = "";
+  idFe: string = "idFe";
+  portFe: string = "portFe";
 
   constructor(private service: ApiService) {}
 
@@ -20,6 +24,8 @@ export class AppComponent implements OnInit{
     let response = this.service.getMessage();
     response.subscribe((helloWorldDto: HelloWorldDto)=>{      
       this.message = helloWorldDto.text;
+      this.idBe = helloWorldDto.idBe;
+      this.portBe = helloWorldDto.portBe;
     });
   }
   
