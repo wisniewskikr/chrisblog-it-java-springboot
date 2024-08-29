@@ -14,16 +14,16 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have the 'fe-angular-be-springboot-db-sql-mysql' title`, () => {
+  it(`should have the 'fe-angular-be-springboot-db-sql-mysql_FE' title`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('fe-angular-be-springboot-db-sql-mysql');
+    expect(app.title).toEqual('fe-angular-be-springboot-db-sql-mysql_FE');
   });
 
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, fe-angular-be-springboot-db-sql-mysql');
+    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, fe-angular-be-springboot-db-sql-mysql_FE');
   });
 });
