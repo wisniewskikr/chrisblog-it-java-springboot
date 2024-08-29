@@ -7,7 +7,7 @@ EXAMPLE
 USAGE MANUAL
 ------------
 
-> **Usage Manual** means that Back-End and Front-End services are provided as **Java and Maven applications** and started **manually**. Database is provided as **Docker container**.
+> **Usage Manual** means that Back-End and Front-End services are started **manually** from a command line. Database is provided as **Docker container**.
 
 > Please **clone/download** project, open **project's main folder** in your favorite **command line tool** and then **proceed with steps below**. 
 
@@ -171,6 +171,8 @@ Terminology explanation:
 * **Spring Boot**: framework for Java. It consists of: Spring + Container + Configuration
 * **Maven**: tool for build automation
 * **Git**: tool for distributed version control
+* **TypeScirpt**: TypeScript is a statically typed superset of JavaScript that adds optional type annotations, allowing for improved code quality, error checking, and editor support. It compiles to plain JavaScript, making it compatible with any environment that runs JavaScript.
+* **Angular**: Angular is a popular open-source web application framework developed and maintained by Google. It is used for building dynamic, single-page applications (SPAs) with a focus on performance and modularity. Angular provides tools for two-way data binding, dependency injection, and component-based architecture, enabling developers to create scalable and maintainable web applications.
 * **Database**: A database is an organized collection of data that is stored and managed electronically, allowing for efficient retrieval, manipulation, and updating of information. It is typically managed by a database management system (DBMS).
 * **MySql**: MySQL is an open-source relational database management system (RDBMS) that uses Structured Query Language (SQL) for managing and organizing data. It's widely used for web applications and is known for its speed, reliability, and ease of use.
 * **Back-End**: The back-end refers to the server-side part of a software application, responsible for managing the database, server logic, and application programming interface (API). It processes requests from the front-end (user interface), handles data storage, retrieval, and business logic, and sends the appropriate responses back to the front-end.
