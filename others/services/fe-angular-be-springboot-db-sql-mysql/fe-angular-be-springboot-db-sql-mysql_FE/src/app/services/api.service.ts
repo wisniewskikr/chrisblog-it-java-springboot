@@ -3,18 +3,19 @@ import { HttpClient } from '@angular/common/http';
 import { catchError, throwError, Observable } from 'rxjs';
 import { HelloWorldDto } from '../dtos/HelloWorldDto';
 import { map } from 'rxjs/operators';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ApiService {
 
-  URL = 'http://localhost:8081/message/1';
+  private baseUrl = environment.apiUrl;
 
   constructor(private http: HttpClient) {}
 
   getMessage(): Observable<HelloWorldDto> {
-    return this.http.get<any>(this.URL)
+    return this.http.get<any>(`${this.baseUrl}/message/1`)
           .pipe(
             map(data => new HelloWorldDto(data.id, data.text, data.idBe, data.portBe)),
             catchError((error) => {
