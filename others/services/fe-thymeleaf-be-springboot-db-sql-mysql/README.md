@@ -142,6 +142,8 @@ USAGE KUBERNETES (MINIKUBE)
 1. In a command line tool build Docker FE image with `docker build -f fe-thymeleaf-be-springboot-db-sql-mysql_FE/Dockerfile -t wisniewskikr/fe-thymeleaf-be-springboot-db-sql-mysql_fe:0.0.1 ./fe-thymeleaf-be-springboot-db-sql-mysql_FE`
 1. In a command line tool push Docker FE image to Docker Repository with `docker push wisniewskikr/fe-thymeleaf-be-springboot-db-sql-mysql_fe:0.0.1` 
 1. In the first command line tool with administrator privileges check status of Minikube with `minikube status`
+1. In the first command line tool with administrator privileges check Docker images in Minikube with `minikube ssh docker images`
+1. In the first command line tool with administrator privileges check Docker containers in Minikube with `minikube ssh docker ps`
 1. In a command line tool check Kubernetes Deployments with `kubectl get deployments`
 1. In a command line tool check Kubernetes Deployments details with **kubectl describe deployment {deployment-name}**
 1. In a command line tool check Kubernetes Services with `kubectl get services`
