@@ -16,13 +16,16 @@ USAGE MANUAL
 * **Java** (tested on version 17.0.5)
 * **Maven** (tested on version 3.8.5)
 * **Git** (tested on version 2.33.0.windows.2)
-* **Docker** (texted on version 4.33.1 - it has to be up and running)
+* **Docker** (tested on version 4.33.1 - it has to be up and running)
+* **node.js** (tested on version 20.11.0)
+* **angular CLI**  (tested on version 17.1.1)
 
 ##### Required steps:
 1. In the first command line tool **start Docker MySql container** with `docker run -d --name mysql-container -e MYSQL_ROOT_PASSWORD=my_secret_password -e MYSQL_DATABASE=database -e MYSQL_USER=admin -e MYSQL_PASSWORD=admin123 -p 3306:3306 mysql:5.7`
 1. In the second command line tool **start Back-End application** with `mvn -f ./fe-thymeleaf-be-springboot-db-sql-mysql_BE spring-boot:run`
-1. In the third command line tool **start Front-End application** with `mvn -f ./fe-thymeleaf-be-springboot-db-sql-mysql_FE spring-boot:run`
-1. In a browser visit `http://localhost:8080`
+1. In the third command line tool **install Front-End nmp packages** with `cd .\fe-angular-be-springboot-db-sql-mysql_FE\ | ng install`
+1. In the third command line tool **start Front-End application** with `cd .\fe-angular-be-springboot-db-sql-mysql_FE\ | ng install`
+1. In a http browser (e.g. Chrome) visit `http://localhost:4200`
    * Expected HTML page with **Database Message**, **Back-End Id**, **Back-End Port**, **Front-End Id** and **Front-End Port** 
 1. Clean up environment 
      * In the third command line tool **stop Front-End application** with `ctrl + C`
