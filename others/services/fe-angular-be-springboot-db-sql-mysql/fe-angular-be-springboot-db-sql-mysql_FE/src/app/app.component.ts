@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { ApiService } from './services/api.service';
 import { HelloWorldDto } from './dtos/HelloWorldDto';
-import { v4 as uuidv4 } from 'uuid';
+import { UuidService } from './services/uuid.service';
 
 @Component({
   selector: 'app-root',
@@ -19,13 +19,13 @@ export class AppComponent implements OnInit{
   idFe: string = "";
   portFe: string = "";
 
-  constructor(private service: ApiService) {}
+  constructor(private apiService: ApiService, private uuidSevice: UuidService) {}
 
   ngOnInit(): void {
-    this.idFe = uuidv4();
+    this.idFe = this.uuidSevice.getUUID();
     this.portFe = window.location.port;
 
-    let response = this.service.getMessage();
+    let response = this.apiService.getMessage();
     response.subscribe((helloWorldDto: HelloWorldDto)=>{      
       this.message = helloWorldDto.text;
       this.idBe = helloWorldDto.idBe;
