@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { catchError, throwError, Observable } from 'rxjs';
-import { HelloWorldDto } from '../dtos/HelloWorldDto';
+import { HelloWorldDto } from '../../dtos/HelloWorldDto';
 import { map } from 'rxjs/operators';
-import { environment } from '../../environments/environment';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
