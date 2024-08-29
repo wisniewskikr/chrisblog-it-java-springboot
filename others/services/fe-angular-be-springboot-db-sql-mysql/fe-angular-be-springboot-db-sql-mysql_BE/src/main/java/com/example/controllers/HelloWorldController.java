@@ -20,7 +20,7 @@ public class HelloWorldController {
 		this.helloWorldService = helloWorldService;
 	}
 
-	@CrossOrigin("http://localhost:4200/")
+	@CrossOrigin("${baseurl.fe}")
 	@GetMapping("/message/{id}")
 	public ResponseEntity<HelloWorldDto> helloWorld(@PathVariable Long id) {
 
