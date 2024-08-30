@@ -85,7 +85,7 @@ spec:
     spec:
       containers:
       - name: be
-        image: wisniewskikr/fe-thymeleaf-be-springboot-db-sql-mysql_be:0.0.1
+        image: wisniewskikr/fe-angular-be-springboot-db-sql-mysql_be:0.0.1
         ports:
         - containerPort: 8081
         env:
@@ -144,24 +144,21 @@ spec:
     spec:
       containers:
       - name: fe
-        image: wisniewskikr/fe-thymeleaf-be-springboot-db-sql-mysql_fe:0.0.1
+        image: wisniewskikr/fe-angular-be-springboot-db-sql-mysql_fe:0.0.1
         ports:
-        - containerPort: 8080
-        env:
-        - name: baseurl.be
-          value: http://be:8081
+        - containerPort: 80
         readinessProbe:
           httpGet:
-            path: /actuator/health
-            port: 8080
+            path: /
+            port: 80
           initialDelaySeconds: 30
           periodSeconds: 10
           timeoutSeconds: 5
           failureThreshold: 3
         livenessProbe:
           httpGet:
-            path: /actuator/health
-            port: 8080
+            path: /
+            port: 80
           initialDelaySeconds: 30
           periodSeconds: 10
           timeoutSeconds: 5
@@ -179,6 +176,6 @@ spec:
   selector:
     app: fe
   ports:
-    - port: 8080
-      targetPort: 8080
+    - port: 80
+      targetPort: 80
       nodePort: 30000
