@@ -56,11 +56,11 @@ USAGE DOCKER
 ##### Required steps:
 1. In a command line tool create **Docker Network** with `docker network create helloworld-network`
 1. In a command line tool build and start **Docker container MySql** database with `docker run -d --name mysql-container -e MYSQL_ROOT_PASSWORD=my_secret_password -e MYSQL_DATABASE=database -e MYSQL_USER=admin -e MYSQL_PASSWORD=admin123 -p 3306:3306 --network helloworld-network mysql:5.7`
-1. In a command line tool build **Docker image BE** with `docker build -f fe-thymeleaf-be-springboot-db-sql-mysql_BE/Dockerfile -t be-image:0.0.1 ./fe-thymeleaf-be-springboot-db-sql-mysql_BE`
+1. In a command line tool build **Docker image BE** with `docker build -f fe-angular-be-springboot-db-sql-mysql_BE/Dockerfile -t be-image:0.0.1 ./fe-angular-be-springboot-db-sql-mysql_BE`
 1. In a command line tool build and start **Docker container BE** with `docker run -p 8081:8081 --name be-container --network helloworld-network -e spring.datasource.url=jdbc:mysql://mysql-container:3306/database -d be-image:0.0.1`
-1. In a command line tool build **Docker image FE** with `docker build -f fe-thymeleaf-be-springboot-db-sql-mysql_FE/Dockerfile -t fe-image:0.0.1 ./fe-thymeleaf-be-springboot-db-sql-mysql_FE`
-1. In a command line tool build and start **Docker container FE** with `docker run -p 8080:8080 --name fe-container --network helloworld-network -e baseurl.be=http://be-container:8081 -d fe-image:0.0.1`
-1. In a browser visit `http://localhost:8080`
+1. In a command line tool build **Docker image FE** with `docker build -f fe-angular-be-springboot-db-sql-mysql_FE/Dockerfile -t fe-image:0.0.1 ./fe-angular-be-springboot-db-sql-mysql_FE`
+1. In a command line tool build and start **Docker container FE** with `docker run -p 4200:80 --name fe-container --network helloworld-network -d fe-image:0.0.1`
+1. In a browser visit `http://localhost:4200`
    * Expected HTML page with **Database Message**, **Back-End Id**, **Back-End Port**, **Front-End Id** and **Front-End Port** 
 1. Clean up environment 
      * In a command line tool stop and remove **BE Docker container** with `docker rm -f fe-container`
@@ -74,7 +74,6 @@ USAGE DOCKER
 ##### Optional steps:
 1. In a browser check Back-End application healthcheck with `http://localhost:8081/actuator/health`
 1. In a browser check Back-End application API result with `http://localhost:8081/message/1`
-1. In a browser check Front-End application healthcheck with `http://localhost:8080/actuator/health`
 1. In a command line tool check list of Docker images with `docker images`
 1. In a command line tool check list of all Docker containers with `docker ps -a`
 1. In a command line tool check list of active Docker containers with `docker ps`
