@@ -96,7 +96,7 @@ USAGE DOCKER COMPOSE
 
 ##### Required steps:
 1. In a command line tool **start Docker containers** with `docker-compose up -d --build`
-1. In a browser visit `http://localhost:8080`
+1. In a browser visit `http://localhost:4200`
    * Expected HTML page with **Database Message**, **Back-End Id**, **Back-End Port**, **Front-End Id** and **Front-End Port** 
 1. Clean up environment 
      * In a command line tool **remove Docker containers** with `docker-compose down --rmi all`
@@ -104,7 +104,6 @@ USAGE DOCKER COMPOSE
 ##### Optional steps:
 1. In a browser check Back-End application healthcheck with `http://localhost:8081/actuator/health`
 1. In a browser check Back-End application API result with `http://localhost:8081/message/1`
-1. In a browser check Front-End application healthcheck with `http://localhost:8080/actuator/health`
 1. In a command line tool validate Docker Compose with `docker-compose config`
 1. In a command line tool check list of Docker images with `docker images`
 1. In a command line tool check list of all Docker containers with `docker ps -a`
