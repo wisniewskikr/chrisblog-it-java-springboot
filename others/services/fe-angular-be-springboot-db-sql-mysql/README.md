@@ -40,6 +40,42 @@ USAGE MANUAL DEV
 1. In a command line tool check list of active Docker containers with `docker ps`
 
 
+USAGE MANUAL PRD
+----------------
+
+> **Usage Manual** means that Back-End and Front-End services are started **manually** from a command line. Database is provided as **Docker container**. Front-End application is run on **Production** environment - package is build and external server is used as provider.
+
+> Please **clone/download** project, open **project's main folder** in your favorite **command line tool** and then **proceed with steps below**. 
+
+> Please be aware that following tools should be installed on your local PC:  
+* **Operating System** (tested on Windows 11)
+* **Java** (tested on version 17.0.5)
+* **Maven** (tested on version 3.8.5)
+* **Git** (tested on version 2.33.0.windows.2)
+* **Docker** (tested on version 4.33.1 - it has to be up and running)
+* **node.js** (tested on version 20.11.0)
+* **angular CLI**  (tested on version 17.1.1)
+
+##### Required steps:
+1. In the first command line tool **start Docker MySql container** with `docker run -d --name mysql-container -e MYSQL_ROOT_PASSWORD=my_secret_password -e MYSQL_DATABASE=database -e MYSQL_USER=admin -e MYSQL_PASSWORD=admin123 -p 3306:3306 mysql:5.7`
+1. In the second command line tool **start Back-End application** with `mvn -f ./fe-angular-be-springboot-db-sql-mysql_BE spring-boot:run`
+1. In the third command line tool **start Front-End application** with `cd .\fe-angular-be-springboot-db-sql-mysql_FE\ | ng build --configuration=production | node server.js`
+1. In a http browser (e.g. Chrome) visit `http://localhost:4200`
+   * Expected HTML page with **Database Message**, **Back-End Id**, **Back-End Port**, **Front-End Id** and **Front-End Port** 
+1. Clean up environment 
+     * In the third command line tool **stop Front-End application** with `ctrl + C`
+     * In the second command line tool **stop Back-End application** with `ctrl + C`
+     * In the first command line tool **stop and remove Docker MySql container** with `docker rm -f mysql-container`
+     * In the first command line tool **remove Docker MySql image** with `docker rmi mysql:5.7`
+
+##### Optional steps:
+1. In a browser check Back-End application healthcheck with `http://localhost:8081/actuator/health`
+1. In a browser check Back-End application API result with `http://localhost:8081/message/1`
+1. In a command line tool check list of Docker images with `docker images`
+1. In a command line tool check list of all Docker containers with `docker ps -a`
+1. In a command line tool check list of active Docker containers with `docker ps`
+
+
 USAGE DOCKER
 ------------
 
