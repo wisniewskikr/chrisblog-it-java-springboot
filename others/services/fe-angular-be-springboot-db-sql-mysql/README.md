@@ -162,8 +162,6 @@ USAGE KUBERNETES (MINIKUBE)
 
 ##### Required steps:
 1. In the first command line tool **with administrator privileges** start **Minikube** with `minikube start`
-1. In the first command line tool **with administrator privileges** check **Minikube IP addres** with `minikube ip`
-   * Expected something like **192.196.49.2**
 1. In the second command line tool **start Kubernetes Pods** with `kubectl apply -f kubernetes.yaml`
 1. In the second command line tool **check status of Kubernetes Pods** with `kubectl get pods`
    * Expected mysql, be and fe as **READY 1/1** (it can take few minutes)

@@ -86,7 +86,6 @@ spec:
       containers:
       - name: be
         image: fe-angular-be-springboot-db-sql-mysql_be:0.0.1
-        imagePullPolicy: Never
         ports:
         - containerPort: 8081
         env:
@@ -148,7 +147,6 @@ spec:
       containers:
       - name: fe
         image: fe-angular-be-springboot-db-sql-mysql_fe:0.0.1
-        imagePullPolicy: Never
         ports:
         - containerPort: 80
         readinessProbe:
