@@ -43,7 +43,7 @@ services:
     container_name: fe-container
     build:
       context: ./fe-angular-be-springboot-db-sql-mysql_FE
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile-dockercompose
     depends_on:
       - be
     ports:

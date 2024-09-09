@@ -85,12 +85,15 @@ spec:
     spec:
       containers:
       - name: be
-        image: wisniewskikr/fe-angular-be-springboot-db-sql-mysql_be:0.0.1
+        image: fe-angular-be-springboot-db-sql-mysql_be:0.0.1
+        imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 8081
         env:
         - name: spring.datasource.url
           value: jdbc:mysql://mysql:3306/database
+        - name: baseurl.fe
+          value: http://fe:30000/
         readinessProbe:
           httpGet:
             path: /actuator/health
@@ -144,7 +147,8 @@ spec:
     spec:
       containers:
       - name: fe
-        image: wisniewskikr/fe-angular-be-springboot-db-sql-mysql_fe:0.0.1
+        image: fe-angular-be-springboot-db-sql-mysql_fe:0.0.1
+        imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 80
         readinessProbe:
