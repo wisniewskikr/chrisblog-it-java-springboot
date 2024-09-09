@@ -55,7 +55,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: mysql
+  name: mysql-service
 spec:
   selector:
     app: mysql
@@ -90,7 +90,7 @@ spec:
         - containerPort: 8081
         env:
         - name: spring.datasource.url
-          value: jdbc:mysql://mysql:3306/database
+          value: jdbc:mysql://mysql-service:3306/database
         - name: baseurl.fe
           value: http://fe:30000/
         readinessProbe:
@@ -116,13 +116,15 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: be
+  name: be-service
 spec:
   selector:
     app: be
   ports:
-    - port: 8081
+    - protocol: TCP
+      port: 8081
       targetPort: 8081
+  type: ClusterIP
 
 ---
 
@@ -172,12 +174,13 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: fe
-spec:
-  type: NodePort
+  name: fe-service
+spec:  
   selector:
     app: fe
   ports:
-    - port: 80
+    - protocol: TCP
+      port: 80
       targetPort: 80
       nodePort: 30000
+  type: NodePort
