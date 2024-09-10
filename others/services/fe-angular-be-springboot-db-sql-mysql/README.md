@@ -199,7 +199,7 @@ DESCRIPTION
 The goal of this project is to present how to create **chain of services** which communicate each other and provide single ouput on HTML page. This chain of services consists of following elements:
 * **Database**: type SQL - **MySql**
 * **Back-End**: an application created in **Java** programming language with usage **Spring Boot** framework
-* **Front-End**: an application created in **Java** programming language with usage **Spring Boot** framework. **Thymeleaf** engine is used to display data
+* **Front-End**: an application created in **TypeScript** programming language with usage **Angular** framework.
 
 ##### Terminology
 Terminology explanation:
