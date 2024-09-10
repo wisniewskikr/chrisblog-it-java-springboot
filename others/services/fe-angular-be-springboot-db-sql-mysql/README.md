@@ -165,11 +165,15 @@ USAGE KUBERNETES (MINIKUBE)
 1. In the second command line tool **start Kubernetes Pods** with `kubectl apply -f kubernetes.yaml`
 1. In the second command line tool **check status of Kubernetes Pods** with `kubectl get pods`
    * Expected mysql, be and fe as **READY 1/1** (it can take few minutes)
-1. In the first command line tool **with administrator privileges** display FE service in a Browser with `minikube service fe`
-   * Expected HTML page with **Database Message**, **Back-End Id**, **Back-End Port**, **Front-End Id** and **Front-End Port**
-1. Clean up environment 
-     * In the second command line tool **remove Kubernetes Pods** with `kubectl delete -f kubernetes.yaml`
-     * In the first command line tool **with administrator privileges** stop **Minikube** with `minikube stop`
+1. In the second command line tool **forward BE port** with `kubectl port-forward service/be-service 8081:8081` 
+1. In the third command line tool **forward FE port** with `kubectl port-forward service/fe-service 4200:80`  
+1. In a browser visit `http://localhost:4200`
+   * Expected HTML page with **Database Message**, **Back-End Id**, **Back-End Port**, **Front-End Id** and **Front-End Port** 
+1. Clean up environment
+   * In the third command line tool **remove forwarding FE port** with `Ctrl + C`
+   * In the second command line tool **remove forwarding BE port** with `Ctrl + C`
+   * In the second command line tool **remove Kubernetes Pods** with `kubectl delete -f kubernetes.yaml`
+   * In the first command line tool **with administrator privileges** stop **Minikube** with `minikube stop`
 
 ##### Optional steps:
 1. In a command line tool build Docker BE image with `docker build -f fe-angular-be-springboot-db-sql-mysql_BE/Dockerfile -t wisniewskikr/fe-angular-be-springboot-db-sql-mysql_be:0.0.1 ./fe-angular-be-springboot-db-sql-mysql_BE`
