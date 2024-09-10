@@ -93,7 +93,7 @@ USAGE DOCKER
 1. In a command line tool build and start **Docker container MySql** database with `docker run -d --name mysql-container -e MYSQL_ROOT_PASSWORD=my_secret_password -e MYSQL_DATABASE=database -e MYSQL_USER=admin -e MYSQL_PASSWORD=admin123 -p 3306:3306 --network helloworld-network mysql:5.7`
 1. In a command line tool build **Docker image BE** with `docker build -f fe-angular-be-springboot-db-sql-mysql_BE/Dockerfile -t be-image:0.0.1 ./fe-angular-be-springboot-db-sql-mysql_BE`
 1. In a command line tool build and start **Docker container BE** with `docker run -p 8081:8081 --name be-container --network helloworld-network -e spring.datasource.url=jdbc:mysql://mysql-container:3306/database -d be-image:0.0.1`
-1. In a command line tool build **Docker image FE** with `docker build -f fe-angular-be-springboot-db-sql-mysql_FE/Dockerfile-docker -t fe-image:0.0.1 ./fe-angular-be-springboot-db-sql-mysql_FE`
+1. In a command line tool build **Docker image FE** with `docker build -f fe-angular-be-springboot-db-sql-mysql_FE/Dockerfile -t fe-image:0.0.1 ./fe-angular-be-springboot-db-sql-mysql_FE`
 1. In a command line tool build and start **Docker container FE** with `docker run -p 4200:80 --name fe-container --network helloworld-network -d fe-image:0.0.1`
 1. In a browser visit `http://localhost:4200`
    * Expected HTML page with **Database Message**, **Back-End Id**, **Back-End Port**, **Front-End Id** and **Front-End Port** 
@@ -178,7 +178,7 @@ USAGE KUBERNETES (MINIKUBE)
 ##### Optional steps:
 1. In a command line tool build Docker BE image with `docker build -f fe-angular-be-springboot-db-sql-mysql_BE/Dockerfile -t wisniewskikr/fe-angular-be-springboot-db-sql-mysql_be:0.0.1 ./fe-angular-be-springboot-db-sql-mysql_BE`
 1. In a command line tool push Docker BE image to Docker Repository with `docker push wisniewskikr/fe-angular-be-springboot-db-sql-mysql_be:0.0.1` 
-1. In a command line tool build Docker FE image with `docker build -f fe-angular-be-springboot-db-sql-mysql_FE/Dockerfile-kubernetes -t wisniewskikr/fe-angular-be-springboot-db-sql-mysql_fe:0.0.1 ./fe-angular-be-springboot-db-sql-mysql_FE`
+1. In a command line tool build Docker FE image with `docker build -f fe-angular-be-springboot-db-sql-mysql_FE/Dockerfile -t wisniewskikr/fe-angular-be-springboot-db-sql-mysql_fe:0.0.1 ./fe-angular-be-springboot-db-sql-mysql_FE`
 1. In a command line tool push Docker FE image to Docker Repository with `docker push wisniewskikr/fe-angular-be-springboot-db-sql-mysql_fe:0.0.1` 
 1. In the first command line tool with administrator privileges check status of Minikube with `minikube status`
 1. In the first command line tool with administrator privileges check Docker images in Minikube with `minikube ssh docker images`

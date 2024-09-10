@@ -16,8 +16,8 @@ RUN npm install
 # Copy the rest of the application code
 COPY . .
 
-# Build the Angular application in dockercompose mode
-RUN ng build --configuration=dockercompose
+# Build the Angular application in docker mode
+RUN ng build --configuration=production
 
 # Stage 2: Serve the application using Nginx
 FROM nginx:alpine
