@@ -1,15 +1,19 @@
 import { useState, useEffect } from "react";
+import getFixedUUID from "./services/uuidService";
 
 function App() {
 
   const [message, setMessage] = useState("");
   const [idBe, setIdBe] = useState("");
   const [portBe, setPortBe] = useState("");
-  const [idFe, setIdFe] = useState("idFe");
+  const [idFe, setIdFe] = useState("");
   const portFe = window.location.port;
 
   useEffect(() =>{
 
+    const uuid = getFixedUUID();
+    setIdFe(uuid);
+    
     const fetchData = async () => {
 
       const response = await fetch("http://localhost:8081/message/1");
