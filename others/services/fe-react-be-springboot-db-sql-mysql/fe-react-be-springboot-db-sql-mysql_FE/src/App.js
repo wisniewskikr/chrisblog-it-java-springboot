@@ -12,9 +12,9 @@ function App() {
 
     const fetchData = async () => {
 
-      const response = await fetch("https://localhost:8081/message/1");
+      const response = await fetch("http://localhost:8081/message/1");
       const result = await response.json();
-      setMessage(result.message);
+      setMessage(result.text);
       setIdBe(result.idBe);
       setPortBe(result.portBe);
 
@@ -28,25 +28,25 @@ function App() {
     <ul>
       <li>
           <span><b>Database Message: </b></span>
-          <span> {{message}} </span>
+          <span> {message} </span>
       </li>
       <li>
           <span><b>Back-End Id: </b></span>
-          <span> {{idBe}} </span>
+          <span> {idBe} </span>
       </li>
       <li>
           <span><b>Back-End Port: </b></span>
-          <span> {{portBe}} </span>
+          <span> {portBe} </span>
       </li>
       <li>
           <span><b>Front-End Id: </b></span>
-          <span> {{idFe}} </span>
+          <span> {idFe} </span>
       </li>
       <li>
           <span><b>Front-End Port: </b></span>
-          <span> {{portFe}} </span>
+          <span> {portFe} </span>
       </li>
-  </ul>
+    </ul>
   );
 
 }
