@@ -6,7 +6,7 @@ function App() {
   const [idBe, setIdBe] = useState("");
   const [portBe, setPortBe] = useState("");
   const [idFe, setIdFe] = useState("idFe");
-  const [portFe, setPortFe] = useState("portFe");
+  const portFe = window.location.port;
 
   useEffect(() =>{
 
