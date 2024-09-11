@@ -5,8 +5,8 @@ function App() {
   const [message, setMessage] = useState("");
   const [idBe, setIdBe] = useState("");
   const [portBe, setPortBe] = useState("");
-  const idFe = "idFe";
-  const portFe = "portFe";
+  const [idFe, setIdFe] = useState("idFe");
+  const [portFe, setPortFe] = useState("portFe");
 
   useEffect(() =>{
 
