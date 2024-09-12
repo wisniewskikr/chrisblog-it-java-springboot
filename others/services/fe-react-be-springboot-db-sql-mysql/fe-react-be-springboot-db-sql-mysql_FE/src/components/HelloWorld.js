@@ -13,10 +13,11 @@ function HelloWorld() {
 
     const uuid = getFixedUUID();
     setIdFe(uuid);
+    const apiUrl = process.env.REACT_APP_API_URL;
     
     const fetchData = async () => {
 
-      const response = await fetch("http://localhost:8081/message/1");
+      const response = await fetch(`${apiUrl}/message/1`);
       const result = await response.json();
       setMessage(result.text);
       setIdBe(result.idBe);
