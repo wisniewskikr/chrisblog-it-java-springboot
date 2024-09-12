@@ -58,8 +58,8 @@ USAGE MANUAL PRD
 ##### Required steps:
 1. In the first command line tool **start Docker MySql container** with `docker run -d --name mysql-container -e MYSQL_ROOT_PASSWORD=my_secret_password -e MYSQL_DATABASE=database -e MYSQL_USER=admin -e MYSQL_PASSWORD=admin123 -p 3306:3306 mysql:5.7`
 1. In the second command line tool **start Back-End application** with `mvn -f ./fe-react-be-springboot-db-sql-mysql_BE spring-boot:run`
-1. In the third command line tool **start Front-End application** with `cd .\fe-react-be-springboot-db-sql-mysql_FE\ | ng build --configuration=production | node server.js`
-1. In a http browser (e.g. Chrome) visit `http://localhost:4200`
+1. In the third command line tool **start Front-End application** with `cd .\fe-react-be-springboot-db-sql-mysql_FE\ | npm run build | node server.js`
+1. In a http browser (e.g. Chrome) visit `http://localhost:3000`
    * Expected HTML page with **Database Message**, **Back-End Id**, **Back-End Port**, **Front-End Id** and **Front-End Port** 
 1. Clean up environment 
      * In the third command line tool **stop Front-End application** with `ctrl + C`
