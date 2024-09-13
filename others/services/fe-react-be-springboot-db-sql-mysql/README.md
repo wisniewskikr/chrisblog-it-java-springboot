@@ -93,8 +93,8 @@ USAGE DOCKER
 1. In a command line tool build **Docker image BE** with `docker build -f fe-react-be-springboot-db-sql-mysql_BE/Dockerfile -t be-image:0.0.1 ./fe-react-be-springboot-db-sql-mysql_BE`
 1. In a command line tool build and start **Docker container BE** with `docker run -p 8081:8081 --name be-container --network helloworld-network -e spring.datasource.url=jdbc:mysql://mysql-container:3306/database -d be-image:0.0.1`
 1. In a command line tool build **Docker image FE** with `docker build -f fe-react-be-springboot-db-sql-mysql_FE/Dockerfile -t fe-image:0.0.1 ./fe-react-be-springboot-db-sql-mysql_FE`
-1. In a command line tool build and start **Docker container FE** with `docker run -p 4200:80 --name fe-container --network helloworld-network -d fe-image:0.0.1`
-1. In a browser visit `http://localhost:4200`
+1. In a command line tool build and start **Docker container FE** with `docker run -p 3000:3000 --name fe-container --network helloworld-network -d fe-image:0.0.1`
+1. In a browser visit `http://localhost:3000`
    * Expected HTML page with **Database Message**, **Back-End Id**, **Back-End Port**, **Front-End Id** and **Front-End Port** 
 1. Clean up environment 
      * In a command line tool stop and remove **BE Docker container** with `docker rm -f fe-container`
@@ -130,7 +130,7 @@ USAGE DOCKER COMPOSE
 
 ##### Required steps:
 1. In a command line tool **start Docker containers** with `docker-compose up -d --build`
-1. In a browser visit `http://localhost:4200`
+1. In a browser visit `http://localhost:3000`
    * Expected HTML page with **Database Message**, **Back-End Id**, **Back-End Port**, **Front-End Id** and **Front-End Port** 
 1. Clean up environment 
      * In a command line tool **remove Docker containers** with `docker-compose down --rmi all`
@@ -165,8 +165,8 @@ USAGE KUBERNETES (MINIKUBE)
 1. In the second command line tool **check status of Kubernetes Pods** with `kubectl get pods`
    * Expected mysql, be and fe as **READY 1/1** (it can take few minutes)
 1. In the second command line tool **forward BE port** with `kubectl port-forward service/be-service 8081:8081` 
-1. In the third command line tool **forward FE port** with `kubectl port-forward service/fe-service 4200:80`  
-1. In a browser visit `http://localhost:4200`
+1. In the third command line tool **forward FE port** with `kubectl port-forward service/fe-service 3000:3000`  
+1. In a browser visit `http://localhost:3000`
    * Expected HTML page with **Database Message**, **Back-End Id**, **Back-End Port**, **Front-End Id** and **Front-End Port** 
 1. Clean up environment
    * In the third command line tool **remove forwarding FE port** with `Ctrl + C`
@@ -198,7 +198,7 @@ DESCRIPTION
 The goal of this project is to present how to create **chain of services** which communicate each other and provide single ouput on HTML page. This chain of services consists of following elements:
 * **Database**: type SQL - **MySql**
 * **Back-End**: an application created in **Java** programming language with usage **Spring Boot** framework
-* **Front-End**: an application created in **TypeScript** programming language with usage **Angular** framework.
+* **Front-End**: an application created in **TypeScript** programming language with usage **React** framework.
 
 ##### Terminology
 Terminology explanation:
@@ -207,7 +207,8 @@ Terminology explanation:
 * **Maven**: tool for build automation
 * **Git**: tool for distributed version control
 * **TypeScirpt**: TypeScript is a statically typed superset of JavaScript that adds optional type annotations, allowing for improved code quality, error checking, and editor support. It compiles to plain JavaScript, making it compatible with any environment that runs JavaScript.
-* **Angular**: Angular is a popular open-source web application framework developed and maintained by Google. It is used for building dynamic, single-page applications (SPAs) with a focus on performance and modularity. Angular provides tools for two-way data binding, dependency injection, and component-based architecture, enabling developers to create scalable and maintainable web applications.
+* **React**: 
+React is a popular JavaScript library for building user interfaces, primarily for single-page applications. It allows developers to create reusable UI components that update efficiently with changes in data, using a virtual DOM to optimize performance. React is maintained by Facebook and a community of developers.
 * **Database**: A database is an organized collection of data that is stored and managed electronically, allowing for efficient retrieval, manipulation, and updating of information. It is typically managed by a database management system (DBMS).
 * **MySql**: MySQL is an open-source relational database management system (RDBMS) that uses Structured Query Language (SQL) for managing and organizing data. It's widely used for web applications and is known for its speed, reliability, and ease of use.
 * **Back-End**: The back-end refers to the server-side part of a software application, responsible for managing the database, server logic, and application programming interface (API). It processes requests from the front-end (user interface), handles data storage, retrieval, and business logic, and sends the appropriate responses back to the front-end.

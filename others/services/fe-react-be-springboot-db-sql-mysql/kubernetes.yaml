@@ -148,11 +148,11 @@ spec:
       - name: fe
         image: wisniewskikr/fe-react-be-springboot-db-sql-mysql_fe:0.0.1
         ports:
-        - containerPort: 80
+        - containerPort: 3000
         readinessProbe:
           httpGet:
             path: /
-            port: 80
+            port: 3000
           initialDelaySeconds: 30
           periodSeconds: 10
           timeoutSeconds: 5
@@ -160,7 +160,7 @@ spec:
         livenessProbe:
           httpGet:
             path: /
-            port: 80
+            port: 3000
           initialDelaySeconds: 30
           periodSeconds: 10
           timeoutSeconds: 5
@@ -178,6 +178,6 @@ spec:
     app: fe
   ports:
     - protocol: TCP
-      port: 80
-      targetPort: 80
+      port: 3000
+      targetPort: 3000
   type: ClusterIP
