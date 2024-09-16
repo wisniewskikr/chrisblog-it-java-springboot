@@ -150,7 +150,7 @@ USAGE KUBERNETES (MINIKUBE)
 > Please be aware that following tools should be installed on your local PC:  
 * **Operating System** (tested on Windows 11)
 * **Git** (tested on version 2.33.0.windows.2)
-* **Minikube** (texted on version 1.33.1)
+* **Minikube** (tested on version 1.33.1)
 
 ##### Required steps:
 1. In the first command line tool **with administrator privileges** start **Minikube** with `minikube start`
