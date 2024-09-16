@@ -2,10 +2,10 @@ DESCRIPTION
 -----------
 
 ##### Goal
-The goal of this project is to present how to create **chain of applications (services)** which communicate each other and provide single ouput on HTML page. This output consists of following elements:
-* **Database Message**: on HTML page message stored in database is displayed. It's the simple text "Hello World!"
-* **Back-End Port**: on HTML page port of Back-End application is displayed
-* **Front-End Port**: on HTML page port of Front-End application is displayed
+The goal of this project is to present how to create **chain of applications (services)** which communicate each other and provide single ouput as an HTML page. This output consists of following elements:
+* **Database Message**: the HTML displays the message stored in database. It's the simple text "Hello World!".
+* **Back-End Port**: the HTML page displays the port of Back-End application.
+* **Front-End Port**: the HTML page displays port of Front-End application.
 
 This chain of services consists of following applications:
 * **Database**: SQL database - in this case type **MySql**
