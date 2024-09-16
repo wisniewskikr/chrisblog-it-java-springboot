@@ -24,7 +24,6 @@ public class HelloWorldService {
         
         HelloWorldEntity helloWorldEntity = helloWorldRepository.findById(id).orElseThrow(() -> new RuntimeException("Message doesn't exist"));
         String portBe = environment.getProperty("local.server.port");
-		String idBe = System.getProperty("id");
         return new HelloWorldDto(helloWorldEntity.getId(), helloWorldEntity.getText(), idBe, portBe);
 
     }
