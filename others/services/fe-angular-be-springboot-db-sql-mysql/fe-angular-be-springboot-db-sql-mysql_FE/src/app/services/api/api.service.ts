@@ -17,7 +17,7 @@ export class ApiService {
   getMessage(): Observable<HelloWorldDto> {
     return this.http.get<any>(`${this.baseUrl}/message/1`)
           .pipe(
-            map(data => new HelloWorldDto(data.id, data.text, data.idBe, data.portBe)),
+            map(data => new HelloWorldDto(data.id, data.text, data.portBe)),
             catchError((error) => {
               return throwError(() => error);
             })
