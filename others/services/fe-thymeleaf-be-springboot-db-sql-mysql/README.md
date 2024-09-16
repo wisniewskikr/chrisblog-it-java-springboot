@@ -23,7 +23,7 @@ USAGE MANUAL
 1. In the second command line tool **start Back-End application** with `mvn -f ./fe-thymeleaf-be-springboot-db-sql-mysql_BE spring-boot:run`
 1. In the third command line tool **start Front-End application** with `mvn -f ./fe-thymeleaf-be-springboot-db-sql-mysql_FE spring-boot:run`
 1. In a browser visit `http://localhost:8080`
-   * Expected HTML page with **Database Message**, **Back-End Id**, **Back-End Port**, **Front-End Id** and **Front-End Port** 
+   * Expected HTML page with **Database Message**, **Back-End Port** and **Front-End Port** 
 1. Clean up environment 
      * In the third command line tool **stop Front-End application** with `ctrl + C`
      * In the second command line tool **stop Back-End application** with `ctrl + C`
@@ -59,7 +59,7 @@ USAGE DOCKER
 1. In a command line tool build **Docker image FE** with `docker build -f fe-thymeleaf-be-springboot-db-sql-mysql_FE/Dockerfile -t fe-image:0.0.1 ./fe-thymeleaf-be-springboot-db-sql-mysql_FE`
 1. In a command line tool build and start **Docker container FE** with `docker run -p 8080:8080 --name fe-container --network helloworld-network -e baseurl.be=http://be-container:8081 -d fe-image:0.0.1`
 1. In a browser visit `http://localhost:8080`
-   * Expected HTML page with **Database Message**, **Back-End Id**, **Back-End Port**, **Front-End Id** and **Front-End Port** 
+   * Expected HTML page with **Database Message**, **Back-End Port** and **Front-End Port**  
 1. Clean up environment 
      * In a command line tool stop and remove **BE Docker container** with `docker rm -f fe-container`
      * In a command line tool remove **BE Docker image** with `docker rmi fe-image:0.0.1`
@@ -96,7 +96,7 @@ USAGE DOCKER COMPOSE
 ##### Required steps:
 1. In a command line tool **start Docker containers** with `docker-compose up -d --build`
 1. In a browser visit `http://localhost:8080`
-   * Expected HTML page with **Database Message**, **Back-End Id**, **Back-End Port**, **Front-End Id** and **Front-End Port** 
+   * Expected HTML page with **Database Message**, **Back-End Port** and **Front-End Port** 
 1. Clean up environment 
      * In a command line tool **remove Docker containers** with `docker-compose down --rmi all`
 
@@ -131,7 +131,7 @@ USAGE KUBERNETES (MINIKUBE)
 1. In the second command line tool **check status of Kubernetes Pods** with `kubectl get pods`
    * Expected mysql, be and fe as **READY 1/1** (it can take few minutes)
 1. In the first command line tool **with administrator privileges** display FE service in a Browser with `minikube service fe`
-   * Expected HTML page with **Database Message**, **Back-End Id**, **Back-End Port**, **Front-End Id** and **Front-End Port**
+   * Expected HTML page with **Database Message**, **Back-End Port** and **Front-End Port** 
 1. Clean up environment 
      * In the second command line tool **remove Kubernetes Pods** with `kubectl delete -f kubernetes.yaml`
      * In the first command line tool **with administrator privileges** stop **Minikube** with `minikube stop`
