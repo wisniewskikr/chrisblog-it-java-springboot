@@ -114,7 +114,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: be
+  name: be-service
 spec:
   selector:
     app: be
@@ -149,7 +149,7 @@ spec:
         - containerPort: 8080
         env:
         - name: baseurl.be
-          value: http://be:8081
+          value: http://be-service:8081
         readinessProbe:
           httpGet:
             path: /actuator/health
@@ -173,7 +173,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: fe
+  name: fe-service
 spec:
   type: NodePort
   selector:
