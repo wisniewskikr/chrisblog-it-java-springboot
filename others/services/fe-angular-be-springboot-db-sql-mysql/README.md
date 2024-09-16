@@ -25,7 +25,7 @@ USAGE MANUAL DEV
 1. In the second command line tool **start Back-End application** with `mvn -f ./fe-angular-be-springboot-db-sql-mysql_BE spring-boot:run`
 1. In the third command line tool **start Front-End application** with `cd .\fe-angular-be-springboot-db-sql-mysql_FE\ | npm install | ng serve`
 1. In a http browser (e.g. Chrome) visit `http://localhost:4200`
-   * Expected HTML page with **Database Message**, **Back-End Id**, **Back-End Port**, **Front-End Id** and **Front-End Port** 
+   * Expected HTML page with **Database Message**, **Back-End Port** and **Front-End Port** 
 1. Clean up environment 
      * In the third command line tool **stop Front-End application** with `ctrl + C`
      * In the second command line tool **stop Back-End application** with `ctrl + C`
@@ -61,7 +61,7 @@ USAGE MANUAL PRD
 1. In the second command line tool **start Back-End application** with `mvn -f ./fe-angular-be-springboot-db-sql-mysql_BE spring-boot:run`
 1. In the third command line tool **start Front-End application** with `cd .\fe-angular-be-springboot-db-sql-mysql_FE\ | ng build --configuration=production | node server.js`
 1. In a http browser (e.g. Chrome) visit `http://localhost:4200`
-   * Expected HTML page with **Database Message**, **Back-End Id**, **Back-End Port**, **Front-End Id** and **Front-End Port** 
+   * Expected HTML page with **Database Message**, **Back-End Port** and **Front-End Port** 
 1. Clean up environment 
      * In the third command line tool **stop Front-End application** with `ctrl + C`
      * In the second command line tool **stop Back-End application** with `ctrl + C`
@@ -96,7 +96,7 @@ USAGE DOCKER
 1. In a command line tool build **Docker image FE** with `docker build -f fe-angular-be-springboot-db-sql-mysql_FE/Dockerfile -t fe-image:0.0.1 ./fe-angular-be-springboot-db-sql-mysql_FE`
 1. In a command line tool build and start **Docker container FE** with `docker run -p 4200:80 --name fe-container --network helloworld-network -d fe-image:0.0.1`
 1. In a browser visit `http://localhost:4200`
-   * Expected HTML page with **Database Message**, **Back-End Id**, **Back-End Port**, **Front-End Id** and **Front-End Port** 
+   * Expected HTML page with **Database Message**, **Back-End Port** and **Front-End Port**  
 1. Clean up environment 
      * In a command line tool stop and remove **BE Docker container** with `docker rm -f fe-container`
      * In a command line tool remove **BE Docker image** with `docker rmi fe-image:0.0.1`
@@ -132,7 +132,7 @@ USAGE DOCKER COMPOSE
 ##### Required steps:
 1. In a command line tool **start Docker containers** with `docker-compose up -d --build`
 1. In a browser visit `http://localhost:4200`
-   * Expected HTML page with **Database Message**, **Back-End Id**, **Back-End Port**, **Front-End Id** and **Front-End Port** 
+   * Expected HTML page with **Database Message**, **Back-End Port** and **Front-End Port**  
 1. Clean up environment 
      * In a command line tool **remove Docker containers** with `docker-compose down --rmi all`
 
@@ -168,7 +168,7 @@ USAGE KUBERNETES (MINIKUBE)
 1. In the second command line tool **forward BE port** with `kubectl port-forward service/be-service 8081:8081` 
 1. In the third command line tool **forward FE port** with `kubectl port-forward service/fe-service 4200:80`  
 1. In a browser visit `http://localhost:4200`
-   * Expected HTML page with **Database Message**, **Back-End Id**, **Back-End Port**, **Front-End Id** and **Front-End Port** 
+   * Expected HTML page with **Database Message**, **Back-End Port** and **Front-End Port** 
 1. Clean up environment
    * In the third command line tool **remove forwarding FE port** with `Ctrl + C`
    * In the second command line tool **remove forwarding BE port** with `Ctrl + C`
