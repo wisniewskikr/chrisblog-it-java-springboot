@@ -1,3 +1,32 @@
+DESCRIPTION
+-----------
+
+##### Goal
+The goal of this project is to present how to create **chain of applications (services)** which communicate each other and provide single ouput as an HTML page. This output consists of following elements:
+* **Database Message**: the HTML displays the message stored in database. It's the simple text "Hello World!".
+* **Back-End Port**: the HTML page displays the port of Back-End application.
+* **Front-End Port**: the HTML page displays port of Front-End application.
+
+This chain of services consists of following applications:
+* **Database**: SQL database - in this case type **MySql**
+* **Back-End**: an application created in **Java** programming language with usage **Spring Boot** framework
+* **Front-End**: an application created in **JavaScript** programming language with usage **React** framework.
+
+##### Terminology
+Terminology explanation:
+* **Git**: tool for distributed version control
+* **Maven**: tool for build automation
+* **Java**: object-oriented programming language
+* **Spring Boot**: framework for Java. It consists of: Spring + Container + Configuration
+* **JavaScript**: JavaScript is a high-level, interpreted programming language primarily used to create interactive and dynamic content on websites. It enables web pages to respond to user input, manipulate HTML/CSS, and interact with external APIs.
+* **React**: 
+React is a popular JavaScript library for building user interfaces, primarily for single-page applications. It allows developers to create reusable UI components that update efficiently with changes in data, using a virtual DOM to optimize performance. React is maintained by Facebook and a community of developers.
+* **Database**: A database is an organized collection of data that is stored and managed electronically, allowing for efficient retrieval, manipulation, and updating of information. It is typically managed by a database management system (DBMS).
+* **MySql**: MySQL is an open-source relational database management system (RDBMS) that uses Structured Query Language (SQL) for managing and organizing data. It's widely used for web applications and is known for its speed, reliability, and ease of use.
+* **Back-End**: The back-end refers to the server-side part of a software application, responsible for managing the database, server logic, and application programming interface (API). It processes requests from the front-end (user interface), handles data storage, retrieval, and business logic, and sends the appropriate responses back to the front-end.
+* **Front-End**: Front-end refers to the part of a website or application that users interact with directly. It includes the visual elements, layout, and design, typically built using HTML, CSS, and JavaScript. The front-end is responsible for the user experience (UX) and interface (UI) that allows users to navigate and interact with the system.
+
+
 EXAMPLE
 -------
 
@@ -24,7 +53,7 @@ USAGE MANUAL DEV
 1. In the second command line tool **start Back-End application** with `mvn -f ./fe-react-be-springboot-db-sql-mysql_BE spring-boot:run`
 1. In the third command line tool **start Front-End application** with `cd .\fe-react-be-springboot-db-sql-mysql_FE\ | npm install | npm start`
 1. In a http browser (e.g. Chrome) visit `http://localhost:3000`
-   * Expected HTML page with **Database Message**, **Back-End Id**, **Back-End Port**, **Front-End Id** and **Front-End Port** 
+   * Expected HTML page with **Database Message**, **Back-End Port** and **Front-End Port** 
 1. Clean up environment 
      * In the third command line tool **stop Front-End application** with `ctrl + C`
      * In the second command line tool **stop Back-End application** with `ctrl + C`
@@ -60,7 +89,7 @@ USAGE MANUAL PRD
 1. In the second command line tool **start Back-End application** with `mvn -f ./fe-react-be-springboot-db-sql-mysql_BE spring-boot:run`
 1. In the third command line tool **start Front-End application** with `cd .\fe-react-be-springboot-db-sql-mysql_FE\ | npm run build | node server.js`
 1. In a http browser (e.g. Chrome) visit `http://localhost:3000`
-   * Expected HTML page with **Database Message**, **Back-End Id**, **Back-End Port**, **Front-End Id** and **Front-End Port** 
+   * Expected HTML page with **Database Message**, **Back-End Port** and **Front-End Port**
 1. Clean up environment 
      * In the third command line tool **stop Front-End application** with `ctrl + C`
      * In the second command line tool **stop Back-End application** with `ctrl + C`
@@ -95,7 +124,7 @@ USAGE DOCKER
 1. In a command line tool build **Docker image FE** with `docker build -f fe-react-be-springboot-db-sql-mysql_FE/Dockerfile -t fe-image:0.0.1 ./fe-react-be-springboot-db-sql-mysql_FE`
 1. In a command line tool build and start **Docker container FE** with `docker run -p 3000:3000 --name fe-container --network helloworld-network -d fe-image:0.0.1`
 1. In a browser visit `http://localhost:3000`
-   * Expected HTML page with **Database Message**, **Back-End Id**, **Back-End Port**, **Front-End Id** and **Front-End Port** 
+   * Expected HTML page with **Database Message**, **Back-End Port** and **Front-End Port** 
 1. Clean up environment 
      * In a command line tool stop and remove **BE Docker container** with `docker rm -f fe-container`
      * In a command line tool remove **BE Docker image** with `docker rmi fe-image:0.0.1`
@@ -131,7 +160,7 @@ USAGE DOCKER COMPOSE
 ##### Required steps:
 1. In a command line tool **start Docker containers** with `docker-compose up -d --build`
 1. In a browser visit `http://localhost:3000`
-   * Expected HTML page with **Database Message**, **Back-End Id**, **Back-End Port**, **Front-End Id** and **Front-End Port** 
+   * Expected HTML page with **Database Message**, **Back-End Port** and **Front-End Port** 
 1. Clean up environment 
      * In a command line tool **remove Docker containers** with `docker-compose down --rmi all`
 
@@ -157,7 +186,7 @@ USAGE KUBERNETES (MINIKUBE)
 > Please be aware that following tools should be installed on your local PC:  
 * **Operating System** (tested on Windows 11)
 * **Git** (tested on version 2.33.0.windows.2)
-* **Minikube** (texted on version 1.33.1)
+* **Minikube** (tested on version 1.33.1)
 
 ##### Required steps:
 1. In the first command line tool **with administrator privileges** start **Minikube** with `minikube start`
@@ -167,7 +196,7 @@ USAGE KUBERNETES (MINIKUBE)
 1. In the second command line tool **forward BE port** with `kubectl port-forward service/be-service 8081:8081` 
 1. In the third command line tool **forward FE port** with `kubectl port-forward service/fe-service 3000:3000`  
 1. In a browser visit `http://localhost:3000`
-   * Expected HTML page with **Database Message**, **Back-End Id**, **Back-End Port**, **Front-End Id** and **Front-End Port** 
+   * Expected HTML page with **Database Message**, **Back-End Port** and **Front-End Port**
 1. Clean up environment
    * In the third command line tool **remove forwarding FE port** with `Ctrl + C`
    * In the second command line tool **remove forwarding BE port** with `Ctrl + C`
@@ -189,30 +218,3 @@ USAGE KUBERNETES (MINIKUBE)
 1. In a command line tool check Kubernetes Pods with `kubectl get pods`
 1. In a command line tool check Kubernetes Pods details with **kubectl describe pod {pod-name}**
 1. In a command line tool check Kubernetes Pods logs with **kubectl log {pod-name}**
-
-
-DESCRIPTION
------------
-
-##### Goal
-The goal of this project is to present how to create **chain of services** which communicate each other and provide single ouput on HTML page. This chain of services consists of following elements:
-* **Database**: type SQL - **MySql**
-* **Back-End**: an application created in **Java** programming language with usage **Spring Boot** framework
-* **Front-End**: an application created in **TypeScript** programming language with usage **React** framework.
-
-##### Terminology
-Terminology explanation:
-* **Java**: object-oriented programming language
-* **Spring Boot**: framework for Java. It consists of: Spring + Container + Configuration
-* **Maven**: tool for build automation
-* **Git**: tool for distributed version control
-* **TypeScirpt**: TypeScript is a statically typed superset of JavaScript that adds optional type annotations, allowing for improved code quality, error checking, and editor support. It compiles to plain JavaScript, making it compatible with any environment that runs JavaScript.
-* **React**: 
-React is a popular JavaScript library for building user interfaces, primarily for single-page applications. It allows developers to create reusable UI components that update efficiently with changes in data, using a virtual DOM to optimize performance. React is maintained by Facebook and a community of developers.
-* **Database**: A database is an organized collection of data that is stored and managed electronically, allowing for efficient retrieval, manipulation, and updating of information. It is typically managed by a database management system (DBMS).
-* **MySql**: MySQL is an open-source relational database management system (RDBMS) that uses Structured Query Language (SQL) for managing and organizing data. It's widely used for web applications and is known for its speed, reliability, and ease of use.
-* **Back-End**: The back-end refers to the server-side part of a software application, responsible for managing the database, server logic, and application programming interface (API). It processes requests from the front-end (user interface), handles data storage, retrieval, and business logic, and sends the appropriate responses back to the front-end.
-* **Front-End**: Front-end refers to the part of a website or application that users interact with directly. It includes the visual elements, layout, and design, typically built using HTML, CSS, and JavaScript. The front-end is responsible for the user experience (UX) and interface (UI) that allows users to navigate and interact with the system.
-
-##### Launch
-To launch this application please make sure that the **Preconditions** are met and then follow instructions from **Usage** section.
