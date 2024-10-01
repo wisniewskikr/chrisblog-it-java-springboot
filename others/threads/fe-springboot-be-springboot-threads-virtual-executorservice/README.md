@@ -2,7 +2,7 @@ DESCRIPTION
 -----------
 
 ##### Goal
-The goal of this project is to present how to use **Java Virtual Threads** configured as **Spring property** for chain of applications (services). Tool Hey **simulates 30 threads** at the same time. Server Tomcat for Front-End application is **restricted to only 10 threads** but Front-End application uses Virtual Threads. Back-End application **works 3 seconds per call**. So **expected result of this example is 3 seconds** instead of 9 seconds for applications without Virtual Threads.
+The goal of this project is to present how to use **Java Virtual Threads** with plain Java **ExecutorService** for chain of applications (services). Tool Hey **simulates 30 threads** at the same time. Server Tomcat for Front-End application is **restricted to only 10 threads** but Front-End application uses Virtual Threads. Back-End application **works 3 seconds per call**. So **expected result of this example is 3 seconds** instead of 9 seconds for applications without Virtual Threads.
 
 This chain of services consists of following applications:
 * **Back-End**: an application created in **Java** programming language with usage **Spring Boot** framework
@@ -17,6 +17,7 @@ Terminology explanation:
 * **Back-End**: The back-end refers to the server-side part of a software application, responsible for managing the database, server logic, and application programming interface (API). It processes requests from the front-end (user interface), handles data storage, retrieval, and business logic, and sends the appropriate responses back to the front-end.
 * **Front-End**: Front-end refers to the part of a website or application that users interact with directly. It includes the visual elements, layout, and design, typically built using HTML, CSS, and JavaScript. The front-end is responsible for the user experience (UX) and interface (UI) that allows users to navigate and interact with the system.
 * **Virtual Threads**: A Java Virtual Thread is a lightweight, user-mode thread introduced in Java as part of Project Loom. Unlike traditional platform (OS) threads, virtual threads are managed by the JVM and allow for the creation of millions of concurrent tasks with low overhead, improving scalability and simplifying the development of concurrent applications.
+* **ExecutorService**: In Java, an ExecutorService is a part of the java.util.concurrent package that provides a higher-level replacement for managing threads. It allows for asynchronous task execution by managing a pool of threads and submitting tasks for concurrent execution without directly dealing with thread creation and management. It offers methods to start, schedule, and shut down tasks efficiently.
 
 ##### Implementation
 Implementation details for Back-End:
@@ -24,7 +25,8 @@ Implementation details for Back-End:
 
 Implementation details for Front-End:
 * Limit Tomcat threads to 10 by adding property **server.tomcat.threads.max=10** (by default Tomcat uses from 10 to 200 threads)
-* Turn on Virtual Threads by adding property **spring.threads.virtual.enabled=true**
+* Create class **ExecutorConfig** where Virtual Thread ExecutorService is created
+* Create class **ApiServie** which contains callable method
 
 
 EXAMPLE
