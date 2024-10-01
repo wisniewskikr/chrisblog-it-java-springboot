@@ -36,7 +36,7 @@ EXAMPLE
 USAGE MANUAL
 ------------
 
-> **Usage Manual** means that Back-End and Front-End services are provided as **Java and Maven applications** and started **manually**. Database is provided as **Docker container**.
+> **Usage Manual** means that Back-End and Front-End services are provided as **Java and Maven applications** and started **manually**.
 
 > Please **clone/download** project, open **project's main folder** in your favorite **command line tool** and then **proceed with steps below**. 
 
