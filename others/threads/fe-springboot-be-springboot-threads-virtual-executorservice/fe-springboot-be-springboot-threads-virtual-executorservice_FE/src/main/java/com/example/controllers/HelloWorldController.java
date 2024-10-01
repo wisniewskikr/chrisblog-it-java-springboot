@@ -1,19 +1,17 @@
 package com.example.controllers;
 
-import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Future;
-
+import org.springframework.core.task.AsyncTaskExecutor;
 import org.springframework.web.bind.annotation.*;
-
 import com.example.services.ApiService;
 
 @RestController
 public class HelloWorldController {
 
-    private final ExecutorService executorService;
+    private final AsyncTaskExecutor executorService;
     private final ApiService apiService;
 
-    public HelloWorldController(ExecutorService executorService, ApiService apiService) {
+    public HelloWorldController(AsyncTaskExecutor executorService, ApiService apiService) {
         this.executorService = executorService;
         this.apiService = apiService;
     }
