@@ -17,6 +17,13 @@ Terminology explanation:
 * **Back-End**: The back-end refers to the server-side part of a software application, responsible for managing the database, server logic, and application programming interface (API). It processes requests from the front-end (user interface), handles data storage, retrieval, and business logic, and sends the appropriate responses back to the front-end.
 * **Front-End**: Front-end refers to the part of a website or application that users interact with directly. It includes the visual elements, layout, and design, typically built using HTML, CSS, and JavaScript. The front-end is responsible for the user experience (UX) and interface (UI) that allows users to navigate and interact with the system.
 
+##### Implementation
+Implementation details for Back-End:
+* Pause flow for 3 seconds by **Thread.sleep(3000);**
+
+Implementation details for Front-End:
+* Limit Tomcat threads to 10 by adding property **server.tomcat.threads.max=10** (by default Tomcat uses from 10 to 200 threads)
+
 
 EXAMPLE
 -------
