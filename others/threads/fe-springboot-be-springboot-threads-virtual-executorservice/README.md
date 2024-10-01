@@ -48,8 +48,8 @@ USAGE MANUAL
 * **Docker** (texted on version 4.33.1 - it has to be up and running)
 
 ##### Required steps:
-1. In the first command line tool **start Back-End application** with `mvn -f ./fe-springboot-be-springboot-threads-platform-executorservice_BE spring-boot:run`
-1. In the second command line tool **start Front-End application** with `mvn -f ./fe-springboot-be-springboot-threads-platform-executorservice_FE spring-boot:run`
+1. In the first command line tool **start Back-End application** with `mvn -f ./fe-springboot-be-springboot-threads-virtual-executorservice_BE spring-boot:run`
+1. In the second command line tool **start Front-End application** with `mvn -f ./fe-springboot-be-springboot-threads-virtual-executorservice_FE spring-boot:run`
 1. In the third command line tool **run Docker Hey image** for testing 30 threads with `docker run --rm williamyeh/hey -n 30 -c 30 http://host.docker.internal:8080/`
    * Expected **Summary -> Total** with value **over 3 seconds** (test for 30 threads -> FE restricted to 10 threads but with Virtual Threads -> BE API call restricted to at least 3 seconds)
 1. Clean up environment:
