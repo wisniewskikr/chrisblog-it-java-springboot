@@ -1,33 +1,23 @@
 package com.example.controllers;
 
-import org.springframework.core.env.Environment;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.RestClient;
 
-import com.example.dtos.HelloWorldDto;
-import com.example.services.HelloWorldService;
-
-@Controller
+@RestController
 public class HelloWorldController {
 
-    private HelloWorldService helloWorldService;
-    private Environment environment; 
+    private RestClient restClient;    
 
-    public HelloWorldController(HelloWorldService helloWorldService, Environment environment) {
-        this.helloWorldService = helloWorldService;
-        this.environment = environment;
+    public HelloWorldController(RestClient.Builder restClientBuilder) {
+        this.restClient = restClientBuilder.baseUrl("http://localhost:8081").build();
     }
 
-    @GetMapping
-    String findById(Model model) {
-
-        HelloWorldDto helloWorldDto = helloWorldService.findById(1L);
-        model.addAttribute("message", helloWorldDto.text());        
-        model.addAttribute("portBe", helloWorldDto.portBe());
-        model.addAttribute("portFe", environment.getProperty("local.server.port"));
-        return "helloworld";
-
+    @GetMapping("/")
+    public String get() {
+        return restClient.get()
+                .uri("/")
+                .retrieve()
+                .body(String.class);
     }
 
 }
