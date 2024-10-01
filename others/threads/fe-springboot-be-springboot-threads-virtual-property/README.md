@@ -2,7 +2,7 @@ DESCRIPTION
 -----------
 
 ##### Goal
-The goal of this project is to present how to use **Java Virtual Threads** configures as **Spring property** for chain of applications (services). Tool Hey **simulates 30 threads** at the same time. Server Tomcat for Front-End application is **restricted to only 10 threads** but Front-End application uses Virtual Threads. Back-End application **works 3 seconds per call**. So **expected result of this example is 3 seconds** instead of 9 seconds for applications without Virtual Threads.
+The goal of this project is to present how to use **Java Virtual Threads** configured as **Spring property** for chain of applications (services). Tool Hey **simulates 30 threads** at the same time. Server Tomcat for Front-End application is **restricted to only 10 threads** but Front-End application uses Virtual Threads. Back-End application **works 3 seconds per call**. So **expected result of this example is 3 seconds** instead of 9 seconds for applications without Virtual Threads.
 
 This chain of services consists of following applications:
 * **Back-End**: an application created in **Java** programming language with usage **Spring Boot** framework
