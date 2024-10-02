@@ -11,7 +11,7 @@
 	</parent>
 
 	<groupId>com.example</groupId>
-	<artifactId>fe-springboot-be-springboot-threads-no_FE</artifactId>
+	<artifactId>fe-springboot-be-springboot-threads-inner-no_FE</artifactId>
 	<version>0.0.1</version>
 
 	<properties>
