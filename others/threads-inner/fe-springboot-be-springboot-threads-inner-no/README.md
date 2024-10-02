@@ -2,7 +2,7 @@ DESCRIPTION
 -----------
 
 ##### Goal
-The goal of this project is to present how works chain of applications (services) **without multithreds**. Tool Hey **simulates 30 threads** at the same time. Front-End application is **restricted to only 10 threads**. Back-End application **works 3 seconds per call**. So **expected result of this example is 9 seconds.**
+The goal of this project is to present how to use **no threads** in **inner** method of FE application calling BE application in chain of applications (services). Back-End application **works 3 seconds per call**. Front-End application calls **3 times** Back-End application in one inner method. So without multithread expected result of method call is about **9 seconds**.
 
 This chain of services consists of following applications:
 * **Back-End**: an application created in **Java** programming language with usage **Spring Boot** framework
