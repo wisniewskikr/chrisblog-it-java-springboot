@@ -22,7 +22,7 @@ Implementation details for Back-End:
 * Pause flow for 3 seconds by **Thread.sleep(3000);**
 
 Implementation details for Front-End:
-* Limit Tomcat threads to 10 by adding property **server.tomcat.threads.max=10** (by default Tomcat uses from 10 to 200 threads)
+* N/A
 
 
 EXAMPLE

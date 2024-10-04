@@ -2,6 +2,7 @@ package com.example.services;
 
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestClient;
+import java.util.List;
 
 @Service
 public class ApiService {
@@ -12,12 +13,13 @@ public class ApiService {
         this.restClient = restClientBuilder.baseUrl("http://localhost:8081").build();
     }
     
-    public String callApi(String name) {
+    public void callApi(List<String> results) {
         
-        return restClient.get()
-                .uri("/" + name)
+        String result = restClient.get()
+                .uri("/" + Thread.currentThread().getName())
                 .retrieve()
                 .body(String.class);
+        results.add(result);
 
     }
 
