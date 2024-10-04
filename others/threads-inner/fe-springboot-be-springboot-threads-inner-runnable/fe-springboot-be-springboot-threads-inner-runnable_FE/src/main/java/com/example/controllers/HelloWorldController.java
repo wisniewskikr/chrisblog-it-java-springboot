@@ -1,5 +1,9 @@
 package com.example.controllers;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.CountDownLatch;
+
 import org.json.JSONObject;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,18 +19,24 @@ public class HelloWorldController {
     }
 
     @GetMapping("/")
-    public String get() {
+    public String get() throws InterruptedException {
+
+        List<String> results = new ArrayList<>();        
 
         long startTime = System.currentTimeMillis();
 
-        String result1 = apiService.callApi(Thread.currentThread().getName());
-        String result2 = apiService.callApi(Thread.currentThread().getName());
-        String result3 = apiService.callApi(Thread.currentThread().getName());
+        CountDownLatch latch = new CountDownLatch(3);
+
+        apiService.callApi(results, latch);
+        apiService.callApi(results, latch);
+        apiService.callApi(results, latch);
+
+        latch.await();
 
         long endTime = System.currentTimeMillis();
 
         JSONObject json = new JSONObject();
-        json.put("result", result1 + " | " + result2 + " | " + result3);
+        json.put("result", String.join(", ", results));
         json.put("duration in ms", (endTime - startTime));
 
         return json.toString();

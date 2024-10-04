@@ -1,5 +1,8 @@
 package com.example.services;
 
+import java.util.List;
+import java.util.concurrent.CountDownLatch;
+
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestClient;
 
@@ -12,12 +15,21 @@ public class ApiService {
         this.restClient = restClientBuilder.baseUrl("http://localhost:8081").build();
     }
     
-    public String callApi(String name) {
+    public void callApi(List<String> results, CountDownLatch latch) {
+
+        Runnable task = () -> {
+
+                String result = restClient.get()
+                    .uri("/" + Thread.currentThread().getName())
+                    .retrieve()
+                    .body(String.class);
+                results.add(result); 
+                latch.countDown();      
+
+        };
         
-        return restClient.get()
-                .uri("/" + name)
-                .retrieve()
-                .body(String.class);
+        Thread thread = new Thread(task);
+        thread.start();        
 
     }
 
