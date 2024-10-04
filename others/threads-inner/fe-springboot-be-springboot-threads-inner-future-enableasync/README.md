@@ -2,7 +2,7 @@ DESCRIPTION
 -----------
 
 ##### Goal
-The goal of this project is to present how to use **classic threads** in **inner** method of FE application calling BE application in chain of applications (services). Back-End application **works 3 seconds per call**. Front-End application calls **3 times** Back-End application in one inner method. So with multithread expected result of method call is about **3 seconds**.
+The goal of this project is to present how to use class **Future** with Spring Boot annotation **@EnableAsync** in **inner** method of FE application calling BE application in chain of applications (services). Back-End application **works 3 seconds per call**. Front-End application calls **3 times** Back-End application in one inner method. So with multithread expected result of method call is about **3 seconds**.
 
 This chain of services consists of following applications:
 * **Back-End**: an application created in **Java** programming language with usage **Spring Boot** framework
@@ -16,15 +16,18 @@ Terminology explanation:
 * **Spring Boot**: framework for Java. It consists of: Spring + Container + Configuration
 * **Back-End**: The back-end refers to the server-side part of a software application, responsible for managing the database, server logic, and application programming interface (API). It processes requests from the front-end (user interface), handles data storage, retrieval, and business logic, and sends the appropriate responses back to the front-end.
 * **Front-End**: Front-end refers to the part of a website or application that users interact with directly. It includes the visual elements, layout, and design, typically built using HTML, CSS, and JavaScript. The front-end is responsible for the user experience (UX) and interface (UI) that allows users to navigate and interact with the system.
-* **Thread**: A thread in Java is a lightweight unit of execution within a program that allows multiple tasks to run concurrently. It shares the same memory and resources with other threads of the same process, enabling efficient multitasking. Java's Thread class or the Runnable interface can be used to create and manage threads.
+* **Future**: In Java, a Future is an interface that represents the result of an asynchronous computation. It provides methods to check if the computation is complete, wait for its completion, and retrieve the result. A Future is typically used with executors to handle tasks that run in separate threads.
+* **@EnableAsync**: In Java, @EnableAsync is an annotation used to enable Spring's asynchronous method execution capability. When applied, it allows methods annotated with @Async to run in a separate thread, enabling non-blocking, concurrent execution of tasks.
 
 ##### Implementation
 Implementation details for Back-End:
 * Pause flow for 3 seconds by **Thread.sleep(3000);**
 
 Implementation details for Front-End:
-* Implement interface **Runnable** and use it in a constructor of class **Thread**. Then use method **start()** to run it in separate thread.
-* Use class **CountDownLatch** to wait for results of all three threads and then display result.
+* In Spring Boot start class annotation **@EnableAsync** was added
+* Method with new thread was marked with annotation **@Async**
+* Method with new thread returns class **Future**
+* Method **Future.get()** was called to start thread and get result
 
 
 EXAMPLE
