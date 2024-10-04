@@ -3,6 +3,8 @@ package com.example.controllers;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.Future;
 
 import org.json.JSONObject;
 import org.springframework.web.bind.annotation.*;
@@ -19,19 +21,19 @@ public class HelloWorldController {
     }
 
     @GetMapping("/")
-    public String get() throws InterruptedException {
+    public String get() throws InterruptedException, ExecutionException {
 
         List<String> results = new ArrayList<>();        
 
         long startTime = System.currentTimeMillis();
 
-        CountDownLatch latch = new CountDownLatch(3);
+        Future<Void> future1 = apiService.callApi(results);
+        Future<Void> future2 = apiService.callApi(results);
+        Future<Void> future3 = apiService.callApi(results);
 
-        apiService.callApi(results, latch);
-        apiService.callApi(results, latch);
-        apiService.callApi(results, latch);
-
-        latch.await();
+        future1.get();
+        future2.get();
+        future3.get();
 
         long endTime = System.currentTimeMillis();
 
