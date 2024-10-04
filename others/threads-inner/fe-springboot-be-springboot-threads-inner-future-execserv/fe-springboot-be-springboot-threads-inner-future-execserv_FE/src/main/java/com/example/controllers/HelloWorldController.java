@@ -2,8 +2,9 @@ package com.example.controllers;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutionException;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 
 import org.json.JSONObject;
@@ -27,13 +28,17 @@ public class HelloWorldController {
 
         long startTime = System.currentTimeMillis();
 
-        Future<Void> future1 = apiService.callApi(results);
-        Future<Void> future2 = apiService.callApi(results);
-        Future<Void> future3 = apiService.callApi(results);
+        ExecutorService executorService = Executors.newFixedThreadPool(3);
+        
+        Future<?> future1 = executorService.submit(apiService.callApi(results));
+        Future<?> future2 = executorService.submit(apiService.callApi(results));
+        Future<?> future3 = executorService.submit(apiService.callApi(results));
 
         future1.get();
         future2.get();
         future3.get();
+        
+        executorService.shutdown();
 
         long endTime = System.currentTimeMillis();
 
