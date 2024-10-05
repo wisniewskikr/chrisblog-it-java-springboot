@@ -2,7 +2,7 @@ DESCRIPTION
 -----------
 
 ##### Goal
-The goal of this project is to present how to use class **Future** together with Java class **ExecutorService** in **inner** method of FE application calling BE application in chain of applications (services). Back-End application **works 3 seconds per call**. Front-End application calls **3 times** Back-End application in one inner method. So with multithread expected result of method call is about **3 seconds**.
+The goal of this project is to present how to use class **CompletableFuture** together with Java class **ExecutorService** in **inner** method of FE application calling BE application in chain of applications (services). Back-End application **works 3 seconds per call**. Front-End application calls **3 times** Back-End application in one inner method. So with multithread expected result of method call is about **3 seconds**.
 
 This chain of services consists of following applications:
 * **Back-End**: an application created in **Java** programming language with usage **Spring Boot** framework
@@ -16,7 +16,7 @@ Terminology explanation:
 * **Spring Boot**: framework for Java. It consists of: Spring + Container + Configuration
 * **Back-End**: The back-end refers to the server-side part of a software application, responsible for managing the database, server logic, and application programming interface (API). It processes requests from the front-end (user interface), handles data storage, retrieval, and business logic, and sends the appropriate responses back to the front-end.
 * **Front-End**: Front-end refers to the part of a website or application that users interact with directly. It includes the visual elements, layout, and design, typically built using HTML, CSS, and JavaScript. The front-end is responsible for the user experience (UX) and interface (UI) that allows users to navigate and interact with the system.
-* **Future**: In Java, a Future is an interface that represents the result of an asynchronous computation. It provides methods to check if the computation is complete, wait for its completion, and retrieve the result. A Future is typically used with executors to handle tasks that run in separate threads.
+* **CompletableFuture**: A CompletableFuture in Java is a class that represents a future result of an asynchronous computation. It allows you to write non-blocking code by executing tasks asynchronously and then provides methods to combine, transform, or handle the result once it’s ready.
 * **ExecutorService**: An ExecutorService in Java is a framework provided by the java.util.concurrent package that simplifies thread management. It allows for the asynchronous execution of tasks, managing a pool of threads, handling task submission, execution, and shutdown. Instead of manually creating and managing threads, you submit tasks (Runnable or Callable) to the ExecutorService, which handles their execution.
 
 ##### Implementation
@@ -24,11 +24,8 @@ Implementation details for Back-End:
 * Pause flow for 3 seconds by **Thread.sleep(3000);**
 
 Implementation details for Front-End:
-* Method with new thread returns class **Runnable**
-* Class **ExecutorService.newFixedThreadPool()** has to be called to start threads pool
-* Method **ExecutorService.submit()** has to be called and class **Future** is returned
-* Method **Future.get()** was called to start thread and get result
-* Method **ExecutorService.shutdown()** has to be called to close thread pool
+* Method with new thread takes as an argument **ExecutorService** and returns class **CompletableFuture**
+* Methods **CompletableFuture.allOf(future1, future2, future3)** and **combinedFuture.join()** join and run all CompletableFutures
 
 
 EXAMPLE
