@@ -2,10 +2,9 @@ package com.example.controllers;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.ExecutionException;
+import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-import java.util.concurrent.Future;
 
 import org.json.JSONObject;
 import org.springframework.web.bind.annotation.*;
@@ -22,7 +21,7 @@ public class HelloWorldController {
     }
 
     @GetMapping("/")
-    public String get() throws InterruptedException, ExecutionException {
+    public String get() {
 
         List<String> results = new ArrayList<>();        
 
@@ -30,13 +29,12 @@ public class HelloWorldController {
 
         ExecutorService executorService = Executors.newFixedThreadPool(3);
         
-        Future<?> future1 = executorService.submit(apiService.callApi(results));
-        Future<?> future2 = executorService.submit(apiService.callApi(results));
-        Future<?> future3 = executorService.submit(apiService.callApi(results));
+        CompletableFuture<?> future1 = apiService.callApi(results, executorService);
+        CompletableFuture<?> future2 = apiService.callApi(results, executorService);
+        CompletableFuture<?> future3 = apiService.callApi(results, executorService);
 
-        future1.get();
-        future2.get();
-        future3.get();
+        CompletableFuture<Void> allTasks = CompletableFuture.allOf(future1, future2, future3);
+        allTasks.join();
         
         executorService.shutdown();
 
