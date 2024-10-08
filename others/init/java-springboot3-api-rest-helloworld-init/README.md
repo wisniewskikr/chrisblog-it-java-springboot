@@ -22,6 +22,37 @@ EXAMPLE
 ![My Image](readme-images/image-02.png)
 
 
+PREPARE VISUAL STUDIO CODE
+--------------------------
+
+Steps for preparation Visual Studio Code IDE:
+* Download Visual Studio Code
+* Install extension **Extension Pack for Java**
+* Install extension **GitLens**
+* Install extension **SonarLint**
+* Install extension **Conventional Commits**
+* Install extension **Docker**
+* Install extension **Kubernetes**
+
+
+PREPARE APPLICATION
+-------------------
+
+Steps for preparation application:
+* Create Git project in **GitHub**. For intance project 'init'
+* Create Spring Boot in **Spring Initializr**. For instance 'java-springboot3-api-rest-helloworld-init'
+* Download and unzip project from **Spring Initializr**
+* Open project in **Visual Studio Code**
+* Open terminal in **Visual Studio Code**
+* Init project as Git project with `git init`
+* Add all files to Git project with `git add .`
+* Check files status in Git project with `git status`
+* Commit files to Git project with `git commit -m "Init project"`
+* Create branch **main** with `git branch -M main`
+* Connect Git local repository with remote repository with `git remote add origin git@github.com:wisniewskikr/init.git`
+* Push changes to remote repository with `git push -u origin main`
+
+
 USAGE MANUAL
 ------------
 
@@ -34,7 +65,6 @@ USAGE MANUAL
 * **Java** (tested on version 17.0.5)
 * **Maven** (tested on version 3.8.5)
 * **Git** (tested on version 2.33.0.windows.2)
-* **Docker** (texted on version 4.33.1 - it has to be up and running)
 
 ##### Required steps:
 1. In the first command line tool **start Back-End application** with `mvn -f ./fe-springboot-be-springboot-threads-no_BE spring-boot:run`
