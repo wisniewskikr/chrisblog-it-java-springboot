@@ -56,7 +56,7 @@ Steps for preparation application:
 USAGE MANUAL
 ------------
 
-> **Usage Manual** means that Back-End and Front-End services are provided as **Java and Maven applications** and started **manually**. Tool **Hey** is provided as **Docker container**.
+> **Usage Manual** means that **Java, Maven, Spring Boot application** and started **manually** from command line.
 
 > Please **clone/download** project, open **project's main folder** in your favorite **command line tool** and then **proceed with steps below**. 
 
@@ -67,21 +67,12 @@ USAGE MANUAL
 * **Git** (tested on version 2.33.0.windows.2)
 
 ##### Required steps:
-1. In the first command line tool **start Back-End application** with `mvn -f ./fe-springboot-be-springboot-threads-no_BE spring-boot:run`
-1. In the second command line tool **start Front-End application** with `mvn -f ./fe-springboot-be-springboot-threads-no_FE spring-boot:run`
-1. In the third command line tool **run Docker Hey image** for testing 30 threads with `docker run --rm williamyeh/hey -n 30 -c 30 http://host.docker.internal:8080/`
-   * Expected **Summary -> Total** with value **over 9 seconds** (test for 30 threads -> FE restricted to 10 threads -> BE API call restricted to at least 3 seconds)
+1. In a command line tool **start application** with `mvn spring-boot:run`
+1. In a http browser visit http://localhost:8080
+   * Expected HTML page with message **Hello World!**
 1. Clean up environment:
-     * In the third command line tool **remove Docker Hey image** with `docker rmi williamyeh/hey`
-     * In the second command line tool **stop Front-End application** with `ctrl + C`
-     * In the first command line tool **stop Back-End application** with `ctrl + C`
+     * In acommand line tool **stop application** with `ctrl + C`
      
 
 ##### Optional steps:
-1. In a browser check Back-End application healthcheck with `http://localhost:8081/actuator/health`
-1. In a browser check Back-End application API result with `http://localhost:8081/`
-1. In a browser check Front-End application healthcheck with `http://localhost:8080/actuator/health`
-1. In a browser check Front-End application API result with `http://localhost:8080/`
-1. In a command line tool check list of Docker images with `docker images`
-1. In a command line tool check list of all Docker containers with `docker ps -a`
-1. In a command line tool check list of active Docker containers with `docker ps`
+1. In a browser check application healthcheck with `http://localhost:8080/actuator/health`
