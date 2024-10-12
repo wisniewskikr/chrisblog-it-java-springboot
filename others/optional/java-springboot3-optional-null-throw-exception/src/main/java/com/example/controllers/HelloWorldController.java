@@ -20,7 +20,7 @@ public class HelloWorldController {
 			.orElseThrow(() -> 
             new IllegalArgumentException("Name cannot be null"));
 
-		Map<String, String> response = Collections.singletonMap("message", "Hello World: " + name + "!");		
+		Map<String, String> response = Collections.singletonMap("message", "Hello World " + name + "!");		
 		return ResponseEntity.ok(response);		
 		
 	}
