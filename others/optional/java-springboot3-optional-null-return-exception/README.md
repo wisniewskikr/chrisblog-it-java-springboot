@@ -24,7 +24,7 @@ USAGE JAVA
 Usage steps:
 1. In a command line tool start application with `mvn spring-boot:run`
 1. In a browser visit `http://localhost:8080`
-   * Expected exception with message: **Name cannot be null**
+   * Expected JSON **{"message":"Name cannot be null!"}**
 1. In a browser visit `http://localhost:8080?name=Stranger`
    * Expected JSON **{"message":"Hello World Stranger!"}**
 1. Clean up environment 
