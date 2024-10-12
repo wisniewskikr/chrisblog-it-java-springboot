@@ -9,7 +9,7 @@
 		<relativePath/>
 	</parent>
 	<groupId>com.example</groupId>
-	<artifactId>jjava-springboot3-optional-check-null</artifactId>
+	<artifactId>java-springboot3-optional-null-throw-exception</artifactId>
 	<version>0.1.0</version>
 
 	<properties>
