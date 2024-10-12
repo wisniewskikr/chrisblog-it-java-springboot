@@ -2,7 +2,7 @@ DESCRIPTION
 -----------
 
 ##### Goal
-The goal of this project is to present how to use **Optional** to **check null** and if exists **throw an exception** in an application type **API REST** in **Java** programming language with usage **Spring Boot 3** framework.
+The goal of this project is to present how to use **Optional** to **check null** and if exists **return response with exception** in an application type **API REST** in **Java** programming language with usage **Spring Boot 3** framework.
 
 ##### Terminology
 Terminology explanation:
