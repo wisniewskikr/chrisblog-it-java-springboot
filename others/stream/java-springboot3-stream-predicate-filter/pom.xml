@@ -9,7 +9,7 @@
 		<relativePath/>
 	</parent>
 	<groupId>com.example</groupId>
-	<artifactId>java-springboot3-optional-null-return-exception</artifactId>
+	<artifactId>java-springboot3-stream-predicate-filter</artifactId>
 	<version>0.1.0</version>
 
 	<properties>
