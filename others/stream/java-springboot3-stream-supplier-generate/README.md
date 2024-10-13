@@ -2,7 +2,7 @@ DESCRIPTION
 -----------
 
 ##### Goal
-The goal of this project is to present how to use Functional Interface **UnaryOperator** with method **T apply(T)** together with **Stream** method **map()** in an application type **API REST** in **Java** programming language with usage **Spring Boot 3** framework. Method Stream.map() enables changing one object into another.
+The goal of this project is to present how to use Functional Interface **Suppier** with method **T get()** together with **Stream** method **generate()** in an application type **API REST** in **Java** programming language with usage **Spring Boot 3** framework. Method Stream.generate() enables generating some values.
 
 ##### Terminology
 Terminology explanation:
