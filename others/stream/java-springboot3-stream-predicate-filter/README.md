@@ -2,7 +2,7 @@ DESCRIPTION
 -----------
 
 ##### Goal
-The goal of this project is to present how to use Functional Interface **Predicate** in the method **stream.filter()** in an application type **API REST** in **Java** programming language with usage **Spring Boot 3** framework. Method stream.filter() enables to choose only specifed elements from the stream.
+The goal of this project is to present how to use Functional Interface **Function** with method **boolean test(T)** together with **Stream** method **filter()** in an application type **API REST** in **Java** programming language with usage **Spring Boot 3** framework. Method Stream.filter() enables choosing only specified objects.
 
 ##### Terminology
 Terminology explanation:
