@@ -2,7 +2,7 @@ DESCRIPTION
 -----------
 
 ##### Goal
-The goal of this project is to present how to use **Optional** to **check null** and if exists **return response with exception** in an application type **API REST** in **Java** programming language with usage **Spring Boot 3** framework.
+The goal of this project is to present how to use Functional Interface **Predicate** in the method **stream.filter()** in an application type **API REST** in **Java** programming language with usage **Spring Boot 3** framework. Method stream.filter() enables to choose only specifed elements from the stream.
 
 ##### Terminology
 Terminology explanation:
@@ -12,6 +12,7 @@ Terminology explanation:
 * **Git**: tool for distributed version control
 * **API**: Application Programming Interface is designed for communication between machines
 * **REST**: It's HTTP protocol with some set of rules
+* **Functional Interface**: A functional interface in programming, particularly in Java, is an interface that contains exactly one abstract method. It can have multiple default or static methods, but only one method that is unimplemented. Functional interfaces are designed for use with lambda expressions and method references, enabling a more concise, functional-style coding. The most common example is the java.util.function package, which includes interfaces like Function, Predicate, and Consumer.
 
 
 USAGE JAVA
@@ -24,8 +25,6 @@ USAGE JAVA
 Usage steps:
 1. In a command line tool start application with `mvn spring-boot:run`
 1. In a browser visit `http://localhost:8080`
-   * Expected JSON **{"message":"Name cannot be null!"}**
-1. In a browser visit `http://localhost:8080?name=Stranger`
-   * Expected JSON **{"message":"Hello World Stranger!"}**
+   * Expected JSON **{"message":"Hello World!"}**
 1. Clean up environment 
      * In a command line tool stop application with `ctrl + C`
