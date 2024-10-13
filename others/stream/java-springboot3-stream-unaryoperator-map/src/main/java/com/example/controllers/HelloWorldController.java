@@ -16,7 +16,7 @@ public class HelloWorldController {
 	@GetMapping
 	public ResponseEntity<Map<String, String>> helloWorld() {
 
-		List<Integer> messages = Arrays.asList(1);
+		List<String> messages = Arrays.asList("Some text");
                 
         List<String> result = messages.stream()
                                            .map(n -> "Hello World!")
