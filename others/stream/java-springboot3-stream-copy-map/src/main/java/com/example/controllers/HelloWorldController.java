@@ -16,10 +16,10 @@ public class HelloWorldController {
 	@GetMapping
 	public ResponseEntity<Map<String, String>> helloWorld() {
 
-		List<String> messages = Arrays.asList("Some text");
+		List<String> messages = Arrays.asList("Hello World!");
                 
         List<String> result = messages.stream()
-                                           .map(n -> "Hello World!")
+                                           .map(String::new)
                                            .collect(Collectors.toList());
 
 		Map<String, String> response = Collections.singletonMap("message", result.get(0));		
