@@ -47,8 +47,8 @@ USAGE MANUAL
 * **Git** (tested on version 2.33.0.windows.2)
 
 ##### Required steps:
-1. In the first command line tool **start Back-End application** with `mvn -f ./springboot-threads-inner-runnable_BE spring-boot:run`
-1. In the second command line tool **start Front-End application** with `mvn -f ./springboot-threads-inner-runnable_FE spring-boot:run`
+1. In the first command line tool **start Back-End application** with `mvn -f ./springboot-threads-inner-callable_BE spring-boot:run`
+1. In the second command line tool **start Front-End application** with `mvn -f ./springboot-threads-inner-callable_FE spring-boot:run`
 1. In a browser visit `http://localhost:8080`
    * Expected HTML page with similar JSON: **{"result":"Hello World http-nio-8080-exec-1! | Hello World http-nio-8080-exec-1! | Hello World http-nio-8080-exec-1!","duration in ms":3164}**
 1. Clean up environment:
