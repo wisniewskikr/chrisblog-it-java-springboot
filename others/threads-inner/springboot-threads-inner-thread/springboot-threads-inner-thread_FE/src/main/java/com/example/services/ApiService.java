@@ -17,18 +17,22 @@ public class ApiService {
     
     public void callApi(List<String> results, CountDownLatch latch) {
 
-        Runnable task = () -> {
+        Thread thread = new Thread(){
 
+            @Override
+            public void run() {
+                
                 String result = restClient.get()
                     .uri("/" + Thread.currentThread().getName())
                     .retrieve()
                     .body(String.class);
                 results.add(result); 
-                latch.countDown();      
+                latch.countDown(); 
+
+            }
 
         };
-        
-        Thread thread = new Thread(task);
+
         thread.start();        
 
     }
