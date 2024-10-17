@@ -11,7 +11,7 @@
 	</parent>
 	
 	<groupId>com.example</groupId>
-	<artifactId>springboot-threads-inner-runnable_BE</artifactId>
+	<artifactId>springboot-threads-inner-thread_BE</artifactId>
 	<version>0.0.1</version>
 
 	<properties>
