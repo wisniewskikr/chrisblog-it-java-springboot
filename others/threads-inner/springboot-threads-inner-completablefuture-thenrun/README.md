@@ -2,9 +2,9 @@ DESCRIPTION
 -----------
 
 ##### Goal
-The goal of this project is to present how to use class **CompletableFuture** and method **runAsync()** in **inner** method of FE application calling BE application in chain of applications (services). Back-End application **works 3 seconds per call**. Front-End application calls **3 times** Back-End application in one inner method. So with multithread expected result of method call is about **3 seconds**.
+The goal of this project is to present how to use class **CompletableFuture** and method **thenRun()** in **inner** method of FE application calling BE application in chain of applications (services). Back-End application **works 3 seconds per call**. Front-End application calls **3 times** Back-End application in one inner method - 2 times together and **then** 1 time. So with multithread expected result of method call is about **6 seconds**.
 
-CompletableFuture.runAsync() starts new thread in asynchronous mode. It does not return anything.
+CompletableFuture.thenRun() starts new thread with Runnable interface after previous task or tasks are finished.
 
 This chain of services consists of following applications:
 * **Back-End**: an application created in **Java** programming language with usage **Spring Boot** framework
