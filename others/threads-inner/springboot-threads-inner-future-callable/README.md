@@ -2,7 +2,7 @@ DESCRIPTION
 -----------
 
 ##### Goal
-The goal of this project is to present how to use class **Future** together with interface **Runnable** in **inner** method of FE application calling BE application in chain of applications (services). Back-End application **works 3 seconds per call**. Front-End application calls **3 times** Back-End application in one inner method. So with multithread expected result of method call is about **3 seconds**.
+The goal of this project is to present how to use class **Future** together with interface **Callable** in **inner** method of FE application calling BE application in chain of applications (services). Back-End application **works 3 seconds per call**. Front-End application calls **3 times** Back-End application in one inner method. So with multithread expected result of method call is about **3 seconds**.
 
 This chain of services consists of following applications:
 * **Back-End**: an application created in **Java** programming language with usage **Spring Boot** framework
@@ -17,7 +17,7 @@ Terminology explanation:
 * **Back-End**: The back-end refers to the server-side part of a software application, responsible for managing the database, server logic, and application programming interface (API). It processes requests from the front-end (user interface), handles data storage, retrieval, and business logic, and sends the appropriate responses back to the front-end.
 * **Front-End**: Front-end refers to the part of a website or application that users interact with directly. It includes the visual elements, layout, and design, typically built using HTML, CSS, and JavaScript. The front-end is responsible for the user experience (UX) and interface (UI) that allows users to navigate and interact with the system.
 * **Future**: In Java, a Future is an interface that represents the result of an asynchronous computation. It provides methods to check if the computation is complete, wait for its completion, and retrieve the result. A Future is typically used with executors to handle tasks that run in separate threads.
-* **Runnable**: this interface does not return anything. It just executes new thread.
+* **Callable**: this interface returns some value. It executes new thread.
 
 ##### Implementation
 Implementation details for Back-End:
