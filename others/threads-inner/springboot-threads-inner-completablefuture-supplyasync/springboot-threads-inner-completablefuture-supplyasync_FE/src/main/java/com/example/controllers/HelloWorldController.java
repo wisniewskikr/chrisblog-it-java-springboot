@@ -3,6 +3,7 @@ package com.example.controllers;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -21,7 +22,7 @@ public class HelloWorldController {
     }
 
     @GetMapping("/")
-    public String get() {
+    public String get() throws InterruptedException, ExecutionException {
 
         List<String> results = new ArrayList<>();        
 
@@ -29,12 +30,15 @@ public class HelloWorldController {
 
         ExecutorService executorService = Executors.newFixedThreadPool(3);
         
-        CompletableFuture<?> future1 = apiService.callApi(results, executorService);
-        CompletableFuture<?> future2 = apiService.callApi(results, executorService);
-        CompletableFuture<?> future3 = apiService.callApi(results, executorService);
+        CompletableFuture<String> future1 = apiService.callApi(executorService);
+        CompletableFuture<String> future2 = apiService.callApi(executorService);
+        CompletableFuture<String> future3 = apiService.callApi(executorService);
 
-        CompletableFuture<Void> allTasks = CompletableFuture.allOf(future1, future2, future3);
-        allTasks.join();
+        CompletableFuture.allOf(future1, future2, future3).join();
+
+        results.add(future1.get());
+        results.add(future2.get());
+        results.add(future3.get());
         
         executorService.shutdown();
 

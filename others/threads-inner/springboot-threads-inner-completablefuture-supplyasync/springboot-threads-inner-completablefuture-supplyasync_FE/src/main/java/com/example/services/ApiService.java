@@ -1,6 +1,5 @@
 package com.example.services;
 
-import java.util.List;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutorService;
 
@@ -16,15 +15,14 @@ public class ApiService {
         this.restClient = restClientBuilder.baseUrl("http://localhost:8081").build();
     }
     
-    public CompletableFuture<Void> callApi(List<String> results, ExecutorService executor) {
+    public CompletableFuture<String> callApi(ExecutorService executor) {
         
-        return CompletableFuture.runAsync(() -> {
+        return CompletableFuture.supplyAsync(() -> {
 
-            String result = restClient.get()
+            return restClient.get()
                 .uri("/" + Thread.currentThread().getName())
                 .retrieve()
                 .body(String.class);
-            results.add(result);
              
         }, executor);
 
