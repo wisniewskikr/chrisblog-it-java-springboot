@@ -30,13 +30,13 @@ public class HelloWorldController {
 
         ExecutorService executorService = Executors.newFixedThreadPool(3);
         
-        Future<?> future1 = executorService.submit(apiService.callApi(results));
-        Future<?> future2 = executorService.submit(apiService.callApi(results));
-        Future<?> future3 = executorService.submit(apiService.callApi(results));
+        Future<String> future1 = executorService.submit(apiService.callApi());
+        Future<String> future2 = executorService.submit(apiService.callApi());
+        Future<String> future3 = executorService.submit(apiService.callApi());
 
-        future1.get();
-        future2.get();
-        future3.get();
+        results.add(future1.get());
+        results.add(future2.get());
+        results.add(future3.get());
         
         executorService.shutdown();
 
