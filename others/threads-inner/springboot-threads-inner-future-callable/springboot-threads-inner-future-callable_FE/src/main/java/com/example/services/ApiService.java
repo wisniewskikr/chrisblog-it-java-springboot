@@ -1,6 +1,5 @@
 package com.example.services;
 
-import java.util.List;
 import java.util.concurrent.Callable;
 
 import org.springframework.stereotype.Service;
@@ -15,15 +14,14 @@ public class ApiService {
         this.restClient = restClientBuilder.baseUrl("http://localhost:8081").build();
     }
     
-    public Runnable callApi(List<String> results) {        
+    public Callable<String> callApi() {        
 
         return () -> {
 
-            String result = restClient.get()
+            return restClient.get()
                 .uri("/" + Thread.currentThread().getName())
                 .retrieve()
                 .body(String.class);
-            results.add(result); 
 
         };
 
