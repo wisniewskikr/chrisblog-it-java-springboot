@@ -2,9 +2,9 @@ DESCRIPTION
 -----------
 
 ##### Goal
-The goal of this project is to present how to use class **CompletableFuture** and method **thenApply()** in **inner** method of FE application calling BE application in chain of applications (services). Back-End application **works 3 seconds per call**. Front-End application calls **3 times** Back-End application in one inner method. So with multithread expected result of method call is about **3 seconds**.
+The goal of this project is to present how to use class **CompletableFuture** and method **thenAccept()** in **inner** method of FE application calling BE application in chain of applications (services). Back-End application **works 3 seconds per call**. Front-End application calls **3 times** Back-End application in one inner method. So with multithread expected result of method call is about **3 seconds**.
 
-CompletableFuture.thenApply() maps achived value to new one. Because it needs value then it works only with supplyAsync().
+CompletableFuture.thenAccept() makes some actions on received result. Because it needs value then it works only with supplyAsync().
 
 This chain of services consists of following applications:
 * **Back-End**: an application created in **Java** programming language with usage **Spring Boot** framework
