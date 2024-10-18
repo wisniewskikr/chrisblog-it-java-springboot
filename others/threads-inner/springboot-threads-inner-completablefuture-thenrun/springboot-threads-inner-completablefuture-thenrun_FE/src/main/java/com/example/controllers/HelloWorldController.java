@@ -31,10 +31,8 @@ public class HelloWorldController {
         
         CompletableFuture<?> future1 = apiService.callApi(results, executorService);
         CompletableFuture<?> future2 = apiService.callApi(results, executorService);
-        CompletableFuture<?> future3 = apiService.callApi(results, executorService);
 
-        CompletableFuture<Void> allTasks = CompletableFuture.allOf(future1, future2, future3);
-        allTasks.join();
+        CompletableFuture.allOf(future1, future2).thenRun(apiService.callApi(results)).join();
         
         executorService.shutdown();
 

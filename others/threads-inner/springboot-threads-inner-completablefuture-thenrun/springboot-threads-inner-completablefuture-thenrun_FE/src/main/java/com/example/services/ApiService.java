@@ -30,4 +30,18 @@ public class ApiService {
 
     }
 
+    public Runnable callApi(List<String> results) {        
+
+        return () -> {
+
+            String result = restClient.get()
+                .uri("/" + Thread.currentThread().getName())
+                .retrieve()
+                .body(String.class);
+            results.add(result); 
+
+        };
+
+    }
+
 }
