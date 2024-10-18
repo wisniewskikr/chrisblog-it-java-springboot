@@ -2,7 +2,9 @@ DESCRIPTION
 -----------
 
 ##### Goal
-The goal of this project is to present how to use class **CompletableFuture** together with Java class **ExecutorService** in **inner** method of FE application calling BE application in chain of applications (services). Back-End application **works 3 seconds per call**. Front-End application calls **3 times** Back-End application in one inner method. So with multithread expected result of method call is about **3 seconds**.
+The goal of this project is to present how to use class **CompletableFuture** and method **runAsync()** in **inner** method of FE application calling BE application in chain of applications (services). Back-End application **works 3 seconds per call**. Front-End application calls **3 times** Back-End application in one inner method. So with multithread expected result of method call is about **3 seconds**.
+
+CompletableFuture.runAsync() starts new thread in asynchronous mode. It does not return anything.
 
 This chain of services consists of following applications:
 * **Back-End**: an application created in **Java** programming language with usage **Spring Boot** framework
@@ -17,7 +19,6 @@ Terminology explanation:
 * **Back-End**: The back-end refers to the server-side part of a software application, responsible for managing the database, server logic, and application programming interface (API). It processes requests from the front-end (user interface), handles data storage, retrieval, and business logic, and sends the appropriate responses back to the front-end.
 * **Front-End**: Front-end refers to the part of a website or application that users interact with directly. It includes the visual elements, layout, and design, typically built using HTML, CSS, and JavaScript. The front-end is responsible for the user experience (UX) and interface (UI) that allows users to navigate and interact with the system.
 * **CompletableFuture**: A CompletableFuture in Java is a class that represents a future result of an asynchronous computation. It allows you to write non-blocking code by executing tasks asynchronously and then provides methods to combine, transform, or handle the result once it’s ready.
-* **ExecutorService**: An ExecutorService in Java is a framework provided by the java.util.concurrent package that simplifies thread management. It allows for the asynchronous execution of tasks, managing a pool of threads, handling task submission, execution, and shutdown. Instead of manually creating and managing threads, you submit tasks (Runnable or Callable) to the ExecutorService, which handles their execution.
 
 ##### Implementation
 Implementation details for Back-End:
