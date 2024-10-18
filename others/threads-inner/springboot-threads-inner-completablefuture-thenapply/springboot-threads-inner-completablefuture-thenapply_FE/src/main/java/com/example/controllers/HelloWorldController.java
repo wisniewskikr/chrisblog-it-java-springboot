@@ -30,9 +30,9 @@ public class HelloWorldController {
 
         ExecutorService executorService = Executors.newFixedThreadPool(3);
         
-        CompletableFuture<String> future1 = apiService.callApi(executorService);
-        CompletableFuture<String> future2 = apiService.callApi(executorService);
-        CompletableFuture<String> future3 = apiService.callApi(executorService);
+        CompletableFuture<String> future1 = apiService.callApi(executorService).thenApply(result -> result.replace("Tmp", "Hello World"));
+        CompletableFuture<String> future2 = apiService.callApi(executorService).thenApply(result -> result.replace("Tmp", "Hello World"));
+        CompletableFuture<String> future3 = apiService.callApi(executorService).thenApply(result -> result.replace("Tmp", "Hello World"));
 
         CompletableFuture.allOf(future1, future2, future3).join();
 

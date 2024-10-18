@@ -10,7 +10,7 @@ public class HelloWorldController {
 	@GetMapping("/{name}")
 	public String helloWorld(@PathVariable("name") String name) throws InterruptedException {
 		Thread.sleep(3000);
-		return "Hello World " + name + "!";			
+		return "Tmp " + name + "!";			
 	}
 	
 }
