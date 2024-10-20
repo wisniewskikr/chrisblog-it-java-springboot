@@ -1,12 +1,17 @@
 package com.example.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.exception.MessageException;
 import com.example.model.dto.MessageDto;
 import com.example.service.MessageService;
 
@@ -25,6 +30,18 @@ public class MessageController {
     public ResponseEntity<MessageDto> create(@RequestBody MessageDto message) {
         message = service.save(message);
         return ResponseEntity.ok().body(message);
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<?> read(@PathVariable("id") Long id) {
+
+        try {
+            MessageDto message = service.findById(id);
+            return ResponseEntity.ok().body(message);
+        } catch (MessageException e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
+        }
+
     }
 
 }
