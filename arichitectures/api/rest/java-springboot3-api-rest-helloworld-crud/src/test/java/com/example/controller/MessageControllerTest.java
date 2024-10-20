@@ -1,5 +1,6 @@
 package com.example.controller;
 
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -9,8 +10,10 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.example.exception.MessageException;
 import com.example.model.dto.MessageDto;
 import com.example.service.MessageService;
@@ -28,6 +31,8 @@ public class MessageControllerTest {
     @MockBean
     private MessageService messageService;
 
+    private ObjectMapper objectMapper = new ObjectMapper();
+
     private MessageDto message1;
     private MessageDto message2;
 
@@ -37,10 +42,22 @@ public class MessageControllerTest {
         message2 = new MessageDto(2L, "Hello World 2!");
     }
 
-    // @Test
-    // void testCreate() {
+    @Test
+    void testCreate_Ok() throws Exception {
 
-    // }
+        when(messageService.save(any(MessageDto.class))).thenReturn(message1);
+
+        String messageJson = objectMapper.writeValueAsString(message1);
+
+        mockMvc.perform(post("/api/v1/messages")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(messageJson))
+                .andExpect(status().isCreated())
+                .andExpect(jsonPath("$.infos.info").value("Message with id 1 was created"))
+                .andExpect(jsonPath("$.messages[0].id").value(1))
+                .andExpect(jsonPath("$.messages[0].text").value("Hello World 1!"));
+
+    }
 
     // @Test
     // void testDelete() {
