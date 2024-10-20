@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -48,6 +49,14 @@ public class MessageController {
             return ResponseEntity.ok().body(message);
     }
 
+    @PutMapping("/{id}")
+    public ResponseEntity<MessageDto> update(@PathVariable("id") Long id, @Valid @RequestBody MessageDto messageNew) throws MessageException { 
+        MessageDto message = service.findById(id); 
+        message.setText(messageNew.getText());      
+        message = service.update(message);
+        return ResponseEntity.ok().body(message);
+    }
+
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<Map<String, String>> handleValidationExceptions(MethodArgumentNotValidException ex) {
 
@@ -68,7 +77,7 @@ public class MessageController {
         Map<String, String> errors = new HashMap<>();
         errors.put("message", ex.getMessage());
         return new ResponseEntity<>(errors, HttpStatus.NOT_FOUND);
-        
+
     }
 
 }

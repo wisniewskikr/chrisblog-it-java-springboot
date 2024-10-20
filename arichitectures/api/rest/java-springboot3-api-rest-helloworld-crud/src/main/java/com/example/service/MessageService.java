@@ -31,4 +31,12 @@ public class MessageService {
         return new MessageDto(entity.getId(), entity.getText());
     }
 
+    public MessageDto update(MessageDto message) {
+
+        MessageEntity entity = new MessageEntity(message.getId(), message.getText());
+        entity = repository.save(entity);
+        return new MessageDto(entity.getId(), entity.getText());
+        
+    }
+
 }
