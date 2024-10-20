@@ -39,4 +39,10 @@ public class MessageService {
         
     }
 
+    public void delete(Long id) throws MessageException {        
+        MessageEntity entity = repository.findById(id).orElseThrow(() -> new MessageException("There is no Message with id: " + id));
+        repository.delete(entity);
+        
+    }
+
 }

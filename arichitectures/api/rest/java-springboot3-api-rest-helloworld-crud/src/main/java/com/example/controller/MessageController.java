@@ -11,6 +11,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.MethodArgumentNotValidException;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -55,6 +56,14 @@ public class MessageController {
         message.setText(messageNew.getText());      
         message = service.update(message);
         return ResponseEntity.ok().body(message);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Map<String, String>> delete(@PathVariable("id") Long id) throws MessageException {
+            service.delete(id);
+            Map<String, String> messages = new HashMap<>();
+            messages.put("message", String.format("Message with id %d was successfully deleted.", id));
+            return ResponseEntity.ok().body(messages);
     }
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
