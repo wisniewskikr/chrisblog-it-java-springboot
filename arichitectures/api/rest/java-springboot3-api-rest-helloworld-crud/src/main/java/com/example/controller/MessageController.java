@@ -1,6 +1,7 @@
 package com.example.controller;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,6 +49,12 @@ public class MessageController {
     public ResponseEntity<MessageDto> read(@PathVariable("id") Long id) throws MessageException {
             MessageDto message = service.findById(id);
             return ResponseEntity.ok().body(message);
+    }
+
+    @GetMapping()
+    public ResponseEntity<List<MessageDto>> readAll() {
+            List<MessageDto> messages = service.findAll();
+            return ResponseEntity.ok().body(messages);
     }
 
     @PutMapping("/{id}")

@@ -1,5 +1,8 @@
 package com.example.service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -29,6 +32,19 @@ public class MessageService {
     public MessageDto findById(Long id) throws MessageException {
         MessageEntity entity = repository.findById(id).orElseThrow(() -> new MessageException("There is no Message with id: " + id));
         return new MessageDto(entity.getId(), entity.getText());
+    }
+
+    public List<MessageDto> findAll() {
+
+        List<MessageDto> dtos = new ArrayList<>();
+
+        List<MessageEntity> entities = repository.findAll();
+        for (MessageEntity entity : entities) {
+            dtos.add(new MessageDto(entity.getId(), entity.getText()));
+        }
+        
+        return dtos;
+
     }
 
     public MessageDto update(MessageDto message) {
