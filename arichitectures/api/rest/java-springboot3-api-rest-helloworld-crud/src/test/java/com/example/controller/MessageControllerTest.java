@@ -162,4 +162,21 @@ public class MessageControllerTest {
 
     }
 
+    @Test
+    void testUpdate_NotExists() throws Exception {
+
+        when(messageService.findById(1L)).thenThrow(new MessageException("There is no Message with id: 1"));
+
+        String messageJson = objectMapper.writeValueAsString(message1);
+
+        mockMvc.perform(put("/api/v1/messages/1")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(messageJson))
+                .andExpect(status().isNotFound())
+                .andExpect(jsonPath("$.statusCode").value(HttpStatus.NOT_FOUND.value()))
+                .andExpect(jsonPath("$.infos.info").value("There is no Message with id: 1"))
+                .andExpect(jsonPath("$.messages").isEmpty());
+
+    }
+
 }
