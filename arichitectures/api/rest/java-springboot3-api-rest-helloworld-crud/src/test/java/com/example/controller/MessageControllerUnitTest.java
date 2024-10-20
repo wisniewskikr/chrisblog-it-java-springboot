@@ -57,6 +57,7 @@ public class MessageControllerUnitTest {
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(messageJson))
                 .andExpect(status().isCreated())
+                .andExpect(jsonPath("$.statusCode").value(HttpStatus.CREATED.value()))
                 .andExpect(jsonPath("$.infos.info").value("Message with id 1 was created"))
                 .andExpect(jsonPath("$.messages[0].id").value(1))
                 .andExpect(jsonPath("$.messages[0].text").value("Hello World 1!"));
