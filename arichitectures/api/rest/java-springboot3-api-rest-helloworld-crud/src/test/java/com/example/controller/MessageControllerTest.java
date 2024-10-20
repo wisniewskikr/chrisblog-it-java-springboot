@@ -1,6 +1,7 @@
 package com.example.controller;
 
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.doThrow;
 import static org.mockito.Mockito.when;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -62,10 +63,29 @@ public class MessageControllerTest {
 
     }
 
-    // @Test
-    // void testDelete() {
+    @Test
+    void testDelete_Ok() throws Exception {
 
-    // }
+        mockMvc.perform(delete("/api/v1/messages/1"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.statusCode").value(HttpStatus.OK.value()))
+                .andExpect(jsonPath("$.infos.info").value("Message with id 1 was deleted"))
+                .andExpect(jsonPath("$.messages").isEmpty());
+
+    }
+
+    @Test
+    void testDelete_NotExists() throws Exception {
+
+        doThrow(new MessageException("There is no Message with id: 1")).when(messageService).delete(1L);
+
+        mockMvc.perform(delete("/api/v1/messages/1"))
+                .andExpect(status().isNotFound())
+                .andExpect(jsonPath("$.statusCode").value(HttpStatus.NOT_FOUND.value()))
+                .andExpect(jsonPath("$.infos.info").value("There is no Message with id: 1"))
+                .andExpect(jsonPath("$.messages").isEmpty());
+
+    }
 
     @Test
     void testRead_Ok() throws Exception {
@@ -123,8 +143,23 @@ public class MessageControllerTest {
 
     }
 
-    // @Test
-    // void testUpdate() {
+    @Test
+    void testUpdate_Ok() throws Exception {
 
-    // }
+        when(messageService.findById(1L)).thenReturn(message1);
+        when(messageService.update(any(MessageDto.class))).thenReturn(message2);
+
+        String messageJson = objectMapper.writeValueAsString(message1);
+
+        mockMvc.perform(put("/api/v1/messages/1")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(messageJson))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.statusCode").value(HttpStatus.OK.value()))
+                .andExpect(jsonPath("$.infos.info").value("Message with id 1 was updated"))
+                .andExpect(jsonPath("$.messages[0].id").value(2))
+                .andExpect(jsonPath("$.messages[0].text").value("Hello World 2!"));
+
+    }
+
 }
