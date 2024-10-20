@@ -17,6 +17,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import io.restassured.RestAssured;
 
 import static io.restassured.RestAssured.given;
+import static org.hamcrest.Matchers.empty;
 import static org.hamcrest.Matchers.equalTo;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
@@ -148,6 +149,20 @@ public class MessageControllerIntgTest {
             .body("messages[0].text", equalTo("Hello World 1"))
             .body("messages[1].id", equalTo(2))
             .body("messages[1].text", equalTo("Hello World 2"));
+
+    }
+
+    @Test
+    void testReadAll_Empty() {
+
+        given()
+        .when()
+            .get("/api/v1/messages")
+        .then()
+            .statusCode(HttpStatus.OK.value())
+            .body("statusCode", equalTo(HttpStatus.OK.value()))
+            .body("infos.info", equalTo("Messages were received"))
+            .body("messages", empty());
 
     }
 
