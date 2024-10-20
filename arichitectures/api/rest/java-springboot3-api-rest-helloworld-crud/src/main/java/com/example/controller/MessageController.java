@@ -43,26 +43,32 @@ public class MessageController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<?> read(@PathVariable("id") Long id) {
-
-        try {
+    public ResponseEntity<MessageDto> read(@PathVariable("id") Long id) throws MessageException {
             MessageDto message = service.findById(id);
             return ResponseEntity.ok().body(message);
-        } catch (MessageException e) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
-        }
-
     }
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<Map<String, String>> handleValidationExceptions(MethodArgumentNotValidException ex) {
+
         Map<String, String> errors = new HashMap<>();
+        
         ex.getBindingResult().getAllErrors().forEach((error) -> {
             String fieldName = ((FieldError) error).getField();
             String errorMessage = error.getDefaultMessage();
             errors.put(fieldName, errorMessage);
         });
+
         return new ResponseEntity<>(errors, HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(MessageException.class)
+    public ResponseEntity<Map<String, String>> handleMessageExceptin(MessageException ex) {
+
+        Map<String, String> errors = new HashMap<>();
+        errors.put("message", ex.getMessage());
+        return new ResponseEntity<>(errors, HttpStatus.NOT_FOUND);
+        
     }
 
 }
