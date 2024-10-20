@@ -21,6 +21,9 @@ import com.example.service.MessageService;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 @SpringBootTest
 @AutoConfigureMockMvc
 public class MessageControllerTest {
@@ -91,10 +94,34 @@ public class MessageControllerTest {
 
     }
 
-    // @Test
-    // void testReadAll() {
+    @Test
+    void testReadAll_Ok() throws Exception {
 
-    // }
+        when(messageService.findAll()).thenReturn(Arrays.asList(message1, message2));
+
+        mockMvc.perform(get("/api/v1/messages"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.statusCode").value(HttpStatus.OK.value()))
+                .andExpect(jsonPath("$.infos.info").value("Messages were received"))
+                .andExpect(jsonPath("$.messages[0].id").value(1))
+                .andExpect(jsonPath("$.messages[0].text").value("Hello World 1!"))
+                .andExpect(jsonPath("$.messages[1].id").value(2))
+                .andExpect(jsonPath("$.messages[1].text").value("Hello World 2!"));
+
+    }
+
+    @Test
+    void testReadAll_Empty() throws Exception {
+
+        when(messageService.findAll()).thenReturn(new ArrayList<MessageDto>());
+
+        mockMvc.perform(get("/api/v1/messages"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.statusCode").value(HttpStatus.OK.value()))
+                .andExpect(jsonPath("$.infos.info").value("Messages were received"))
+                .andExpect(jsonPath("$.messages").isEmpty());
+
+    }
 
     // @Test
     // void testUpdate() {
