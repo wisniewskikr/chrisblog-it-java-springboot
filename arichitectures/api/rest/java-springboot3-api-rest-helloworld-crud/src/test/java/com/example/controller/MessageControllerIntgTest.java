@@ -166,4 +166,25 @@ public class MessageControllerIntgTest {
 
     }
 
+    @Test
+    void testUpdate_Ok() throws Exception {
+
+        repository.save(new MessageEntity("Hello World 1"));
+
+        String messageJson = objectMapper.writeValueAsString(new MessageDto(1L, "Hello World 2"));
+
+        given()
+            .contentType(MediaType.APPLICATION_JSON_VALUE)
+            .body(messageJson)
+        .when()
+            .put("/api/v1/messages/1")
+        .then()
+            .statusCode(HttpStatus.OK.value())
+            .body("statusCode", equalTo(HttpStatus.OK.value()))
+            .body("infos.info", equalTo("Message with id 1 was updated"))
+            .body("messages[0].id", equalTo(1))
+            .body("messages[0].text", equalTo("Hello World 2"));
+
+    }
+
 }
