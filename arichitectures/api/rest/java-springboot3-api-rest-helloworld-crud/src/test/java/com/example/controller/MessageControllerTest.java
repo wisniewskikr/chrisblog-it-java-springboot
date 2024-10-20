@@ -8,8 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.http.HttpStatus;
 import org.springframework.test.web.servlet.MockMvc;
 
+import com.example.exception.MessageException;
 import com.example.model.dto.MessageDto;
 import com.example.service.MessageService;
 
@@ -52,10 +54,23 @@ public class MessageControllerTest {
 
         mockMvc.perform(get("/api/v1/messages/1"))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$.statusCode").value(200))
+                .andExpect(jsonPath("$.statusCode").value(HttpStatus.OK.value()))
                 .andExpect(jsonPath("$.infos.info").value("Message with id 1 was received"))
                 .andExpect(jsonPath("$.messages[0].id").value(1))
                 .andExpect(jsonPath("$.messages[0].text").value("Hello World 1!"));
+
+    }
+
+    @Test
+    void testRead_NotExists() throws Exception {
+
+        when(messageService.findById(1L)).thenThrow(new MessageException("There is no Message with id: 1"));
+
+        mockMvc.perform(get("/api/v1/messages/1"))
+                .andExpect(status().isNotFound())
+                .andExpect(jsonPath("$.statusCode").value(HttpStatus.NOT_FOUND.value()))
+                .andExpect(jsonPath("$.infos.info").value("There is no Message with id: 1"))
+                .andExpect(jsonPath("$.messages").isEmpty());
 
     }
 
