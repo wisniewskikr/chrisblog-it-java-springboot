@@ -27,7 +27,7 @@ import java.util.Arrays;
 
 @SpringBootTest
 @AutoConfigureMockMvc
-public class MessageControllerTest {
+public class MessageControllerUnitTest {
 
     @Autowired
     private MockMvc mockMvc;
