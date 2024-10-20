@@ -103,4 +103,18 @@ public class MessageControllerIntgTest {
 
     }
 
+    @Test
+    void testRead_NotExists() {
+
+        given()
+        .when()
+            .get("/api/v1/messages/1")
+        .then()
+            .statusCode(HttpStatus.NOT_FOUND.value())
+            .body("statusCode", equalTo(HttpStatus.NOT_FOUND.value()))
+            .body("infos.info", equalTo("There is no Message with id: 1"))
+            .body("messages", equalTo(null));
+
+    }
+
 }
