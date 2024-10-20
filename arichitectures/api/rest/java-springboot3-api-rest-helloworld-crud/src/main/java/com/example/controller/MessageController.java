@@ -5,15 +5,8 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.BindingResult;
-import org.springframework.validation.FieldError;
-import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -21,8 +14,6 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import com.example.exception.MessageException;
 import com.example.model.dto.MessageDto;
 import com.example.service.MessageService;
 
@@ -46,7 +37,7 @@ public class MessageController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<MessageDto> read(@PathVariable("id") Long id) throws MessageException {
+    public ResponseEntity<MessageDto> read(@PathVariable("id") Long id) {
             MessageDto message = service.findById(id);
             return ResponseEntity.ok().body(message);
     }
@@ -58,7 +49,7 @@ public class MessageController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<MessageDto> update(@PathVariable("id") Long id, @Valid @RequestBody MessageDto messageNew) throws MessageException { 
+    public ResponseEntity<MessageDto> update(@PathVariable("id") Long id, @Valid @RequestBody MessageDto messageNew) { 
         MessageDto message = service.findById(id); 
         message.setText(messageNew.getText());      
         message = service.update(message);
@@ -66,7 +57,7 @@ public class MessageController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Map<String, String>> delete(@PathVariable("id") Long id) throws MessageException {
+    public ResponseEntity<Map<String, String>> delete(@PathVariable("id") Long id) {
             service.delete(id);
             Map<String, String> messages = new HashMap<>();
             messages.put("message", String.format("Message with id %d was successfully deleted.", id));

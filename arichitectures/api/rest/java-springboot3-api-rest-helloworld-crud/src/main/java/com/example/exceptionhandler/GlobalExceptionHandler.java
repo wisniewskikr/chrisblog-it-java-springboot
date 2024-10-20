@@ -30,11 +30,20 @@ public class GlobalExceptionHandler {
     }
 
     @ExceptionHandler(MessageException.class)
-    public ResponseEntity<Map<String, String>> handleMessageExceptin(MessageException ex) {
+    public ResponseEntity<Map<String, String>> handleMessageException(MessageException ex) {
 
         Map<String, String> errors = new HashMap<>();
         errors.put("message", ex.getMessage());
         return new ResponseEntity<>(errors, HttpStatus.NOT_FOUND);
+
+    }
+
+    @ExceptionHandler(Exception.class)
+    public ResponseEntity<Map<String, String>> handleException(Exception ex) {
+
+        Map<String, String> errors = new HashMap<>();
+        errors.put("message", ex.getMessage());
+        return new ResponseEntity<>(errors, HttpStatus.INTERNAL_SERVER_ERROR);
 
     }
 
