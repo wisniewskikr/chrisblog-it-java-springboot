@@ -1,9 +1,12 @@
 package com.example.model.dto;
 
+import jakarta.validation.constraints.NotNull;
+
 public class MessageDto {
     
     private Long id;
-    private String text;    
+    @NotNull(message = "Text can not be null")
+    String text;    
 
     public MessageDto(Long id, String text) {
         this.id = id;
