@@ -11,39 +11,40 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
 import com.example.exception.MessageException;
+import com.example.model.dto.ResponseDto;
 
 @ControllerAdvice
 public class GlobalExceptionHandler {
     
     @ExceptionHandler(MethodArgumentNotValidException.class)
-    public ResponseEntity<Map<String, String>> handleValidationExceptions(MethodArgumentNotValidException ex) {
+    public ResponseEntity<ResponseDto> handleValidationExceptions(MethodArgumentNotValidException ex) {
 
-        Map<String, String> errors = new HashMap<>();
+        Map<String, String> infos = new HashMap<>();
         
         ex.getBindingResult().getAllErrors().forEach((error) -> {
             String fieldName = ((FieldError) error).getField();
             String errorMessage = error.getDefaultMessage();
-            errors.put(fieldName, errorMessage);
+            infos.put(fieldName, errorMessage);
         });
 
-        return new ResponseEntity<>(errors, HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<>(new ResponseDto(HttpStatus.BAD_REQUEST.value(), infos, null), HttpStatus.BAD_REQUEST);
     }
 
     @ExceptionHandler(MessageException.class)
-    public ResponseEntity<Map<String, String>> handleMessageException(MessageException ex) {
+    public ResponseEntity<ResponseDto> handleMessageException(MessageException ex) {
 
-        Map<String, String> errors = new HashMap<>();
-        errors.put("message", ex.getMessage());
-        return new ResponseEntity<>(errors, HttpStatus.NOT_FOUND);
+        Map<String, String> infos = new HashMap<>();
+        infos.put("info", ex.getMessage());
+        return new ResponseEntity<>(new ResponseDto(HttpStatus.NOT_FOUND.value(), infos, null), HttpStatus.NOT_FOUND);
 
     }
 
     @ExceptionHandler(Exception.class)
-    public ResponseEntity<Map<String, String>> handleException(Exception ex) {
+    public ResponseEntity<ResponseDto> handleException(Exception ex) {
 
-        Map<String, String> errors = new HashMap<>();
-        errors.put("message", ex.getMessage());
-        return new ResponseEntity<>(errors, HttpStatus.INTERNAL_SERVER_ERROR);
+        Map<String, String> infos = new HashMap<>();
+        infos.put("info", ex.getMessage());
+        return new ResponseEntity<>(new ResponseDto(HttpStatus.INTERNAL_SERVER_ERROR.value(), infos, null), HttpStatus.INTERNAL_SERVER_ERROR);
 
     }
 
