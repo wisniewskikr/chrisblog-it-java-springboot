@@ -187,4 +187,22 @@ public class MessageControllerIntgTest {
 
     }
 
+    @Test
+    void testUpdate_NotExists() throws Exception {
+
+        String messageJson = objectMapper.writeValueAsString(new MessageDto(1L, "Hello World 2"));
+
+        given()
+            .contentType(MediaType.APPLICATION_JSON_VALUE)
+            .body(messageJson)
+        .when()
+            .put("/api/v1/messages/1")
+        .then()
+            .statusCode(HttpStatus.NOT_FOUND.value())
+            .body("statusCode", equalTo(HttpStatus.NOT_FOUND.value()))
+            .body("infos.info", equalTo("There is no Message with id: 1"))
+            .body("messages", equalTo(null));
+
+    }
+
 }
