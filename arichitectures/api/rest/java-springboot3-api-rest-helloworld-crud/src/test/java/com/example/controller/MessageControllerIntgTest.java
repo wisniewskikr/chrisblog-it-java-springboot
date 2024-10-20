@@ -131,4 +131,24 @@ public class MessageControllerIntgTest {
 
     }
 
+    @Test
+    void testReadAll_Ok() {
+
+        repository.save(new MessageEntity("Hello World 1"));
+        repository.save(new MessageEntity("Hello World 2"));
+
+        given()
+        .when()
+            .get("/api/v1/messages")
+        .then()
+            .statusCode(HttpStatus.OK.value())
+            .body("statusCode", equalTo(HttpStatus.OK.value()))
+            .body("infos.info", equalTo("Messages were received"))
+            .body("messages[0].id", equalTo(1))
+            .body("messages[0].text", equalTo("Hello World 1"))
+            .body("messages[1].id", equalTo(2))
+            .body("messages[1].text", equalTo("Hello World 2"));
+
+    }
+
 }
