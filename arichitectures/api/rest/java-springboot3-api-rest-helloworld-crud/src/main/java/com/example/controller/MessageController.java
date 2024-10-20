@@ -2,9 +2,11 @@ package com.example.controller;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.ArrayList;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.example.model.dto.MessageDto;
+import com.example.model.dto.ResponseDto;
 import com.example.service.MessageService;
 
 import jakarta.validation.Valid;
@@ -31,37 +34,74 @@ public class MessageController {
     }
     
     @PostMapping
-    public ResponseEntity<MessageDto> create(@Valid @RequestBody MessageDto message) {        
+    public ResponseEntity<ResponseDto> create(@Valid @RequestBody MessageDto message) {        
+        
         message = service.save(message);
-        return ResponseEntity.ok().body(message);
+
+        Map<String, String> infos = new HashMap<>();
+        infos.put("info", String.format("Message with id %d was created", message.getId()));
+
+        List<MessageDto> messages = new ArrayList<>();
+        messages.add(message);
+
+        return new ResponseEntity<>(new ResponseDto(HttpStatus.CREATED.value(), infos, messages), HttpStatus.CREATED);
+
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<MessageDto> read(@PathVariable("id") Long id) {
-            MessageDto message = service.findById(id);
-            return ResponseEntity.ok().body(message);
+    public ResponseEntity<ResponseDto> read(@PathVariable("id") Long id) {
+
+        MessageDto message = service.findById(id);
+            
+        Map<String, String> infos = new HashMap<>();
+        infos.put("info", String.format("Message with id %d was received", id));
+
+        List<MessageDto> messages = new ArrayList<>();
+        messages.add(message);
+
+        return new ResponseEntity<>(new ResponseDto(HttpStatus.OK.value(), infos, messages), HttpStatus.OK);
+
     }
 
     @GetMapping()
-    public ResponseEntity<List<MessageDto>> readAll() {
-            List<MessageDto> messages = service.findAll();
-            return ResponseEntity.ok().body(messages);
+    public ResponseEntity<ResponseDto> readAll() {
+
+        
+        Map<String, String> infos = new HashMap<>();
+        infos.put("info", "Messages were received");
+
+        List<MessageDto> messages = service.findAll();
+
+        return new ResponseEntity<>(new ResponseDto(HttpStatus.OK.value(), infos, messages), HttpStatus.OK);
+
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<MessageDto> update(@PathVariable("id") Long id, @Valid @RequestBody MessageDto messageNew) { 
+    public ResponseEntity<ResponseDto> update(@PathVariable("id") Long id, @Valid @RequestBody MessageDto messageNew) { 
+
         MessageDto message = service.findById(id); 
         message.setText(messageNew.getText());      
         message = service.update(message);
-        return ResponseEntity.ok().body(message);
+
+        Map<String, String> infos = new HashMap<>();
+        infos.put("info", String.format("Message with id %d was updated", id));
+
+        List<MessageDto> messages = new ArrayList<>();
+        messages.add(message);
+
+        return new ResponseEntity<>(new ResponseDto(HttpStatus.OK.value(), infos, messages), HttpStatus.OK);
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Map<String, String>> delete(@PathVariable("id") Long id) {
-            service.delete(id);
-            Map<String, String> messages = new HashMap<>();
-            messages.put("message", String.format("Message with id %d was successfully deleted.", id));
-            return ResponseEntity.ok().body(messages);
+    public ResponseEntity<ResponseDto> delete(@PathVariable("id") Long id) {
+            
+        service.delete(id);
+
+        Map<String, String> infos = new HashMap<>();
+        infos.put("info", String.format("Message with id %d was deleted", id));
+
+        return new ResponseEntity<>(new ResponseDto(HttpStatus.OK.value(), infos, null), HttpStatus.OK);
+            
     }
 
 }
