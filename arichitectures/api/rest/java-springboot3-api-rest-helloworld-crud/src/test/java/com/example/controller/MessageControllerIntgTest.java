@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.server.LocalServerPort;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 
 import com.example.model.dto.MessageDto;
@@ -51,8 +52,11 @@ public class MessageControllerIntgTest {
         .when()
             .post("/api/v1/messages")
         .then()
-            .statusCode(201)
-            .body("statusCode", equalTo(201));
+            .statusCode(HttpStatus.CREATED.value())
+            .body("statusCode", equalTo(HttpStatus.CREATED.value()))
+            .body("infos.info", equalTo("Message with id 1 was created"))
+            .body("messages[0].id", equalTo(1))
+            .body("messages[0].text", equalTo("Hello World 1!"));
 
     }
 
