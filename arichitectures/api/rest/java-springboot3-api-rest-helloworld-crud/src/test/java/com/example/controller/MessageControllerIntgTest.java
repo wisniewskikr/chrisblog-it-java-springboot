@@ -117,4 +117,18 @@ public class MessageControllerIntgTest {
 
     }
 
+    @Test
+    void testRead_WrongUrl() {
+
+        given()
+        .when()
+            .get("/api/v1/tmp")
+        .then()
+            .statusCode(HttpStatus.INTERNAL_SERVER_ERROR.value())
+            .body("statusCode", equalTo(HttpStatus.INTERNAL_SERVER_ERROR.value()))
+            .body("infos.info", equalTo("No static resource api/v1/tmp."))
+            .body("messages", equalTo(null));
+
+    }
+
 }
