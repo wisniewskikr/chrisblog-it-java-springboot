@@ -10,6 +10,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 
 import com.example.model.dto.MessageDto;
+import com.example.model.entity.MessageEntity;
 import com.example.repository.MessageRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -57,6 +58,22 @@ public class MessageControllerIntgTest {
             .body("infos.info", equalTo("Message with id 1 was created"))
             .body("messages[0].id", equalTo(1))
             .body("messages[0].text", equalTo("Hello World 1!"));
+
+    }
+
+    @Test
+    void testDelete_Ok() {
+
+        repository.save(new MessageEntity("Hello World"));
+
+        given()
+        .when()
+            .delete("/api/v1/messages/1")
+        .then()
+            .statusCode(HttpStatus.OK.value())
+            .body("statusCode", equalTo(HttpStatus.OK.value()))
+            .body("infos.info", equalTo("Message with id 1 was deleted"))
+            .body("messages", equalTo(null));
 
     }
 
