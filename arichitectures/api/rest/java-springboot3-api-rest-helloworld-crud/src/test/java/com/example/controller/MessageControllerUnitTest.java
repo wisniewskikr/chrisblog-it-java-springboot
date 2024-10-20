@@ -115,6 +115,19 @@ public class MessageControllerUnitTest {
     }
 
     @Test
+    void testRead_WrongUrl() throws Exception {
+
+        when(messageService.findById(1L)).thenReturn(message1);
+
+        mockMvc.perform(get("/api/v1/tmp"))
+                .andExpect(status().isInternalServerError())
+                .andExpect(jsonPath("$.statusCode").value(HttpStatus.INTERNAL_SERVER_ERROR.value()))
+                .andExpect(jsonPath("$.infos.info").value("No static resource api/v1/tmp."))
+                .andExpect(jsonPath("$.messages").isEmpty());
+
+    }
+
+    @Test
     void testReadAll_Ok() throws Exception {
 
         when(messageService.findAll()).thenReturn(Arrays.asList(message1, message2));
