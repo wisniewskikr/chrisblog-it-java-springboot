@@ -23,29 +23,24 @@ import static org.hamcrest.Matchers.equalTo;
 @AutoConfigureMockMvc
 public class MessageControllerIntgTest {
 
+    private ObjectMapper objectMapper = new ObjectMapper();
+
     @LocalServerPort
     private int port;
 
     @Autowired
-    private MessageRepository repository;
-
-    private ObjectMapper objectMapper = new ObjectMapper();
-    private MessageDto message1;
-    private MessageDto message2;
-  
-
+    private MessageRepository repository;    
+ 
     @BeforeEach
     void setUp() {
         RestAssured.port = port;
-        message1 = new MessageDto(1L, "Hello World 1!");
-        message2 = new MessageDto(2L, "Hello World 2!");
         repository.deleteAll();
     }
 
     @Test
     void testCreate_Ok() throws Exception {
 
-        String messageJson = objectMapper.writeValueAsString(message1);
+        String messageJson = objectMapper.writeValueAsString(new MessageDto(1L, "Hello World"));
 
         given()
             .contentType(MediaType.APPLICATION_JSON_VALUE)
@@ -57,7 +52,7 @@ public class MessageControllerIntgTest {
             .body("statusCode", equalTo(HttpStatus.CREATED.value()))
             .body("infos.info", equalTo("Message with id 1 was created"))
             .body("messages[0].id", equalTo(1))
-            .body("messages[0].text", equalTo("Hello World 1!"));
+            .body("messages[0].text", equalTo("Hello World"));
 
     }
 
