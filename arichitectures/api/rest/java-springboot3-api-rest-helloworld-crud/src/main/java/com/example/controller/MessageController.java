@@ -73,27 +73,4 @@ public class MessageController {
             return ResponseEntity.ok().body(messages);
     }
 
-    @ExceptionHandler(MethodArgumentNotValidException.class)
-    public ResponseEntity<Map<String, String>> handleValidationExceptions(MethodArgumentNotValidException ex) {
-
-        Map<String, String> errors = new HashMap<>();
-        
-        ex.getBindingResult().getAllErrors().forEach((error) -> {
-            String fieldName = ((FieldError) error).getField();
-            String errorMessage = error.getDefaultMessage();
-            errors.put(fieldName, errorMessage);
-        });
-
-        return new ResponseEntity<>(errors, HttpStatus.BAD_REQUEST);
-    }
-
-    @ExceptionHandler(MessageException.class)
-    public ResponseEntity<Map<String, String>> handleMessageExceptin(MessageException ex) {
-
-        Map<String, String> errors = new HashMap<>();
-        errors.put("message", ex.getMessage());
-        return new ResponseEntity<>(errors, HttpStatus.NOT_FOUND);
-
-    }
-
 }
