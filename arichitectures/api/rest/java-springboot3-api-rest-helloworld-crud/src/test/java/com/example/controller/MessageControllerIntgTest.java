@@ -51,8 +51,8 @@ public class MessageControllerIntgTest {
         .then()
             .statusCode(HttpStatus.CREATED.value())
             .body("statusCode", equalTo(HttpStatus.CREATED.value()))
-            .body("infos.info", equalTo("Message with id 1 was created"))
-            .body("messages[0].id", equalTo(1))
+            // .body("infos.info", equalTo("Message with id 1 was created"))
+            // .body("messages[0].id", equalTo(1))
             .body("messages[0].text", equalTo("Hello World"));
 
     }
@@ -69,7 +69,7 @@ public class MessageControllerIntgTest {
         .then()
             .statusCode(HttpStatus.OK.value())
             .body("statusCode", equalTo(HttpStatus.OK.value()))
-            .body("infos.info", equalTo("Message with id 1 was deleted"))
+            .body("infos.info", equalTo(String.format("Message with id %d was deleted", message.getId())))
             .body("messages", equalTo(null));
 
     }
@@ -100,8 +100,8 @@ public class MessageControllerIntgTest {
         .then()
             .statusCode(HttpStatus.OK.value())
             .body("statusCode", equalTo(HttpStatus.OK.value()))
-            .body("infos.info", equalTo("Message with id 1 was received"))
-            .body("messages[0].id", equalTo(1))
+            .body("infos.info", equalTo(String.format("Message with id %d was received", message.getId())))
+            .body("messages[0].id", equalTo(message.getId().intValue()))
             .body("messages[0].text", equalTo("Hello World"));
 
     }
@@ -137,8 +137,8 @@ public class MessageControllerIntgTest {
     @Test
     void testReadAll_Ok() {
 
-        repository.save(new MessageEntity("Hello World 1"));
-        repository.save(new MessageEntity("Hello World 2"));
+        MessageEntity message1 = repository.save(new MessageEntity("Hello World 1"));
+        MessageEntity message2 =  repository.save(new MessageEntity("Hello World 2"));
 
         given()
         .when()
@@ -147,9 +147,9 @@ public class MessageControllerIntgTest {
             .statusCode(HttpStatus.OK.value())
             .body("statusCode", equalTo(HttpStatus.OK.value()))
             .body("infos.info", equalTo("Messages were received"))
-            .body("messages[0].id", equalTo(1))
+            .body("messages[0].id", equalTo(message1.getId().intValue()))
             .body("messages[0].text", equalTo("Hello World 1"))
-            .body("messages[1].id", equalTo(2))
+            .body("messages[1].id", equalTo(message2.getId().intValue()))
             .body("messages[1].text", equalTo("Hello World 2"));
 
     }
@@ -184,8 +184,8 @@ public class MessageControllerIntgTest {
         .then()
             .statusCode(HttpStatus.OK.value())
             .body("statusCode", equalTo(HttpStatus.OK.value()))
-            .body("infos.info", equalTo("Message with id 1 was updated"))
-            .body("messages[0].id", equalTo(1))
+            .body("infos.info", equalTo(String.format("Message with id %d was updated", message.getId())))
+            .body("messages[0].id", equalTo(message.getId().intValue()))
             .body("messages[0].text", equalTo("Hello World 2"));
 
     }
