@@ -8,7 +8,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.example.controller.MessageController;
 import com.example.exception.MessageException;
 import com.example.model.dto.MessageDto;
 import com.example.model.entity.MessageEntity;
@@ -28,6 +27,9 @@ public class MessageService {
     
     public MessageDto save(MessageDto message) {
 
+        if (message == null) 
+            throw new IllegalArgumentException("Argument 'message' in method save() cannot be null");
+
         logger.info("Method save() was called.");
 
         MessageEntity entity = new MessageEntity(message.getText());
@@ -37,6 +39,9 @@ public class MessageService {
     }
 
     public MessageDto findById(Long id) throws MessageException {
+
+        if (id == null)
+            throw new IllegalArgumentException("Argument 'id' in method findById() cannot be null");
 
         logger.info("Method findById() was called for id {}.", id);
 
@@ -62,6 +67,9 @@ public class MessageService {
 
     public MessageDto update(MessageDto message) {
 
+        if (message == null) 
+            throw new IllegalArgumentException("Argument 'message' in method update() cannot be null");
+
         logger.info("Method update() was called for id {}.", message.getId());
 
         MessageEntity entity = new MessageEntity(message.getId(), message.getText());
@@ -70,7 +78,10 @@ public class MessageService {
         
     }
 
-    public void delete(Long id) throws MessageException {  
+    public void delete(Long id) throws MessageException { 
+        
+        if (id == null)
+            throw new IllegalArgumentException("Argument 'id' in method delete() cannot be null");
         
         logger.info("Method delete() was called for id {}.", id);
         
