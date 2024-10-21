@@ -9,7 +9,7 @@
 		<relativePath/>
 	</parent>
 	<groupId>com.example</groupId>
-	<artifactId>java-springboot3-stream-flatmap</artifactId>
+	<artifactId>java-springboot3-stream-parallelstream</artifactId>
 	<version>0.1.0</version>
 
 	<properties>
