@@ -2,11 +2,11 @@ DESCRIPTION
 -----------
 
 ##### Goal
-The goal of this project is to present how create **REST API** application with **CRUD (Create, Read, Update, Delete)** method with usage **Java** programming language, **Spring Boot** framework and embedded **H2** database. This application enables following REST operations with object Message:
-* Create: object Message can be created and saved in database
-* Read: object Message can be read from database
-* Update: object Message can be mofied and saved in database
-* Delete: object Message can be removed from database
+The goal of this project is to present how create **REST API** application with **CRUD (Create, Read, Update, Delete)** methods with usage **Java** programming language, **Spring Boot** framework and embedded **H2** database. This application enables following REST operations with object Message:
+* **Create**: object Message can be created and saved in database
+* **Read**: object Message can be read from database
+* **Update**: object Message can be mofied and saved in database
+* **Delete**: object Message can be removed from database
 
 ##### Terminology
 Terminology explanation:
