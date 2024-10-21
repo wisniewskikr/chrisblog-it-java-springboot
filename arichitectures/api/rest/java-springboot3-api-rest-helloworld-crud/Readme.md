@@ -78,4 +78,4 @@ USAGE MANUAL
      
 
 ##### Optional steps:
-N/A
+1. In a command line tool run **Unit Tests** and **Integration tests** with `mvn test`
