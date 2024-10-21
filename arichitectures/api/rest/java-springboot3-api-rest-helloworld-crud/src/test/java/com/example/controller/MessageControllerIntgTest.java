@@ -1,7 +1,10 @@
 package com.example.controller;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.MethodOrderer;
+import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestMethodOrder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -22,6 +25,7 @@ import static org.hamcrest.Matchers.equalTo;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @AutoConfigureMockMvc
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class MessageControllerIntgTest {
 
     private ObjectMapper objectMapper = new ObjectMapper();
@@ -39,6 +43,7 @@ public class MessageControllerIntgTest {
     }
 
     @Test
+    @Order(1)
     void testCreate_Ok() throws Exception {
 
         String messageJson = objectMapper.writeValueAsString(new MessageDto(1L, "Hello World"));
@@ -51,8 +56,8 @@ public class MessageControllerIntgTest {
         .then()
             .statusCode(HttpStatus.CREATED.value())
             .body("statusCode", equalTo(HttpStatus.CREATED.value()))
-            // .body("infos.info", equalTo("Message with id 1 was created"))
-            // .body("messages[0].id", equalTo(1))
+            .body("infos.info", equalTo("Message with id 1 was created"))
+            .body("messages[0].id", equalTo(1))
             .body("messages[0].text", equalTo("Hello World"));
 
     }
