@@ -60,11 +60,12 @@ public class MessageControllerIntgTest {
     @Test
     void testDelete_Ok() {
 
-        repository.save(new MessageEntity("Hello World"));
+        MessageEntity message = repository.save(new MessageEntity("Hello World"));
 
         given()
+             .pathParam("id", message.getId())
         .when()
-            .delete("/api/v1/messages/1")
+            .delete("/api/v1/messages/{id}")
         .then()
             .statusCode(HttpStatus.OK.value())
             .body("statusCode", equalTo(HttpStatus.OK.value()))
@@ -90,11 +91,12 @@ public class MessageControllerIntgTest {
     @Test
     void testRead_Ok() {
 
-        repository.save(new MessageEntity("Hello World"));
+        MessageEntity message = repository.save(new MessageEntity("Hello World"));
 
         given()
+            .pathParam("id", message.getId())
         .when()
-            .get("/api/v1/messages/1")
+            .get("/api/v1/messages/{id}")
         .then()
             .statusCode(HttpStatus.OK.value())
             .body("statusCode", equalTo(HttpStatus.OK.value()))
@@ -169,15 +171,16 @@ public class MessageControllerIntgTest {
     @Test
     void testUpdate_Ok() throws Exception {
 
-        repository.save(new MessageEntity("Hello World 1"));
+        MessageEntity message = repository.save(new MessageEntity("Hello World 1"));
 
         String messageJson = objectMapper.writeValueAsString(new MessageDto(1L, "Hello World 2"));
 
         given()
             .contentType(MediaType.APPLICATION_JSON_VALUE)
             .body(messageJson)
+            .pathParam("id", message.getId())
         .when()
-            .put("/api/v1/messages/1")
+            .put("/api/v1/messages/{id}")
         .then()
             .statusCode(HttpStatus.OK.value())
             .body("statusCode", equalTo(HttpStatus.OK.value()))
