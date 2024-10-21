@@ -5,6 +5,8 @@ import java.util.List;
 import java.util.ArrayList;
 import java.util.Map;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -25,6 +27,8 @@ import jakarta.validation.Valid;
 @RestController
 @RequestMapping("api/v1/messages")
 public class MessageController {
+
+    private static final Logger logger = LoggerFactory.getLogger(MessageController.class);
     
     private MessageService service;
 
@@ -34,7 +38,9 @@ public class MessageController {
     }
     
     @PostMapping
-    public ResponseEntity<ResponseDto> create(@Valid @RequestBody MessageDto message) {        
+    public ResponseEntity<ResponseDto> create(@Valid @RequestBody MessageDto message) { 
+        
+        logger.info("Method create() was called.");
         
         message = service.save(message);
 
@@ -51,6 +57,8 @@ public class MessageController {
     @GetMapping("/{id}")
     public ResponseEntity<ResponseDto> read(@PathVariable("id") Long id) {
 
+        logger.info("Method read() was called for id {}.", id);
+
         MessageDto message = service.findById(id);
             
         Map<String, String> infos = new HashMap<>();
@@ -66,6 +74,7 @@ public class MessageController {
     @GetMapping()
     public ResponseEntity<ResponseDto> readAll() {
 
+        logger.info("Method readAll() was called for id.");
         
         Map<String, String> infos = new HashMap<>();
         infos.put("info", "Messages were received");
@@ -77,7 +86,9 @@ public class MessageController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<ResponseDto> update(@PathVariable("id") Long id, @Valid @RequestBody MessageDto messageNew) { 
+    public ResponseEntity<ResponseDto> update(@PathVariable("id") Long id, @Valid @RequestBody MessageDto messageNew) {
+        
+        logger.info("Method update() was called for id {}.", id);
 
         MessageDto message = service.findById(id); 
         message.setText(messageNew.getText());      
@@ -94,6 +105,8 @@ public class MessageController {
 
     @DeleteMapping("/{id}")
     public ResponseEntity<ResponseDto> delete(@PathVariable("id") Long id) {
+
+        logger.info("Method delete() was called for id {}.", id);
             
         service.delete(id);
 
