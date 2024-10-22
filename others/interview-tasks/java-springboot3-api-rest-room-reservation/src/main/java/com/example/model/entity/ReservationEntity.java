@@ -7,6 +7,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.persistence.Version;
 
 @Entity
 @Table(name = "RESERVATION")
@@ -15,6 +16,8 @@ public class ReservationEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Version
+    private int version;
     private String roomName;    
     private String reservedBy;
     private LocalDateTime startTime;
@@ -44,6 +47,12 @@ public class ReservationEntity {
     public void setId(Long id) {
         this.id = id;
     }
+    public int getVersion() {
+        return version;
+    }
+    public void setVersion(int version) {
+        this.version = version;
+    } 
     public String getRoomName() {
         return roomName;
     }
@@ -67,6 +76,6 @@ public class ReservationEntity {
     }
     public void setEndTime(LocalDateTime endTime) {
         this.endTime = endTime;
-    }    
+    }       
 
 }
