@@ -8,6 +8,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Isolation;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.example.exception.ReservationException;
 import com.example.model.dto.ReservationDto;
@@ -26,6 +28,7 @@ public class ReservationService {
         this.repository = repository;
     }
     
+    @Transactional(isolation = Isolation.SERIALIZABLE)
     public ReservationDto save(ReservationDto reservation) {
 
         if (reservation == null) 
@@ -70,6 +73,7 @@ public class ReservationService {
 
     }
 
+    @Transactional(isolation = Isolation.SERIALIZABLE)
     public ReservationDto update(ReservationDto reservation) {
 
         if (reservation == null) 
@@ -87,6 +91,7 @@ public class ReservationService {
         
     }
 
+    @Transactional(isolation = Isolation.SERIALIZABLE)
     public void delete(Long id) throws ReservationException { 
         
         if (id == null)
