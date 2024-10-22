@@ -1,5 +1,8 @@
 package com.example.repository;
 
+import java.time.LocalDateTime;
+import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -7,4 +10,8 @@ import com.example.model.entity.ReservationEntity;
 
 @Repository
 public interface ReservationRepository extends JpaRepository<ReservationEntity, Long> {
+
+    List<ReservationEntity> findByRoomNameAndStartTimeLessThanEqualAndEndTimeGreaterThanEqual(
+        String roomName, LocalDateTime endTime, LocalDateTime startTime);
+
 }
