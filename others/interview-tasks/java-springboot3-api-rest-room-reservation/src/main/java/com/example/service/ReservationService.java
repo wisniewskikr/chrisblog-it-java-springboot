@@ -8,6 +8,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Isolation;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.example.exception.ReservationException;
 import com.example.model.dto.ReservationDto;
@@ -70,12 +72,19 @@ public class ReservationService {
 
     }
 
+    @Transactional(isolation = Isolation.READ_COMMITTED)
     public ReservationDto update(ReservationDto reservation) {
 
         if (reservation == null) 
             throw new IllegalArgumentException("Argument 'reservation' in method update() cannot be null");
 
         logger.info("Method update() was called for id {}.", reservation.getId());
+
+        delete(reservation.getId());
+
+        if (!isRoomAvailable(reservation.getRoomName(), reservation.getStartTime(), reservation.getEndTime())) {
+            throw new ReservationException("Room is not available for the selected time.");
+        }
 
         ReservationEntity entity = new ReservationEntity(reservation.getId(), reservation.getRoomName(), reservation.getReservedBy(), reservation.getStartTime(), reservation.getEndTime());
         entity = repository.save(entity);
