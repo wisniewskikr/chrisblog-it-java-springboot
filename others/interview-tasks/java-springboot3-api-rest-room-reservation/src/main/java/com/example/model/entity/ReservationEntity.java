@@ -8,21 +8,21 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "MESSAGE")
-public class MessageEntity {
+public class ReservationEntity {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String text;    
 
-    public MessageEntity() {}
+    public ReservationEntity() {}
 
-    public MessageEntity(Long id, String text) {
+    public ReservationEntity(Long id, String text) {
         this.id = id;
         this.text = text;
     }    
 
-    public MessageEntity(String text) {
+    public ReservationEntity(String text) {
         this.text = text;
     }
 

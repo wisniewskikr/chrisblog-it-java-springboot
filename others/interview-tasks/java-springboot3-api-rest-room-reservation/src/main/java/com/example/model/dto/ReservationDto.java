@@ -2,18 +2,18 @@ package com.example.model.dto;
 
 import jakarta.validation.constraints.NotNull;
 
-public class MessageDto {
+public class ReservationDto {
     
     private Long id;
     @NotNull(message = "Text can not be null")
     String text;    
 
-    public MessageDto(Long id, String text) {
+    public ReservationDto(Long id, String text) {
         this.id = id;
         this.text = text;
     }    
 
-    public MessageDto(String text) {
+    public ReservationDto(String text) {
         this.text = text;
     }
 

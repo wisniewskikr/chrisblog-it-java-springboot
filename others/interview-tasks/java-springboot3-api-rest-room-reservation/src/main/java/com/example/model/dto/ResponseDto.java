@@ -9,9 +9,9 @@ public class ResponseDto {
     
     private int statusCode;
     private Map<String, String> infos = new HashMap<>();
-    private List<MessageDto> messages = new ArrayList<>();
+    private List<ReservationDto> messages = new ArrayList<>();
 
-    public ResponseDto(int statusCode, Map<String, String> infos, List<MessageDto> messages) {
+    public ResponseDto(int statusCode, Map<String, String> infos, List<ReservationDto> messages) {
         this.statusCode = statusCode;
         this.infos = infos;
         this.messages = messages;
@@ -29,10 +29,10 @@ public class ResponseDto {
     public void setInfos(Map<String, String> infos) {
         this.infos = infos;
     }
-    public List<MessageDto> getMessages() {
+    public List<ReservationDto> getMessages() {
         return messages;
     }
-    public void setMessages(List<MessageDto> messages) {
+    public void setMessages(List<ReservationDto> messages) {
         this.messages = messages;
     }
 
