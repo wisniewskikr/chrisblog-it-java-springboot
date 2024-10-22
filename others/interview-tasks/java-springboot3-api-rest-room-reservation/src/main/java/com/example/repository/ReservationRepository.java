@@ -13,5 +13,8 @@ public interface ReservationRepository extends JpaRepository<ReservationEntity, 
 
     List<ReservationEntity> findByRoomNameAndStartTimeLessThanEqualAndEndTimeGreaterThanEqual(
         String roomName, LocalDateTime endTime, LocalDateTime startTime);
+    
+    List<ReservationEntity> findByIdNotAndRoomNameAndStartTimeLessThanEqualAndEndTimeGreaterThanEqual(
+            Long id, String roomName, LocalDateTime endTime, LocalDateTime startTime);
 
 }

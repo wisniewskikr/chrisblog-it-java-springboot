@@ -35,7 +35,7 @@ public class ReservationService {
 
         logger.info("Method save() was called.");
 
-        if (!isRoomAvailable(reservation.getRoomName(), reservation.getStartTime(), reservation.getEndTime())) {
+        if (!isRoomAvailable(null, reservation.getRoomName(), reservation.getStartTime(), reservation.getEndTime())) {
             throw new ReservationException("Room is not available for the selected time.");
         }
 
@@ -80,9 +80,7 @@ public class ReservationService {
 
         logger.info("Method update() was called for id {}.", reservation.getId());
 
-        delete(reservation.getId());
-
-        if (!isRoomAvailable(reservation.getRoomName(), reservation.getStartTime(), reservation.getEndTime())) {
+        if (!isRoomAvailable(reservation.getId(), reservation.getRoomName(), reservation.getStartTime(), reservation.getEndTime())) {
             throw new ReservationException("Room is not available for the selected time.");
         }
 
@@ -104,10 +102,20 @@ public class ReservationService {
         
     }
 
-    public boolean isRoomAvailable(String roomName, LocalDateTime startTime, LocalDateTime endTime) {
-        List<ReservationEntity> overlappingReservations = repository
+    public boolean isRoomAvailable(Long id, String roomName, LocalDateTime startTime, LocalDateTime endTime) {
+
+        List<ReservationEntity> overlappingReservations = null;
+
+        if (id == null) {
+            overlappingReservations = repository
                 .findByRoomNameAndStartTimeLessThanEqualAndEndTimeGreaterThanEqual(
                         roomName, endTime, startTime);
+        } else {
+            overlappingReservations = repository
+                .findByIdNotAndRoomNameAndStartTimeLessThanEqualAndEndTimeGreaterThanEqual(
+                        id, roomName, endTime, startTime);
+        }
+        
 
         return overlappingReservations.isEmpty();
     }
