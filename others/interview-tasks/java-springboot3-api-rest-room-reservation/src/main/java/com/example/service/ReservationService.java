@@ -25,16 +25,16 @@ public class ReservationService {
         this.repository = repository;
     }
     
-    public ReservationDto save(ReservationDto message) {
+    public ReservationDto save(ReservationDto reservation) {
 
-        if (message == null) 
-            throw new IllegalArgumentException("Argument 'message' in method save() cannot be null");
+        if (reservation == null) 
+            throw new IllegalArgumentException("Argument 'reservation' in method save() cannot be null");
 
         logger.info("Method save() was called.");
 
-        ReservationEntity entity = new ReservationEntity(message.getText());
+        ReservationEntity entity = new ReservationEntity(reservation.getRoomName(), reservation.getReservedBy(), reservation.getStartTime(), reservation.getEndTime());
         entity = repository.save(entity);
-        return new ReservationDto(entity.getId(), entity.getText());
+        return new ReservationDto(entity.getId(), entity.getRoomName(), entity.getReservedBy(), entity.getStartTime(), entity.getEndTime());
         
     }
 
@@ -45,8 +45,8 @@ public class ReservationService {
 
         logger.info("Method findById() was called for id {}.", id);
 
-        ReservationEntity entity = repository.findById(id).orElseThrow(() -> new ReservationException("There is no Message with id: " + id));
-        return new ReservationDto(entity.getId(), entity.getText());
+        ReservationEntity entity = repository.findById(id).orElseThrow(() -> new ReservationException("There is no Reservation with id: " + id));
+        return new ReservationDto(entity.getId(), entity.getRoomName(), entity.getReservedBy(), entity.getStartTime(), entity.getEndTime());
 
     }
 
@@ -58,23 +58,23 @@ public class ReservationService {
 
         List<ReservationEntity> entities = repository.findAll();
         for (ReservationEntity entity : entities) {
-            dtos.add(new ReservationDto(entity.getId(), entity.getText()));
+            dtos.add(new ReservationDto(entity.getId(), entity.getRoomName(), entity.getReservedBy(), entity.getStartTime(), entity.getEndTime()));
         }
         
         return dtos;
 
     }
 
-    public ReservationDto update(ReservationDto message) {
+    public ReservationDto update(ReservationDto reservation) {
 
-        if (message == null) 
-            throw new IllegalArgumentException("Argument 'message' in method update() cannot be null");
+        if (reservation == null) 
+            throw new IllegalArgumentException("Argument 'reservation' in method update() cannot be null");
 
-        logger.info("Method update() was called for id {}.", message.getId());
+        logger.info("Method update() was called for id {}.", reservation.getId());
 
-        ReservationEntity entity = new ReservationEntity(message.getId(), message.getText());
+        ReservationEntity entity = new ReservationEntity(reservation.getId(), reservation.getRoomName(), reservation.getReservedBy(), reservation.getStartTime(), reservation.getEndTime());
         entity = repository.save(entity);
-        return new ReservationDto(entity.getId(), entity.getText());
+        return new ReservationDto(entity.getId(), entity.getRoomName(), entity.getReservedBy(), entity.getStartTime(), entity.getEndTime());
         
     }
 
@@ -85,7 +85,7 @@ public class ReservationService {
         
         logger.info("Method delete() was called for id {}.", id);
         
-        ReservationEntity entity = repository.findById(id).orElseThrow(() -> new ReservationException("There is no Message with id: " + id));
+        ReservationEntity entity = repository.findById(id).orElseThrow(() -> new ReservationException("There is no Reservation with id: " + id));
         repository.delete(entity);
         
     }

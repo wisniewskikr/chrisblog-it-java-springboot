@@ -20,7 +20,16 @@ public class ReservationEntity {
     private LocalDateTime startTime;
     private LocalDateTime endTime;
 
-    public ReservationEntity() {}
+    public ReservationEntity() {}    
+
+    public ReservationEntity(Long id, String roomName, String reservedBy, LocalDateTime startTime,
+            LocalDateTime endTime) {
+        this.id = id;
+        this.roomName = roomName;
+        this.reservedBy = reservedBy;
+        this.startTime = startTime;
+        this.endTime = endTime;
+    }
 
     public ReservationEntity(String roomName, String reservedBy, LocalDateTime startTime, LocalDateTime endTime) {
         this.roomName = roomName;
