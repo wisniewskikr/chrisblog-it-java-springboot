@@ -25,7 +25,7 @@ import com.example.service.ReservationService;
 import jakarta.validation.Valid;
 
 @RestController
-@RequestMapping("api/v1/messages")
+@RequestMapping("api/v1/reservations")
 public class ReservationController {
 
     private static final Logger logger = LoggerFactory.getLogger(ReservationController.class);
@@ -38,19 +38,19 @@ public class ReservationController {
     }
     
     @PostMapping
-    public ResponseEntity<ResponseDto> create(@Valid @RequestBody ReservationDto message) { 
+    public ResponseEntity<ResponseDto> create(@Valid @RequestBody ReservationDto reservation) { 
         
         logger.info("Method create() was called.");
         
-        message = service.save(message);
+        reservation = service.save(reservation);
 
         Map<String, String> infos = new HashMap<>();
-        infos.put("info", String.format("Message with id %d was created", message.getId()));
+        infos.put("info", String.format("Reservation with id %d was created", reservation.getId()));
 
-        List<ReservationDto> messages = new ArrayList<>();
-        messages.add(message);
+        List<ReservationDto> reservations = new ArrayList<>();
+        reservations.add(reservation);
 
-        return new ResponseEntity<>(new ResponseDto(HttpStatus.CREATED.value(), infos, messages), HttpStatus.CREATED);
+        return new ResponseEntity<>(new ResponseDto(HttpStatus.CREATED.value(), infos, reservations), HttpStatus.CREATED);
 
     }
 
@@ -59,15 +59,15 @@ public class ReservationController {
 
         logger.info("Method read() was called for id {}.", id);
 
-        ReservationDto message = service.findById(id);
+        ReservationDto reservation = service.findById(id);
             
         Map<String, String> infos = new HashMap<>();
-        infos.put("info", String.format("Message with id %d was received", id));
+        infos.put("info", String.format("Reservation with id %d was received", id));
 
-        List<ReservationDto> messages = new ArrayList<>();
-        messages.add(message);
+        List<ReservationDto> reservations = new ArrayList<>();
+        reservations.add(reservation);
 
-        return new ResponseEntity<>(new ResponseDto(HttpStatus.OK.value(), infos, messages), HttpStatus.OK);
+        return new ResponseEntity<>(new ResponseDto(HttpStatus.OK.value(), infos, reservations), HttpStatus.OK);
 
     }
 
@@ -77,30 +77,33 @@ public class ReservationController {
         logger.info("Method readAll() was called for id.");
         
         Map<String, String> infos = new HashMap<>();
-        infos.put("info", "Messages were received");
+        infos.put("info", "Reservations were received");
 
-        List<ReservationDto> messages = service.findAll();
+        List<ReservationDto> reservations = service.findAll();
 
-        return new ResponseEntity<>(new ResponseDto(HttpStatus.OK.value(), infos, messages), HttpStatus.OK);
+        return new ResponseEntity<>(new ResponseDto(HttpStatus.OK.value(), infos, reservations), HttpStatus.OK);
 
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<ResponseDto> update(@PathVariable("id") Long id, @Valid @RequestBody ReservationDto messageNew) {
+    public ResponseEntity<ResponseDto> update(@PathVariable("id") Long id, @Valid @RequestBody ReservationDto reservationNew) {
         
         logger.info("Method update() was called for id {}.", id);
 
-        ReservationDto message = service.findById(id); 
-        message.setText(messageNew.getText());      
-        message = service.update(message);
+        ReservationDto reservation = service.findById(id); 
+        reservation.setRoomName(reservationNew.getRoomName());
+        reservation.setReservedBy(reservationNew.getReservedBy());
+        reservation.setStartTime(reservationNew.getStartTime());
+        reservation.setEndTime(reservationNew.getEndTime());     
+        reservation = service.update(reservation);
 
         Map<String, String> infos = new HashMap<>();
-        infos.put("info", String.format("Message with id %d was updated", id));
+        infos.put("info", String.format("Reservation with id %d was updated", id));
 
-        List<ReservationDto> messages = new ArrayList<>();
-        messages.add(message);
+        List<ReservationDto> reservations = new ArrayList<>();
+        reservations.add(reservation);
 
-        return new ResponseEntity<>(new ResponseDto(HttpStatus.OK.value(), infos, messages), HttpStatus.OK);
+        return new ResponseEntity<>(new ResponseDto(HttpStatus.OK.value(), infos, reservations), HttpStatus.OK);
     }
 
     @DeleteMapping("/{id}")
@@ -111,7 +114,7 @@ public class ReservationController {
         service.delete(id);
 
         Map<String, String> infos = new HashMap<>();
-        infos.put("info", String.format("Message with id %d was deleted", id));
+        infos.put("info", String.format("Reservation with id %d was deleted", id));
 
         return new ResponseEntity<>(new ResponseDto(HttpStatus.OK.value(), infos, null), HttpStatus.OK);
             
