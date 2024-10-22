@@ -15,11 +15,11 @@ import jakarta.persistence.LockModeType;
 public interface ReservationRepository extends JpaRepository<ReservationEntity, Long> {
 
     @Lock(LockModeType.PESSIMISTIC_WRITE)
-    List<ReservationEntity> findByRoomNameAndStartTimeLessThanEqualAndEndTimeGreaterThanEqual(
+    List<ReservationEntity> findByRoomNameAndStartTimeLessThanAndEndTimeGreaterThan(
         String roomName, LocalDateTime endTime, LocalDateTime startTime);
     
     @Lock(LockModeType.PESSIMISTIC_WRITE)
-    List<ReservationEntity> findByIdNotAndRoomNameAndStartTimeLessThanEqualAndEndTimeGreaterThanEqual(
+    List<ReservationEntity> findByIdNotAndRoomNameAndStartTimeLessThanAndEndTimeGreaterThan(
         Long id, String roomName, LocalDateTime endTime, LocalDateTime startTime);
 
 }

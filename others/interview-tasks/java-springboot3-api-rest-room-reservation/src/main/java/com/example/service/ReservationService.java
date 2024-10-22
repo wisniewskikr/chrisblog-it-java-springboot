@@ -110,11 +110,11 @@ public class ReservationService {
 
         if (id == null) {
             overlappingReservations = repository
-                .findByRoomNameAndStartTimeLessThanEqualAndEndTimeGreaterThanEqual(
+                .findByRoomNameAndStartTimeLessThanAndEndTimeGreaterThan(
                         roomName, endTime, startTime);
         } else {
             overlappingReservations = repository
-                .findByIdNotAndRoomNameAndStartTimeLessThanEqualAndEndTimeGreaterThanEqual(
+                .findByIdNotAndRoomNameAndStartTimeLessThanAndEndTimeGreaterThan(
                         id, roomName, endTime, startTime);
         }
         
