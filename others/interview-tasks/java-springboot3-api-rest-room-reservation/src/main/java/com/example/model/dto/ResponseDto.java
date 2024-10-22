@@ -9,12 +9,12 @@ public class ResponseDto {
     
     private int statusCode;
     private Map<String, String> infos = new HashMap<>();
-    private List<ReservationDto> messages = new ArrayList<>();
+    private List<ReservationDto> reservations = new ArrayList<>();
 
-    public ResponseDto(int statusCode, Map<String, String> infos, List<ReservationDto> messages) {
+    public ResponseDto(int statusCode, Map<String, String> infos, List<ReservationDto> reservations) {
         this.statusCode = statusCode;
         this.infos = infos;
-        this.messages = messages;
+        this.reservations = reservations;
     }
     
     public int getStatusCode() {
@@ -29,13 +29,11 @@ public class ResponseDto {
     public void setInfos(Map<String, String> infos) {
         this.infos = infos;
     }
-    public List<ReservationDto> getMessages() {
-        return messages;
+    public List<ReservationDto> getReservations() {
+        return reservations;
     }
-    public void setMessages(List<ReservationDto> messages) {
-        this.messages = messages;
-    }
-
-    
+    public void setReservations(List<ReservationDto> reservations) {
+        this.reservations = reservations;
+    }    
 
 }
