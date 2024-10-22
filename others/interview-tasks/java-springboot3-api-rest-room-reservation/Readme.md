@@ -2,11 +2,11 @@ DESCRIPTION
 -----------
 
 ##### Goal
-The goal of this project is to present how create **REST API** application with **CRUD (Create, Read, Update, Delete)** methods with usage **Java** programming language, **Spring Boot** framework and embedded **H2** database. This application enables following REST operations with object Message:
-* **Create**: object Message can be created and saved in database
-* **Read**: object Message can be read from database
-* **Update**: object Message can be mofied and saved in database
-* **Delete**: object Message can be removed from database
+The goal of this project is to present how create **REST API** application for **Room Reservation** with usage **Java** programming language, **Spring Boot** framework and embedded **H2** database. This application enables following REST operations with object Reservation:
+* **Create**: object Reservation is created and saved in database
+* **Read**: object Reservation is read from database
+* **Update**: object Reservation is mofied and saved in database
+* **Delete**: object Reservation is removed from database
 
 ##### Terminology
 Terminology explanation:
@@ -21,8 +21,6 @@ Terminology explanation:
 ##### Implementation
 Implementation details:
 * Application is created basing on Controllers, Services, Repositories and Entities
-* There are Unit Tests for application
-* There are Integration Tests for application
 
 
 EXAMPLE
@@ -35,10 +33,6 @@ EXAMPLE
 ![My Image](readme-images/image-03.png)
 
 ![My Image](readme-images/image-04.png)
-
-![My Image](readme-images/image-05.png)
-
-![My Image](readme-images/image-06.png)
 
 
 USAGE MANUAL
@@ -56,26 +50,32 @@ USAGE MANUAL
 
 ##### Required steps:
 1. In a command line tool **start** application with `mvn spring-boot:run`
-1. In a Rest Client (for example Postman) **create** new message using **POST** method with `http://localhost:8080/api/v1/messages`
+1. In a Rest Client (for example Postman) **create** new reservation using **POST** method with `http://localhost:8080/api/v1/reservations`
    * Use **Body -> Raw -> JSON**
    ```
    {
-        "text": "Hello World!"
-    }
+      "roomName": "Conference Room A",
+      "reservedBy": "John Doe",
+      "startTime": "2024-10-22T08:00:00",
+      "endTime": "2024-10-22T09:00:00"
+   }
    ```
-1. In a Rest Client (for example Postman) **read specific** message using **GET** method with `http://localhost:8080/api/v1/messages/1`
-1. In a Rest Client (for example Postman) **read all** messages using **GET** method with `http://localhost:8080/api/v1/messages`
-1. In a Rest Client (for example Postman) **update** message using **POST** method with `http://localhost:8080/api/v1/messages/1`
+1. In a Rest Client (for example Postman) **read specific** reservation using **GET** method with `http://localhost:8080/api/v1/reservations/1`
+1. In a Rest Client (for example Postman) **read all** reservations using **GET** method with `http://localhost:8080/api/v1/reservations`
+1. In a Rest Client (for example Postman) **update** reservation using **POST** method with `http://localhost:8080/api/v1/reservations/1`
    * Use **Body -> Raw -> JSON**
    ```
    {
-        "text": "Hello World Updated!"
-    }
+      "roomName": "Conference Room A",
+      "reservedBy": "John Doe",
+      "startTime": "2024-10-22T10:00:00",
+      "endTime": "2024-10-22T11:00:00"
+   }
    ```
-1. In a Rest Client (for example Postman) **delete** message using **DELETE** method with `http://localhost:8080/api/v1/messages/1`
+1. In a Rest Client (for example Postman) **delete** reservation using **DELETE** method with `http://localhost:8080/api/v1/reservations/1`
 1. Clean up environment:
      * In a command line tool **stop** application with `ctrl + C`
      
 
 ##### Optional steps:
-1. In a command line tool run **Unit Tests** and **Integration tests** with `mvn test`
+N/A
