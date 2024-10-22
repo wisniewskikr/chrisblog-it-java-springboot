@@ -1,5 +1,6 @@
 package com.example.service;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,6 +32,10 @@ public class ReservationService {
             throw new IllegalArgumentException("Argument 'reservation' in method save() cannot be null");
 
         logger.info("Method save() was called.");
+
+        if (!isRoomAvailable(reservation.getRoomName(), reservation.getStartTime(), reservation.getEndTime())) {
+            throw new ReservationException("Room is not available for the selected time.");
+        }
 
         ReservationEntity entity = new ReservationEntity(reservation.getRoomName(), reservation.getReservedBy(), reservation.getStartTime(), reservation.getEndTime());
         entity = repository.save(entity);
@@ -88,6 +93,14 @@ public class ReservationService {
         ReservationEntity entity = repository.findById(id).orElseThrow(() -> new ReservationException("There is no Reservation with id: " + id));
         repository.delete(entity);
         
+    }
+
+    public boolean isRoomAvailable(String roomName, LocalDateTime startTime, LocalDateTime endTime) {
+        List<ReservationEntity> overlappingReservations = repository
+                .findByRoomNameAndStartTimeLessThanEqualAndEndTimeGreaterThanEqual(
+                        roomName, endTime, startTime);
+
+        return overlappingReservations.isEmpty();
     }
 
 }
