@@ -7,5 +7,5 @@ TODO:
 - Integration Test - Rest RestClient with Mockito
 - Integration Test - Rest RestClient with Wiremock (Spring Boot Microservices Tutorial - Part 4 - Spring Cloud OpenFeign & Testing with Wiremock, https://www.youtube.com/watch?v=ViVB32BqOZg&list=PLSVW22jAG8pDeU80nDzbUgr8qqzEMppi8&index=9)
 - OpenAPI Integration - Integration many OpeAPI in one place ((https://www.youtube.com/watch?v=ViVB32BqOZg&list=PLSVW22jAG8pDeU80nDzbUgr8qqzEMppi8&index=9)
-- Cirkuit Braker for service: https://www.youtube.com/watch?v=Hw2KC7ecY_A&list=PLSVW22jAG8pDeU80nDzbUgr8qqzEMppi8
-- Cirkuit Braker for API Gateway: https://www.youtube.com/watch?v=Hw2KC7ecY_A&list=PLSVW22jAG8pDeU80nDzbUgr8qqzEMppi8
+- Cirkuit Braker for services: implement CB pattern between two services (https://www.youtube.com/watch?v=Hw2KC7ecY_A&list=PLSVW22jAG8pDeU80nDzbUgr8qqzEMppi8)
+- Cirkuit Braker for API Gateway: implement CB patterf for API Gateway (https://www.youtube.com/watch?v=Hw2KC7ecY_A&list=PLSVW22jAG8pDeU80nDzbUgr8qqzEMppi8)
