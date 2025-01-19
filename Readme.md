@@ -13,3 +13,5 @@ TODO:
 - Angular Keyloak security: secure Angular with Keyloack (https://www.youtube.com/watch?v=6ar-_3ZuOr0&list=PLSVW22jAG8pDeU80nDzbUgr8qqzEMppi8&index=12)
 - Angular + Spring Boot + Keyloak: secure Angular with Keyloak and pass token to secured Spring Boot (https://www.youtube.com/watch?v=6ar-_3ZuOr0&list=PLSVW22jAG8pDeU80nDzbUgr8qqzEMppi8&index=12)
 - Spring Boot 3 authomatic run: run Spring Boot 3 applications using "run.sh" file (https://github.com/sivaprasadreddy/spring-boot-3-observability-grafana-stack/blob/main/run.sh)
+- Spring Cloud + Kafka: use Kafka with microservices (https://www.youtube.com/watch?v=BObDQv_sCb4&list=PLSVW22jAG8pDeU80nDzbUgr8qqzEMppi8&index=11)
+- Spring Boot 3 + Email: sending email by Spring Boot (https://www.youtube.com/watch?v=BObDQv_sCb4&list=PLSVW22jAG8pDeU80nDzbUgr8qqzEMppi8&index=11)
