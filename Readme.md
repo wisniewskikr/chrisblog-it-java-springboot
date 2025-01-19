@@ -20,3 +20,4 @@ TODO:
 - Spring Boot 3 + Kafka + Test: how to test Kafka (https://www.youtube.com/watch?v=BObDQv_sCb4&list=PLSVW22jAG8pDeU80nDzbUgr8qqzEMppi8&index=11)
 - Spring Cloud + Grafana + Dashboard: how to create dashboard for Grafana (https://www.youtube.com/watch?v=ILOGEFkdfqU&list=PLSVW22jAG8pDeU80nDzbUgr8qqzEMppi8&index=12)
 - Spring Cloud + Grafana + Kafka: how trace Kafka in Grafana Tempo (https://www.youtube.com/watch?v=ILOGEFkdfqU&list=PLSVW22jAG8pDeU80nDzbUgr8qqzEMppi8&index=12)
+- Spring Boot 3 + Kecloac + export + authomatic import realm: how to export and authomatically import realm to Kickloak (https://www.youtube.com/watch?v=ILOGEFkdfqU&list=PLSVW22jAG8pDeU80nDzbUgr8qqzEMppi8&index=12)
