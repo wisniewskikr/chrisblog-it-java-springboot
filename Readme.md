@@ -17,3 +17,4 @@ TODO:
 - Spring Boot 3 + Email: sending email by Spring Boot (https://www.youtube.com/watch?v=BObDQv_sCb4&list=PLSVW22jAG8pDeU80nDzbUgr8qqzEMppi8&index=11)
 - Spring Boot 3 + Kafka + Kafka UI: UI for Kafka events (https://www.youtube.com/watch?v=BObDQv_sCb4&list=PLSVW22jAG8pDeU80nDzbUgr8qqzEMppi8&index=11)
 - Spring Boot 3 + Kafka + Schema Registry: central registry for classes used by producers and consumers (https://www.youtube.com/watch?v=BObDQv_sCb4&list=PLSVW22jAG8pDeU80nDzbUgr8qqzEMppi8&index=11)
+- Spring Boot 3 + Kafka + Test: how to test Kafka (https://www.youtube.com/watch?v=BObDQv_sCb4&list=PLSVW22jAG8pDeU80nDzbUgr8qqzEMppi8&index=11)
