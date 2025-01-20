@@ -22,3 +22,4 @@ TODO:
 - Spring Cloud + Grafana + Kafka: how trace Kafka in Grafana Tempo (https://www.youtube.com/watch?v=ILOGEFkdfqU&list=PLSVW22jAG8pDeU80nDzbUgr8qqzEMppi8&index=12)
 - Spring Boot 3 + Kecloac + export + authomatic import realm: how to export and authomatically import realm to Kickloak (https://www.youtube.com/watch?v=ILOGEFkdfqU&list=PLSVW22jAG8pDeU80nDzbUgr8qqzEMppi8&index=12)
 - Docker buildpacks: how to automatically create Docker images (https://www.youtube.com/watch?v=Ob6n2AlDqEA&list=PLSVW22jAG8pDeU80nDzbUgr8qqzEMppi8&index=13)
+- Kubernetes Kind: alternative for Minikube (https://www.youtube.com/watch?v=Ob6n2AlDqEA&list=PLSVW22jAG8pDeU80nDzbUgr8qqzEMppi8&index=13)
