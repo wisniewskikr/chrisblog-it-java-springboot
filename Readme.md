@@ -1,4 +1,12 @@
-TODO:
+TODO Short:
+- Add TODO Long about security
+- Microservices + Vault
+- Microservices + Prometheus + Dashboard
+- Microservices + Observability + Kind
+- Microservices Full
+- Microservices Chrisblog
+
+TODO Long:
 - Integration Test - restassure (Spring Boot Microservices Tutorial - Part 1 - Building Services)
 - Test Container - MongoDb (Spring Boot Microservices Tutorial - Part 1 - Building Services)
 - Test Container - MySql (Spring Boot Microservices Tutorial - Part 2 - Order Service)
