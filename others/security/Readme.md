@@ -1,3 +1,29 @@
+Types:
+- Mvc
+- Single Page Application (SPA)
+- Api
+
+Types:
+- client: many properties
+- server: only one property
+
+Grant Type:
+- Authorization Code
+- Client Credentials
+
+Code Flows:
+- Authorization Code Flow (oAuth Client)
+- PKCE Authorization Code Flow (SinglePage or Mobile) (oAuth Server, JOSE, Spring Security)
+- Client Credentials (Spring Security, oAuth Server Resource)
+
+JOSE - Javascript Object Signing and Encryption (Frameworks):
+- JWT: Json Web Tokens
+- JWS: Json Web Signature
+- JWE: Json Web Encryption
+- JWK: Json Web Key
+
+---
+
 Application types:
 - HTML
 	- Basic
