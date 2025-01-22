@@ -1,4 +1,6 @@
-TODO Short:
+##### TODO Short
+
+List:
 - Microservices + Observability + Kind
 - Spring Boot 3 + Kafka + Kafka UI
 - Mikroservices + Kafka + Kafka UI
@@ -17,7 +19,9 @@ TODO Short:
 - Spring Cloud + API REST + Keycloack
 - Spring Cloud + SPA Angular + Keycloack
 
-TODO Long:
+##### TODO Long:
+
+List:
 - Integration Test - restassure (Spring Boot Microservices Tutorial - Part 1 - Building Services)
 - Test Container - MongoDb (Spring Boot Microservices Tutorial - Part 1 - Building Services)
 - Test Container - MySql (Spring Boot Microservices Tutorial - Part 2 - Order Service)
@@ -45,3 +49,9 @@ TODO Long:
 - Security Keycloack + SPA: integraton SPA + Keycloack + with PKCE/without PKCE (https://www.youtube.com/watch?v=_0oXZKr97ro, https://www.youtube.com/watch?v=t9O99l4gjAc&t=1030s)
 - Security Keycloack + API: integraton API + Keycloack + single and multiple (https://www.youtube.com/watch?v=_0oXZKr97ro, https://www.youtube.com/watch?v=t9O99l4gjAc&t=1030s)
 - Microservices + Vault: integrate Spring Cloud + Server Config + Vault (check if Service Discovery is required or not)
+
+##### Inspirations
+
+List:
+- Microservices: https://www.youtube.com/playlist?list=PLSVW22jAG8pBnhAdq9S8BpLnZ0_jVBj0c
+- Kubernetes: https://www.youtube.com/@kubeskills/playlists
