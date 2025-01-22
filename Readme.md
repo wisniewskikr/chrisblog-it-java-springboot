@@ -1,5 +1,4 @@
 TODO Short:
-- Microservices + Prometheus + Dashboard
 - Microservices + Observability + Kind
 - Spring Boot 3 + Kafka + Kafka UI
 - Mikroservices + Kafka + Kafka UI
@@ -38,7 +37,6 @@ TODO Long:
 - Spring Boot 3 + Kafka + Kafka UI: UI for Kafka events (https://www.youtube.com/watch?v=BObDQv_sCb4&list=PLSVW22jAG8pDeU80nDzbUgr8qqzEMppi8&index=11)
 - Spring Boot 3 + Kafka + Schema Registry: central registry for classes used by producers and consumers (https://www.youtube.com/watch?v=BObDQv_sCb4&list=PLSVW22jAG8pDeU80nDzbUgr8qqzEMppi8&index=11)
 - Spring Boot 3 + Kafka + Test: how to test Kafka (https://www.youtube.com/watch?v=BObDQv_sCb4&list=PLSVW22jAG8pDeU80nDzbUgr8qqzEMppi8&index=11)
-- Spring Cloud + Grafana + Dashboard: how to create dashboard for Grafana (https://www.youtube.com/watch?v=ILOGEFkdfqU&list=PLSVW22jAG8pDeU80nDzbUgr8qqzEMppi8&index=12)
 - Spring Cloud + Grafana + Kafka: how trace Kafka in Grafana Tempo (https://www.youtube.com/watch?v=ILOGEFkdfqU&list=PLSVW22jAG8pDeU80nDzbUgr8qqzEMppi8&index=12)
 - Spring Boot 3 + Kecloac + export + authomatic import realm: how to export and authomatically import realm to Kickloak (https://www.youtube.com/watch?v=ILOGEFkdfqU&list=PLSVW22jAG8pDeU80nDzbUgr8qqzEMppi8&index=12)
 - Docker buildpacks: how to automatically create Docker images (https://www.youtube.com/watch?v=Ob6n2AlDqEA&list=PLSVW22jAG8pDeU80nDzbUgr8qqzEMppi8&index=13)
