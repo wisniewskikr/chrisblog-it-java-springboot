@@ -14,7 +14,7 @@ Usage steps:
    * Expected text **Hello World Stranger** in the console
 1. Clean up environment
     * Stop containers with `ctrl + C`
-    * Remove containers `docker-compose down`
+    * Remove containers `docker-compose.yaml down --rmi all`
 
 
 DESCRIPTION
