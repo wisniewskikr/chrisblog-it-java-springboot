@@ -6,7 +6,7 @@ USAGE
 > Please **clone/download** project, open **project's main folder** in your favorite **command line tool** and then **proceed with steps below**. 
 
 Usage steps:
-1. Build packages with `mvn clean package`
+1. Start **Docker** tool
 1. Start elements using Docker Compose with `docker-compose up --build`
 1. Send message with **http://localhost:8080/helloworld/name/{name}**. For instance: `http://localhost:8080/helloworld/name/Stranger`
    * Expected text **Done** in the browser
@@ -14,7 +14,8 @@ Usage steps:
    * Expected text **Hello World Stranger** in the console
 1. Clean up environment
     * Stop containers with `ctrl + C`
-    * Remove containers `docker-compose.yaml down --rmi all`
+    * Remove containers `docker-compose down --rmi all`
+    * Stop **Docker** tool
 
 
 DESCRIPTION
