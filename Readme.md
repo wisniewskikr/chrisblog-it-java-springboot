@@ -19,7 +19,7 @@ List:
 - Spring Cloud + API REST + Keycloack
 - Spring Cloud + SPA Angular + Keycloack
 
-##### TODO Long:
+##### TODO Long
 
 List:
 - Integration Test - restassure (Spring Boot Microservices Tutorial - Part 1 - Building Services)
