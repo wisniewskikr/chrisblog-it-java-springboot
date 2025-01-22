@@ -1,7 +1,6 @@
 ##### TODO Short
 
 List:
-- Microservices + Observability + Kind
 - Spring Boot 3 + Kafka + Kafka UI
 - Mikroservices + Kafka + Kafka UI
 - Microservices Full
