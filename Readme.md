@@ -1,9 +1,22 @@
 TODO Short:
-- Microservices + Vault
 - Microservices + Prometheus + Dashboard
 - Microservices + Observability + Kind
+- Spring Boot 3 + Kafka + Kafka UI
+- Mikroservices + Kafka + Kafka UI
 - Microservices Full
 - Microservices Chrisblog
+- Spring Boot 3 + UI MVC
+- Spring Boot 3 + API REST
+- Spring Boot 3 + SPA Angular
+- Spring Boot 3 + UI MVC + Keycloack
+- Spring Boot 3 + API REST + Keycloack
+- Spring Boot 3 + SPA Angular + Keycloack
+- Spring Cloud + UI MVC
+- Spring Cloud + API REST
+- Spring Cloud + SPA Angular
+- Spring Cloud + UI MVC + Keycloack
+- Spring Cloud + API REST + Keycloack
+- Spring Cloud + SPA Angular + Keycloack
 
 TODO Long:
 - Integration Test - restassure (Spring Boot Microservices Tutorial - Part 1 - Building Services)
@@ -33,3 +46,4 @@ TODO Long:
 - Security Keycloack + MVC: integraton MVC + Keycloack + with PKCE/without PKCE (https://www.youtube.com/watch?v=_0oXZKr97ro, https://www.youtube.com/watch?v=t9O99l4gjAc&t=1030s)
 - Security Keycloack + SPA: integraton SPA + Keycloack + with PKCE/without PKCE (https://www.youtube.com/watch?v=_0oXZKr97ro, https://www.youtube.com/watch?v=t9O99l4gjAc&t=1030s)
 - Security Keycloack + API: integraton API + Keycloack + single and multiple (https://www.youtube.com/watch?v=_0oXZKr97ro, https://www.youtube.com/watch?v=t9O99l4gjAc&t=1030s)
+- Microservices + Vault: integrate Spring Cloud + Server Config + Vault (check if Service Discovery is required or not)
