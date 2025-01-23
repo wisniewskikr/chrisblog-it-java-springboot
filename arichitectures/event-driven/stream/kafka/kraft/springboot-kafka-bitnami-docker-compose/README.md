@@ -56,14 +56,12 @@ USAGES
 ------
 
 This project can be tested in following configurations:
-* **Usage Docker Compose (Recommended)**: all services are started as Docker containers definied in a Docker Compose file.
-* **Usage Kubernetes (Kind) (Recommended)**: all services are started as Kubernetes pods.
-* **Usage Manual + Docker**: custom services are started manually from command line. Other services (like Sql Databases, NoSql Databases etc.) are started as Docker containers.
-* **Usage Docker**: all services are started as Docker containers.
+* **Usage Docker Compose**: all services are started as Docker containers definied in a Docker Compose file.
+* **Usage Kubernetes (Kind)**: all services are started as Kubernetes pods.
 
 
-USAGE DOCKER COMPOSE (RECOMMENDED)
-----------------------------------
+USAGE DOCKER COMPOSE
+--------------------
 
 > **Usage Docker Compse** means all services are started as Docker containers definied in Docker Compose file.
 
@@ -87,3 +85,52 @@ Usage steps:
 1. Clean up environment
     * Remove containers `docker-compose -f .\docker-compose\docker-compose.yml down --rmi all`
     * Stop **Docker** tool
+
+
+USAGE KUBERNETES (KIND)
+-----------------------
+
+> **Usage Kubernetes** means that all services are started as Kubernetes pods. 
+
+> Please **clone/download** project, open **project's main folder** in your favorite **command line tool** and then **proceed with steps below**.
+
+> **Prerequisites**:  
+* **Operating System** (tested on Windows 11)
+* **Git** (tested on version 2.33.0.windows.2)
+* **Kind** (tested on version 0.26.0)
+
+##### Required steps:
+1. Start **Docker** tool
+1. In the first command line tool **with administrator privileges** create and start cluster **Kind** with `kind create cluster --helloworld`
+1. In the second command line tool **start Kubernetes Pods** with `kubectl apply -f ./k8s`
+1. In the second command line tool **check status of Kubernetes Pods** with `kubectl get pods`
+   * Expected mysql, be and fe as **READY 1/1** (it can take few minutes)
+1. In the third command line tool **forward port of Producer service** with `kubectl port-forward service/producer 8080:8080`
+1. In the fourth command line tool**forward port of Kafka UI service** with `kubectl port-forward service/kafka-ui 8086:8086`
+1. In a browser visit `http://localhost:8080/helloworld/name/{name}` (f.e `http://localhost:8080/helloworld/name/Stranger`)
+   * Expected text **Done** in the browser
+1. In a browser visit `http://localhost:8086`
+   * Expected **dashboard** of Kafka UI (check section **EXAMPLE**)
+   * Fill **Cluster name** as **localhost**
+   * Fill **Host** as **kafka**
+   * Fill **Port** as **9092**
+1. Clean up environment 
+     * In the fourth command line tool **stop forwarding port of Kafka UI service** with `ctrl + C`
+     * In the third command line tool **stop forwarding port of Producer service** with `ctrl + C`
+     * In the second command line tool **remove Kubernetes Pods** with `kubectl delete -f ./k8s`
+     * In the first command line tool **with administrator privileges** delete cluster **Kind** with `kind delete cluster --name helloworld`
+     * Stop **Docker** tool
+
+##### Optional steps:
+1. In a command line tool build Docker Producer image with `docker build -f springcloud-springboot3-observability-grafana-stack_BE/Dockerfile -t wisniewskikr/springcloud-springboot3-observability-grafana-stack_be:0.0.1 ./springcloud-springboot3-observability-grafana-stack_BE`
+1. In a command line tool push Docker BE image to Docker Repository with `docker push wisniewskikr/springcloud-springboot3-observability-grafana-stack_be:0.0.1` 
+1. In a command line tool build Docker FE image with `docker build -f springcloud-springboot3-observability-grafana-stack_FE/Dockerfile -t wisniewskikr/springcloud-springboot3-observability-grafana-stack_fe:0.0.1 ./springcloud-springboot3-observability-grafana-stack_FE`
+1. In a command line tool push Docker FE image to Docker Repository with `docker push wisniewskikr/springcloud-springboot3-observability-grafana-stack_fe:0.0.1` 
+1. In the first command line tool with administrator privileges check clusers with `kind get clusters`
+1. In a command line tool check Kubernetes Deployments with `kubectl get deployments`
+1. In a command line tool check Kubernetes Deployments details with **kubectl describe deployment {deployment-name}**
+1. In a command line tool check Kubernetes Services with `kubectl get services`
+1. In a command line tool check Kubernetes Services details with **kubectl describe service {service-name}**
+1. In a command line tool check Kubernetes Pods with `kubectl get pods`
+1. In a command line tool check Kubernetes Pods details with **kubectl describe pod {pod-name}**
+1. In a command line tool check Kubernetes Pods logs with **kubectl logs {pod-name}**
