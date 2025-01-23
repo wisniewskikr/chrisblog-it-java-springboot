@@ -20,24 +20,21 @@ DESCRIPTION
 ##### Goal
 The goal of this project is to present how to use **Kafka** type **KRaft** for implementation of asynchronous communication between two applications created with usage **Java** programming language and **Spring Boot 3** framework. Additionally **Krafka UI** is used to present messages sent between these two applications.
 
-##### 
+##### Content
 This project consists of following applications:
 * **Producer**: sends events to Kafka broker
+   * **Input**: Http request with path variable **name** from any browser is received
+   * **Output**: Http response to any browser with message **Done** is sent
 * **Consumer**: receives events from Kafka broker
+   * **Input**: Http request from any browser is received
+   * **Output**: Http response to any browser with message **Message from Producer via Kafka is: Hello World {name}** is sent
 * **Kafka**: acts as an intermediary between the producer and the consumer
+   * **Input**: event from Producer is received
+   * **Output**: event to Consumer is sent
 * **Kafka UI**: displays events handled by Kafka broker
-
-##### Inputs
-This project requires following inputs:
-* **Producer**: handles http request from any browser
-* **Kafka UI**: handles http request from any browser
-
-##### Outputs
-This project provides following outputs:
-* **Producer**: sends http response to any browser
-  * Message **Done** is sent
-* **Kafka UI**: sends http responses to any browser
-  * Dashboard with Kafka events is sent
+   * **Input**: Http request from any browser is received
+   * **Output**: Http response to any browser with **dashboard of Kafka event`s** details is sent
+   
 
 ##### Terminology
 Terminology explanation:
@@ -77,9 +74,13 @@ USAGE DOCKER COMPOSE
 Usage steps:
 1. Start **Docker** tool
 1. In a command line tool **start Docker containers** with `docker-compose -f .\docker-compose\docker-compose.yml up -d --build`
-1. In a browser visit `http://localhost:8080/helloworld/name/{name}` (f.e `http://localhost:8080/helloworld/name/Stranger`)
+1. In a browser check **Consumer** and visit `http://localhost:9090`
+   * Expected text **Message from Producer via Kafka is: There is no message from Producer via Kafka yet** in the browser
+1. In a browser check **Procuder** and visit `http://localhost:8080/helloworld/name/{name}` (f.e `http://localhost:8080/helloworld/name/Stranger`)
    * Expected text **Done** in the browser
-1. In a browser visit `http://localhost:8086`
+1. In a browser check again **Consumer** and visit `http://localhost:9090`
+   * Expected text **Message from Producer via Kafka is: Hello World {name}** (e.g. **Message from Producer via Kafka is: Hello World Stranger**) in the browser
+1. In a browser check **Kafka UI** and visit `http://localhost:8086`
    * Expected **dashboard** of Kafka UI (check section **EXAMPLE**)
    * Fill **Cluster name** as **localhost**
    * Fill **Host** as **kafka**
