@@ -65,7 +65,7 @@ This project can be tested in following configurations:
 USAGE DOCKER COMPOSE (RECOMMENDED)
 ----------------------------------
 
-> **Usage Docker Compse** means all services are started as Docker containers definied in "docker-compose/with-custom-services/docker-compose.yaml" file.
+> **Usage Docker Compse** means all services are started as Docker containers definied in Docker Compose file.
 
 > Please **clone/download** project, open **project's main folder** in your favorite **command line tool** and then **proceed with steps below**.
 
@@ -76,12 +76,14 @@ USAGE DOCKER COMPOSE (RECOMMENDED)
 
 Usage steps:
 1. Start **Docker** tool
-1. In a command line tool **start Docker containers** with `docker-compose up --build`
+1. In a command line tool **start Docker containers** with `docker-compose -f .\docker-compose\docker-compose.yml up -d --build`
 1. In a browser visit `http://localhost:8080/helloworld/name/{name}` (f.e `http://localhost:8080/helloworld/name/Stranger`)
    * Expected text **Done** in the browser
 1. In a browser visit `http://localhost:8086`
    * Expected **dashboard** of Kafka UI (check section **EXAMPLE**)
+   * Fill **Cluster name** as **localhost**
+   * Fill **Host** as **kafka**
+   * Fill **Port** as **9092**
 1. Clean up environment
-    * Stop containers with `ctrl + C`
-    * Remove containers `docker-compose down --rmi all`
+    * Remove containers `docker-compose -f .\docker-compose\docker-compose.yml down --rmi all`
     * Stop **Docker** tool

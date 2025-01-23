@@ -41,7 +41,7 @@ services:
     image: producer
     container_name: producer
     build:
-      context: ./springboot-kafka-producer
+      context: ./../springboot-kafka-producer
       dockerfile: Dockerfile
     ports:
       - "8080:8080"
@@ -54,7 +54,7 @@ services:
     image: consumer
     container_name: consumer
     build:
-      context: ./springboot-kafka-consumer
+      context: ./../springboot-kafka-consumer
       dockerfile: Dockerfile
     ports:
       - "9090:9090"
