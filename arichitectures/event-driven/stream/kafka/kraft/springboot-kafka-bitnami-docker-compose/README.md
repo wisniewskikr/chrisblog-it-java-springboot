@@ -13,6 +13,10 @@ EXAMPLE
 
 ![My Image](readme-images/image-06.png)
 
+![My Image](readme-images/image-07.png)
+
+![My Image](readme-images/image-08.png)
+
 
 DESCRIPTION
 -----------
@@ -76,7 +80,7 @@ Usage steps:
 1. In a command line tool **start Docker containers** with `docker-compose -f .\docker-compose\docker-compose.yml up -d --build`
 1. In a browser check **Consumer** and visit `http://localhost:9090`
    * Expected text **Message from Producer via Kafka is: There is no message from Producer via Kafka yet** in the browser
-1. In a browser check **Procuder** and visit `http://localhost:8080/helloworld/name/{name}` (f.e `http://localhost:8080/helloworld/name/Stranger`)
+1. In a browser check **Procuder** and visit `http://localhost:8080/helloworld/name/{name}` (e.g. `http://localhost:8080/helloworld/name/Stranger`)
    * Expected text **Done** in the browser
 1. In a browser check again **Consumer** and visit `http://localhost:9090`
    * Expected text **Message from Producer via Kafka is: Hello World {name}** (e.g. **Message from Producer via Kafka is: Hello World Stranger**) in the browser
@@ -109,16 +113,22 @@ USAGE KUBERNETES (KIND)
 1. In the second command line tool **check status of Kubernetes Pods** with `kubectl get pods`
    * Expected mysql, be and fe as **READY 1/1** (it can take few minutes)
 1. In the third command line tool **forward port of Producer service** with `kubectl port-forward service/producer 8080:8080`
-1. In the fourth command line tool**forward port of Kafka UI service** with `kubectl port-forward service/kafka-ui 8086:8086`
-1. In a browser visit `http://localhost:8080/helloworld/name/{name}` (f.e `http://localhost:8080/helloworld/name/Stranger`)
+1. In the fourth command line tool **forward port of Consumer service** with `kubectl port-forward service/consumer 9090:9090`
+1. In the fifth command line tool**forward port of Kafka UI service** with `kubectl port-forward service/kafka-ui 8086:8086`
+1. In a browser check **Consumer** and visit `http://localhost:9090`
+   * Expected text **Message from Producer via Kafka is: There is no message from Producer via Kafka yet** in the browser
+1. In a browser check **Procuder** and visit `http://localhost:8080/helloworld/name/{name}` (e.g. `http://localhost:8080/helloworld/name/Stranger`)
    * Expected text **Done** in the browser
-1. In a browser visit `http://localhost:8086`
+1. In a browser check again **Consumer** and visit `http://localhost:9090`
+   * Expected text **Message from Producer via Kafka is: Hello World {name}** (e.g. **Message from Producer via Kafka is: Hello World Stranger**) in the browser
+1. In a browser check **Kafka UI** and visit `http://localhost:8086`
    * Expected **dashboard** of Kafka UI (check section **EXAMPLE**)
    * Fill **Cluster name** as **localhost**
    * Fill **Host** as **kafka**
    * Fill **Port** as **9092**
 1. Clean up environment 
-     * In the fourth command line tool **stop forwarding port of Kafka UI service** with `ctrl + C`
+     * In the fifth command line tool **stop forwarding port of Kafka UI service** with `ctrl + C`
+     * In the fourth command line tool **stop forwarding port of Consumer service** with `ctrl + C`
      * In the third command line tool **stop forwarding port of Producer service** with `ctrl + C`
      * In the second command line tool **remove Kubernetes Pods** with `kubectl delete -f ./k8s`
      * In the first command line tool **with administrator privileges** delete cluster **Kind** with `kind delete cluster --name helloworld`
