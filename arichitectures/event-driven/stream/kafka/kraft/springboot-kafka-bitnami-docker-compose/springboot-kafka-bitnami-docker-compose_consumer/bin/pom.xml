@@ -8,7 +8,7 @@
 		<version>2.3.4.RELEASE</version>		
 	</parent>
 	<groupId>com.example.app</groupId>
-	<artifactId>springboot-kafka-consumer</artifactId>
+	<artifactId>springboot-kafka-bitnami-docker-compose_consumer</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 
 	<properties>
