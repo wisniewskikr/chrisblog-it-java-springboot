@@ -3,7 +3,7 @@ version: '3'
 services:
 
   kafka:
-    image: bitnami/kafka:3.6
+    image: bitnami/kafka:3.9.0
     container_name: kafka
     ports:
       - 9092:9092
