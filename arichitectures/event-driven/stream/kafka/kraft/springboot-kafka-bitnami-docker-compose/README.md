@@ -12,61 +12,76 @@ EXAMPLE
 ![My Image](readme-images/image-05.png)
 
 
-USAGE
------
-
-> Please be aware that following tools should be installed on your local machine: **Java**, **Maven**, **Git** and **Docker**. Docker tool has to be **up and running**. 
-
-> Please **clone/download** project, open **project's main folder** in your favorite **command line tool** and then **proceed with steps below**. 
-
-Usage steps:
-1. Start **Docker** tool
-1. Start elements using Docker Compose with `docker-compose up --build`
-1. Send message with **http://localhost:8080/helloworld/name/{name}**. For instance: `http://localhost:8080/helloworld/name/Stranger`
-   * Expected text **Done** in the browser
-1. Read message by checking logs in Command Line tool. The application **Consumer** should display following message there: **Hello World {name}**. 
-   * Expected text **Hello World Stranger** in the console
-1. Clean up environment
-    * Stop containers with `ctrl + C`
-    * Remove containers `docker-compose down --rmi all`
-    * Stop **Docker** tool
-
-
 DESCRIPTION
 -----------
 
 ##### Goal
-The goal of this project is to show how to **send messages** from one **Java** application with **Spring Boot** framework (called **Producer**) to other (called **Consumer**) using **Apache Kafka** broker (type **Bitnami**) in **KRaft** mode. KRaft mode means that Apache Kafka doesn't user Zookeeper (Discovery Service) any more. All applications are on different Docker containers managed by **Docker Compose** tool.
+The goal of this project is to present how to use **Kafka** type **KRaft** for implementation of asynchronous communication between two applications created with usage **Java** programming language and **Spring Boot 3** framework. Additionally **Krafka UI** is used to present messages sent between these two applications.
 
-##### Details
-This project consists of:
-* **Apache Kafka server**: messages broker - tool which enable sending and receiving messages. This server is in KRaft mode what means that doesn't user Zookeeper (Discovery Service) any more
-* **Spring Boot Producer application**: application which sends messages to Apache Kafka. User's **name** is sent as parameter
-* **Spring Boot Consumer application**: application which receives messages from Apacke Kafka and displays it on Console. Following message is displayed: **Hello World + {name}**
+##### 
+This project consists of following applications:
+* **Producer**: sends events to Kafka broker
+* **Consumer**: receives events from Kafka broker
+* **Kafka**: acts as an intermediary between the producer and the consumer
+* **Kafka UI**: displays events handled by Kafka broker
 
-##### Launch
-To launch this application please make sure that the **Preconditions** are met and then follow instructions from **Usage** section.
+##### Inputs
+This project requires following inputs:
+* **Producer**: handles http request from any browser
+* **Kafka UI**: handles http request from any browser
 
-##### Technologies
-This application uses:
-* **Java**: `https://docs.google.com/document/d/119VYxF8JIZIUSk7JjwEPNX1RVjHBGbXHBKuK_1ytJg4/edit?usp=sharing`
-* **Maven**: `https://docs.google.com/document/d/1cfIMcqkWlobUfVfTLQp7ixqEcOtoTR8X6OGo3cU4maw/edit?usp=sharing`
-* **Git**: `https://docs.google.com/document/d/1Iyxy5DYfsrEZK5fxZJnYy5a1saARxd5LyMEscJKSHn0/edit?usp=sharing`
-* **Docker**: `https://docs.google.com/document/d/1tKdfZIrNhTNWjlWcqUkg4lteI91EhBvaj6VDrhpnCnk/edit?usp=sharing`
-* **Spring Boot** framework: `https://docs.google.com/document/d/1mvrJT5clbkr9yTj-AQ7YOXcqr2eHSEw2J8n9BMZIZKY/edit?usp=sharing`
-* **Docker Compose** tool: `https://docs.google.com/document/d/1SPrCS5OS_G0je_wmcLGrX8cFv7ZkQbb5uztNc9kElS4/edit?usp=sharing`
-* **Apache Kafka** tool: `https://docs.google.com/document/d/1pDBnFbpvo0mNaIgxLCV--3qUn-wf0vHZiTYRQL05Wes/edit?usp=sharing`
+##### Outputs
+This project provides following outputs:
+* **Producer**: sends http response to any browser
+  * Message **Done** is sent
+* **Kafka UI**: sends http responses to any browser
+  * Dashboard with Kafka events is sent
 
-PRECONDITIONS
--------------
+##### Terminology
+Terminology explanation:
+* **Git**: Git is a distributed version control system used to track changes in code, collaborate with others, and manage source code history efficiently.
+* **Java**: Java is a high-level, object-oriented programming language known for its platform independence, achieved through the Java Virtual Machine (JVM). It is widely used for developing web, mobile, desktop, and enterprise applications, emphasizing simplicity, security, and portability. "Write once, run anywhere" is its core principle.
+* **Maven**: Maven is a build automation and dependency management tool for Java projects, streamlining project builds, managing libraries, and ensuring consistent project configurations.
+* **Spring Boot**: Spring Boot is a framework for building Java-based applications that simplifies development by providing auto-configuration, embedded servers, and production-ready tools, enabling developers to create standalone, production-ready applications with minimal configuration.
+* **Kafka KRaft**: Kafka KRaft (Kafka Raft) is a mode of running Apache Kafka without the need for Apache ZooKeeper. It uses the Raft consensus algorithm for managing metadata and leader election, simplifying the architecture by removing ZooKeeper's dependency while maintaining Kafka's distributed, fault-tolerant capabilities. This mode enhances scalability and operational simplicity.
+* **Kafka UI**: Kafka UI is a web-based interface for managing and monitoring Apache Kafka clusters. It allows users to visualize topics, partitions, consumer groups, and messages, making it easier to interact with Kafka without using the command line.
+* **Asynchronous Communication**: Asynchronous communication is the exchange of information without requiring participants to be present or respond in real time, allowing for flexibility in timing (e.g., emails or messaging apps).
+* **Docker**: Docker is a platform that allows you to build, run, and manage applications in lightweight, portable containers. These containers package the application and its dependencies, ensuring consistency across development, testing, and production environments.
+* **Docker Compose**: Docker Compose is a tool for defining and running multi-container Docker applications using a simple YAML configuration file (docker-compose.yml). It allows you to specify services, networks, and volumes, enabling easy orchestration and management of containerized applications.
+* **Kubernetes**: Kubernetes is an open-source platform for automating the deployment, scaling, and management of containerized applications. It organizes containers into logical units called pods and helps ensure high availability, scalability, and efficient resource utilization.
+* **Kind**: Kubernetes Kind (Kubernetes IN Docker) is a tool for running Kubernetes clusters locally using Docker containers. It allows developers to easily create and manage multi-node Kubernetes clusters for testing and development purposes in a lightweight environment.
 
-##### Preconditions - Tools
-* Installed **Operating System** (tested on Windows 10)
-* Installed **Java** (tested on version 1.8.0_291)
-* Installed **Maven** (tested on version 3.8.5) 
-* Installed **Git** (tested on version 2.33.0.windows.2) 
-* Installed **Docker** (tested on version version 20.10.12) 
 
-##### Preconditions - Actions
-* Download **Source Code** (using Git or in any other way) 
-* Open any **Command Line** tool (for instance "Windonw PowerShell" on Windows OS) on downloaded **project's main folder**
+USAGES
+------
+
+This project can be tested in following configurations:
+* **Usage Docker Compose (Recommended)**: all services are started as Docker containers definied in a Docker Compose file.
+* **Usage Kubernetes (Kind) (Recommended)**: all services are started as Kubernetes pods.
+* **Usage Manual + Docker**: custom services are started manually from command line. Other services (like Sql Databases, NoSql Databases etc.) are started as Docker containers.
+* **Usage Docker**: all services are started as Docker containers.
+
+
+USAGE DOCKER COMPOSE (RECOMMENDED)
+----------------------------------
+
+> **Usage Docker Compse** means all services are started as Docker containers definied in "docker-compose/with-custom-services/docker-compose.yaml" file.
+
+> Please **clone/download** project, open **project's main folder** in your favorite **command line tool** and then **proceed with steps below**.
+
+> **Prerequisites**:  
+* **Operating System** (tested on Windows 11)
+* **Git** (tested on version 2.33.0.windows.2)
+* **Docker** (tested on version 4.33.1) 
+
+Usage steps:
+1. Start **Docker** tool
+1. In a command line tool **start Docker containers** with `docker-compose up --build`
+1. In a browser visit `http://localhost:8080/helloworld/name/{name}` (f.e `http://localhost:8080/helloworld/name/Stranger`)
+   * Expected text **Done** in the browser
+1. In a browser visit `http://localhost:8086`
+   * Expected **dashboard** of Kafka UI (check section **EXAMPLE**)
+1. Clean up environment
+    * Stop containers with `ctrl + C`
+    * Remove containers `docker-compose down --rmi all`
+    * Stop **Docker** tool
