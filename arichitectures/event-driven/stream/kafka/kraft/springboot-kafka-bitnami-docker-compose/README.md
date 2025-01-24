@@ -135,10 +135,10 @@ USAGE KUBERNETES (KIND)
      * Stop **Docker** tool
 
 ##### Optional steps:
-1. In a command line tool build Docker Producer image with `docker build -f springcloud-springboot3-observability-grafana-stack_BE/Dockerfile -t wisniewskikr/springcloud-springboot3-observability-grafana-stack_be:0.0.1 ./springcloud-springboot3-observability-grafana-stack_BE`
-1. In a command line tool push Docker BE image to Docker Repository with `docker push wisniewskikr/springcloud-springboot3-observability-grafana-stack_be:0.0.1` 
-1. In a command line tool build Docker FE image with `docker build -f springcloud-springboot3-observability-grafana-stack_FE/Dockerfile -t wisniewskikr/springcloud-springboot3-observability-grafana-stack_fe:0.0.1 ./springcloud-springboot3-observability-grafana-stack_FE`
-1. In a command line tool push Docker FE image to Docker Repository with `docker push wisniewskikr/springcloud-springboot3-observability-grafana-stack_fe:0.0.1` 
+1. In a command line tool build Docker Producer image with `docker build -f springboot-kafka-bitnami-docker-compose_producer/Dockerfile -t wisniewskikr/springboot-kafka-bitnami-docker-compose_producer:0.0.1 ./springboot-kafka-bitnami-docker-compose_producer`
+1. In a command line tool push Docker Procuder image to Docker Repository with `docker push wisniewskikr/springboot-kafka-bitnami-docker-compose_producer:0.0.1` 
+1. In a command line tool build Docker Consumer image with `docker build -f springboot-kafka-bitnami-docker-compose_consumer/Dockerfile -t wisniewskikr/springboot-kafka-bitnami-docker-compose_consumer:0.0.1 ./springboot-kafka-bitnami-docker-compose_consumer`
+1. In a command line tool push Docker Consumer image to Docker Repository with `docker push wisniewskikr/springboot-kafka-bitnami-docker-compose_consumer:0.0.1` 
 1. In the first command line tool with administrator privileges check clusers with `kind get clusters`
 1. In a command line tool check Kubernetes Deployments with `kubectl get deployments`
 1. In a command line tool check Kubernetes Deployments details with **kubectl describe deployment {deployment-name}**
