@@ -28,7 +28,7 @@ The goal of this project is to present how to use **Kafka** type **KRaft** for i
 This project consists of following applications:
 * **Producer**: sends events to Kafka broker
    * **Input**: Http request with path variable **name** from any browser is received
-   * **Output**: Http response to any browser with message **Done** is sent
+   * **Output**: Http response to any browser with message **The message was sent to Consumer via Kafka** is sent
 * **Consumer**: receives events from Kafka broker
    * **Input**: Http request from any browser is received
    * **Output**: Http response to any browser with message **Message from Producer via Kafka is: Hello World {name}** is sent
@@ -81,7 +81,7 @@ Usage steps:
 1. In a browser check **Consumer** and visit `http://localhost:9090`
    * Expected text **Message from Producer via Kafka is: There is no message from Producer via Kafka yet** in the browser
 1. In a browser check **Procuder** and visit `http://localhost:8080/helloworld/name/{name}` (e.g. `http://localhost:8080/helloworld/name/Stranger`)
-   * Expected text **Done** in the browser
+   * Expected text **The message was sent to Consumer via Kafka** in the browser
 1. In a browser check again **Consumer** and visit `http://localhost:9090`
    * Expected text **Message from Producer via Kafka is: Hello World {name}** (e.g. **Message from Producer via Kafka is: Hello World Stranger**) in the browser
 1. In a browser check **Kafka UI** and visit `http://localhost:8086`
@@ -118,7 +118,7 @@ USAGE KUBERNETES (KIND)
 1. In a browser check **Consumer** and visit `http://localhost:9090`
    * Expected text **Message from Producer via Kafka is: There is no message from Producer via Kafka yet** in the browser
 1. In a browser check **Procuder** and visit `http://localhost:8080/helloworld/name/{name}` (e.g. `http://localhost:8080/helloworld/name/Stranger`)
-   * Expected text **Done** in the browser
+   * Expected text **The message was sent to Consumer via Kafka** in the browser
 1. In a browser check again **Consumer** and visit `http://localhost:9090`
    * Expected text **Message from Producer via Kafka is: Hello World {name}** (e.g. **Message from Producer via Kafka is: Hello World Stranger**) in the browser
 1. In a browser check **Kafka UI** and visit `http://localhost:8086`

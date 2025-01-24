@@ -25,7 +25,7 @@ public class HelloWorldController {
 		
 		String message = "Hello World " + name;
 		kafkaTemplate.send(topicName, message);
-		return "Done";
+		return "The message was sent to Consumer via Kafka";
 		
 	}
 	
