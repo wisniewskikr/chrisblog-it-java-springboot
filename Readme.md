@@ -2,6 +2,7 @@
 
 List:
 - Spring Boot 3 + Kafka + Kafka UI
+- Docker buildpacks: how to automatically create Docker images (https://www.youtube.com/watch?v=Ob6n2AlDqEA&list=PLSVW22jAG8pDeU80nDzbUgr8qqzEMppi8&index=13)
 - Mikroservices + Kafka + Kafka UI
 - Microservices Full
 - Microservices Chrisblog
@@ -42,12 +43,13 @@ List:
 - Spring Boot 3 + Kafka + Test: how to test Kafka (https://www.youtube.com/watch?v=BObDQv_sCb4&list=PLSVW22jAG8pDeU80nDzbUgr8qqzEMppi8&index=11)
 - Spring Cloud + Grafana + Kafka: how trace Kafka in Grafana Tempo (https://www.youtube.com/watch?v=ILOGEFkdfqU&list=PLSVW22jAG8pDeU80nDzbUgr8qqzEMppi8&index=12)
 - Spring Boot 3 + Kecloac + export + authomatic import realm: how to export and authomatically import realm to Kickloak (https://www.youtube.com/watch?v=ILOGEFkdfqU&list=PLSVW22jAG8pDeU80nDzbUgr8qqzEMppi8&index=12)
-- Docker buildpacks: how to automatically create Docker images (https://www.youtube.com/watch?v=Ob6n2AlDqEA&list=PLSVW22jAG8pDeU80nDzbUgr8qqzEMppi8&index=13)
-- Kubernetes Kind: alternative for Minikube (https://www.youtube.com/watch?v=Ob6n2AlDqEA&list=PLSVW22jAG8pDeU80nDzbUgr8qqzEMppi8&index=13)
 - Security Keycloack + MVC: integraton MVC + Keycloack + with PKCE/without PKCE (https://www.youtube.com/watch?v=_0oXZKr97ro, https://www.youtube.com/watch?v=t9O99l4gjAc&t=1030s)
 - Security Keycloack + SPA: integraton SPA + Keycloack + with PKCE/without PKCE (https://www.youtube.com/watch?v=_0oXZKr97ro, https://www.youtube.com/watch?v=t9O99l4gjAc&t=1030s)
 - Security Keycloack + API: integraton API + Keycloack + single and multiple (https://www.youtube.com/watch?v=_0oXZKr97ro, https://www.youtube.com/watch?v=t9O99l4gjAc&t=1030s)
 - Microservices + Vault: integrate Spring Cloud + Server Config + Vault (check if Service Discovery is required or not)
+
+##### Done
+- Kubernetes Kind: alternative for Minikube (https://www.youtube.com/watch?v=Ob6n2AlDqEA&list=PLSVW22jAG8pDeU80nDzbUgr8qqzEMppi8&index=13)
 
 ##### Inspirations
 
