@@ -108,13 +108,13 @@ USAGE KUBERNETES (KIND)
 
 ##### Required steps:
 1. Start **Docker** tool
-1. In the first command line tool **with administrator privileges** create and start cluster **Kind** with `kind create cluster --helloworld`
-1. In the second command line tool **start Kubernetes Pods** with `kubectl apply -f ./k8s`
-1. In the second command line tool **check status of Kubernetes Pods** with `kubectl get pods`
+1. In the first command line tool create and start cluster **Kind** with `kind create cluster --name helloworld`
+1. In the first command line tool **start Kubernetes Pods** with `kubectl apply -f ./k8s --recursive`
+1. In the first command line tool **check status of Kubernetes Pods** with `kubectl get pods`
    * Expected mysql, be and fe as **READY 1/1** (it can take few minutes)
-1. In the third command line tool **forward port of Producer service** with `kubectl port-forward service/producer 8080:8080`
-1. In the fourth command line tool **forward port of Consumer service** with `kubectl port-forward service/consumer 9090:9090`
-1. In the fifth command line tool**forward port of Kafka UI service** with `kubectl port-forward service/kafka-ui 8086:8086`
+1. In the second command line tool **forward port of Producer service** with `kubectl port-forward service/producer 8080:8080`
+1. In the third command line tool **forward port of Consumer service** with `kubectl port-forward service/consumer 9090:9090`
+1. In the fourth command line tool**forward port of Kafka UI service** with `kubectl port-forward service/kafka-ui 8086:8086`
 1. In a browser check **Consumer** and visit `http://localhost:9090`
    * Expected text **Message from Producer via Kafka is: There is no message from Producer via Kafka yet** in the browser
 1. In a browser check **Procuder** and visit `http://localhost:8080/helloworld/name/{name}` (e.g. `http://localhost:8080/helloworld/name/Stranger`)
@@ -127,11 +127,11 @@ USAGE KUBERNETES (KIND)
    * Fill **Host** as **kafka**
    * Fill **Port** as **9092**
 1. Clean up environment 
-     * In the fifth command line tool **stop forwarding port of Kafka UI service** with `ctrl + C`
-     * In the fourth command line tool **stop forwarding port of Consumer service** with `ctrl + C`
-     * In the third command line tool **stop forwarding port of Producer service** with `ctrl + C`
-     * In the second command line tool **remove Kubernetes Pods** with `kubectl delete -f ./k8s`
-     * In the first command line tool **with administrator privileges** delete cluster **Kind** with `kind delete cluster --name helloworld`
+     * In the fourth command line tool **stop forwarding port of Kafka UI service** with `ctrl + C`
+     * In the third command line tool **stop forwarding port of Consumer service** with `ctrl + C`
+     * In the second command line tool **stop forwarding port of Producer service** with `ctrl + C`
+     * In the first command line tool **remove Kubernetes Pods** with `kubectl delete -f ./k8s --recursive`
+     * In the first command line tool delete cluster **Kind** with `kind delete cluster --name helloworld`
      * Stop **Docker** tool
 
 ##### Optional steps:
