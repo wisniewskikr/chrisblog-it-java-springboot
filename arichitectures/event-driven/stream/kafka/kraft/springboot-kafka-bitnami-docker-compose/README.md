@@ -77,7 +77,7 @@ USAGE DOCKER COMPOSE
 
 Usage steps:
 1. Start **Docker** tool
-1. In a command line tool **start Docker containers** with `docker-compose -f .\docker-compose\docker-compose-full.yml up -d --build`
+1. In a command line tool **start Docker containers** with `docker-compose -f .\docker-compose\docker-compose.yml up -d --build`
 1. In a browser check **Consumer** and visit `http://localhost:9090`
    * Expected text **Message from Producer via Kafka is: There is no message from Producer via Kafka yet** in the browser
 1. In a browser check **Procuder** and visit `http://localhost:8080/helloworld/name/{name}` (e.g. `http://localhost:8080/helloworld/name/Stranger`)
@@ -90,7 +90,7 @@ Usage steps:
    * Fill **Host** as **kafka**
    * Fill **Port** as **9092**
 1. Clean up environment
-    * Remove containers `docker-compose -f .\docker-compose\docker-compose-full.yml down --rmi all`
+    * Remove containers `docker-compose -f .\docker-compose\docker-compose.yml down --rmi all`
     * Stop **Docker** tool
 
 
