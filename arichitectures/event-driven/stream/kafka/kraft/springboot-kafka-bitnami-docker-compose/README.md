@@ -147,3 +147,10 @@ USAGE KUBERNETES (KIND)
 1. In a command line tool check Kubernetes Pods with `kubectl get pods`
 1. In a command line tool check Kubernetes Pods details with **kubectl describe pod {pod-name}**
 1. In a command line tool check Kubernetes Pods logs with **kubectl logs {pod-name}**
+
+
+INSPIRATIONS
+------------
+
+Inspirations:
+- https://github.com/rafaelmnatali/kafka-k8s/tree/main/confluent-local
