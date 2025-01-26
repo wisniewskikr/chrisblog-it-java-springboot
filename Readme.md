@@ -1,9 +1,6 @@
 ##### TODO Short
 
 List:
-- Spring Boot 3 + Kafka + Kafka UI
-- Docker buildpacks: how to automatically create Docker images (https://www.youtube.com/watch?v=Ob6n2AlDqEA&list=PLSVW22jAG8pDeU80nDzbUgr8qqzEMppi8&index=13)
-- Mikroservices + Kafka + Kafka UI
 - Microservices Full
 - Microservices Chrisblog
 - Spring Boot 3 + UI MVC
@@ -50,9 +47,12 @@ List:
 
 ##### Done
 - Kubernetes Kind: alternative for Minikube (https://www.youtube.com/watch?v=Ob6n2AlDqEA&list=PLSVW22jAG8pDeU80nDzbUgr8qqzEMppi8&index=13)
+- Spring Boot 3 + Kafka + Kafka UI
+- Docker buildpacks: how to automatically create Docker images (https://www.youtube.com/watch?v=Ob6n2AlDqEA&list=PLSVW22jAG8pDeU80nDzbUgr8qqzEMppi8&index=13)
 
 ##### Inspirations
 
 List:
 - Microservices: https://www.youtube.com/playlist?list=PLSVW22jAG8pBnhAdq9S8BpLnZ0_jVBj0c
 - Kubernetes: https://www.youtube.com/@kubeskills/playlists
+- Mikroservices + Kafka + Kafka UI
