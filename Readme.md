@@ -1,7 +1,6 @@
 ##### TODO Short
 
 List:
-- Mikroservices + Kafka + Kafka UI
 - Microservices Full
 - Microservices Chrisblog
 - Spring Boot 3 + UI MVC
@@ -56,3 +55,4 @@ List:
 List:
 - Microservices: https://www.youtube.com/playlist?list=PLSVW22jAG8pBnhAdq9S8BpLnZ0_jVBj0c
 - Kubernetes: https://www.youtube.com/@kubeskills/playlists
+- Mikroservices + Kafka + Kafka UI
