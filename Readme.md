@@ -2,6 +2,8 @@
 
 List:
 - Microservices Full
+- API Gateway + Configuration: without annotations
+- API Gateway + Problem with Spring Boot 3.4.2: resolve problem with this version
 - Microservices Chrisblog
 - Spring Boot 3 + UI MVC
 - Spring Boot 3 + API REST
