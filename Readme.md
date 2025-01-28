@@ -1,7 +1,6 @@
 ##### TODO Short
 
 List:
-- Microservices Full
 - API Gateway + Configuration: without annotations
 - API Gateway + Problem with Spring Boot 3.4.2: resolve problem with this version
 - Microservices Chrisblog
@@ -51,6 +50,7 @@ List:
 - Kubernetes Kind: alternative for Minikube (https://www.youtube.com/watch?v=Ob6n2AlDqEA&list=PLSVW22jAG8pDeU80nDzbUgr8qqzEMppi8&index=13)
 - Spring Boot 3 + Kafka + Kafka UI
 - Docker buildpacks: how to automatically create Docker images (https://www.youtube.com/watch?v=Ob6n2AlDqEA&list=PLSVW22jAG8pDeU80nDzbUgr8qqzEMppi8&index=13)
+- Microservices Full
 
 ##### Inspirations
 
