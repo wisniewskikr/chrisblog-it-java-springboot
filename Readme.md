@@ -21,8 +21,6 @@ List:
 - Integration Test - restassure (Spring Boot Microservices Tutorial - Part 1 - Building Services)
 - Test Container - MongoDb (Spring Boot Microservices Tutorial - Part 1 - Building Services)
 - Test Container - MySql (Spring Boot Microservices Tutorial - Part 2 - Order Service)
-- DB Migration - Flyway (Spring Boot Microservices Tutorial - Part 2 - Order Service)
-- DB Migration - Liquibase
 - Integration Test - Rest RestClient with Mockito
 - Integration Test - Rest RestClient with Wiremock (Spring Boot Microservices Tutorial - Part 4 - Spring Cloud OpenFeign & Testing with Wiremock, https://www.youtube.com/watch?v=ViVB32BqOZg&list=PLSVW22jAG8pDeU80nDzbUgr8qqzEMppi8&index=9)
 - OpenAPI Integration - Integration many OpeAPI in one place ((https://www.youtube.com/watch?v=ViVB32BqOZg&list=PLSVW22jAG8pDeU80nDzbUgr8qqzEMppi8&index=9)
@@ -51,6 +49,7 @@ List:
 - Microservices Full
 - API Gateway + Configuration: without annotations
 - API Gateway + Problem with Spring Boot 3.4.2: resolve problem with this version
+- DB Migration - Flyway (Spring Boot Microservices Tutorial - Part 2 - Order Service)
 
 ##### Inspirations
 
