@@ -1,0 +1,1 @@
+INSERT INTO HELLO_WORLDS (id, text) VALUES (1, 'Hello World!');
