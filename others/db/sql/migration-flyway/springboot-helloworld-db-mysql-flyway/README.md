@@ -2,10 +2,14 @@ USAGE
 -----
 
 Usage steps:
+1. Start Docker tool
+1. In a command line tool start MySql Docker container with `docker-compose -f .\docker-compose\docker-compose.yaml up -d --build`
 1. In command line tool start application with `mvn spring-boot:run`
 1. In Postman tool using GET method visit `http://localhost:8080`
-1. (Optional) Check database in console (url: "jdbc:h2:mem:db-embedded", user: "admin", password: "admin123") with `http://localhost:8080/console`
-1. Clean up environment with `ctrl + C`
+1. Clean up environment 
+    * Stop application with `ctrl + C`
+    * In a command line tool remove MySql Docker container with `docker-compose -f .\docker-compose\docker-compose.yaml down --rmi all`
+    * Stop Docker tool
 
 
 USAGE PRINTSCREENS
@@ -18,14 +22,13 @@ DESCRIPTION
 -----------
 
 ##### Goal
-The goal of this project is to present how to use database migration tool **Flyway** in **Java** application with usage **Spring Boot** framework and **embedded** database type **h2**.
+The goal of this project is to present how to use database migration tool **Flyway** in **Java** application with usage **Spring Boot** framework and database type **MySql**.
 
 ##### Terminology
 Terminology explanation:
 * **Java Spring Boot application**: application created in Java programming language with usage Spring Boot framework
 * **Flyway**: this tool enables automated database migration. This tool is used for versioning database changes. All database migration scrips are loaded before application is started
-* **H2**: relational database
-* **Embedded database**: it means that database is started together with application 
+* **MySql**: relational database
 
 ##### Flow
 The following flow takes place in this project:
