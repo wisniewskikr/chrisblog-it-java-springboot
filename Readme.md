@@ -2,6 +2,7 @@
 
 List:
 - Microservices Chrisblog
+- Config Server in files - example, full and chrisblog: https://www.youtube.com/watch?v=jdeSV0GRvwI
 - Spring Boot 3 + UI MVC
 - Spring Boot 3 + API REST
 - Spring Boot 3 + SPA Angular
