@@ -41,6 +41,7 @@ List:
 - Security Keycloack + SPA: integraton SPA + Keycloack + with PKCE/without PKCE (https://www.youtube.com/watch?v=_0oXZKr97ro, https://www.youtube.com/watch?v=t9O99l4gjAc&t=1030s)
 - Security Keycloack + API: integraton API + Keycloack + single and multiple (https://www.youtube.com/watch?v=_0oXZKr97ro, https://www.youtube.com/watch?v=t9O99l4gjAc&t=1030s)
 - Microservices + Vault: integrate Spring Cloud + Server Config + Vault (check if Service Discovery is required or not)
+- Annotation @EnableJpaAuditig: what is it (https://www.youtube.com/watch?v=jdeSV0GRvwI, 3:16:37)
 
 ##### Done
 - Kubernetes Kind: alternative for Minikube (https://www.youtube.com/watch?v=Ob6n2AlDqEA&list=PLSVW22jAG8pDeU80nDzbUgr8qqzEMppi8&index=13)
