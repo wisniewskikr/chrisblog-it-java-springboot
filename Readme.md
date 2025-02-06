@@ -43,6 +43,7 @@ List:
 - Microservices + Vault: integrate Spring Cloud + Server Config + Vault (check if Service Discovery is required or not)
 - Annotation @EnableJpaAuditig, @CreatedDate, @LastModifiedDate: what is it (https://www.youtube.com/watch?v=jdeSV0GRvwI, 4:18:59)
 - Kafka implementation: how to implement Kafka (https://www.youtube.com/watch?v=jdeSV0GRvwI, 3:53:24)
+- Annotation @Valid and @Validated: request validation (https://www.youtube.com/watch?v=jdeSV0GRvwI, 4:22:09)
 
 ##### Done
 - Kubernetes Kind: alternative for Minikube (https://www.youtube.com/watch?v=Ob6n2AlDqEA&list=PLSVW22jAG8pDeU80nDzbUgr8qqzEMppi8&index=13)
