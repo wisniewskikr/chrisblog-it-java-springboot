@@ -41,7 +41,7 @@ List:
 - Security Keycloack + SPA: integraton SPA + Keycloack + with PKCE/without PKCE (https://www.youtube.com/watch?v=_0oXZKr97ro, https://www.youtube.com/watch?v=t9O99l4gjAc&t=1030s)
 - Security Keycloack + API: integraton API + Keycloack + single and multiple (https://www.youtube.com/watch?v=_0oXZKr97ro, https://www.youtube.com/watch?v=t9O99l4gjAc&t=1030s)
 - Microservices + Vault: integrate Spring Cloud + Server Config + Vault (check if Service Discovery is required or not)
-- Annotation @EnableJpaAuditig: what is it (https://www.youtube.com/watch?v=jdeSV0GRvwI, 3:16:37)
+- Annotation @EnableJpaAuditig, @CreatedDate, @LastModifiedDate: what is it (https://www.youtube.com/watch?v=jdeSV0GRvwI, 4:18:59)
 - Kafka implementation: how to implement Kafka (https://www.youtube.com/watch?v=jdeSV0GRvwI, 3:53:24)
 
 ##### Done
