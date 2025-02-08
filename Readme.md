@@ -1,7 +1,6 @@
 ##### TODO Short
 
 List:
-- Config Server in files - example, full and chrisblog: https://www.youtube.com/watch?v=jdeSV0GRvwI
 - Spring Boot 3 + UI MVC
 - Spring Boot 3 + API REST
 - Spring Boot 3 + SPA Angular
@@ -54,6 +53,7 @@ List:
 - API Gateway + Problem with Spring Boot 3.4.2: resolve problem with this version
 - DB Migration - Flyway (Spring Boot Microservices Tutorial - Part 2 - Order Service)
 - Microservices Chrisblog
+- Config Server in files - example, full and chrisblog: https://www.youtube.com/watch?v=jdeSV0GRvwI
 
 ##### Inspirations
 
