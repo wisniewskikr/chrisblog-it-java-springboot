@@ -1,4 +1,4 @@
-package com.alibou.keycloak;
+package com.example.keycloak.config;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
@@ -7,6 +7,8 @@ import org.springframework.security.config.annotation.method.configuration.Enabl
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.web.SecurityFilterChain;
+
+import com.example.keycloak.converter.JwtAuthConverter;
 
 import static org.springframework.security.config.http.SessionCreationPolicy.STATELESS;
 

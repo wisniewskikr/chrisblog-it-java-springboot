@@ -1,4 +1,4 @@
-package com.alibou.keycloak;
+package com.example.keycloak;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

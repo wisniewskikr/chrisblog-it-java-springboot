@@ -1,4 +1,4 @@
-package com.alibou.keycloak;
+package com.example.keycloak.converter;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.convert.converter.Converter;
