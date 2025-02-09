@@ -1,7 +1,6 @@
 ##### TODO Short
 
 List:
-- Microservices Chrisblog
 - Spring Boot 3 + UI MVC
 - Spring Boot 3 + API REST
 - Spring Boot 3 + SPA Angular
@@ -21,8 +20,6 @@ List:
 - Integration Test - restassure (Spring Boot Microservices Tutorial - Part 1 - Building Services)
 - Test Container - MongoDb (Spring Boot Microservices Tutorial - Part 1 - Building Services)
 - Test Container - MySql (Spring Boot Microservices Tutorial - Part 2 - Order Service)
-- DB Migration - Flyway (Spring Boot Microservices Tutorial - Part 2 - Order Service)
-- DB Migration - Liquibase
 - Integration Test - Rest RestClient with Mockito
 - Integration Test - Rest RestClient with Wiremock (Spring Boot Microservices Tutorial - Part 4 - Spring Cloud OpenFeign & Testing with Wiremock, https://www.youtube.com/watch?v=ViVB32BqOZg&list=PLSVW22jAG8pDeU80nDzbUgr8qqzEMppi8&index=9)
 - OpenAPI Integration - Integration many OpeAPI in one place ((https://www.youtube.com/watch?v=ViVB32BqOZg&list=PLSVW22jAG8pDeU80nDzbUgr8qqzEMppi8&index=9)
@@ -43,6 +40,9 @@ List:
 - Security Keycloack + SPA: integraton SPA + Keycloack + with PKCE/without PKCE (https://www.youtube.com/watch?v=_0oXZKr97ro, https://www.youtube.com/watch?v=t9O99l4gjAc&t=1030s)
 - Security Keycloack + API: integraton API + Keycloack + single and multiple (https://www.youtube.com/watch?v=_0oXZKr97ro, https://www.youtube.com/watch?v=t9O99l4gjAc&t=1030s)
 - Microservices + Vault: integrate Spring Cloud + Server Config + Vault (check if Service Discovery is required or not)
+- Annotation @EnableJpaAuditig, @CreatedDate, @LastModifiedDate: what is it (https://www.youtube.com/watch?v=jdeSV0GRvwI, 4:18:59)
+- Kafka implementation: how to implement Kafka (https://www.youtube.com/watch?v=jdeSV0GRvwI, 3:53:24)
+- Annotation @Valid and @Validated: request validation (https://www.youtube.com/watch?v=jdeSV0GRvwI, 4:22:09)
 
 ##### Done
 - Kubernetes Kind: alternative for Minikube (https://www.youtube.com/watch?v=Ob6n2AlDqEA&list=PLSVW22jAG8pDeU80nDzbUgr8qqzEMppi8&index=13)
@@ -51,6 +51,9 @@ List:
 - Microservices Full
 - API Gateway + Configuration: without annotations
 - API Gateway + Problem with Spring Boot 3.4.2: resolve problem with this version
+- DB Migration - Flyway (Spring Boot Microservices Tutorial - Part 2 - Order Service)
+- Microservices Chrisblog
+- Config Server in files - example, full and chrisblog: https://www.youtube.com/watch?v=jdeSV0GRvwI
 
 ##### Inspirations
 
