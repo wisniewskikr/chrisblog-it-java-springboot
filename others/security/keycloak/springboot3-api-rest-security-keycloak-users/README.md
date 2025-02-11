@@ -91,11 +91,11 @@ USAGE KUBERNETES (KIND)
 ##### Required steps:
 1. Start **Docker** tool
 1. In the first command line tool create and start cluster **Kind** with `kind create cluster --name helloworld`
-1. In the second command line tool **start Kubernetes Pods** with `kubectl apply -f ./k8s --recursive`
+1. In the second command line tool **start Kubernetes Pods** with `kubectl apply -f kubernetes.yaml`
 1. In the second command line tool **check status of Kubernetes Pods** with `kubectl get pods`
    * Expected mysql, be and fe as **READY 1/1** (it can take few minutes)
 1. In the second command line tool **forward port of Keycloak service** with `kubectl port-forward service/keycloak 9090:9090`
-1. In the third command line tool **forward port of REST API service** with `kubectl port-forward service/rest-api 8080:8080`
+1. In the third command line tool **forward port of REST API service** with `kubectl port-forward service/app 8080:8080`
 1. In a browser visit **Keycloak** console with `http://localhost:9090`
    * Use credentials admin/admin and configure Realm, Client and User (please check section **Keycloak Configuration**)
 1. In a browser visit **Keycloack** JWT generator with `http://localhost:9090/realms/helloworld-realm/protocol/openid-connect/token`
@@ -110,7 +110,7 @@ USAGE KUBERNETES (KIND)
 1. Clean up environment 
      * In the third command line tool **stop forwarding port of REST API service** with `ctrl + C`
      * In the second command line tool **stop forwarding port of Keycloak service** with `ctrl + C`
-     * In the second command line tool **remove Kubernetes Pods** with `kubectl delete -f ./k8s --recursive`
+     * In the second command line tool **remove Kubernetes Pods** with `kubectl delete -f kubernetes.yaml`
      * In the first command line tool delete cluster **Kind** with `kind delete cluster --name helloworld`
      * Stop **Docker** tool
 
