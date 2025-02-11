@@ -115,16 +115,8 @@ USAGE KUBERNETES (KIND)
      * Stop **Docker** tool
 
 ##### Optional steps:
-1. In a command line tool build Docker BE image with `docker build -f springcloud-springboot3-full_BE/Dockerfile -t wisniewskikr/springcloud-springboot3-full_be:0.0.1 ./springcloud-springboot3-full_BE`
-1. In a command line tool push Docker BE image to Docker Repository with `docker push wisniewskikr/springcloud-springboot3-full_be:0.0.1` 
-1. In a command line tool build Docker FE image with `docker build -f springcloud-springboot3-full_FE/Dockerfile -t wisniewskikr/springcloud-springboot3-full_fe:0.0.1 ./springcloud-springboot3-full_FE`
-1. In a command line tool push Docker FE image to Docker Repository with `docker push wisniewskikr/springcloud-springboot3-full_fe:0.0.1` 
-1. In a command line tool build Docker GATEWAY image with `docker build -f springcloud-springboot3-full_GATEWAY/Dockerfile -t wisniewskikr/springcloud-springboot3-full_gateway:0.0.1 ./springcloud-springboot3-full_GATEWAY`
-1. In a command line tool push Docker GATEWAY image to Docker Repository with `docker push wisniewskikr/springcloud-springboot3-full_gateway:0.0.1`
-1. In a command line tool build Docker DISCOVERY image with `docker build -f springcloud-springboot3-full_DISCOVERY/Dockerfile -t wisniewskikr/springcloud-springboot3-full_discovery:0.0.1 ./springcloud-springboot3-full_DISCOVERY`
-1. In a command line tool push Docker DISCOVERY image to Docker Repository with `docker push wisniewskikr/springcloud-springboot3-full_discovery:0.0.1`  
-1. In a command line tool build Docker CONFIG image with `docker build -f springcloud-springboot3-full_CONFIG/Dockerfile -t wisniewskikr/springcloud-springboot3-full_config:0.0.1 ./springcloud-springboot3-full_CONFIG`
-1. In a command line tool push Docker CONFIG image to Docker Repository with `docker push wisniewskikr/springcloud-springboot3-full_config:0.0.1` 
+1. In a command line tool build Docker REST API image with `docker build -t wisniewskikr/springboot3-api-rest-security-keycloak-user:0.0.1-SNAPSHOT .`
+1. In a command line tool push Docker REST API image to Docker Repository with `docker push wisniewskikr/springboot3-api-rest-security-keycloak-user:0.0.1-SNAPSHOT` 
 1. In the first command line tool with administrator privileges check clusers with `kind get clusters`
 1. In a command line tool check Kubernetes Deployments with `kubectl get deployments`
 1. In a command line tool check Kubernetes Deployments details with **kubectl describe deployment {deployment-name}**
