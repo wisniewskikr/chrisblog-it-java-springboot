@@ -85,6 +85,7 @@ USAGE KUBERNETES (KIND)
 > **Prerequisites**:  
 * **Operating System** (tested on Windows 11)
 * **Git** (tested on version 2.33.0.windows.2)
+* **Docker** (tested on version 4.33.1)
 * **Kind** (tested on version 0.26.0)
 
 ##### Required steps:
@@ -93,19 +94,22 @@ USAGE KUBERNETES (KIND)
 1. In the second command line tool **start Kubernetes Pods** with `kubectl apply -f ./k8s --recursive`
 1. In the second command line tool **check status of Kubernetes Pods** with `kubectl get pods`
    * Expected mysql, be and fe as **READY 1/1** (it can take few minutes)
-1. In the second command line tool **forward port of Discovery service** with `kubectl port-forward service/discovery 8761:8761`
-1. In the third command line tool **forward port of Gateway service** with `kubectl port-forward service/gateway 8762:8762`
-1. In the fourth command line tool**forward port of Grafana service** with `kubectl port-forward service/grafana 3000:3000`
-1. In a browser visit `http://localhost:8761`
-   * Expected HTML page with **Discovery dashboard**
-1. In a browser visit `http://localhost:8762`
-   * Expected HTML page with **Database Message**, **Back-End Port** and **Front-End Port** 
-1. In a browser visit `http://localhost:3000`
-   * Expected HTML page with **Grafana dashboard** (please check section **EXAMPLE**).
+1. In the second command line tool **forward port of Keycloak service** with `kubectl port-forward service/keycloak 9090:9090`
+1. In the third command line tool **forward port of REST API service** with `kubectl port-forward service/rest-api 8080:8080`
+1. In a browser visit **Keycloak** console with `http://localhost:9090`
+   * Use credentials admin/admin and configure Realm, Client and User (please check section **Keycloak Configuration**)
+1. In a browser visit **Keycloack** JWT generator with `http://localhost:9090/realms/helloworld-realm/protocol/openid-connect/token`
+   * Method: **POST**
+   * client_id: **helloworld_client**
+   * username: **user**
+   * password: **user**
+   * Expected JWT token
+1. In a browser visit **REST API** application with `http://localhost:8080`
+   * Bearer Token: JWT token
+   * Expected "Hello World!" message
 1. Clean up environment 
-     * In the fourth command line tool **stop forwarding port of Grafana service** with `ctrl + C`
-     * In the third command line tool **stop forwarding port of Gateway service** with `ctrl + C`
-     * In the second command line tool **stop forwarding port of Discovery service** with `ctrl + C`
+     * In the third command line tool **stop forwarding port of REST API service** with `ctrl + C`
+     * In the second command line tool **stop forwarding port of Keycloak service** with `ctrl + C`
      * In the second command line tool **remove Kubernetes Pods** with `kubectl delete -f ./k8s --recursive`
      * In the first command line tool delete cluster **Kind** with `kind delete cluster --name helloworld`
      * Stop **Docker** tool
