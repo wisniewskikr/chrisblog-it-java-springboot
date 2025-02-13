@@ -62,6 +62,9 @@ spec:
       containers:
         - name: app
           image: wisniewskikr/springboot3-api-rest-security-keycloak-user:0.0.1-SNAPSHOT
+          env:
+            - name: spring.security.oauth2.resourceserver.jwt.issuer-uri
+              value: http://keycloak:9090/realms/helloworld-realm
           ports:
             - containerPort: 8080
 ---
