@@ -14,6 +14,8 @@ services:
   app:
     container_name: app
     image: app
+    environment:
+      spring.security.oauth2.resourceserver.jwt.issuer-uri: http://keycloak:9090/realms/helloworld-realm
     build:
       context: ./
       dockerfile: Dockerfile
