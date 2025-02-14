@@ -16,7 +16,7 @@ DESCRIPTION
 -----------
 
 ##### Goal
-The goal of this project is to present how to implement **security** in **REST API** application using **Keycloak** tool with usage **Java** programming language and **Spring Boot 3** framework. This application handles only users, without any roles. It means that if user exists in Keycloak then he/she has access to aplication - otherwise not.
+The goal of this project is to present how to implement **security** in **REST API** application using **Keycloak** tool with usage **Java** programming language and **Spring Boot 3** framework. This application handles users with roles. It means that only user with special roles has access to specific resources.
 
 ##### Elements
 This project consists of following elements:
@@ -58,15 +58,26 @@ USAGE DOCKER COMPOSE
 1. In a command line tool **start Docker containers** with `docker-compose up -d --build`
 1. In a browser visit **Keycloak** console with `http://localhost:9090`
    * Use credentials admin/admin and configure Realm, Client and User (please check section **Keycloak Configuration**)
+1. In any Rest Client (e.g. Postman) visit **REST API** application with `http://localhost:8080/api/v1/demo`
+   * Expected "Hello World!" message
 1. In a browser visit **Keycloack** JWT generator with `http://localhost:9090/realms/helloworld-realm/protocol/openid-connect/token`
    * Method: **POST**
    * client_id: **helloworld_client**
    * username: **user**
    * password: **user**
    * Expected JWT token
-1. In a browser visit **REST API** application with `http://localhost:8080`
+1. In any Rest Client (e.g. Postman) visit **REST API** application with `http://localhost:8080/api/v1/demo/user`
    * Bearer Token: JWT token
-   * Expected "Hello World!" message
+   * Expected "Hello World, User!" message
+1. In a browser visit **Keycloack** JWT generator with `http://localhost:9090/realms/helloworld-realm/protocol/openid-connect/token`
+   * Method: **POST**
+   * client_id: **helloworld_client**
+   * username: **admin**
+   * password: **admin**
+   * Expected JWT token
+1. In any Rest Client (e.g. Postman) visit **REST API** application with `http://localhost:8080/api/v1/demo/admin`
+   * Bearer Token: JWT token
+   * Expected "Hello World, Admin!" message
 1. Clean up environment 
      * In a command line tool **remove Docker containers** with `docker-compose down --rmi all`
      * Stop **Docker** tool
@@ -104,15 +115,26 @@ USAGE KUBERNETES (KIND)
 1. In the third command line tool **forward port of REST API service** with `kubectl port-forward service/app 8080:8080`
 1. In a browser visit **Keycloak** console with `http://localhost:9090`
    * Use credentials admin/admin and configure Realm, Client and User (please check section **Keycloak Configuration**)
+1. In any Rest Client (e.g. Postman) visit **REST API** application with `http://localhost:8080/api/v1/demo`
+   * Expected "Hello World!" message
 1. In a browser visit **Keycloack** JWT generator with `http://localhost:9090/realms/helloworld-realm/protocol/openid-connect/token`
    * Method: **POST**
    * client_id: **helloworld_client**
    * username: **user**
    * password: **user**
    * Expected JWT token
-1. In a browser visit **REST API** application with `http://localhost:8080`
+1. In any Rest Client (e.g. Postman) visit **REST API** application with `http://localhost:8080/api/v1/demo/user`
    * Bearer Token: JWT token
-   * Expected "Hello World!" message
+   * Expected "Hello World, User!" message
+1. In a browser visit **Keycloack** JWT generator with `http://localhost:9090/realms/helloworld-realm/protocol/openid-connect/token`
+   * Method: **POST**
+   * client_id: **helloworld_client**
+   * username: **admin**
+   * password: **admin**
+   * Expected JWT token
+1. In any Rest Client (e.g. Postman) visit **REST API** application with `http://localhost:8080/api/v1/demo/admin`
+   * Bearer Token: JWT token
+   * Expected "Hello World, Admin!" message
 1. Clean up environment 
      * In the third command line tool **stop forwarding port of REST API service** with `ctrl + C`
      * In the second command line tool **stop forwarding port of Keycloak service** with `ctrl + C`
