@@ -11,13 +11,13 @@ services:
     command:
       - "start-dev"
 
-  # app:
-  #   container_name: app
-  #   image: app
-  #   environment:
-  #     spring.security.oauth2.resourceserver.jwt.issuer-uri: http://keycloak:9090/realms/helloworld-realm
-  #   build:
-  #     context: ./
-  #     dockerfile: Dockerfile
-  #   ports:
-  #     - "8080:8080"
+  app:
+    container_name: app
+    image: app
+    environment:
+      spring.security.oauth2.resourceserver.jwt.issuer-uri: http://keycloak:9090/realms/helloworld-realm
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
