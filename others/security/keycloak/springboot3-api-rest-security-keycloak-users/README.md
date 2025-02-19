@@ -58,7 +58,7 @@ USAGE DOCKER COMPOSE
    * username: **user**
    * password: **user**
    * Expected JWT token
-1. In a browser visit **REST API** application with `http://localhost:8080`
+1. In a browser visit **REST API** application with `http://localhost:8080/api/v1/demo`
    * Bearer Token: JWT token
    * Expected "Hello World!" message
 1. Clean up environment 
@@ -94,8 +94,8 @@ USAGE KUBERNETES (KIND)
 1. In the second command line tool **start Kubernetes Pods** with `kubectl apply -f kubernetes.yaml`
 1. In the second command line tool **check status of Kubernetes Pods** with `kubectl get pods`
    * Expected mysql, be and fe as **READY 1/1** (it can take few minutes)
-1. In the second command line tool **forward port of Keycloak service** with `kubectl port-forward service/keycloak 9090:9090`
-1. In the third command line tool **forward port of REST API service** with `kubectl port-forward service/app 8080:8080`
+1. In the second command line tool **forward port of Keycloak service** with `kubectl port-forward service/keycloak 8080:8080`
+1. In the third command line tool **forward port of REST API service** with `kubectl port-forward service/app 9090:9090`
 1. In a browser visit **Keycloak** console with `http://localhost:9090`
    * Use credentials admin/admin and configure Realm, Client and User (please check section **Keycloak Configuration**)
 1. In a browser visit **Keycloack** JWT generator with `http://localhost:9090/realms/helloworld-realm/protocol/openid-connect/token`
