@@ -5,6 +5,8 @@ EXAMPLE
 
 ![My Image](readme-images/image-02.png)
 
+![My Image](readme-images/image-03.png)
+
 
 DESCRIPTION
 -----------
@@ -14,7 +16,9 @@ The goal of this project is to present how to implement **security** in **REST A
 
 ##### Elements
 This project consists of following elements:
-* **Rest API**: secured Rest API application which returns "Hello World!" message 
+* **Rest API**: Rest API application which returns
+   * Not secured "Hello World!" message
+   * Secured "Hello World, User!" message 
 * **Keycloak**: IAM tool for user management and entrypoint for JWT
 
 ##### Terminology
@@ -50,17 +54,19 @@ USAGE DOCKER COMPOSE
 ##### Required steps:
 1. Start **Docker** tool
 1. In a command line tool **start Docker containers** with `docker-compose up -d --build`
-1. In a browser visit **Keycloak** console with `http://localhost:9090`
+1. In a browser visit **Keycloak** console with `http://localhost:8080`
    * Use credentials admin/admin and configure Realm, Client and User (please check section **Keycloak Configuration**)
-1. In a browser visit **Keycloack** JWT generator with `http://localhost:9090/realms/helloworld-realm/protocol/openid-connect/token`
+1. In any REST Client (e.g. Postman) visit **REST API** application with `http://localhost:9090/api/v1/demo`
+   * Expected "Hello World!" message
+1. In any REST Client (e.g. Postman) visit **Keycloack** JWT generator with `http://localhost:8080/realms/helloworld-realm/protocol/openid-connect/token`
    * Method: **POST**
    * client_id: **helloworld_client**
    * username: **user**
    * password: **user**
    * Expected JWT token
-1. In a browser visit **REST API** application with `http://localhost:8080/api/v1/demo`
+1. In any REST Client (e.g. Postman) visit **REST API** application with `http://localhost:9090/api/v1/demo/user`
    * Bearer Token: JWT token
-   * Expected "Hello World!" message
+   * Expected "Hello World, User!" message
 1. Clean up environment 
      * In a command line tool **remove Docker containers** with `docker-compose down --rmi all`
      * Stop **Docker** tool
