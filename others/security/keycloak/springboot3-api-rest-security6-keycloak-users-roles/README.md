@@ -143,8 +143,8 @@ USAGE KUBERNETES (KIND) - WIP
      * Stop **Docker** tool
 
 ##### Optional steps:
-1. In a command line tool build Docker REST API image with `docker build -t wisniewskikr/springboot3-api-rest-security-keycloak-user:0.0.1-SNAPSHOT .`
-1. In a command line tool push Docker REST API image to Docker Repository with `docker push wisniewskikr/springboot3-api-rest-security-keycloak-user:0.0.1-SNAPSHOT` 
+1. In a command line tool build Docker REST API image with `docker build -t wisniewskikr/springboot3-api-rest-security6-keycloak-user-roles:0.0.1-SNAPSHOT .`
+1. In a command line tool push Docker REST API image to Docker Repository with `docker push wisniewskikr/springboot3-api-rest-security6-keycloak-user-roles:0.0.1-SNAPSHOT` 
 1. In the first command line tool with administrator privileges check clusers with `kind get clusters`
 1. In a command line tool check Kubernetes Deployments with `kubectl get deployments`
 1. In a command line tool check Kubernetes Deployments details with **kubectl describe deployment {deployment-name}**
