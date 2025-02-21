@@ -92,8 +92,8 @@ USAGE DOCKER COMPOSE
 1. In a command line tool check FE container logs with `docker logs fe-container`
 
 
-USAGE KUBERNETES (KIND)
----------------------------
+USAGE KUBERNETES (KIND) - WIP
+-----------------------------
 
 > **Usage Kubernetes** means that all services are started as Kubernetes pods. 
 
@@ -113,26 +113,26 @@ USAGE KUBERNETES (KIND)
    * Expected mysql, be and fe as **READY 1/1** (it can take few minutes)
 1. In the second command line tool **forward port of Keycloak service** with `kubectl port-forward service/keycloak 9090:9090`
 1. In the third command line tool **forward port of REST API service** with `kubectl port-forward service/app 8080:8080`
-1. In a browser visit **Keycloak** console with `http://localhost:9090`
+1. In a browser visit **Keycloak** console with `http://localhost:8080`
    * Use credentials admin/admin and configure Realm, Client and User (please check section **Keycloak Configuration**)
-1. In any Rest Client (e.g. Postman) visit **REST API** application with `http://localhost:8080/api/v1/demo`
+1. In any Rest Client (e.g. Postman) visit **REST API** application with `http://localhost:9090/api/v1/demo`
    * Expected "Hello World!" message
-1. In a browser visit **Keycloack** JWT generator with `http://localhost:9090/realms/helloworld-realm/protocol/openid-connect/token`
+1. In a browser visit **Keycloack** JWT generator with `http://localhost:8080/realms/helloworld-realm/protocol/openid-connect/token`
    * Method: **POST**
    * client_id: **helloworld_client**
    * username: **user**
    * password: **user**
    * Expected JWT token
-1. In any Rest Client (e.g. Postman) visit **REST API** application with `http://localhost:8080/api/v1/demo/user`
+1. In any Rest Client (e.g. Postman) visit **REST API** application with `http://localhost:9090/api/v1/demo/user`
    * Bearer Token: JWT token
    * Expected "Hello World, User!" message
-1. In a browser visit **Keycloack** JWT generator with `http://localhost:9090/realms/helloworld-realm/protocol/openid-connect/token`
+1. In a browser visit **Keycloack** JWT generator with `http://localhost:8090/realms/helloworld-realm/protocol/openid-connect/token`
    * Method: **POST**
    * client_id: **helloworld_client**
    * username: **admin**
    * password: **admin**
    * Expected JWT token
-1. In any Rest Client (e.g. Postman) visit **REST API** application with `http://localhost:8080/api/v1/demo/admin`
+1. In any Rest Client (e.g. Postman) visit **REST API** application with `http://localhost:9090/api/v1/demo/admin`
    * Bearer Token: JWT token
    * Expected "Hello World, Admin!" message
 1. Clean up environment 
