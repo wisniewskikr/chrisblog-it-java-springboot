@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.alibou</groupId>
-	<artifactId>springboot3-api-rest-security-keycloak-users</artifactId>
+	<artifactId>springboot3-api-rest-security-keycloak26-users</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>keycloak</name>
 	<properties>
