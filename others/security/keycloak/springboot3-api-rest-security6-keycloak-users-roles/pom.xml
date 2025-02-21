@@ -5,15 +5,15 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>3.0.6</version>
+		<version>3.4.3</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.alibou</groupId>
-	<artifactId>springboot3-api-rest-security-keycloak-users-roles</artifactId>
+	<artifactId>springboot3-api-rest-security6-keycloak-users-roles</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>keycloak</name>
 	<properties>
-		<java.version>17</java.version>
+		<java.version>23</java.version>
 	</properties>
 	<dependencies>
 		<dependency>
