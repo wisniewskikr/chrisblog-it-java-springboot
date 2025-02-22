@@ -20,7 +20,7 @@ public class DemoController {
 
     @GetMapping("/admin")
     public String helloAdmin() {
-        return "Hello World, User!";
+        return "Hello World, Admin!";
     }
 
 }
