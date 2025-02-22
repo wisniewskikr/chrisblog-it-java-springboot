@@ -1,5 +1,5 @@
-EXAMPLE
--------
+EXAMPLE BEARER TOKEN
+---------------------
 
 ![My Image](readme-images/image-01.png)
 
@@ -12,15 +12,34 @@ EXAMPLE
 ![My Image](readme-images/image-05.png)
 
 
+EXAMPLE OAUTH 2.0
+-----------------
+
+![My Image](readme-images/image-06.png)
+
+![My Image](readme-images/image-07.png)
+
+![My Image](readme-images/image-08.png)
+
+![My Image](readme-images/image-09.png)
+
+![My Image](readme-images/image-10.png)
+
+![My Image](readme-images/image-11.png)
+
+
 DESCRIPTION
 -----------
 
 ##### Goal
-The goal of this project is to present how to implement **security** in **REST API** application using **Keycloak** tool with usage **Java** programming language and **Spring Boot 3** framework. This application handles users with roles. It means that only user with special roles has access to specific resources.
+The goal of this project is to present how to implement **security** in **REST API** application using **Keycloak** tool with usage **Java** programming language and **Spring Boot 3** framework. This application is used as **resource server** (verifies JWT tokens) and for authentication uses **password credentials** (requires user with name and password). Additionally resources are available only for users in specific **roles**.
 
 ##### Elements
 This project consists of following elements:
-* **Rest API**: secured Rest API application which returns "Hello World!" message 
+* **Rest API**: Rest API application which returns
+   * Not secured "Hello World!" message
+   * Secured "Hello World, User!" message
+   * Secured "Hello World, Admin!" message  
 * **Keycloak**: IAM tool for user management and entrypoint for JWT
 
 ##### Terminology
@@ -31,6 +50,8 @@ Terminology explanation:
 * **Spring Boot**: framework for Java. It consists of: Spring + Container + Configuration
 * **REST API**: A REST API (Representational State Transfer API) is a web service that allows systems to communicate over HTTP using standard methods like GET, POST, PUT, and DELETE. It follows REST principles, ensuring scalability, statelessness, and resource-based interactions, typically using JSON or XML for data exchange.
 * **Keycloak**: Keycloak is an open-source identity and access management solution that provides authentication, authorization, and user management for applications and services. It supports Single Sign-On (SSO), social logins, multi-factor authentication, and integration with LDAP and Active Directory.
+* **Resource Server**: is a Spring Boot starter that provides auto-configuration and dependencies to build an OAuth2 resource server. It enables authentication and authorization by validating access tokens issued by an OAuth2 authorization server.
+* **Password Credentials Grant** is a grant type where a client directly exchanges a username and password for an access token. 
 
 
 USAGES
