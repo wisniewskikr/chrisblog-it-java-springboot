@@ -70,9 +70,9 @@ USAGE DOCKER COMPOSE
    * Expected "Hello World!" message
 1. In any REST Client (e.g. Postman) visit **Keycloack** JWT generator with `http://localhost:8080/realms/helloworld-realm/protocol/openid-connect/token`
    * Method: **POST**
+   * grant_type: **client_credentials**
    * client_id: **helloworld_client**
-   * username: **user**
-   * password: **user**
+   * client_secret: **{secret}**
    * Expected JWT token
 1. In any REST Client (e.g. Postman) visit **REST API** application with `http://localhost:9090/api/v1/demo/user`
    * Bearer Token: JWT token
