@@ -111,15 +111,3 @@ KEYCLOAK CONFIGURATION
 ![My Image](readme-images/config-07.png)
 
 ![My Image](readme-images/config-08.png)
-
-![My Image](readme-images/config-09.png)
-
-![My Image](readme-images/config-10.png)
-
-![My Image](readme-images/config-11.png)
-
-![My Image](readme-images/config-12.png)
-
-![My Image](readme-images/config-13.png)
-
-![My Image](readme-images/config-14.png)
