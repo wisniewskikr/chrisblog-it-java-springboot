@@ -137,3 +137,29 @@ KEYCLOAK CONFIGURATION
 ![My Image](readme-images/config-13.png)
 
 ![My Image](readme-images/config-14.png)
+
+![My Image](readme-images/config-15.png)
+
+![My Image](readme-images/config-16.png)
+
+![My Image](readme-images/config-17.png)
+
+![My Image](readme-images/config-18.png)
+
+![My Image](readme-images/config-19.png)
+
+![My Image](readme-images/config-20.png)
+
+![My Image](readme-images/config-21.png)
+
+![My Image](readme-images/config-22.png)
+
+![My Image](readme-images/config-23.png)
+
+![My Image](readme-images/config-24.png)
+
+![My Image](readme-images/config-25.png)
+
+![My Image](readme-images/config-26.png)
+
+![My Image](readme-images/config-27.png)
