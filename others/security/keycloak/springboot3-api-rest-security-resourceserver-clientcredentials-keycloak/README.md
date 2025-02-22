@@ -5,24 +5,22 @@ EXAMPLE BEARER TOKEN
 
 ![My Image](readme-images/image-02.png)
 
-![My Image](readme-images/image-03.png)
-
 
 EXAMPLE OAUTH 2.0
 -----------------
 
+![My Image](readme-images/image-03.png)
+
 ![My Image](readme-images/image-04.png)
 
 ![My Image](readme-images/image-05.png)
-
-![My Image](readme-images/image-06.png)
 
 
 DESCRIPTION
 -----------
 
 ##### Goal
-The goal of this project is to present how to implement **security** in **REST API** application using **Keycloak** tool with usage **Java** programming language and **Spring Boot 3** framework. This application is used as **resource server** (verifies JWT tokens) and for authentication uses **password credentials** (requires user with name and password).
+The goal of this project is to present how to implement **security** in **REST API** application using **Keycloak** tool with usage **Java** programming language and **Spring Boot 3** framework. This application is used as **resource server** (verifies JWT tokens) and for authentication uses **client credentials** (requires client secret).
 
 ##### Elements
 This project consists of following elements:
@@ -41,7 +39,7 @@ Terminology explanation:
 * **REST API**: A REST API (Representational State Transfer API) is a web service that allows systems to communicate over HTTP using standard methods like GET, POST, PUT, and DELETE. It follows REST principles, ensuring scalability, statelessness, and resource-based interactions, typically using JSON or XML for data exchange.
 * **Keycloak**: Keycloak is an open-source identity and access management solution that provides authentication, authorization, and user management for applications and services. It supports Single Sign-On (SSO), social logins, multi-factor authentication, and integration with LDAP and Active Directory.
 * **Resource Server**: is a Spring Boot starter that provides auto-configuration and dependencies to build an OAuth2 resource server. It enables authentication and authorization by validating access tokens issued by an OAuth2 authorization server.
-* **Password Credentials Grant** is a grant type where a client directly exchanges a username and password for an access token. 
+* **Client Credentials Grant**: it allows secure access to protected resources by validating access tokens issued by an OAuth 2.0 Authorization Server. It typically integrates with JWT or opaque token validation mechanisms. 
 
 
 USAGES
