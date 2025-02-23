@@ -24,7 +24,7 @@ DESCRIPTION
 -----------
 
 ##### Goal
-The goal of this project is to present how to implement **security** in **REST API** application using **Keycloak** tool with usage **Java** programming language and **Spring Boot 3** framework. This application is used as **resource server** (verifies JWT tokens) and for authentication uses **authorization code** (two steps: 1. User logs in and gets authorization code; 2. User generates token basing on authorization code).
+The goal of this project is to present how to implement **security** in **REST API** application using **Keycloak** tool with usage **Java** programming language and **Spring Boot 3** framework. This application is used as **resource server** (verifies JWT tokens) and for authentication uses **Implicit Grant Type** (two steps: 1. User logs in and gets access token; 2. User gets resource using access token).
 
 ##### Elements
 This project consists of following elements:
@@ -43,13 +43,7 @@ Terminology explanation:
 * **REST API**: A REST API (Representational State Transfer API) is a web service that allows systems to communicate over HTTP using standard methods like GET, POST, PUT, and DELETE. It follows REST principles, ensuring scalability, statelessness, and resource-based interactions, typically using JSON or XML for data exchange.
 * **Keycloak**: Keycloak is an open-source identity and access management solution that provides authentication, authorization, and user management for applications and services. It supports Single Sign-On (SSO), social logins, multi-factor authentication, and integration with LDAP and Active Directory.
 * **Resource Server**: is a Spring Boot starter that provides auto-configuration and dependencies to build an OAuth2 resource server. It enables authentication and authorization by validating access tokens issued by an OAuth2 authorization server.
-* **Authorization Code Grant**: it is an OAuth 2.0 flow used for securely obtaining an access token. It is commonly used by web and mobile apps that need to authenticate users via a third-party authorization server. 
-
-Authorization Code Grant steps:
-1. User Authorization – The user is redirected to the authorization server and logs in.
-1. Authorization Code Issued – After successful login, the authorization server redirects back with a short-lived authorization code.
-1. Code Exchange for Token – The client app sends the authorization code to the authorization server (along with client credentials) to obtain an access token (and optionally a refresh token).
-1. Access Token Usage – The client uses the access token to access protected resources on behalf of the user.
+* **Implicit Grant Type**: it is an OAuth 2.0 authorization flow designed for client-side applications (e.g., JavaScript apps). Instead of issuing an authorization code first, the access token is returned directly in the URL fragment after user authentication. It is now considered less secure and generally replaced by the Authorization Code Flow with PKCE.
 
 
 USAGES
