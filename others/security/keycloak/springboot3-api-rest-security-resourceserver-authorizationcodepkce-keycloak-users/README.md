@@ -12,7 +12,7 @@ DESCRIPTION
 -----------
 
 ##### Goal
-The goal of this project is to present how to implement **security** in **REST API** application using **Keycloak** tool with usage **Java** programming language and **Spring Boot 3** framework. This application is used as **resource server** (verifies JWT tokens) and for authentication uses **authorization code** (two steps: 1. User logs in and gets authorization code; 2. User generates token basing on authorization code).
+The goal of this project is to present how to implement **security** in **REST API** application using **Keycloak** tool with usage **Java** programming language and **Spring Boot 3** framework. This application is used as **resource server** (verifies JWT tokens) and for authentication uses **authorization code with PKCE** (two steps: 1. User logs in and gets authorization code; 2. User generates token basing on authorization code). PKCE means that user doesn't have to new "secret id" any more.
 
 ##### Elements
 This project consists of following elements:
@@ -31,7 +31,7 @@ Terminology explanation:
 * **REST API**: A REST API (Representational State Transfer API) is a web service that allows systems to communicate over HTTP using standard methods like GET, POST, PUT, and DELETE. It follows REST principles, ensuring scalability, statelessness, and resource-based interactions, typically using JSON or XML for data exchange.
 * **Keycloak**: Keycloak is an open-source identity and access management solution that provides authentication, authorization, and user management for applications and services. It supports Single Sign-On (SSO), social logins, multi-factor authentication, and integration with LDAP and Active Directory.
 * **Resource Server**: is a Spring Boot starter that provides auto-configuration and dependencies to build an OAuth2 resource server. It enables authentication and authorization by validating access tokens issued by an OAuth2 authorization server.
-* **Authorization Code Grant**: it is an OAuth 2.0 flow used for securely obtaining an access token. It is commonly used by web and mobile apps that need to authenticate users via a third-party authorization server. 
+* **Authorization Code With PKCE (Proof Key for Code Exchange)**: it is an OAuth 2.0 extension that enhances security by preventing authorization code interception attacks. It replaces client secrets with a dynamically generated code verifier and a code challenge, ensuring that only the original client can exchange the authorization code for an access token. This is especially useful for mobile and public clients where storing secrets securely is impractical. 
 
 Authorization Code Grant steps:
 1. User Authorization – The user is redirected to the authorization server and logs in.
