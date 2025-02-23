@@ -66,9 +66,6 @@ USAGE DOCKER COMPOSE
 1. In a command line tool **start Docker containers** with `docker-compose up -d --build`
 1. In a browser visit **Keycloak** console with `http://localhost:8080`
    * Use credentials admin/admin and configure Realm, Client and User (please check section **Keycloak Configuration**)
-1. In a browser visit **Keycloak** to get **authorization code** with `http://localhost:8080/realms/helloworld-realm/protocol/openid-connect/auth?response_type=code&client_id=helloworld-client`
-   * Log in using credentials **user/user**
-   * Expected authorization code
 1. In any REST Client (e.g. Postman) visit **REST API** application with `http://localhost:9090/api/v1/demo`
    * Expected "Hello World!" message
    * Expected JWT token
