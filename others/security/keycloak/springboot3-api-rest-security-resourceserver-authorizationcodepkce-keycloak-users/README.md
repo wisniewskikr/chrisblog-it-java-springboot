@@ -69,16 +69,19 @@ USAGE DOCKER COMPOSE
    * Expected authorization code
 1. In any REST Client (e.g. Postman) visit **REST API** application with `http://localhost:9090/api/v1/demo`
    * Expected "Hello World!" message
-1. In any REST Client (e.g. Postman) visit **Keycloack** JWT generator with `http://localhost:8080/realms/helloworld-realm/protocol/openid-connect/token`
-   * Method: **POST**
-   * grant_type: **authorization_code**
-   * client_id: **helloworld_client**
-   * client_secret: **{client secret}**
-   * code: **{authorization code}**
    * Expected JWT token
 1. In any REST Client (e.g. Postman) visit **REST API** application with `http://localhost:9090/api/v1/demo/user`
-   * Bearer Token: JWT token
-   * Expected "Hello World, User!" message
+   * Authorization -> Type -> OAuth 2.0
+   * Token Name: **Token**
+   * Grant Type: **Authorization Code (With PKCE)
+   * Callback URL: **http://localhost:9090/code**
+   * Auth URL: **http://localhost:8080/realms/helloworld-realm/protocol/openid-connect/auth**
+   * Access Token URL: **http://localhost:8080/realms/helloworld-realm/protocol/openid-connect/token**
+   * Client ID: **helloworld-client**
+   * Code Challenge Method: **SHA-256**
+   * Click **Get New Access Token -> Use Token**
+   * Click **Send**
+   * Expected text **Hello World, User!**
 1. Clean up environment 
      * In a command line tool **remove Docker containers** with `docker-compose down --rmi all`
      * Stop **Docker** tool
