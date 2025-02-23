@@ -15,7 +15,7 @@ public class HelloWorldService {
     public HelloWorldDto getMessage() {
 
         return restClient.get()
-                .uri("/")
+                .uri("/message")
                 .retrieve()
                 .body(HelloWorldDto.class);
 
