@@ -1,3 +1,11 @@
+Resource Server Grant Types:
+* **Client Credential**: no users and roles. It requires only secret ID. Two steps: 1. Get token; 2. Get resource using token
+* **Password Credential**: it requires user credentials and secret ID. Two steps: 1. Get token; 2. Get resource using token
+* **Implicit**: it requires only user credentials. Two steps: 1. Get token; 2. Get resource using token
+* **Authorization Code**: it requires user credentials and secret ID. Three steps: 1. Get authorization code; 2. Get token using authorization code; 3. Get resource using token
+* **Authorization Code (With PKCE)**: it requires only user credentials. Three steps: 1. Get authorization code; 2. Get token using authorization code; 3. Get resource using token 
+
+
 TODO:
 * springboot3-api-rest-security-keycloak-users
 * springboot3-api-rest-security-keycloak-users-roles
