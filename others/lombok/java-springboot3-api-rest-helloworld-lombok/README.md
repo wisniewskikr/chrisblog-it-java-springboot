@@ -1,59 +1,53 @@
-USAGE JAVA
-----------
+EXAMPLE
+-------
 
-> Please be aware that following tools should be installed on your local PC: **Java**, **Maven** and **Git**. 
-
-> Please **clone/download** project, open **project's main folder** in your favorite **command line tool** and then **proceed with steps below**. 
-
-Usage steps:
-1. In a command line tool start application with `mvn spring-boot:run`
-1. In a browser visit `http://localhost:8080`
-   * Expected JSON **{"message":"Hello World!"}**
-1. Clean up environment 
-     * In a command line tool stop application with `ctrl + C`
+![My Image](readme-images/image-01.png)
 
 
 DESCRIPTION
 -----------
 
 ##### Goal
-The goal of this project is to present how to create an application type **API REST** in **Java** programming language with usage **Spring Boot 3** framework.
+The goal of this project is to present how to implement **communication** between two **REST API** applications with usage **Java** programming language and **Spring Boot 3** framework. Class **RestClient** is used for this communication.
+
+##### Elements
+This project consists of following elements:
+* **First**: Rest API application
+   * Input: endpoint "api/vi/message"
+   * Content: RestClient communication with second application
+   * Output: JSON with message
+* **Second**: Rest API application
+   * Input: endpoint "api/vi/message"
+   * Content: N/A
+   * Output: JSON with message
 
 ##### Terminology
 Terminology explanation:
-* **Java**: object-oriented programming language
-* **Spring Boot**: framework for Java. It consists of: Spring + Container + Configuration
-* **Maven**: tool for build automation
-* **Git**: tool for distributed version control
-* **API**: Application Programming Interface is designed for communication between machines
-* **REST**: It's HTTP protocol with some set of rules
-
-##### Flow
-The following flow takes place in this project:
-1. User via any browser sends request to application Hello World for the content.
-1. Application HelloWorld sends back response with "Hello World" message This response is presented to User via browser.
-
-##### Launch
-To launch this application please make sure that the **Preconditions** are met and then follow instructions from **Usage** section.
-
-##### Technologies
-This project uses following technologies:
-* **Java**: `https://docs.google.com/document/d/119VYxF8JIZIUSk7JjwEPNX1RVjHBGbXHBKuK_1ytJg4/edit?usp=sharing`
-* **Maven**: `https://docs.google.com/document/d/1cfIMcqkWlobUfVfTLQp7ixqEcOtoTR8X6OGo3cU4maw/edit?usp=sharing`
-* **Git**: `https://docs.google.com/document/d/1Iyxy5DYfsrEZK5fxZJnYy5a1saARxd5LyMEscJKSHn0/edit?usp=sharing`
-* **Spring Boot**: `https://docs.google.com/document/d/1mvrJT5clbkr9yTj-AQ7YOXcqr2eHSEw2J8n9BMZIZKY/edit?usp=sharing`
+* **Git**: Git is a distributed version control system (VCS) that tracks changes in code, allowing multiple developers to collaborate efficiently. It helps manage different versions of a project, enabling branching, merging, and rollback to previous states.
+* **Maven**: Maven is a build automation and project management tool for Java-based projects, used primarily for dependency management and project configuration.
+* **Java**: Java is a high-level, object-oriented programming language known for its platform independence, achieved through the Java Virtual Machine (JVM). It is widely used for web, mobile, and enterprise applications. Java follows the "write once, run anywhere" (WORA) principle, making it a popular choice for cross-platform development.
+* **Spring Boot**: Spring Boot is a Java-based framework that simplifies the development of stand-alone, production-ready Spring applications by providing auto-configuration, embedded servers, and a convention-over-configuration approach.
+* **REST API**: A REST API (Representational State Transfer API) is a web service that allows systems to communicate over HTTP using standard methods like GET, POST, PUT, and DELETE. It follows REST principles, ensuring scalability, statelessness, and resource-based interactions, typically using JSON or XML for data exchange.
+* **RestClient**: A RestClient is a tool, library, or object used to send HTTP requests and receive responses from RESTful web services. It simplifies communication with APIs by handling methods like GET, POST, PUT, and DELETE, often providing features like authentication, headers, and data serialization. 
 
 
-PRECONDITIONS
--------------
+USAGES
+------
 
-##### Preconditions - Tools
-* Installed **Operating System** (tested on Windows 11)
-* Installed **Java** (tested on version 17.0.5)
-* Installed **Maven** (tested on version 3.8.5)
-* Installed **Git** (tested on version 2.33.0.windows.2)
+This project can be tested in following configurations:
+* **Usage Manual**: all services are started manually in a command line
 
 
-##### Preconditions - Actions
-* Download **Source Code** (using Git or in any other way) 
-* Open any **Command Line** tool (for instance "Windonw PowerShell" on Windows OS) on downloaded **project's main folder**
+USAGE MANUAL
+------------
+
+> Please be aware that following tools should be installed on your local PC: **Java**, **Maven** and **Git**. 
+
+> Please **clone/download** project, open **project's main folder** in your favorite **command line tool** and then **proceed with steps below**. 
+
+Usage steps:
+1. In any command line tool start application with `mvn spring-boot:run`
+1. In any browser visit `http://localhost:8080`
+   * Expected JSON **{"message":"Hello World!"}**
+1. Clean up environment 
+     * In any command line tool stop application with `ctrl + C`
