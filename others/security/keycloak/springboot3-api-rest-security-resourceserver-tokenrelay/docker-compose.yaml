@@ -27,6 +27,7 @@
       dockerfile: Dockerfile
     environment:
       API_SECOND_URL: http://localhost:8082/api/v1
+      SPRING_SECURITY_OAUTH2_RESOURCESERVER_JWT_ISSUER_URI: http://localhost:8080/realms/helloworld-realm
     depends_on:
       - keycloak
     network_mode: "service:localhost"
@@ -37,6 +38,8 @@
     build:
       context: ./springboot3-api-rest-security-resourceserver-tokenrelay-second
       dockerfile: Dockerfile
+    environment:
+      SPRING_SECURITY_OAUTH2_RESOURCESERVER_JWT_ISSUER_URI: http://localhost:8080/realms/helloworld-realm
     depends_on:
       - keycloak
     network_mode: "service:localhost"
