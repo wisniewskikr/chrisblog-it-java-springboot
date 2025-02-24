@@ -62,6 +62,16 @@ USAGE DOCKER COMPOSE
 1. In a browser visit **Keycloak** console with `http://localhost:8080`
    * Use credentials admin/admin and configure Realm, Client and User (please check section **Keycloak Configuration**)
 1. In any REST Client (e.g. Postman) visit **first** application with `http://localhost:8081/api/v1/message`
+    * Authorization -> Type -> OAuth 2.0
+   * Token Name: **Token**
+   * Grant Type: **Authorization Code (With PKCE)
+   * Callback URL: **http://localhost:8081/**
+   * Auth URL: **http://localhost:8080/realms/helloworld-realm/protocol/openid-connect/auth**
+   * Access Token URL: **http://localhost:8080/realms/helloworld-realm/protocol/openid-connect/token**
+   * Client ID: **helloworld-client**
+   * Code Challenge Method: **SHA-256**
+   * Click **Get New Access Token -> Use Token**
+   * Click **Send**
    * Expected JSON with "Hello World!" message
 1. Clean up environment 
      * In a command line tool **remove Docker containers** with `docker-compose down --rmi all`
