@@ -53,7 +53,7 @@ USAGE DOCKER COMPOSE
 ##### Required steps:
 1. Start **Docker** tool
 1. In a command line tool **start Docker containers** with `docker-compose up -d --build`
-1. In any REST Client (e.g. Postman) visit **first** application with `http://localhost:8080/api/v1/message`
+1. In any REST Client (e.g. Postman) visit **first** application with `http://localhost:8081/api/v1/message`
    * Expected JSON with "Hello World!" message
 1. Clean up environment 
      * In a command line tool **remove Docker containers** with `docker-compose down --rmi all`
