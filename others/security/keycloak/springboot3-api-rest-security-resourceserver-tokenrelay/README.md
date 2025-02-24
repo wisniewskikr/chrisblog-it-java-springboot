@@ -3,6 +3,12 @@ EXAMPLE
 
 ![My Image](readme-images/image-01.png)
 
+![My Image](readme-images/image-02.png)
+
+![My Image](readme-images/image-03.png)
+
+![My Image](readme-images/image-04.png)
+
 
 DESCRIPTION
 -----------
@@ -53,6 +59,8 @@ USAGE DOCKER COMPOSE
 ##### Required steps:
 1. Start **Docker** tool
 1. In a command line tool **start Docker containers** with `docker-compose up -d --build`
+1. In a browser visit **Keycloak** console with `http://localhost:8080`
+   * Use credentials admin/admin and configure Realm, Client and User (please check section **Keycloak Configuration**)
 1. In any REST Client (e.g. Postman) visit **first** application with `http://localhost:8081/api/v1/message`
    * Expected JSON with "Hello World!" message
 1. Clean up environment 
@@ -66,3 +74,37 @@ USAGE DOCKER COMPOSE
 1. In a command line tool check list of active Docker containers with `docker ps`
 1. In a command line tool check list of Docker nerworks with `docker network ls`
 1. In a command line tool check container logs with `docker logs {container-name}`
+
+
+KEYCLOAK CONFIGURATION
+----------------------
+
+![My Image](readme-images/config-01.png)
+
+![My Image](readme-images/config-02.png)
+
+![My Image](readme-images/config-03.png)
+
+![My Image](readme-images/config-04.png)
+
+![My Image](readme-images/config-05.png)
+
+![My Image](readme-images/config-06.png)
+
+![My Image](readme-images/config-07.png)
+
+![My Image](readme-images/config-08.png)
+
+![My Image](readme-images/config-09.png)
+
+![My Image](readme-images/config-10.png)
+
+![My Image](readme-images/config-11.png)
+
+![My Image](readme-images/config-12.png)
+
+![My Image](readme-images/config-13.png)
+
+![My Image](readme-images/config-14.png)
+
+![My Image](readme-images/config-15.png)
