@@ -8,8 +8,8 @@
     <artifactId>springboot-helloworld-port-uuid-multiple</artifactId>
     <version>0.1.0</version>
     <modules>
-    	<module>springboot-communication-restclient-multiple-first</module>
-        <module>springboot-communication-restclient-multiple-second</module>
+    	<module>springboot3-api-rest-security-resourceserver-tokenrelay-first</module>
+        <module>springboot3-api-rest-security-resourceserver-tokenrelay-second</module>
     </modules>
     <packaging>pom</packaging>
 

@@ -4,7 +4,7 @@
     container_name: first
     image: first
     build:
-      context: ./springboot-communication-restclient-multiple-first
+      context: ./springboot3-api-rest-security-resourceserver-tokenrelay-first
       dockerfile: Dockerfile
     environment:
       API_SECOND_URL: http://second:9090/api/v1
@@ -15,7 +15,7 @@
     container_name: second
     image: second
     build:
-      context: ./springboot-communication-restclient-multiple-second
+      context: ./springboot3-api-rest-security-resourceserver-tokenrelay-second
       dockerfile: Dockerfile
     ports:
       - 9090:9090

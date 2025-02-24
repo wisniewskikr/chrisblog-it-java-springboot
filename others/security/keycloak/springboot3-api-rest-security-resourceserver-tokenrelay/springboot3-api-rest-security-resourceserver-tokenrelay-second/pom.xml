@@ -9,7 +9,7 @@
 		<relativePath/>
 	</parent>
 	<groupId>com.example</groupId>
-	<artifactId>springboot-communication-restclient-multiple-second</artifactId>
+	<artifactId>springboot3-api-rest-security-resourceserver-tokenrelay-second</artifactId>
 	<version>0.1.0</version>
 
 	<properties>
