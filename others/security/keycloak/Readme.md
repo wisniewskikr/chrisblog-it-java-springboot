@@ -7,7 +7,4 @@ Resource Server Grant Types:
 
 **Token Relay** is the process of forwarding an authentication token from one service or application to another to maintain user authentication and authorization across multiple systems. It enables secure access delegation without exposing user credentials.
 
-TODO:
-* springboot3-api-rest-security-keycloak-users
-* springboot3-api-rest-security-keycloak-users-roles
-* springboot3-api-rest-security-keycloak-developers
+**Refresh Token** is a credential used to obtain a new access token without requiring the user to log in again.
