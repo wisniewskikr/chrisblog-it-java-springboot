@@ -4,11 +4,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-public class UserController {
+public class SecuredController {
 
-	@RequestMapping(value="/user")
+	@RequestMapping(value="/secured")
 	public String display() {
-		return "user";		
+		return "secured";		
 	}
 	
 }

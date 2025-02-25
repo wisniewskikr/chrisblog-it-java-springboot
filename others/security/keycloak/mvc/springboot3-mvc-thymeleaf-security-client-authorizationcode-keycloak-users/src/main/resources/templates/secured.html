@@ -11,13 +11,13 @@
 	<body>	
 		<div sec:authorize="isAuthenticated()">
 			<span>User Role: </span>
-			<span sec:authentication="principal.authorities"></span> <br/>
-			<a th:href="@{/logout}">Logout</a> 
-		</div>		
+			<span sec:authentication="principal.authorities"></span> <br/> 
+			<a th:href="@{/logout}">Logout</a>
+		</div>
 		<br/>
-		<div>Hello World from User Page!</div> 
+		<div>Hello World from Secured Page!</div> 
 		<br/>
-		<a th:href="@{/}">Home</a>	
+		<a th:href="@{/}">Home</a>		
 	</body>
 
 </html>
