@@ -21,8 +21,6 @@
   app:
     container_name: app
     image: app
-    environment:
-      SPRING_SECURITY_OAUTH2_RESOURCESERVER_JWT_ISSUER_URI: http://localhost:8080/realms/helloworld-realm
     build:
       context: ./
       dockerfile: Dockerfile
