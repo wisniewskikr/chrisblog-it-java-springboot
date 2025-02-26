@@ -10,8 +10,8 @@
 
 	<body>	
 		<div sec:authorize="isAuthenticated()">
-			<span>User Role: </span>
-			<span sec:authentication="principal.authorities"></span> <br/> 
+			<span>User Name: </span>
+			<span sec:authentication="principal.attributes['preferred_username']"></span> <br/> 
 			<a th:href="@{/logout}">Logout</a>
 		</div>
 		<br/>
