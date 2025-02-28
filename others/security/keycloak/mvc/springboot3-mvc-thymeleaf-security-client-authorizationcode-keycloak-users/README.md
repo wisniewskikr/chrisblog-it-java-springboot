@@ -20,15 +20,14 @@ DESCRIPTION
 -----------
 
 ##### Goal
-The goal of this project is to present how to implement **security** in **REST API** application using **Keycloak** tool with usage **Java** programming language and **Spring Boot 3** framework. This application is used as **resource server** (verifies JWT tokens) and for authentication uses **authorization code** (two steps: 1. User logs in and gets authorization code; 2. User generates token basing on authorization code).
+The goal of this project is to present how to implement **security** in **MVC (Thymeleaf)** application using **Keycloak** tool with usage **Java** programming language and **Spring Boot 3** framework. Security is based on authorization grant type **Authorization Code**. This application handles only **users** with no roles. User has access to any secured resouce after log in.
 
 ##### Elements
 This project consists of following elements:
-* **Rest API**: Rest API application which returns
-   * Not secured "Hello World!" message
-   * Secured "Hello World, User!" message
-   * Secured "Hello World, Admin!" message  
-* **Keycloak**: IAM tool for user management and entrypoint for JWT
+* **MVC**: this application consists of
+   * Public Page: available without log in
+   * Secured Page: available only after log in
+* **Keycloak**: IAM tool for user management
 
 ##### Terminology
 Terminology explanation:
@@ -36,16 +35,9 @@ Terminology explanation:
 * **Maven**: tool for build automation
 * **Java**: object-oriented programming language
 * **Spring Boot**: framework for Java. It consists of: Spring + Container + Configuration
-* **REST API**: A REST API (Representational State Transfer API) is a web service that allows systems to communicate over HTTP using standard methods like GET, POST, PUT, and DELETE. It follows REST principles, ensuring scalability, statelessness, and resource-based interactions, typically using JSON or XML for data exchange.
+* **MVC**: MVC is a design pattern that separates an application into three components: 1. Model: Manages data and business logic. 2. View: Handles UI and presentation (Thymeleaf templates in Spring Boot). 3. Controller: Processes user requests, interacts with the model, and updates the view.
 * **Keycloak**: Keycloak is an open-source identity and access management solution that provides authentication, authorization, and user management for applications and services. It supports Single Sign-On (SSO), social logins, multi-factor authentication, and integration with LDAP and Active Directory.
-* **Resource Server**: is a Spring Boot starter that provides auto-configuration and dependencies to build an OAuth2 resource server. It enables authentication and authorization by validating access tokens issued by an OAuth2 authorization server.
-* **Authorization Code Grant**: it is an OAuth 2.0 flow used for securely obtaining an access token. It is commonly used by web and mobile apps that need to authenticate users via a third-party authorization server. 
-
-Authorization Code Grant steps:
-1. User Authorization – The user is redirected to the authorization server and logs in.
-1. Authorization Code Issued – After successful login, the authorization server redirects back with a short-lived authorization code.
-1. Code Exchange for Token – The client app sends the authorization code to the authorization server (along with client credentials) to obtain an access token (and optionally a refresh token).
-1. Access Token Usage – The client uses the access token to access protected resources on behalf of the user.
+* **Authorization Code Grant**: it is an OAuth 2.0 flow used for securely obtaining an access token. It is commonly used by web and mobile apps that need to authenticate users via a third-party authorization server.
 
 
 USAGES
