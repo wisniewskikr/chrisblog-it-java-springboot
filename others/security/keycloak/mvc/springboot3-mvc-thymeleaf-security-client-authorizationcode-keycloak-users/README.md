@@ -63,22 +63,11 @@ USAGE DOCKER COMPOSE
 1. Start **Docker** tool
 1. In a command line tool **start Docker containers** with `docker-compose up -d --build`
 1. In a browser visit **Keycloak** console with `http://localhost:8080`
-   * Use credentials admin/admin and configure Realm, Client and User (please check section **Keycloak Configuration**)
-1. In a browser visit **Keycloak** to get **authorization code** with `http://localhost:8080/realms/helloworld-realm/protocol/openid-connect/auth?response_type=code&client_id=helloworld-client`
-   * Log in using credentials **user/user**
-   * Expected authorization code
-1. In any REST Client (e.g. Postman) visit **REST API** application with `http://localhost:9090/api/v1/demo`
-   * Expected "Hello World!" message
-1. In any REST Client (e.g. Postman) visit **Keycloack** JWT generator with `http://localhost:8080/realms/helloworld-realm/protocol/openid-connect/token`
-   * Method: **POST**
-   * grant_type: **authorization_code**
-   * client_id: **helloworld_client**
-   * client_secret: **{client secret}**
-   * code: **{authorization code}**
-   * Expected JWT token
-1. In any REST Client (e.g. Postman) visit **REST API** application with `http://localhost:9090/api/v1/demo/user`
-   * Bearer Token: JWT token
-   * Expected "Hello World, User!" message
+   * Use credentials admin/admin and configure User (please check section **Keycloak Configuration**)
+1. In a browser visit **MVC** with `http://localhost:9090`
+    * Expected Landing page
+    * Click **Public Page**: expected public page
+    * Click **Secured Page**: expected secured page after log in (credentials user/user)
 1. Clean up environment 
      * In a command line tool **remove Docker containers** with `docker-compose down --rmi all`
      * Stop **Docker** tool
