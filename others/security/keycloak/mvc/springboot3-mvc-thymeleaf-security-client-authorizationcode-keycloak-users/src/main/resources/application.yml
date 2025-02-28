@@ -8,7 +8,7 @@ spring:
         registration:
           keycloak:
             client-id: helloworld-client
-            client-secret: 80S9WScOhA3G67uosIbF33IFjZgtNoK8
+            client-secret: helloworld-secret
             authorization-grant-type: authorization_code
             scope: openid
             redirect-uri: http://localhost:9090/login/oauth2/code/helloworld-client
