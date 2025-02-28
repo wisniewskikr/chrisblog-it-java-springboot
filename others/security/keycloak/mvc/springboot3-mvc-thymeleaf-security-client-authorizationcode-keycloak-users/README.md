@@ -63,7 +63,7 @@ USAGE DOCKER COMPOSE
 1. Start **Docker** tool
 1. In a command line tool **start Docker containers** with `docker-compose up -d --build`
 1. In a browser visit **Keycloak** console with `http://localhost:8080`
-   * Use credentials admin/admin and configure User (please check section **Keycloak Configuration**)
+   * Use credentials admin/admin and create new User (Name: "user", Credentials: "user". Please check section **Keycloak Configuration**)
 1. In a browser visit **MVC** with `http://localhost:9090`
     * Expected Landing page
     * Click **Public Page**: expected public page
