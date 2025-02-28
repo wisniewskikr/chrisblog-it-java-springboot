@@ -82,6 +82,14 @@ USAGE DOCKER COMPOSE
 1. In a command line tool check FE container logs with `docker logs fe-container`
 
 
+IMPLEMENTATION
+--------------
+
+After export you have to **update realm-export.json** file:
+* "type": "regex" (instead of "js")
+* "secret": "helloworld-secret" (insetead of "********")
+
+
 KEYCLOAK CONFIGURATION
 ----------------------
 
