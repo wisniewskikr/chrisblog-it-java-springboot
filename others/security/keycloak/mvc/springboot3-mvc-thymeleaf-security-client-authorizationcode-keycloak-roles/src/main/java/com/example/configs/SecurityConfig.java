@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.Customizer;
-import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -28,18 +27,23 @@ import org.springframework.core.convert.converter.Converter;
 
 @Configuration
 @RequiredArgsConstructor
-@EnableMethodSecurity
 public class SecurityConfig {
 
     @Value("${jwt.auth.converter.resource-id}")
     private String resourceId;
+
+    @Value("${jwt.auth.post-logout-uri}")
+    private String postLogoutUri;
+    
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http, ClientRegistrationRepository clientRegistrationRepository) throws Exception {
 
         http
             .authorizeHttpRequests(auth -> auth
-                .requestMatchers("/", "/login", "/public").permitAll()
+                .requestMatchers("/", "/login", "/logout", "/public").permitAll()
+                .requestMatchers("/user").hasAnyRole("USER","ADMIN")
+                .requestMatchers("/admin").hasRole("ADMIN")
                 .anyRequest().authenticated()
             );
 
@@ -104,12 +108,10 @@ public class SecurityConfig {
     public LogoutSuccessHandler oidcLogoutSuccessHandler(ClientRegistrationRepository clientRegistrationRepository) {
 
         OidcClientInitiatedLogoutSuccessHandler oidcLogoutSuccessHandler = 
-            new OidcClientInitiatedLogoutSuccessHandler(clientRegistrationRepository);
-        
-        // Configure the post-logout redirect URI
-        oidcLogoutSuccessHandler.setPostLogoutRedirectUri("http://localhost:9090/");
-        
+            new OidcClientInitiatedLogoutSuccessHandler(clientRegistrationRepository);        
+        oidcLogoutSuccessHandler.setPostLogoutRedirectUri(postLogoutUri);        
         return oidcLogoutSuccessHandler;
+        
     }   
 
 }

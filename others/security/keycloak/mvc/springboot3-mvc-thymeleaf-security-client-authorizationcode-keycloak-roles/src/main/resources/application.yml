@@ -21,3 +21,4 @@ jwt:
   auth:
     converter:
       resource-id: helloworld-client
+    post-logout-uri: http://localhost:9090/

@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class LogoutController {
 
-	@GetMapping("/logout")
+	@GetMapping("/tmp")
 	public String logout(HttpServletRequest request) throws ServletException {
 		
 		request.logout();
