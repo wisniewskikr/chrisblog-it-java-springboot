@@ -4,14 +4,20 @@ server:
 spring:
   security:
     oauth2:
+    
       client:
         registration:
           keycloak:
             client-id: helloworld-client
             client-secret: helloworld-secret
             authorization-grant-type: authorization_code
-            scope: openid
+            scope: openid, profile, email, roles
             redirect-uri: http://localhost:9090/login/oauth2/code/helloworld-client
         provider:
           keycloak:
             issuer-uri: http://localhost:8080/realms/helloworld-realm
+
+jwt:
+  auth:
+    converter:
+      resource-id: helloworld-client
