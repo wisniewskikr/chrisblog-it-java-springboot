@@ -52,9 +52,6 @@ public class SecurityConfig {
             );
 
         http
-            .oauth2Login(Customizer.withDefaults());
-
-        http
             .exceptionHandling(exception -> exception
                 .accessDeniedPage("/access-denied")
             );
