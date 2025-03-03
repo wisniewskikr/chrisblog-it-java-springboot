@@ -68,10 +68,12 @@ public class SecurityConfig {
 
     @Bean
     AuthoritiesConverter realmRolesAuthoritiesConverter() {
-        return claims -> {            
+        return claims -> {  
+
             Map<String, Object> resourceAccess;
             Map<String, Object> resource;
             Collection<String> resourceRoles;
+
             if (claims.get("resource_access") == null) {
                 return Set.of();
             }
@@ -87,6 +89,7 @@ public class SecurityConfig {
                     .stream()
                     .map(role -> new SimpleGrantedAuthority("ROLE_" + role))
                     .collect(Collectors.toSet());
+                    
         };
     }
 
