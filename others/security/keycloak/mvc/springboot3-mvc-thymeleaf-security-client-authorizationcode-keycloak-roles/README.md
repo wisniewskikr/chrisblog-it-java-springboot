@@ -1,23 +1,5 @@
-USAGE COMMANDS
---------------
-
-> Please be aware that following tools should be installed in advance on your computer: **Java**, **Maven** and **Git**. 
-
-> Please **clone/download** project, open **project's main folder** in your favorite **command line tool** and then **proceed with steps below**. 
-
-Usage steps:
-1. Start application with `mvn spring-boot:run`
-1. (Optional) Check database (url: `jdbc:h2:mem:db-embedded;DB_CLOSE_DELAY=-1`, username: `sa`, password: -, table: `USER_TBL`) with `http://localhost:8080/h2-console`
-1. In any browser display Home Page with `http://localhost:8080`
-1. In any browser display not secured Public Page with `http://localhost:8080/public`
-1. In any browser display secured User Page (credentials **user / user123** or **admin / admin123**) with `http://localhost:8080/user`
-1. In any browser display secured Admin Page (credentials **admin / admin123**) with `http://localhost:8080/admin`
-1. Clean up environment:
-    * Stop application with `ctrl + C`
-
-
-USAGE IMAGES
-------------
+EXAMPLE
+-------
 
 ![My Image](readme-images/image-01.png)
 
@@ -33,48 +15,139 @@ USAGE IMAGES
 
 ![My Image](readme-images/image-07.png)
 
-![My Image](readme-images/image-08.png)
-
-![My Image](readme-images/image-09.png)
-
-![My Image](readme-images/image-10.png)
-
-![My Image](readme-images/image-11.png)
-
 
 DESCRIPTION
 -----------
 
 ##### Goal
-The goal of this project is to present how to implement **security** type **custom form** for **UI** application type **HTML** in **Java** programming language with usage **Spring Boot** and **Thymeleaf** frameworks and **Spring Security** dependencies. Users are stored in **embedded database** type **H2**.
+The goal of this project is to present how to implement **security** in **MVC (Thymeleaf)** application using **Keycloak** tool with usage **Java** programming language and **Spring Boot 3** framework. Security is based on authorization grant type **Authorization Code**. This application handles **users** with roles. User has access to only specific secured resouce after log in.
+
+##### Elements
+This project consists of following elements:
+* **MVC**: this application consists of
+   * Public Page: available without log in
+   * User Page: available only after log in for USER and ADMIN roles
+   * Admin Page: available only after log in for ADMIN role
+* **Keycloak**: IAM tool for user management
 
 ##### Terminology
 Terminology explanation:
-* **Security**: in IT it means authentication + authorization. Authentication - application confirms that you are you and checks your role. Authorization - application confirms that you have access to requested resources.
-* **Custom Form**: it's means that login and logout forms have to be fully implemented by developers. Therefore they can be fully customized. 
-* **UI**: it's type of application designed for humans.
-* **HTML**: it stands for HyperText Markup Language, is the standard language used to create and design documents on the World Wide Web.
-* **Java**: object-oriented programming language.
-* **Spring Boot**: framework for Java. It consists of: Spring + Container + Configuration.
-* **Thymeleaf**: Thymeleaf is a modern server-side Java template engine for web and standalone environments. It is used for processing and generating HTML, XML, JavaScript, CSS, and plain text. Thymeleaf's main goal is to bring elegant natural templates to your development workflow.
-* **Spring Security**: Spring Security is a powerful and highly customizable authentication and access-control framework for the Java application development environment. It is part of the Spring Framework ecosystem and provides comprehensive security services for enterprise applications.
-* **Embedded Database**: this type of database is embedded in application. It means that it starts together with application.
-* **H2**: type of embedded database.
-
-##### Launch
-To launch this application please make sure that the **Preconditions** are met and then follow instructions from **Usage** section.
+* **Git**: tool for distributed version control
+* **Maven**: tool for build automation
+* **Java**: object-oriented programming language
+* **Spring Boot**: framework for Java. It consists of: Spring + Container + Configuration
+* **MVC**: MVC is a design pattern that separates an application into three components: 1. Model: Manages data and business logic. 2. View: Handles UI and presentation (Thymeleaf templates in Spring Boot). 3. Controller: Processes user requests, interacts with the model, and updates the view.
+* **Keycloak**: Keycloak is an open-source identity and access management solution that provides authentication, authorization, and user management for applications and services. It supports Single Sign-On (SSO), social logins, multi-factor authentication, and integration with LDAP and Active Directory.
+* **Authorization Code Grant**: it is an OAuth 2.0 flow used for securely obtaining an access token. It is commonly used by web and mobile apps that need to authenticate users via a third-party authorization server.
 
 
-PRECONDITIONS
--------------
+USAGES
+------
 
-##### Preconditions - Tools
-* Installed **Operating System** (tested on Windows 10)
-* Installed **Java** (tested on version 11.0.16.1)
-* Installed **Maven** (tested on version 3.8.5)
-* Installed **Git** (tested on version 2.33.0.windows.2)
+This project can be tested in following configurations:
+* **Usage Docker Compose**: all services are started as Docker containers definied in docker compose file.
 
 
-##### Preconditions - Actions
-* **Download** source code using Git 
-* Open any **Command Line** (for instance "Windonw PowerShell" on Windows OS) tool on **project's folder**.
+USAGE DOCKER COMPOSE
+--------------------
+
+> **Usage Docker Compse** means all services are started as Docker containers definied in docker compose file.
+
+> Please **clone/download** project, open **project's main folder** in your favorite **command line tool** and then **proceed with steps below**.
+
+> **Prerequisites**:  
+* **Operating System** (tested on Windows 11)
+* **Git** (tested on version 2.33.0.windows.2)
+* **Docker** (tested on version 4.33.1)
+
+##### Required steps:
+1. Start **Docker** tool
+1. In a command line tool **start Docker containers** with `docker-compose up -d --build`
+1. In a browser visit **Keycloak** console with `http://localhost:8080`
+   * Use credentials admin/admin and create new User (Name: "user", Credentials: "user". Please check section **Keycloak Configuration**)
+1. In a browser visit **MVC** with `http://localhost:9090`
+    * Expected Landing page
+    * Click **Public Page**: expected public page
+    * Click **Secured Page**: expected secured page after log in (credentials user/user)
+1. Clean up environment 
+     * In a command line tool **remove Docker containers** with `docker-compose down --rmi all`
+     * Stop **Docker** tool
+
+##### Optional steps:
+1. In a command line tool validate Docker Compose with `docker-compose config`
+1. In a command line tool check list of Docker images with `docker images`
+1. In a command line tool check list of all Docker containers with `docker ps -a`
+1. In a command line tool check list of active Docker containers with `docker ps`
+1. In a command line tool check list of Docker nerworks with `docker network ls`
+1. In a command line tool check BE container logs with `docker logs be-container`
+1. In a command line tool check FE container logs with `docker logs fe-container`
+
+
+IMPLEMENTATION
+--------------
+
+After export you have to **update realm-export.json** file:
+* "type": "regex" (instead of "js")
+* "secret": "helloworld-secret" (insetead of "********")
+
+
+KEYCLOAK CONFIGURATION
+----------------------
+
+![My Image](readme-images/config-01.png)
+
+![My Image](readme-images/config-02.png)
+
+![My Image](readme-images/config-03.png)
+
+![My Image](readme-images/config-04.png)
+
+![My Image](readme-images/config-05.png)
+
+![My Image](readme-images/config-06.png)
+
+![My Image](readme-images/config-07.png)
+
+![My Image](readme-images/config-09.png)
+
+![My Image](readme-images/config-10.png)
+
+![My Image](readme-images/config-11.png)
+
+![My Image](readme-images/config-12.png)
+
+![My Image](readme-images/config-12a.png)
+
+![My Image](readme-images/config-12b.png)
+
+![My Image](readme-images/config-12c.png)
+
+![My Image](readme-images/config-13.png)
+
+![My Image](readme-images/config-14.png)
+
+![My Image](readme-images/config-15.png)
+
+![My Image](readme-images/config-16.png)
+
+![My Image](readme-images/config-17.png)
+
+![My Image](readme-images/config-18.png)
+
+![My Image](readme-images/config-19.png)
+
+![My Image](readme-images/config-20.png)
+
+![My Image](readme-images/config-21.png)
+
+![My Image](readme-images/config-22.png)
+
+![My Image](readme-images/config-23.png)
+
+![My Image](readme-images/config-24.png)
+
+![My Image](readme-images/config-25.png)
+
+![My Image](readme-images/config-26.png)
+
+![My Image](readme-images/config-27.png)
