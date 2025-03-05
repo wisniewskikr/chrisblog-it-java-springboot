@@ -20,7 +20,7 @@ DESCRIPTION
 -----------
 
 ##### Goal
-The goal of this project is to present how to implement **security** in **MVC (Thymeleaf)** application using **Keycloak** tool with usage **Java** programming language and **Spring Boot 3** framework. Security is based on authorization grant type **Authorization Code**. This application handles only **users** with no roles. User has access to any secured resouce after log in.
+The goal of this project is to present how to implement **security** in **MVC (Thymeleaf)** application using **Keycloak** tool with usage **Java** programming language and **Spring Boot 3** framework. Security is based on authorization grant type **Authorization Code with PKCE**. Authorization Code with PKCE means that developer don't need store secret ID in application. This application handles only **users** with no roles. User has access to any secured resouce after log in.
 
 ##### Elements
 This project consists of following elements:
@@ -37,7 +37,7 @@ Terminology explanation:
 * **Spring Boot**: framework for Java. It consists of: Spring + Container + Configuration
 * **MVC**: MVC is a design pattern that separates an application into three components: 1. Model: Manages data and business logic. 2. View: Handles UI and presentation (Thymeleaf templates in Spring Boot). 3. Controller: Processes user requests, interacts with the model, and updates the view.
 * **Keycloak**: Keycloak is an open-source identity and access management solution that provides authentication, authorization, and user management for applications and services. It supports Single Sign-On (SSO), social logins, multi-factor authentication, and integration with LDAP and Active Directory.
-* **Authorization Code Grant**: it is an OAuth 2.0 flow used for securely obtaining an access token. It is commonly used by web and mobile apps that need to authenticate users via a third-party authorization server.
+* **Authorization Code with PKCE Grant**: Authorization Code with Proof Key for Code Exchange (PKCE) is an OAuth 2.0 extension that enhances security for public clients (e.g., mobile and SPAs) by preventing authorization code interception attacks. Instead of using a client secret, PKCE introduces a dynamically generated code verifier and its code challenge, ensuring that only the original client can exchange the authorization code for a token.
 
 
 USAGES
@@ -85,9 +85,7 @@ USAGE DOCKER COMPOSE
 IMPLEMENTATION
 --------------
 
-After export you have to **update realm-export.json** file:
-* "type": "regex" (instead of "js")
-* "secret": "helloworld-secret" (insetead of "********")
+In the file **application.yml** replace **client-secret:** with **client-authentication-method: none**.
 
 
 KEYCLOAK CONFIGURATION
