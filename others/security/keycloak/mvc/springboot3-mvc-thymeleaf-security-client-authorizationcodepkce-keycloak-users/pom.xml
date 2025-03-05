@@ -9,7 +9,7 @@
 		<relativePath/>
 	</parent>
 	<groupId>com.example</groupId>
-	<artifactId>springboot3-mvc-thymeleaf-security-client-authorizationcode-keycloak-users</artifactId>
+	<artifactId>springboot3-mvc-thymeleaf-security-client-authorizationcodepkce-keycloak-users</artifactId>
 	<version>0.1.0</version>
 
 	<properties>
