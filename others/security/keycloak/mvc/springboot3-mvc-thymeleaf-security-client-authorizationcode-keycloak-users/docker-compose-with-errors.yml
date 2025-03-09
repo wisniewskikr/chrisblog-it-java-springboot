@@ -21,7 +21,6 @@
     environment:      
       WAIT_HOSTS: keycloak:8080
       WAIT_TIMEOUT: 60
-      SPRING_SECURITY_OAUTH2_CLIENT_REGISTRATION_KEYCLOAK_REDIRECTURI: http://localhost:9090/login/oauth2/code/helloworld-client
       SPRING_SECURITY_OAUTH2_CLIENT_PROVIDER_KEYCLOAK_ISSUERURI: http://keycloak:8080/realms/helloworld-realm    
     ports:
       - "9090:9090"
