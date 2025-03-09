@@ -1,0 +1,27 @@
+ services:
+
+  keycloak:
+    container_name: keycloak
+    image: quay.io/keycloak/keycloak:26.0
+    environment:
+      KEYCLOAK_ADMIN: admin
+      KEYCLOAK_ADMIN_PASSWORD: admin 
+    command: ["start-dev", "--import-realm"]
+    volumes:
+      - ./realm-export.json:/opt/keycloak/data/import/realm-export.json
+    ports:
+      - "8080:8080"
+
+  app:
+    container_name: app
+    image: app
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    environment:      
+      WAIT_HOSTS: keycloak:8080
+      WAIT_TIMEOUT: 60
+      SPRING_SECURITY_OAUTH2_CLIENT_REGISTRATION_KEYCLOAK_REDIRECTURI: http://localhost:9090/login/oauth2/code/helloworld-client
+      SPRING_SECURITY_OAUTH2_CLIENT_PROVIDER_KEYCLOAK_ISSUERURI: http://keycloak:8080/realms/helloworld-realm    
+    ports:
+      - "9090:9090"
