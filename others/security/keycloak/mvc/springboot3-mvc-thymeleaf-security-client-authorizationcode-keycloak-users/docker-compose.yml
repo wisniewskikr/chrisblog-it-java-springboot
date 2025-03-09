@@ -1,13 +1,5 @@
  services:
 
-  localhost:
-    container_name: localhost
-    image: alpine:latest
-    command: sleep infinity
-    ports:
-    - "8080:8080"
-    - "9090:9090"
-
   keycloak:
     container_name: keycloak
     image: quay.io/keycloak/keycloak:26.0
@@ -17,7 +9,8 @@
     command: ["start-dev", "--import-realm"]
     volumes:
       - ./realm-export.json:/opt/keycloak/data/import/realm-export.json
-    network_mode: "service:localhost"
+    ports:
+      - "8080:8080"
 
   app:
     container_name: app
@@ -26,8 +19,8 @@
       context: ./
       dockerfile: Dockerfile
     environment:      
-      WAIT_HOSTS: localhost:8080
+      WAIT_HOSTS: keycloak:8080
       WAIT_TIMEOUT: 60
-    depends_on:
-      - keycloak
-    network_mode: "service:localhost"
+      SPRING_SECURITY_OAUTH2_CLIENT_PROVIDER_KEYCLOAK_ISSUERURI: http://keycloak:8080/realms/helloworld-realm    
+    ports:
+      - "9090:9090"
