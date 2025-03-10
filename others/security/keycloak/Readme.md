@@ -21,4 +21,5 @@ TODO:
 * Implement registration from login page
 * Implement Github login from login page
 * Implement token relay between MVC and API
+* Implement keycloak starter
 * Implement SPA
