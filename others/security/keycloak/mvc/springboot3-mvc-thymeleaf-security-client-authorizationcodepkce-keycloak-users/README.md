@@ -66,6 +66,7 @@ USAGE DOCKER COMPOSE
 1. Update **hosts** file (Run as Administrator; Windows: "Windows\System32\drivers\etc\hosts"; MAC/Linux: "etc/hosts") with new line **127.0.0.1 keycloak**
 1. Start **Docker** tool
 1. In a command line tool **start Docker containers** with `docker-compose up -d --build`
+   * Starting can **take few moments**. Please check docker logs to be sure if loading is finished
 1. In a browser visit **MVC** with `http://localhost:9090`
     * Expected **Landing page**
     * Click **Public Page**: expected public page
