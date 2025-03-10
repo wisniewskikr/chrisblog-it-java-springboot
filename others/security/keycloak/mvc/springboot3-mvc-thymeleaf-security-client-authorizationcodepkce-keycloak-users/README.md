@@ -7,7 +7,9 @@ EXAMPLE
 
 ![My Image](readme-images/image-03.png)
 
-![My Image](readme-images/image-04.png)
+![My Image](readme-images/image-04a.png)
+
+![My Image](readme-images/image-04b.png)
 
 ![My Image](readme-images/image-05.png)
 
