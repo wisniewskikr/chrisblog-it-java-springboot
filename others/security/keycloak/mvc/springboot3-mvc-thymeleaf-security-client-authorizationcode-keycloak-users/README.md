@@ -62,17 +62,18 @@ USAGE DOCKER COMPOSE
 * **Docker** (tested on version 4.33.1)
 
 ##### Required steps:
+1. Update **hosts** file (Run as Administrator; Windows: "Windows\System32\drivers\etc\hosts"; MAC/Linux: "etc/hosts") with new line **127.0.0.1 keycloak**
 1. Start **Docker** tool
 1. In a command line tool **start Docker containers** with `docker-compose up -d --build`
-1. In a browser visit **Keycloak** console with `http://localhost:8080`
-   * Use credentials admin/admin and create new User (Name: "user", Credentials: "user". Please check section **Keycloak Configuration**)
+   * Starting can **take few moments**. Please check docker logs to be sure if loading is finished
 1. In a browser visit **MVC** with `http://localhost:9090`
-    * Expected Landing page
+    * Expected **Landing page**
     * Click **Public Page**: expected public page
-    * Click **Secured Page**: expected secured page after log in (credentials user/user)
+    * Click **Secured Page**: expected secured page after log in page (Please **register new user**)
 1. Clean up environment 
      * In a command line tool **remove Docker containers** with `docker-compose down --rmi all`
      * Stop **Docker** tool
+     * Remove new line from **hosts**
 
 ##### Optional steps:
 1. In a command line tool validate Docker Compose with `docker-compose config`
