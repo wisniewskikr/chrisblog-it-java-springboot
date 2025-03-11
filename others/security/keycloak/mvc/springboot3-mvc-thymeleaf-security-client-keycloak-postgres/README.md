@@ -20,7 +20,7 @@ DESCRIPTION
 -----------
 
 ##### Goal
-The goal of this project is to present how to implement **security** in **MVC (Thymeleaf)** application using **Keycloak** tool with usage **Java** programming language and **Spring Boot 3** framework. Security is based on authorization grant type **Authorization Code**. This application handles **users** with roles. User has access to only specific secured resouce after log in.
+The goal of this project is to present how to implement **security** in **MVC (Thymeleaf)** application using **Keycloak** tool with usage **Java** programming language and **Spring Boot 3** framework. All Keycloak data are stored in **Postgres** database. Security is based on authorization grant type **Authorization Code**. This application handles **users** with roles. User has access to only specific secured resouce after log in.
 
 ##### Elements
 This project consists of following elements:
@@ -39,6 +39,7 @@ Terminology explanation:
 * **MVC**: MVC is a design pattern that separates an application into three components: 1. Model: Manages data and business logic. 2. View: Handles UI and presentation (Thymeleaf templates in Spring Boot). 3. Controller: Processes user requests, interacts with the model, and updates the view.
 * **Keycloak**: Keycloak is an open-source identity and access management solution that provides authentication, authorization, and user management for applications and services. It supports Single Sign-On (SSO), social logins, multi-factor authentication, and integration with LDAP and Active Directory.
 * **Authorization Code Grant**: it is an OAuth 2.0 flow used for securely obtaining an access token. It is commonly used by web and mobile apps that need to authenticate users via a third-party authorization server.
+* **Postgres**: PostgreSQL (or Postgres) is a powerful, open-source relational database management system (RDBMS) known for its extensibility, SQL compliance, and robustness. It supports advanced features like ACID transactions, JSON, full-text search, and custom data types, making it ideal for scalable and high-performance applications.
 
 
 USAGES
