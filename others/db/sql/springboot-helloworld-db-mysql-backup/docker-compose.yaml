@@ -12,20 +12,9 @@ services:
       MYSQL_PASSWORD: admin123
     ports:
       - "3306:3306"
-#    volumes:
+    volumes:
+      - ./backup.sql:/docker-entrypoint-initdb.d/backup.sql
 #      - dbdata:/var/lib/mysql
 
-  pma:
-    image: phpmyadmin/phpmyadmin:5.2.1
-    container_name: pma-container
-    links:
-      - mysql
-    environment:
-      PMA_HOST: mysql
-      PMA_PORT: 3306
-      PMA_ARBITRARY: 1
-    restart: always
-    ports:
-      - 8081:80
 #volumes:
 #  dbdata:
