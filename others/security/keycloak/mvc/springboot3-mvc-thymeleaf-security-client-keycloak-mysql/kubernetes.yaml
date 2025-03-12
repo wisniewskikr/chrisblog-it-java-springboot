@@ -1,41 +1,39 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: postgres
+  name: mysql
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: postgres
+      app: mysql
   template:
     metadata:
       labels:
-        app: postgres
+        app: mysql
     spec:
       containers:
-        - name: postgres
-          image: postgres:15
+        - name: mysql
+          image: mysql:8
           env:
-            - name: POSTGRES_DB
+            - name: MYSQL_ROOT_PASSWORD
+              value: "root"
+            - name: MYSQL_DATABASE
               value: "keycloak"
-            - name: POSTGRES_USER
+            - name: MYSQL_USER
               value: "keycloak"
-            - name: POSTGRES_PASSWORD
+            - name: MYSQL_PASSWORD
               value: "password"
-          ports:
-            - containerPort: 5432
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: postgres
+  name: mysql
 spec:
-  selector:
-    app: postgres
   ports:
-    - protocol: TCP
-      port: 5432
-      targetPort: 5432
+    - port: 3306
+  selector:
+    app: mysql
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -62,15 +60,15 @@ spec:
               value: "admin"
             - name: KEYCLOAK_ADMIN_PASSWORD
               value: "admin"
-            - name: KC_DB
-              value: "postgres"
-            - name: KC_DB_URL_HOST
-              value: "postgres"
-            - name: KC_DB_URL_DATABASE
+            - name: DB_VENDOR
+              value: "MYSQL"
+            - name: DB_ADDR
+              value: "mysql"
+            - name: DB_DATABASE
               value: "keycloak"
-            - name: KC_DB_USERNAME
+            - name: DB_USER
               value: "keycloak"
-            - name: KC_DB_PASSWORD
+            - name: DB_PASSWORD
               value: "password"
           ports:
             - containerPort: 8080
