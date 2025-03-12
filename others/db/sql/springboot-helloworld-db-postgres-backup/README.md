@@ -10,7 +10,7 @@ DESCRIPTION
 -----------
 
 ##### Goal
-The goal of this project is to present how to perform **backup** of **Postgres** dababase basing on application in **Java** programming language with usage **Spring Boot** framework.
+The goal of this project is to present how to perform **backup** of **Postgres** dababase basing on application in **Java** programming language with usage **Spring Boot** framework. Backup means that database is loaded with data from "backup.sql" file.
 
 ##### Elements
 This project consists of following elements:
@@ -48,5 +48,5 @@ USAGE
      * Stop Docker tool
 
 ##### Optional steps:
-1. Create Posgres backup file with `docker-compose exec db pg_dump -U myuser -d mydatabase > .backup.sql`
-1. Load Postgres backup file with `docker-compose exec -T db psql -U myuser -d mydatabase < .backup.sql`
+1. Create Posgres backup file with `docker-compose exec db pg_dump -U myuser -d mydatabase > backup.sql`
+1. Load Postgres backup file with `docker-compose exec -T db psql -U myuser -d mydatabase < backup.sql`
