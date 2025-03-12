@@ -3,10 +3,10 @@ version: '3'
 services:
 
   mysql:
-    image: mysql:5.7
+    image: mysql:9
     container_name: mysql-container
     environment:
-      MYSQL_ROOT_PASSWORD: my_secret_password
+      MYSQL_ROOT_PASSWORD: root123
       MYSQL_DATABASE: database
       MYSQL_USER: admin
       MYSQL_PASSWORD: admin123
