@@ -106,13 +106,11 @@ USAGE KUBERNETES (KIND)
    * Expected mysql, be and fe as **READY 1/1** (it can take few minutes)
 1. In the second command line tool **forward port of Keycloak service** with `kubectl port-forward service/keycloak 8080:8080`
 1. In the third command line tool **forward port of App service** with `kubectl port-forward service/app 9090:9090`
-1. In a browser visit **Keycloak** console with `http://localhost:8080`
-   * Use credentials admin/admin and create new users (Name: "user", Credentials: "user", Role: "USER". Name: "admin", Credentials: "admin", Role: "ADMIN". Please check section **Keycloak Configuration**)
 1. In a browser visit **MVC** with `http://localhost:9090`
     * Expected Landing page
     * Click **Public Page**: expected not secured public page
-    * Click **User Page**: expected secured user page. Visible for user and admin
-    * Click **Admin Page**: expected secured admin page. Visible for admin
+    * Click **User Page**: expected "Login" page with "Registration" link. Then expected secured user page for manually registered user (default role USER)
+    * Click **Admin Page**: expected "Login" page with "Registration" link. Then expected no permission message for manually registered user (default role USER)
 1. Clean up environment 
      * In the third command line tool **stop forwarding port of App service** with `ctrl + C`
      * In the second command line tool **stop forwarding port of Keycloak service** with `ctrl + C`
