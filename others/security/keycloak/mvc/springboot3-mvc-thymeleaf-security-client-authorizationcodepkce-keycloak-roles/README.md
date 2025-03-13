@@ -7,7 +7,9 @@ EXAMPLE
 
 ![My Image](readme-images/image-03.png)
 
-![My Image](readme-images/image-04.png)
+![My Image](readme-images/image-04a.png)
+
+![My Image](readme-images/image-04b.png)
 
 ![My Image](readme-images/image-05.png)
 
@@ -204,3 +206,9 @@ KEYCLOAK CONFIGURATION
 ![My Image](readme-images/config-26.png)
 
 ![My Image](readme-images/config-27.png)
+
+![My Image](readme-images/config-28.png)
+
+![My Image](readme-images/config-29.png)
+
+![My Image](readme-images/config-30.png)
