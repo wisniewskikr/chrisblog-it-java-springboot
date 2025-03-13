@@ -115,7 +115,7 @@ data:
       "oauth2DevicePollingInterval": 5,
       "enabled": true,
       "sslRequired": "external",
-      "registrationAllowed": false,
+      "registrationAllowed": true,
       "registrationEmailAsUsername": false,
       "rememberMe": false,
       "verifyEmail": false,
@@ -155,6 +155,9 @@ data:
                 "uma_authorization"
               ],
               "client": {
+                "helloworld-client": [
+                  "USER"
+                ],
                 "account": [
                   "view-profile",
                   "manage-account"
@@ -1691,14 +1694,14 @@ data:
             "subComponents": {},
             "config": {
               "allowed-protocol-mapper-types": [
-                "saml-role-list-mapper",
-                "oidc-sha256-pairwise-sub-mapper",
-                "oidc-usermodel-attribute-mapper",
-                "oidc-address-mapper",
+                "saml-user-attribute-mapper",
                 "saml-user-property-mapper",
                 "oidc-full-name-mapper",
-                "saml-user-attribute-mapper",
-                "oidc-usermodel-property-mapper"
+                "saml-role-list-mapper",
+                "oidc-sha256-pairwise-sub-mapper",
+                "oidc-address-mapper",
+                "oidc-usermodel-property-mapper",
+                "oidc-usermodel-attribute-mapper"
               ]
             }
           },
@@ -1725,14 +1728,14 @@ data:
             "subComponents": {},
             "config": {
               "allowed-protocol-mapper-types": [
+                "saml-user-property-mapper",
                 "saml-role-list-mapper",
+                "oidc-address-mapper",
                 "saml-user-attribute-mapper",
                 "oidc-usermodel-attribute-mapper",
                 "oidc-usermodel-property-mapper",
                 "oidc-full-name-mapper",
-                "saml-user-property-mapper",
-                "oidc-sha256-pairwise-sub-mapper",
-                "oidc-address-mapper"
+                "oidc-sha256-pairwise-sub-mapper"
               ]
             }
           },
