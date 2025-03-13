@@ -7,7 +7,9 @@ EXAMPLE
 
 ![My Image](readme-images/image-03.png)
 
-![My Image](readme-images/image-04.png)
+![My Image](readme-images/image-04a.png)
+
+![My Image](readme-images/image-04b.png)
 
 ![My Image](readme-images/image-05.png)
 
@@ -68,8 +70,8 @@ USAGE DOCKER COMPOSE
 1. In a browser visit **MVC** with `http://localhost:9090`
     * Expected Landing page
     * Click **Public Page**: expected not secured public page
-    * Click **User Page**: expected secured user page for manually registered user (default role USER)
-    * Click **Admin Page**: expected no permission message for manually registered user (default role USER)
+    * Click **User Page**: expected "Login" page with "Registration" link. Then expected secured user page for manually registered user (default role USER)
+    * Click **Admin Page**: expected "Login" page with "Registration" link. Then expected no permission message for manually registered user (default role USER)
 1. Clean up environment 
      * In a command line tool **remove Docker containers** with `docker-compose down --rmi all`
      * Stop **Docker** tool
