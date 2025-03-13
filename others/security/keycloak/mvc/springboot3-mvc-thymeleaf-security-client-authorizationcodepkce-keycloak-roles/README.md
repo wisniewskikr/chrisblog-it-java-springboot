@@ -66,13 +66,11 @@ USAGE DOCKER COMPOSE
 ##### Required steps:
 1. Start **Docker** tool
 1. In a command line tool **start Docker containers** with `docker-compose up -d --build`
-1. In a browser visit **Keycloak** console with `http://localhost:8080`
-   * Use credentials admin/admin and create new users (Name: "user", Credentials: "user", Role: "USER". Name: "admin", Credentials: "admin", Role: "ADMIN". Please check section **Keycloak Configuration**)
 1. In a browser visit **MVC** with `http://localhost:9090`
     * Expected Landing page
     * Click **Public Page**: expected not secured public page
-    * Click **User Page**: expected secured user page. Visible for user and admin
-    * Click **Admin Page**: expected secured admin page. Visible for admin
+    * Click **User Page**: expected "Login" page with "Registration" link. Then expected secured user page for manually registered user (default role USER)
+    * Click **Admin Page**: expected "Login" page with "Registration" link. Then expected no permission message for manually registered user (default role USER)
 1. Clean up environment 
      * In a command line tool **remove Docker containers** with `docker-compose down --rmi all`
      * Stop **Docker** tool
