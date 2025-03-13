@@ -62,6 +62,7 @@ USAGE DOCKER COMPOSE
 * **Docker** (tested on version 4.33.1)
 
 ##### Required steps:
+1. Update **hosts** file (Run as Administrator; Windows: "Windows\System32\drivers\etc\hosts"; MAC/Linux: "etc/hosts") with new line **127.0.0.1 keycloak**
 1. Start **Docker** tool
 1. In a command line tool **start Docker containers** with `docker-compose up -d --build`
 1. In a browser visit **Keycloak** console with `http://localhost:8080`
@@ -74,6 +75,7 @@ USAGE DOCKER COMPOSE
 1. Clean up environment 
      * In a command line tool **remove Docker containers** with `docker-compose down --rmi all`
      * Stop **Docker** tool
+     * Remove new line from **hosts**
 
 ##### Optional steps:
 1. In a command line tool validate Docker Compose with `docker-compose config`
@@ -202,3 +204,9 @@ KEYCLOAK CONFIGURATION
 ![My Image](readme-images/config-26.png)
 
 ![My Image](readme-images/config-27.png)
+
+![My Image](readme-images/config-28.png)
+
+![My Image](readme-images/config-29.png)
+
+![My Image](readme-images/config-30.png)
