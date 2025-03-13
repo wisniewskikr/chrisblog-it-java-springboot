@@ -143,6 +143,8 @@ After export you have to **update realm-export.json** file:
 KEYCLOAK CONFIGURATION
 ----------------------
 
+Credentials: **admin/admin**
+
 ![My Image](readme-images/config-01.png)
 
 ![My Image](readme-images/config-02.png)
