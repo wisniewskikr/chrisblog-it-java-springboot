@@ -207,3 +207,9 @@ KEYCLOAK CONFIGURATION
 ![My Image](readme-images/config-26.png)
 
 ![My Image](readme-images/config-27.png)
+
+![My Image](readme-images/config-28.png)
+
+![My Image](readme-images/config-29.png)
+
+![My Image](readme-images/config-30.png)
