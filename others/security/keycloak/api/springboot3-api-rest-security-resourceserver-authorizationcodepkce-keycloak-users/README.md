@@ -181,3 +181,5 @@ KEYCLOAK CONFIGURATION
 ![My Image](readme-images/config-14.png)
 
 ![My Image](readme-images/config-15.png)
+
+![My Image](readme-images/config-16.png)
