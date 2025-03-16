@@ -1,5 +1,5 @@
-EXAMPLE OAUTH 2.0
------------------
+EXAMPLE
+-------
 
 ![My Image](readme-images/image-01.png)
 
@@ -8,6 +8,8 @@ EXAMPLE OAUTH 2.0
 ![My Image](readme-images/image-03.png)
 
 ![My Image](readme-images/image-04.png)
+
+![My Image](readme-images/image-05.png)
 
 
 DESCRIPTION
@@ -62,20 +64,16 @@ USAGE DOCKER COMPOSE
 * **Docker** (tested on version 4.33.1)
 
 ##### Required steps:
+1. Update **hosts** file (Run as Administrator; Windows: "Windows\System32\drivers\etc\hosts"; MAC/Linux: "etc/hosts") with new line **127.0.0.1 keycloak**
 1. Start **Docker** tool
 1. In a command line tool **start Docker containers** with `docker-compose up -d --build`
-1. In a browser visit **Keycloak** console with `http://localhost:8080`
-   * Use credentials admin/admin and configure Realm, Client and User (please check section **Keycloak Configuration**)
-1. In any REST Client (e.g. Postman) visit **REST API** application with `http://localhost:9090/api/v1/demo`
-   * Expected "Hello World!" message
-   * Expected JWT token
 1. In any REST Client (e.g. Postman) visit **REST API** application with `http://localhost:9090/api/v1/demo/user`
    * Authorization -> Type -> OAuth 2.0
    * Token Name: **Token**
    * Grant Type: **Authorization Code (With PKCE)
    * Callback URL: **http://localhost:9090/code**
-   * Auth URL: **http://localhost:8080/realms/helloworld-realm/protocol/openid-connect/auth**
-   * Access Token URL: **http://localhost:8080/realms/helloworld-realm/protocol/openid-connect/token**
+   * Auth URL: **http://keycloak:8080/realms/helloworld-realm/protocol/openid-connect/auth**
+   * Access Token URL: **http://keycloak:8080/realms/helloworld-realm/protocol/openid-connect/token**
    * Client ID: **helloworld-client**
    * Code Challenge Method: **SHA-256**
    * Click **Get New Access Token -> Use Token**
@@ -84,6 +82,7 @@ USAGE DOCKER COMPOSE
 1. Clean up environment 
      * In a command line tool **remove Docker containers** with `docker-compose down --rmi all`
      * Stop **Docker** tool
+     * Remove new line from **hosts**
 
 ##### Optional steps:
 1. In a command line tool validate Docker Compose with `docker-compose config`
