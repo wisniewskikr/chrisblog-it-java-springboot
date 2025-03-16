@@ -141,6 +141,8 @@ In the file **application.yml** replace **client-secret:** with **client-authent
 KEYCLOAK CONFIGURATION
 ----------------------
 
+Credentials: **admin/admin**
+
 ![My Image](readme-images/config-01.png)
 
 ![My Image](readme-images/config-02.png)
