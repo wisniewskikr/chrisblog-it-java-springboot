@@ -1,19 +1,11 @@
-EXAMPLE BEARER TOKEN
---------------------
+EXAMPLE
+-------
 
 ![My Image](readme-images/image-01.png)
 
 ![My Image](readme-images/image-02.png)
 
-
-EXAMPLE OAUTH 2.0
------------------
-
 ![My Image](readme-images/image-03.png)
-
-![My Image](readme-images/image-04.png)
-
-![My Image](readme-images/image-05.png)
 
 
 DESCRIPTION
