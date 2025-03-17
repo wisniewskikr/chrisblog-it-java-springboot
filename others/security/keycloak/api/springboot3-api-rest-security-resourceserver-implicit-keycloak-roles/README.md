@@ -13,8 +13,6 @@ EXAMPLE
 
 ![My Image](readme-images/image-06.png)
 
-![My Image](readme-images/image-07.png)
-
 
 DESCRIPTION
 -----------
