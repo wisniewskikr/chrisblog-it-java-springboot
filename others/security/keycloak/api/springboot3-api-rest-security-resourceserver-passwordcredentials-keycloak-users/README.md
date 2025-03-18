@@ -1,5 +1,5 @@
-EXAMPLE BEARER TOKEN
---------------------
+EXAMPLE
+-------
 
 ![My Image](readme-images/image-01.png)
 
@@ -7,15 +7,7 @@ EXAMPLE BEARER TOKEN
 
 ![My Image](readme-images/image-03.png)
 
-
-EXAMPLE OAUTH 2.0
------------------
-
 ![My Image](readme-images/image-04.png)
-
-![My Image](readme-images/image-05.png)
-
-![My Image](readme-images/image-06.png)
 
 
 DESCRIPTION
@@ -64,24 +56,28 @@ USAGE DOCKER COMPOSE
 * **Docker** (tested on version 4.33.1)
 
 ##### Required steps:
+1. Update **hosts** file (Run as Administrator; Windows: "Windows\System32\drivers\etc\hosts"; MAC/Linux: "etc/hosts") with new line **127.0.0.1 keycloak**
 1. Start **Docker** tool
 1. In a command line tool **start Docker containers** with `docker-compose up -d --build`
 1. In a browser visit **Keycloak** console with `http://localhost:8080`
-   * Use credentials admin/admin and configure Realm, Client and User (please check section **Keycloak Configuration**)
-1. In any REST Client (e.g. Postman) visit **REST API** application with `http://localhost:9090/api/v1/demo`
-   * Expected "Hello World!" message
-1. In any REST Client (e.g. Postman) visit **Keycloack** JWT generator with `http://localhost:8080/realms/helloworld-realm/protocol/openid-connect/token`
-   * Method: **POST**
-   * client_id: **helloworld_client**
-   * username: **user**
-   * password: **user**
+   * Use credentials admin/admin and configure User (please check section **Keycloak Configuration**)
+1. In any REST Client (e.g. Postman) visit **Keycloack** with `http://localhost:9090/api/v1/demo/user`
+   * Authorization -> OAuth 2.0
+   * Grant Type: **Password Credentials**
+   * Access Token URL: **http://keycloak:8080/realms/helloworld-realm/protocol/openid-connect/token**
+   * Client Id: **helloworld-client**
+   * Username: **user**
+   * Password: **user**
+   * Scope: **openid**
+   * Click **Get New Access Token**
    * Expected JWT token
-1. In any REST Client (e.g. Postman) visit **REST API** application with `http://localhost:9090/api/v1/demo/user`
+1. In any REST Client (e.g. Postman) visit **REST API** application with (method **GET**) `http://localhost:9090/api/v1/demo/user`
    * Bearer Token: JWT token
    * Expected "Hello World, User!" message
 1. Clean up environment 
      * In a command line tool **remove Docker containers** with `docker-compose down --rmi all`
      * Stop **Docker** tool
+     * Remove new line from **hosts**
 
 ##### Optional steps:
 1. In a command line tool validate Docker Compose with `docker-compose config`
