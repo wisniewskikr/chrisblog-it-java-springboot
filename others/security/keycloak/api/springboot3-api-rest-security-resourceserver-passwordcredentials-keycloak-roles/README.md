@@ -41,6 +41,7 @@ USAGES
 
 This project can be tested in following configurations:
 * **Usage Docker Compose**: all services are started as Docker containers definied in docker compose file.
+* **Usage Kubernetes (Kind)**: all services are started as Kubernetes pods.
 
 
 USAGE DOCKER COMPOSE
