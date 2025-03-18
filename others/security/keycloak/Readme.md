@@ -10,15 +10,10 @@ Resource Server Grant Types:
 **Refresh Token** is a credential used to obtain a new access token without requiring the user to log in again.
 
 TODO:
-* Add external database
-* Add export and import users from database
-* Improvement of docker-compose: remove localhost
-* Implementation of Kubernetes
 * Implement of MVC custom login page
 * Implement of MVC custom logout page
 * Implement realm roles for API
 * Implement realm roles for MVC
-* Implement registration from login page
 * Implement Github login from login page
 * Implement token relay between MVC and API
 * Implement keycloak starter
