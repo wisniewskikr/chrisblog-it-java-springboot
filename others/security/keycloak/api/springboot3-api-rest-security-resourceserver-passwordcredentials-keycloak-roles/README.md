@@ -60,7 +60,7 @@ USAGE DOCKER COMPOSE
 1. Start **Docker** tool
 1. In a command line tool **start Docker containers** with `docker-compose up -d --build`
 1. In a browser visit **Keycloak** console with `http://localhost:8080`
-   * Use credentials admin/admin and configure User (please check section **Keycloak Configuration**)
+   * Use credentials admin/admin and configure User with role USER (please check section **Keycloak Configuration**)
 1. In any REST Client (e.g. Postman) visit **Keycloack** with `http://localhost:9090/api/v1/demo/user`
    * Authorization -> OAuth 2.0
    * Grant Type: **Password Credentials**
