@@ -75,6 +75,9 @@ USAGE DOCKER COMPOSE
 1. In any REST Client (e.g. Postman) visit **REST API** application with (method **GET**) `http://localhost:9090/api/v1/demo/user`
    * Bearer Token: JWT token
    * Expected "Hello World, User!" message
+1. In any REST Client (e.g. Postman) visit **REST API** application with (method **GET**) `http://localhost:9090/api/v1/demo/admin`
+   * Bearer Token: JWT token
+   * Expected "Hello World, Admin!" message
 1. Clean up environment 
      * In a command line tool **remove Docker containers** with `docker-compose down --rmi all`
      * Stop **Docker** tool
@@ -111,20 +114,24 @@ USAGE KUBERNETES (KIND)
    * Expected mysql, be and fe as **READY 1/1** (it can take few minutes)
 1. In the second command line tool **forward port of Keycloak service** with `kubectl port-forward service/keycloak 8080:8080`
 1. In the third command line tool **forward port of App service** with `kubectl port-forward service/app 9090:9090`
+1. In a browser visit **Keycloak** console with `http://localhost:8080`
+   * Use credentials admin/admin and configure User (please check section **Keycloak Configuration**)
 1. In any REST Client (e.g. Postman) visit **Keycloack** with `http://localhost:9090/api/v1/demo/user`
    * Authorization -> OAuth 2.0
-   * Grant Type: **Authorization Code**
-   * Callback URL: **http://localhost:9090/code**
-   * Auth URL: **http://keycloak.default.svc.cluster.local:8080/realms/helloworld-realm/protocol/openid-connect/auth**
-   * Access Token URL: **http://keycloak.default.svc.cluster.local:8080/realms/helloworld-realm/protocol/openid-connect/token**
+   * Grant Type: **Password Credentials**
+   * Access Token URL: **http://keycloak:8080/realms/helloworld-realm/protocol/openid-connect/token**
    * Client Id: **helloworld-client**
-   * Client Secret: **helloworld-secret**
+   * Username: **user**
+   * Password: **user**
    * Scope: **openid**
    * Click **Get New Access Token**
    * Expected JWT token
 1. In any REST Client (e.g. Postman) visit **REST API** application with (method **GET**) `http://localhost:9090/api/v1/demo/user`
    * Bearer Token: JWT token
    * Expected "Hello World, User!" message
+1. In any REST Client (e.g. Postman) visit **REST API** application with (method **GET**) `http://localhost:9090/api/v1/demo/admin`
+   * Bearer Token: JWT token
+   * Expected "Hello World, Admin!" message
 1. Clean up environment 
      * In the third command line tool **stop forwarding port of App service** with `ctrl + C`
      * In the second command line tool **stop forwarding port of Keycloak service** with `ctrl + C`
