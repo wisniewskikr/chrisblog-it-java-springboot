@@ -119,7 +119,7 @@ USAGE KUBERNETES (KIND)
 1. In any REST Client (e.g. Postman) visit **Keycloack** with `http://localhost:9090/api/v1/demo/user`
    * Authorization -> OAuth 2.0
    * Grant Type: **Password Credentials**
-   * Access Token URL: **http://keycloak:8080/realms/helloworld-realm/protocol/openid-connect/token**
+   * Access Token URL: **http://keycloak.default.svc.cluster.local:8080/realms/helloworld-realm/protocol/openid-connect/token**
    * Client Id: **helloworld-client**
    * Username: **user**
    * Password: **user**
