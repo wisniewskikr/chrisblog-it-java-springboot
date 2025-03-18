@@ -12,5 +12,4 @@ spring:
 jwt:
   auth:
     converter:
-      resource-id: helloworld-client
       principle-attribute: preferred_username
