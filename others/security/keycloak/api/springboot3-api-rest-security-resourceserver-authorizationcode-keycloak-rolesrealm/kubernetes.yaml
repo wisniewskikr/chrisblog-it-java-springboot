@@ -143,18 +143,34 @@ data:
             "composites": {
               "realm": [
                 "offline_access",
-                "uma_authorization"
+                "uma_authorization",
+                "USER"
               ],
               "client": {
-                "helloworld-client": [
-                  "USER"
-                ],
                 "account": [
                   "view-profile",
                   "manage-account"
                 ]
               }
             },
+            "clientRole": false,
+            "containerId": "56b3fd7d-bc83-41a2-9b39-0174e1d7a0a2",
+            "attributes": {}
+          },
+          {
+            "id": "be1a7a29-3a9b-47a2-8573-32402b4b231e",
+            "name": "ADMIN",
+            "description": "",
+            "composite": false,
+            "clientRole": false,
+            "containerId": "56b3fd7d-bc83-41a2-9b39-0174e1d7a0a2",
+            "attributes": {}
+          },
+          {
+            "id": "d1b2016d-e3b5-4d75-8757-e6e29b269405",
+            "name": "USER",
+            "description": "",
+            "composite": false,
             "clientRole": false,
             "containerId": "56b3fd7d-bc83-41a2-9b39-0174e1d7a0a2",
             "attributes": {}
@@ -393,26 +409,7 @@ data:
           ],
           "security-admin-console": [],
           "admin-cli": [],
-          "helloworld-client": [
-            {
-              "id": "8c1b7432-07d3-4c03-9880-4e2d69b3821e",
-              "name": "ADMIN",
-              "description": "",
-              "composite": false,
-              "clientRole": true,
-              "containerId": "6dca95f0-c40b-4835-9b76-b611fd15dbb4",
-              "attributes": {}
-            },
-            {
-              "id": "6e77df2b-50d6-421c-ae8e-0b44496c7ef2",
-              "name": "USER",
-              "description": "",
-              "composite": false,
-              "clientRole": true,
-              "containerId": "6dca95f0-c40b-4835-9b76-b611fd15dbb4",
-              "attributes": {}
-            }
-          ],
+          "helloworld-client": [],
           "account-console": [],
           "broker": [
             {
@@ -1625,14 +1622,14 @@ data:
             "subComponents": {},
             "config": {
               "allowed-protocol-mapper-types": [
+                "oidc-address-mapper",
                 "saml-user-attribute-mapper",
+                "saml-user-property-mapper",
                 "saml-role-list-mapper",
                 "oidc-usermodel-property-mapper",
-                "oidc-usermodel-attribute-mapper",
                 "oidc-full-name-mapper",
-                "oidc-sha256-pairwise-sub-mapper",
-                "oidc-address-mapper",
-                "saml-user-property-mapper"
+                "oidc-usermodel-attribute-mapper",
+                "oidc-sha256-pairwise-sub-mapper"
               ]
             }
           },
@@ -1652,14 +1649,14 @@ data:
             "subComponents": {},
             "config": {
               "allowed-protocol-mapper-types": [
-                "saml-user-property-mapper",
-                "oidc-address-mapper",
-                "saml-role-list-mapper",
-                "oidc-sha256-pairwise-sub-mapper",
-                "oidc-full-name-mapper",
                 "saml-user-attribute-mapper",
                 "oidc-usermodel-attribute-mapper",
-                "oidc-usermodel-property-mapper"
+                "saml-role-list-mapper",
+                "oidc-full-name-mapper",
+                "oidc-sha256-pairwise-sub-mapper",
+                "oidc-address-mapper",
+                "oidc-usermodel-property-mapper",
+                "saml-user-property-mapper"
               ]
             }
           },
