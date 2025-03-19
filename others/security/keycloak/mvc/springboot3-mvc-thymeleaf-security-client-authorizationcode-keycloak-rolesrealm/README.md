@@ -122,8 +122,8 @@ USAGE KUBERNETES (KIND)
      * Remove new line from **hosts**
 
 ##### Optional steps:
-1. In a command line tool build Docker App image with `docker build -t wisniewskikr/springboot3-mvc-thymeleaf-security-client-authorizationcode-keycloak-roles:0.0.1 .`
-1. In a command line tool push Docker BE image to Docker Repository with `docker push wisniewskikr/springboot3-mvc-thymeleaf-security-client-authorizationcode-keycloak-roles:0.0.1` 
+1. In a command line tool build Docker App image with `docker build -t wisniewskikr/springboot3-mvc-thymeleaf-security-client-authorizationcode-keycloak-rolesrealm:0.0.1 .`
+1. In a command line tool push Docker BE image to Docker Repository with `docker push wisniewskikr/springboot3-mvc-thymeleaf-security-client-authorizationcode-keycloak-rolesrealm:0.0.1` 
 1. In the first command line tool with administrator privileges check clusers with `kind get clusters`
 1. In a command line tool check Kubernetes Deployments with `kubectl get deployments`
 1. In a command line tool check Kubernetes Deployments details with **kubectl describe deployment {deployment-name}**
