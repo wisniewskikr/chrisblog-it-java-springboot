@@ -29,9 +29,6 @@ import org.springframework.core.convert.converter.Converter;
 @RequiredArgsConstructor
 public class SecurityConfig {
 
-    @Value("${jwt.auth.converter.resource-id}")
-    private String resourceId;
-
     @Value("${jwt.auth.post-logout-uri}")
     private String postLogoutUri;
     
@@ -70,21 +67,15 @@ public class SecurityConfig {
     AuthoritiesConverter realmRolesAuthoritiesConverter() {
         return claims -> {  
 
-            Map<String, Object> resourceAccess;
-            Map<String, Object> resource;
+            Map<String, Object> realmAccess;
             Collection<String> resourceRoles;
 
-            if (claims.get("resource_access") == null) {
+            if (claims.get("realm_access") == null) {
                 return Set.of();
             }
-            resourceAccess = (Map<String, Object>) claims.get("resource_access");
+            realmAccess = (Map<String, Object>) claims.get("realm_access");
 
-            if (resourceAccess.get(resourceId) == null) {
-                return Set.of();
-            }
-            resource = (Map<String, Object>) resourceAccess.get(resourceId);
-
-            resourceRoles = (Collection<String>) resource.get("roles");
+            resourceRoles = (Collection<String>) realmAccess.get("roles");
             return resourceRoles
                     .stream()
                     .map(role -> new SimpleGrantedAuthority("ROLE_" + role))
