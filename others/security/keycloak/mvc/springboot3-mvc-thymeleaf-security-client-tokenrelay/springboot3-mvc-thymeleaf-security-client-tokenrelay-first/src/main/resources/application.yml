@@ -19,3 +19,8 @@ spring:
 api:
   second:
     url: http://localhost:8082/api/v1
+
+
+post:
+  logout:
+    uri: http://localhost:8081/

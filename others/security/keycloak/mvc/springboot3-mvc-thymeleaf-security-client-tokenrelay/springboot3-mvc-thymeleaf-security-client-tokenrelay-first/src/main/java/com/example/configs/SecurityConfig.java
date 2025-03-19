@@ -1,5 +1,6 @@
 package com.example.configs;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.Customizer;
@@ -13,6 +14,9 @@ import org.springframework.security.web.authentication.logout.LogoutSuccessHandl
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {
+
+    @Value("${post.logout.uri}")
+    private String postLogoutUri;
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http, ClientRegistrationRepository clientRegistrationRepository) throws Exception {
@@ -47,7 +51,7 @@ public class SecurityConfig {
             new OidcClientInitiatedLogoutSuccessHandler(clientRegistrationRepository);
         
         // Configure the post-logout redirect URI
-        oidcLogoutSuccessHandler.setPostLogoutRedirectUri("http://localhost:9090/");
+        oidcLogoutSuccessHandler.setPostLogoutRedirectUri(postLogoutUri);
         
         return oidcLogoutSuccessHandler;
     }
