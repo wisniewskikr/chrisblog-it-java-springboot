@@ -159,9 +159,11 @@ Credentials: **admin/admin**
 
 ![My Image](readme-images/config-07.png)
 
-![My Image](readme-images/config-08a.png)
+![My Image](readme-images/config-07a.png)
 
-![My Image](readme-images/config-08b.png)
+![My Image](readme-images/config-07b.png)
+
+![My Image](readme-images/config-08.png)
 
 ![My Image](readme-images/config-09.png)
 
@@ -170,12 +172,6 @@ Credentials: **admin/admin**
 ![My Image](readme-images/config-11.png)
 
 ![My Image](readme-images/config-12.png)
-
-![My Image](readme-images/config-12a.png)
-
-![My Image](readme-images/config-12b.png)
-
-![My Image](readme-images/config-12c.png)
 
 ![My Image](readme-images/config-13.png)
 
@@ -187,6 +183,10 @@ Credentials: **admin/admin**
 
 ![My Image](readme-images/config-17.png)
 
+![My Image](readme-images/config-17a.png)
+
+![My Image](readme-images/config-17b.png)
+
 ![My Image](readme-images/config-18.png)
 
 ![My Image](readme-images/config-19.png)
@@ -194,21 +194,3 @@ Credentials: **admin/admin**
 ![My Image](readme-images/config-20.png)
 
 ![My Image](readme-images/config-21.png)
-
-![My Image](readme-images/config-22.png)
-
-![My Image](readme-images/config-23.png)
-
-![My Image](readme-images/config-24.png)
-
-![My Image](readme-images/config-25.png)
-
-![My Image](readme-images/config-26.png)
-
-![My Image](readme-images/config-27.png)
-
-![My Image](readme-images/config-28.png)
-
-![My Image](readme-images/config-29.png)
-
-![My Image](readme-images/config-30.png)
