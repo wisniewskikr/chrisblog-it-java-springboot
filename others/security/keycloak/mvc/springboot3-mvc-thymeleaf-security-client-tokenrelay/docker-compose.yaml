@@ -19,8 +19,10 @@
       context: ./springboot3-mvc-thymeleaf-security-client-tokenrelay-first
       dockerfile: Dockerfile
     environment:
+      WAIT_HOSTS: keycloak:8080
+      WAIT_TIMEOUT: 60
       API_SECOND_URL: http://second:8082/api/v1
-      SPRING_SECURITY_OAUTH2_RESOURCESERVER_JWT_ISSUER-URI: http://keycloak:8080/realms/helloworld-realm
+      SPRING_SECURITY_OAUTH2_CLIENT_PROVIDER_KEYCLOAK_ISSUERURI: http://keycloak:8080/realms/helloworld-realm
     ports:
       - "8081:8081"
 
