@@ -57,6 +57,15 @@
         "attributes": {}
       },
       {
+        "id": "4fcd208c-87ee-4946-b804-dad7939ee753",
+        "name": "ADMIN",
+        "description": "",
+        "composite": false,
+        "clientRole": false,
+        "containerId": "fe6238f9-bd81-4c4c-a586-30522d170950",
+        "attributes": {}
+      },
+      {
         "id": "051fb005-851a-45a3-976f-68586e1d2e06",
         "name": "default-roles-helloworld-realm",
         "description": "${role_default-roles}",
@@ -64,18 +73,25 @@
         "composites": {
           "realm": [
             "offline_access",
-            "uma_authorization"
+            "uma_authorization",
+            "USER"
           ],
           "client": {
-            "helloworld-client": [
-              "USER"
-            ],
             "account": [
               "view-profile",
               "manage-account"
             ]
           }
         },
+        "clientRole": false,
+        "containerId": "fe6238f9-bd81-4c4c-a586-30522d170950",
+        "attributes": {}
+      },
+      {
+        "id": "1bf6936b-567e-41e5-9a0e-bc6f095866ab",
+        "name": "USER",
+        "description": "",
+        "composite": false,
         "clientRole": false,
         "containerId": "fe6238f9-bd81-4c4c-a586-30522d170950",
         "attributes": {}
@@ -306,24 +322,6 @@
       "security-admin-console": [],
       "admin-cli": [],
       "helloworld-client": [
-        {
-          "id": "62c74c07-820d-4220-946c-7935d5d265ba",
-          "name": "USER",
-          "description": "",
-          "composite": false,
-          "clientRole": true,
-          "containerId": "26ba87a8-4a09-4647-9900-dcbf553a8978",
-          "attributes": {}
-        },
-        {
-          "id": "684ac0cb-02c4-4802-be43-c74bbad3e7f4",
-          "name": "ADMIN",
-          "description": "",
-          "composite": false,
-          "clientRole": true,
-          "containerId": "26ba87a8-4a09-4647-9900-dcbf553a8978",
-          "attributes": {}
-        },
         {
           "id": "6cb41e87-22d6-4cf9-8f8e-225751491a76",
           "name": "uma_protection",
@@ -1192,12 +1190,15 @@
           "protocolMapper": "oidc-usermodel-realm-role-mapper",
           "consentRequired": false,
           "config": {
-            "user.attribute": "foo",
             "introspection.token.claim": "true",
+            "multivalued": "true",
+            "userinfo.token.claim": "false",
+            "user.attribute": "foo",
+            "id.token.claim": "true",
+            "lightweight.claim": "false",
             "access.token.claim": "true",
             "claim.name": "realm_access.roles",
-            "jsonType.label": "String",
-            "multivalued": "true"
+            "jsonType.label": "String"
           }
         },
         {
@@ -1222,7 +1223,7 @@
             "multivalued": "true",
             "userinfo.token.claim": "false",
             "user.attribute": "foo",
-            "id.token.claim": "true",
+            "id.token.claim": "false",
             "lightweight.claim": "false",
             "access.token.claim": "true",
             "claim.name": "resource_access.${client_id}.roles",
@@ -1606,14 +1607,14 @@
         "subComponents": {},
         "config": {
           "allowed-protocol-mapper-types": [
-            "saml-user-attribute-mapper",
+            "oidc-usermodel-attribute-mapper",
+            "oidc-address-mapper",
+            "oidc-sha256-pairwise-sub-mapper",
             "saml-user-property-mapper",
             "oidc-full-name-mapper",
-            "saml-role-list-mapper",
-            "oidc-sha256-pairwise-sub-mapper",
-            "oidc-address-mapper",
             "oidc-usermodel-property-mapper",
-            "oidc-usermodel-attribute-mapper"
+            "saml-user-attribute-mapper",
+            "saml-role-list-mapper"
           ]
         }
       },
@@ -1641,13 +1642,13 @@
         "config": {
           "allowed-protocol-mapper-types": [
             "saml-user-property-mapper",
-            "saml-role-list-mapper",
-            "oidc-address-mapper",
             "saml-user-attribute-mapper",
-            "oidc-usermodel-attribute-mapper",
-            "oidc-usermodel-property-mapper",
             "oidc-full-name-mapper",
-            "oidc-sha256-pairwise-sub-mapper"
+            "oidc-sha256-pairwise-sub-mapper",
+            "oidc-address-mapper",
+            "oidc-usermodel-property-mapper",
+            "oidc-usermodel-attribute-mapper",
+            "saml-role-list-mapper"
           ]
         }
       },
