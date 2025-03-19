@@ -1,0 +1,45 @@
+ services:
+
+  localhost:
+    container_name: localhost
+    image: alpine:latest
+    command: sleep infinity
+    ports:
+    - "8080:8080"
+    - "8081:8081"
+    - "8082:8082"
+
+  keycloak:
+    container_name: keycloak
+    image: quay.io/keycloak/keycloak:26.0
+    environment:
+      KEYCLOAK_ADMIN: admin
+      KEYCLOAK_ADMIN_PASSWORD: admin    
+    command:
+      - "start-dev"
+    network_mode: "service:localhost"
+
+  first:
+    container_name: first
+    image: first
+    build:
+      context: ./springboot3-api-rest-security-resourceserver-tokenrelay-first
+      dockerfile: Dockerfile
+    environment:
+      API_SECOND_URL: http://localhost:8082/api/v1
+      SPRING_SECURITY_OAUTH2_RESOURCESERVER_JWT_ISSUER_URI: http://localhost:8080/realms/helloworld-realm
+    depends_on:
+      - keycloak
+    network_mode: "service:localhost"
+
+  second:
+    container_name: second
+    image: second
+    build:
+      context: ./springboot3-api-rest-security-resourceserver-tokenrelay-second
+      dockerfile: Dockerfile
+    environment:
+      SPRING_SECURITY_OAUTH2_RESOURCESERVER_JWT_ISSUER_URI: http://localhost:8080/realms/helloworld-realm
+    depends_on:
+      - keycloak
+    network_mode: "service:localhost"
