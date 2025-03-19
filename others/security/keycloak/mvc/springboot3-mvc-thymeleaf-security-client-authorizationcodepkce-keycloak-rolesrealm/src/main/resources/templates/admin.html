@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+	<head>
+		<title>Hello World</title>
+		<meta charset="utf-8">
+		<link rel="stylesheet" th:href="@{/css/custom.css}"/>
+		<script th:src="@{/js/custom.js}"></script>  
+	</head>
+
+	<body>	
+		<div sec:authorize="isAuthenticated()">
+			<span>User Name: </span>
+			<span sec:authentication="principal.attributes['preferred_username']"></span> <br/>
+			<a th:href="@{/logout}">Logout</a>
+		</div>
+		<br/>
+		<div>Hello World from Admin Page!</div> 
+		<br/>
+		<a th:href="@{/}">Home</a>		
+	</body>
+
+</html>
