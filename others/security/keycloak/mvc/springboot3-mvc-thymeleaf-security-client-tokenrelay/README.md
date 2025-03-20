@@ -20,7 +20,7 @@ DESCRIPTION
 -----------
 
 ##### Goal
-The goal of this project is to present how to implement **Token Relay** between two **REST API** applications with usage **Java** programming language and **Spring Boot 3** framework. Token Relay means that user logs in to the first secured application and token is automatically added to request to the second secured application. 
+The goal of this project is to present how to implement **Token Relay** between **MVC Thymeleaf** and **REST API** applications with usage **Java** programming language and **Spring Boot 3** framework. Token Relay means that user logs in to the first secured application and token is automatically added to request to the second secured application. 
 
 ##### Elements
 This project consists of following elements:
@@ -67,18 +67,10 @@ USAGE DOCKER COMPOSE
 1. Update **hosts** file (Run as Administrator; Windows: "Windows\System32\drivers\etc\hosts"; MAC/Linux: "etc/hosts") with new line **127.0.0.1 keycloak**
 1. Start **Docker** tool
 1. In a command line tool **start Docker containers** with `docker-compose up -d --build`
-1. In any REST Client (e.g. Postman) visit **REST API** application with `http://localhost:8081/api/v1/message`
-   * Authorization -> Type -> OAuth 2.0
-   * Token Name: **Token**
-   * Grant Type: **Authorization Code (With PKCE)
-   * Callback URL: http://localhost:8081/*
-   * Auth URL: **http://keycloak:8080/realms/helloworld-realm/protocol/openid-connect/auth**
-   * Access Token URL: **http://keycloak:8080/realms/helloworld-realm/protocol/openid-connect/token**
-   * Client ID: **helloworld-client**
-   * Code Challenge Method: **SHA-256**
-   * Click **Get New Access Token -> Use Token**
-   * Click **Send**
-   * Expected text **{message: Hello World}**
+1. In any browser visit **MVC Thymeleaf** application with `http://localhost:8081`
+   * Expected **Home Page** with links to Public Page and Secured Page
+   * **Public Page**: content is visible without log in
+   * **Secured Page**: content is visible after registration or log in
 1. Clean up environment 
      * In a command line tool **remove Docker containers** with `docker-compose down --rmi all`
      * Stop **Docker** tool
