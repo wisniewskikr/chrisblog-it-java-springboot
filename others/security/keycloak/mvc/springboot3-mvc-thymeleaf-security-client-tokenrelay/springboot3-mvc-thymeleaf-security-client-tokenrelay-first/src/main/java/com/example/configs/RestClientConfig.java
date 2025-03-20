@@ -17,9 +17,16 @@ public class RestClientConfig {
 	private String apiSecondUrl;
 
 	private final JwtInterceptor jwtInterceptor;
+
+	@Bean
+    RestClient restClientPublic() {
+		return RestClient.builder()
+			.baseUrl(apiSecondUrl)
+			.build();
+	}
 	
 	@Bean
-    RestClient restClient() {
+    RestClient restClientSecured() {
 		return RestClient.builder()
 			.baseUrl(apiSecondUrl)
 			.requestInterceptor(jwtInterceptor)

@@ -15,7 +15,7 @@
 			<a th:href="@{/logout}">Logout</a>
 		</div>
 		<br/>
-		<div>Hello World from Public Page!</div>
+		<div th:text="${message}">Hello World from Public Page!</div>
 		<br/>
 		<a th:href="@{/}">Home</a>			
 	</body>

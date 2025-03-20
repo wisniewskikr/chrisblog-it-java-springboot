@@ -11,9 +11,14 @@ import com.example.keycloak.dto.HelloWorldDto;
 @RequestMapping("/api/v1/demo")
 public class DemoController {
 
-    @GetMapping
-    public ResponseEntity<HelloWorldDto> hello() {
-        return ResponseEntity.ok(new HelloWorldDto("Hello World!"));
+    @GetMapping("/public")
+    public ResponseEntity<HelloWorldDto> helloPublic() {
+        return ResponseEntity.ok(new HelloWorldDto("Hello World, Public!"));
+    }
+
+    @GetMapping("/secured")
+    public ResponseEntity<HelloWorldDto> helloSecured() {
+        return ResponseEntity.ok(new HelloWorldDto("Hello World, Secured!"));
     }
 
 }
