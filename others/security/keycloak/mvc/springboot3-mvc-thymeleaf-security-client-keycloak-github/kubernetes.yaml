@@ -61,7 +61,7 @@ spec:
     spec:
       containers:
         - name: app
-          image: wisniewskikr/springboot3-mvc-thymeleaf-security-client-authorizationcode-keycloak-users:0.0.1
+          image: wisniewskikr/springboot3-mvc-thymeleaf-security-client-keycloak-github:0.0.1
           env:
             - name: SPRING_SECURITY_OAUTH2_CLIENT_PROVIDER_KEYCLOAK_ISSUERURI
               value: http://keycloak.default.svc.cluster.local:8080/realms/helloworld-realm
