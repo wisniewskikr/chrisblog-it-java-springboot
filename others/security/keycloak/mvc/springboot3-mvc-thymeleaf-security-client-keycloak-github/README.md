@@ -22,7 +22,7 @@ DESCRIPTION
 -----------
 
 ##### Goal
-The goal of this project is to present how to implement **security** in **MVC (Thymeleaf)** application using **Keycloak** tool with usage **Java** programming language and **Spring Boot 3** framework. Security is based on authorization grant type **Authorization Code**. This application handles only **users** with no roles. User has access to any secured resouce after log in.
+The goal of this project is to present how to implement **security** in **MVC (Thymeleaf)** application using **Keycloak** tool with usage **Java** programming language and **Spring Boot 3** framework. Security is based on authorization grant type **Authorization Code**. Additionally account of **Github** is connected to Keycloak - so user can log in using Github credentials.
 
 ##### Elements
 This project consists of following elements:
@@ -67,10 +67,12 @@ USAGE DOCKER COMPOSE
 1. Start **Docker** tool
 1. In a command line tool **start Docker containers** with `docker-compose up -d --build`
    * Starting can **take few moments**. Please check docker logs to be sure if loading is finished
+1. In a browser visit **Keycloak** with `http://localhost:8080`
+   * Configure **Github** Identity Provider (Please check section **Github Configuration**)
 1. In a browser visit **MVC** with `http://localhost:9090`
     * Expected **Landing page**
     * Click **Public Page**: expected public page
-    * Click **Secured Page**: expected secured page after log in page (Please **register new user**)
+    * Click **Secured Page**: expected secured page after log in page (Please use **Github credentials**)
 1. Clean up environment 
      * In a command line tool **remove Docker containers** with `docker-compose down --rmi all`
      * Stop **Docker** tool
@@ -107,10 +109,12 @@ USAGE KUBERNETES (KIND)
    * Expected mysql, be and fe as **READY 1/1** (it can take few minutes)
 1. In the second command line tool **forward port of Keycloak service** with `kubectl port-forward service/keycloak 8080:8080`
 1. In the third command line tool **forward port of App service** with `kubectl port-forward service/app 9090:9090`
+1. In a browser visit **Keycloak** with `http://localhost:8080`
+   * Configure **Github** Identity Provider (Please check section **Github Configuration**)
 1. In a browser visit **MVC** with `http://localhost:9090`
     * Expected **Landing page**
     * Click **Public Page**: expected public page
-    * Click **Secured Page**: expected secured page after log in page (Please **register new user**)
+    * Click **Secured Page**: expected secured page after log in page (Please use **Github credentials**)
 1. Clean up environment 
      * In the third command line tool **stop forwarding port of App service** with `ctrl + C`
      * In the second command line tool **stop forwarding port of Keycloak service** with `ctrl + C`
