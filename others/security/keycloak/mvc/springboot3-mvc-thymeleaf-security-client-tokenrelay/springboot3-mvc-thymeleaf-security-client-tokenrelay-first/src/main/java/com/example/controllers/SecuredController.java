@@ -16,7 +16,7 @@ public class SecuredController {
 
 	@RequestMapping(value="/secured")
 	public String display(Model model) {
-		model.addAttribute("message", helloWorldService.getMessage());
+		model.addAttribute("message", helloWorldService.getHelloWorldSecured().message());
 		return "secured";		
 	}
 	

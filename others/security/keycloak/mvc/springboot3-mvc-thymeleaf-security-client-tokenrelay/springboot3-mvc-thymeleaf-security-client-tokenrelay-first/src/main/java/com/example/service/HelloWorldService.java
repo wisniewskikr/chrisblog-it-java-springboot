@@ -12,7 +12,7 @@ public class HelloWorldService {
     
     private final RestClient restClient;
 
-    public HelloWorldDto getMessage() {
+    public HelloWorldDto getHelloWorldSecured() {
 
         return restClient.get()
                 .uri("/demo")
