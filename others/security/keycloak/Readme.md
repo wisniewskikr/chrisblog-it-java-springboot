@@ -12,7 +12,6 @@ Resource Server Grant Types:
 TODO:
 * Implement of MVC custom login page
 * Implement of MVC custom logout page
-* Implement Github login from login page
-* Implement token relay between MVC and API
 * Implement keycloak starter
 * Implement SPA
+* Implement Keycloak + Gateway API
