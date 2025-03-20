@@ -1,0 +1,17 @@
+server:
+  port: 9090
+
+spring:
+  security:
+    oauth2:
+      client:
+        registration:
+          keycloak:
+            client-id: helloworld-client
+            client-secret: helloworld-secret
+            authorization-grant-type: authorization_code
+            scope: openid
+            redirect-uri: http://localhost:9090/login/oauth2/code/helloworld-client
+        provider:
+          keycloak:
+            issuer-uri: http://localhost:8080/realms/helloworld-realm
