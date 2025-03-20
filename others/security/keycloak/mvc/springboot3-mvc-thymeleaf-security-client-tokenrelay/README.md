@@ -105,18 +105,10 @@ USAGE KUBERNETES (KIND)
    * Expected mysql, be and fe as **READY 1/1** (it can take few minutes)
 1. In the second command line tool **forward port of Keycloak service** with `kubectl port-forward service/keycloak 8080:8080`
 1. In the third command line tool **forward port of First service** with `kubectl port-forward service/first 8081:8081`
-1. In any REST Client (e.g. Postman) visit **REST API** application with `http://localhost:8081/api/v1/message`
-   * Authorization -> Type -> OAuth 2.0
-   * Token Name: **Token**
-   * Grant Type: **Authorization Code (With PKCE)
-   * Callback URL: http://localhost:8081/*
-   * Auth URL: **http://keycloak.default.svc.cluster.local:8080/realms/helloworld-realm/protocol/openid-connect/auth**
-   * Access Token URL: **http://keycloak.default.svc.cluster.local:8080/realms/helloworld-realm/protocol/openid-connect/token**
-   * Client ID: **helloworld-client**
-   * Code Challenge Method: **SHA-256**
-   * Click **Get New Access Token -> Use Token**
-   * Click **Send**
-   * Expected text **{message: Hello World}**
+1. In any browser visit **MVC Thymeleaf** application with `http://localhost:8081`
+   * Expected **Home Page** with links to Public Page and Secured Page
+   * **Public Page**: content is visible without log in
+   * **Secured Page**: content is visible after registration or log in
 1. Clean up environment 
      * In the third command line tool **stop forwarding port of First service** with `ctrl + C`
      * In the second command line tool **stop forwarding port of Keycloak service** with `ctrl + C`
@@ -126,10 +118,10 @@ USAGE KUBERNETES (KIND)
      * Remove new line from **hosts**
 
 ##### Optional steps:
-1. In a command line tool build Docker First image with `docker build -f springboot3-api-rest-security-resourceserver-tokenrelay-first/Dockerfile -t wisniewskikr/springboot3-api-rest-security-resourceserver-tokenrelay-first:0.0.1 ./springboot3-api-rest-security-resourceserver-tokenrelay-first`
-1. In a command line tool push Docker First image to Docker Repository with `docker push wisniewskikr/springboot3-api-rest-security-resourceserver-tokenrelay-first:0.0.1` 
-1. In a command line tool build Docker Second image with `docker build -f springboot3-api-rest-security-resourceserver-tokenrelay-second/Dockerfile -t wisniewskikr/springboot3-api-rest-security-resourceserver-tokenrelay-second:0.0.1 ./springboot3-api-rest-security-resourceserver-tokenrelay-second`
-1. In a command line tool push Docker Second image to Docker Repository with `docker push wisniewskikr/springboot3-api-rest-security-resourceserver-tokenrelay-second:0.0.1` 
+1. In a command line tool build Docker First image with `docker build -f springboot3-mvc-thymeleaf-security-client-tokenrelay-first/Dockerfile -t wisniewskikr/springboot3-mvc-thymeleaf-security-client-tokenrelay-first:0.0.1 ./springboot3-mvc-thymeleaf-security-client-tokenrelay-first`
+1. In a command line tool push Docker First image to Docker Repository with `docker push wisniewskikr/springboot3-mvc-thymeleaf-security-client-tokenrelay-first:0.0.1` 
+1. In a command line tool build Docker Second image with `docker build -f springboot3-mvc-thymeleaf-security-client-tokenrelay-second/Dockerfile -t wisniewskikr/springboot3-mvc-thymeleaf-security-client-tokenrelay-second:0.0.1 ./springboot3-mvc-thymeleaf-security-client-tokenrelay-second`
+1. In a command line tool push Docker Second image to Docker Repository with `docker push wisniewskikr/springboot3-mvc-thymeleaf-security-client-tokenrelay-second:0.0.1` 
 1. In the first command line tool with administrator privileges check clusers with `kind get clusters`
 1. In a command line tool check Kubernetes Deployments with `kubectl get deployments`
 1. In a command line tool check Kubernetes Deployments details with **kubectl describe deployment {deployment-name}**
