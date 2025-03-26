@@ -117,3 +117,4 @@ IMPLEMENTATION
 FE:
 * In "package.json" add "angular-oauth2-oidc": "^10.0.3"
 * Call command "npm install"
+* Add file "auth.config.ts"
