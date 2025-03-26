@@ -11,7 +11,7 @@
 	</parent>
 
 	<groupId>com.example</groupId>
-	<artifactId>ts-angular-rest-api-java-springboot-be</artifactId>
+	<artifactId>angular-springboot-spa-security-keycloak-be</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 
 	<properties>

@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "ts-angular-rest-api-java-springboot-fe": {
+    "angular-springboot-spa-security-keycloak-fe": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/ts-angular-rest-api-java-springboot-fe",
+            "outputPath": "dist/angular-springboot-spa-security-keycloak-fe",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
@@ -57,10 +57,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "ts-angular-rest-api-java-springboot-fe:build:production"
+              "buildTarget": "angular-springboot-spa-security-keycloak-fe:build:production"
             },
             "development": {
-              "buildTarget": "ts-angular-rest-api-java-springboot-fe:build:development"
+              "buildTarget": "angular-springboot-spa-security-keycloak-fe:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -68,7 +68,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "buildTarget": "ts-angular-rest-api-java-springboot-fe:build"
+            "buildTarget": "angular-springboot-spa-security-keycloak-fe:build"
           }
         },
         "test": {

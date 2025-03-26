@@ -1,5 +1,5 @@
 {
-  "name": "ts-angular-rest-api-java-springboot-fe",
+  "name": "angular-springboot-spa-security-keycloak-fe",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",

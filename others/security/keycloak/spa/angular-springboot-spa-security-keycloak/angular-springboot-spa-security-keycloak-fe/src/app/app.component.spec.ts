@@ -14,16 +14,16 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have the 'ts-angular-rest-api-java-springboot-fe' title`, () => {
+  it(`should have the 'angular-springboot-spa-security-keycloak-fe' title`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('ts-angular-rest-api-java-springboot-fe');
+    expect(app.title).toEqual('angular-springboot-spa-security-keycloak-fe');
   });
 
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, ts-angular-rest-api-java-springboot-fe');
+    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, angular-springboot-spa-security-keycloak-fe');
   });
 });

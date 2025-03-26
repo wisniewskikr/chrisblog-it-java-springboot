@@ -97,10 +97,10 @@ USAGE KUBERNETES (KIND)
      * Stop **Docker** tool
 
 ##### Optional steps:
-1. In a command line tool build Docker BE image with `docker build -f ts-angular-rest-api-java-springboot-be/Dockerfile -t wisniewskikr/ts-angular-rest-api-java-springboot-be:0.0.1 ./ts-angular-rest-api-java-springboot-be`
-1. In a command line tool push Docker BE image to Docker Repository with `docker push wisniewskikr/ts-angular-rest-api-java-springboot-be:0.0.1` 
-1. In a command line tool build Docker FE image with `docker build -f ts-angular-rest-api-java-springboot-fe/Dockerfile -t wisniewskikr/ts-angular-rest-api-java-springboot-fe:0.0.1 ./ts-angular-rest-api-java-springboot-fe`
-1. In a command line tool push Docker FE image to Docker Repository with `docker push wisniewskikr/ts-angular-rest-api-java-springboot-fe:0.0.1` 
+1. In a command line tool build Docker BE image with `docker build -f angular-springboot-spa-security-keycloak-be/Dockerfile -t wisniewskikr/angular-springboot-spa-security-keycloak-be:0.0.1 ./angular-springboot-spa-security-keycloak-be`
+1. In a command line tool push Docker BE image to Docker Repository with `docker push wisniewskikr/angular-springboot-spa-security-keycloak-be:0.0.1` 
+1. In a command line tool build Docker FE image with `docker build -f angular-springboot-spa-security-keycloak-fe/Dockerfile -t wisniewskikr/angular-springboot-spa-security-keycloak-fe:0.0.1 ./angular-springboot-spa-security-keycloak-fe`
+1. In a command line tool push Docker FE image to Docker Repository with `docker push wisniewskikr/angular-springboot-spa-security-keycloak-fe:0.0.1` 
 1. In the first command line tool with administrator privileges check clusers with `kind get clusters`
 1. In a command line tool check Kubernetes Deployments with `kubectl get deployments`
 1. In a command line tool check Kubernetes Deployments details with **kubectl describe deployment {deployment-name}**

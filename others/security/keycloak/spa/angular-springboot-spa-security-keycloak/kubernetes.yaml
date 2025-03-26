@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: be
-          image: wisniewskikr/ts-angular-rest-api-java-springboot-be:0.0.1
+          image: wisniewskikr/angular-springboot-spa-security-keycloak-be:0.0.1
           ports:
             - containerPort: 8080
 ---
@@ -46,7 +46,7 @@ spec:
     spec:
       containers:
         - name: fe
-          image: wisniewskikr/ts-angular-rest-api-java-springboot-fe:0.0.1
+          image: wisniewskikr/angular-springboot-spa-security-keycloak-fe:0.0.1
           ports:
             - containerPort: 80
 ---

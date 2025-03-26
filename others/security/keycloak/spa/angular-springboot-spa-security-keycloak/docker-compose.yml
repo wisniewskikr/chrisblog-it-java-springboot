@@ -6,7 +6,7 @@ services:
     container_name: be
     image: be
     build:
-      context: ./ts-angular-rest-api-java-springboot-be
+      context: ./angular-springboot-spa-security-keycloak-be
       dockerfile: Dockerfile    
     ports:
       - "8080:8080"
@@ -15,7 +15,7 @@ services:
     container_name: fe
     image: fe
     build:
-      context: ./ts-angular-rest-api-java-springboot-fe
+      context: ./angular-springboot-spa-security-keycloak-fe
       dockerfile: Dockerfile
     ports:
       - "4200:80"
