@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+
+  be:
+    container_name: be
+    image: be
+    build:
+      context: ./ts-angular-rest-api-java-springboot-be
+      dockerfile: Dockerfile    
+    ports:
+      - "8080:8080"
+
+  fe:
+    container_name: fe
+    image: fe
+    build:
+      context: ./ts-angular-rest-api-java-springboot-fe
+      dockerfile: Dockerfile
+    ports:
+      - "4200:80"
+    restart: always
