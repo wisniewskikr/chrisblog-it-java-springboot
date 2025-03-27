@@ -118,3 +118,6 @@ FE:
 * In "package.json" add "angular-oauth2-oidc": "^10.0.3"
 * Call command "npm install"
 * Add file "auth.config.ts"
+* Update file "app.config.ts" with "OAuthModule"
+* Update file "app.component.ts" with constuctor parameter OAuthService and methods configure(), login() and logout()
+* Update file "app.component.html" with links "Login" and "Logout" 
