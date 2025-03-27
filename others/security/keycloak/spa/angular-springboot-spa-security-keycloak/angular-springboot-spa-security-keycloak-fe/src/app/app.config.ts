@@ -11,7 +11,7 @@ export const appConfig: ApplicationConfig = {
     provideHttpClient(withFetch()),
     importProvidersFrom(OAuthModule.forRoot({
       resourceServer: {
-        allowedUrls: ['http://localhost:8080/api'],
+        allowedUrls: ['http://localhost:9090'],
         sendAccessToken: true
       }
     }))
