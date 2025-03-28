@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../../services/api.service';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-public',
   standalone: true,
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './public.component.html',
   styleUrl: './public.component.css'
 })

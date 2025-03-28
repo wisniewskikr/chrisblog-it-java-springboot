@@ -2,11 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { ApiService } from './../../services/api.service';
 import { OAuthService } from 'angular-oauth2-oidc';
 import {authConfig} from "./../../auth.config";
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-secured',
   standalone: true,
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './secured.component.html',
   styleUrl: './secured.component.css'
 })
