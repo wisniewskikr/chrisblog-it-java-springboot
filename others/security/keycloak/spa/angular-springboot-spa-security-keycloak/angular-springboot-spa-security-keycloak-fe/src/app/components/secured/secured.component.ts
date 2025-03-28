@@ -19,7 +19,7 @@ export class SecuredComponent implements OnInit {
       }
     
       ngOnInit(): void {
-        let response = this.service.getMessage();
+        let response = this.service.getMessageSecured();
         response.subscribe((data)=>{      
           this.message = data
         });

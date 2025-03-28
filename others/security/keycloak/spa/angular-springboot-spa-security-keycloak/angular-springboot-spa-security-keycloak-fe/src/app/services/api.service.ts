@@ -9,11 +9,11 @@ import { OAuthService } from 'angular-oauth2-oidc';
 })
 export class ApiService {
 
-  URL = environment.API_BE_URL;
+  URL_SECURED = environment.API_BE_SECURED_URL;
 
   constructor(private http: HttpClient, private oauthService: OAuthService) {}
 
-  getMessage() {
+  getMessageSecured() {
 
     // TODO: make it authomatic
     const headers = new HttpHeaders({
@@ -21,7 +21,7 @@ export class ApiService {
       'Authorization': 'Bearer ' + this.oauthService.getAccessToken()
     });
 
-    return this.http.get(this.URL, { headers, responseType: 'text' })
+    return this.http.get(this.URL_SECURED, { headers, responseType: 'text' })
           .pipe(
             catchError((error) => {
               return throwError(() => error);
