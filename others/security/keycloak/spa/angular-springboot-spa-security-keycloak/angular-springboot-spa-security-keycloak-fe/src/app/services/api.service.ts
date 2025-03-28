@@ -9,9 +9,21 @@ import { OAuthService } from 'angular-oauth2-oidc';
 })
 export class ApiService {
 
+  URL_PUBLIC = environment.API_BE_PUBLIC_URL;
   URL_SECURED = environment.API_BE_SECURED_URL;
 
   constructor(private http: HttpClient, private oauthService: OAuthService) {}
+
+  getMessagePublic() {
+
+    return this.http.get(this.URL_PUBLIC, { responseType: 'text' })
+          .pipe(
+            catchError((error) => {
+              return throwError(() => error);
+            })
+          );
+
+  }
 
   getMessageSecured() {
 
