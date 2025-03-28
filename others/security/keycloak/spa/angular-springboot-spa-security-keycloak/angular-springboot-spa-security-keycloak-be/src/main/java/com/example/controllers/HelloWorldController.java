@@ -5,12 +5,17 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
+@CrossOrigin("http://localhost:4200/")
 public class HelloWorldController {
+    
+    @GetMapping("/public")
+    public String helloPublic() {
+        return "Hello World, Public!";
+    }
 
-    @CrossOrigin("http://localhost:4200/")
-    @GetMapping("/")
-    public String displayMessage() {
-        return "Hello World!";
+    @GetMapping("/secured")
+    public String helloSecured() {
+        return "Hello World, Secured!";
     }
     
 }

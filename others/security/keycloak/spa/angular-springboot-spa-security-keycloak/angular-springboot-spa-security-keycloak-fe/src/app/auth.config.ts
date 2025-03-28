@@ -2,7 +2,7 @@ import {AuthConfig} from 'angular-oauth2-oidc';
 
 export const authConfig: AuthConfig = {
   issuer: 'http://localhost:8080/realms/helloworld-realm',
-  redirectUri: window.location.origin,
+  redirectUri: 'http://localhost:4200/secured',
   clientId: 'helloworld-client',
   responseType: 'code',
   strictDiscoveryDocumentValidation: false,
