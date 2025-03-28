@@ -36,6 +36,13 @@ This project can be tested in following configurations:
 * **Usage Kubernetes (Kind)**: all services are started as Kubernetes pods.
 
 
+USAGE MANUAL
+------------
+1. In a first command line tool **start Docker containers** with `docker-compose up -d --build`
+1. In a second command line tool start back-end application with `cd .\angular-springboot-spa-security-keycloak-be\ | mvn spring-boot:run`
+1. In a third command line tool start front-end application with `cd .\angular-springboot-spa-security-keycloak-fe\ | npm start`
+
+
 USAGE DOCKER COMPOSE
 --------------------
 
@@ -115,9 +122,14 @@ IMPLEMENTATION
 --------------
 
 FE:
-* In "package.json" add "angular-oauth2-oidc": "^17.0.0"
+* Update file "package.json" with "angular-oauth2-oidc": "^17.0.0"
 * Call command "npm install"
 * Add file "auth.config.ts"
 * Update file "app.config.ts" with "provideOAuthClient" and "OAuthModule"
 * Update file "app.component.ts" with constuctor parameter OAuthService and methods configure(), login() and logout()
 * Update file "app.component.html" with links "Login" and "Logout" 
+
+BE:
+* Update file "pom.xml" with dependencies "spring-boot-starter-security" and "spring-boot-starter-oauth2-resource-server"
+* Update file "application.yaml" with spring security properties
+* Add class SecurityConfig
