@@ -14,7 +14,8 @@ import { CommonModule } from '@angular/common';
 export class SecuredComponent implements OnInit {
 
       message: any;
-      showLogout: boolean = false;
+      isLoggedIn: boolean = false;
+      userName: string = '';
     
       constructor(private readonly service: ApiService, private readonly authService: AuthService, private readonly router: Router) {}
     
@@ -27,7 +28,8 @@ export class SecuredComponent implements OnInit {
           return;
         }
 
-        this.showLogout = true;
+        this.isLoggedIn = true;
+        this.userName = this.authService.userName;
 
         let response = this.service.getMessageSecured();
         response.subscribe((data)=>{      
