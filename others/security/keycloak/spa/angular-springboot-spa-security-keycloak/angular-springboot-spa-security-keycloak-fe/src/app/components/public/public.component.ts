@@ -13,15 +13,17 @@ import { CommonModule } from '@angular/common';
 })
 export class PublicComponent implements OnInit {
 
-  showLogout: boolean = false;
+  isLoggedIn: boolean = false;
   message: any;
+  userName: string = '';
 
   constructor(private readonly service: ApiService, private readonly authService: AuthService) {}
 
   ngOnInit(): void {
 
     if (this.authService.isLoggedIn) {
-      this.showLogout = true;
+      this.isLoggedIn = true;
+      this.userName = this.authService.userName;
     }
 
     let response = this.service.getMessagePublic();
