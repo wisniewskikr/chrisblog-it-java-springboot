@@ -2,17 +2,19 @@ import { Component, OnInit } from '@angular/core';
 import { ApiService } from './../../services/api.service';
 import { Router, RouterLink } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-secured',
   standalone: true,
-  imports: [RouterLink],
+  imports: [RouterLink, CommonModule],
   templateUrl: './secured.component.html',
   styleUrl: './secured.component.css'
 })
 export class SecuredComponent implements OnInit {
 
       message: any;
+      showLogout: boolean = false;
     
       constructor(private readonly service: ApiService, private readonly authService: AuthService, private readonly router: Router) {}
     
@@ -24,6 +26,8 @@ export class SecuredComponent implements OnInit {
           });
           return;
         }
+
+        this.showLogout = true;
 
         let response = this.service.getMessageSecured();
         response.subscribe((data)=>{      
