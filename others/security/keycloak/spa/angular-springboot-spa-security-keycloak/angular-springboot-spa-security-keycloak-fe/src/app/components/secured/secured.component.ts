@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from './../../services/api.service';
-import { OAuthService } from 'angular-oauth2-oidc';
-import {authConfig} from "./../../auth.config";
 import { RouterLink } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-secured',
@@ -13,11 +12,9 @@ import { RouterLink } from '@angular/router';
 })
 export class SecuredComponent implements OnInit {
 
-  message: any;
+      message: any;
     
-      constructor(private service: ApiService, private oauthService: OAuthService) {
-        this.configure();
-      }
+      constructor(private readonly service: ApiService, private readonly authService: AuthService) {}
     
       ngOnInit(): void {
         let response = this.service.getMessageSecured();
@@ -26,17 +23,12 @@ export class SecuredComponent implements OnInit {
         });
       }
     
-      private configure() {
-        this.oauthService.configure(authConfig);
-        this.oauthService.loadDiscoveryDocumentAndTryLogin();
-      }
-    
       login() {
-        this.oauthService.initCodeFlow();
+        this.authService.login();
       }
     
       logout() {
-        this.oauthService.logOut();
+        this.authService.logout();
       }
 
 }
