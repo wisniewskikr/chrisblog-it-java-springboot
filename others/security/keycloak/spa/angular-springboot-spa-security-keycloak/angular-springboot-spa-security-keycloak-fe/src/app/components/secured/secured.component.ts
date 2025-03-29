@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from './../../services/api.service';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 
 @Component({
@@ -14,17 +14,21 @@ export class SecuredComponent implements OnInit {
 
       message: any;
     
-      constructor(private readonly service: ApiService, private readonly authService: AuthService) {}
+      constructor(private readonly service: ApiService, private readonly authService: AuthService, private readonly router: Router) {}
     
       ngOnInit(): void {
+
+        if (!this.authService.isLoggedIn) {
+          this.router.navigate([''], {
+            queryParams: { login: true }
+          });
+          return;
+        }
+
         let response = this.service.getMessageSecured();
         response.subscribe((data)=>{      
           this.message = data
         });
-      }
-    
-      login() {
-        this.authService.login();
       }
     
       logout() {
