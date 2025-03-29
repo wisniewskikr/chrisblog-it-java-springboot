@@ -11,7 +11,8 @@ import { CommonModule } from '@angular/common';
 })
 export class HomeComponent implements OnInit {
 
-  showLogout: boolean = false;
+  isLoggedIn: boolean = false;
+  userName: string = '';
 
   constructor(private readonly route: ActivatedRoute, private readonly authService: AuthService) {
 
@@ -27,7 +28,8 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
 
     if (this.authService.isLoggedIn) {
-      this.showLogout = true;
+      this.isLoggedIn = true;
+      this.userName = this.authService.userName;
     }
     
   }

@@ -1,6 +1,8 @@
-<a href="#" *ngIf="showLogout" (click)="logout()">Logout</a>
-<br>
-<br>
+<div *ngIf="isLoggedIn">
+    <span>Username:{{ userName }} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+    <a href="#" (click)="logout()">Logout</a>
+</div>
+
 <a routerLink="/public">Public Page</a>
 <br/>
 <a routerLink="/secured">Secured Page</a>

@@ -25,11 +25,17 @@ export class AuthService {
   }
 
   get accessToken(): string {
+    this.oauthService.getIdentityClaims()
     return this.oauthService.getAccessToken();
   }
 
   get isLoggedIn(): boolean {
     return this.oauthService.hasValidAccessToken();
+  }
+
+  get userName() : string {
+    const claims = this.oauthService.getIdentityClaims();
+    return claims?.['name'];
   }
 
 }
