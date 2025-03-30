@@ -21,13 +21,6 @@ export class SecuredComponent implements OnInit {
     
       ngOnInit(): void {
 
-        if (!this.authService.isLoggedIn) {
-          this.router.navigate([''], {
-            queryParams: { login: true }
-          });
-          return;
-        }
-
         this.isLoggedIn = true;
         this.userName = this.authService.userName;
 
@@ -35,6 +28,7 @@ export class SecuredComponent implements OnInit {
         response.subscribe((data)=>{      
           this.message = data
         });
+        
       }
     
       logout() {
