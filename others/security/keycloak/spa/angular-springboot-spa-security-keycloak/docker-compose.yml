@@ -14,23 +14,23 @@ services:
     ports:
       - "8080:8080"
 
-  # be:
-  #   container_name: be
-  #   image: be
-  #   build:
-  #     context: ./angular-springboot-spa-security-keycloak-be
-  #     dockerfile: Dockerfile
-  #   environment:
-  #     SPRING_SECURITY_OAUTH2_RESOURCESERVER_JWT_ISSUER-URI: http://keycloak:8080/realms/helloworld-realm    
-  #   ports:
-  #     - "9090:9090"
+  be:
+    container_name: be
+    image: be
+    build:
+      context: ./angular-springboot-spa-security-keycloak-be
+      dockerfile: Dockerfile
+    environment:
+      SPRING_SECURITY_OAUTH2_RESOURCESERVER_JWT_ISSUER-URI: http://keycloak:8080/realms/helloworld-realm    
+    ports:
+      - "9090:9090"
 
-  # fe:
-  #   container_name: fe
-  #   image: fe
-  #   build:
-  #     context: ./angular-springboot-spa-security-keycloak-fe
-  #     dockerfile: Dockerfile
-  #   ports:
-  #     - "4200:80"
-  #   restart: always
+  fe:
+    container_name: fe
+    image: fe
+    build:
+      context: ./angular-springboot-spa-security-keycloak-fe
+      dockerfile: Dockerfile
+    ports:
+      - "4200:80"
+    restart: always
