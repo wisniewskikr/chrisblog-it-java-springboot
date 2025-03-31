@@ -3,12 +3,26 @@ EXAMPLE
 
 ![My Image](readme-images/image-01.png)
 
+![My Image](readme-images/image-02.png)
+
+![My Image](readme-images/image-03.png)
+
+![My Image](readme-images/image-04.png)
+
+![My Image](readme-images/image-05.png)
+
+![My Image](readme-images/image-06.png)
+
+![My Image](readme-images/image-07.png)
+
+![My Image](readme-images/image-08.png)
+
 
 DESCRIPTION
 -----------
 
 ##### Goal
-The goal of this project is to present how to connect **front-end** application - basing on **Typescript and Angular** framework - with **back-end** application - basing on **Java and Spring Boot** framework. Connection is done by using **API REST**. 
+The goal of this project is to present how to secure using **Keycloak** a **front-end** application - basing on **Typescript and Angular** framework - and **back-end** application - basing on **Java and Spring Boot** framework.
 
 ##### Elements
 This project consists of following elements:
@@ -16,6 +30,7 @@ This project consists of following elements:
    * Message "Hello World!" 
 * **FE**: Angular application which displays:
    * Message "Hello World!" from BE application
+* **Keycloak**: tool for securing applications
 
 ##### Terminology
 Terminology explanation:
@@ -26,6 +41,7 @@ Terminology explanation:
 * **Git**: tool for distributed version control
 * **Typescript**: it's superset of Javascript. It means that it contains everything like Javascript plus it's strongly typed, it provides OOPS elements etc. 
 * **Angular**: it's component-based framework for building structured single page applications on client side. 
+* **Keycloak**: it is an open-source identity and access management solution that provides authentication, authorization, and single sign-on (SSO) capabilities for applications and services. It supports various authentication protocols like OAuth 2.0, OpenID Connect, and SAML.
 
 
 USAGES
@@ -34,13 +50,6 @@ USAGES
 This project can be tested in following configurations:
 * **Usage Docker Compose**: all services are started as Docker containers definied in docker compose file.
 * **Usage Kubernetes (Kind)**: all services are started as Kubernetes pods.
-
-
-USAGE MANUAL
-------------
-1. In a first command line tool **start Docker containers** with `docker-compose up -d --build`
-1. In a second command line tool start back-end application with `cd .\angular-springboot-spa-security-keycloak-be\ | mvn spring-boot:run`
-1. In a third command line tool start front-end application with `cd .\angular-springboot-spa-security-keycloak-fe\ | npm start`
 
 
 USAGE DOCKER COMPOSE
@@ -58,8 +67,10 @@ USAGE DOCKER COMPOSE
 ##### Required steps:
 1. Start **Docker** tool
 1. In a command line tool **start Docker containers** with `docker-compose up -d --build`
+   * Wait **few minutes** when Keycloak is loaded
 1. In any Internet Browser (e.g. Chrome) visit **Fe** application with `http://localhost:4200`
-   * Expected **Hello World!** message
+   * **Public Page**: expected not secured API call to Be and result **Hello World, Public!**
+   * **Secured Page**: expected secured API call to Be and result **Hello World, Secured!**
 1. Clean up environment 
      * In a command line tool **remove Docker containers** with `docker-compose down --rmi all`
      * Stop **Docker** tool
