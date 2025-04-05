@@ -22,7 +22,7 @@ DESCRIPTION
 -----------
 
 ##### Goal
-The goal of this project is to present how to secure using **Keycloak** a **front-end** application - basing on **Typescript and Angular** framework - and **back-end** application - basing on **Java and Spring Boot** framework.
+The goal of this project is to present how to user **Keycloak** for securing **front-end** and **back-end** applications. Front-end application - basing on **Typescript and Angular** framework - and back-end application - basing on **Java and Spring Boot** framework.
 
 ##### Elements
 This project consists of following elements:
