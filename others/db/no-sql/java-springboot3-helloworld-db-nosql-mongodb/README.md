@@ -42,7 +42,7 @@ USAGES
 
 This project can be tested in following configurations:
 * **Usage Manual**: infrastructure services are started as Docker containers. Application is started manually in a command line.
-* **Usage Docker Compose**: N/A
+* **Usage Docker Compose**: all services are started as Docker containers defined in docker compose file.
 * **Usage Kubernetes (Kind)**: N/A
 
 
@@ -73,7 +73,31 @@ USAGE MANUAL
 USAGE DOCKER COMPOSE
 --------------------
 
-N/A
+> **Usage Docker Compose** means all services are started as Docker containers defined in docker compose file.
+
+> Please **clone/download** project, open **project's main folder** in your favorite **command line tool** and then **proceed with steps below**.
+
+> **Prerequisites**:
+* **Operating System** (tested on Windows 11)
+* **Git** (tested on version 2.33.0.windows.2)
+* **Docker** (tested on version 4.33.1)
+
+##### Required steps:
+1. Start **Docker** tool
+1. In any command line tool **start Docker containers** with `docker-compose -f .\docker-compose\full\docker-compose.yaml up -d --build`
+1. In any Rest Client (e.g. Postman) using GET method visit `http://localhost:8080`
+   * Expected following **JSON**: {"id": 1, "text": "Hello World!", "port": "8080"}
+1. Clean up environment
+   * In a command line tool **remove Docker containers** with `docker-compose -f .\docker-compose\full\docker-compose.yaml down --rmi all`
+   * Stop **Docker** tool
+
+##### Optional steps:
+1. In a command line tool validate Docker Compose with `docker-compose config`
+1. In a command line tool check list of Docker images with `docker images`
+1. In a command line tool check list of all Docker containers with `docker ps -a`
+1. In a command line tool check list of active Docker containers with `docker ps`
+1. In a command line tool check list of Docker nerworks with `docker network ls`
+1. In a command line tool check APP container logs with `docker logs app-container`
 
 
 USAGE KUBERNETES (KIND)
