@@ -17,8 +17,8 @@ services:
     image: app-image:0.0.1
     container_name: app-container
     build:
-      context: ./../..
-      dockerfile: Dockerfile
+      context: ../../
+      dockerfile: docker/Dockerfile
     environment:
       spring.data.mongodb.uri: mongodb://root:password@mongodb:27017/database?authSource=admin
     depends_on:
