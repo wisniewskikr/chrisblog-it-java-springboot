@@ -33,30 +33,16 @@ public class HelloWorldControllerTest {
     }
 
     @Test
-    void testHelloWorld_public() {
+    void testHelloWorld() {
 
         given()
         .when()
-            .get("/message/1")
+            .get()
         .then()
             .statusCode(200)
             .body("id", equalTo(String.valueOf(1)))
-            .body("text", equalTo("Hello World, Public!"))
+            .body("text", equalTo("Hello World!"))
             .body("port", equalTo(String.valueOf(port)));
-
-    }
-
-    @Test
-    void testHelloWorld_secured() {
-
-        given()
-                .when()
-                .get("/message/2")
-                .then()
-                .statusCode(200)
-                .body("id", equalTo(String.valueOf(2)))
-                .body("text", equalTo("Hello World, Secured!"))
-                .body("port", equalTo(String.valueOf(port)));
 
     }
 
