@@ -18,8 +18,8 @@ public class HelloWorldService {
     public HelloWorldDto findById(String id) {
         
         HelloWorldDoc helloWorldDoc = helloWorldRepository.findById(id).orElseThrow(() -> new RuntimeException("Message doesn't exist"));
-        String portSecond = environment.getProperty("local.server.port");
-        return new HelloWorldDto(helloWorldDoc.getId(), helloWorldDoc.getText(), portSecond);
+        String port = environment.getProperty("local.server.port");
+        return new HelloWorldDto(helloWorldDoc.getId(), helloWorldDoc.getText(), port);
 
     }
 

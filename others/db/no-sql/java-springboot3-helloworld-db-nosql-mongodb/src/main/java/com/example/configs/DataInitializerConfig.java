@@ -15,8 +15,7 @@ public class DataInitializerConfig {
         return args -> {
             helloWorldRepository.deleteAll(); // Clear existing data
 
-            helloWorldRepository.save(new HelloWorldDoc("1", "Hello World, Public!"));
-            helloWorldRepository.save(new HelloWorldDoc("2", "Hello World, Secured!"));
+            helloWorldRepository.save(new HelloWorldDoc("1", "Hello World!"));
 
             System.out.println("Data initialized");
         };

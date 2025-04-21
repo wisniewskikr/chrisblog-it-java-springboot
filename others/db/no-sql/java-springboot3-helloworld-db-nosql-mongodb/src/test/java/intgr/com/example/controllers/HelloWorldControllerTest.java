@@ -42,7 +42,7 @@ public class HelloWorldControllerTest {
             .statusCode(200)
             .body("id", equalTo(String.valueOf(1)))
             .body("text", equalTo("Hello World, Public!"))
-            .body("portSecond", equalTo(String.valueOf(port)));
+            .body("port", equalTo(String.valueOf(port)));
 
     }
 
@@ -56,7 +56,7 @@ public class HelloWorldControllerTest {
                 .statusCode(200)
                 .body("id", equalTo(String.valueOf(2)))
                 .body("text", equalTo("Hello World, Secured!"))
-                .body("portSecond", equalTo(String.valueOf(port)));
+                .body("port", equalTo(String.valueOf(port)));
 
     }
 

@@ -17,10 +17,10 @@ public class HelloWorldController {
 
 	private HelloWorldService helloWorldService;
 
-	@GetMapping("/message/{id}")
+	@GetMapping
 	public ResponseEntity<HelloWorldDto> helloWorld(@PathVariable String id) {
 
-		log.info("Called SECOND method HelloWorldController.helloWorld() for id {}", id);
+		log.info("Called method HelloWorldController.helloWorld() for id {}", id);
 
 		HelloWorldDto helloWorldDto = helloWorldService.findById(id);
 		return ResponseEntity.ok(helloWorldDto);
