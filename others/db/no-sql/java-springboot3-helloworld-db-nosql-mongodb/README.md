@@ -41,7 +41,7 @@ USAGES
 ------
 
 This project can be tested in following configurations:
-* **Usage Manual**: tests are started manually in command line
+* **Usage Manual**: infrastructure services are started as Docker containers. Application is started manually in a command line.
 * **Usage Docker Compose**: N/A
 * **Usage Kubernetes (Kind)**: N/A
 
@@ -49,19 +49,25 @@ This project can be tested in following configurations:
 USAGE MANUAL
 ------------
 
-> **Usage Manual** means that tests are started manually in command line.
+> **Usage Manual** means that infrastructure services are started as Docker containers. Application is started manually in a command line.
 
 > Please **clone/download** project, open **project's main folder** in your favorite **command line tool** and then **proceed with steps below**.
 
 > **Prerequisites**:
 * **Operating System** (tested on Windows 11)
 * **Git** (tested on version 2.33.0.windows.2)
+* **Docker** (tested on version 4.33.1)
 
 ##### Required steps:
-1. In a first command line tool **start Unit Tests** with `mvn clean test`
-   * Expected **passed tests** for Service
+1. Start **Docker** tool
+1. In a first command line tool **start Docker containers** with `docker-compose -f .\docker-compose\infrastructure\docker-compose.yaml up -d --build`
+1. In a second command line tool **start application** with `mvn spring-boot:run`
+1. In any Rest Client (e.g. Postman) using GET method visit `http://localhost:8080`
+   * Expected following **JSON**: {"id": 1, "text": "Hello World!", "port": "8080"}
 1. Clean up environment
-   * N/A
+   * In the second command line tool **stop application** with `ctrl + C`
+   * In the first command line tool **remove Docker containers** with `docker-compose -f .\docker-compose\infrastructure\docker-compose.yaml down --rmi all`
+   * Stop **Docker** tool
 
 
 USAGE DOCKER COMPOSE
