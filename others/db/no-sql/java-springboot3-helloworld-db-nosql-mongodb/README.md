@@ -128,7 +128,7 @@ USAGE KUBERNETES (KIND)
    * Stop **Docker** tool
 
 ##### Optional steps:
-1. In a command line tool build Docker App image with `docker build -f java-springboot3-helloworld-db-nosql-mongodb/docker/Dockerfile -t wisniewskikr/java-springboot3-helloworld-db-nosql-mongodb:0.0.1 .`
+1. In a command line tool build Docker App image with `docker build -f docker/Dockerfile -t wisniewskikr/java-springboot3-helloworld-db-nosql-mongodb:0.0.1 .`
 1. In a command line tool push Docker App image to Docker Repository with `docker push wisniewskikr/java-springboot3-helloworld-db-nosql-mongodb:0.0.1`
 1. In the first command line tool with administrator privileges check clusers with `kind get clusters`
 1. In a command line tool check Kubernetes Deployments with `kubectl get deployments`
