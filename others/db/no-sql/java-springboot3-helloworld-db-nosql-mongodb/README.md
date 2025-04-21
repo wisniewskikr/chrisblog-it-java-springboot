@@ -8,7 +8,7 @@ DESCRIPTION
 -----------
 
 ##### Goal
-The goal of this project is to present how to use **no sql** database type **MongoDb** with usage **Java** programming language and **Spring Cloud** and **Spring Boot 3** frameworks.
+The goal of this project is to present how to use **no sql** database type **MongoDb** together with application which uses **Java** programming language and **Spring Cloud** and **Spring Boot 3** frameworks.
 
 ##### Services
 This project consists of following applications:
