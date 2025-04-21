@@ -18,11 +18,11 @@ public class HelloWorldController {
 	private HelloWorldService helloWorldService;
 
 	@GetMapping
-	public ResponseEntity<HelloWorldDto> helloWorld(@PathVariable String id) {
+	public ResponseEntity<HelloWorldDto> helloWorld() {
 
-		log.info("Called method HelloWorldController.helloWorld() for id {}", id);
+		log.info("Called method HelloWorldController.helloWorld()");
 
-		HelloWorldDto helloWorldDto = helloWorldService.findById(id);
+		HelloWorldDto helloWorldDto = helloWorldService.findById("1");
 		return ResponseEntity.ok(helloWorldDto);
 		
 	}
