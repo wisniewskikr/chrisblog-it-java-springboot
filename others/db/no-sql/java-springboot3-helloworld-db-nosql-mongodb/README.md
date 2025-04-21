@@ -43,7 +43,7 @@ USAGES
 This project can be tested in following configurations:
 * **Usage Manual**: infrastructure services are started as Docker containers. Application is started manually in a command line.
 * **Usage Docker Compose**: all services are started as Docker containers defined in docker compose file.
-* **Usage Kubernetes (Kind)**: N/A
+* **Usage Kubernetes (Kind)**: all services are started as Kubernetes pods.
 
 
 USAGE MANUAL
@@ -103,4 +103,38 @@ USAGE DOCKER COMPOSE
 USAGE KUBERNETES (KIND)
 ---------------------------
 
-N/A
+> **Usage Kubernetes** means that all services are started as Kubernetes pods.
+
+> Please **clone/download** project, open **project's main folder** in your favorite **command line tool** and then **proceed with steps below**.
+
+> **Prerequisites**:
+* **Operating System** (tested on Windows 11)
+* **Git** (tested on version 2.33.0.windows.2)
+* **Kind** (tested on version 0.26.0)
+
+##### Required steps:
+1. Start **Docker** tool
+1. In the first command line tool create and start cluster **Kind** with `kind create cluster --name helloworld`
+1. In the first command line tool **start Kubernetes Pods** with `kubectl apply -f ./k8s --recursive`
+1. In the first command line tool **check status of Kubernetes Pods** with `kubectl get pods`
+   * Expected mysql, second and first as **READY 1/1** (it can take few minutes)
+1. In the second command line tool **forward port of App** with `kubectl port-forward service/app 8080:8080`
+1. In any Rest Client (e.g. Postman) using GET method visit `http://localhost:8080`
+   * Expected following **JSON**: {"id": 1, "text": "Hello World!", "port": "8080"}
+1. Clean up environment
+   * In the second command line tool **stop forwarding port of App** with `ctrl + C`
+   * In the first command line tool **remove Kubernetes Pods** with `kubectl delete -f ./k8s --recursive`
+   * In the first command line tool delete cluster **Kind** with `kind delete cluster --name helloworld`
+   * Stop **Docker** tool
+
+##### Optional steps:
+1. In a command line tool build Docker App image with `docker build -f java-springboot3-helloworld-db-nosql-mongodb/docker/Dockerfile -t wisniewskikr/java-springboot3-helloworld-db-nosql-mongodb:0.0.1 .`
+1. In a command line tool push Docker App image to Docker Repository with `docker push wisniewskikr/java-springboot3-helloworld-db-nosql-mongodb:0.0.1`
+1. In the first command line tool with administrator privileges check clusers with `kind get clusters`
+1. In a command line tool check Kubernetes Deployments with `kubectl get deployments`
+1. In a command line tool check Kubernetes Deployments details with **kubectl describe deployment {deployment-name}**
+1. In a command line tool check Kubernetes Services with `kubectl get services`
+1. In a command line tool check Kubernetes Services details with **kubectl describe service {service-name}**
+1. In a command line tool check Kubernetes Pods with `kubectl get pods`
+1. In a command line tool check Kubernetes Pods details with **kubectl describe pod {pod-name}**
+1. In a command line tool check Kubernetes Pods logs with **kubectl logs {pod-name}**
