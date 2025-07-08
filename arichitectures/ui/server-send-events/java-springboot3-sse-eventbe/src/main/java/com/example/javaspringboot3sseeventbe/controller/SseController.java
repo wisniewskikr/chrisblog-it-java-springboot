@@ -1,6 +1,7 @@
 package com.example.javaspringboot3sseeventbe.controller;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.method.annotation.SseEmitter;
 
@@ -22,7 +23,7 @@ public class SseController {
         return emitter;
     }
 
-    @PostMapping("/send")
+    @Scheduled(fixedRate = 3000)
     public ResponseEntity<String> sendMessage() {
         List<SseEmitter> deadEmitters = new CopyOnWriteArrayList<>();
         for (SseEmitter emitter : emitters) {

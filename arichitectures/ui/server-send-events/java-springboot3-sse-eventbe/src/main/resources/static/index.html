@@ -6,8 +6,7 @@
 </head>
 <body>
 <h1>Spring Boot 3 SSE</h1>
-<h2>Manual Events from FE</h2>
-<button onclick="sendRequest()">Send Hello</button>
+<h2>Automatic Events from BE</h2>
 <div id="output"></div>
 
 <script>
@@ -21,12 +20,6 @@
         msg.textContent = event.data;
         output.appendChild(msg);
     };
-
-    function sendRequest() {
-        fetch("/send", {
-            method: "POST"
-        });
-    }
 </script>
 </body>
 </html>
