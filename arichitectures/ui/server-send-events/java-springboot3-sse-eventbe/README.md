@@ -3,28 +3,22 @@ EXAMPLE
 
 ![My Image](readme-images/image-01.png)
 
-![My Image](readme-images/image-02.png)
-
 
 DESCRIPTION
 -----------
 
 ##### Goal
-The goal of this project is to present how to handle **Server-Sent Events** triggered manually from **FE** side 
+The goal of this project is to present how to handle **Server-Sent Events** triggered automatically from **BE** side 
 with usage **Java** programming language and **Spring Boot 3** framework.
 
-Sse triggered manually from FE means that user clicks button on HTML page. This button calls API. And this API
-sends event back to HTML page. So communication is asynchronous - there is no request-response communication.
-There is request -> event communication.
+Sse triggered automatically from BE means that scheduler sends events to HTML page. 
+So communication is asynchronous - there is no request-response communication.
 
 ##### Services
 This project consists of following applications:
 * **App**: application created in Spring Boot 3 contains both - FE and BE - parts. Actions:
-  * **Action 1**:
-    * **Input**: user clicks on button
-    * **Output**: API is called and creates event
-  * **Action 2**: 
-    * **Input**: sse event is created
+  * **Action 1**: 
+    * **Input**: sse event is created by Scheduler
     * **Output**: event text is displayed on HTML page
 
 ##### Terminology
@@ -41,7 +35,7 @@ USAGES
 ------
 
 This project can be tested in following configurations:
-* **Usage Manual**: infrastucture services are started as Docker containers. Application services are started manually in command line
+* **Usage Manual**: infrastructure services are started as Docker containers. Application services are started manually in command line
 * **Usage Docker Compose**: N/A
 * **Usage Kubernetes (Kind)**: N/A
 
@@ -62,9 +56,7 @@ USAGE MANUAL
 ##### Required steps:
 1. In a first command line tool **start application** with `./mvnw spring-boot:run`
 1. In any Internet Browser (e.g. Chrome) visit `http://localhost:8080`
-   * Expected: HTML page with button **Send Hello**
-   * Click button **Send Hello**
-   * Expected: text **Hello World** below the button
+   * Expected: texts **Hello World**
 1. Clean up environment
    * In the first command line tool **stop application** with `ctrl + C`
 
