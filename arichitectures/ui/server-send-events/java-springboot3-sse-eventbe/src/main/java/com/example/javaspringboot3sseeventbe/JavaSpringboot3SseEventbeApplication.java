@@ -4,10 +4,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class JavaSpringboot3SseEventfeApplication {
+public class JavaSpringboot3SseEventbeApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(JavaSpringboot3SseEventfeApplication.class, args);
+		SpringApplication.run(JavaSpringboot3SseEventbeApplication.class, args);
 	}
 
 }
