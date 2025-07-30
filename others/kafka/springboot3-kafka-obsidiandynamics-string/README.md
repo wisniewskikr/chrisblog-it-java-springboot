@@ -81,11 +81,9 @@ USAGE MANUAL
 1. In a first command line tool **start Docker containers** with `docker-compose -f .\docker-compose\infrastructure\docker-compose.yaml up -d --build`
 1. In a second command line tool **start PRODUCER application** with `mvn -f ./springboot3-kafka-obsidiandynamics-string_producer spring-boot:run`
 1. In a third command line tool **start CONSUMER application** with `mvn -f ./springboot3-kafka-obsidiandynamics-string_consumer spring-boot:run`
-1. In a browser check **Consumer** and visit `http://localhost:9090`
-    * Expected text **Message from Producer via Kafka is: There is no message from Producer via Kafka yet** in the browser
-1. In a browser check **Procuder** and visit `http://localhost:8080/helloworld/name/{name}` (e.g. `http://localhost:8080/helloworld/name/Stranger`)
+1. In a browser check **PRODUCER** and visit `http://localhost:8080/api/producer?name={name}` (e.g. `http://localhost:8080/api/producer?name=Stranger)
     * Expected text **The message was sent to Consumer via Kafka** in the browser
-1. In a browser check again **Consumer** and visit `http://localhost:9090`
+1. In a browser check again **CONSUMER** and visit `http://localhost:9090/api/consumer`
     * Expected text **Message from Producer via Kafka is: Hello World {name}** (e.g. **Message from Producer via Kafka is: Hello World Stranger**) in the browser
 1. Clean up environment
     * In the third command line tool **stop CONSUMER application** with `ctrl + C`

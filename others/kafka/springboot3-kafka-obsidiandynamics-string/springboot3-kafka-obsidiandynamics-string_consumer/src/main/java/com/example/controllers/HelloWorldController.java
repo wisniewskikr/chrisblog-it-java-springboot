@@ -1,10 +1,12 @@
 package com.example.controllers;
 
 import org.springframework.kafka.annotation.KafkaListener;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @RestController
+@RequestMapping("/api/consumer")
 public class HelloWorldController {
 
 	private String message = "There is no message from Producer via Kafka yet";
