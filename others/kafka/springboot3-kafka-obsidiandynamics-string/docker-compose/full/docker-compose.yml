@@ -41,7 +41,7 @@ services:
     image: producer
     container_name: producer
     build:
-      context: ./../springboot3-kafka-obsidiandynamics-string_producer
+      context: ../../springboot3-kafka-obsidiandynamics-string_producer
       dockerfile: Dockerfile
     ports:
       - "8080:8080"
@@ -54,7 +54,7 @@ services:
     image: consumer
     container_name: consumer
     build:
-      context: ./../springboot3-kafka-obsidiandynamics-string_consumer
+      context: ../../springboot3-kafka-obsidiandynamics-string_consumer
       dockerfile: Dockerfile
     ports:
       - "9090:9090"
