@@ -125,7 +125,7 @@ USAGE KUBERNETES (KIND)
 1. In the first command line tool create and start cluster **Kind** with `kind create cluster --name helloworld`
 1. In the first command line tool **start Kubernetes Pods** with `kubectl apply -f ./k8s --recursive`
 1. In the first command line tool **check status of Kubernetes Pods** with `kubectl get pods`
-   * Expected mysql, be and fe as **READY 1/1** (it can take few minutes)
+   * Expected all services as **READY 1/1** (it can take few minutes)
 1. In the second command line tool **forward port of PRODUCER service** with `kubectl port-forward service/producer 8080:8080`
 1. In the third command line tool **forward port of CONSUMER service** with `kubectl port-forward service/consumer 9090:9090`
 1. In the fourth command line tool**forward port of KAFDROP service** with `kubectl port-forward service/kafdrop 9000:9000`
