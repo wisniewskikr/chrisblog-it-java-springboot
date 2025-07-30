@@ -94,21 +94,18 @@ USAGE DOCKER COMPOSE
 
 Usage steps:
 1. Start **Docker** tool
-1. In a command line tool **start Docker containers** with `docker-compose -f .\docker-compose\docker-compose.yml up -d --build`
-1. In a browser check **Consumer** and visit `http://localhost:9090`
-   * Expected text **Message from Producer via Kafka is: There is no message from Producer via Kafka yet** in the browser
-1. In a browser check **Procuder** and visit `http://localhost:8080/helloworld/name/{name}` (e.g. `http://localhost:8080/helloworld/name/Stranger`)
-   * Expected text **The message was sent to Consumer via Kafka** in the browser
-1. In a browser check again **Consumer** and visit `http://localhost:9090`
-   * Expected text **Message from Producer via Kafka is: Hello World {name}** (e.g. **Message from Producer via Kafka is: Hello World Stranger**) in the browser
-1. In a browser check **Kafka UI** and visit `http://localhost:8086`
-   * Expected **dashboard** of Kafka UI (check section **EXAMPLE**)
-   * Fill **Cluster name** as **localhost**
-   * Fill **Host** as **kafka**
-   * Fill **Port** as **9092**
+1. In a command line tool **start Docker containers** with `docker-compose -f .\docker-compose\full\docker-compose.yml up -d --build`
+   . In a browser check **PRODUCER** and visit `http://localhost:8080/api/producer?name={name}` (e.g. `http://localhost:8080/api/producer?name=Stranger)
+    * Expected text **The message was sent to Consumer via Kafka** in the browser
+1. In a browser check again **CONSUMER** and visit `http://localhost:9090/api/consumer`
+    * Expected text **Message from Producer via Kafka is: Hello World {name}** (e.g. **Message from Producer via Kafka is: Hello World Stranger**) in the browser
 1. Clean up environment
-    * Remove containers `docker-compose -f .\docker-compose\docker-compose.yml down --rmi all`
+    * Remove containers `docker-compose -f .\docker-compose\full\docker-compose.yml down --rmi all`
     * Stop **Docker** tool
+
+##### Optional steps:
+1. In a browser check messages via **Kafdrop** with `http://localhost:9090`
+    * For more details please check section **KAFDROP CONFIGURATION**
 
 
 USAGE KUBERNETES (KIND)
