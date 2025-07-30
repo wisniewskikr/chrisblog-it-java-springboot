@@ -20,6 +20,9 @@ spec:
           ports:
             - containerPort: 9090
               protocol: TCP
+          env:
+            - name: SPRING_KAFKA_CONSUMER_BOOTSTRAP_SERVERS
+              value: kafka:29092
       restartPolicy: Always
 
 ---
