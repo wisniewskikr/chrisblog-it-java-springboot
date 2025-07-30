@@ -10,22 +10,18 @@ DESCRIPTION
 -----------
 
 ##### Goal
-The goal of this project is to present how to use **Kafka** type **KRaft** for implementation of asynchronous communication between two applications created with usage **Java** programming language and **Spring Boot 3** framework. Additionally **Krafka UI** is used to present messages sent between these two applications.
+The goal of this project is to present how to use **Kafka** type **Obsidiandynamics** for implementation of 
+asynchronous communication between two applications created with usage **Java** programming language and 
+**Spring Boot 3** framework. Message type **String** is sent between these two applications. 
+
+Additionally **Krafdrop** is used to present messages sent between these two applications.
 
 ##### Content
 This project consists of following applications:
 * **Producer**: sends events to Kafka broker
-   * **Input**: Http request with path variable **name** from any browser is received
-   * **Output**: Http response to any browser with message **The message was sent to Consumer via Kafka** is sent
 * **Consumer**: receives events from Kafka broker
-   * **Input**: Http request from any browser is received
-   * **Output**: Http response to any browser with message **Message from Producer via Kafka is: Hello World {name}** is sent
 * **Kafka**: acts as an intermediary between the producer and the consumer
-   * **Input**: event from Producer is received
-   * **Output**: event to Consumer is sent
-* **Kafka UI**: displays events handled by Kafka broker
-   * **Input**: Http request from any browser is received
-   * **Output**: Http response to any browser with **dashboard of Kafka event`s** details is sent
+* **Kafdrop**: displays events handled by Kafka broker
    
 
 ##### Terminology
@@ -34,8 +30,8 @@ Terminology explanation:
 * **Java**: Java is a high-level, object-oriented programming language known for its platform independence, achieved through the Java Virtual Machine (JVM). It is widely used for developing web, mobile, desktop, and enterprise applications, emphasizing simplicity, security, and portability. "Write once, run anywhere" is its core principle.
 * **Maven**: Maven is a build automation and dependency management tool for Java projects, streamlining project builds, managing libraries, and ensuring consistent project configurations.
 * **Spring Boot**: Spring Boot is a framework for building Java-based applications that simplifies development by providing auto-configuration, embedded servers, and production-ready tools, enabling developers to create standalone, production-ready applications with minimal configuration.
-* **Kafka KRaft**: Kafka KRaft (Kafka Raft) is a mode of running Apache Kafka without the need for Apache ZooKeeper. It uses the Raft consensus algorithm for managing metadata and leader election, simplifying the architecture by removing ZooKeeper's dependency while maintaining Kafka's distributed, fault-tolerant capabilities. This mode enhances scalability and operational simplicity.
-* **Kafka UI**: Kafka UI is a web-based interface for managing and monitoring Apache Kafka clusters. It allows users to visualize topics, partitions, consumer groups, and messages, making it easier to interact with Kafka without using the command line.
+* **Apache Kafka**: Apache Kafka is an open-source distributed event streaming platform used to build real-time data pipelines and streaming applications. It is designed for high throughput, fault tolerance, and scalability, enabling the publishing, storing, and processing of streams of records in real time.
+* **Kafdrop**: Kafdrop helps simplify Kafka operations by making it easier to inspect and troubleshoot Kafka data and performance through an accessible web UI.
 * **Asynchronous Communication**: Asynchronous communication is the exchange of information without requiring participants to be present or respond in real time, allowing for flexibility in timing (e.g., emails or messaging apps).
 * **Docker**: Docker is a platform that allows you to build, run, and manage applications in lightweight, portable containers. These containers package the application and its dependencies, ensuring consistency across development, testing, and production environments.
 * **Docker Compose**: Docker Compose is a tool for defining and running multi-container Docker applications using a simple YAML configuration file (docker-compose.yml). It allows you to specify services, networks, and volumes, enabling easy orchestration and management of containerized applications.
