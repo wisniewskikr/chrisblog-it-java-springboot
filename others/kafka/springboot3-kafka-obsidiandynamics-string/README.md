@@ -5,18 +5,6 @@ EXAMPLE
 
 ![My Image](readme-images/image-02.png)
 
-![My Image](readme-images/image-03.png)
-
-![My Image](readme-images/image-04.png)
-
-![My Image](readme-images/image-05.png)
-
-![My Image](readme-images/image-06.png)
-
-![My Image](readme-images/image-07.png)
-
-![My Image](readme-images/image-08.png)
-
 
 DESCRIPTION
 -----------
@@ -90,6 +78,10 @@ USAGE MANUAL
     * In the second command line tool **stop PRODUCER application** with `ctrl + C`
     * In the first command line tool **remove Docker containers** with `docker-compose -f .\docker-compose\infrastructure\docker-compose.yaml down --rmi all`
     * Stop **Docker** tool
+
+##### Optional steps:
+1. In a browser check messages via **Kafdrop** with `http://localhost:9090`
+    * For more details please check section **KAFDROP CONFIGURATION**
 
 
 USAGE DOCKER COMPOSE
@@ -178,8 +170,13 @@ USAGE KUBERNETES (KIND)
 1. In a command line tool check Kubernetes Pods logs with **kubectl logs {pod-name}**
 
 
-INSPIRATIONS
-------------
+KAFDROP CONFIGURATION
+---------------------
 
-Inspirations:
-- https://github.com/rafaelmnatali/kafka-k8s/tree/main/confluent-local
+![My Image](readme-images/kafdrop-01.png)
+
+![My Image](readme-images/kafdrop-02.png)
+
+![My Image](readme-images/kafdrop-03.png)
+
+![My Image](readme-images/kafdrop-04.png)
