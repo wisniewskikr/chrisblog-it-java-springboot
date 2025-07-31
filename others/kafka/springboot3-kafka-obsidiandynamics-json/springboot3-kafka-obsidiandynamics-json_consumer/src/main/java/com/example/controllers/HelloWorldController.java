@@ -1,5 +1,6 @@
 package com.example.controllers;
 
+import com.example.models.HelloWorldModel;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -18,8 +19,8 @@ public class HelloWorldController {
 	}
 		
 	@KafkaListener(topics = "#{'${topic.name}'}")
-	public void helloWorldListener(String message) {
-		this.message = message;		
+	public void helloWorldListener(HelloWorldModel helloWorldModel) {
+		this.message = helloWorldModel.getMessage();
 		System.out.println(message);		
 	}
 	
