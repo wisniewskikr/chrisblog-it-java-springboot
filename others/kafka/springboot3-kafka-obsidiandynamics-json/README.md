@@ -12,7 +12,7 @@ DESCRIPTION
 ##### Goal
 The goal of this project is to present how to use **Kafka** type **Obsidiandynamics** for implementation of 
 asynchronous communication between two applications created with usage **Java** programming language and 
-**Spring Boot 3** framework. Message type **String** is sent between these two applications. 
+**Spring Boot 3** framework. Message type **JSON** is sent between these two applications. 
 
 Additionally **Krafdrop** is used to present messages sent between these two applications.
 
