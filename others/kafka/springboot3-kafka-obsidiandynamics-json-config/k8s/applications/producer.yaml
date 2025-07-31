@@ -15,7 +15,7 @@ spec:
         app: producer
     spec:
       containers:
-        - image: wisniewskikr/springboot3-kafka-obsidiandynamics-json_producer:0.0.1
+        - image: wisniewskikr/springboot3-kafka-obsidiandynamics-json-config_producer:0.0.1
           name: producer
           ports:
             - containerPort: 8080
