@@ -10,6 +10,7 @@
     <modules>
     	<module>springboot3-kafka-obsidiandynamics-json-model_producer</module>
         <module>springboot3-kafka-obsidiandynamics-json-model_consumer</module>
+		<module>springboot3-kafka-obsidiandynamics-json-model_model</module>
     </modules>
     <packaging>pom</packaging>
 
