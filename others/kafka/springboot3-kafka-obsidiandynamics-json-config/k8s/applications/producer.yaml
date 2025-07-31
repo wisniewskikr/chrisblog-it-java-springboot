@@ -21,7 +21,7 @@ spec:
             - containerPort: 8080
               protocol: TCP
           env:
-            - name: SPRING_KAFKA_PRODUCER_BOOTSTRAP_SERVERS
+            - name: KAFKA_URL
               value: kafka:29092
       restartPolicy: Always
 
