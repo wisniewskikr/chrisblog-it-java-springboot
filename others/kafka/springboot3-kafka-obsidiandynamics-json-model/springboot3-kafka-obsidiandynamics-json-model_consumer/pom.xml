@@ -24,7 +24,12 @@
 		<dependency>
 	      	<groupId>org.springframework.kafka</groupId>
 	      	<artifactId>spring-kafka</artifactId>
-	    </dependency>		
+	    </dependency>
+		<dependency>
+			<groupId>com.example.app</groupId>
+			<artifactId>springboot3-kafka-obsidiandynamics-json-model_model</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
 	</dependencies>
 
 	<build>
