@@ -10,4 +10,12 @@
 		<java.version>23</java.version>
 	</properties>
 
+	<distributionManagement>
+		<repository>
+			<id>github</id>
+			<name>GitHub Packages</name>
+			<url>https://maven.pkg.github.com/wisniewskikr/chrisblog-it-java-springboot</url>
+		</repository>
+	</distributionManagement>
+
 </project>

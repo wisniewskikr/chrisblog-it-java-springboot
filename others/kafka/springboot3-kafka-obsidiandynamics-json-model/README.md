@@ -63,7 +63,6 @@ USAGE MANUAL
 
 ##### Required steps:
 1. Start **Docker** tool
-1. In a first command line tool **build Model package** with `mvn -f ./springboot3-kafka-obsidiandynamics-json-model_model clean install`
 1. In a first command line tool **start Docker containers** with `docker-compose -f .\docker-compose\infrastructure\docker-compose.yaml up -d --build`
 1. In a second command line tool **start PRODUCER application** with `mvn -f ./springboot3-kafka-obsidiandynamics-json-model_producer spring-boot:run`
 1. In a third command line tool **start CONSUMER application** with `mvn -f ./springboot3-kafka-obsidiandynamics-json-model_consumer spring-boot:run`
