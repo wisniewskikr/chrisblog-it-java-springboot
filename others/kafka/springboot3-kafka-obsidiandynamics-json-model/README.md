@@ -62,7 +62,7 @@ USAGE MANUAL
 * **Docker** (tested on version 4.33.1)
 
 ##### Required steps:
-1. Configure Maven remote repository (check section **REMOTE MAVEN REPOSITORY CONFIGURATION**)
+1. Configure Maven remote repository for **Model** (check section **REMOTE MAVEN REPOSITORY CONFIGURATION**)
 1. Start **Docker** tool
 1. In a first command line tool **start Docker containers** with `docker-compose -f .\docker-compose\infrastructure\docker-compose.yaml up -d --build`
 1. In a second command line tool **start PRODUCER application** with `mvn -f ./springboot3-kafka-obsidiandynamics-json-model_producer spring-boot:run`
@@ -95,7 +95,7 @@ USAGE DOCKER COMPOSE
 * **Docker** (tested on version 4.33.1) 
 
 Usage steps:
-1. Configure Maven remote repository (check section **REMOTE MAVEN REPOSITORY CONFIGURATION**)
+1. Configure Maven remote repository for **Model** (check section **REMOTE MAVEN REPOSITORY CONFIGURATION**)
 1. Start **Docker** tool
 1. In a command line tool **start Docker containers** with `docker-compose -f .\docker-compose\full\docker-compose.yml up -d --build`
 1. In a browser send message via **PRODUCER** and visit `http://localhost:8080/api/producer?name={name}` (e.g. `http://localhost:8080/api/producer?name=Stranger)
@@ -124,7 +124,7 @@ USAGE KUBERNETES (KIND)
 * **Kind** (tested on version 0.26.0)
 
 ##### Required steps:
-1. Configure Maven remote repository (check section **REMOTE MAVEN REPOSITORY CONFIGURATION**)
+1. Configure Maven remote repository for **Model** (check section **REMOTE MAVEN REPOSITORY CONFIGURATION**)
 1. Start **Docker** tool
 1. In the first command line tool create and start cluster **Kind** with `kind create cluster --name helloworld`
 1. In the first command line tool **start Kubernetes Pods** with `kubectl apply -f ./k8s --recursive`
@@ -206,3 +206,11 @@ REMOTE MAVEN REPOSITORY CONFIGURATION
 ![My Image](readme-images/image-14.png)
 
 ![My Image](readme-images/image-15.png)
+
+![My Image](readme-images/image-16.png)
+
+![My Image](readme-images/image-17.png)
+
+![My Image](readme-images/image-18.png)
+
+![My Image](readme-images/image-19.png)
