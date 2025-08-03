@@ -63,8 +63,8 @@ USAGE MANUAL
 ##### Required steps:
 1. Start **Docker** tool
 1. In a first command line tool **start Docker containers** with `docker-compose -f .\docker-compose\infrastructure\docker-compose.yaml up -d --build`
-1. In a second command line tool **start PRODUCER application** with `mvn -f ./springboot3-kafka-obsidiandynamics-string_producer spring-boot:run`
-1. In a third command line tool **start CONSUMER application** with `mvn -f ./springboot3-kafka-obsidiandynamics-string_consumer spring-boot:run`
+1. In a second command line tool **start PRODUCER application** with `mvn -f ./springboot3-kafka-obsidiandynamics-queue_producer spring-boot:run`
+1. In a third command line tool **start CONSUMER application** with `mvn -f ./springboot3-kafka-obsidiandynamics-queue_consumer spring-boot:run`
 1. In a browser send message via **PRODUCER** and visit `http://localhost:8080/api/producer?name={name}` (e.g. `http://localhost:8080/api/producer?name=Stranger)
     * Expected text **The message was sent to Consumer via Kafka** in the browser
 1. In a browser check **CONSUMER** and visit `http://localhost:9090/api/consumer`
@@ -144,10 +144,10 @@ USAGE KUBERNETES (KIND)
 ##### Optional steps:
 1. In a browser check messages via **Kafdrop** with `http://localhost:9090`
     * For more details please check section **KAFDROP CONFIGURATION**
-1. In a command line tool build Docker Producer image with `docker build -f springboot3-kafka-obsidiandynamics-string_producer/Dockerfile -t wisniewskikr/springboot3-kafka-obsidiandynamics-string_producer:0.0.1 ./springboot3-kafka-obsidiandynamics-string_producer`
-1. In a command line tool push Docker Procuder image to Docker Repository with `docker push wisniewskikr/springboot3-kafka-obsidiandynamics-string_producer:0.0.1` 
-1. In a command line tool build Docker Consumer image with `docker build -f springboot3-kafka-obsidiandynamics-string_consumer/Dockerfile -t wisniewskikr/springboot3-kafka-obsidiandynamics-string_consumer:0.0.1 ./springboot3-kafka-obsidiandynamics-string_consumer`
-1. In a command line tool push Docker Consumer image to Docker Repository with `docker push wisniewskikr/springboot3-kafka-obsidiandynamics-string_consumer:0.0.1` 
+1. In a command line tool build Docker Producer image with `docker build -f springboot3-kafka-obsidiandynamics-queue_producer/Dockerfile -t wisniewskikr/springboot3-kafka-obsidiandynamics-queue_producer:0.0.1 ./springboot3-kafka-obsidiandynamics-queue_producer`
+1. In a command line tool push Docker Procuder image to Docker Repository with `docker push wisniewskikr/springboot3-kafka-obsidiandynamics-queue_producer:0.0.1` 
+1. In a command line tool build Docker Consumer image with `docker build -f springboot3-kafka-obsidiandynamics-queue_consumer/Dockerfile -t wisniewskikr/springboot3-kafka-obsidiandynamics-queue_consumer:0.0.1 ./springboot3-kafka-obsidiandynamics-queue_consumer`
+1. In a command line tool push Docker Consumer image to Docker Repository with `docker push wisniewskikr/springboot3-kafka-obsidiandynamics-queue_consumer:0.0.1` 
 1. In the first command line tool with administrator privileges check clusers with `kind get clusters`
 1. In a command line tool check Kubernetes Deployments with `kubectl get deployments`
 1. In a command line tool check Kubernetes Deployments details with **kubectl describe deployment {deployment-name}**
