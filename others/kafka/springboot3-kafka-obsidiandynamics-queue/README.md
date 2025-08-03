@@ -14,14 +14,16 @@ DESCRIPTION
 ##### Goal
 The goal of this project is to present how to use **Kafka** type **Obsidiandynamics** for implementation of 
 asynchronous communication between two applications created with usage **Java** programming language and 
-**Spring Boot 3** framework. Message type **String** is sent between these two applications. 
+**Spring Boot 3** framework. It presents how to implement communication type **queue** - if there is many
+consumers then only one consumes the message.
 
 Additionally **Krafdrop** is used to present messages sent between these two applications.
 
 ##### Content
 This project consists of following applications:
 * **Producer**: sends events to Kafka broker
-* **Consumer**: receives events from Kafka broker
+* **Consumer1**: receives events from Kafka broker
+* **Consumer2**: receives events from Kafka broker
 * **Kafka**: acts as an intermediary between the producer and the consumer
 * **Kafdrop**: displays events handled by Kafka broker
    
