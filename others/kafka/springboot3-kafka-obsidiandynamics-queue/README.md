@@ -15,7 +15,8 @@ DESCRIPTION
 The goal of this project is to present how to use **Kafka** type **Obsidiandynamics** for implementation of 
 asynchronous communication between two applications created with usage **Java** programming language and 
 **Spring Boot 3** framework. It presents how to implement communication type **queue** - if there is many
-consumers then only one consumes the message.
+consumers then only one consumes the message. It is done by having the same **group id** by many Consumers -
+only one random Consumer from the group consumes the message.
 
 Additionally **Krafdrop** is used to present messages sent between these two applications.
 
