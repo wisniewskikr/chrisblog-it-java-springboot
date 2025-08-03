@@ -41,14 +41,29 @@ services:
     depends_on:
       - kafka
   
-  consumer:
-    image: consumer
-    container_name: consumer
+  consumer1:
+    image: consumer1
+    container_name: consumer1
     build:
       context: ../../springboot3-kafka-obsidiandynamics-queue_consumer1
       dockerfile: Dockerfile
     ports:
       - "9090:9090"
+    environment:
+      SPRING_KAFKA_CONSUMER_BOOTSTRAP_SERVERS: kafka:29092
+    networks:
+      - network
+    depends_on:
+      - kafka
+
+  consumer2:
+    image: consumer2
+    container_name: consumer2
+    build:
+      context: ../../springboot3-kafka-obsidiandynamics-queue_consumer2
+      dockerfile: Dockerfile
+    ports:
+      - "9091:9091"
     environment:
       SPRING_KAFKA_CONSUMER_BOOTSTRAP_SERVERS: kafka:29092
     networks:

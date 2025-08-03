@@ -104,9 +104,11 @@ Usage steps:
 1. Start **Docker** tool
 1. In a command line tool **start Docker containers** with `docker-compose -f .\docker-compose\full\docker-compose.yml up -d --build`
 1. In a browser send message via **PRODUCER** and visit `http://localhost:8080/api/producer?name={name}` (e.g. `http://localhost:8080/api/producer?name=Stranger)
-    * Expected text **The message was sent to Consumer via Kafka** in the browser
-1. In a browser check **CONSUMER** and visit `http://localhost:9090/api/consumer`
-    * Expected text **Message from Producer via Kafka is: Hello World {name}** (e.g. **Message from Producer via Kafka is: Hello World Stranger**) in the browser
+   * Expected text **The message was sent to Consumer via Kafka** in the browser
+1. In a browser check **CONSUMER1** and visit `http://localhost:9090/api/consumer`
+   * Expected text **Message from Producer via Kafka is: There is no message from Producer via Kafka yet** or **Message from Producer via Kafka is: Hello World {name}** (e.g. **Message from Producer via Kafka is: Hello World Stranger**) in the browser
+1. In a browser check **CONSUMER2** and visit `http://localhost:9091/api/consumer`
+   * Expected text **Message from Producer via Kafka is: There is no message from Producer via Kafka yet** or **Message from Producer via Kafka is: Hello World {name}** (e.g. **Message from Producer via Kafka is: Hello World Stranger**) in the browser
 1. Clean up environment
     * Remove containers `docker-compose -f .\docker-compose\full\docker-compose.yml down --rmi all`
     * Stop **Docker** tool
