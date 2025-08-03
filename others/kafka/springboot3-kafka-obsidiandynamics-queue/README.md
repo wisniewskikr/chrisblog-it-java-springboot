@@ -5,6 +5,8 @@ EXAMPLE
 
 ![My Image](readme-images/image-02.png)
 
+![My Image](readme-images/image-03.png)
+
 
 DESCRIPTION
 -----------
@@ -64,13 +66,17 @@ USAGE MANUAL
 1. Start **Docker** tool
 1. In a first command line tool **start Docker containers** with `docker-compose -f .\docker-compose\infrastructure\docker-compose.yaml up -d --build`
 1. In a second command line tool **start PRODUCER application** with `mvn -f ./springboot3-kafka-obsidiandynamics-queue_producer spring-boot:run`
-1. In a third command line tool **start CONSUMER application** with `mvn -f ./springboot3-kafka-obsidiandynamics-queue_consumer1 spring-boot:run`
+1. In a third command line tool **start CONSUMER1 application** with `mvn -f ./springboot3-kafka-obsidiandynamics-queue_consumer1 spring-boot:run`
+1. In a fourth command line tool **start CONSUMER1 application** with `mvn -f ./springboot3-kafka-obsidiandynamics-queue_consumer2 spring-boot:run`
 1. In a browser send message via **PRODUCER** and visit `http://localhost:8080/api/producer?name={name}` (e.g. `http://localhost:8080/api/producer?name=Stranger)
     * Expected text **The message was sent to Consumer via Kafka** in the browser
-1. In a browser check **CONSUMER** and visit `http://localhost:9090/api/consumer`
-    * Expected text **Message from Producer via Kafka is: Hello World {name}** (e.g. **Message from Producer via Kafka is: Hello World Stranger**) in the browser
+1. In a browser check **CONSUMER1** and visit `http://localhost:9090/api/consumer`
+    * Expected text **Message from Producer via Kafka is: There is no message from Producer via Kafka yet** or **Message from Producer via Kafka is: Hello World {name}** (e.g. **Message from Producer via Kafka is: Hello World Stranger**) in the browser
+1. In a browser check **CONSUMER2** and visit `http://localhost:9091/api/consumer`
+   * Expected text **Message from Producer via Kafka is: There is no message from Producer via Kafka yet** or **Message from Producer via Kafka is: Hello World {name}** (e.g. **Message from Producer via Kafka is: Hello World Stranger**) in the browser
 1. Clean up environment
-    * In the third command line tool **stop CONSUMER application** with `ctrl + C`
+    * In the fourth command line tool **stop CONSUMER2 application** with `ctrl + C`
+    * In the third command line tool **stop CONSUMER1 application** with `ctrl + C`
     * In the second command line tool **stop PRODUCER application** with `ctrl + C`
     * In the first command line tool **remove Docker containers** with `docker-compose -f .\docker-compose\infrastructure\docker-compose.yaml down --rmi all`
     * Stop **Docker** tool
