@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: consumer2
+  name: consumer2
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: consumer2
+  template:
+    metadata:
+      labels:
+        app: consumer2
+    spec:
+      containers:
+        - image: wisniewskikr/springboot3-kafka-obsidiandynamics-queue_consumer1:0.0.1
+          name: consumer2
+          ports:
+            - containerPort: 9091
+              protocol: TCP
+          env:
+            - name: SPRING_KAFKA_CONSUMER_BOOTSTRAP_SERVERS
+              value: kafka:29092
+      restartPolicy: Always
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: consumer2
+  name: consumer2
+spec:
+  ports:
+    - name: "9091"
+      port: 9091
+      targetPort: 9091
+  selector:
+    app: consumer2

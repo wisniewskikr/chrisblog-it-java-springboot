@@ -137,15 +137,19 @@ USAGE KUBERNETES (KIND)
 1. In the first command line tool **check status of Kubernetes Pods** with `kubectl get pods`
    * Expected all services as **READY 1/1** (it can take few minutes)
 1. In the second command line tool **forward port of PRODUCER service** with `kubectl port-forward service/producer 8080:8080`
-1. In the third command line tool **forward port of CONSUMER service** with `kubectl port-forward service/consumer 9090:9090`
-1. In the fourth command line tool**forward port of KAFDROP service** with `kubectl port-forward service/kafdrop 9000:9000`
+1. In the third command line tool **forward port of CONSUMER1 service** with `kubectl port-forward service/consumer1 9090:9090`
+1. In the fourth command line tool **forward port of CONSUMER2 service** with `kubectl port-forward service/consumer2 9091:9091`
+1. In the fifth command line tool**forward port of KAFDROP service** with `kubectl port-forward service/kafdrop 9000:9000`
 1. In a browser send message via **PRODUCER** and visit `http://localhost:8080/api/producer?name={name}` (e.g. `http://localhost:8080/api/producer?name=Stranger)
-    * Expected text **The message was sent to Consumer via Kafka** in the browser
-1. In a browser check **CONSUMER** and visit `http://localhost:9090/api/consumer`
-    * Expected text **Message from Producer via Kafka is: Hello World {name}** (e.g. **Message from Producer via Kafka is: Hello World Stranger**) in the browser
+   * Expected text **The message was sent to Consumer via Kafka** in the browser
+1. In a browser check **CONSUMER1** and visit `http://localhost:9090/api/consumer`
+   * Expected text **Message from Producer via Kafka is: There is no message from Producer via Kafka yet** or **Message from Producer via Kafka is: Hello World {name}** (e.g. **Message from Producer via Kafka is: Hello World Stranger**) in the browser
+1. In a browser check **CONSUMER2** and visit `http://localhost:9091/api/consumer`
+   * Expected text **Message from Producer via Kafka is: There is no message from Producer via Kafka yet** or **Message from Producer via Kafka is: Hello World {name}** (e.g. **Message from Producer via Kafka is: Hello World Stranger**) in the browser
 1. Clean up environment 
-     * In the fourth command line tool **stop forwarding port of KAFDROP service** with `ctrl + C`
-     * In the third command line tool **stop forwarding port of CONSUMER service** with `ctrl + C`
+     * In the fifth command line tool **stop forwarding port of KAFDROP service** with `ctrl + C`
+     * In the fourth command line tool **stop forwarding port of CONSUMER2 service** with `ctrl + C`
+     * In the third command line tool **stop forwarding port of CONSUMER1 service** with `ctrl + C`
      * In the second command line tool **stop forwarding port of PRODUCER service** with `ctrl + C`
      * In the first command line tool **remove Kubernetes Pods** with `kubectl delete -f ./k8s --recursive`
      * In the first command line tool delete cluster **Kind** with `kind delete cluster --name helloworld`
