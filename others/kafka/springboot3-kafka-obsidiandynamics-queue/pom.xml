@@ -10,6 +10,7 @@
     <modules>
     	<module>springboot3-kafka-obsidiandynamics-queue_producer</module>
         <module>springboot3-kafka-obsidiandynamics-queue_consumer1</module>
+		<module>springboot3-kafka-obsidiandynamics-queue_consumer2</module>
     </modules>
     <packaging>pom</packaging>
 
