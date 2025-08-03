@@ -30,7 +30,7 @@ services:
     image: producer
     container_name: producer
     build:
-      context: ../../springboot3-kafka-obsidiandynamics-queue_producer
+      context: ../../springboot3-kafka-obsidiandynamics-topic_producer
       dockerfile: Dockerfile
     ports:
       - "8080:8080"
@@ -45,7 +45,7 @@ services:
     image: consumer1
     container_name: consumer1
     build:
-      context: ../../springboot3-kafka-obsidiandynamics-queue_consumer1
+      context: ../../springboot3-kafka-obsidiandynamics-topic_consumer1
       dockerfile: Dockerfile
     ports:
       - "9090:9090"
@@ -60,7 +60,7 @@ services:
     image: consumer2
     container_name: consumer2
     build:
-      context: ../../springboot3-kafka-obsidiandynamics-queue_consumer2
+      context: ../../springboot3-kafka-obsidiandynamics-topic_consumer2
       dockerfile: Dockerfile
     ports:
       - "9091:9091"

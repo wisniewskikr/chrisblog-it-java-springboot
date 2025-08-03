@@ -15,7 +15,7 @@ spec:
         app: consumer2
     spec:
       containers:
-        - image: wisniewskikr/springboot3-kafka-obsidiandynamics-queue_consumer1:0.0.1
+        - image: wisniewskikr/springboot3-kafka-obsidiandynamics-topic_consumer1:0.0.1
           name: consumer2
           ports:
             - containerPort: 9091
