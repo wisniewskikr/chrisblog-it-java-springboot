@@ -107,9 +107,9 @@ Usage steps:
 1. In a browser send message via **PRODUCER** and visit `http://localhost:8080/api/producer?name={name}` (e.g. `http://localhost:8080/api/producer?name=Stranger)
    * Expected text **The message was sent to Consumer via Kafka** in the browser
 1. In a browser check **CONSUMER1** and visit `http://localhost:9090/api/consumer`
-   * Expected text **Message from Producer via Kafka is: There is no message from Producer via Kafka yet** or **Message from Producer via Kafka is: Hello World {name}** (e.g. **Message from Producer via Kafka is: Hello World Stranger**) in the browser
+   * Expected text **Message from Producer via Kafka is: Hello World {name}** (e.g. **Message from Producer via Kafka is: Hello World Stranger**) in the browser
 1. In a browser check **CONSUMER2** and visit `http://localhost:9091/api/consumer`
-   * Expected text **Message from Producer via Kafka is: There is no message from Producer via Kafka yet** or **Message from Producer via Kafka is: Hello World {name}** (e.g. **Message from Producer via Kafka is: Hello World Stranger**) in the browser
+   * Expected text **Message from Producer via Kafka is: Hello World {name}** (e.g. **Message from Producer via Kafka is: Hello World Stranger**) in the browser
 1. Clean up environment
     * Remove containers `docker-compose -f .\docker-compose\full\docker-compose.yml down --rmi all`
     * Stop **Docker** tool
@@ -144,9 +144,9 @@ USAGE KUBERNETES (KIND)
 1. In a browser send message via **PRODUCER** and visit `http://localhost:8080/api/producer?name={name}` (e.g. `http://localhost:8080/api/producer?name=Stranger)
    * Expected text **The message was sent to Consumer via Kafka** in the browser
 1. In a browser check **CONSUMER1** and visit `http://localhost:9090/api/consumer`
-   * Expected text **Message from Producer via Kafka is: There is no message from Producer via Kafka yet** or **Message from Producer via Kafka is: Hello World {name}** (e.g. **Message from Producer via Kafka is: Hello World Stranger**) in the browser
+   * Expected text **Message from Producer via Kafka is: Hello World {name}** (e.g. **Message from Producer via Kafka is: Hello World Stranger**) in the browser
 1. In a browser check **CONSUMER2** and visit `http://localhost:9091/api/consumer`
-   * Expected text **Message from Producer via Kafka is: There is no message from Producer via Kafka yet** or **Message from Producer via Kafka is: Hello World {name}** (e.g. **Message from Producer via Kafka is: Hello World Stranger**) in the browser
+   * Expected text **Message from Producer via Kafka is: Hello World {name}** (e.g. **Message from Producer via Kafka is: Hello World Stranger**) in the browser
 1. Clean up environment 
      * In the fifth command line tool **stop forwarding port of KAFDROP service** with `ctrl + C`
      * In the fourth command line tool **stop forwarding port of CONSUMER2 service** with `ctrl + C`
