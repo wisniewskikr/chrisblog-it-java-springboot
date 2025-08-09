@@ -9,6 +9,9 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class EmailController {
 
+    @Value("${email.from}")
+    private String emailFrom;
+
     @Value("${email.to}")
     private String emailTo;
 
@@ -27,7 +30,7 @@ public class EmailController {
     @GetMapping
     public ResponseEntity<String> send() {
 
-        emailService.sendEmailAsText(emailTo, emailSubject, emailText);
+        emailService.sendEmailAsText(emailFrom, emailTo, emailSubject, emailText);
         return ResponseEntity.ok("Email sent successfully");
 
     }
