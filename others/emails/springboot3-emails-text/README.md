@@ -10,19 +10,14 @@ DESCRIPTION
 -----------
 
 ##### Goal
-The goal of this project is to present how to use **Kafka** type **Obsidiandynamics** for implementation of
-asynchronous communication between two applications created with usage **Java** programming language and
-**Spring Boot 3** framework. Message type **JSON** is sent between these two applications.
+The goal of this project is to present how to send **emails** type **text** with usage **Java** programming language and
+**Spring Boot 3** framework. 
 
-Additionally **Krafdrop** is used to present messages sent between these two applications.
+Emails are sent and received by tool called **Mailtrap**.
 
 ##### Content
 This project consists of following applications:
-* **Producer**: sends events to Kafka broker
-* **Consumer**: receives events from Kafka broker
-* **Kafka**: acts as an intermediary between the producer and the consumer
-* **Kafdrop**: displays events handled by Kafka broker
-
+* **App**: application type REST API which sends predefined "Hello World" emails
 
 ##### Terminology
 Terminology explanation:
@@ -30,14 +25,7 @@ Terminology explanation:
 * **Java**: Java is a high-level, object-oriented programming language known for its platform independence, achieved through the Java Virtual Machine (JVM). It is widely used for developing web, mobile, desktop, and enterprise applications, emphasizing simplicity, security, and portability. "Write once, run anywhere" is its core principle.
 * **Maven**: Maven is a build automation and dependency management tool for Java projects, streamlining project builds, managing libraries, and ensuring consistent project configurations.
 * **Spring Boot**: Spring Boot is a framework for building Java-based applications that simplifies development by providing auto-configuration, embedded servers, and production-ready tools, enabling developers to create standalone, production-ready applications with minimal configuration.
-* **Apache Kafka**: Apache Kafka is an open-source distributed event streaming platform used to build real-time data pipelines and streaming applications. It is designed for high throughput, fault tolerance, and scalability, enabling the publishing, storing, and processing of streams of records in real time.
-* **Kafdrop**: Kafdrop helps simplify Kafka operations by making it easier to inspect and troubleshoot Kafka data and performance through an accessible web UI.
-* **Asynchronous Communication**: Asynchronous communication is the exchange of information without requiring participants to be present or respond in real time, allowing for flexibility in timing (e.g., emails or messaging apps).
-* **Docker**: Docker is a platform that allows you to build, run, and manage applications in lightweight, portable containers. These containers package the application and its dependencies, ensuring consistency across development, testing, and production environments.
-* **Docker Compose**: Docker Compose is a tool for defining and running multi-container Docker applications using a simple YAML configuration file (docker-compose.yml). It allows you to specify services, networks, and volumes, enabling easy orchestration and management of containerized applications.
-* **Kubernetes**: Kubernetes is an open-source platform for automating the deployment, scaling, and management of containerized applications. It organizes containers into logical units called pods and helps ensure high availability, scalability, and efficient resource utilization.
-* **Kind**: Kubernetes Kind (Kubernetes IN Docker) is a tool for running Kubernetes clusters locally using Docker containers. It allows developers to easily create and manage multi-node Kubernetes clusters for testing and development purposes in a lightweight environment.
-
+* **Mailtrap**: Mailtrap is an email testing tool that simulates an SMTP server, letting developers safely capture, inspect, and debug outgoing emails from their applications without actually sending them to real recipients.
 
 USAGES
 ------
