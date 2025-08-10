@@ -6,6 +6,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.io.File;
+
 @RestController
 public class EmailController {
 
@@ -21,6 +23,9 @@ public class EmailController {
     @Value("${email.text}")
     private String emailText;
 
+    @Value("${email.attachment}")
+    private String emailAttachment;
+
     private final EmailService emailService;
 
     public EmailController(EmailService emailService) {
@@ -30,7 +35,8 @@ public class EmailController {
     @GetMapping
     public ResponseEntity<String> send() {
 
-        emailService.sendEmailAsText(emailFrom, emailTo, emailSubject, emailText);
+        File attachment = new File(emailAttachment);
+        emailService.sendEmailAsTextWithAttachment(emailFrom, emailTo, emailSubject, emailText, attachment);
         return ResponseEntity.ok("Email sent successfully");
 
     }
