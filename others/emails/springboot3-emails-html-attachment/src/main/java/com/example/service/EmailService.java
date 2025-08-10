@@ -6,6 +6,8 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
 
+import java.io.File;
+
 @Service
 public class EmailService {
 
@@ -15,7 +17,7 @@ public class EmailService {
         this.mailSender = mailSender;
     }
 
-    public void sendEmailAsHtml(String from, String to, String subject, String htmlContent) {
+    public void sendEmailAsHtml(String from, String to, String subject, String htmlContent, File attachment) {
 
         try {
 
@@ -27,6 +29,7 @@ public class EmailService {
             helper.setTo(to);
             helper.setSubject(subject);
             helper.setText(htmlContent, true); // true = HTML content
+            helper.addAttachment(attachment.getName(), attachment);
 
             mailSender.send(message);
 
