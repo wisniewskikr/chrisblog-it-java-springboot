@@ -10,7 +10,7 @@ DESCRIPTION
 -----------
 
 ##### Goal
-The goal of this project is to present how to send **emails** type **text** with usage **Java** programming language and
+The goal of this project is to present how to send **emails** type **html** with usage **Java** programming language and
 **Spring Boot 3** framework. 
 
 Emails are sent and received by tool called **Mailtrap**.
