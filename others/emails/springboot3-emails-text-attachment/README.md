@@ -10,8 +10,8 @@ DESCRIPTION
 -----------
 
 ##### Goal
-The goal of this project is to present how to send **emails** type **text** with usage **Java** programming language and
-**Spring Boot 3** framework. 
+The goal of this project is to present how to send **emails** type **text** with **attachment** and with usage **Java** 
+programming language and **Spring Boot 3** framework. 
 
 Emails are sent and received by tool called **Mailtrap**.
 
@@ -61,6 +61,7 @@ USAGE MANUAL
     * Expected to **to@example.com**
     * Expected subject **Hello World!**
     * Expected text **Hello World, Stranger!**
+    * Expected attachment **Hello-World.pdf**
 1. Clean up environment
     * In a command line tool **stop application** with `ctrl + C`
 
@@ -93,6 +94,7 @@ Usage steps:
    * Expected to **to@example.com**
    * Expected subject **Hello World!**
    * Expected text **Hello World, Stranger!**
+   * Expected attachment **Hello-World.pdf**
 1. Clean up environment
     * Remove containers `docker-compose down --rmi all`
     * Stop **Docker** tool
