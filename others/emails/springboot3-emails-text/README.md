@@ -45,22 +45,24 @@ USAGE MANUAL
 > **Prerequisites**:
 * **Operating System** (tested on Windows 11)
 * **Git** (tested on version 2.33.0.windows.2)
-* **Docker** (tested on version 4.33.1)
+* **Java** (tested on version 23.0.1)
+* **Maven** (tested on version 3.9.6)
 
 ##### Required steps:
-1. Start **Docker** tool
-1. In a first command line tool **start Docker containers** with `docker-compose -f .\docker-compose\infrastructure\docker-compose.yaml up -d --build`
-1. In a second command line tool **start PRODUCER application** with `mvn -f ./springboot3-kafka-obsidiandynamics-json_producer spring-boot:run`
-1. In a third command line tool **start CONSUMER application** with `mvn -f ./springboot3-kafka-obsidiandynamics-json_consumer spring-boot:run`
-1. In a browser send message via **PRODUCER** and visit `http://localhost:8080/api/producer?name={name}` (e.g. `http://localhost:8080/api/producer?name=Stranger)
-    * Expected text **The message was sent to Consumer via Kafka** in the browser
-1. In a browser check **CONSUMER** and visit `http://localhost:9090/api/consumer`
-    * Expected text **Message from Producer via Kafka is: Hello World {name}** (e.g. **Message from Producer via Kafka is: Hello World Stranger**) in the browser
+1. Configure **Mailtrap** (check section **MAILTRAP CONFIGURATION**)
+1. Update file **src/main/resources/application.properties**
+    * Update property **spring.mail.username** with value from Mailtrap
+    * Update property **spring.mail.password** with value from Mailtrap
+1. In a command line tool **start application** with `mvn spring-boot:run`
+1. In a browser send message with `http://localhost:8080`
+    * Expected text **Email sent successfully** in the browser
+1. In a browser check **Mailtrap sandbox** (check section **EXAMPLE**) 
+    * Expected from **from@example.com**
+    * Expected to **to@example.com**
+    * Expected subject **Hello World!**
+    * Expected text **Hello World, Stranger!**
 1. Clean up environment
-    * In the third command line tool **stop CONSUMER application** with `ctrl + C`
-    * In the second command line tool **stop PRODUCER application** with `ctrl + C`
-    * In the first command line tool **remove Docker containers** with `docker-compose -f .\docker-compose\infrastructure\docker-compose.yaml down --rmi all`
-    * Stop **Docker** tool
+    * In a command line tool **stop application** with `ctrl + C`
 
 
 USAGE DOCKER COMPOSE
