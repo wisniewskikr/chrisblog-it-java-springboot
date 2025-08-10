@@ -68,29 +68,34 @@ USAGE MANUAL
 USAGE DOCKER COMPOSE
 --------------------
 
-> **Usage Docker Compose** means all services are started as Docker containers definied in Docker Compose file.
+> **Usage Docker Compose** means all services are started as Docker containers defined in Docker Compose file.
 
 > Please **clone/download** project, open **project's main folder** in your favorite **command line tool** and then **proceed with steps below**.
 
 > **Prerequisites**:
 * **Operating System** (tested on Windows 11)
 * **Git** (tested on version 2.33.0.windows.2)
+* **Java** (tested on version 23.0.1)
+* **Maven** (tested on version 3.9.6)
 * **Docker** (tested on version 4.33.1)
 
 Usage steps:
+1. Configure **Mailtrap** (check section **MAILTRAP CONFIGURATION**)
+1. Update file **docker-compose.yaml**
+   * Update property **spring.mail.username** with value from Mailtrap
+   * Update property **spring.mail.password** with value from Mailtrap
 1. Start **Docker** tool
-1. In a command line tool **start Docker containers** with `docker-compose -f .\docker-compose\full\docker-compose.yml up -d --build`
-1. In a browser send message via **PRODUCER** and visit `http://localhost:8080/api/producer?name={name}` (e.g. `http://localhost:8080/api/producer?name=Stranger)
-    * Expected text **The message was sent to Consumer via Kafka** in the browser
-1. In a browser check **CONSUMER** and visit `http://localhost:9090/api/consumer`
-    * Expected text **Message from Producer via Kafka is: Hello World {name}** (e.g. **Message from Producer via Kafka is: Hello World Stranger**) in the browser
+1. In a command line tool **start Docker containers** with `docker-compose up -d --build`
+1. In a browser send message with `http://localhost:8080`
+   * Expected text **Email sent successfully** in the browser
+1. In a browser check **Mailtrap sandbox** (check section **EXAMPLE**)
+   * Expected from **from@example.com**
+   * Expected to **to@example.com**
+   * Expected subject **Hello World!**
+   * Expected text **Hello World, Stranger!**
 1. Clean up environment
-    * Remove containers `docker-compose -f .\docker-compose\full\docker-compose.yml down --rmi all`
+    * Remove containers `docker-compose down --rmi all`
     * Stop **Docker** tool
-
-##### Optional steps:
-1. In a browser check messages via **Kafdrop** with `http://localhost:9090`
-    * For more details please check section **KAFDROP CONFIGURATION**
 
 
 MAILTRAP CONFIGURATION
