@@ -18,8 +18,8 @@ public class EmailController {
     @Value("${email.subject}")
     private String emailSubject;
 
-    @Value("${email.text}")
-    private String emailText;
+    @Value("${email.html}")
+    private String emailHtml;
 
     private final EmailService emailService;
 
@@ -30,7 +30,7 @@ public class EmailController {
     @GetMapping
     public ResponseEntity<String> send() {
 
-        emailService.sendEmailAsText(emailFrom, emailTo, emailSubject, emailText);
+        emailService.sendEmailAsHtml(emailFrom, emailTo, emailSubject, emailHtml);
         return ResponseEntity.ok("Email sent successfully");
 
     }
