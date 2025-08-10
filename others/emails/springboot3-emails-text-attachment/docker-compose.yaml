@@ -1,0 +1,13 @@
+version: "4"
+services:
+
+  app:
+    image: app-image:0.0.1
+    container_name: app-container
+    build:
+      dockerfile: Dockerfile
+    environment:
+      spring.mail.username:
+      spring.mail.password:
+    ports:
+      - 8080:8080
