@@ -98,19 +98,25 @@ USAGE DOCKER COMPOSE
 * **Docker** (tested on version 4.33.1)
 
 Usage steps:
-1. Configure **Mailtrap** (check section **MAILTRAP CONFIGURATION**)
+1. Configure **Stripe** (check section **STRIPE CONFIGURATION**)
 1. Update file **docker-compose.yaml**
-    * Update property **spring.mail.username** with value from Mailtrap
-    * Update property **spring.mail.password** with value from Mailtrap
+    * Update property **stripe.secretKey** with value from Stripe
 1. Start **Docker** tool
-1. In a command line tool **start Docker containers** with `docker-compose up -d --build`
-1. In a browser send message with `http://localhost:8080`
-    * Expected text **Email sent successfully** in the browser
-1. In a browser check **Mailtrap sandbox** (check section **EXAMPLE**)
-    * Expected from **from@example.com**
-    * Expected to **to@example.com**
-    * Expected subject **Hello World!**
-    * Expected text **Hello World, Stranger!**
+1. In a Rest Client (e.g. Postman) order payment using **POST** method with `http://localhost:8080/api/v1/checkout`
+    * Body -> JSON
+      {
+      "amount": 10,
+      "quantity": 1,
+      "name": "Hello World",
+      "currency": "PLN"
+      }
+    * Expected response with **sessionUrl**
+1. In a browser make **Stripe payment** with `{sessionUrl}`
+    * Fill **Email**
+    * Fill **Card information** (e.g. 4242 4242 4242 4242; 12/34; 567)
+    * Fill **Cardholder name**
+    * Click **Pay**
+    * Expected message **Payment successful**
 1. Clean up environment
     * Remove containers `docker-compose down --rmi all`
     * Stop **Docker** tool
