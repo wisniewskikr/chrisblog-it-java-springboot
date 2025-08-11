@@ -14,6 +14,9 @@ import org.springframework.stereotype.Service;
 @Slf4j
 public class StripeService {
 
+    public static final String DEFAULT_CURRENCY = "PLN";
+    public static final int DEFAULT_MULTIPLIER = 100;
+
     @Value("${stripe.secretKey}")
     private String secretKey;
 
@@ -36,9 +39,9 @@ public class StripeService {
         // Create new line item with the above product data and associated price
         SessionCreateParams.LineItem.PriceData priceData =
                 SessionCreateParams.LineItem.PriceData.builder()
-                        .setCurrency(StripeRequest.getCurrency() != null ? StripeRequest.getCurrency() : "USD")
-                        .setUnitAmount(StripeRequest.getAmount())
                         .setProductData(productData)
+                        .setCurrency(StripeRequest.getCurrency() != null ? StripeRequest.getCurrency() : DEFAULT_CURRENCY)
+                        .setUnitAmount(Math.multiplyExact(StripeRequest.getAmount(), DEFAULT_MULTIPLIER))
                         .build();
 
         // Create new line item with the above price data
@@ -68,8 +71,6 @@ public class StripeService {
                     .builder()
                     .status("FAILED")
                     .message("Payment session failed. Error: " + e.getMessage())
-                    .sessionId(session.getId())
-                    .sessionUrl(session.getUrl())
                     .build();
         }
 
