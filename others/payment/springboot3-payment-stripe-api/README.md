@@ -102,6 +102,7 @@ Usage steps:
 1. Update file **docker-compose.yaml**
     * Update property **stripe.secretKey** with value from Stripe
 1. Start **Docker** tool
+1. In a command line tool **start Docker containers** with `docker-compose up -d --build`
 1. In a Rest Client (e.g. Postman) order payment using **POST** method with `http://localhost:8080/api/v1/checkout`
     * Body -> JSON
       {
