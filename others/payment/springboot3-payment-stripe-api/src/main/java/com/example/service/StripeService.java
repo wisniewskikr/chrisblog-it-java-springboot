@@ -23,7 +23,7 @@ public class StripeService {
     @Value("${stripe.cancelUrl}")
     private String cancelUrl;
 
-    public StripeResponse checkoutProducts(StripeRequest StripeRequest) {
+    public StripeResponse checkout(StripeRequest StripeRequest) {
         // Set your secret key. Remember to switch to your live secret key in production!
         Stripe.apiKey = secretKey;
 
