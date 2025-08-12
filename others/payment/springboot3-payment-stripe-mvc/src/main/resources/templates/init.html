@@ -2,9 +2,67 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Stripe MVC</title>
+    <title>Stripe Checkout</title>
 </head>
 <body>
-    Init
+<h1>Stripe Checkout Form</h1>
+
+<form id="checkoutForm">
+    <label>
+        Name:
+        <input type="text" name="name" value="Hello World" readonly>
+    </label>
+    <br><br>
+
+    <label>
+        Amount:
+        <input type="number" name="amount" value="10" readonly>
+    </label>
+    <br><br>
+
+    <label>
+        Currency:
+        <input type="text" name="currency" value="PLN" readonly>
+    </label>
+    <br><br>
+
+    <label>
+        Quantity:
+        <select name="quantity">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+        </select>
+    </label>
+    <br><br>
+
+    <button type="submit">Checkout</button>
+</form>
+
+<script>
+    document.getElementById("checkoutForm").addEventListener("submit", async function (e) {
+        e.preventDefault();
+
+        const formData = new FormData(e.target);
+        const data = {
+            amount: parseInt(formData.get("amount")),
+            quantity: parseInt(formData.get("quantity")),
+            name: formData.get("name"),
+            currency: formData.get("currency")
+        };
+
+        const response = await fetch("/api/v1/checkout", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(data)
+        });
+
+        const result = await response.json();
+        alert("Response: " + JSON.stringify(result));
+    });
+</script>
+
 </body>
 </html>
