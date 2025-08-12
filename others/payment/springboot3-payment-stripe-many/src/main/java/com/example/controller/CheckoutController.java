@@ -7,6 +7,8 @@ import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/v1")
 @AllArgsConstructor
@@ -15,9 +17,9 @@ public class CheckoutController {
     private final StripeService stripeService;
 
     @PostMapping("/checkout")
-    public ResponseEntity<StripeResponse> checkout(@RequestBody StripeRequest stripeRequest) {
+    public ResponseEntity<StripeResponse> checkout(@RequestBody List<StripeRequest> stripeRequests) {
 
-        StripeResponse stripeResponse = stripeService.checkout(stripeRequest);
+        StripeResponse stripeResponse = stripeService.checkout(stripeRequests);
         return "SUCCESS".equals(stripeResponse.getStatus()) ? ResponseEntity.ok(stripeResponse) : ResponseEntity.badRequest().body(stripeResponse);
 
     }

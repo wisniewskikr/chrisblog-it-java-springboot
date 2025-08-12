@@ -10,6 +10,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @Slf4j
 public class StripeService {
@@ -26,43 +28,46 @@ public class StripeService {
     @Value("${stripe.cancelUrl}")
     private String cancelUrl;
 
-    public StripeResponse checkout(StripeRequest stripeRequest) {
+    public StripeResponse checkout(List<StripeRequest> stripeRequests) {
         // Set your secret key. Remember to switch to your live secret key in production!
         Stripe.apiKey = secretKey;
 
-        // Create a PaymentIntent with the order amount and currency
-        SessionCreateParams.LineItem.PriceData.ProductData productData =
-                SessionCreateParams.LineItem.PriceData.ProductData.builder()
-                        .setName(stripeRequest.getName())
-                        .build();
+        // Convert List<StripeRequest> to List<SessionCreateParams.LineItem>
+        List<SessionCreateParams.LineItem> lineItems = stripeRequests.stream()
+                .map(req -> {
+                    // Product data
+                    SessionCreateParams.LineItem.PriceData.ProductData productData =
+                            SessionCreateParams.LineItem.PriceData.ProductData.builder()
+                                    .setName(req.getName())
+                                    .build();
 
-        // Create new line item with the above product data and associated price
-        SessionCreateParams.LineItem.PriceData priceData =
-                SessionCreateParams.LineItem.PriceData.builder()
-                        .setProductData(productData)
-                        .setCurrency(stripeRequest.getCurrency() != null ? stripeRequest.getCurrency() : DEFAULT_CURRENCY)
-                        .setUnitAmount(Math.multiplyExact(stripeRequest.getAmount(), DEFAULT_MULTIPLIER))
-                        .build();
+                    // Price data
+                    SessionCreateParams.LineItem.PriceData priceData =
+                            SessionCreateParams.LineItem.PriceData.builder()
+                                    .setProductData(productData)
+                                    .setCurrency(req.getCurrency() != null ? req.getCurrency() : DEFAULT_CURRENCY)
+                                    .setUnitAmount(Math.multiplyExact(req.getAmount(), DEFAULT_MULTIPLIER))
+                                    .build();
 
-        // Create new line item with the above price data
-        SessionCreateParams.LineItem lineItem =
-                SessionCreateParams
-                        .LineItem.builder()
-                        .setQuantity(stripeRequest.getQuantity())
-                        .setPriceData(priceData)
-                        .build();
+                    // Line item
+                    return SessionCreateParams.LineItem.builder()
+                            .setQuantity(req.getQuantity())
+                            .setPriceData(priceData)
+                            .build();
+                })
+                .toList();
 
-        // Create new session with the line items
+        // Create session params with all line items
         SessionCreateParams params =
                 SessionCreateParams.builder()
                         .setMode(SessionCreateParams.Mode.PAYMENT)
-                        .setSuccessUrl(successUrl + "?paymentId=" + stripeRequest.getPaymentId())
-                        .setCancelUrl(cancelUrl + "?paymentId=" + stripeRequest.getPaymentId())
-                        .addLineItem(lineItem)
+                        .setSuccessUrl(successUrl) // You might need a different strategy for successUrl if IDs vary
+                        .setCancelUrl(cancelUrl)
+                        .addAllLineItem(lineItems)
                         .build();
 
         // Create new session
-        Session session = null;
+        Session session;
         try {
             session = Session.create(params);
         } catch (StripeException e) {
@@ -81,7 +86,7 @@ public class StripeService {
                 .sessionId(session.getId())
                 .sessionUrl(session.getUrl())
                 .build();
-
     }
+
 
 }
