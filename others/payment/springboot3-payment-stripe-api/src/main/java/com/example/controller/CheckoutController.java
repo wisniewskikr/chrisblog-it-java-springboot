@@ -23,13 +23,13 @@ public class CheckoutController {
     }
 
     @GetMapping("/success")
-    public ResponseEntity<String> success() {
-        return ResponseEntity.ok("Payment successful");
+    public ResponseEntity<String> success(@RequestParam String paymentId) {
+        return ResponseEntity.ok("Payment successful for payment " + paymentId);
     }
 
     @GetMapping("/cancel")
-    public ResponseEntity<String> cancel() {
-        return ResponseEntity.ok("Payment cancelled");
+    public ResponseEntity<String> cancel(@RequestParam String paymentId) {
+        return ResponseEntity.ok("Payment cancelled for payment " + paymentId);
     }
 
 }

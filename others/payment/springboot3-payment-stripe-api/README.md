@@ -65,13 +65,14 @@ USAGE MANUAL
     * Update property **stripe.secretKey** with value from Stripe
 1. In a command line tool **start application** with `mvn spring-boot:run`
 1. In a Rest Client (e.g. Postman) order payment using **POST** method with `http://localhost:8080/api/v1/checkout`
-    * Body -> JSON 
-    {
+    * Body -> JSON
+      {
+      "paymentId": 1234,
       "amount": 10,
       "quantity": 1,
       "name": "Hello World",
       "currency": "PLN"
-    }
+      }
     * Expected response with **sessionUrl** 
 1. In a browser make **Stripe payment** with `{sessionUrl}`
     * Fill **Email**
@@ -106,6 +107,7 @@ Usage steps:
 1. In a Rest Client (e.g. Postman) order payment using **POST** method with `http://localhost:8080/api/v1/checkout`
     * Body -> JSON
       {
+      "paymentId": 1234,
       "amount": 10,
       "quantity": 1,
       "name": "Hello World",
