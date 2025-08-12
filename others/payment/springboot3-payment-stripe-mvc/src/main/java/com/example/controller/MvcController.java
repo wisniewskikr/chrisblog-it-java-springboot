@@ -11,4 +11,14 @@ public class MvcController {
         return "init";
     }
 
+    @GetMapping("/success")
+    public String success() {
+        return "success";
+    }
+
+    @GetMapping("/cancel")
+    public String cancel() {
+        return "cancel";
+    }
+
 }
