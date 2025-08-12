@@ -22,14 +22,4 @@ public class CheckoutController {
 
     }
 
-    @GetMapping("/success")
-    public ResponseEntity<String> success() {
-        return ResponseEntity.ok("Payment successful");
-    }
-
-    @GetMapping("/cancel")
-    public ResponseEntity<String> cancel() {
-        return ResponseEntity.ok("Payment cancelled");
-    }
-
 }
