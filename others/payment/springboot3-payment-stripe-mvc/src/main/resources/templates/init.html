@@ -3,40 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <title>Stripe Checkout</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: auto;
+        }
+        td {
+            padding: 8px;
+            border: none;
+        }
+    </style>
 </head>
 <body>
 <h1>Stripe Checkout Form</h1>
 
 <form id="checkoutForm">
-    <label>
-        Name:
-        <input type="text" name="name" value="Hello World" readonly>
-    </label>
-    <br><br>
-
-    <label>
-        Amount:
-        <input type="number" name="amount" value="10" readonly>
-    </label>
-    <br><br>
-
-    <label>
-        Currency:
-        <input type="text" name="currency" value="PLN" readonly>
-    </label>
-    <br><br>
-
-    <label>
-        Quantity:
-        <select name="quantity">
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-        </select>
-    </label>
-    <br><br>
-
-    <button type="submit">Checkout</button>
+    <table>
+        <tr>
+            <td><label for="name">Name:</label></td>
+            <td><input type="text" id="name" name="name" value="Hello World" readonly></td>
+        </tr>
+        <tr>
+            <td><label for="amount">Amount:</label></td>
+            <td><input type="number" id="amount" name="amount" value="10" readonly></td>
+        </tr>
+        <tr>
+            <td><label for="currency">Currency:</label></td>
+            <td><input type="text" id="currency" name="currency" value="PLN" readonly></td>
+        </tr>
+        <tr>
+            <td><label for="quantity">Quantity:</label></td>
+            <td>
+                <select id="quantity" name="quantity">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2" style="text-align:center;">
+                <button type="submit">Checkout</button>
+            </td>
+        </tr>
+    </table>
 </form>
 
 <script>
