@@ -23,12 +23,12 @@ DESCRIPTION
 The goal of this project is to present how to make **payment** using **Stripe** tool with usage **Java** 
 programming language and **Spring Boot 3** framework.
 
-This payment is done by **REST API** application.
+This payment is done by **Model-View-Controller** application.
 
 
 ##### Content
 This project consists of following applications:
-* **App**: application type REST API which connects with Stripe payment tool
+* **App**: application type MVC which connects with Stripe payment tool
 
 ##### Terminology
 Terminology explanation:
@@ -64,21 +64,15 @@ USAGE MANUAL
 1. Update file **src/main/resources/application.yaml**
     * Update property **stripe.secretKey** with value from Stripe
 1. In a command line tool **start application** with `mvn spring-boot:run`
-1. In a Rest Client (e.g. Postman) order payment using **POST** method with `http://localhost:8080/api/v1/checkout`
-    * Body -> JSON 
-    {
-      "amount": 10,
-      "quantity": 1,
-      "name": "Hello World",
-      "currency": "PLN"
-    }
-    * Expected response with **sessionUrl** 
-1. In a browser make **Stripe payment** with `{sessionUrl}`
+1. In a browser **open application** with `http://localhost:8080`
+    * Choose **quantity** (equal or greater then 1)
+    * Click **Checkout** button
+1. In a browser make **Stripe payment**
     * Fill **Email**
     * Fill **Card information** (e.g. 4242 4242 4242 4242; 12/34; 567)
     * Fill **Cardholder name**
-    * Click **Pay**
-    * Expected message **Payment successful**
+    * Click **Pay** button
+    * Expected HTML page with message **Payment successful**
 1. Clean up environment
     * In a command line tool **stop application** with `ctrl + C`
 
@@ -103,21 +97,15 @@ Usage steps:
     * Update property **stripe.secretKey** with value from Stripe
 1. Start **Docker** tool
 1. In a command line tool **start Docker containers** with `docker-compose up -d --build`
-1. In a Rest Client (e.g. Postman) order payment using **POST** method with `http://localhost:8080/api/v1/checkout`
-    * Body -> JSON
-      {
-      "amount": 10,
-      "quantity": 1,
-      "name": "Hello World",
-      "currency": "PLN"
-      }
-    * Expected response with **sessionUrl**
-1. In a browser make **Stripe payment** with `{sessionUrl}`
-    * Fill **Email**
-    * Fill **Card information** (e.g. 4242 4242 4242 4242; 12/34; 567)
-    * Fill **Cardholder name**
-    * Click **Pay**
-    * Expected message **Payment successful**
+1. In a browser **open application** with `http://localhost:8080`
+   * Choose **quantity** (equal or greater then 1)
+   * Click **Checkout** button
+1. In a browser make **Stripe payment**
+   * Fill **Email**
+   * Fill **Card information** (e.g. 4242 4242 4242 4242; 12/34; 567)
+   * Fill **Cardholder name**
+   * Click **Pay** button
+   * Expected HTML page with message **Payment successful**
 1. Clean up environment
     * Remove containers `docker-compose down --rmi all`
     * Stop **Docker** tool
