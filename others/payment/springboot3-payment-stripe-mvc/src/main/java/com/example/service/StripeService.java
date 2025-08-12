@@ -26,29 +26,29 @@ public class StripeService {
     @Value("${stripe.cancelUrl}")
     private String cancelUrl;
 
-    public StripeResponse checkout(StripeRequest StripeRequest) {
+    public StripeResponse checkout(StripeRequest stripeRequest) {
         // Set your secret key. Remember to switch to your live secret key in production!
         Stripe.apiKey = secretKey;
 
         // Create a PaymentIntent with the order amount and currency
         SessionCreateParams.LineItem.PriceData.ProductData productData =
                 SessionCreateParams.LineItem.PriceData.ProductData.builder()
-                        .setName(StripeRequest.getName())
+                        .setName(stripeRequest.getName())
                         .build();
 
         // Create new line item with the above product data and associated price
         SessionCreateParams.LineItem.PriceData priceData =
                 SessionCreateParams.LineItem.PriceData.builder()
                         .setProductData(productData)
-                        .setCurrency(StripeRequest.getCurrency() != null ? StripeRequest.getCurrency() : DEFAULT_CURRENCY)
-                        .setUnitAmount(Math.multiplyExact(StripeRequest.getAmount(), DEFAULT_MULTIPLIER))
+                        .setCurrency(stripeRequest.getCurrency() != null ? stripeRequest.getCurrency() : DEFAULT_CURRENCY)
+                        .setUnitAmount(Math.multiplyExact(stripeRequest.getAmount(), DEFAULT_MULTIPLIER))
                         .build();
 
         // Create new line item with the above price data
         SessionCreateParams.LineItem lineItem =
                 SessionCreateParams
                         .LineItem.builder()
-                        .setQuantity(StripeRequest.getQuantity())
+                        .setQuantity(stripeRequest.getQuantity())
                         .setPriceData(priceData)
                         .build();
 
@@ -56,8 +56,8 @@ public class StripeService {
         SessionCreateParams params =
                 SessionCreateParams.builder()
                         .setMode(SessionCreateParams.Mode.PAYMENT)
-                        .setSuccessUrl(successUrl)
-                        .setCancelUrl(cancelUrl)
+                        .setSuccessUrl(successUrl + "?paymentId=" + stripeRequest.getPaymentId())
+                        .setCancelUrl(cancelUrl + "?paymentId=" + stripeRequest.getPaymentId())
                         .addLineItem(lineItem)
                         .build();
 
