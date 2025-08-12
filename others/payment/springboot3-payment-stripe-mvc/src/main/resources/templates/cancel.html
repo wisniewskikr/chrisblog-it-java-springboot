@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Stripe Checkout</title>
 </head>
 <body>
-    <h1>Stripe Checkout</h1>
-    <p>Payment cancelled</p>
+<h1>Stripe Checkout</h1>
+<p th:text="'Payment cancelled for payment ' + ${paymentId}"></p>
 </body>
 </html>
