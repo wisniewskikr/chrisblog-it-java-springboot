@@ -12,6 +12,11 @@
             padding: 8px;
             border: none;
         }
+        #error-message {
+            color: red;
+            margin-top: 10px;
+            font-weight: bold;
+        }
     </style>
 </head>
 <body>
@@ -49,9 +54,14 @@
     </table>
 </form>
 
+<div id="error-message"></div>
+
 <script>
     document.getElementById("checkoutForm").addEventListener("submit", async function (e) {
         e.preventDefault();
+
+        const errorMessageDiv = document.getElementById("error-message");
+        errorMessageDiv.textContent = ""; // Clear previous error
 
         const formData = new FormData(e.target);
         const data = {
@@ -61,16 +71,27 @@
             currency: formData.get("currency")
         };
 
-        const response = await fetch("/api/v1/checkout", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(data)
-        });
+        try {
+            const response = await fetch("/api/v1/checkout", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(data)
+            });
 
-        const result = await response.json();
-        alert("Response: " + JSON.stringify(result));
+            const result = await response.json();
+
+            if (result.status === "FAILED") {
+                errorMessageDiv.textContent = result.message || "Something went wrong.";
+            } else if (result.status === "SUCCESS") {
+                window.location.href = result.sessionUrl;
+            } else {
+                errorMessageDiv.textContent = "Unexpected response from server.";
+            }
+        } catch (error) {
+            errorMessageDiv.textContent = "Error connecting to server.";
+        }
     });
 </script>
 
