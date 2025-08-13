@@ -28,7 +28,7 @@ public class StripeService {
     @Value("${stripe.cancelUrl}")
     private String cancelUrl;
 
-    @Value("${stripe.sessionDurationInSeconds")
+    @Value("${stripe.sessionDurationInSeconds}")
     private long sessionDurationInSeconds;
 
     public StripeResponse checkout(StripeRequest stripeRequest) {
