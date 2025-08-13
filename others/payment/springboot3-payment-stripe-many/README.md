@@ -13,14 +13,6 @@ EXAMPLE
 
 ![My Image](readme-images/image-06.png)
 
-![My Image](readme-images/image-07.png)
-
-![My Image](readme-images/image-08.png)
-
-![My Image](readme-images/image-09.png)
-
-![My Image](readme-images/image-10.png)
-
 
 DESCRIPTION
 -----------
@@ -29,7 +21,7 @@ DESCRIPTION
 The goal of this project is to present how to make **payment** using **Stripe** tool with usage **Java** 
 programming language and **Spring Boot 3** framework.
 
-This payment is done by **REST API** application.
+This payment is done by **REST API** application and contains order with **many** items.
 
 
 ##### Content
@@ -73,11 +65,21 @@ USAGE MANUAL
 1. In a Rest Client (e.g. Postman) order payment using **POST** method with `http://localhost:8080/api/v1/checkout`
     * Body -> JSON
       {
-      "paymentId": 1234,
+      "orderId": 1234,
+      "stripeItems": [
+      {
       "amount": 10,
       "quantity": 1,
-      "name": "Hello World",
+      "name": "Hello World, First",
       "currency": "PLN"
+      },
+      {
+      "amount": 20,
+      "quantity": 2,
+      "name": "Hello World, Second",
+      "currency": "PLN"
+      }
+      ]
       }
     * Expected response with **sessionUrl** 
 1. In a browser make **Stripe payment** with `{sessionUrl}`
@@ -85,7 +87,7 @@ USAGE MANUAL
     * Fill **Card information** (e.g. 4242 4242 4242 4242; 12/34; 567)
     * Fill **Cardholder name**
     * Click **Pay**
-    * Expected message **Payment successful**
+    * Expected message **Payment successful for order 1234**
 1. Clean up environment
     * In a command line tool **stop application** with `ctrl + C`
 
@@ -113,11 +115,21 @@ Usage steps:
 1. In a Rest Client (e.g. Postman) order payment using **POST** method with `http://localhost:8080/api/v1/checkout`
     * Body -> JSON
       {
-      "paymentId": 1234,
+      "orderId": 1234,
+      "stripeItems": [
+      {
       "amount": 10,
       "quantity": 1,
-      "name": "Hello World",
+      "name": "Hello World, First",
       "currency": "PLN"
+      },
+      {
+      "amount": 20,
+      "quantity": 2,
+      "name": "Hello World, Second",
+      "currency": "PLN"
+      }
+      ]
       }
     * Expected response with **sessionUrl**
 1. In a browser make **Stripe payment** with `{sessionUrl}`
@@ -125,7 +137,7 @@ Usage steps:
     * Fill **Card information** (e.g. 4242 4242 4242 4242; 12/34; 567)
     * Fill **Cardholder name**
     * Click **Pay**
-    * Expected message **Payment successful**
+    * Expected message **Payment successful for order 1234**
 1. Clean up environment
     * Remove containers `docker-compose down --rmi all`
     * Stop **Docker** tool
