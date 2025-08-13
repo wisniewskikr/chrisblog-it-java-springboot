@@ -28,14 +28,15 @@ public class StripeService {
     @Value("${stripe.cancelUrl}")
     private String cancelUrl;
 
-    @Value("${stripe.sessionDurationInSeconds}")
-    private long sessionDurationInSeconds;
+    @Value("${stripe.sessionDurationInMinutes}")
+    private long sessionDurationInMinutes;
 
     public StripeResponse checkout(StripeRequest stripeRequest) {
         // Set your secret key. Remember to switch to your live secret key in production!
         Stripe.apiKey = secretKey;
 
-        long expiresAtUnix = Instant.now().plusSeconds(sessionDurationInSeconds).getEpochSecond();
+        // By default it's 24 hours. Minimum time is 30 minutes
+        long expiresAtUnix = Instant.now().plusSeconds(sessionDurationInMinutes * 60).getEpochSecond();
 
         // Create a PaymentIntent with the order amount and currency
         SessionCreateParams.LineItem.PriceData.ProductData productData =

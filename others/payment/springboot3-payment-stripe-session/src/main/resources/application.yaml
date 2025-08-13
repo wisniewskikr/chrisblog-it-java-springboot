@@ -6,4 +6,4 @@ stripe:
   secretKey:
   successUrl: http://localhost:8080/api/v1/success
   cancelUrl: http://localhost:8080/api/v1/cancel
-  sessionDurationInSeconds: 60
+  sessionDurationInMinutes: 30
