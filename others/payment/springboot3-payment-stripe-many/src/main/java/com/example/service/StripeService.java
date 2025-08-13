@@ -1,5 +1,6 @@
 package com.example.service;
 
+import com.example.model.StripeItem;
 import com.example.model.StripeRequest;
 import com.example.model.StripeResponse;
 import com.stripe.Stripe;
@@ -28,12 +29,12 @@ public class StripeService {
     @Value("${stripe.cancelUrl}")
     private String cancelUrl;
 
-    public StripeResponse checkout(List<StripeRequest> stripeRequests) {
+    public StripeResponse checkout(StripeRequest stripeRequest) {
         // Set your secret key. Remember to switch to your live secret key in production!
         Stripe.apiKey = secretKey;
 
-        // Convert List<StripeRequest> to List<SessionCreateParams.LineItem>
-        List<SessionCreateParams.LineItem> lineItems = stripeRequests.stream()
+        // Convert List<StripeItem> to List<SessionCreateParams.LineItem>
+        List<SessionCreateParams.LineItem> lineItems = stripeRequest.getStripeItems().stream()
                 .map(req -> {
                     // Product data
                     SessionCreateParams.LineItem.PriceData.ProductData productData =
@@ -61,8 +62,8 @@ public class StripeService {
         SessionCreateParams params =
                 SessionCreateParams.builder()
                         .setMode(SessionCreateParams.Mode.PAYMENT)
-                        .setSuccessUrl(successUrl) // You might need a different strategy for successUrl if IDs vary
-                        .setCancelUrl(cancelUrl)
+                        .setSuccessUrl(successUrl + "?orderId=" + stripeRequest.getOrderId())
+                        .setCancelUrl(cancelUrl + "?orderId=" + stripeRequest.getOrderId())
                         .addAllLineItem(lineItems)
                         .build();
 
