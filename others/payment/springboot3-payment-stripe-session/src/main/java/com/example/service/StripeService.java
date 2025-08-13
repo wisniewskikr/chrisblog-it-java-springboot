@@ -10,6 +10,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
+import java.time.Instant;
+
 @Service
 @Slf4j
 public class StripeService {
@@ -26,9 +28,14 @@ public class StripeService {
     @Value("${stripe.cancelUrl}")
     private String cancelUrl;
 
+    @Value("${stripe.sessionDurationInSeconds")
+    private long sessionDurationInSeconds;
+
     public StripeResponse checkout(StripeRequest stripeRequest) {
         // Set your secret key. Remember to switch to your live secret key in production!
         Stripe.apiKey = secretKey;
+
+        long expiresAtUnix = Instant.now().plusSeconds(sessionDurationInSeconds).getEpochSecond();
 
         // Create a PaymentIntent with the order amount and currency
         SessionCreateParams.LineItem.PriceData.ProductData productData =
@@ -59,6 +66,7 @@ public class StripeService {
                         .setSuccessUrl(successUrl + "?paymentId=" + stripeRequest.getPaymentId())
                         .setCancelUrl(cancelUrl + "?paymentId=" + stripeRequest.getPaymentId())
                         .addLineItem(lineItem)
+                        .setExpiresAt(expiresAtUnix)
                         .build();
 
         // Create new session
