@@ -5,22 +5,6 @@ EXAMPLE
 
 ![My Image](readme-images/image-02.png)
 
-![My Image](readme-images/image-03.png)
-
-![My Image](readme-images/image-04.png)
-
-![My Image](readme-images/image-05.png)
-
-![My Image](readme-images/image-06.png)
-
-![My Image](readme-images/image-07.png)
-
-![My Image](readme-images/image-08.png)
-
-![My Image](readme-images/image-09.png)
-
-![My Image](readme-images/image-10.png)
-
 
 DESCRIPTION
 -----------
@@ -29,7 +13,8 @@ DESCRIPTION
 The goal of this project is to present how to make **payment** using **Stripe** tool with usage **Java** 
 programming language and **Spring Boot 3** framework.
 
-This payment is done by **REST API** application.
+This payment has restricted **session** time. By default it's 24 hours. Minimum is 30 minutes. In this example session
+is set for the minimum.
 
 
 ##### Content
@@ -80,12 +65,9 @@ USAGE MANUAL
       "currency": "PLN"
       }
     * Expected response with **sessionUrl** 
+1. Wait **30 minutes** for expiration of session
 1. In a browser make **Stripe payment** with `{sessionUrl}`
-    * Fill **Email**
-    * Fill **Card information** (e.g. 4242 4242 4242 4242; 12/34; 567)
-    * Fill **Cardholder name**
-    * Click **Pay**
-    * Expected message **Payment successful**
+    * Expected error message
 1. Clean up environment
     * In a command line tool **stop application** with `ctrl + C`
 
@@ -111,21 +93,18 @@ Usage steps:
 1. Start **Docker** tool
 1. In a command line tool **start Docker containers** with `docker-compose up -d --build`
 1. In a Rest Client (e.g. Postman) order payment using **POST** method with `http://localhost:8080/api/v1/checkout`
-    * Body -> JSON
-      {
-      "paymentId": 1234,
-      "amount": 10,
-      "quantity": 1,
-      "name": "Hello World",
-      "currency": "PLN"
-      }
-    * Expected response with **sessionUrl**
+   * Body -> JSON
+     {
+     "paymentId": 1234,
+     "amount": 10,
+     "quantity": 1,
+     "name": "Hello World",
+     "currency": "PLN"
+     }
+   * Expected response with **sessionUrl**
+1. Wait **30 minutes** for expiration of session
 1. In a browser make **Stripe payment** with `{sessionUrl}`
-    * Fill **Email**
-    * Fill **Card information** (e.g. 4242 4242 4242 4242; 12/34; 567)
-    * Fill **Cardholder name**
-    * Click **Pay**
-    * Expected message **Payment successful**
+   * Expected error message
 1. Clean up environment
     * Remove containers `docker-compose down --rmi all`
     * Stop **Docker** tool
