@@ -1,5 +1,6 @@
 package com.example.controller;
 
+import com.example.model.StripeRequest;
 import com.example.model.StripeResponse;
 import com.example.service.StripeService;
 import lombok.AllArgsConstructor;
