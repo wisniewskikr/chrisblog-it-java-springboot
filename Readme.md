@@ -1,18 +1,10 @@
 ##### TODO Short
 
 List:
-- Spring Boot 3 + UI MVC
-- Spring Boot 3 + API REST
-- Spring Boot 3 + SPA Angular
-- Spring Boot 3 + UI MVC + Keycloack
-- Spring Boot 3 + API REST + Keycloack
-- Spring Boot 3 + SPA Angular + Keycloack
-- Spring Cloud + UI MVC
-- Spring Cloud + API REST
-- Spring Cloud + SPA Angular
-- Spring Cloud + UI MVC + Keycloack
-- Spring Cloud + API REST + Keycloack
-- Spring Cloud + SPA Angular + Keycloack
+- API Stream
+- Kafka Stream
+- Kafka 4.0
+- Leaflet (maps)
 
 ##### TODO Long
 
