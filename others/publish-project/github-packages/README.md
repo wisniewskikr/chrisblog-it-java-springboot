@@ -1,3 +1,9 @@
+DESCRIPTION
+-----------
+
+Disadvantage of this approach is that dependency is always privates.
+
+
 REMOTE MAVEN REPOSITORY CONFIGURATION
 -------------------------------------
 

@@ -1,0 +1,9 @@
+jdk:
+  - openjdk21
+
+install:
+  - cd dto-package
+  - mvn install -DskipTests=true
+
+script:
+  - mvn deploy -DskipTests=true
