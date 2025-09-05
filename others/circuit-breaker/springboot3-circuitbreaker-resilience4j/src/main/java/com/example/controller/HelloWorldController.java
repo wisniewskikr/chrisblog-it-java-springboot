@@ -1,5 +1,6 @@
 package com.example.controller;
 
+import com.example.service.HelloWorldService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -9,11 +10,16 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/api/v1/status")
 @AllArgsConstructor
-public class Resilience4JController {
+public class HelloWorldController {
+
+    private final HelloWorldService helloWorldService;
 
     @GetMapping
     public ResponseEntity<String> getStatus() {
-        return ResponseEntity.ok("OK");
+
+        String message = helloWorldService.sayHello();
+        return ResponseEntity.ok(message);
+
     }
 
 }
