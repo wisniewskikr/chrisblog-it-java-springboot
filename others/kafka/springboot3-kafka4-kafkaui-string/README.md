@@ -10,18 +10,18 @@ DESCRIPTION
 -----------
 
 ##### Goal
-The goal of this project is to present how to use **Kafka** type **Obsidiandynamics** for implementation of 
+The goal of this project is to present how to use **Kafka** in version **4** for implementation of 
 asynchronous communication between two applications created with usage **Java** programming language and 
 **Spring Boot 3** framework. Message type **String** is sent between these two applications. 
 
-Additionally **Krafdrop** is used to present messages sent between these two applications.
+Additionally **Kafka UI** is used to present messages sent between these two applications.
 
 ##### Content
 This project consists of following applications:
 * **Producer**: sends events to Kafka broker
 * **Consumer**: receives events from Kafka broker
 * **Kafka**: acts as an intermediary between the producer and the consumer
-* **Kafdrop**: displays events handled by Kafka broker
+* **Kafka UI**: displays events handled by Kafka broker
    
 
 ##### Terminology
@@ -31,7 +31,7 @@ Terminology explanation:
 * **Maven**: Maven is a build automation and dependency management tool for Java projects, streamlining project builds, managing libraries, and ensuring consistent project configurations.
 * **Spring Boot**: Spring Boot is a framework for building Java-based applications that simplifies development by providing auto-configuration, embedded servers, and production-ready tools, enabling developers to create standalone, production-ready applications with minimal configuration.
 * **Apache Kafka**: Apache Kafka is an open-source distributed event streaming platform used to build real-time data pipelines and streaming applications. It is designed for high throughput, fault tolerance, and scalability, enabling the publishing, storing, and processing of streams of records in real time.
-* **Kafdrop**: Kafdrop helps simplify Kafka operations by making it easier to inspect and troubleshoot Kafka data and performance through an accessible web UI.
+* **Kafka UI**: Kafka UI is a web-based tool for exploring, monitoring, and managing Apache Kafka clusters with an easy-to-use interface.
 * **Asynchronous Communication**: Asynchronous communication is the exchange of information without requiring participants to be present or respond in real time, allowing for flexibility in timing (e.g., emails or messaging apps).
 * **Docker**: Docker is a platform that allows you to build, run, and manage applications in lightweight, portable containers. These containers package the application and its dependencies, ensuring consistency across development, testing, and production environments.
 * **Docker Compose**: Docker Compose is a tool for defining and running multi-container Docker applications using a simple YAML configuration file (docker-compose.yml). It allows you to specify services, networks, and volumes, enabling easy orchestration and management of containerized applications.
@@ -76,7 +76,7 @@ USAGE MANUAL
     * Stop **Docker** tool
 
 ##### Optional steps:
-1. In a browser check messages via **Kafka UI** with `http://localhost:9090`
+1. In a browser check messages via **Kafka UI** with `http://localhost:9000`
     * For more details please check section **KAFKA UI CONFIGURATION**
 
 
@@ -104,7 +104,7 @@ Usage steps:
     * Stop **Docker** tool
 
 ##### Optional steps:
-1. In a browser check messages via **Kafka UI** with `http://localhost:9090`
+1. In a browser check messages via **Kafka UI** with `http://localhost:9000`
    * For more details please check section **KAFKA UI CONFIGURATION**
 
 
@@ -142,7 +142,7 @@ USAGE KUBERNETES (KIND)
      * Stop **Docker** tool
 
 ##### Optional steps:
-1. In a browser check messages via **Kafka UI** with `http://localhost:9090`
+1. In a browser check messages via **Kafka UI** with `http://localhost:9000`
    * For more details please check section **KAFKA UI CONFIGURATION**
 1. In a command line tool build Docker Producer image with `docker build -f springboot3-kafka4-kafkaui-string_producer/Dockerfile -t wisniewskikr/springboot3-kafka4-kafkaui-string_producer:0.0.1 ./springboot3-kafka4-kafkaui-string_producer`
 1. In a command line tool push Docker Procuder image to Docker Repository with `docker push wisniewskikr/springboot3-kafka4-kafkaui-string_producer:0.0.1` 
@@ -161,7 +161,7 @@ USAGE KUBERNETES (KIND)
 KAFDROP CONFIGURATION
 ---------------------
 
-![My Image](readme-images/kakaui-01.png)
+![My Image](readme-images/kafkaui-01.png)
 
 ![My Image](readme-images/kafkaui-02.png)
 
