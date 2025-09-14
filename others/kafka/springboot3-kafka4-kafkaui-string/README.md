@@ -76,8 +76,8 @@ USAGE MANUAL
     * Stop **Docker** tool
 
 ##### Optional steps:
-1. In a browser check messages via **Kafdrop** with `http://localhost:9090`
-    * For more details please check section **KAFDROP CONFIGURATION**
+1. In a browser check messages via **Kafka UI** with `http://localhost:9090`
+    * For more details please check section **KAFKA UI CONFIGURATION**
 
 
 USAGE DOCKER COMPOSE
@@ -104,8 +104,8 @@ Usage steps:
     * Stop **Docker** tool
 
 ##### Optional steps:
-1. In a browser check messages via **Kafdrop** with `http://localhost:9090`
-    * For more details please check section **KAFDROP CONFIGURATION**
+1. In a browser check messages via **Kafka UI** with `http://localhost:9090`
+   * For more details please check section **KAFKA UI CONFIGURATION**
 
 
 USAGE KUBERNETES (KIND)
@@ -128,7 +128,7 @@ USAGE KUBERNETES (KIND)
    * Expected all services as **READY 1/1** (it can take few minutes)
 1. In the second command line tool **forward port of PRODUCER service** with `kubectl port-forward service/producer 8080:8080`
 1. In the third command line tool **forward port of CONSUMER service** with `kubectl port-forward service/consumer 9090:9090`
-1. In the fourth command line tool**forward port of KAFDROP service** with `kubectl port-forward service/kafdrop 9000:9000`
+1. In the fourth command line tool**forward port of KAFDROP service** with `kubectl port-forward service/kafka-ui 9000:9000`
 1. In a browser send message via **PRODUCER** and visit `http://localhost:8080/api/producer?name={name}` (e.g. `http://localhost:8080/api/producer?name=Stranger)
     * Expected text **The message was sent to Consumer via Kafka** in the browser
 1. In a browser check **CONSUMER** and visit `http://localhost:9090/api/consumer`
@@ -142,8 +142,8 @@ USAGE KUBERNETES (KIND)
      * Stop **Docker** tool
 
 ##### Optional steps:
-1. In a browser check messages via **Kafdrop** with `http://localhost:9090`
-    * For more details please check section **KAFDROP CONFIGURATION**
+1. In a browser check messages via **Kafka UI** with `http://localhost:9090`
+   * For more details please check section **KAFKA UI CONFIGURATION**
 1. In a command line tool build Docker Producer image with `docker build -f springboot3-kafka4-kafkaui-string_producer/Dockerfile -t wisniewskikr/springboot3-kafka4-kafkaui-string_producer:0.0.1 ./springboot3-kafka4-kafkaui-string_producer`
 1. In a command line tool push Docker Procuder image to Docker Repository with `docker push wisniewskikr/springboot3-kafka4-kafkaui-string_producer:0.0.1` 
 1. In a command line tool build Docker Consumer image with `docker build -f springboot3-kafka4-kafkaui-string_consumer/Dockerfile -t wisniewskikr/springboot3-kafka4-kafkaui-string_consumer:0.0.1 ./springboot3-kafka4-kafkaui-string_consumer`
