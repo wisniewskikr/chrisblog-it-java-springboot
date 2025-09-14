@@ -29,6 +29,8 @@ services:
 
       # Cluster ID (dla KRaft)
       CLUSTER_ID: "5L6g3nShT-eMCtK--X86sw"
+    volumes:
+      - kafka_data:/var/lib/kafka/data
 
   kafka-ui:
     image: provectuslabs/kafka-ui:v0.7.2
@@ -39,3 +41,6 @@ services:
       KAFKA_CLUSTERS_0_NAME: local
       KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS: kafka:29092
       KAFKA_CLUSTERS_0_READONLY: "false"
+
+volumes:
+  kafka_data:
