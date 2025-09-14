@@ -161,10 +161,10 @@ USAGE KUBERNETES (KIND)
 KAFDROP CONFIGURATION
 ---------------------
 
-![My Image](readme-images/kafdrop-01.png)
+![My Image](readme-images/kakaui-01.png)
 
-![My Image](readme-images/kafdrop-02.png)
+![My Image](readme-images/kafkaui-02.png)
 
-![My Image](readme-images/kafdrop-03.png)
+![My Image](readme-images/kafkaui-03.png)
 
-![My Image](readme-images/kafdrop-04.png)
+![My Image](readme-images/kafkaui-04.png)
