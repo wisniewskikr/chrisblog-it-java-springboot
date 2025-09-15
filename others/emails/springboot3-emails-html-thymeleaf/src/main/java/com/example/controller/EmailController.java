@@ -6,6 +6,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Map;
+
 @RestController
 public class EmailController {
 
@@ -18,8 +20,8 @@ public class EmailController {
     @Value("${email.subject}")
     private String emailSubject;
 
-    @Value("${email.html}")
-    private String emailHtml;
+    @Value("${email.template}")
+    private String emailTemplate;
 
     private final EmailService emailService;
 
@@ -30,7 +32,8 @@ public class EmailController {
     @GetMapping
     public ResponseEntity<String> send() {
 
-        emailService.sendEmailAsHtml(emailFrom, emailTo, emailSubject, emailHtml);
+        Map<String, Object> variables = Map.of("username", "Stranger");
+        emailService.sendEmailFromTemplate(emailFrom, emailTo, emailSubject, emailTemplate, variables);
         return ResponseEntity.ok("Email sent successfully");
 
     }
