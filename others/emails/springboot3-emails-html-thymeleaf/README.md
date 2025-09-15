@@ -10,8 +10,8 @@ DESCRIPTION
 -----------
 
 ##### Goal
-The goal of this project is to present how to send **emails** type **html** with usage **Java** programming language and
-**Spring Boot 3** framework. 
+The goal of this project is to present how to send **emails** type **html** with usage **Thymeleaf** template engine and 
+**Java** programming language and **Spring Boot 3** framework. 
 
 Emails are sent and received by tool called **Mailtrap**.
 
@@ -26,6 +26,7 @@ Terminology explanation:
 * **Maven**: Maven is a build automation and dependency management tool for Java projects, streamlining project builds, managing libraries, and ensuring consistent project configurations.
 * **Spring Boot**: Spring Boot is a framework for building Java-based applications that simplifies development by providing auto-configuration, embedded servers, and production-ready tools, enabling developers to create standalone, production-ready applications with minimal configuration.
 * **Mailtrap**: Mailtrap is an email testing tool that simulates an SMTP server, letting developers safely capture, inspect, and debug outgoing emails from their applications without actually sending them to real recipients.
+* **Thymeleaf**: a modern server-side Java template engine that lets you write “natural” HTML templates that render in browsers and can be processed on the server
 
 USAGES
 ------
