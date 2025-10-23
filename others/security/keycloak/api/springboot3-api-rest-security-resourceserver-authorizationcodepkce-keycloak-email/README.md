@@ -11,12 +11,22 @@ EXAMPLE
 
 ![My Image](readme-images/image-05.png)
 
+![My Image](readme-images/image-06.png)
+
+![My Image](readme-images/image-07.png)
+
 
 DESCRIPTION
 -----------
 
 ##### Goal
-The goal of this project is to present how to implement **security** in **REST API** application using **Keycloak** tool with usage **Java** programming language and **Spring Boot 3** framework. This application is used as **resource server** (verifies JWT tokens) and for authentication uses **authorization code with PKCE** (two steps: 1. User logs in and gets authorization code; 2. User generates token basing on authorization code). PKCE means that user doesn't have to new "secret id" any more.
+The goal of this project is to present how to implement **security** in **REST API** application using **Keycloak** 
+tool with usage **Java** programming language and **Spring Boot 3** framework. This application is used as 
+**resource server** (verifies JWT tokens) and for authentication uses **authorization code with PKCE** 
+(two steps: 1. User logs in and gets authorization code; 2. User generates token basing on authorization code). 
+PKCE means that user doesn't have to new "secret id" any more.
+
+Additionally user **email** from Keycloak is displayed.
 
 ##### Elements
 This project consists of following elements:
@@ -68,7 +78,9 @@ USAGE DOCKER COMPOSE
 1. Update **hosts** file (Run as Administrator; Windows: "Windows\System32\drivers\etc\hosts"; MAC/Linux: "etc/hosts") with new line **127.0.0.1 keycloak**
 1. Start **Docker** tool
 1. In a command line tool **start Docker containers** with `docker-compose up -d --build`
-1. In any REST Client (e.g. Postman) visit **REST API** application with `http://localhost:9090/api/v1/demo/user`
+1. In any REST Client (e.g. Postman) visit **REST API** application with `http://localhost:9090/api/v1/public`
+   * Expected message **Hello World, Public!** 
+1. In any REST Client (e.g. Postman) visit **REST API** application with `http://localhost:9090/api/v1/user`
    * Authorization -> Type -> OAuth 2.0
    * Token Name: **Token**
    * Grant Type: **Authorization Code (With PKCE)
@@ -77,9 +89,9 @@ USAGE DOCKER COMPOSE
    * Access Token URL: **http://keycloak:8080/realms/helloworld-realm/protocol/openid-connect/token**
    * Client ID: **helloworld-client**
    * Code Challenge Method: **SHA-256**
-   * Click **Get New Access Token -> Use Token**
+   * Click **Get New Access Token -> Register an user -> Use Token**
    * Click **Send**
-   * Expected text **Hello World, User!**
+   * Expected text **Hello World, {email}!**
 1. Clean up environment 
      * In a command line tool **remove Docker containers** with `docker-compose down --rmi all`
      * Stop **Docker** tool
@@ -116,7 +128,9 @@ USAGE KUBERNETES (KIND)
    * Expected mysql, be and fe as **READY 1/1** (it can take few minutes)
 1. In the second command line tool **forward port of Keycloak service** with `kubectl port-forward service/keycloak 8080:8080`
 1. In the third command line tool **forward port of App service** with `kubectl port-forward service/app 9090:9090`
-1. In any REST Client (e.g. Postman) visit **REST API** application with `http://localhost:9090/api/v1/demo/user`
+1. In any REST Client (e.g. Postman) visit **REST API** application with `http://localhost:9090/api/v1/public`
+   * Expected message **Hello World, Public!**
+1. In any REST Client (e.g. Postman) visit **REST API** application with `http://localhost:9090/api/v1/user`
    * Authorization -> Type -> OAuth 2.0
    * Token Name: **Token**
    * Grant Type: **Authorization Code (With PKCE)
@@ -125,9 +139,9 @@ USAGE KUBERNETES (KIND)
    * Access Token URL: **http://keycloak.default.svc.cluster.local:8080/realms/helloworld-realm/protocol/openid-connect/token**
    * Client ID: **helloworld-client**
    * Code Challenge Method: **SHA-256**
-   * Click **Get New Access Token -> Use Token**
+   * Click **Get New Access Token -> Register an user -> Use Token**
    * Click **Send**
-   * Expected text **Hello World, User!**
+   * Expected text **Hello World, {email}!**
 1. Clean up environment 
      * In the third command line tool **stop forwarding port of App service** with `ctrl + C`
      * In the second command line tool **stop forwarding port of Keycloak service** with `ctrl + C`
