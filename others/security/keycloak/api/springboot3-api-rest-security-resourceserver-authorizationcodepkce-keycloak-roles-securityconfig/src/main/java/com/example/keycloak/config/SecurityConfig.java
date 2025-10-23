@@ -26,11 +26,11 @@ public class SecurityConfig {
                 .sessionManagement(sess -> sess.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(auth -> auth
                         // Public endpoint
-                        .requestMatchers("/api/v1/demo").permitAll()
+                        .requestMatchers("/api/v1/public").permitAll()
 
                         // Role-based access
-                        .requestMatchers("/api/v1/demo/user").hasAnyRole("USER", "ADMIN")
-                        .requestMatchers("/api/v1/demo/admin").hasRole("ADMIN")
+                        .requestMatchers("/api/v1/user").hasAnyRole("USER", "ADMIN")
+                        .requestMatchers("/api/v1/admin").hasRole("ADMIN")
 
                         // Everything else requires authentication
                         .anyRequest().authenticated()
