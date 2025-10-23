@@ -4,6 +4,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
 
@@ -12,7 +13,6 @@ import com.example.keycloak.converter.JwtAuthConverter;
 import lombok.RequiredArgsConstructor;
 
 @Configuration
-@EnableMethodSecurity
 @RequiredArgsConstructor
 public class SecurityConfig {
 
@@ -20,25 +20,28 @@ public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        
-        http
-            .csrf(csrf -> csrf.disable())
-            .authorizeHttpRequests(auth -> auth
-                .requestMatchers("/api/v1/demo").permitAll()
-                .anyRequest().authenticated()
-            );
 
         http
-            .oauth2ResourceServer(oauth2 -> 
-                oauth2.jwt(jwt -> 
-                    jwt.jwtAuthenticationConverter(jwtAuthConverter)
+                .csrf(AbstractHttpConfigurer::disable)
+                .sessionManagement(sess -> sess.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+                .authorizeHttpRequests(auth -> auth
+                        // Public endpoint
+                        .requestMatchers("/api/v1/demo").permitAll()
+
+                        // Role-based access
+                        .requestMatchers("/api/v1/demo/user").hasAnyRole("USER", "ADMIN")
+                        .requestMatchers("/api/v1/demo/admin").hasRole("ADMIN")
+
+                        // Everything else requires authentication
+                        .anyRequest().authenticated()
                 )
-            );
-
-        http
-            .sessionManagement(sess -> sess.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
+                .oauth2ResourceServer(oauth2 ->
+                        oauth2.jwt(jwt ->
+                                jwt.jwtAuthenticationConverter(jwtAuthConverter)
+                        )
+                );
 
         return http.build();
-
     }
+
 }
