@@ -100,8 +100,69 @@ USAGES
 ------
 
 This project can be tested in following configurations:
+* **Usage Manual**: Keycloak is started as Docker container defined in docker compose file
 * **Usage Docker Compose**: all services are started as Docker containers defined in docker compose file.
 * **Usage Kubernetes (Kind)**: all services are started as Kubernetes pods.
+
+
+USAGE MANUAL
+------------
+
+> **Usage Manual** means that Keycloak is started as Docker container defined in docker compose file
+
+> Please **clone/download** project, open **project's main folder** in your favorite **command line tool**
+> and then **proceed with steps below**.
+
+> **Prerequisites**:
+* **Operating System** (tested on Windows 11)
+* **Git** (tested on version 2.33.0.windows.2)
+* **Docker** (tested on version 4.33.1)
+
+##### Required steps:
+1. Start **Docker** tool
+1. In the first command line tool **start Keycloak container** with `docker-compose -f docker-compose-infrastructure.yml up -d --build`
+1. In the second command line tool start application with `mvn spring-boot:run`
+1. In an internet browser create an user **admin** with password **admin** role **ADMIN** with `http://localhost:8080`
+1. In any REST Client (e.g. Postman) visit **REST API** application with `http://localhost:9090/api/v1/public`
+   * Expected message **Hello World, Public!**
+1. In any REST Client (e.g. Postman) visit **REST API** application with `http://localhost:9090/api/v1/user`
+   * Authorization -> Type -> OAuth 2.0
+   * Token Name: **Token**
+   * Grant Type: **Authorization Code (With PKCE)
+   * Callback URL: **http://localhost:9090/code**
+   * Auth URL: **http://localhost:8080/realms/helloworld-realm/protocol/openid-connect/auth**
+   * Access Token URL: **http://localhost:8080/realms/helloworld-realm/protocol/openid-connect/token**
+   * Client ID: **helloworld-client**
+   * Code Challenge Method: **SHA-256**
+   * Click **Get New Access Token -> Register new user -> Use Token**
+   * Click **Send**
+   * Expected text **Hello World, User!**
+1. In any REST Client (e.g. Postman) visit **REST API** application with `http://localhost:9090/api/v1/admin`
+   * Authorization -> Type -> OAuth 2.0
+   * Token Name: **Token**
+   * Grant Type: **Authorization Code (With PKCE)
+   * Callback URL: **http://localhost:9090/code**
+   * Auth URL: **http://keycloak:8080/realms/helloworld-realm/protocol/openid-connect/auth**
+   * Access Token URL: **http://keycloak:8080/realms/helloworld-realm/protocol/openid-connect/token**
+   * Client ID: **helloworld-client**
+   * Code Challenge Method: **SHA-256**
+   * Click **Get New Access Token -> Use credentials "admin/admin" -> Use Token**
+   * Click **Send**
+   * Expected text **Hello World, Admin!**
+1. Clean up environment
+   * In the second command line tool **remove Keycloak container** with `docker-compose down --rmi all`
+   * In the first command line tool **stop application** with `ctrl + c`
+   * Stop **Docker** tool
+   * Remove new line from **hosts**
+
+##### Optional steps:
+1. In a command line tool validate Docker Compose with `docker-compose config`
+1. In a command line tool check list of Docker images with `docker images`
+1. In a command line tool check list of all Docker containers with `docker ps -a`
+1. In a command line tool check list of active Docker containers with `docker ps`
+1. In a command line tool check list of Docker nerworks with `docker network ls`
+1. In a command line tool check BE container logs with `docker logs be-container`
+1. In a command line tool check FE container logs with `docker logs fe-container`
 
 
 USAGE DOCKER COMPOSE
