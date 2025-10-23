@@ -121,6 +121,7 @@ USAGE DOCKER COMPOSE
 1. Update **hosts** file (Run as Administrator; Windows: "Windows\System32\drivers\etc\hosts"; MAC/Linux: "etc/hosts") with new line **127.0.0.1 keycloak**
 1. Start **Docker** tool
 1. In a command line tool **start Docker containers** with `docker-compose up -d --build`
+1. In an internet browser create an user **admin** with password **admin** role **ADMIN** with `http://localhost:8080`
 1. In any REST Client (e.g. Postman) visit **REST API** application with `http://localhost:9090/api/v1/public`
    * Expected message **Hello World, Public!**
 1. In any REST Client (e.g. Postman) visit **REST API** application with `http://localhost:9090/api/v1/user`
@@ -181,9 +182,10 @@ USAGE KUBERNETES (KIND)
 1. In the first command line tool create and start cluster **Kind** with `kind create cluster --name helloworld`
 1. In the second command line tool **start Kubernetes Pods** with `kubectl apply -f kubernetes.yaml`
 1. In the second command line tool **check status of Kubernetes Pods** with `kubectl get pods`
-   * Expected mysql, be and fe as **READY 1/1** (it can take few minutes)
+   * Expected **READY 1/1** (it can take few minutes)
 1. In the second command line tool **forward port of Keycloak service** with `kubectl port-forward service/keycloak 8080:8080`
 1. In the third command line tool **forward port of App service** with `kubectl port-forward service/app 9090:9090`
+1. In an internet browser create an user **admin** with password **admin** role **ADMIN** with `http://localhost:8080`
 1. In any REST Client (e.g. Postman) visit **REST API** application with `http://localhost:9090/api/v1/public`
    * Expected message **Hello World, Public!**
 1. In any REST Client (e.g. Postman) visit **REST API** application with `http://localhost:9090/api/v1/user`
