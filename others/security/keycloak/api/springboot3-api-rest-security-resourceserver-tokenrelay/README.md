@@ -51,7 +51,7 @@ This project can be tested in following configurations:
 USAGE MANUAL
 ------------
 
-> **Usage Docker Manual** means that infrastructure services are started as Docker containers. Services are started manually.
+> **Usage Manual** means that infrastructure services are started as Docker containers. Services are started manually.
 
 > Please **clone/download** project, open **project's main folder** in your favorite **command line tool** and then **proceed with steps below**.
 
