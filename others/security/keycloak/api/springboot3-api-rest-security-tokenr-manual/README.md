@@ -24,18 +24,12 @@ DESCRIPTION
 -----------
 
 ##### Goal
-The goal of this project is to present how to implement **Token Relay** between two **REST API** applications with usage **Java** programming language and **Spring Boot 3** framework. Token Relay means that user logs in to the first secured application and token is automatically added to request to the second secured application. 
+The goal of this project is to present how to implement **Token Relay** between two **REST API** applications 
+with usage **Java** programming language and **Spring Boot 3** framework. Token Relay means that user logs in to the 
+first secured application and token is automatically added to request to the second secured application. 
 
-##### Elements
-This project consists of following elements:
-* **First**: Rest API application
-   * Input: endpoint "api/vi/message"
-   * Content: RestClient communication with second application. Token is automatically added to request.
-   * Output: JSON with message
-* **Second**: Rest API application
-   * Input: endpoint "api/vi/message"
-   * Content: N/A
-   * Output: JSON with message
+In this example **token** is created **manually** by user and send with request to First service. First service
+checks this token and if everything is ok sends it to Second service.
 
 ##### Terminology
 Terminology explanation:
