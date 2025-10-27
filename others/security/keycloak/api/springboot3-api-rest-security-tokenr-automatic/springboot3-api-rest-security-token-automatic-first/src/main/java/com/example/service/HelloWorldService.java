@@ -9,12 +9,12 @@ import lombok.AllArgsConstructor;
 @Service
 @AllArgsConstructor
 public class HelloWorldService {
-    
-    private final RestClient restClient;
+
+    private final RestClient restClientSecond;
 
     public HelloWorldDto getMessage() {
 
-        return restClient.get()
+        return restClientSecond.get()
                 .uri("/message")
                 .retrieve()
                 .body(HelloWorldDto.class);

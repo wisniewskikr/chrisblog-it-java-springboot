@@ -19,7 +19,7 @@ public class RestClientConfig {
 	private final JwtInterceptor jwtInterceptor;
 	
 	@Bean
-    RestClient restClient() {
+    RestClient restClientSecond() {
 		return RestClient.builder()
 			.baseUrl(apiSecondUrl)
 			.requestInterceptor(jwtInterceptor)

@@ -4,3 +4,10 @@ server:
 api:
   second:
     url: http://localhost:8082/api/v1
+  keycloak:
+    url: http://localhost:8080
+
+keycloak:
+  credentials:
+    user: user
+    password: user
