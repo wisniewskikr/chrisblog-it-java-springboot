@@ -67,6 +67,8 @@ spec:
               value: http://second:8082/api/v1
             - name: KEYCLOAK_URL
               value: http://keycloak.default.svc.cluster.local:8080
+            - name: SPRING_SECURITY_OAUTH2_RESOURCESERVER_JWT_ISSUERURI
+              value: http://keycloak.default.svc.cluster.local:8080/realms/helloworld-realm
           ports:
             - containerPort: 8081
 ---

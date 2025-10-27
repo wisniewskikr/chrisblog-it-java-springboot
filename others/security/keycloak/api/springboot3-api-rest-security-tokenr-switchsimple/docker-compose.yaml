@@ -21,6 +21,7 @@
     environment:
       API_SECOND_URL: http://second:8082/api/v1
       KEYCLOAK_URL: http://keycloak:8080
+      SPRING_SECURITY_OAUTH2_RESOURCESERVER_JWT_ISSUER-URI: http://keycloak:8080/realms/helloworld-realm
     ports:
       - "8081:8081"
 
