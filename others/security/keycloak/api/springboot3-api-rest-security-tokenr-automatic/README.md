@@ -96,7 +96,6 @@ USAGE DOCKER COMPOSE
 * **Docker** (tested on version 4.33.1)
 
 ##### Required steps:
-1. Update **hosts** file (Run as Administrator; Windows: "Windows\System32\drivers\etc\hosts"; MAC/Linux: "etc/hosts") with new line **127.0.0.1 keycloak**
 1. Start **Docker** tool
 1. In a command line tool **start Docker containers** with `docker-compose up -d --build`
 1. In any Internet Browser (e.g. Chrome) create new user **user** with password **user** with `http://locaholst:8080`
@@ -128,7 +127,6 @@ USAGE KUBERNETES (KIND)
 * **Kind** (tested on version 0.26.0)
 
 ##### Required steps:
-1. Update **hosts** file (Run as Administrator; Windows: "Windows\System32\drivers\etc\hosts"; MAC/Linux: "etc/hosts") with new line **127.0.0.1 keycloak.default.svc.cluster.local**
 1. Start **Docker** tool
 1. In the first command line tool create and start cluster **Kind** with `kind create cluster --name helloworld`
 1. In the second command line tool **start Kubernetes Pods** with `kubectl apply -f kubernetes.yaml`
