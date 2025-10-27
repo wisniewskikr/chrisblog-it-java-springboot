@@ -17,8 +17,6 @@ EXAMPLE
 
 ![My Image](readme-images/image-08.png)
 
-![My Image](readme-images/image-09.png)
-
 
 DESCRIPTION
 -----------
