@@ -63,8 +63,8 @@ USAGE MANUAL
 ##### Required steps:
 1. Start **Docker** tool
 1. In the first command line tool **start Keycloak container** with `docker-compose -f docker-compose-infrastructure.yaml up -d --build`
-1. In the second command line tool **start First service** with `mvn -f ./springboot3-api-rest-security-token-automatic-first spring-boot:run`
-1. In the third command line tool **start Second service** with `mvn -f ./springboot3-api-rest-security-token-automatic-second spring-boot:run`
+1. In the second command line tool **start First service** with `mvn -f ./springboot3-api-rest-security-token-switchuser-first spring-boot:run`
+1. In the third command line tool **start Second service** with `mvn -f ./springboot3-api-rest-security-token-switchuser-second spring-boot:run`
 1. In any Internet Browser (e.g. Chrome) create new user **user** with password **user** with `http://locaholst:8080`
 1. In any REST Client (e.g. Postman) using **GET** method visit `http://localhost:8081/api/v1/message`
    * Expected "Hello World!" message
@@ -148,10 +148,10 @@ USAGE KUBERNETES (KIND)
      * Remove new line from **hosts**
 
 ##### Optional steps:
-1. In a command line tool build Docker First image with `docker build -f springboot3-api-rest-security-token-automatic-first/Dockerfile -t wisniewskikr/springboot3-api-rest-security-token-automatic-first:0.0.1 ./springboot3-api-rest-security-token-automatic-first`
-1. In a command line tool push Docker First image to Docker Repository with `docker push wisniewskikr/springboot3-api-rest-security-token-automatic-first:0.0.1` 
-1. In a command line tool build Docker Second image with `docker build -f springboot3-api-rest-security-token-automatic-second/Dockerfile -t wisniewskikr/springboot3-api-rest-security-token-automatic-second:0.0.1 ./springboot3-api-rest-security-token-automatic-second`
-1. In a command line tool push Docker Second image to Docker Repository with `docker push wisniewskikr/springboot3-api-rest-security-token-automatic-second:0.0.1` 
+1. In a command line tool build Docker First image with `docker build -f springboot3-api-rest-security-token-switchuser-first/Dockerfile -t wisniewskikr/springboot3-api-rest-security-token-switchuser-first:0.0.1 ./springboot3-api-rest-security-token-switchuser-first`
+1. In a command line tool push Docker First image to Docker Repository with `docker push wisniewskikr/springboot3-api-rest-security-token-switchuser-first:0.0.1` 
+1. In a command line tool build Docker Second image with `docker build -f springboot3-api-rest-security-token-switchuser-second/Dockerfile -t wisniewskikr/springboot3-api-rest-security-token-switchuser-second:0.0.1 ./springboot3-api-rest-security-token-switchuser-second`
+1. In a command line tool push Docker Second image to Docker Repository with `docker push wisniewskikr/springboot3-api-rest-security-token-switchuser-second:0.0.1` 
 1. In the first command line tool with administrator privileges check clusers with `kind get clusters`
 1. In a command line tool check Kubernetes Deployments with `kubectl get deployments`
 1. In a command line tool check Kubernetes Deployments details with **kubectl describe deployment {deployment-name}**
