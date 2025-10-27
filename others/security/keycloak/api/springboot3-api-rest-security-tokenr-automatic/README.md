@@ -66,15 +66,7 @@ USAGE MANUAL
 1. In the second command line tool **start First service** with `mvn -f ./springboot3-api-rest-security-token-automatic-first spring-boot:run`
 1. In the third command line tool **start Second service** with `mvn -f ./springboot3-api-rest-security-token-automatic-second spring-boot:run`
 1. In any Internet Browser (e.g. Chrome) create new user **user** with password **user** with `http://locaholst:8080`
-1. In any REST Client (e.g. Postman) visit Keycloack JWT generator with http://localhost:8080/realms/helloworld-realm/protocol/openid-connect/token
-   * method: POST
-   * grant_type: password
-   * client_id: helloworld_client
-   * username: user
-   * password: user
-   * Expected JWT token
- 1. In any REST Client (e.g. Postman) visit First service with http://localhost:8081/api/v1/message
-   * Bearer Token: JWT token
+1. In any REST Client (e.g. Postman) using **GET** method visit `http://localhost:8081/api/v1/message`
    * Expected "Hello World!" message
 1. Clean up environment
    * In the third command line tool **stop Second service** with `ctrl + c`
@@ -108,15 +100,7 @@ USAGE DOCKER COMPOSE
 1. Start **Docker** tool
 1. In a command line tool **start Docker containers** with `docker-compose up -d --build`
 1. In any Internet Browser (e.g. Chrome) create new user **user** with password **user** with `http://locaholst:8080`
-1. In any REST Client (e.g. Postman) visit Keycloack JWT generator with http://localhost:8080/realms/helloworld-realm/protocol/openid-connect/token
-   * method: POST
-   * grant_type: password
-   * client_id: helloworld_client
-   * username: user
-   * password: user
-   * Expected JWT token
-1. In any REST Client (e.g. Postman) visit First service with http://localhost:8081/api/v1/message
-   * Bearer Token: JWT token
+1. In any REST Client (e.g. Postman) using **GET** method visit `http://localhost:8081/api/v1/message`
    * Expected "Hello World!" message
 1. Clean up environment 
      * In a command line tool **remove Docker containers** with `docker-compose down --rmi all`
@@ -153,15 +137,7 @@ USAGE KUBERNETES (KIND)
 1. In the second command line tool **forward port of Keycloak service** with `kubectl port-forward service/keycloak 8080:8080`
 1. In the third command line tool **forward port of First service** with `kubectl port-forward service/first 8081:8081`
 1. In any Internet Browser (e.g. Chrome) create new user **user** with password **user** with `http://locaholst:8080`
-1. In any REST Client (e.g. Postman) visit Keycloack JWT generator with http://localhost:8080/realms/helloworld-realm/protocol/openid-connect/token
-   * method: POST
-   * grant_type: password
-   * client_id: helloworld_client
-   * username: user
-   * password: user
-   * Expected JWT token
-1. In any REST Client (e.g. Postman) visit First service with http://localhost:8081/api/v1/message
-   * Bearer Token: JWT token
+1. In any REST Client (e.g. Postman) using **GET** method visit `http://localhost:8081/api/v1/message`
    * Expected "Hello World!" message
 1. Clean up environment 
      * In the third command line tool **stop forwarding port of First service** with `ctrl + C`
