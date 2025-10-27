@@ -13,18 +13,18 @@ import java.util.Map;
 @Service
 public class KeycloakService {
 
-    @Value("${keycloak.credentials.user}")
-    private String keycloakUser;
+    @Value("${keycloak.administrator.username}")
+    private String keycloakUsername;
 
-    @Value("${keycloak.credentials.password}")
+    @Value("${keycloak.administrator.password}")
     private String keycloakPassword;
 
     private final RestClient restClientKeycloak;
 
     public KeycloakService(RestClient.Builder restClientBuilder,
-                           @Value("${api.keycloak.url}") String apiKeycloakUrl) {
+                           @Value("${keycloak.url}") String keycloakUrl) {
         this.restClientKeycloak = restClientBuilder
-                .baseUrl(apiKeycloakUrl)
+                .baseUrl(keycloakUrl)
                 .build();
     }
 
@@ -33,10 +33,9 @@ public class KeycloakService {
         MultiValueMap<String, String> formData = new LinkedMultiValueMap<>();
         formData.add("grant_type", "password");
         formData.add("client_id", "helloworld-client");
-        formData.add("username", keycloakUser);
+        formData.add("username", keycloakUsername);
         formData.add("password", keycloakPassword);
 
-        // Send POST request
         Map response = restClientKeycloak.post()
                 .uri("/realms/helloworld-realm/protocol/openid-connect/token")
                 .header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_FORM_URLENCODED_VALUE)
