@@ -61,7 +61,7 @@ spec:
     spec:
       containers:
         - name: first
-          image: wisniewskikr/springboot3-api-rest-security-token-switchuser-first:0.0.1
+          image: wisniewskikr/springboot3-api-rest-security-token-switchsimple-first:0.0.1
           env:
             - name: API_SECOND_URL
               value: http://second:8082/api/v1
@@ -100,7 +100,7 @@ spec:
     spec:
       containers:
         - name: second
-          image: wisniewskikr/springboot3-api-rest-security-token-switchuser-second:0.0.1
+          image: wisniewskikr/springboot3-api-rest-security-token-switchsimple-second:0.0.1
           env:
             - name: SPRING_SECURITY_OAUTH2_RESOURCESERVER_JWT_ISSUERURI
               value: http://keycloak.default.svc.cluster.local:8080/realms/helloworld-realm
