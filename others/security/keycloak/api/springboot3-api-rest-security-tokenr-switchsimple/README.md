@@ -37,9 +37,9 @@ DESCRIPTION
 The goal of this project is to present how to implement a connection between two **REST API** applications 
 with usage **Java** programming language and **Spring Boot 3** framework. 
 
-In this example First service is not secured but Second service is secured. The **token** is created **automatically** 
-in First Service and send with request to Second service. Second service checks this token and if everything is ok then 
-sends response back to First service.
+In this example First service is secured as USER and Second service is secured as ADMIN. After log in as USER 
+the **token** is created **automatically** in First Service (**switch** to ADMIN) and send with request to Second service. 
+Second service checks this token and if everything is ok then sends response back to First service.
 
 ##### Terminology
 Terminology explanation:
