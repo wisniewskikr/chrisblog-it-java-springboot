@@ -8,8 +8,8 @@ api:
 keycloak:
   url: http://localhost:8080
   administrator:
-    username: user
-    password: user
+    username: admin
+    password: admin
 
 spring:
   security:
@@ -18,3 +18,9 @@ spring:
         jwt:
           issuer-uri: http://localhost:8080/realms/helloworld-realm
           jwk-set-uri: ${spring.security.oauth2.resourceserver.jwt.issuer-uri}/protocol/openid-connect/certs
+
+jwt:
+  auth:
+    converter:
+      resource-id: helloworld-client
+      principle-attribute: preferred_username
