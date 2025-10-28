@@ -77,9 +77,19 @@ USAGE MANUAL
 1. In the first command line tool **start Keycloak container** with `docker-compose -f docker-compose-infrastructure.yaml up -d --build`
 1. In the second command line tool **start First service** with `mvn -f ./springboot3-api-rest-security-token-switchuser-first spring-boot:run`
 1. In the third command line tool **start Second service** with `mvn -f ./springboot3-api-rest-security-token-switchuser-second spring-boot:run`
-1. In any Internet Browser (e.g. Chrome) create new user **user** with password **user** with `http://locaholst:8080`
-1. In any REST Client (e.g. Postman) using **GET** method visit `http://localhost:8081/api/v1/message`
-   * Expected "Hello World!" message
+1. In any Internet Browser (e.g. Chrome) create new user **admin** with password **admin** with `http://locaholst:8080`
+1. In any REST Client (e.g. Postman) visit **REST API** application with `http://localhost:8081/api/v1/message`
+   * Authorization -> Type -> OAuth 2.0
+   * Token Name: **Token**
+   * Grant Type: **Authorization Code (With PKCE)
+   * Callback URL: **http://localhost:8081**
+   * Auth URL: **http://localhost:8080/realms/helloworld-realm/protocol/openid-connect/auth**
+   * Access Token URL: **http://localhost:8080/realms/helloworld-realm/protocol/openid-connect/token**
+   * Client ID: **helloworld-client**
+   * Code Challenge Method: **SHA-256**
+   * Click **Get New Access Token -> Register user/user -> Use Token**
+   * Click **Send**
+   * Expected text **Hello World!**
 1. Clean up environment
    * In the third command line tool **stop Second service** with `ctrl + c`
    * In the second command line tool **stop First service** with `ctrl + c`
@@ -111,9 +121,19 @@ USAGE DOCKER COMPOSE
 1. Update **hosts** file (Run as Administrator; Windows: "Windows\System32\drivers\etc\hosts"; MAC/Linux: "etc/hosts") with new line **127.0.0.1 keycloak**
 1. Start **Docker** tool
 1. In a command line tool **start Docker containers** with `docker-compose up -d --build`
-1. In any Internet Browser (e.g. Chrome) create new user **user** with password **user** with `http://locaholst:8080`
-1. In any REST Client (e.g. Postman) using **GET** method visit `http://localhost:8081/api/v1/message`
-   * Expected "Hello World!" message
+1. In any Internet Browser (e.g. Chrome) create new user **admin** with password **admin** with `http://locaholst:8080`
+1. In any REST Client (e.g. Postman) visit **REST API** application with `http://localhost:8081/api/v1/message`
+   * Authorization -> Type -> OAuth 2.0
+   * Token Name: **Token**
+   * Grant Type: **Authorization Code (With PKCE)
+   * Callback URL: **http://localhost:8081**
+   * Auth URL: **http://keycloak:8080/realms/helloworld-realm/protocol/openid-connect/auth**
+   * Access Token URL: **http://keycloak:8080/realms/helloworld-realm/protocol/openid-connect/token**
+   * Client ID: **helloworld-client**
+   * Code Challenge Method: **SHA-256**
+   * Click **Get New Access Token -> Register user/user -> Use Token**
+   * Click **Send**
+   * Expected text **Hello World!**
 1. Clean up environment 
      * In a command line tool **remove Docker containers** with `docker-compose down --rmi all`
      * Stop **Docker** tool
@@ -148,9 +168,19 @@ USAGE KUBERNETES (KIND)
    * Expected mysql, be and fe as **READY 1/1** (it can take few minutes)
 1. In the second command line tool **forward port of Keycloak service** with `kubectl port-forward service/keycloak 8080:8080`
 1. In the third command line tool **forward port of First service** with `kubectl port-forward service/first 8081:8081`
-1. In any Internet Browser (e.g. Chrome) create new user **user** with password **user** with `http://locaholst:8080`
-1. In any REST Client (e.g. Postman) using **GET** method visit `http://localhost:8081/api/v1/message`
-   * Expected "Hello World!" message
+1. In any Internet Browser (e.g. Chrome) create new user **admin** with password **admin** with `http://locaholst:8080`
+1. In any REST Client (e.g. Postman) visit **REST API** application with `http://localhost:8081/api/v1/message`
+   * Authorization -> Type -> OAuth 2.0
+   * Token Name: **Token**
+   * Grant Type: **Authorization Code (With PKCE)
+   * Callback URL: **http://localhost:8081**
+   * Auth URL: **http://keycloak.default.svc.cluster.local:8080/realms/helloworld-realm/protocol/openid-connect/auth**
+   * Access Token URL: **http://keycloak.default.svc.cluster.local:8080/realms/helloworld-realm/protocol/openid-connect/token**
+   * Client ID: **helloworld-client**
+   * Code Challenge Method: **SHA-256**
+   * Click **Get New Access Token -> Register user/user -> Use Token**
+   * Click **Send**
+   * Expected text **Hello World!**
 1. Clean up environment 
      * In the third command line tool **stop forwarding port of First service** with `ctrl + C`
      * In the second command line tool **stop forwarding port of Keycloak service** with `ctrl + C`
