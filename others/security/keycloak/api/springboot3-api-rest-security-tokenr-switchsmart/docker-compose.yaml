@@ -16,7 +16,7 @@
     container_name: first
     image: first
     build:
-      context: ./springboot3-api-rest-security-token-switchsimple-first
+      context: ./springboot3-api-rest-security-token-switchsmart-first
       dockerfile: Dockerfile
     environment:
       API_SECOND_URL: http://second:8082/api/v1
@@ -29,7 +29,7 @@
     container_name: second
     image: second
     build:
-      context: ./springboot3-api-rest-security-token-switchsimple-second
+      context: ./springboot3-api-rest-security-token-switchsmart-second
       dockerfile: Dockerfile
     environment:
       SPRING_SECURITY_OAUTH2_RESOURCESERVER_JWT_ISSUER-URI: http://keycloak:8080/realms/helloworld-realm
