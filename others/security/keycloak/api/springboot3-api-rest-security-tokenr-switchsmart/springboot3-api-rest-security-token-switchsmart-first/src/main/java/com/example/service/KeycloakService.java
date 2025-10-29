@@ -1,5 +1,6 @@
 package com.example.service;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
@@ -16,6 +17,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.oauth2.jwt.Jwt;
 
 @Service
+@Slf4j
 public class KeycloakService {
 
     @Value("${keycloak.administrator.username}")
@@ -45,10 +47,10 @@ public class KeycloakService {
 
         token = getCurrentTokenIfValidRole(role);
         if (token == null) {
-            System.out.println("***** Switch role");
+            log.info("***** Switch role");
             token = getNewToken();
         } else {
-            System.out.println("***** No switch role");
+            log.info("***** No switch role");
         }
 
         return token;
