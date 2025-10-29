@@ -8,7 +8,12 @@ import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestClient;
 
+import java.util.Collection;
 import java.util.Map;
+
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.oauth2.jwt.Jwt;
 
 @Service
 public class KeycloakService {
@@ -19,6 +24,12 @@ public class KeycloakService {
     @Value("${keycloak.administrator.password}")
     private String keycloakPassword;
 
+    @Value("${jwt.auth.converter.principle-attribute}")
+    private String principleAttribute;
+
+    @Value("${jwt.auth.converter.resource-id}")
+    private String resourceId;
+
     private final RestClient restClientKeycloak;
 
     public KeycloakService(RestClient.Builder restClientBuilder,
@@ -28,7 +39,56 @@ public class KeycloakService {
                 .build();
     }
 
-    public String getAccessToken() {
+    public String getAccessTokenForRole(String role) {
+
+        String token = null;
+
+        token = getCurrentTokenIfValidRole(role);
+        if (token == null) {
+            System.out.println("***** Switch role");
+            token = getNewToken();
+        } else {
+            System.out.println("***** No switch role");
+        }
+
+        return token;
+
+    }
+
+    private String getCurrentTokenIfValidRole(String role) {
+
+        String token = null;
+
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+
+        if (authentication != null && authentication.getPrincipal() instanceof Jwt jwt) {
+
+            Map<String, Object> resourceAccess;
+            Map<String, Object> resource;
+            Collection<String> resourceRoles;
+            if (jwt.getClaim("resource_access") == null) {
+                return token;
+            }
+            resourceAccess = jwt.getClaim("resource_access");
+
+            if (resourceAccess.get(resourceId) == null) {
+                return token;
+            }
+            resource = (Map<String, Object>) resourceAccess.get(resourceId);
+
+            resourceRoles = (Collection<String>) resource.get("roles");
+
+            if (resourceRoles.contains(role)) {
+                token = jwt.getTokenValue();
+            }
+
+        }
+
+        return token;
+
+    }
+
+    private String getNewToken() {
 
         MultiValueMap<String, String> formData = new LinkedMultiValueMap<>();
         formData.add("grant_type", "password");
