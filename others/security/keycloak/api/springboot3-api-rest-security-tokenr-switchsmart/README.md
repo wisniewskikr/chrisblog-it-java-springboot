@@ -48,8 +48,9 @@ The goal of this project is to present how to implement a connection between two
 with usage **Java** programming language and **Spring Boot 3** framework. 
 
 In this example First service is secured as USER and Second service is secured as ADMIN. After log in as USER 
-the **token** is created **automatically** in First Service (**simple switch** to ADMIN) and send with request to Second service. 
-Second service checks this token and if everything is ok then sends response back to First service.
+the **token** is created **automatically** in First Service (**smart switch**: if current role is ADMIN then no switch otherwise switch) 
+and send with request to Second service. Second service checks this token and if everything is ok then sends 
+response back to First service.
 
 ##### Terminology
 Terminology explanation:
