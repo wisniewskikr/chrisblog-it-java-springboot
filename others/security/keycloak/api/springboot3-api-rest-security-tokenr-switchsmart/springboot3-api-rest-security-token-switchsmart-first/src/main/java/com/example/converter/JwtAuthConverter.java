@@ -20,12 +20,15 @@ import java.util.stream.Stream;
 @Component
 public class JwtAuthConverter implements Converter<Jwt, AbstractAuthenticationToken> {
 
+    public static final String ROLES = "roles";
+    public static final String ROLE = "ROLE_";
+
     private final JwtGrantedAuthoritiesConverter jwtGrantedAuthoritiesConverter =
             new JwtGrantedAuthoritiesConverter();
 
-    @Value("${jwt.auth.converter.principle-attribute}")
+    @Value("${keycloak.principle-attribute}")
     private String principleAttribute;
-    @Value("${jwt.auth.converter.resource-id}")
+    @Value("${keycloak.resource-id}")
     private String resourceId;
 
     @Override
@@ -64,10 +67,10 @@ public class JwtAuthConverter implements Converter<Jwt, AbstractAuthenticationTo
         }
         resource = (Map<String, Object>) resourceAccess.get(resourceId);
 
-        resourceRoles = (Collection<String>) resource.get("roles");
+        resourceRoles = (Collection<String>) resource.get(ROLES);
         return resourceRoles
                 .stream()
-                .map(role -> new SimpleGrantedAuthority("ROLE_" + role))
+                .map(role -> new SimpleGrantedAuthority(ROLE + role))
                 .collect(Collectors.toSet());
     }
 

@@ -5,6 +5,14 @@ api:
   second:
     url: http://localhost:8082/api/v1
 
+spring:
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost:8080/realms/helloworld-realm
+          jwk-set-uri: ${spring.security.oauth2.resourceserver.jwt.issuer-uri}/protocol/openid-connect/certs
+
 keycloak:
   url: http://localhost:8080
   realm: helloworld-realm
@@ -14,17 +22,3 @@ keycloak:
     username: admin
     password: admin
     role: ADMIN
-
-spring:
-  security:
-    oauth2:
-      resourceserver:
-        jwt:
-          issuer-uri: http://localhost:8080/realms/helloworld-realm
-          jwk-set-uri: ${spring.security.oauth2.resourceserver.jwt.issuer-uri}/protocol/openid-connect/certs
-
-jwt:
-  auth:
-    converter:
-      resource-id: helloworld-client
-      principle-attribute: preferred_username
