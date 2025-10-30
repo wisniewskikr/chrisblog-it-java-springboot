@@ -21,13 +21,13 @@ import org.springframework.security.oauth2.jwt.Jwt;
 public class KeycloakService {
 
     @Value("${keycloak.administrator.username}")
-    private String keycloakUsername;
+    private String keycloakAdminUsername;
 
     @Value("${keycloak.administrator.password}")
-    private String keycloakPassword;
+    private String keycloakAdminPassword;
 
-    @Value("${jwt.auth.converter.principle-attribute}")
-    private String principleAttribute;
+    @Value("${keycloak.administrator.role}")
+    private String keycloakAdminRole;
 
     @Value("${jwt.auth.converter.resource-id}")
     private String resourceId;
@@ -41,23 +41,23 @@ public class KeycloakService {
                 .build();
     }
 
-    public String getAccessTokenForRole(String role) {
+    public String getAdminAccessToken() {
 
         String token = null;
 
-        token = getCurrentTokenIfValidRole(role);
+        token = getCurrentAccessTokenIfAdmin();
         if (token == null) {
-            log.info("***** Switch role");
-            token = getNewToken();
+            log.info("Switch role. Current user is not in ADMIN role");
+            token = getNewAdminAccessToken();
         } else {
-            log.info("***** No switch role");
+            log.info("No switch role. Current user is in ADMIN role");
         }
 
         return token;
 
     }
 
-    private String getCurrentTokenIfValidRole(String role) {
+    private String getCurrentAccessTokenIfAdmin() {
 
         String token = null;
 
@@ -80,7 +80,7 @@ public class KeycloakService {
 
             resourceRoles = (Collection<String>) resource.get("roles");
 
-            if (resourceRoles.contains(role)) {
+            if (resourceRoles.contains(keycloakAdminRole)) {
                 token = jwt.getTokenValue();
             }
 
@@ -90,13 +90,13 @@ public class KeycloakService {
 
     }
 
-    private String getNewToken() {
+    private String getNewAdminAccessToken() {
 
         MultiValueMap<String, String> formData = new LinkedMultiValueMap<>();
         formData.add("grant_type", "password");
         formData.add("client_id", "helloworld-client");
-        formData.add("username", keycloakUsername);
-        formData.add("password", keycloakPassword);
+        formData.add("username", keycloakAdminUsername);
+        formData.add("password", keycloakAdminPassword);
 
         Map response = restClientKeycloak.post()
                 .uri("/realms/helloworld-realm/protocol/openid-connect/token")

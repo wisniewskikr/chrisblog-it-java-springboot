@@ -10,6 +10,7 @@ keycloak:
   administrator:
     username: admin
     password: admin
+    role: ADMIN
 
 spring:
   security:

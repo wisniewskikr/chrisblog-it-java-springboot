@@ -19,7 +19,7 @@ public class JwtInterceptor implements ClientHttpRequestInterceptor {
     public ClientHttpResponse intercept(HttpRequest request, byte[] body, ClientHttpRequestExecution execution)
             throws IOException {
 
-        request.getHeaders().setBearerAuth(keycloakService.getAccessTokenForRole("ADMIN"));
+        request.getHeaders().setBearerAuth(keycloakService.getAdminAccessToken());
         return execution.execute(request, body);
 
     }
