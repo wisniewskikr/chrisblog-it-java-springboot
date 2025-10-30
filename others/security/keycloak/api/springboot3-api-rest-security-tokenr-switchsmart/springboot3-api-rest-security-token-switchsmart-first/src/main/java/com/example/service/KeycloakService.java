@@ -20,6 +20,9 @@ import org.springframework.security.oauth2.jwt.Jwt;
 @Slf4j
 public class KeycloakService {
 
+    public static final String ROLES = "roles";
+    public static final String PASSWORD = "password";
+
     @Value("${keycloak.administrator.username}")
     private String keycloakAdminUsername;
 
@@ -29,8 +32,11 @@ public class KeycloakService {
     @Value("${keycloak.administrator.role}")
     private String keycloakAdminRole;
 
-    @Value("${jwt.auth.converter.resource-id}")
-    private String resourceId;
+    @Value("${keycloak.resource-id}")
+    private String keycloakResourceId;
+
+    @Value("${keycloak.realm}")
+    private String keycloakRealm;
 
     private final RestClient restClientKeycloak;
 
@@ -73,12 +79,12 @@ public class KeycloakService {
             }
             resourceAccess = jwt.getClaim("resource_access");
 
-            if (resourceAccess.get(resourceId) == null) {
+            if (resourceAccess.get(keycloakResourceId) == null) {
                 return token;
             }
-            resource = (Map<String, Object>) resourceAccess.get(resourceId);
+            resource = (Map<String, Object>) resourceAccess.get(keycloakResourceId);
 
-            resourceRoles = (Collection<String>) resource.get("roles");
+            resourceRoles = (Collection<String>) resource.get(ROLES);
 
             if (resourceRoles.contains(keycloakAdminRole)) {
                 token = jwt.getTokenValue();
@@ -93,13 +99,13 @@ public class KeycloakService {
     private String getNewAdminAccessToken() {
 
         MultiValueMap<String, String> formData = new LinkedMultiValueMap<>();
-        formData.add("grant_type", "password");
-        formData.add("client_id", "helloworld-client");
+        formData.add("grant_type", PASSWORD);
+        formData.add("client_id", keycloakResourceId);
         formData.add("username", keycloakAdminUsername);
         formData.add("password", keycloakAdminPassword);
 
         Map response = restClientKeycloak.post()
-                .uri("/realms/helloworld-realm/protocol/openid-connect/token")
+                .uri("/realms/" + keycloakRealm + "/protocol/openid-connect/token")
                 .header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_FORM_URLENCODED_VALUE)
                 .body(formData)
                 .retrieve()
