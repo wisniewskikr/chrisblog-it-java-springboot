@@ -2,11 +2,12 @@ package com.example.models;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 
-@Schema(description = "Model of object HelloWorldModel")
+@Schema(description = "Model of Message")
 public class HelloWorldModel {
 	
-	@Schema(description = "Unique Id of object HelloWorldModel")
-    private Long id; 
+	@Schema(description = "Unique Id of Message", example = "1")
+    private Long id;
+	@Schema(description = "Text of Message", example = "Hello World!")
     private String text;    
 	
 	public HelloWorldModel() {}

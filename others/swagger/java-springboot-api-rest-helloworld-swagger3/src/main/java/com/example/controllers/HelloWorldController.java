@@ -35,8 +35,8 @@ public class HelloWorldController {
 	}
 
 	@Operation(
-    	summary = "Retrieve a list of messages",
-      	description = "Get a list of HelloWorldModel objects.")
+    	summary = "Read the list of messages",
+      	description = "Read the list of messages")
 	@GetMapping
 	public ResponseEntity<List<HelloWorldModel>> list() {		
 		List<HelloWorldModel> models = helloWorldService.findAll();
@@ -44,8 +44,8 @@ public class HelloWorldController {
 	}
 
 	@Operation(
-      	summary = "Retrieve a HelloWorldModel object by Id",
-      	description = "Get a HelloWorldModel object by specifying its Id. The response is HelloWorldModel object with id and text.")
+      	summary = "Read the message with specific id",
+      	description = "Read the message with specific id")
 	@GetMapping(value="/{id}")
 	public ResponseEntity<?> view(@Parameter(description = "Unique Id of Message", example = "1") @PathVariable Long id) {
 		HelloWorldModel model = null;
@@ -57,8 +57,11 @@ public class HelloWorldController {
 		return ResponseEntity.ok(model);
 	}
 
+	@Operation(
+			summary = "Create a message",
+			description = "Create a message")
 	@PostMapping
-	public ResponseEntity<?> create(@RequestBody HelloWorldModel helloWorldModel) {
+	public ResponseEntity<?> create(@Parameter(description = "Model of message to create") @RequestBody HelloWorldModel helloWorldModel) {
 		String message = null;
 		try {
 			message = helloWorldService.save(helloWorldModel);
@@ -68,8 +71,11 @@ public class HelloWorldController {
 		return ResponseEntity.ok(new InfoModel(message));
 	}
 
+	@Operation(
+			summary = "Update the message",
+			description = "Update the message")
 	@PutMapping
-	public ResponseEntity<?> edit(@RequestBody HelloWorldModel helloWorldModel) {
+	public ResponseEntity<?> edit(@Parameter(description = "Model of message to create") @RequestBody HelloWorldModel helloWorldModel) {
 		String message = null;
 		try {
 			message = helloWorldService.save(helloWorldModel);
@@ -79,8 +85,11 @@ public class HelloWorldController {
 		return ResponseEntity.ok(new InfoModel(message));
 	}
 
+	@Operation(
+			summary = "Delete the message with specific id",
+			description = "Delete the message with specific id")
 	@DeleteMapping(value="/{id}")
-	public ResponseEntity<?> delete(@PathVariable Long id) {
+	public ResponseEntity<?> delete(@Parameter(description = "Unique Id of Message", example = "1") @PathVariable Long id) {
 		String message = null;
 		try {
 			message = helloWorldService.deleteById(id);
