@@ -1,9 +1,12 @@
 package com.example.models;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 
+@Schema(description = "Model of Info")
 public class InfoModel {
-		
-    private String info;    
+
+	@Schema(description = "Content of info", example = "Info")
+    private String info;
 	
 	public InfoModel() {}
 
