@@ -2,6 +2,7 @@ package com.example.controllers;
 
 import java.util.List;
 
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -36,7 +37,8 @@ public class HelloWorldController {
 
 	@Operation(
     	summary = "Read the list of messages",
-      	description = "Read the list of messages")
+      	description = "Read the list of messages",
+		security = {})
 	@GetMapping
 	public ResponseEntity<List<HelloWorldModel>> list() {		
 		List<HelloWorldModel> models = helloWorldService.findAll();
@@ -45,7 +47,8 @@ public class HelloWorldController {
 
 	@Operation(
       	summary = "Read the message with specific id",
-      	description = "Read the message with specific id")
+      	description = "Read the message with specific id",
+		security = {})
 	@GetMapping(value="/{id}")
 	public ResponseEntity<?> view(@Parameter(description = "Unique Id of Message", example = "1") @PathVariable Long id) {
 		HelloWorldModel model = null;
@@ -59,7 +62,8 @@ public class HelloWorldController {
 
 	@Operation(
 			summary = "Create a message",
-			description = "Create a message")
+			description = "Create a message",
+			security = @SecurityRequirement(name = "keycloak"))
 	@PostMapping
 	public ResponseEntity<?> create(@Parameter(description = "Model of message to create") @RequestBody HelloWorldModel helloWorldModel) {
 		String message = null;
@@ -73,7 +77,8 @@ public class HelloWorldController {
 
 	@Operation(
 			summary = "Update the message",
-			description = "Update the message")
+			description = "Update the message",
+			security = @SecurityRequirement(name = "keycloak"))
 	@PutMapping
 	public ResponseEntity<?> edit(@Parameter(description = "Model of message to create") @RequestBody HelloWorldModel helloWorldModel) {
 		String message = null;
@@ -87,7 +92,8 @@ public class HelloWorldController {
 
 	@Operation(
 			summary = "Delete the message with specific id",
-			description = "Delete the message with specific id")
+			description = "Delete the message with specific id",
+			security = @SecurityRequirement(name = "keycloak") )
 	@DeleteMapping(value="/{id}")
 	public ResponseEntity<?> delete(@Parameter(description = "Unique Id of Message", example = "1") @PathVariable Long id) {
 		String message = null;

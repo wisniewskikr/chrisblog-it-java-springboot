@@ -39,18 +39,17 @@ public class Swagger3Config {
                 .termsOfService("http://helloworld.com")
                 .license(mitLicense);
 
-        // Define OpenID Connect security
         SecurityScheme keycloakSecurityScheme = new SecurityScheme()
                 .type(SecurityScheme.Type.OPENIDCONNECT)
                 .openIdConnectUrl(keycloakBaseUrl + "/.well-known/openid-configuration")
                 .description("OAuth2 flow via Keycloak (PKCE enabled)");
 
-        SecurityRequirement securityRequirement = new SecurityRequirement().addList("keycloak");
-
         return new OpenAPI()
                 .info(info)
                 .addServersItem(server)
-                .components(new Components().addSecuritySchemes("keycloak", keycloakSecurityScheme))
-                .addSecurityItem(securityRequirement);
+                .components(new Components().addSecuritySchemes("keycloak", keycloakSecurityScheme));
+
     }
+
 }
+
