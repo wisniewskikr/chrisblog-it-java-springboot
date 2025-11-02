@@ -5,11 +5,15 @@ import io.swagger.v3.oas.models.OpenAPI;
 import io.swagger.v3.oas.models.info.*;
 import io.swagger.v3.oas.models.security.*;
 import io.swagger.v3.oas.models.servers.Server;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class Swagger3Config {
+
+    @Value("${spring.security.oauth2.resourceserver.jwt.issuer-uri}")
+    public String keycloakBaseUrl;
 
     @Bean
     public OpenAPI myOpenAPI() {
@@ -38,7 +42,7 @@ public class Swagger3Config {
         // Define OpenID Connect security
         SecurityScheme keycloakSecurityScheme = new SecurityScheme()
                 .type(SecurityScheme.Type.OPENIDCONNECT)
-                .openIdConnectUrl("http://localhost:7070/realms/helloworld-realm/.well-known/openid-configuration")
+                .openIdConnectUrl(keycloakBaseUrl + "/.well-known/openid-configuration")
                 .description("OAuth2 flow via Keycloak (PKCE enabled)");
 
         SecurityRequirement securityRequirement = new SecurityRequirement().addList("keycloak");
