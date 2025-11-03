@@ -12,7 +12,7 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class Swagger3Config {
 
-    @Value("${spring.security.oauth2.resourceserver.jwt.issuer-uri}")
+    @Value("${swagger.keycloak.issuer-uri}")
     public String keycloakBaseUrl;
 
     @Bean

@@ -16,3 +16,7 @@ spring:
         jwt:
           issuer-uri: http://localhost:7070/realms/helloworld-realm
           jwk-set-uri: ${spring.security.oauth2.resourceserver.jwt.issuer-uri}/protocol/openid-connect/certs
+
+swagger:
+  keycloak:
+    issuer-uri: http://localhost:7070/realms/helloworld-realm
