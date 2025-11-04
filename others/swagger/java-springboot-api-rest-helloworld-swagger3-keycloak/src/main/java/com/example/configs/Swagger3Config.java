@@ -12,6 +12,9 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class Swagger3Config {
 
+    @Value("${swagger.app.uri}")
+    public String appUrl;
+
     @Value("${swagger.keycloak.issuer-uri}")
     public String keycloakBaseUrl;
 
@@ -19,7 +22,7 @@ public class Swagger3Config {
     public OpenAPI myOpenAPI() {
 
         Server server = new Server()
-                .url("http://localhost:8080")
+                .url(appUrl)
                 .description("Local server");
 
         Contact contact = new Contact()
