@@ -103,16 +103,16 @@ USAGE DOCKER COMPOSE
 1. Update **hosts** file (Run as Administrator; Windows: "Windows\System32\drivers\etc\hosts"; MAC/Linux: "etc/hosts") with new line **127.0.0.1 keycloak**
 1. Start **Docker** tool
 1. In a command line tool **start Docker containers** with `docker-compose up -d --build`
-1. In any REST Client (e.g. Postman) visit **REST API** application with `http://localhost:9090/api/v1/demo/user`
+1. In any REST Client (e.g. Postman) visit **REST API** application with `http://localhost:8080/api/v1/demo/user`
    * Authorization -> Type -> OAuth 2.0
    * Token Name: **Token**
    * Grant Type: **Authorization Code (With PKCE)
-   * Callback URL: **http://localhost:9090/code**
-   * Auth URL: **http://keycloak:8080/realms/helloworld-realm/protocol/openid-connect/auth**
-   * Access Token URL: **http://keycloak:8080/realms/helloworld-realm/protocol/openid-connect/token**
+   * Callback URL: **http://localhost:8080**
+   * Auth URL: **http://keycloak:7070/realms/helloworld-realm/protocol/openid-connect/auth**
+   * Access Token URL: **http://keycloak:7070/realms/helloworld-realm/protocol/openid-connect/token**
    * Client ID: **helloworld-client**
    * Code Challenge Method: **SHA-256**
-   * Click **Get New Access Token -> Use Token**
+   * Click **Get New Access Token -> Register new user -> Use Token**
    * Click **Send**
    * Expected text **Hello World, User!**
 1. Clean up environment 
