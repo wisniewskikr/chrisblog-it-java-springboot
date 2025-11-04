@@ -10,15 +10,15 @@
     volumes:
       - ./realm-export.json:/opt/keycloak/data/import/realm-export.json
     ports:
-      - "8080:8080"
+      - "7070:8080"
 
   app:
     container_name: app
     image: app
     environment:
-      SPRING_SECURITY_OAUTH2_RESOURCESERVER_JWT_ISSUER-URI: http://keycloak:8080/realms/helloworld-realm
+      SPRING_SECURITY_OAUTH2_RESOURCESERVER_JWT_ISSUER-URI: http://keycloak:7070/realms/helloworld-realm
     build:
       context: ./
       dockerfile: Dockerfile
     ports:
-      - "9090:9090"
+      - "8080:8080"
