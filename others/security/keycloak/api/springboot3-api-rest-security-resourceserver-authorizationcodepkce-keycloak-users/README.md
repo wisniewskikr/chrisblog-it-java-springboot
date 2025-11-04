@@ -48,8 +48,43 @@ USAGES
 ------
 
 This project can be tested in following configurations:
-* **Usage Docker Compose**: all services are started as Docker containers definied in docker compose file.
+* **Usage Manual**: infrastructure services are started as Docker containers. Services are started manually.
+* **Usage Docker Compose**: all services are started as Docker containers defined in docker compose file.
 * **Usage Kubernetes (Kind)**: all services are started as Kubernetes pods.
+
+
+USAGE MANUAL
+------------
+
+> **Usage Manual** means that infrastructure services are started as Docker containers. Services are started manually.
+
+> Please **clone/download** project, open **project's main folder** in your favorite **command line tool** and then **proceed with steps below**.
+
+> **Prerequisites**:
+* **Operating System** (tested on Windows 11)
+* **Git** (tested on version 2.33.0.windows.2)
+* **Docker** (tested on version 4.33.1)
+
+##### Required steps:
+1. Start **Docker** tool
+1. In the first command line tool **start Keycloak container** with `docker-compose -f docker-compose-infrastructure.yml up -d --build`
+1. In the second command line tool **start First service** with `mvn spring-boot:run`
+1. In any REST Client (e.g. Postman) visit **REST API** application with `http://localhost:9090/api/v1/demo/user`
+   * Authorization -> Type -> OAuth 2.0
+   * Token Name: **Token**
+   * Grant Type: **Authorization Code (With PKCE)
+   * Callback URL: **http://localhost:9090/code**
+   * Auth URL: **http://localhost:8080/realms/helloworld-realm/protocol/openid-connect/auth**
+   * Access Token URL: **http://localhost:8080/realms/helloworld-realm/protocol/openid-connect/token**
+   * Client ID: **helloworld-client**
+   * Code Challenge Method: **SHA-256**
+   * Click **Get New Access Token -> Register new user -> Use Token**
+   * Click **Send**
+   * Expected text **Hello World, User!**
+1. Clean up environment
+   * In the second command line tool **stop First service** with `ctrl + c`
+   * In the first command line tool **remove Docker containers** with `docker-compose -f docker-compose-infrastructure.yaml down --rmi all`
+   * Stop **Docker** tool
 
 
 USAGE DOCKER COMPOSE
