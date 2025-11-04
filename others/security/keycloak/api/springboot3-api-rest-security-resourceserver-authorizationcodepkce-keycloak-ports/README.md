@@ -69,13 +69,13 @@ USAGE MANUAL
 1. Start **Docker** tool
 1. In the first command line tool **start Keycloak container** with `docker-compose -f docker-compose-infrastructure.yml up -d --build`
 1. In the second command line tool **start First service** with `mvn spring-boot:run`
-1. In any REST Client (e.g. Postman) visit **REST API** application with `http://localhost:9090/api/v1/demo/user`
+1. In any REST Client (e.g. Postman) visit **REST API** application with `http://localhost:8080/api/v1/demo/user`
    * Authorization -> Type -> OAuth 2.0
    * Token Name: **Token**
    * Grant Type: **Authorization Code (With PKCE)
-   * Callback URL: **http://localhost:9090/code**
-   * Auth URL: **http://localhost:8080/realms/helloworld-realm/protocol/openid-connect/auth**
-   * Access Token URL: **http://localhost:8080/realms/helloworld-realm/protocol/openid-connect/token**
+   * Callback URL: **http://localhost:8080**
+   * Auth URL: **http://localhost:7070/realms/helloworld-realm/protocol/openid-connect/auth**
+   * Access Token URL: **http://localhost:7070/realms/helloworld-realm/protocol/openid-connect/token**
    * Client ID: **helloworld-client**
    * Code Challenge Method: **SHA-256**
    * Click **Get New Access Token -> Register new user -> Use Token**
