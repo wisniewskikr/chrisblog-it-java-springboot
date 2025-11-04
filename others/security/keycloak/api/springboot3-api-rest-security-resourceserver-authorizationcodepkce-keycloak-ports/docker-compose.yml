@@ -3,9 +3,12 @@
   keycloak:
     container_name: keycloak
     image: quay.io/keycloak/keycloak:26.0
-    environment:
-      KEYCLOAK_ADMIN: admin
-      KEYCLOAK_ADMIN_PASSWORD: admin
+#    environment:
+#      KEYCLOAK_ADMIN: admin
+#      KEYCLOAK_ADMIN_PASSWORD: admin
+#      KC_HOSTNAME: keycloak
+#      KC_HOSTNAME_STRICT: false
+#      KC_PROXY: edge
     command: ["start-dev", "--import-realm"]
     volumes:
       - ./realm-export.json:/opt/keycloak/data/import/realm-export.json
@@ -16,7 +19,10 @@
     container_name: app
     image: app
     environment:
-      SPRING_SECURITY_OAUTH2_RESOURCESERVER_JWT_ISSUER-URI: http://keycloak:7070/realms/helloworld-realm
+      # Accept the issuer exactly as present in the token
+      SPRING_SECURITY_OAUTH2_RESOURCESERVER_JWT_ISSUER_URI: "http://keycloak:7070/realms/helloworld-realm"
+      # But fetch signing keys from the Keycloak container (internal port 8080)
+      SPRING_SECURITY_OAUTH2_RESOURCESERVER_JWT_JWK_SET_URI: "http://keycloak:8080/realms/helloworld-realm/protocol/openid-connect/certs"
     build:
       context: ./
       dockerfile: Dockerfile
