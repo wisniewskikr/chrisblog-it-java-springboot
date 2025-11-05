@@ -85,8 +85,7 @@ USAGE MANUAL
 1. In the second command line tool **start First service** with `mvn spring-boot:run`
 1. In any Internet Browser (e.g. Chrome) create new user **admin** with password **admin** with `http://locaholst:7070`
 1. In any Internet Browser (e.g. Chrome) visit **Swagger 3** of application with `http://localhost:8080/swagger-ui/index.html`
-   * Display all messages with **GET** method and endpoint `api/v1/messages`
-   * Create new message with **POST** method, log in to **Keycloak** (credentials "admin/admin" and client id "helloworld-client") and endpoint `api/v1/messages`
+   * Create new message with **POST** method (log in to **Keycloak** with credentials "admin/admin" and client id "helloworld-client") and endpoint `api/v1/messages`
 1. Clean up environment
    * In the second command line tool **stop First service** with `ctrl + c`
    * In the first command line tool **remove Docker containers** with `docker-compose -f docker-compose-infrastructure.yaml down --rmi all`
@@ -119,8 +118,7 @@ USAGE DOCKER COMPOSE
 1. In a command line tool **start Docker containers** with `docker-compose up -d --build`
 1. In any Internet Browser (e.g. Chrome) create new user **admin** with password **admin** with `http://locaholst:7070`
 1. In any Internet Browser (e.g. Chrome) visit **Swagger 3** of application with `http://localhost:8080/swagger-ui/index.html`
-   * Display all messages with **GET** method and endpoint `api/v1/messages`
-   * Create new message with **POST** method, log in to **Keycloak** (credentials "admin/admin" and client id "helloworld-client") and endpoint `api/v1/messages`
+   * Create new message with **POST** method (log in to **Keycloak** with credentials "admin/admin" and client id "helloworld-client") and endpoint `api/v1/messages`
 1. Clean up environment
    * In a command line tool **remove Docker containers** with `docker-compose down --rmi all`
    * Stop **Docker** tool
@@ -152,13 +150,12 @@ USAGE KUBERNETES (KIND)
 1. In the first command line tool create and start cluster **Kind** with `kind create cluster --name helloworld`
 1. In the second command line tool **start Kubernetes Pods** with `kubectl apply -f kubernetes.yaml`
 1. In the second command line tool **check status of Kubernetes Pods** with `kubectl get pods`
-   * Expected mysql, be and fe as **READY 1/1** (it can take few minutes)
+   * Expected all pods as **READY 1/1** (it can take few minutes)
 1. In the second command line tool **forward port of Keycloak service** with `kubectl port-forward service/keycloak 7070:7070`
 1. In the third command line tool **forward port of First service** with `kubectl port-forward service/app 8080:8080`
 1. In any Internet Browser (e.g. Chrome) create new user **admin** with password **admin** with `http://locaholst:7070`
 1. In any Internet Browser (e.g. Chrome) visit **Swagger 3** of application with `http://localhost:8080/swagger-ui/index.html`
-   * Display all messages with **GET** method and endpoint `api/v1/messages`
-   * Create new message with **POST** method, log in to **Keycloak** (credentials "admin/admin" and client id "helloworld-client") and endpoint `api/v1/messages`
+   * Create new message with **POST** method (log in to **Keycloak** with credentials "admin/admin" and client id "helloworld-client") and endpoint `api/v1/messages`
 1. Clean up environment
    * In the third command line tool **stop forwarding port of App service** with `ctrl + C`
    * In the second command line tool **stop forwarding port of Keycloak service** with `ctrl + C`
