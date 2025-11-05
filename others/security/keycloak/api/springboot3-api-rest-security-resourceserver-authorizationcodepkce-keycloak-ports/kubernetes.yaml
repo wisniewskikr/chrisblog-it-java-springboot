@@ -693,7 +693,8 @@ data:
           "protocol": "openid-connect",
           "attributes": {
             "realm_client": "false",
-            "client.use.lightweight.access.token.enabled": "true"
+            "client.use.lightweight.access.token.enabled": "true",
+            "post.logout.redirect.uris": "+"
           },
           "authenticationFlowBindingOverrides": {},
           "fullScopeAllowed": true,
@@ -735,7 +736,8 @@ data:
           "frontchannelLogout": false,
           "protocol": "openid-connect",
           "attributes": {
-            "realm_client": "true"
+            "realm_client": "true",
+            "post.logout.redirect.uris": "+"
           },
           "authenticationFlowBindingOverrides": {},
           "fullScopeAllowed": false,
@@ -769,10 +771,10 @@ data:
           "alwaysDisplayInConsole": false,
           "clientAuthenticatorType": "client-secret",
           "redirectUris": [
-            "http://localhost:9090/code"
+            "http://localhost:8080"
           ],
           "webOrigins": [
-            "http://localhost:9090"
+            "*"
           ],
           "notBefore": 0,
           "bearerOnly": false,
@@ -786,6 +788,7 @@ data:
           "protocol": "openid-connect",
           "attributes": {
             "client.introspection.response.allow.jwt.claim.enabled": "false",
+            "post.logout.redirect.uris": "+",
             "oauth2.device.authorization.grant.enabled": "false",
             "backchannel.logout.revoke.offline.tokens": "false",
             "use.refresh.tokens": "true",
@@ -841,7 +844,8 @@ data:
           "frontchannelLogout": false,
           "protocol": "openid-connect",
           "attributes": {
-            "realm_client": "true"
+            "realm_client": "true",
+            "post.logout.redirect.uris": "+"
           },
           "authenticationFlowBindingOverrides": {},
           "fullScopeAllowed": false,
@@ -1054,6 +1058,7 @@ data:
               "config": {
                 "introspection.token.claim": "true",
                 "multivalued": "true",
+                "userinfo.token.claim": "true",
                 "user.attribute": "foo",
                 "id.token.claim": "true",
                 "access.token.claim": "true",
@@ -1081,8 +1086,9 @@ data:
               "consentRequired": false,
               "config": {
                 "user.session.note": "AUTH_TIME",
-                "id.token.claim": "true",
                 "introspection.token.claim": "true",
+                "userinfo.token.claim": "true",
+                "id.token.claim": "true",
                 "access.token.claim": "true",
                 "claim.name": "auth_time",
                 "jsonType.label": "long"
@@ -1496,12 +1502,13 @@ data:
               "protocolMapper": "oidc-organization-membership-mapper",
               "consentRequired": false,
               "config": {
-                "id.token.claim": "true",
                 "introspection.token.claim": "true",
+                "multivalued": "true",
+                "userinfo.token.claim": "true",
+                "id.token.claim": "true",
                 "access.token.claim": "true",
                 "claim.name": "organization",
-                "jsonType.label": "String",
-                "multivalued": "true"
+                "jsonType.label": "String"
               }
             }
           ]
@@ -1549,7 +1556,8 @@ data:
               "config": {
                 "id.token.claim": "true",
                 "introspection.token.claim": "true",
-                "access.token.claim": "true"
+                "access.token.claim": "true",
+                "userinfo.token.claim": "true"
               }
             }
           ]
@@ -1661,14 +1669,14 @@ data:
             "subComponents": {},
             "config": {
               "allowed-protocol-mapper-types": [
-                "saml-role-list-mapper",
-                "saml-user-attribute-mapper",
-                "oidc-sha256-pairwise-sub-mapper",
-                "oidc-usermodel-attribute-mapper",
-                "saml-user-property-mapper",
                 "oidc-usermodel-property-mapper",
+                "saml-role-list-mapper",
+                "saml-user-property-mapper",
                 "oidc-address-mapper",
-                "oidc-full-name-mapper"
+                "oidc-full-name-mapper",
+                "oidc-usermodel-attribute-mapper",
+                "oidc-sha256-pairwise-sub-mapper",
+                "saml-user-attribute-mapper"
               ]
             }
           },
@@ -1680,14 +1688,14 @@ data:
             "subComponents": {},
             "config": {
               "allowed-protocol-mapper-types": [
-                "saml-user-attribute-mapper",
+                "oidc-usermodel-attribute-mapper",
                 "saml-user-property-mapper",
-                "oidc-usermodel-property-mapper",
+                "saml-user-attribute-mapper",
                 "saml-role-list-mapper",
-                "oidc-address-mapper",
+                "oidc-usermodel-property-mapper",
                 "oidc-full-name-mapper",
                 "oidc-sha256-pairwise-sub-mapper",
-                "oidc-usermodel-attribute-mapper"
+                "oidc-address-mapper"
               ]
             }
           },
@@ -2490,8 +2498,8 @@ data:
         "cibaExpiresIn": "120",
         "cibaAuthRequestedUserHint": "login_hint",
         "oauth2DeviceCodeLifespan": "600",
-        "oauth2DevicePollingInterval": "5",
         "clientOfflineSessionMaxLifespan": "0",
+        "oauth2DevicePollingInterval": "5",
         "clientSessionIdleTimeout": "0",
         "parRequestUriLifespan": "60",
         "clientSessionMaxLifespan": "0",
