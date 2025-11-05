@@ -153,39 +153,14 @@ USAGE KUBERNETES (KIND)
 1. In the second command line tool **start Kubernetes Pods** with `kubectl apply -f kubernetes.yaml`
 1. In the second command line tool **check status of Kubernetes Pods** with `kubectl get pods`
    * Expected mysql, be and fe as **READY 1/1** (it can take few minutes)
-1. In the second command line tool **forward port of Keycloak service** with `kubectl port-forward service/keycloak 8080:8080`
-1. In the third command line tool **forward port of First service** with `kubectl port-forward service/first 8081:8081`
-1. In any Internet Browser (e.g. Chrome) create new user **admin** with password **admin** with `http://locaholst:8080`
-1. In any REST Client (e.g. Postman) visit **REST API** application with `http://localhost:8081/api/v1/message`
-   * Authorization -> Type -> OAuth 2.0
-   * Token Name: **Token**
-   * Grant Type: **Authorization Code (With PKCE)
-   * Callback URL: **http://localhost:8081**
-   * Auth URL: **http://localhost:8080/realms/helloworld-realm/protocol/openid-connect/auth**
-   * Access Token URL: **http://localhost:8080/realms/helloworld-realm/protocol/openid-connect/token**
-   * Client ID: **helloworld-client**
-   * Code Challenge Method: **SHA-256**
-   * Click **Get New Access Token -> Register user/user -> Use Token**
-   * Click **Send**
-   * Expected text **Hello World!**
-1. In any REST Client (e.g. Postman) visit **REST API** application with `http://localhost:8081/api/v1/message`
-   * Authorization -> Type -> OAuth 2.0
-   * Token Name: **Token**
-   * Grant Type: **Authorization Code (With PKCE)
-   * Callback URL: **http://localhost:8081**
-   * Auth URL: **http://localhost:8080/realms/helloworld-realm/protocol/openid-connect/auth**
-   * Access Token URL: **http://localhost:8080/realms/helloworld-realm/protocol/openid-connect/token**
-   * Client ID: **helloworld-client**
-   * Code Challenge Method: **SHA-256**
-   * Click **Clear cookies**
-   * Click **Get New Access Token -> Log in as admin/admin -> Use Token**
-   * Click **Send**
-   * Expected text **Hello World!**
-1. In First service console expected:
-   * Message **Switch role**
-   * Message **No switch role**
+1. In the second command line tool **forward port of Keycloak service** with `kubectl port-forward service/keycloak 7070:7070`
+1. In the third command line tool **forward port of First service** with `kubectl port-forward service/app 8080:8080`
+1. In any Internet Browser (e.g. Chrome) create new user **admin** with password **admin** with `http://locaholst:7070`
+1. In any Internet Browser (e.g. Chrome) visit **Swagger 3** of application with `http://localhost:8080/swagger-ui/index.html`
+   * Display all messages with **GET** method and endpoint `api/v1/messages`
+   * Create new message with **POST** method, log in to **Keycloak** (credentials "admin/admin" and client id "helloworld-client") and endpoint `api/v1/messages`
 1. Clean up environment
-   * In the third command line tool **stop forwarding port of First service** with `ctrl + C`
+   * In the third command line tool **stop forwarding port of App service** with `ctrl + C`
    * In the second command line tool **stop forwarding port of Keycloak service** with `ctrl + C`
    * In the second command line tool **remove Kubernetes Pods** with `kubectl delete -f kubernetes.yaml`
    * In the first command line tool delete cluster **Kind** with `kind delete cluster --name helloworld`
@@ -193,10 +168,8 @@ USAGE KUBERNETES (KIND)
    * Remove new line from **hosts**
 
 ##### Optional steps:
-1. In a command line tool build Docker First image with `docker build -f java-springboot-api-rest-helloworld-swagger3-keycloak-first/Dockerfile -t wisniewskikr/java-springboot-api-rest-helloworld-swagger3-keycloak-first:0.0.1 ./java-springboot-api-rest-helloworld-swagger3-keycloak-first`
-1. In a command line tool push Docker First image to Docker Repository with `docker push wisniewskikr/java-springboot-api-rest-helloworld-swagger3-keycloak-first:0.0.1`
-1. In a command line tool build Docker Second image with `docker build -f java-springboot-api-rest-helloworld-swagger3-keycloak-second/Dockerfile -t wisniewskikr/java-springboot-api-rest-helloworld-swagger3-keycloak-second:0.0.1 ./java-springboot-api-rest-helloworld-swagger3-keycloak-second`
-1. In a command line tool push Docker Second image to Docker Repository with `docker push wisniewskikr/java-springboot-api-rest-helloworld-swagger3-keycloak-second:0.0.1`
+1. In a command line tool build Docker App image with `docker build -f java-springboot-api-rest-helloworld-swagger3-keycloak/Dockerfile -t wisniewskikr/java-springboot-api-rest-helloworld-swagger3-keycloak:0.0.1 ./java-springboot-api-rest-helloworld-swagger3-keycloak`
+1. In a command line tool push Docker App image to Docker Repository with `docker push wisniewskikr/java-springboot-api-rest-helloworld-swagger3-keycloak:0.0.1`
 1. In the first command line tool with administrator privileges check clusers with `kind get clusters`
 1. In a command line tool check Kubernetes Deployments with `kubectl get deployments`
 1. In a command line tool check Kubernetes Deployments details with **kubectl describe deployment {deployment-name}**
