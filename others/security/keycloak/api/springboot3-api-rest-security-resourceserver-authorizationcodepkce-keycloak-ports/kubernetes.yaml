@@ -42,7 +42,7 @@ spec:
     app: keycloak
   ports:
     - protocol: TCP
-      port: 8080
+      port: 7070
       targetPort: 8080
 ---
 apiVersion: apps/v1
@@ -63,8 +63,10 @@ spec:
         - name: app
           image: wisniewskikr/springboot3-api-rest-security-resourceserver-authorizationcodepkce-keycloak-ports:0.0.1
           env:
+            - name: SPRING_SECURITY_OAUTH2_RESOURCESERVER_JWT_ISSUER_URI
+              value: http://keycloak.default.svc.cluster.local:7070/realms/helloworld-realm
             - name: SPRING_SECURITY_OAUTH2_RESOURCESERVER_JWT_ISSUERURI
-              value: http://keycloak.default.svc.cluster.local:8080/realms/helloworld-realm
+              value: http://keycloak.default.svc.cluster.local:8080/realms/helloworld-realm/protocol/openid-connect/certs
           ports:
             - containerPort: 9090
 ---
