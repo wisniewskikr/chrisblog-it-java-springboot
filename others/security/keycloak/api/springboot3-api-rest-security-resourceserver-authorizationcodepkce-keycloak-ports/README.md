@@ -149,18 +149,18 @@ USAGE KUBERNETES (KIND)
 1. In the second command line tool **start Kubernetes Pods** with `kubectl apply -f kubernetes.yaml`
 1. In the second command line tool **check status of Kubernetes Pods** with `kubectl get pods`
    * Expected mysql, be and fe as **READY 1/1** (it can take few minutes)
-1. In the second command line tool **forward port of Keycloak service** with `kubectl port-forward service/keycloak 8080:8080`
-1. In the third command line tool **forward port of App service** with `kubectl port-forward service/app 9090:9090`
-1. In any REST Client (e.g. Postman) visit **REST API** application with `http://localhost:9090/api/v1/demo/user`
+1. In the second command line tool **forward port of Keycloak service** with `kubectl port-forward service/keycloak 7070:7070`
+1. In the third command line tool **forward port of App service** with `kubectl port-forward service/app 8080:8080`
+1. In any REST Client (e.g. Postman) visit **REST API** application with `http://localhost:8080/api/v1/demo/user`
    * Authorization -> Type -> OAuth 2.0
    * Token Name: **Token**
    * Grant Type: **Authorization Code (With PKCE)
-   * Callback URL: **http://localhost:9090/code**
-   * Auth URL: **http://keycloak.default.svc.cluster.local:8080/realms/helloworld-realm/protocol/openid-connect/auth**
-   * Access Token URL: **http://keycloak.default.svc.cluster.local:8080/realms/helloworld-realm/protocol/openid-connect/token**
+   * Callback URL: **http://localhost:8080**
+   * Auth URL: **http://keycloak.default.svc.cluster.local:7070/realms/helloworld-realm/protocol/openid-connect/auth**
+   * Access Token URL: **http://keycloak.default.svc.cluster.local:7070/realms/helloworld-realm/protocol/openid-connect/token**
    * Client ID: **helloworld-client**
    * Code Challenge Method: **SHA-256**
-   * Click **Get New Access Token -> Use Token**
+   * Click **Get New Access Token -> Register new user -> Use Token**
    * Click **Send**
    * Expected text **Hello World, User!**
 1. Clean up environment 
