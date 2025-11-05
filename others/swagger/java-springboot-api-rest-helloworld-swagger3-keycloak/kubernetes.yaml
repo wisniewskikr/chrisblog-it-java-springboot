@@ -61,7 +61,7 @@ spec:
     spec:
       containers:
         - name: app
-          image: wisniewskikr/springboot3-api-rest-security-resourceserver-authorizationcodepkce-keycloak-ports:0.0.1
+          image: wisniewskikr/java-springboot-api-rest-helloworld-swagger3-keycloak:0.0.1
           env:
             - name: SPRING_SECURITY_OAUTH2_RESOURCESERVER_JWT_ISSUER_URI
               value: http://keycloak.default.svc.cluster.local:7070/realms/helloworld-realm
