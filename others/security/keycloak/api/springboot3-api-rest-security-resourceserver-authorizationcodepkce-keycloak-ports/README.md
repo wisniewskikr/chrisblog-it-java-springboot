@@ -16,7 +16,14 @@ DESCRIPTION
 -----------
 
 ##### Goal
-The goal of this project is to present how to implement **security** in **REST API** application using **Keycloak** tool with usage **Java** programming language and **Spring Boot 3** framework. This application is used as **resource server** (verifies JWT tokens) and for authentication uses **authorization code with PKCE** (two steps: 1. User logs in and gets authorization code; 2. User generates token basing on authorization code). PKCE means that user doesn't have to new "secret id" any more.
+The goal of this project is to present how to implement **security** in **REST API** application using **Keycloak** tool 
+with usage **Java** programming language and **Spring Boot 3** framework. This application is used as **resource server** 
+(verifies JWT tokens) and for authentication uses **authorization code with PKCE** 
+(two steps: 1. User logs in and gets authorization code; 2. User generates token basing on authorization code). 
+PKCE means that user doesn't have to new "secret id" any more.
+
+Additionally Keycloak **port** was changed from 8080 to 7070. In this way Spring Boot application can work on
+default port 8080.
 
 ##### Elements
 This project consists of following elements:
