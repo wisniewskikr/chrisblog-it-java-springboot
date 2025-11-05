@@ -65,8 +65,6 @@ spec:
           env:
             - name: SPRING_SECURITY_OAUTH2_RESOURCESERVER_JWT_ISSUER_URI
               value: http://keycloak.default.svc.cluster.local:7070/realms/helloworld-realm
-            - name: SPRING_SECURITY_OAUTH2_RESOURCESERVER_JWT_ISSUERURI
-              value: http://keycloak.default.svc.cluster.local:8080/realms/helloworld-realm/protocol/openid-connect/certs
           ports:
             - containerPort: 8080
 ---
