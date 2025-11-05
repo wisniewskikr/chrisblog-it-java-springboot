@@ -20,6 +20,5 @@ services:
     environment:
       SPRING_SECURITY_OAUTH2_RESOURCESERVER_JWT_ISSUER_URI: http://keycloak:7070/realms/helloworld-realm
       SPRING_SECURITY_OAUTH2_RESOURCESERVER_JWT_JWK_SET_URI: http://keycloak:8080/realms/helloworld-realm/protocol/openid-connect/certs
-      SWAGGER_KEYCLOAK_ISSUER-URI: http://keycloak:7070/realms/helloworld-realm
     ports:
       - "8080:8080"

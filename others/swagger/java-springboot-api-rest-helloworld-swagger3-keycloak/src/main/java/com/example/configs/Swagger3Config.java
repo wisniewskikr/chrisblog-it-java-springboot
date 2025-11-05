@@ -15,7 +15,7 @@ public class Swagger3Config {
     @Value("${swagger.app.uri}")
     public String appUrl;
 
-    @Value("${swagger.keycloak.issuer-uri}")
+    @Value("${spring.security.oauth2.resourceserver.jwt.issuer-uri}")
     public String keycloakBaseUrl;
 
     @Bean

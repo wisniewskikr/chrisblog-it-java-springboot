@@ -20,5 +20,3 @@ spring:
 swagger:
   app:
     uri: http://localhost:8080
-  keycloak:
-    issuer-uri: http://localhost:7070/realms/helloworld-realm
