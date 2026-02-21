@@ -41,7 +41,7 @@ This project can be tested in following configurations:
 USAGE DOCKER COMPOSE
 --------------------
 
-> **Usage Docker Compse** means all services are started as Docker containers definied in docker compose file.
+> **Usage Docker Compse** means all services are started as Docker containers defined in docker compose file.
 
 > Please **clone/download** project, open **project's main folder** in your favorite **command line tool** and then **proceed with steps below**.
 

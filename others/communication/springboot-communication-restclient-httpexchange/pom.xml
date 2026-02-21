@@ -5,11 +5,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.example</groupId>
-    <artifactId>springboot-helloworld-port-uuid-multiple</artifactId>
+    <artifactId>springboot-communication-restclient-httpexchange</artifactId>
     <version>0.1.0</version>
     <modules>
-    	<module>springboot-communication-restclient-multiple-first</module>
-        <module>springboot-communication-restclient-multiple-second</module>
+    	<module>springboot-communication-restclient-httpexchange-first</module>
+        <module>springboot-communication-restclient-httpexchange-second</module>
     </modules>
     <packaging>pom</packaging>
 
