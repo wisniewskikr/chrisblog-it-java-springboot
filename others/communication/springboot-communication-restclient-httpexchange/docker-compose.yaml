@@ -1,0 +1,21 @@
+ services:
+
+  first:
+    container_name: first
+    image: first
+    build:
+      context: ./springboot-communication-restclient-multiple-first
+      dockerfile: Dockerfile
+    environment:
+      API_SECOND_URL: http://second:9090/api/v1
+    ports:
+      - 8080:8080
+
+  second:
+    container_name: second
+    image: second
+    build:
+      context: ./springboot-communication-restclient-multiple-second
+      dockerfile: Dockerfile
+    ports:
+      - 9090:9090
