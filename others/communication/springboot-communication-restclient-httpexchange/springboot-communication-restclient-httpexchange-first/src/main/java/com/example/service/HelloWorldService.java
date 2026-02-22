@@ -1,7 +1,7 @@
 package com.example.service;
 
+import com.example.client.SecondClient;
 import org.springframework.stereotype.Service;
-import org.springframework.web.client.RestClient;
 import com.example.dto.HelloWorldDto;
 
 import lombok.AllArgsConstructor;
@@ -10,15 +10,10 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor
 public class HelloWorldService {
     
-    private final RestClient restClient;
+    private final SecondClient secondClient;
 
     public HelloWorldDto getMessage() {
-
-        return restClient.get()
-                .uri("/message")
-                .retrieve()
-                .body(HelloWorldDto.class);
-
+        return secondClient.helloWorld();
     }
 
 }
