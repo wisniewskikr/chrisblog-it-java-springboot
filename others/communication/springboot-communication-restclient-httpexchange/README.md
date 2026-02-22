@@ -32,7 +32,30 @@ USAGES
 ------
 
 This project can be tested in following configurations:
+* **Usage Manual**: infrastructure services are started as Docker containers. Application services are started manually in command line
 * **Usage Docker Compose**: all services are started as Docker containers defined in docker compose file.
+* **Usage Kubernetes (Kind)**: all services are started as Kubernetes pods.
+
+
+USAGE MANUAL
+------------
+
+> **Usage Manual** means that infrastructure services are started as Docker containers. Application services are started manually in command line.
+
+> Please **clone/download** project, open **project's main folder** in your favorite **command line tool** and then **proceed with steps below**.
+
+> **Prerequisites**:
+* **Operating System** (tested on Windows 11)
+* **Git** (tested on version 2.33.0.windows.2)
+
+##### Required steps:
+1. In a first command line tool **start Second application** with `mvn -f ./springboot-communication-restclient-httpexchange-second spring-boot:run`
+1. In a second command line tool **start First application** with `mvn -f ./springboot-communication-restclient-httpexchange-first spring-boot:run`
+1. In any REST Client (e.g. Postman) visit **first** application with `http://localhost:8080/api/v1/message`
+    * Expected JSON with "Hello World!" message
+1. Clean up environment:
+    * In the second command line tool **stop Second application** with `ctrl + C`
+    * In the first command line tool **stop First application** with `ctrl + C`
 
 
 USAGE DOCKER COMPOSE
