@@ -65,7 +65,7 @@ USAGE DOCKER COMPOSE
 
 > Please **clone/download** project, open **project's main folder** in your favorite **command line tool** and then **proceed with steps below**.
 
-> **Prerequisites**:  
+> **Prerequisites**:
 * **Operating System** (tested on Windows 11)
 * **Git** (tested on version 2.33.0.windows.2)
 * **Docker** (tested on version 4.33.1)
@@ -84,5 +84,5 @@ USAGE DOCKER COMPOSE
 1. In a command line tool check list of Docker images with `docker images`
 1. In a command line tool check list of all Docker containers with `docker ps -a`
 1. In a command line tool check list of active Docker containers with `docker ps`
-1. In a command line tool check list of Docker nerworks with `docker network ls`
+1. In a command line tool check list of Docker networks with `docker network ls`
 1. In a command line tool check container logs with `docker logs {container-name}`
