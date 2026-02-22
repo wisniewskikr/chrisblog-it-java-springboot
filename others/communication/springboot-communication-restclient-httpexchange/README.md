@@ -8,18 +8,14 @@ DESCRIPTION
 -----------
 
 ##### Goal
-The goal of this project is to present how to implement **communication** between two **REST API** applications with usage **Java** programming language and **Spring Boot 3** framework. Class **RestClient** is used for this communication.
+The goal of this project is to present how to implement **communication** between two **REST API** applications 
+with usage **Java** programming language and **Spring Boot 3** framework. Class **RestClient** with an interface
+**HttoExchange** is used for this communication.
 
 ##### Elements
 This project consists of following elements:
-* **First**: Rest API application
-   * Input: endpoint "api/vi/message"
-   * Content: RestClient communication with second application
-   * Output: JSON with message
-* **Second**: Rest API application
-   * Input: endpoint "api/vi/message"
-   * Content: N/A
-   * Output: JSON with message
+* **First** service: rest API application
+* **Second** service: rest API application
 
 ##### Terminology
 Terminology explanation:
@@ -28,20 +24,21 @@ Terminology explanation:
 * **Java**: Java is a high-level, object-oriented programming language known for its platform independence, achieved through the Java Virtual Machine (JVM). It is widely used for web, mobile, and enterprise applications. Java follows the "write once, run anywhere" (WORA) principle, making it a popular choice for cross-platform development.
 * **Spring Boot**: Spring Boot is a Java-based framework that simplifies the development of stand-alone, production-ready Spring applications by providing auto-configuration, embedded servers, and a convention-over-configuration approach.
 * **REST API**: A REST API (Representational State Transfer API) is a web service that allows systems to communicate over HTTP using standard methods like GET, POST, PUT, and DELETE. It follows REST principles, ensuring scalability, statelessness, and resource-based interactions, typically using JSON or XML for data exchange.
-* **RestClient**: A RestClient is a tool, library, or object used to send HTTP requests and receive responses from RESTful web services. It simplifies communication with APIs by handling methods like GET, POST, PUT, and DELETE, often providing features like authentication, headers, and data serialization. 
+* **RestClient**: A RestClient is a tool, library, or object used to send HTTP requests and receive responses from RESTful web services. It simplifies communication with APIs by handling methods like GET, POST, PUT, and DELETE, often providing features like authentication, headers, and data serialization.
+* **HttpExchange**: The HttpExchange interface (from the Java package com.sun.net.httpserver) represents a single HTTP request–response exchange between a client and a server.
 
 
 USAGES
 ------
 
 This project can be tested in following configurations:
-* **Usage Docker Compose**: all services are started as Docker containers definied in docker compose file.
+* **Usage Docker Compose**: all services are started as Docker containers defined in docker compose file.
 
 
 USAGE DOCKER COMPOSE
 --------------------
 
-> **Usage Docker Compse** means all services are started as Docker containers defined in docker compose file.
+> **Usage Docker Compose** means all services are started as Docker containers defined in docker compose file.
 
 > Please **clone/download** project, open **project's main folder** in your favorite **command line tool** and then **proceed with steps below**.
 
